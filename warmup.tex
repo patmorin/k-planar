@@ -1,0 +1,125 @@
+\documentclass{patmorin}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{pat}
+\usepackage{paralist}
+%\usepackage{hyperref}
+
+\setlength{\parskip}{1ex}
+
+\title{\MakeUppercase{Notes on Layered $H$-Partitions of $k$-Planar Graphs}%
+    \thanks{This work was partly funded by NSERC and MRI.}}
+
+\author{Vida Dujmovi\'c%
+        \thanks{School of Computer Science and Electrical Engineering, 
+                University of Ottawa},\,\, 
+        Pat Morin%
+        \thanks{School of Computer Science, Carleton University},\,\, and
+        David R. Wood%
+        \thanks{School of Mathematical Sciences, Monash University}}
+
+\newcommand{\dual}[1]{{#1}^\star}
+\newcommand{\note}[2]{{\color{red}[#1:~#2]}}
+
+\DeclareMathOperator{\dist}{dist}
+
+\begin{document}
+\maketitle
+
+
+\begin{abstract}
+  These are some notes on our work of layered $H$-partitions for $k$-planar graphs
+\end{abstract}
+
+\section{Introduction}
+
+\section{$1$-Plane Graphs}
+
+Let $G$ be an edge maximal 1-plane graph.  Here, edge-maximal should be taken to mean that any two vertices of $G$ on a common face have an edge joining them.  Assume also that $G$ is crossing minimal so that the embedding of $G$ minimizes the number of crossings over all possible embeddings of the (abstract) graph $G$.  From now on, we treat vertices of $G$ as points and edges as simple curves.
+
+A \emph{kite} in $G$ is the subgraph $K=G[\{v,w,x,y\}]$ induced by the endpoints of a pair of crossing edges $vw,xy\in E(G)$.  It follows from edge-maximality that every kite is isomorphic to the complete graph $K_4$.
+The edges $vw$ and $xy$ are called \emph{spars} of $K$.  The cycle $vxwy$ is called the \emph{sail} of $K$.  It follows from crossing minimality that none of the edges $vx$, $xw$, $wy$, or $yv$ are crossed by any other edges of $G$. Thus any edge that is a spar of a kite $K$ is not part of a sail of any kite $K'$. Observe that any spar of $K$ is incident on exactly four \emph{kite faces} of $G$, each of which has three edges and two vertices of $G$ on its boundary.
+
+The 1-plane graph $G$ has a plane triangulation $G'$ as a subgraph that can be obtained by removing one spar from each kite in $G$.  Observe that, for any spar $vw\in E(G)\setminus E(G')$ that crosses $xy\in E(G')$, $G'$ contains the path $vxw$ (and $vyw$).  It follows that $\dist_{G'}(x,y)\le 2\dist_G(x,y)$ for any pair of vertices $x,y\in V(G)$.
+
+
+
+\begin{lem}\lemlabel{induction} The setup:
+  \begin{compactenum}
+    \item Let $G$ and $G'$ be defined as above.
+    \item Let $T$ be a BFS tree of $G'$ rooted at some vertex $r$.
+    \item For each integer $i\ge 0$, let $V_i=\{v\in V(G):\dist_T(r,v)=i\}$. 
+    \item Let $C$ be a cycle in $G'$ with $r$ in the exterior of $C$ and such that
+    \begin{compactenum} 
+      \item No edge of $C$ is crossed by any edge of $G$; and
+      \item $V(C)$ can be partitioned into $P_1,\ldots,P_k$, $k\le 3$ such that for each $i\in\{1,\ldots,k\}$,
+      \begin{compactenum}
+        \item $F[P_i]$ is a path; and
+        \item $|P_i\cap V_j| \le 15$ for all integers $j\ge 0$.
+      \end{compactenum}
+    \end{compactenum}
+    \item Let $N$ and $N'$ be the subgraphs of $G$ and $G'$ consisting only of those edges and vertices contained in $C$ or the interior of $C$.
+  \end{compactenum}
+  Then $N$ has an $H$-partition $(B_x : x\in V(H))$ such that
+  \begin{compactenum}
+    \item $H$ is planar;
+    \item for all integers $j\ge 0$, and all $x\in V(H)$, $|B_x\cap V_j|\le 15$; 
+    \item for each $i\in\{1,\ldots,k\}$, there exists some $x_i\in V(H)$ such that $P_i=B_{x_i}$; and
+    \item $H$ has a tree decomposition whose largest bag has size at most 4 and such that some bag contains $x_1,\ldots,x_k$.
+  \end{compactenum}
+\end{lem}
+
+\begin{proof}
+  The proof is by induction on the number of vertices of $N$.
+  First note that $N'$ is a near-triangulation.  If $k=3$, set $Q_i=P_i$ for each $i\in\{1,2,3\}$.  Otherwise, as before, split $P_1,\ldots,P_k$ to partition $V(C)$ into three sets $R_1$, $R_2$, and $R_3$ such that each $C[R_i]$ is a path and each $R_i$ contains vertices from at most one of $P_1,\ldots,P_k$. 
+  
+  For each $i\in\{1,2,3\}$ and $v\in R_i$, assign the colour $i$ to $v$.
+  For each $v\in V(N')$, consider the path $P_v$ that consists of the subpath of the $v$ to $r$ path in $T$ that stops at the first vertex $v'\in V(C)$. Assign $v$ to have the same colour as $v'$.
+  
+  Sperner's Lemma ensures that $G'$ contains a triangular face $\tau=v_1v_2v_3$ whose three vertices area assigned different colours. For each $i\in\{1,2,3\}$, let $Q_i=P_{v_i}$ be the path in $T$ form $v_i$ to $v_i'$.  Let $Y$ denote the subgraph if $N'$ consisting of vertices and edges $Q_1$, $Q_2$, $Q_3$, and $\tau$.  Let $Y^+$ denote the subgraph of $N$ consisting of the vertices edges of $Y$ plus the vertices and edges of every kite formed by a crossing between an edge of $G$ and an edge of $Y$.
+  
+  We claim that, for each integer $i\ge 0$, $|V(Y^+)\cap V_i|\le 15$.  To see this, first observe that $Y$ contains at most 3 vertices of $V_i$. If a vertex $x\in V(Y^+)\setminus V(Y)$ is contained in $V_i$, then this is because $Y$ contains an edge $vw$ with $v\in V_{i'}$ and $w\in\{V_{i'+1}$ for some $i'\in\{i-1,i\}$ and $G$ contains an edge $xy$ that crosses $vw$. (Recall that $vx,xw\in E(G')$, so $\dist_{G'}(w,r)-1\le\dist_{G'}(x,r)\le\dist_{G'}(v,r)+1$.)  The graph $Y$ contains at most 6 such edges, each of which accounts for at most 2 additional vertices of $V_i$.  Therefore, in total, $|Y^+\cap V_i|\le 15$.
+
+  
+  Finally, let $S$ and $S^+$ denote the subgraph of $G$ containing the edges and vertices of $Y$, respectively $Y^+$, and the edges and vertices of $C$.  The graph $S^+$ has some number of bounded faces, all contained in the interior of $C$. Some of the bounded faces of $S$ are kite faces. Call the non-kite bounded faces $F_1,\ldots,F_m$ and let $C_1,\ldots,C_m$ denote their boundaries.  We claim that, for each $i\in\{1,\ldots,m\}$, if some portion of $C_i$ is contained in an edge $vw\in E(G)$ then $vw$ is not crossed by any edge of $G$.  To see this, there are three cases to consider:
+  \begin{enumerate}
+    \item $vw\in E(C)$. By assumption, $vw$ is not crossed by any edge of $G$.
+    \item $vw\in E(Y)$. In this case, the kite containing $vw$ is in $Y^+$, so $vw$ is only incident to kite faces.
+    \item $vw\in E(Y^+)\setminus E(Y)$. In this case, either $vw$ is a sail edge in which case it is not crossed by definition, or $vw$ is a spar that was added to $Y^+$ because $vw$ crosses some edge $xy\in E(Y)$.  In this latter case, $vw$ is only incident to kite faces.
+  \end{enumerate}
+  Therefore each $C_i$ is a cycle in $G^+$ consisting entirely of uncrossed edges. The vertices of $C_i$ can be partitioned into at most three sets $P_1'$, $P_2'$, and $P_3'$ where $P_1'\subset V(Y^+)$, $P_2'\subseteq P_a$ and $P_3'\subseteq P_b$ for some $a,b\in\{1,2,3\}$. Furthermore $C_i[P_j']$ is a path for each $j\in\{1,\ldots,3\}$. Finally, the subgraph $N_i$ of $G$ consisting of the edges and vertices of $G$ contained in $C_i$ or its interior does not contain one of the three vertices of $\tau$. Therefore, we can apply induction using the cycle $C_i$ and the partition $P_1',P_2',P_3'$ of $V(C_i)$ to obtain the desired $H$-partition and tree decomposition of $N_i$.
+  
+  The remainder of the proof is as before. We use $V(Y^+)\setminus V(C)$ as an element of our $H$-partition.  The root bag in the tree decomposition contains the vertices obtained by contracting each of $P_1,\ldots,P_k$ and $Y^+$.
+  
+  Planarity comes from the fact that if two edges $vw$ and $xy$ cross, then they end up in the same bag of the $H$-partition.  This means that $H$ is actually obtained by contracting connected sets of vertices in the planar graph $G'$.
+\end{proof}
+
+\begin{thm}\thmlabel{1-plane}
+  Every 1-plane graph $G$ has a layered $H$-partition of layered width at most 30 where $H$ is planar and has treewidth at most 3.
+\end{thm}
+
+\begin{proof}
+  The same as before except that the layered width 15 from \lemref{induction} becomes 30 because \lemref{induction} uses a layering of $G'$ and distances in $G'$ can be a factor of 2 larger than in $G$.
+\end{proof}
+
+\section{Remarks}
+
+\begin{enumerate}
+  \item The fact that $G'$ is a triangulation is not really important. We could arbitrarily triangulate $N'$ (compatible with $T$) and still find a Sperner triangle.
+  \item The fact that $T$ is plane seems important since it lets us use Sperner's Lemma.  But maybe Sperner's Lemma is overkill. $Y^+$ is just a crappy separator of small layered width that happens to break $N$ into components for which no component is adjacent to more than 2 of $Q_1,\ldots,Q_3$.
+  \item The fact that $C_i$ is a cycle of non-crossed edges in $G$ is not necessarily critical.  The non-crossed property isn't so important as long as no edge of $G-V(S^+)$ has endpoints in two different faces of $S^+$.
+  
+  More troublesome, again, is the use of Sperner's Lemma since it requires that $P_1,\ldots,P_k$ (and therefore also the boundary of $Y^+$) be not so wild that they interleave.  Again, maybe we can cook up something more robust than Sperner's Lemma.
+  
+  \item I think I can push through a proof for 2-plane graphs.
+\end{enumerate}
+
+\bibliographystyle{plain}
+\bibliography{warmup}
+
+\end{document}
