@@ -40,7 +40,7 @@
 
 
 \begin{abstract}
-  These are some notes on our work of layered $H$-partitions for $k$-planar graphs
+  We prove that every $k$-planar graph has a layered $H$-partition of layered width $k(24k+4)$ in which $H$ has treewidth 3. This implies that $k$-planar graphs have a queue number upper-bounded by a polynomial in $k$ and have non-repetitive chromatic number upper-bounded by an exponential function of $k$.
 \end{abstract}
 
 \section{Introduction}
@@ -123,10 +123,10 @@ The 1-plane graph $G$ has a plane triangulation $G'$ as a subgraph that can be o
 
 \begin{lem}\lemlabel{k-induction} The setup:
   \begin{compactenum}
-    \item Let $G_0$ be a $k$-plane graph.
+    \item Let $G_0$ be a connected $k$-plane graph.
     \item Let $G=(V(G_0), E(G))$ be some subgraph of $G_0$ (so $E(G)\subseteq E(G_0)$).
-    \item Let $G^+$ be the plane graph obtained by adding a vertex at each crossing point in $G_0$.
-    \item Let $T$ be a spanning tree of $G^+$ rooted at some vertex $r$.
+    \item Let $G^+$ be the triangulation obtained by adding a vertex at each crossing point in $G_0$ and then adding additional edges to obtain a triangulation.
+    \item Let $T$ be a BFS spanning tree of $G^+$ rooted at some vertex $r$.
     \item For each integer $i\ge 0$, let $V^+_i=\{v\in V(G^+):\dist_{G^+}(r,v)=i\}$, and let $V_i=V(G)\cap V^+_i$.
     \item Let $C$ be a cycle in $G^+$ with $r$ in the exterior of $C$ and such that
     \begin{compactenum} 
@@ -149,6 +149,7 @@ The 1-plane graph $G$ has a plane triangulation $G'$ as a subgraph that can be o
 
 
 \begin{proof}
+  We remark that $N^+$ is a near-triangulation.
   The proof is by induction on the number of vertices of $N^+$.
 
   If $k=3$, set $R_i=P_i$ for each $i\in\{1,2,3\}$.  Otherwise, as before, split $P_1,\ldots,P_k$ to partition $V(C)$ into three sets $R_1$, $R_2$, and $R_3$ such that each $C[R_i]$ is a path and each $R_i$ contains vertices from at most one of $P_1,\ldots,P_k$. 
@@ -157,8 +158,7 @@ The 1-plane graph $G$ has a plane triangulation $G'$ as a subgraph that can be o
   For each $i\in\{1,2,3\}$ and $v\in R_i$, assign the colour $i$ to $v$.
   For each $v\in V(N^+)$, consider the path $P_v$ that consists of the subpath of the $v$ to $r$ path in $T$ that stops at the first vertex $v'\in V(C)$. Assign $v$ to have the same colour as $v'$.
   
-  Add edges to $N^+$ to obtain a near-triangulation $G^\Delta$.  
-  Sperner's Lemma ensures that $G^\Delta$ contains a triangular face $\tau=v_1v_2v_3$ whose three vertices are assigned different colours. For each $i\in\{1,2,3\}$, let $Q_i^+=P_{v_i}^+$ be the path in $T$ from $v_i$ to $v_i'$.  Let $Y^+$ denote the subgraph of $N^+$ consisting of vertices and edges of $Q_1^+$, $Q_2^+$, $Q_3^+$, and $\tau$.
+  Sperner's Lemma ensures that $N^+$ contains a triangular face $\tau=v_1v_2v_3$ whose three vertices are assigned different colours. For each $i\in\{1,2,3\}$, let $Q_i^+=P_{v_i}^+$ be the path in $T$ from $v_i$ to $v_i'$.  Let $Y^+$ denote the subgraph of $N^+$ consisting of vertices and edges of $Q_1^+$, $Q_2^+$, $Q_3^+$, and $\tau$.
   
   Define a vertex set $X\subset V(G)$ as follows:  The set $X$ contains $V(Y^+)\cap V(G)\setminus V(C)$.  Next, for each vertex $v^+\in V(Y^+)\setminus V(G)$, we consider the two edges $vw,xy\in E(G_0)$ whose intersection is $v^+$.  Next we set
   \[   X_{vw} = \begin{cases} \{v,w\} & \text{if $vw\in E(G)$} \\
@@ -175,11 +175,11 @@ The 1-plane graph $G$ has a plane triangulation $G'$ as a subgraph that can be o
 
   Let $S^+$ denote the subgraph of $N^+$ consisting of the vertices and edges of $Y^+$ and the vertices and edges of $C$.  The graph $S^+$ is planar. It contains one triangular face $\tau$ and up to three additional bounded faces $F_1$, $F_2$, and $F_3$, where each $F_i$ does not have any vertices in common with $P_i$.
   
-  For each $i\in\{1,2,3\}$, let $Z_i$ be the subset of $V(G)$ that is contained in the interior of $F_i$.  We claim that $N-X-V(C)$ does not contain any edge $vw$ with $v\in Z_i$ and $w\in Z_j$ for $i\neq j$.  Indeed, any such edge would contain a vertex of $V(Y^+)\setminus V(G)$ in its interior and therefore each of $v,w\in X\cup V(C)$.
+  For each $i\in\{1,2,3\}$, let $Z_i$ be the subset of $V(G)$ that is contained in the interior of $F_i$.  We claim that $N-X-V(C)$ does not contain any edge $vw\in E(G)$ with $v\in Z_i$ and $w\in Z_j$ for $i\neq j$.  Indeed, any such edge would contain a vertex of $V(Y^+)\setminus V(G)$ in its interior and therefore each of $v,w\in X\cup V(C)$.
 
   The set $X$ will become an element $B_x$ in our $H$-partition of $G$.  All that remains is to apply induction on three subgraphs.  For each $i\in\{1,\ldots,3\}$, let $N_i^+$ denote the subgraph of $G^+$ containing the vertices and edges of $G^+$ that are contained in the closure of $F_i$.  
-  Let $G_i^-$ be the subgraph of $G$ obtained by removing the edges of $G$ that cross the boundary of $F_i$.  
-  Let $N_i$ denote the subgraph of $G_i^-$ containing the vertices and edges of $G_i^-$ that are contained in the closure of $F_i$.  Note that $G_i^-$ is a subgraph of $G_0$ and that the number of vertices of $N_i^+$ is less than the number of vertices of $N^+$ since $N_i^+$ does not contain one of the vertices of $\tau$.  Therefore, we can apply induction to obtain the desired $H$-partition of $N_i$ using the original graphs $G_0$ and $G^+$, the subgraph $G_i^-$ in place of $G$, the cycle $F_i$ in place of $C$, and partition of $V(F_i)$ into $V(F_i)\cap X$, $V(F_i)\cap P_{i-1}$, and $V(F_i)\cap P_{i+1}$.
+  Let $G_i$ be the subgraph of $G$ obtained by removing the edges of $G$ that cross the boundary of $F_i$.  
+  Let $N_i$ denote the subgraph of $G_i$ containing the vertices and edges of $G_i$ that are contained in the closure of $F_i$.  Note that $G_i$ is a subgraph of $G_0$ and that the number of vertices of $N_i^+$ is less than the number of vertices of $N^+$ since $N_i^+$ does not contain one of the vertices of $\tau$.  Therefore, we can apply induction to obtain the desired $H$-partition of $N_i$ using the original graphs $G_0$ and $G^+$, the subgraph $G_i$ in place of $G$, the cycle $F_i$ in place of $C$, and partition of $V(F_i)$ into $V(F_i)\cap X$, $V(F_i)\cap P_{i-1}$, and $V(F_i)\cap P_{i+1}$.
   
   The remainder of the proof is as before. We use $X$ as an element of our $H$-partition. The root bag in the tree decomposition contains the vertices obtained by contracting each of $P_1,\ldots,P_k$ and $X$.
 \end{proof}
@@ -273,26 +273,18 @@ The 1-plane graph $G$ has a plane triangulation $G'$ as a subgraph that can be o
 % 
 % Let $N$ be the near-triangulation consisting of all edges and vertices of $G$ that are on or in the ineterior of $C$.  
 % 
-  
-
-
-
-
-
-
-
-
-\section{Remarks}
-
-\begin{enumerate}
-  \item The fact that $G'$ is a triangulation is not really important. We could arbitrarily triangulate $N'$ (compatible with $T$) and still find a Sperner triangle.
-  \item The fact that $T$ is plane seems important since it lets us use Sperner's Lemma.  But maybe Sperner's Lemma is overkill. $Y^+$ is just a crappy separator of small layered width that happens to break $N$ into components for which no component is adjacent to more than 2 of $Q_1,\ldots,Q_3$.
-  \item The fact that $C_i$ is a cycle of non-crossed edges in $G$ is not necessarily critical.  The non-crossed property isn't so important as long as no edge of $G-V(S^+)$ has endpoints in two different faces of $S^+$.
-  
-  More troublesome, again, is the use of Sperner's Lemma since it requires that $P_1,\ldots,P_k$ (and therefore also the boundary of $Y^+$) be not so wild that they interleave.  Again, maybe we can cook up something more robust than Sperner's Lemma.
-  
-  \item I think I can push through a proof for 2-plane graphs.
-\end{enumerate}
+% 
+% \section{Remarks}
+% 
+% \begin{enumerate}
+%   \item The fact that $G'$ is a triangulation is not really important. We could arbitrarily triangulate $N'$ (compatible with $T$) and still find a Sperner triangle.
+%   \item The fact that $T$ is plane seems important since it lets us use Sperner's Lemma.  But maybe Sperner's Lemma is overkill. $Y^+$ is just a crappy separator of small layered width that happens to break $N$ into components for which no component is adjacent to more than 2 of $Q_1,\ldots,Q_3$.
+%   \item The fact that $C_i$ is a cycle of non-crossed edges in $G$ is not necessarily critical.  The non-crossed property isn't so important as long as no edge of $G-V(S^+)$ has endpoints in two different faces of $S^+$.
+% 
+%   More troublesome, again, is the use of Sperner's Lemma since it requires that $P_1,\ldots,P_k$ (and therefore also the boundary of $Y^+$) be not so wild that they interleave.  Again, maybe we can cook up something more robust than Sperner's Lemma.
+% 
+%   \item I think I can push through a proof for 2-plane graphs.
+% \end{enumerate}
 
 \bibliographystyle{plain}
 \bibliography{warmup}
