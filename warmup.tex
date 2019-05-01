@@ -59,7 +59,7 @@ The 1-plane graph $G$ has a plane triangulation $G'$ as a subgraph that can be o
       \item No edge of $C$ is crossed by any edge of $G$; and
       \item $V(C)$ can be partitioned into $P_1,\ldots,P_k$, $k\le 3$ such that for each $i\in\{1,\ldots,k\}$,
       \begin{compactenum}
-        \item $F[P_i]$ is a path; and
+        \item $C[P_i]$ is a path; and
         \item $|P_i\cap V_j| \le 15$ for all integers $j\ge 0$.
       \end{compactenum}
     \end{compactenum}
@@ -76,12 +76,12 @@ The 1-plane graph $G$ has a plane triangulation $G'$ as a subgraph that can be o
 
 \begin{proof}
   The proof is by induction on the number of vertices of $N$.
-  First note that $N'$ is a near-triangulation.  If $k=3$, set $Q_i=P_i$ for each $i\in\{1,2,3\}$.  Otherwise, as before, split $P_1,\ldots,P_k$ to partition $V(C)$ into three sets $R_1$, $R_2$, and $R_3$ such that each $C[R_i]$ is a path and each $R_i$ contains vertices from at most one of $P_1,\ldots,P_k$. 
+  First note that $N'$ is a near-triangulation.  If $k=3$, set $R_i=P_i$ for each $i\in\{1,2,3\}$.  Otherwise, as before, split $P_1,\ldots,P_k$ to partition $V(C)$ into three sets $R_1$, $R_2$, and $R_3$ such that each $C[R_i]$ is a path and each $R_i$ contains vertices from at most one of $P_1,\ldots,P_k$. 
   
   For each $i\in\{1,2,3\}$ and $v\in R_i$, assign the colour $i$ to $v$.
   For each $v\in V(N')$, consider the path $P_v$ that consists of the subpath of the $v$ to $r$ path in $T$ that stops at the first vertex $v'\in V(C)$. Assign $v$ to have the same colour as $v'$.
   
-  Sperner's Lemma ensures that $G'$ contains a triangular face $\tau=v_1v_2v_3$ whose three vertices area assigned different colours. For each $i\in\{1,2,3\}$, let $Q_i=P_{v_i}$ be the path in $T$ form $v_i$ to $v_i'$.  Let $Y$ denote the subgraph if $N'$ consisting of vertices and edges $Q_1$, $Q_2$, $Q_3$, and $\tau$.  Let $Y^+$ denote the subgraph of $N$ consisting of the vertices edges of $Y$ plus the vertices and edges of every kite formed by a crossing between an edge of $G$ and an edge of $Y$.
+  Sperner's Lemma ensures that $G'$ contains a triangular face $\tau=v_1v_2v_3$ whose three vertices are assigned different colours. For each $i\in\{1,2,3\}$, let $Q_i=P_{v_i}$ be the path in $T$ form $v_i$ to $v_i'$.  Let $Y$ denote the subgraph of $N'$ consisting of vertices and edges $Q_1$, $Q_2$, $Q_3$, and $\tau$.  Let $Y^+$ denote the subgraph of $N$ consisting of the vertices and edges of $Y$ plus the vertices and edges of every kite formed by a crossing between an edge of $G$ and an edge of $Y$.
   
   We claim that, for each integer $i\ge 0$, $|V(Y^+)\cap V_i|\le 15$.  To see this, first observe that $Y$ contains at most 3 vertices of $V_i$. If a vertex $x\in V(Y^+)\setminus V(Y)$ is contained in $V_i$, then this is because $Y$ contains an edge $vw$ with $v\in V_{i'}$ and $w\in\{V_{i'+1}$ for some $i'\in\{i-1,i\}$ and $G$ contains an edge $xy$ that crosses $vw$. (Recall that $vx,xw\in E(G')$, so $\dist_{G'}(w,r)-1\le\dist_{G'}(x,r)\le\dist_{G'}(v,r)+1$.)  The graph $Y$ contains at most 6 such edges, each of which accounts for at most 2 additional vertices of $V_i$.  Therefore, in total, $|Y^+\cap V_i|\le 15$.
 
