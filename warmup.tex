@@ -178,7 +178,7 @@ The 1-plane graph $G$ has a plane triangulation $G'$ as a subgraph that can be o
   For each $i\in\{1,2,3\}$, let $Z_i$ be the subset of $V(G)$ that is contained in the interior of $F_i$.  We claim that $N-X-V(C)$ does not contain any edge $vw\in E(G)$ with $v\in Z_i$ and $w\in Z_j$ for $i\neq j$.  Indeed, any such edge would contain a vertex of $V(Y^+)\setminus V(G)$ in its interior and therefore each of $v,w\in X\cup V(C)$.
 
   The set $X$ will become an element $B_x$ in our $H$-partition of $G$.  All that remains is to apply induction on three subgraphs.  For each $i\in\{1,\ldots,3\}$, let $N_i^+$ denote the subgraph of $G^+$ containing the vertices and edges of $G^+$ that are contained in the closure of $F_i$.  
-  Let $G_i$ be the subgraph of $G$ obtained by removing the edges of $G$ that cross the boundary of $F_i$.  
+  Let $G_i$ be the subgraph of $G$ obtained by removing the edges of $G$ that cross the boundary of $F_i$.
   Let $N_i$ denote the subgraph of $G_i$ containing the vertices and edges of $G_i$ that are contained in the closure of $F_i$.  Note that $G_i$ is a subgraph of $G_0$ and that the number of vertices of $N_i^+$ is less than the number of vertices of $N^+$ since $N_i^+$ does not contain one of the vertices of $\tau$.  Therefore, we can apply induction to obtain the desired $H$-partition of $N_i$ using the original graphs $G_0$ and $G^+$, the subgraph $G_i$ in place of $G$, the cycle $F_i$ in place of $C$, and partition of $V(F_i)$ into $V(F_i)\cap X$, $V(F_i)\cap P_{i-1}$, and $V(F_i)\cap P_{i+1}$.
   
   The remainder of the proof is as before. We use $X$ as an element of our $H$-partition. The root bag in the tree decomposition contains the vertices obtained by contracting each of $P_1,\ldots,P_k$ and $X$.
