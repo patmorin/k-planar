@@ -117,15 +117,15 @@ The 1-plane graph $G$ has a plane triangulation $G'$ as a subgraph that can be o
 
 \section{$k$-Planar}
 
-  We make use of the fact that, if $G$ is a $k$-plane graph and $G^+$ is the plane graph obtained by adding a dummy vertex at each crossing in $G$, then $\dist_{G^+}(x,y)\le k\dist_G(x,y)$ for any $x,y\in V(G)$.
 
+Let $G$ be a $k$-planar graph.  We will use of the \emph{plane augmentation} $G^+$ of $G$ obtained by adding a \emph{dummy vertex} at each crossing in $G$, then adding a \emph{star vertex} $v_f$ in each face $f$ of the resulting graph and making $v_f$ adjacent to each vertex of $f$.
 
+We will make use of the fact that $\dist_{G^+}(x,y)\le k\cdot\dist_G(x,y)$ for any $x,y\in V(G)$.  This follows immediately from the fact that any edge $xy\in E(G)$ has a corresponding path $x-y$ in $G^+$ of length at most $k$.  We will also make use of the fact that every dummy vertex of $G^+$ has degree 8.  
 
 \begin{lem}\lemlabel{k-induction} The setup:
   \begin{compactenum}
-    \item Let $G_0$ be a connected $k$-plane graph.
-    \item Let $G=(V(G_0), E(G))$ be some subgraph of $G_0$ (so $E(G)\subseteq E(G_0)$).
-    \item Let $G^+$ be the triangulation obtained by adding a vertex at each crossing point in $G_0$ and then adding additional edges to obtain a triangulation.
+    \item Let $G$ be $k$-plane graph.
+    \item Let $G^+$ be the plane augmentation of $G$.
     \item Let $T$ be a BFS spanning tree of $G^+$ rooted at some vertex $r$.
     \item For each integer $i\ge 0$, let $V^+_i=\{v\in V(G^+):\dist_{G^+}(r,v)=i\}$, and let $V_i=V(G)\cap V^+_i$.
     \item Let $C$ be a cycle in $G^+$ with $r$ in the exterior of $C$ and such that
@@ -160,17 +160,10 @@ The 1-plane graph $G$ has a plane triangulation $G'$ as a subgraph that can be o
   
   Sperner's Lemma ensures that $N^+$ contains a triangular face $\tau=v_1v_2v_3$ whose three vertices are assigned different colours. For each $i\in\{1,2,3\}$, let $Q_i^+=P_{v_i}^+$ be the path in $T$ from $v_i$ to $v_i'$.  Let $Y^+$ denote the subgraph of $N^+$ consisting of vertices and edges of $Q_1^+$, $Q_2^+$, $Q_3^+$, and $\tau$.
   
-  Define a vertex set $X\subset V(G)$ as follows:  The set $X$ contains $V(Y^+)\cap V(G)\setminus V(C)$.  Next, for each vertex $v^+\in V(Y^+)\setminus V(G)$, we consider the two edges $vw,xy\in E(G_0)$ whose intersection is $v^+$.  Next we set
-  \[   X_{vw} = \begin{cases} \{v,w\} & \text{if $vw\in E(G)$} \\
-           \emptyset & \text{if $vw\not\in E(G)$,}
-         \end{cases}
-  \]
-  \[   X_{xy} = \begin{cases} \{x,y\} & \text{if $xy\in E(G)$} \\
-           \emptyset & \text{if $xy\not\in E(G)$} 
-         \end{cases}
-  \]
-  and add $(X_{vw}\cup X_{xy})\setminus V(C)$ to $X$.
-
+  Define a vertex set $X\subset V(G)$ as follows:  The set $X$ contains $V(Y^+)\cap V(G)\setminus V(C)$.  Next, for each dummy vertex $v^+\in V(Y^+)\setminus V(G)$, we consider the two edges $vw,xy\in E(G_0)$ whose intersection is $v^+$.  These edges correspond to two paths $v\rightsquigarrow w$ and $x\rightsquigarrow y$.  We collect the set $A_{x^+}$ of all vertices of $G^+$ that are on any face that contains any dummy vertex in $v\rightsquigarrow w$ or $x\rightsquigarrow y$.  We add the set $A_{x^+}\cap V(N^+)\setminus V(C)$ to $X$.  
+  
+  Note that $A_{x^+}$ contains $\{v,w,x,y\}$ and that, for any vertex $z\in A_{x^+}$, $\dist_{G^+}(z,x^+) \le k$.  Careful counting also reveals that the size of $A_{x^+}$ is at most .
+    
   We claim that, for each integer $i\ge 0$, $|V_i\cap X|\le 24k+4$.  To see why this is so, first note that $|V_i^+\cap V(Y^+)|\le 3$ since $V_i^+$ contains at most one vertex from each of $Q_1^+$, $Q_2^+$, and $Q_3^+$. For any vertex $v\in X$, there exists a vertex $v^+\in V(Y^+)$ such that $\dist_{G'}(v,v^+)\le k$.  Turning this around, we can assign each vertex $v\in X$ to a vertex $v^+\in V(Y^+)$ in such a way that each vertex of $Y^+$ is assigned at most 4 vertices of $X$ (each dummy vertex $v^+$ is assigned the four endpoints of the crossing pair of edges that generated $v^+$).  Since any vertex $v\in X\cap V_i$ is assigned to one of the at most $6(k+1)$ vertices in $X\cap (V(Y^+)\cap( V_{i-k}^+\cup\cdots\cup V_{i+k}^+))$, we have $|X\cap V_i|\le 24k+4$.
 
   Let $S^+$ denote the subgraph of $N^+$ consisting of the vertices and edges of $Y^+$ and the vertices and edges of $C$.  The graph $S^+$ is planar. It contains one triangular face $\tau$ and up to three additional bounded faces $F_1$, $F_2$, and $F_3$, where each $F_i$ does not have any vertices in common with $P_i$.
