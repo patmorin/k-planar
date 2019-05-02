@@ -1,7 +1,7 @@
 
-name=warmup
+name=k-planar
 
-texsources=warmup.tex 
+texsources=$(name).tex 
 
 $(name).pdf : $(texsources) $(name).bib figs/
 	make -C figs
@@ -13,4 +13,4 @@ clean :
 	rm -f $(name).pdf
 
 install: $(name).pdf
-	scp $< cglab.ca:public_html/publications/drafts/$(name)/$(name)-`date --iso`.pdf
+	scp $< cglab.ca:public_html/publications/drafts/warmup/$(name)-`date --iso`.pdf

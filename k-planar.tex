@@ -1,0 +1,345 @@
+\documentclass{patmorin}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{pat}
+\usepackage{paralist}
+
+\usepackage{tipa}
+\usepackage{upgreek}
+\usepackage{rotating}
+\newcommand{\V}{\rotatebox[origin=c]{180}{$V$}}
+\newcommand{\Y}{\rotatebox[origin=c]{180}{$Y$}}
+%\usepackage{hyperref}
+
+\setlength{\parskip}{1ex}
+
+\title{\MakeUppercase{Notes on Layered $H$-Partitions of $k$-Planar Graphs}%
+    \thanks{This work was partly funded by NSERC and MRI.}}
+
+\author{Vida Dujmovi\'c%
+        \thanks{School of Computer Science and Electrical Engineering, 
+                University of Ottawa},\,\, 
+        Pat Morin%
+        \thanks{School of Computer Science, Carleton University},\,\, and
+        David R. Wood%
+        \thanks{School of Mathematical Sciences, Monash University}}
+
+\newcommand{\dual}[1]{{#1}^\star}
+\newcommand{\note}[2]{{\color{red}[#1:~#2]}}
+
+\DeclareMathOperator{\dist}{dist}
+\DeclareMathOperator{\depth}{depth}
+\DeclareMathOperator{\ff}{f}
+\newcommand{\f}{{\color{red}\ff}}
+
+\newcommand{\fk}{{\color{red}f(k)}}
+
+\begin{document}
+\maketitle
+
+
+\begin{abstract}
+  TBD
+  % Layered $H$-partitions of graphs (with small layered width, in which $H$ has small treewidth) are a recently-introduced tool that have been used to solve longstanding problems on queue layouts, non-repetitive colouring, and 3-d graph drawing.  Such partitions are known to exist for planar graphs and, more generally, bounded genus graphs.
+  % In the current paper, we prove that every $k$-planar graph has a layered $H$-partition of layered width $O(k^3)$ in which $H$ is planar and has treewidth 3. This implies that $k$-planar graphs have a queue number upper-bounded by a polynomial in $k$ and have non-repetitive chromatic number upper-bounded by an exponential function of $k$.
+\end{abstract}
+
+\section{Introduction}
+
+
+% The remainder of the paper is organized as follows:  \secref{1-planar} is a warm-up and gives the proof for 1-plane graphs.  \secref{k-planar} presents the proof for $k$-plane graphs.
+% 
+% 
+% \section{$1$-Plane Graphs}
+% \seclabel{1-planar}
+% 
+% Let $G$ be an edge maximal 1-plane graph.  Here, edge-maximal should be taken to mean that any two vertices of $G$ on a common face have an edge joining them.  Assume also that $G$ is crossing minimal so that the embedding of $G$ minimizes the number of crossings over all possible embeddings of the (abstract) graph $G$.  From now on, we treat vertices of $G$ as points and edges as simple curves.
+% 
+% A \emph{kite} in $G$ is the subgraph $K=G[\{v,w,x,y\}]$ induced by the endpoints of a pair of crossing edges $vw,xy\in E(G)$.  It follows from edge-maximality that every kite is isomorphic to the complete graph $K_4$.
+% The edges $vw$ and $xy$ are called \emph{spars} of $K$.  The cycle $vxwy$ is called the \emph{sail} of $K$.  It follows from crossing minimality that none of the edges $vx$, $xw$, $wy$, or $yv$ are crossed by any other edges of $G$. Thus any edge that is a spar of a kite $K$ is not part of a sail of any kite $K'$. Observe that any spar of $K$ is incident on exactly four \emph{kite faces} of $G$, each of which has three edges and two vertices of $G$ on its boundary.
+% 
+% The 1-plane graph $G$ has a plane triangulation $G'$ as a subgraph that can be obtained by removing one spar from each kite in $G$.  Observe that, for any spar $vw\in E(G)\setminus E(G')$ that crosses $xy\in E(G')$, $G'$ contains the path $vxw$ (and $vyw$).  It follows that $\dist_{G'}(x,y)\le 2\dist_G(x,y)$ for any pair of vertices $x,y\in V(G)$.
+% 
+% \begin{lem}\lemlabel{induction} The setup:
+%   \begin{compactenum}
+%     \item Let $G$ and $G'$ be defined as above.
+%     \item Let $T$ be a BFS tree of $G'$ rooted at some vertex $r$.
+%     \item For each integer $i\ge 0$, let $V_i=\{v\in V(G):\dist_T(r,v)=i\}$. 
+%     \item Let $C$ be a cycle in $G'$ with $r$ in the exterior of $C$ and such that
+%     \begin{compactenum} 
+%       \item No edge of $C$ is crossed by any edge of $G$; and
+%       \item $V(C)$ can be partitioned into $P_1,\ldots,P_k$, $k\le 3$ such that for each $i\in\{1,\ldots,k\}$,
+%       \begin{compactenum}
+%         \item $C[P_i]$ is a path; and
+%         \item $|P_i\cap V_j| \le 15$ for all integers $j\ge 0$.
+%       \end{compactenum}
+%     \end{compactenum}
+%     \item Let $N$ and $N'$ be the subgraphs of $G$ and $G'$ consisting only of those edges and vertices contained in $C$ or the interior of $C$.
+%   \end{compactenum}
+%   Then $N$ has an $H$-partition $(B_x : x\in V(H))$ such that
+%   \begin{compactenum}
+%     \item $H$ is planar;
+%     \item for all integers $j\ge 0$, and all $x\in V(H)$, $|B_x\cap V_j|\le 15$; 
+%     \item for each $i\in\{1,\ldots,k\}$, there exists some $x_i\in V(H)$ such that $P_i=B_{x_i}$; and
+%     \item $H$ has a tree decomposition whose largest bag has size at most 4 and such that some bag contains $x_1,\ldots,x_k$.
+%   \end{compactenum}
+% \end{lem}
+% 
+% \begin{proof}
+%   The proof is by induction on the number of vertices of $N$.
+%   First note that $N'$ is a near-triangulation.  If $k=3$, set $R_i=P_i$ for each $i\in\{1,2,3\}$.  Otherwise, as before, split $P_1,\ldots,P_k$ to partition $V(C)$ into three sets $R_1$, $R_2$, and $R_3$ such that each $C[R_i]$ is a path and each $R_i$ contains vertices from at most one of $P_1,\ldots,P_k$. 
+% 
+%   For each $i\in\{1,2,3\}$ and $v\in R_i$, assign the colour $i$ to $v$.
+%   For each $v\in V(N')$, consider the path $P_v$ that consists of the subpath of the $v$ to $r$ path in $T$ that stops at the first vertex $v'\in V(C)$. Assign $v$ to have the same colour as $v'$.
+% 
+%   Sperner's Lemma ensures that $G'$ contains a triangular face $\tau=v_1v_2v_3$ whose three vertices are assigned different colours. For each $i\in\{1,2,3\}$, let $Q_i=P_{v_i}$ be the path in $T$ form $v_i$ to $v_i'$.  Let $Y$ denote the subgraph of $N'$ consisting of vertices and edges $Q_1$, $Q_2$, $Q_3$, and $\tau$.  Let $Y^+$ denote the subgraph of $N$ consisting of the vertices and edges of $Y$ plus the vertices and edges of every kite formed by a crossing between an edge of $G$ and an edge of $Y$.
+% 
+%   We claim that, for each integer $i\ge 0$, $|V(Y^+)\cap V_i|\le 15$.  To see this, first observe that $Y$ contains at most 3 vertices of $V_i$. If a vertex $x\in V(Y^+)\setminus V(Y)$ is contained in $V_i$, then this is because $Y$ contains an edge $vw$ with $v\in V_{i'}$ and $w\in\{V_{i'+1}$ for some $i'\in\{i-1,i\}$ and $G$ contains an edge $xy$ that crosses $vw$. (Recall that $vx,xw\in E(G')$, so $\dist_{G'}(w,r)-1\le\dist_{G'}(x,r)\le\dist_{G'}(v,r)+1$.)  The graph $Y$ contains at most 6 such edges, each of which accounts for at most 2 additional vertices of $V_i$.  Therefore, in total, $|Y^+\cap V_i|\le 15$.
+% 
+% 
+%   Finally, let $S$ and $S^+$ denote the subgraph of $G$ containing the edges and vertices of $Y$, respectively $Y^+$, and the edges and vertices of $C$.  The graph $S^+$ has some number of bounded faces, all contained in the interior of $C$. Some of the bounded faces of $S$ are kite faces. Call the non-kite bounded faces $F_1,\ldots,F_m$ and let $C_1,\ldots,C_m$ denote their boundaries.  We claim that, for each $i\in\{1,\ldots,m\}$, if some portion of $C_i$ is contained in an edge $vw\in E(G)$ then $vw$ is not crossed by any edge of $G$.  To see this, there are three cases to consider:
+%   \begin{enumerate}
+%     \item $vw\in E(C)$. By assumption, $vw$ is not crossed by any edge of $G$.
+%     \item $vw\in E(Y)$. In this case, the kite containing $vw$ is in $Y^+$, so $vw$ is only incident to kite faces.
+%     \item $vw\in E(Y^+)\setminus E(Y)$. In this case, either $vw$ is a sail edge in which case it is not crossed by definition, or $vw$ is a spar that was added to $Y^+$ because $vw$ crosses some edge $xy\in E(Y)$.  In this latter case, $vw$ is only incident to kite faces.
+%   \end{enumerate}
+%   Therefore each $C_i$ is a cycle in $G^+$ consisting entirely of uncrossed edges. The vertices of $C_i$ can be partitioned into at most three sets $P_1'$, $P_2'$, and $P_3'$ where $P_1'\subset V(Y^+)$, $P_2'\subseteq P_a$ and $P_3'\subseteq P_b$ for some $a,b\in\{1,2,3\}$. Furthermore $C_i[P_j']$ is a path for each $j\in\{1,\ldots,3\}$. Finally, the subgraph $N_i$ of $G$ consisting of the edges and vertices of $G$ contained in $C_i$ or its interior does not contain one of the three vertices of $\tau$. Therefore, we can apply induction using the cycle $C_i$ and the partition $P_1',P_2',P_3'$ of $V(C_i)$ to obtain the desired $H$-partition and tree decomposition of $N_i$.
+% 
+%   The remainder of the proof is as before. We use $V(Y^+)\setminus V(C)$ as an element of our $H$-partition.  The root bag in the tree decomposition contains the vertices obtained by contracting each of $P_1,\ldots,P_k$ and $Y^+$.
+% 
+%   Planarity comes from the fact that if two edges $vw$ and $xy$ cross, then they end up in the same bag of the $H$-partition.  This means that $H$ is actually obtained by contracting connected sets of vertices in the planar graph $G'$.
+% \end{proof}
+% 
+% \begin{thm}\thmlabel{1-plane}
+%   Every 1-plane graph $G$ has a layered $H$-partition of layered width at most 30 where $H$ is planar and has treewidth at most 3.
+% \end{thm}
+% 
+% \begin{proof}
+%   The same as before except that the layered width 15 from \lemref{induction} becomes 30 because \lemref{induction} uses a layering of $G'$ and distances in $G'$ can be a factor of 2 larger than in $G$.
+% \end{proof}
+
+
+\section{$k$-Planar}
+\seclabel{k-planar}
+
+Let $G$ be a $k$-planar graph.  We will use of the \emph{plane augmentation} $G^+$ of $G$ obtained by adding a \emph{dummy vertex} at each crossing in $G$
+and then adding edges to the resulting graph to obtain a triangulation.
+% 
+% triangulating the resulting graph arbitrarily.
+% 
+% 
+%  then adding a \emph{star vertex} $v_f$ in each face $f$ of the resulting graph and making $v_f$ adjacent to each vertex of $f$.  
+
+We will make use of the fact that $\dist_{G^+}(x,y)\le k\cdot\dist_G(x,y)$ for any $x,y\in V(G)$.  This follows immediately from the fact that any edge $xy\in E(G)$ has a corresponding path $x\to y$ in $G^+$ of length at most $k$.  
+
+The \emph{dummy graph} $G^-$ is the subgraph of $G^+$ induced by the dummy vertices.  Note that the dummy graph has maximum degree 4. This immediately implies the following:
+
+\begin{lem}\lemlabel{small-balls}
+  Let $G$ be a $k$-plane graph, let $G^+$ be the plane augmentation of $G$, and let $G^-=G^+-V(G)$.  Then, for any vertex $v\in G^-$, $|\{w\in V(G^-): \dist_{G^-}(v,w)\le k\}|\le 4\cdot 3^{k-1}$.
+\end{lem}
+
+Before reading the statement of the following lemma it is worthwhile looking at \figref{M} to understand the role of some of the elements (in particular, $Y^{++}$ and $D^+$).
+
+\begin{lem}\lemlabel{k-induction} The setup:
+  \begin{compactenum}
+    \item Let $G$ be a $k$-plane graph, let $G^+$ be the plane augmentation of $G$, and let $G^-$ be the dummy graph of $G$.
+    \item Let $T$ be a BFS spanning tree of $G^+$ rooted at some vertex $r$.
+    \item For each integer $i\ge 0$, let $V^+_i=\{v\in V(G^+):\dist_{G^+}(r,v)=i\}$, and let $V_i=V(G)\cap V^+_i$.
+    \item Let $F$ be a cycle in $G^+$ that has $r$ in its exterior.
+    \item Let $N^+$ denote the near-triangulation consisting of the edges and vertices of $G^+$ contained in $F$ or the interior of $F$
+    \item Let $D^+\subset V(N^+)$ have the following properties:
+    \begin{compactenum}
+      \item $V(F)\subset D^+$.
+      \item For any dummy vertex $x\in V(F)$ and any vertex $y\in V(N^+)\setminus D^+$,  $\dist_{G^-}(x,y) \ge k$.
+      \item $D^+$ can be partitioned into $P_1,\ldots,P_k$, $k\le 3$ such that for each $i\in\{1,\ldots,k\}$,
+      \begin{compactenum}
+        \item $F[P_i]$ is connected; and
+        \item $|P_i\cap V_j| \le \fk$ for all integers $j\ge 0$.
+      \end{compactenum}
+    \end{compactenum}
+    \item Let $N$ be the subgraph of $G$ induced by $V(F)\cap V(G)$ plus the vertices of $G$ in the interior of $F$.
+  \end{compactenum}
+  Then $N$ has an $H$-partition $(B_x : x\in V(H))$ such that
+  \begin{compactenum}
+    \item for every integer $j\ge 0$, and all $x\in V(H)$, $|B_x\cap V_j|\le \fk$; 
+    \item for each $i\in\{1,\ldots,k\}$, there exists some $x_i\in V(H)$ such that $P_i=B_{x_i}$; and
+    \item $H$ has a tree decomposition whose largest bag has size at most 4 and such that some bag contains $x_1,\ldots,x_k$.
+  \end{compactenum}
+\end{lem}
+
+
+\begin{proof}
+  Let $N^+$ be the subgraph of $G^+$ consisting only of those edges and vertices of $G^+$ contained in $F$ or in the interior of $F$.
+  We remark that $N^+$ is a near-triangulation. 
+  
+  The proof is by induction on $|V(N^+)|$.  If $|V(N^+)| = 3$, then the graph $H$ is the complete graph on integers $1,\ldots,k$ and the partition sets $B_{i}=P_i\cap V(G)$ for each $i\in\{1,\ldots,k\}$.  
+  
+  Since $P_1,\ldots,P_k$ is a partition of $D^+$ and $V(N)\subseteq V(D^+)$, every vertex $v\in V(N)$ is contained in some set $P_i$ and is therefore contained in some bag $B_{i}$ of the $H$-partition.  Every edge $vw\in E(N)$ has $v\in B_{i}$ and $w\in B_{j}$ for some $i,j\in\{1,\ldots,k\}$. Either $i=j$ or the edge $ij\in E(H)$.  Therefore $(B_x : x\in V(H))$ is indeed an $H$-partition of $N$.
+  
+  Requirement~1 of the $H$-partition follows from Condition~6.c.ii.  To satisfy Requirements~2 and 3 we take the tree decomposition of $H$ to consist of a single node $u$ whose bag contains $\{1,\ldots,k\}$.  This completes the description of how the base case $|V(N^+)|=3$ is handled. From this point on, we assume $|V(N^+)|> 3$.
+  
+  We want to 3-colour $V(N^+)$ so that we can apply Sperner's Lemma, which means we need to partition $V(F)$ into sets $R_1,\ldots,R_3$ such that $F[R_i]$ is a path for each $i\in\{1,\ldots,3\}$.
+  If $k=3$, we set $R_i=P_i\cap V(F)$ for each $i\in\{1,2,3\}$.  Condition~6.c.i ensures that $F[R_i]$ is a path, for each $i\in\{1,\ldots,3\}$.  If $k\in\{1,2\}$, then we partition $(P_1\cap V(F))\cup\cdots\cup(P_k\cap V(F))$ into three sets $R_1$, $R_2$, and $R_3$ such that, for each $i\in\{1,\ldots,3\}$, $F[R_i]$ is a path $R_i\subseteq P_j$ for some $j\in\{1,\ldots,k\}$. Again, Condition~6.c.i ensures that this is always possible.
+  
+  We now describe the 3-colouring of $V(N^+)$ that allows us to apply Sperner's Lemma. For each $i\in\{1,2,3\}$ and $v\in R_i$, assign the colour $i$ to $v$.
+  For each $v\in V(N^+)$, consider the path $P_v$ that consists of the subpath of the $v$ to $r$ path in $T$ that stops at the first vertex $v'\in V(F)$. Assign $v$ to have the same colour as $v'$.
+  
+  Sperner's Lemma ensures that $N^+$ contains a triangular face $\tau=v_1v_2v_3$ whose three vertices are assigned different colours. For each $i\in\{1,2,3\}$, let $Q_i^+=P_{v_i}^+$ be the path in $T$ from $v_i$ to $v_i'$.  Let $Y^+$ denote the subgraph of $N^+$ consisting of vertices and edges of $Q_1^+$, $Q_2^+$, $Q_3^+$, and $\tau$.  Before continuing, it is worthwhile examining the graph $M$ consisting of the edges and vertices of $Y^+$ and edges and vertices of $F$ (see \figref{M}.a).  The graph $M$ has an outer face bounded by $F$ an inner face $\tau$ and $f\le 3$ inner faces $F_1,\ldots,F_f$, that are labelled so that each $F_i$ does not contain any vertices of $P_i$ on its boundary.  
+  
+  \begin{figure}
+    \begin{center}
+      \begin{tabular}{cc}
+        \includegraphics{figs/tripod-faces} &
+        \includegraphics{figs/tripod-faces-2} \\
+        (a) & (b)
+      \end{tabular}
+    \end{center}
+    \caption{The graph $M=F\cup Y^+$ and the sets $D^+$ and $Y^{++}$.}
+    \figlabel{M}
+  \end{figure}
+  
+  For plane graphs, the tripod $Y^+$ and the esulting graph $M=F\cup Y^+$ are the key ingredients for computing layered $H$-partitions.  The separator $Y^+$ allows us to recurse on the independent subgraphs contained in $F_1$, $F_2$, and $F_3$.  However, for $k$-plane graphs, these are insufficient.  Instead, we need a ``fatter'' version of $M$ that prevents an edge of $G$ from having an endpoint in each of $F_i$ and $F_j$ for $i\neq j$.  The set $D^+$ provides the fat version of $F$ that we need.  Next we describe the fat version of $Y^+$ that we need.  
+
+  Consider the vertex set 
+  \[  
+       X=\bigcup_{x^+\in V(Y^+)\cap V(G^-)}\{z\in V(N^+): \dist_{G^-\cap N^+}(x^+,z)\le k \enspace .
+  \]
+  By \lemref{small-balls}, every dummy vertex $x^+\in V(Y^+)$ contributes at most $4\cdot3^{k-1}$ elements to $X$.
+  Therefore, by the triangle inequality
+  \begin{equation}
+      \dist{T}(r,x^+) - k \le \dist_{T}(r,z) \le \dist{T}(r,x^+) + k
+      \eqlabel{depth-difference}
+  \end{equation}
+
+  Next, consider the set 
+  \[  
+    Y^{++}=(X\cup\{ v: \mbox{$vw\in E(G^+)$ and $w\in X$}\})\cap V(N^+) \setminus V(D^+).  
+  \]
+  Since every vertex in $X$ has maximum degree $4$, every vertex in $Y+$ contributes at most $16\cdot 3^{k-1}$ elements to $Y^{++}$.
+  
+  We claim that, for each integer $i\ge 0$, $|V_i\cap Y^{++}|\le \fk$.  To see why this is so, first note that $|V_i^+\cap V(Y^+)|\le 3$ since $V_i^+$ contains at most one vertex from each of $Q_1^+$, $Q_2^+$, and $Q_3^+$.  By \eqref{depth-difference}, for any vertex $z\in V_i\cap Y^{++}\setminus Y^+$, there is at least one vertex $x^+\in Y^+\cap (V_{i-k}\cup \cdots\cup V_{i+k})$ that contributed $z$.  Since $|Y^+\cap (V_{i-k}\cup \cdots\cup V_{i+k})|\le 3(k+1)$, it follows that $|V_i\cap X\setminus Y^+|\le 3(k+1)16\cdot 3^{k-1}= \fk$.
+  
+  For each $i\in\{1,\ldots,f\}$, let $N^+_i$ denote the subgraph of $N^+$ consisting of only the edges and vertices of $N^+_i$ contain in or in the interior of $F_i^+$.  Similarly, let $Y^{++}_i$, $D^+_i$ be the subsets of $Y^{++}$ and $D^+$ contained in the closure of $F^+i$.
+  
+  We now make the following crucial claim:
+  For any $j\in\{1,\ldots,f\}$ there are two indices $a,b\in\{1,2,3\}$ such that any edge $vw\in E(G)$ with one endpoint $v\in V(N^+_i)\setminus(D^+_i\cup Y^++_i)$ has its other endpoint $w\in V(N^+_i)$.
+  Indeed, if this were not the case, then $vw$ would cross the outer face of $N^+_i$ at some dummy vertex.  Let $x^+$ denote the first such crossing point.  If $x^+\in V(F)$, then $vw$ contains $k$ additional dummy vertices of $D^+_i$. Otherwise, $x^+\in V(Y^+)$, in which case $vw$ contains an additional $k$ dummy vertices in $Y^{++}$.  In either case, $vw$ contains at least $k+1$ dummy vertices, contradicting the fact that $vw$ is crossed by at most $k$ edges.
+  
+  The set $Y^{++}$ will become an element $B_x$ in our $H$-partition of $G$.
+  All that remains is to apply induction on the three subgraphs $N^+_i$ for each $i\in\{1,\ldots,3\}$.  For each $i\in\{1,\ldots,3\}$,
+  let $N_i$ denote the subgraph of $G$ containing the vertices and edges of $G$ that are contained in the closure of $F_i$.  Note that the number of vertices of $N_i^+$ is less than the number of vertices of $N^+$ since $N_i^+$ does not contain one of the vertices of $\tau$.  Therefore, we can apply induction to obtain the desired $H$-partition of $N_i$ using the cycle $F_i$ in place of $F$, the set $D' = D^+_i\cap Y^{++}_i$ and the partition of $D'$ into $D'\cap Y^{++}$, $D'\cap P_{i-1}$ and $D'\cap P_{i+1}$.
+  
+  The remainder of the proof is as before. We use $Y^{++}$ as an element of our $H$-partition. The root bag in the tree decomposition contains the vertices obtained by contracting each of $P_1,\ldots,P_k$ and $Y^{++}$.  The graph $H$ is planar because $Y^{++}$ is a connected set of vertices in $G^+$. 
+\end{proof}
+
+
+\begin{thm}\thmlabel{1-plane}
+  Every $k$-plane graph $G$ has a layered $H$-partition of layered width at most $k\cdot\fk$ in which $H$ is planar and has treewidth at most 3.
+\end{thm}
+
+\begin{proof}
+  The same as before except that the layered width $\fk$ from \lemref{k-induction} becomes $k\cdot\fk$ because \lemref{k-induction} uses a layering of $G^+$ and distances in $G^+$ can be a factor of $k$ larger than in $G$.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+% Let $G$ be a $k$-planar graph with a distinguished vertex $r$. For each integer $i\ge 0$, let $V_i=\{v\in V(G):\dist_G(r,v)=i\}$ and let $V_{\le i}=\bigcup_{j=0}^i V_j$.  We will use distances to $r$ frequently, so for each $v\in V(G)$, we let $d_v=\dist_G(r,v)$ (so that $v\in V_{d_v}$). We say that a subgraph $P$ of $G$ has layered width at most $\ell$ if $|V_i\cap V(P)|\le \ell$ for each integer $i\ge 0$.
+% 
+% Let $P_1,\ldots,P_3$ be three vertex-disjoint subgraphs of $G$, each of which has layered width at most $\ell$ and none of which contains $r$. Let $B$ be the union of $P_1,\ldots,P_3$.  Let $N$ be a component of $G-V(B)$ that does not contain $r$.  Let $G'$ be the subgraph of $G$ consisting of edges and vertices of $N$, edges and vertices of $B$, and all edges $vw\in E(G)$ with $v\in V(N)$ and $w\in V(B)$.
+% 
+% \begin{lem}
+%   There exists a vertex $v\in V(G')$ and three vertex-disjoint paths $Q_1$, $Q_2$, and $Q_3$ where each $Q_i$ begins at $v$, has all of its internal vertices in $V(N)$, ends at a vertex in $V(P_i)$ and has layered width at most 10. 
+% \end{lem}
+% 
+% \begin{proof}
+%   For simplicity, assume that every vertex of $P_i$ is adjacent to at least one vertex of $V(N)$ since we can ignore vertices of $P_i$ for which this is not the case.  
+% 
+%   For each integer $r\ge 0$, consider the induced subgraph $G_r'=G'[V(B)\cup V_{\le r}]$.  Let $r$ be the smallest integer such that $G_{r}'$ has at least one component $A$ that contains vertices from each of $P_1$, $P_2$, and $P_3$.  Select any vertex $w\in V(A)\setminus V_{<r}$. Suppose, for now that $w\not\in V(B)$.  Then, since no component of $V_{r-1}$ contains vertice from each of $P_1$, $P_2$, and $P_3$, it must be the case that $G_{r-1}'$ has components $A_1$, $A_2$, and $A_3$ where $w$ is adjacent to some vertex in each $A_i$, each $A_i$ contains a vertex of $P_i$, $A_1\not\in\{A_2,A_3\}$ and $A_1$ does not contain a vertex of $P_3$.  (Note that we may have $A_2=A_3$ and we may have $A_1$ containig vertices of $P_2$.) 
+% 
+%   If $A_2\neq A_3$, then we are done.  We set $v=w$ and, for each $i\in \{1,\ldots,3\}$ we take a path $Q_i$ from $v$ to $V(P_i)$ whose $j$th vertex is in $V_{r-j+1}\cap V(A_i)$.  These three paths are disjoint since $V(Q_i)\subseteq V(A_i)$ for each $i\in \{1,\ldots,3\}$.
+% 
+%   If $A_2=A_3$, there is still a little more work to do.  In this case we will still use the path $Q_1$ from $w$ to $V(P_1)$.  Now, $w$ is adjacent to a vertex $w_1$ in $A_2=A_3$ so we extend
+% 
+% 
+% 
+% 
+% 
+%    where (without loss of generality) $V(A_1)\cap V(P_1)\neq \emptyset$, $V(A_1)\cap (V(P_2)\cup V(P_3))=\emptyset$, $V(A_2)\cap V(P_2)\neq\emptyset$, $V(A_2)\cap V(P_1)=\emptyset$ and $w$ is adjacent to a vertex $w_i\in A_i$ for each $i\in\{1,2\}$.
+% 
+%   If 
+% 
+% 
+% 
+% 
+% 
+%    contains vertices of $P_1$, $A_2$ contains vertices of $P_2$ and (possibly )
+% 
+% 
+% 
+% 
+%   We claim that $v$ has the desired property.  Indeed
+% 
+% \end{proof}
+% 
+% 
+% 
+% 
+% 
+% \section{A Metric Alternative To Sperner's Lemma}
+% 
+% I'm interested in having something more robust and less magical than Sperner's Lemma. Here's a first attempt.
+% 
+% Let $G$ be a planar triangulation with some distinguished vertex $r$. 
+% 
+% 
+% 
+% 
+% A \emph{$t$-pod} (with respect to $r$) consists of vertex-disjoint paths $Q_1,\ldots,Q_t$, where each $Q_i$ a prefix of some $v_i\leadsto r$ path in $G$ and $v_1,\ldots,v_t$ form a clique in $G$.  We call $v_1,\ldots,v_t$ the \emph{central vertices} of the tripod and we call $Q_1,\ldots,Q_t$ the \emph{legs} of the tripod.  The final vertex in each path $Q_i$ is called \emph{foot} if the tripod.  
+% 
+% A $t$-pod $\Y$ with $t\le 3$, is called a \emph{tripod}.  A $t$-pod $\V$ with $t\le 2$ is called a \emph{bipod}.  A $t$-pod $I$ with $t\le 1$ is called a \emph{monopod}.
+% 
+% For a $t$-pod $Y$ with central vertices $v_1,\ldots,v_t$, we define the \emph{depth} of $Y$ as 
+% \[
+%     \depth(Y)=\max\{d_G(r,v):v\in V(T)\} 
+%         = \max\{\dist_G(r, v_i): i\in\{1,\ldots,t\}\} \enspace .
+% \]
+% Observe that, since $v_1,\ldots,v_t$ form a clique in $G$, $\depth(Y)-1\le \dist_G(r, v_i) \le \depth(Y)$.
+% 
+% Let $C$ be a cycle in $G$ and $P_1,\ldots,P_a$, $a\le 3$ be a partition of $V(C)$ such that $C[P_i]$ is a path and $C[P_i]$ is also a bipod $\V_i$ in $G$. Let $Q_{i,1}$ and (possibly) $Q_{i,2}$ be the legs of $\V_i$ where we use the convention that, for each $i\in\{1,\ldots,a\}$, the last vertex of $Q_{i,2}$ and the first vertex of $Q_{i+1,1}$ are adjacent in $C$.  Let $v_{i,j}$ be first vertex of $Q_{i,j}$ and let $v_{i,j}'$ be the last vertex of $Q_{i,j}$.  With these definitions, $v_{i,j}$ is a central vertex of $\V_i$ and $v_{i,j}'$ is a foot of $\V_{i}$.
+% 
+% Note that, for each $i\in\{1,\ldots,a\}$, let $d_i = dist_{G}(r,\{v_{i,2},v_{i+1,1}'\})$.  
+% 
+% 
+% 
+% Let $N$ be the near-triangulation consisting of all edges and vertices of $G$ that are on or in the ineterior of $C$.  
+% 
+% 
+% \section{Remarks}
+% 
+% \begin{enumerate}
+%   \item The fact that $G'$ is a triangulation is not really important. We could arbitrarily triangulate $N'$ (compatible with $T$) and still find a Sperner triangle.
+%   \item The fact that $T$ is plane seems important since it lets us use Sperner's Lemma.  But maybe Sperner's Lemma is overkill. $Y^+$ is just a crappy separator of small layered width that happens to break $N$ into components for which no component is adjacent to more than 2 of $Q_1,\ldots,Q_3$.
+%   \item The fact that $C_i$ is a cycle of non-crossed edges in $G$ is not necessarily critical.  The non-crossed property isn't so important as long as no edge of $G-V(S^+)$ has endpoints in two different faces of $S^+$.
+% 
+%   More troublesome, again, is the use of Sperner's Lemma since it requires that $P_1,\ldots,P_k$ (and therefore also the boundary of $Y^+$) be not so wild that they interleave.  Again, maybe we can cook up something more robust than Sperner's Lemma.
+% 
+%   \item I think I can push through a proof for 2-plane graphs.
+% \end{enumerate}
+
+\bibliographystyle{plain}
+\bibliography{warmup}
+
+\end{document}
