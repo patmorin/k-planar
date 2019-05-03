@@ -22,8 +22,8 @@
     \thanks{This work was partly funded by NSERC and MRI.}}
 
 \author{Vida Dujmovi\'c%
-        \thanks{School of Computer Science and Electrical Engineering, 
-                University of Ottawa},\,\, 
+        \thanks{School of Computer Science and Electrical Engineering,
+                University of Ottawa},\,\,
         Pat Morin%
         \thanks{School of Computer Science, Carleton University},\,\, and
         David R. Wood%
@@ -71,7 +71,7 @@ Let $K$ be the PS-partition for $G^+$ and $T$.  We say that a vertex $v\in V(G)$
 
 Let $S_x$ (the separator at $x$) denote the set of all vertices $v\in V(G)$ such that $v$ appears at $x$ but does not appear at an ancestor of $x$.  We claim that $(S_x:x\in V(K))$ is a partition of $V(G)$.  Indeed, any $v\in V(G)$ can only appear in a node $x$ such that $v\in V(N_x)\setminus V(F_x)$.  These nodes form a path from the root of $K$ to the unique node $x'$ such that $v\in Y_{x'}$.  It is worth noting that, if $vw\in E(G)$, and $v,w\in S_x$, then the embedding of $vw$ is contained in the interior of $F_x$ (otherwise $v$ and $w$ would have appeared in $S_a$ for some ancestor $a$ of $x$.)
 
-We use the partition $(S_x: x\in V(K))$ which generates a graph $H$ with vertex set $V(H)=V(K)$ the edge $xy\in E(H)$ if there exists an edge $vw\in E(H)$ with $v\in S_x$ and $w\in S_y$. 
+We use the partition $(S_x: x\in V(K))$ which generates a graph $H$ with vertex set $V(H)=V(K)$ the edge $xy\in E(H)$ if there exists an edge $vw\in E(H)$ with $v\in S_x$ and $w\in S_y$.
 
 First we argue that this partition has small width, with respect to the layering defined by $T$ (note that this is a layering of $G^+$, not a layering of $G$).
 
@@ -85,20 +85,28 @@ First we argue that this partition has small width, with respect to the layering
 
 Next we describe a tree decomposition $(B_x:x\in V(K))$ of $H$.  (Don't be put off here by the fact that $V(H)=V(K)$).  We do this by definining, for each $x\in V(H)$, the subtree $K[x]=K[\{y:x\in B_y\}]$.  The subtree $K[x]$ contains $x$.  Additionally, for every edge $xz\in E(H)$, $K[x]$ includes the path from $x$ to $z$ in $K$.  This clearly produces a tree decomposition of $H$, what remains is to upper bound the width of this decomposition.
 
-We claim that $K[x]$ is rooted at $x$, i.e., $x$ is the lowest common ancestor of all nodes in $B_x$.  To see why this is so, suppose $K[x]$ has root $a\neq x$.  This implies that $a$ has two children $b\neq c$ where $x$ is a descendant of $b$, some node $y$ is a descendant of $c$, and there is an edge $vw\in E(G)$ such that $v\in S_x\subset V(N_x)\subseteq V(N_b)\setminus V(F_a)$
-and $w\in S_y\subset V(N_y)\subseteq V(N_b)\setminus V(F_a)$.  Therefore, $v$ and $w$ are in the interior of two different faces of the Mercedes graph $M_a$.  Therefore the curve $vw$ intersects $M_a$.  If it intersects $M_a$ at some vertex in $Y_a$, then $v$ would be in $S_a$, not $S_x$, a contradiction.  If it intersects $M_a$ at some vertex in $F_a$, then $v$ would be in $S_{a'}$ for some ancestor $a'$ of $a$, also a contradiction.
+We claim that $K[x]$ is rooted at $x$, i.e., $x$ is the lowest common ancestor of all nodes in $B_x$.  To see why this is so, suppose $K[x]$ has root $a\neq x$.  In short: This happens because some $v\in V(N_x)$ is incident on an edge $vw\in E(G)$ that crosses $Y_a$.  Longer: This implies that $a$ has two children $b\neq c$ where $x$ is a descendant of $b$, some node $y$ is a descendant of $c$, and there is an edge $vw\in E(G)$ such that $v\in V(N_x)\setminus V(F_x)\subseteq V(N_b)\setminus V(F_a)$
+and $w\in S_y\subset V(N_y)\subseteq V(N_b)\setminus V(F_a)$.  (Note, we allow $x=b$ and/or $y=c$ here.)  Therefore, $v$ and $w$ are in the interior of two different faces of the Mercedes graph $M_a$.  Therefore the edge $vw$ intersects $M_a$.  If it intersects $M_a$ at some vertex in $Y_a$, then $v$ would be in $S_a$, not $S_x$, a contradiction.  If it intersects $M_a$ at some vertex in $F_a$, then $v$ would be in $S_{a'}$ for some ancestor $a'$ of $a$, also a contradiction.
 
 Now, fix some node $x\in V(K)$ and consider the contents of $B_x$.  As we have just argued, $B_x$ contains only ancestors of $x$ (including $x$ itself). If $B_x$ contains some ancestor $a$ of $x$, it is because there is an edge $vw\in E(G)$ with $v\in V(N_x)\setminus V(F(x))$ and $w\in S_a$.  Now, $w\in S_a$ because $w\in Y_a$ or there is an edge $wz\in E(G)$ that contains a point of $Y_a$.  This implies that there is a curve $C$ from $v$ to $z$ that contains at most $2k$ dummy  vertices of $G^+$.
 
-Now, consider the cubic graph $A$ homeomorphic to the union of $F_{a'}$ for all ancestors $a'$ of $x$.  It is helpful to think of this graph as follows:  We begin with $F_{a_0}$ where $a_0$ is the root of $K$.  We then cut $F_{a_0}$ into two pieces $F^{\bar{x}}_{a_0}$ and $F^x_{a_0}$ where $F^x_{a_0}$ contains $F_x$.  This process continues by partitioning $F_{a_1}:=F^x_{a_0}$ recursively.  The process terminates after some number $r$ of iterations, when $F^x_{a_r}=F_x$.
+Now, consider the cubic graph $A$ homeomorphic to the union of $F_{a'}$ for all ancestors $a'$ of $x$. See \figref{A}.  It is helpful to think of this graph as follows:  We begin with $F_{a_0}$ where $a_0$ is the root of $K$.  We then cut $F_{a_0}$ into two pieces $F^{\bar{x}}_{a_0}$ and $F^x_{a_0}$ where $F^x_{a_0}$ contains $F_x$.  This process continues by partitioning $F_{a_1}:=F^x_{a_0}$ recursively.  The process terminates after some number $r$ of iterations, when $F^x_{a_r}=F_x$.
 
-We claim that the curve $C$ begins in $F_x\subseteq F^x_a\subseteq F_a$, remains in the interior of $F_a$, and eventually reaches the boundary $F^{\bar{x}}_a\cap F^x_a$.  The fact that $C$ remains in $F_a$ is due to the fact that, if it crossed the boundary of $F_a$, then one of $vw$ or $wz$ would interects $Y_{a'}$ for some ancestor $a'$ of $a$.  But this would contradict the fact that $vw$ (or $wz$) are in $S_a$. The fact that $C$ eventually reaches $F^{\bar{x}}_a\cap F^x_a$ follows from the fact that $w\in S_a$ (so either $w\in Y_a$ or $wz$ crosses $Y_a$). 
+\begin{figure}
+  \begin{center}
+    \includegraphics{figs/A}
+  \end{center}
+  \caption{The graph $A$.}
+  \figlabel{A}
+\end{figure}
+
+We claim that the curve $C$ begins in $F_x\subseteq F^x_a\subseteq F_a$, remains in the interior of $F_a$, and eventually reaches the boundary $F^{\bar{x}}_a\cap F^x_a$.  The fact that $C$ remains in $F_a$ is due to the fact that, if it crossed the boundary of $F_a$, then one of $vw$ or $wz$ would interects $Y_{a'}$ for some ancestor $a'$ of $a$.  But this would contradict the fact that $vw$ (or $wz$) are in $S_a$. The fact that $C$ eventually reaches $F^{\bar{x}}_a\cap F^x_a$ follows from the fact that $w\in S_a$ (so either $w\in Y_a$ or $wz$ crosses $Y_a$).
 
 Therefore, to upper-bound $|B_x|$, it suffices to upper-bound the number of faces $F^{\bar{x}}_a$ of $A$ that can be reached with curves that begin in $F_x$, remain in $F_a$, and terminate in $F^{\bar{x}}_a$ without crossing more than $2k$ edges in $A$.  To avoid triple subscripts we say that a curve visits $a_i$ if it visits $F^{\bar{x}}_{a_i}$.  We can further restrict ourselves to studying curves that cross the fewest number of edges of $A$ since if a curve exists that crosses at most $k$ edges then the curve that crosses the fewest number of possible edges also crosses at most $k$ edges.  We will call such a curve a lightest curve from $F_x$ to $F_a$.
 
 Again, we let $a_0,\ldots,a_r$ denote the vertices of the path, in $K$ from the root $a_0$ to $x=a_r$.  We claim that, there exists a lightest curve from $a_r$ to $a_0$ that is monotonic in the sense that the curve visits $a_{i_0},\ldots,a_{i_t}$ in this order, where $i_0=r > i_1>\cdots>i_t=0$ the Indeed, this follows from the fact that, for any node $a_i$, $i>0$, the (three) faces of $A$ that share a boundary with $F_{a_i}$ also share a boundary with $F^{\bar{x}}_{a_i}$.  Therefore it is never advantageous for a path to go from $a_i$ to $a_j$ for some $j>i$ since the path will eventually have to return to one of these three faces.
 
-At this point we are essentially done.  Any monotonic curve that visits $a_i$ has at most 3 choices for the next face $a_j$ $j<i$ to visit.  Therefore, the number of faces of $A$ that can be reached from $F_x$ by admissible curves that cross $2k$ edges of $A$ is at most $3^{2k}$. Therefore, 
+At this point we are essentially done.  Any monotonic curve that visits $a_i$ has at most 3 choices for the next face $a_j$ $j<i$ to visit.  Therefore, the number of faces of $A$ that can be reached from $F_x$ by admissible curves that cross $2k$ edges of $A$ is at most $3^{2k}$. Therefore,
 \[
    |B_x| \le \sum_{j=0}^2k 9^j = (9^{2k+1}-1)/8 \enspace .
 \]
