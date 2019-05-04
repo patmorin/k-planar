@@ -67,9 +67,9 @@ In short, $K$ is the 3-ary tree of tripods we get from our proof.  It's the tree
 
 Let $G$ be a $k$-plane graph and let $G^+$ be the graph obtained by making $G$ planar with dummy vertices and then triangulating the resulting graph. Let $T$ be a BFS spanning tree of $G^+$ where the root $r$ of $T$ has degree 3 in $G^+$ (add an additional vertex to $G^+$ if necessary). For each integer $i\ge 0$, let $V_i=\{v\in V(G^+): \dist_{G^+}(r,v)=i\}$.
 
-Let $K$ be the PS-partition for $G^+$ and $T$.  We say that a vertex $v\in V(G)$ \emph{appears} at a node $x\in V(K)$ if $u\in Y_x$ or if there exists $vw\in E(G)$ such that $v,w\in V(N_x)\setminus V(F_x)$ and $vw$ crosses $Y_x$ (i.e,. $vw$ contains a dummy vertex of $V(Y_x)$ in its interior).
+Let $K$ be the PS-partition for $G^+$ and $T$.  We say that a vertex $v\in V(G)$ \emph{appears} at a node $x\in V(K)$ if $u\in Y_x$ or if there exists $vw\in E(G)$ such that $v,w\in V(N_x)$ and $vw$ contains a vertex of $Y_x$, either as an endpoint or in its interior.
 
-Let $S_x$ (the separator at $x$) denote the set of all vertices $v\in V(G)$ such that $v$ appears at $x$ but does not appear at an ancestor of $x$.  We claim that $(S_x:x\in V(K))$ is a partition of $V(G)$.  Indeed, any $v\in V(G)$ can only appear in a node $x$ such that $v\in V(N_x)\setminus V(F_x)$.  These nodes form a path from the root of $K$ to the unique node $x'$ such that $v\in Y_{x'}$.  It is worth noting that, if $vw\in E(G)$, and $v,w\in S_x$, then the embedding of $vw$ is contained in the interior of $F_x$ (otherwise $v$ and $w$ would have appeared in $S_a$ for some ancestor $a$ of $x$.)
+Let $S_x$ (the separator at $x$) denote the set of all vertices $v\in V(G)$ such that $v$ appears at $x$ but does not appear at an ancestor of $x$.  We claim that $(S_x:x\in V(K))$ is a partition of $V(G)$. Indeed, if $v$ appears at nodes $x$ and $y$ where neither $x$ nor $y$ is an ancestor of the other, the $v$ contains a vertex of $Y_a$ for some common ancestor $a$ of $x$ and $y$.
 
 We use the partition $(S_x: x\in V(K))$ which generates a graph $H$ with vertex set $V(H)=V(K)$ the edge $xy\in E(H)$ if there exists an edge $vw\in E(H)$ with $v\in S_x$ and $w\in S_y$.
 
