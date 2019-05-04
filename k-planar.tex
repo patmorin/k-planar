@@ -18,7 +18,7 @@
 
 \setlength{\parskip}{1ex}
 
-\title{\MakeUppercase{Notes on Layered $H$-Partitions of $k$-Planar Graphs}%
+\title{\MakeUppercase{Layered $H$-Partitions of $k$-Planar Graphs}%
     \thanks{This work was partly funded by NSERC and MRI.}}
 
 \author{Vida Dujmovi\'c%
@@ -44,24 +44,35 @@
 
 
 \begin{abstract}
-  TBD
-  % Layered $H$-partitions of graphs (with small layered width, in which $H$ has small treewidth) are a recently-introduced tool that have been used to solve longstanding problems on queue layouts, non-repetitive colouring, and 3-d graph drawing.  Such partitions are known to exist for planar graphs and, more generally, bounded genus graphs.
-  % In the current paper, we prove that every $k$-planar graph has a layered $H$-partition of layered width $O(k^3)$ in which $H$ is planar and has treewidth 3. This implies that $k$-planar graphs have a queue number upper-bounded by a polynomial in $k$ and have non-repetitive chromatic number upper-bounded by an exponential function of $k$.
+  Layered $H$-partitions of graphs (with small layered width, in which $H$ has small treewidth) are a recently-introduced tool that have been used to solve longstanding problems on queue layouts, non-repetitive colouring, and 3-d graph drawing.  Such partitions are known to exist for planar graphs and, more generally, bounded genus graphs.  In the current paper, we prove that every $k$-planar graph has a layered $H$-partition of layered width $O(k)$ in which $H$ has treewidth $k9^k$. This implies that $k$-planar graphs have both queue number and non-repetitive chromatic number upper-bounded by a function of $k$.
 \end{abstract}
 
 \section{Introduction}
 
 
+\section{1-Planar Graphs}
 
-\section{Another Way of Looking at It}
+Put the 1-Planar stuff back here because the constants are better.
+
+\section{$k$-Planar Graphs}
 
 \subsection{PS-Tree}
 
-A PS-Partition $(Y_x:x\in V(K))$ for a triangulation $\Delta$ and spanning-tree $T$ of $\Delta$ is a partition of $V(\Delta)$ whose elements are indexed by nodes of a rooted 3-ary tree $K$.  Each bag $Y_x$ of a PS-partition is a tripod in $\Delta$, with respect to $T$.  This means that $T[Y_x]$ has at most 3 components, each of which is a vertical path whose lower endpoints form a clique $\tau_x$ in $\Delta$.  Associated with each node $x\in V(K)$ is a cycle $F_x$ in $\Delta$ and a near-triangulation $N_x$ consisting of the part of $\Delta$ contained in $F_x$.  Note that $Y_x\subseteq V(N_x)\setminus V(F_x)$ and $V(N_x)\subseteq V(N_a)$ for every ancestor $a$ of $x$.
+Let $\Delta$ be a plane triangulation and let $T$ be a BFS spanning tree of $T$ rooted at some vertex $r$ of degree-3 in $\Delta$.  Then the \emph{PS-tree} for $(\Delta, T, r)$ is a 3-ary tree $K$ that such that each node $x\in V(K)$ is associated with several objects:
 
-It is also useful to have a name for the \emph{Mercedes graph} $M_x$ that consists of the edges and vertices of $F_x$, the clique $\tau_x$, and the paths in $T$ from the vertices of $\tau_x$ to $F_x$.
+\begin{enumerate}
+  \item  A cycle $F_x$ in $\Delta$.  There are at most three ancestors $a$, $b$, and $c$, of $x$ in $T$ such that the vertices of $F_x$ are contained in $V(Y_a)\cup V(Y_b)\cup V(Y_c)$. (See below for the definition of $Y_a$ $Y_b$, and $Y_c$.)
+  
+  \item $A_x=F[Y_a]$, $B_x=F[Y_b]$, $C_x=F[Y_c]$
+  
+  \item A near-triangulation $N_x$ consisting of the part of $\Delta$ contained in $F_x$.  Note that $Y_x\subseteq V(N_x)\setminus V(F_x)$ and $V(N_x)\subseteq V(N_a)$ for every ancestor $a$ of $x$.
 
-In short, $K$ is the 3-ary tree of tripods we get from our proof.  It's the tree we use for our tree-decomposition of $H$.  We've just added some decorations to it. Eventually I should write this as a lemma with bullet points for the relevant properties.
+  \item A \emph{tripod} $Y_x$ in $\Delta$, with respect to $T$. This is a clique $\tau_x\in N(x)$ and at most three disjoint vertical paths in $T$ whose lower endpoints are in $\tau_x$.  Each of these paths is contained in $N_x-V(F_x)$ and the upper endpoint of each path is adjacent, in $T$ to a vertex of $F_x$.  Furthermore, for each of $A_x$, $B_x$, and $C_x$, at least one upper endpoint is adjacent, in $T$ to it.  
+  
+  \item A \emph{Mercedes graph} $M_x$ that consists of the edges and vertices of $F_x$, the clique $\tau_x$, and the paths in $T$ from the vertices of $\tau_x$ to $F_x$.
+\end{enumerate}  
+
+{\color{red}Expand the preceding points more fully and point out the relationsships better.  Deal with degenernate cases.}
 
 \subsection{$k$-Planar Graphs}
 
@@ -114,11 +125,6 @@ This completes the proof
 \begin{thm}
     Every $k$-planar graph $G$ has a $(k9^{2k+1}/8,3k)$-partition.
 \end{thm}
-
-
-
-
-
 
 \bibliographystyle{plain}
 \bibliography{warmup}
