@@ -35,9 +35,9 @@
 \DeclareMathOperator{\dist}{dist}
 \DeclareMathOperator{\depth}{depth}
 \DeclareMathOperator{\ff}{f}
-\newcommand{\f}{{\color{red}\ff}}
 
-\newcommand{\fk}{{\color{red}f(k)}}
+\renewcommand{\proplabel}[1]{\label{prop:#1}}
+\renewcommand{\propref}[1]{(PR\ref{prop:#1})}
 
 \begin{document}
 \maketitle
@@ -121,11 +121,11 @@ The 1-plane graph $G$ has a plane triangulation $G'$ as a subgraph that can be o
 
 \subsection{The PS-Tree}
 
-Let $T$ be a rooted tree rooted at $r\in V(T)$. The \emph{depth} of a node $x\in V(T)$ is equal to the length of the path from $x$ to $r$ in $T$. A $P$ path in $T$ is \emph{vertical} if, for each integer $i$, there is at most one vertex of depth $i$.  The deepest vertex in a vertical path $P$ is called  $P$'s \emph{lower endpoint} and the other (shallowest) vertex in $P$ is called $P$'s \emph{upper endpoint}. For any node $v\in T$, we call each node on the path, in $T$, from $v$ to $r$ a \emph{$T$-ancestor} of $v$.
+Let $T$ be a rooted tree rooted at $r\in V(T)$. The \emph{depth} of a node $x\in V(T)$ is equal to the length of the path from $x$ to $r$ in $T$. A $P$ path in $T$ is \emph{vertical} if, for each integer $i$, $P$ contains at most one vertex of depth $i$.  The deepest vertex in a vertical path $P$ is called  $P$'s \emph{lower endpoint} and the other (shallowest) vertex in $P$ is called $P$'s \emph{upper endpoint}. For any node $v\in T$, we call each node on the path, in $T$, from $v$ to $r$ a \emph{$T$-ancestor} of $v$.
 
 A \emph{near-triangulation} $N$ is a plane graph whose outer face is bounded by a simple cycle in $N$ and each of whose inner faces is bounded by a 3-cycle in $N$.  
 
-Let $\Delta$ be a plane triangulation and let $T$ be a BFS spanning tree of $T$ rooted at some vertex $r$ of degree 3 that is on the outer face of $\Delta$.  For any cycle $F$ of $\Delta$ there is an associated near-triangulation $N=\Delta\circledast F$ consisting of all the edges and vertices of $G$ that are contained in $F$ or its interior.
+Let $\Delta$ be a plane triangulation and let $T$ be a BFS spanning tree of $\Delta$ rooted at some vertex $r$ of degree 3 that is on the outer face of $\Delta$.  For any cycle $F$ of $\Delta$ there is an associated near-triangulation $N=\Delta\circledast F$ consisting of all the edges and vertices of $G$ that are contained in $F$ or its interior.
 
 Let $\tau=v_1v_2v_3$ be an inner face of $N$ and consider the three minimal vertical paths $Q_1$, $Q_2$, and $Q_3$ in $T$ such that, for each $i\in\{1,2,3\}$ the lower endpoint of $Q_i$ is $v_i$ and the upper endpoint of $Q_i$ is in $V(F)$.  If $Q_1$, $Q_2$, and $Q_3$ are vertex disjoint, then the graph $\overline{Y}=\tau\cup Q_1\cup Q_2\cup Q_3$ is called the \emph{closed tripod} in $N$ determined by $\tau$.  We call $Q_1$, $Q_2$, and $Q_3$ the \emph{legs} of $\overline{Y}$ and we call $\tau$ the \emph{center} of $\overline{Y}$.  We call $Y=\overline{Y}-F$ the \emph{(open) tripod} of $N$ determined by $\tau$.  The graph $M=\overline{Y}\cup F$ is called a \emph{Mercedes graph} and the (at most 3) inner faces of $M$ other than $\tau$ are called the \emph{wedges} of $M$.
 
@@ -145,37 +145,36 @@ A \emph{PS-tree}  $K=K(\Delta, T, r)$ is a 3-ary tree, such that each node $x\in
 \begin{enumerate}
   \item A cycle $F_x$ in $\Delta$ and the near-triangulation $N_x=\Delta\circledast F_x$.
   
-  \item An inner face $\tau_x$ of $N_x$ that determines a closed tripod $\overline{Y}_x$ and open tripod $Y_x$ in $N_x$.
+  \item An inner face $\tau_x$ of $N_x$ that determines a closed tripod $\overline{Y}_x$ and an open tripod $Y_x$ in $N_x$.
   
   \item The \emph{Mercedes graph} $M_x=F_x\cup \overline{Y}_x$
 \end{enumerate}
 
 The nodes of the PS-tree $K$ satisfy several conditions:
-\begin{compactenum}[(PR1)]
+\begin{enumerate}[(PR1)]
   \item For the root $r'$ of $K$, $F_{r'}$ is defined to be the 3-cycle in $\Delta$ formed by the three vertices adjacent to $r$.
   
-  \item \label{children} For each node $x\in V(T)$ such that $M_x$ has $f\le 3$ wedges $F_{x,1},\ldots,F_{x,f}$, the node $x$ has exactly $f$ children $y_1,\ldots,y_f$ in $K$ and $F_{y_i} = F_{x,i}$ for each $i\in\{1,\ldots,f\}$.
+  \item \proplabel{children} For each node $x\in V(T)$ such that $M_x$ has $f\le 3$ wedges $F_{x,1},\ldots,F_{x,f}$, the node $x$ has exactly $f$ children $y_1,\ldots,y_f$ in $K$ and $F_{y_i} = F_{x,i}$ for each $i\in\{1,\ldots,f\}$.
   
-  \item \label{ancestor-boundary} For each non-root node $x\in V(T)$, there exists a partition of $V(F_x)$ into $g\le 3$ sets $P_1,\ldots,P_g$ such that, for each $i\in\{1,\ldots,g\}$, $F[P_i]$ is a path that is contained in $Y_a$ for some $K$-ancestor $a$ of $x$ \emph{or} $F[P_i]$ is a path or cycle in $F_{r'}$.
+  \item \proplabel{ancestor-boundary} For each non-root node $x\in V(T)$, there exists a partition of $V(F_x)$ into $g\le 3$ sets $P_1,\ldots,P_g$ such that, for each $i\in\{1,\ldots,g\}$, $F[P_i]$ is a path that is contained in $Y_a$ for some $K$-ancestor $a$ of $x$ \emph{or} $F[P_i]$ is a path or cycle in $F_{r'}$.
 
-  \item \label{partition} $\{Y_x : x\in V(K)\}$ is a partition of $V(G^+)\setminus\{r\}$.
-  
-  % \item Something else?
-\end{compactenum}
+  \item \proplabel{partition} $\{Y_x : x\in V(K)\}$ is a partition of $V(G^+)\setminus\{r\}\setminus V(F_{r'})$.
+\end{enumerate}
 
-Properties~(PR1)--(PR3) are defining properties of a PS-tree. Property~(PR4) 
-
-% There are at most three ancestors $a$, $b$, and $c$, of $x$ in $T$ such that the vertices of $F_x$ are contained in $V(Y_a)\cup V(Y_b)\cup V(Y_c)$. (See below for the definition of $Y_a$ $Y_b$, and $Y_c$.)
-% 
-%  consisting of the part of $\Delta$ contained in $F_x$.  Note that $Y_x\subseteq V(N_x)\setminus V(F_x)$ and $V(N_x)\subseteq V(N_a)$ for every ancestor $a$ of $x$.
-% 
-% {\color{red}Expand the preceding points more fully and point out the relationsships better.  Deal with degenernate cases.}
 
 \subsection{$k$-Planar Graphs}
 
-Let $G$ be a $k$-plane graph and let $G^+$ be the graph obtained by making $G$ planar with dummy vertices, then triangulating the resulting graph and then adding a degree-3 vertex $r$ in the outer face of the resulting graph. Let $T$ be a BFS spanning tree of $G^+$ rooted at $r$. For each integer $i\ge 0$, let $V_i=\{v\in V(G^+): \dist_{G^+}(r,v)=i\}$.  Observe that, for any edge $vw\in E(G)$, $\dist_{G^+}(v,w) \le k$ and therefore, for any two vertices $v,w\in V(G)$,
-\begin{equation}
-  \dist_{G^+}(v,w) \le k\cdot \dist_G(v,w) \eqlabel{distance-preserving}
+Let $G$ be a $k$-plane graph and let $G^+$ be the graph obtained as follows:
+\begin{compactenum}
+  \item Make $G$ planar by adding dummy vertices at each crossing.
+  \item Add a $K_4$ that contains $G$ in one of its inner faces $F_0$.
+  \item Add edges to complete the resulting graph to a triangulation.
+\end{compactenum}
+Let $r$ be the vertex of the $K_4$ not incident on $F_0$ and let $T$ be a BFS spanning tree of $G^+$ rooted at $r$.  For each integer $i\ge 0$, let $V_i=\{v\in V(G^+): \dist_{G^+}(r,v)=i\}$.
+
+Observe that, for any edge $vw\in E(G)$, $\dist_{G^+}(v,w) \le k+1$ and therefore, for any two vertices $v,w\in V(G)$,
+\begin{equation} 
+  \dist_{G^+}(v,w) \le (k+1)\cdot \dist_G(v,w) \eqlabel{distance-preserving}
 \end{equation}
 
 Let $K=K(G^+,T,r)$ be a PS-tree.  We say that a vertex $v\in V(G)$ \emph{appears} at a node $x\in V(K)$ if $v\in Y_x$ or if there exists $vw\in E(G)$ such that $v,w\in V(N_x)$ and $vw$ contains a vertex of $Y_x$, either as an endpoint or in its interior (see \figref{appearances}).
@@ -188,64 +187,78 @@ Let $K=K(G^+,T,r)$ be a PS-tree.  We say that a vertex $v\in V(G)$ \emph{appears
   \figlabel{appearances}
 \end{figure}
 
-Let $S_x$ (the separator at $x$) denote the set of all vertices $v\in V(G)$ such that $v$ appears at $x$ but does not appear at any $K$-ancestor of $x$.  We claim that $(S_x:x\in V(K))$ is a partition of $V(G)$. By (PR\ref{partition}) every vertex $v\in  V(G)$ is in $V(Y_x)\subseteq V(N_x)$. Therefore every vertex $v\in V(G)$ appears at some node $x\in V(K)$, so $\bigcup_{x\in V(K)} S_x \supseteq V(G)$.
+Let $S_x$ (the separator at $x$) denote the set of all vertices $v\in V(G)$ such that $v$ appears at $x$ but does not appear at any $K$-ancestor of $x$.  We claim that $(S_x:x\in V(K))$ is a partition of $V(G)$. By \propref{partition} every vertex $v\in  V(G)$ is in $V(Y_x)\subseteq V(N_x)$ for some $x\in V(K)$. Therefore every vertex $v\in V(G)$ appears at some node $x\in V(K)$, so $\bigcup_{x\in V(K)} S_x \supseteq V(G)$.
 
-Furthermore, if $v$ appears at two nodes $x$ and $y$ then, by definition, $v\in V(N_x)\cap V(N_y)$. If neither $x$ nor $y$ is an ancestor of the other then, by (PR\ref{children}), $V(N_x)\cap V(N_y)=V(F_x)\cap V(F_y)$.  By (PR\ref{ancestor-boundary}), $v\in Y_a$ for some $K$-ancestor $a$ of $x$.  Similarly, $v\in Y_{b}$ for some ancestor $b$ of $y$.  By (PR\ref{partition}), $a=b$ is a common $K$-ancestor of $x$ and $y$.  It follows that there is a unique node $a'$ that is an ancestor of all nodes of $K$ at which $v$ appears, so $v$ appears only in $Y_{a'}$.
+Furthermore, if $v$ appears at two nodes $x$ and $y$ then, by definition, $v\in V(N_x)\cap V(N_y)$. If neither $x$ nor $y$ is an ancestor of the other then, by \propref{children}, $V(N_x)\cap V(N_y)=V(F_x)\cap V(F_y)$.  By \propref{ancestor-boundary}, $v\in V(Y_a)$ for some $K$-ancestor $a$ of $x$.  Similarly, $v\in V(Y_{b})$ for some ancestor $b$ of $y$.  By \propref{partition}, $a=b$ is a common $K$-ancestor of $x$ and $y$ and $v$ appears at $a$.  It follows that there is a unique node $a'$ that is a $K$-ancestor of all nodes of $K$ at which $v$ appears, so $a'$ is the only node of $K$ for which $v\in S_{a'}$.
 
 
 % Indeed, if $v$ appears at nodes $x$ and $y$ where neither $x$ nor $y$ is an ancestor of the other, then there exists edges $vw,vz\in E(G)$ (possibly $w=z$) such that $vw$ contains a vertex of $Y_x$ (as an endpoint or in its interior) and $vz$ contains a vertex of $Y_y$ (as endpoint or in its interior).  At least one of these two edges contains a vertex $Y_a$ for some common ancestor $a$ of $x$ and $y$.
 
-We use the partition $(S_x: x\in V(K))$ which generates a graph $H$ with vertex set $V(H)=V(K)$ the edge $xy\in E(H)$ if there exists an edge $vw\in E(G)$ with $v\in S_x$ and $w\in S_y$.
-First we argue that this partition has small width with respect to the layering defined by $T$ (note that this is a layering of $G^+$, not a layering of $G$).
+We use the partition $(S_x: x\in V(K))$ which generates a graph $H$ with vertex set $V(H)=V(K)$ and the edge $xy\in E(H)$ if and only if there exists an edge $vw\in E(G)$ with $v\in S_x$ and $w\in S_y$.  First we argue that this partition has small width with respect to the layering defined by $T$ (note that this is a layering of $G^+$, not a layering of $G$).
 
 \begin{clm}
-  For any $x\in V(H)$, and any integer $i\ge 0$, $|S_x\cap V_i|\le 3(k+1)$.
+  For any $x\in V(H)$, and any integer $i\ge 0$, $|S_x\cap V_i|\le 3(4k+3)$.
 \end{clm}
 
 \begin{proof}
-  Done already, several times.
+  Since the vertices of $Y_x$ come from at most 3 vertical paths in $T$, $|V(Y_x)\cap V_i|\le 3$.  Any vertex $v\in S_x\cap V_i$ is either in $V(Y_x)$ or is an endpoint of an edge $vw\in E(G)$ that contains a vertex $v'\in V(Y_x)$.  In the latter case, $|\dist_T(r,v)-\dist_T(r, v')|\le k+1$.  Therefore $v'\in V(Y_x)\cap V_{j}$ for some $j\in\{i-k-1,\ldots,i+k+1\}$.   Any such $v'$ is responsible for at most 2 vertices in $S_x\setminus V(Y_x)$. Therefore,
+  \[  |S_x\cap V_i| \le |V(Y_x)\cap V_i| + 3\cdot 2\cdot (2k+1) \le 12k+9 \enspace . \qedhere \]
 \end{proof}
 
 Next we describe a tree decomposition $(B_x:x\in V(K))$ of $H$.  We deliberately use the same node set $V(H)=V(K)$ here, because the subtree $K[x]:=K[\{z:x\in B_z\}]$ will be rooted at $x$.  We claim that, for every edge $xy\in V(H)$, $x$ is an ancestor of $y$ (or vice-versa).  Suppose that this is not the case and that $xy\in E(H)$ but neither $x$ nor $y$ is an ancestor of the other.  Then, since $xy\in E(H)$, there must exist an edge $vw\in E(G)$ such that $v\in S_x$ and $w\in S_y$.  
 
-Since $v\in S_x$, $v\in V(N_x)$ and similarly $w\in V(N_y)$.  Since neither $x$ nor $y$ are ancestors of each other, the interiors of $F_x$ and $F_y$ are disjoint.  If $v$ is in the interior $V(N_x)\setminus V(F_x)$ of $F_x$ then the edge $vw$ crosses $F_x$ and by (PR\ref{ancestor-boundary}) $v$ appears at some ancestor $a$ of $x$. (The node $a$ is the lowest node for which $v,w\in V(N_a)$.)  But this contradicts the assumption that $v\in S_x$, so it must be that $v\in V(F_x)$. This is also a contradiction, since (PR\ref{ancestor-boundary}) then implies that $v\in Y_a$ and therefore appears at $a$ for some $K$-ancestor $a$ of $x$, which contradicts the assumption that $v\in V(N_x)$.
+Since $v\in S_x$, $v\in V(N_x)$ and similarly $w\in V(N_y)$.  Since neither $x$ nor $y$ are ancestors of each other, the interiors of $F_x$ and $F_y$ are disjoint.   Therefore, the edge $vw$ contains a vertex of $F_x$ (as an endpoint or in its interior). This is also a contradiction, since \propref{ancestor-boundary} then implies that $v\in V(Y_a)$ for some $K$-ancestor $a$ of $x$ and therefore appears at $a$, so $v\not\in S_x$.
 
-To describe our tree decomposition we define, for each $x\in V(H)$, the subtree $K[x]=K[\{y:x\in B_y\}]$.  The subtree $K[x]$ contains $x$.  Additionally, for every edge $xz\in E(H)$, where $x$ is an ancestor of $z$, $K[x]$ includes the path from $x$ to $z$ in $K$.  That this produces a tree-decomposition is due to the fact that for every edge $xz$ of $H$, $x$ is an ancestor of $z$ (or vice-versa).  What remains is to upper bound the width of this decomposition.
+To describe our tree decomposition we define, for each $x\in V(H)$, the subtree $K[x]=K[\{y:x\in B_y\}]$.  The subtree $K[x]$ contains $x$.  Additionally, for every edge $xz\in E(H)$, where $x$ is an ancestor of $z$, $K[x]$ includes the path from $x$ to $z$ in $K$.  That this produces a tree-decomposition is due to the fact, established in the preceding paragraph, that for every edge $xz$ of $H$, $x$ is an ancestor of $z$ (or vice-versa).  What remains is to upper bound the width of this decomposition.
 
-First observe that, for every $a\in V(K)$, the subtree $K[a]$ is rooted at $a$, i.e., $a$ is a $K$-ancestor of every node in $x\in B_a$.  Now, fix some node $x\in V(K)$ and consider the contents of $B_x$.  As we have just argued, $B_x$ contains only ancestors of $x$ (including $x$ itself). If $B_x$ contains some ancestor $a$ of $x$, it is because there is an edge $vw\in E(G)$ with $v\in S_x$ and $w\in S_a$. Since $v\in S_x$, $v\in V(N_x)$. Since, $w\in S_a$, $w\in Y_a$ or there is an edge $wz\in E(G)$ that contains a point of $Y_a$. The embedding of the path $vwz$ is a curve that being at $v\in N_x$, ends at
-$z$, contains a point of $V(Y_a)$ and contains at most $2k+1$ vertices of $G^+$.
+First observe that, for every $a\in V(K)$, the subtree $K[a]$ is rooted at $a$, i.e., $a$ is a $K$-ancestor of every node in $x\in B_a$.  Now, fix some node $x\in V(K)$ and consider the contents of $B_x$.  As we have just argued, $B_x$ contains only ancestors of $x$ (including $x$ itself). If $B_x$ contains some $K$-ancestor $a$ of $x$, it is because there is an edge $vw\in E(G)$ with $v\in S_x$ and $w\in S_a$. Since $v\in S_x$, $v\in V(N_x)$. Since, $w\in S_a$, either (a)~$w\in V(Y_a)$ or (b)~there is an edge $wz\in E(G)$ with $w,z\in V(N_a)$ that contains a vertex of $Y_a$.  To avoid having to distinguish between the two cases (a) and (b), we will use $vz$ to denote the embedding of the edge $vw$, in case (a), or the embedding of the path $vwz$, in case~(b). 
 
-Now, consider the cubic graph $A$ homeomorphic to the union of $F_{a'}$ for all ancestors $a'$ of $x$. See \figref{A}.  It is helpful to think of this graph as follows:  We begin with $F_{a_0}$ where $a_0=r'$ is the root of $K$.  We then cut $F_{a_0}$ into two pieces $F^{\bar{x}}_{a_0}$ and $F^x_{a_0}$ where $F^x_{a_0}$ is the piece that contains $F_x$. (The path that makes this cut contains two legs $Q_i$ and $Q_j$ of a tripod $Y$ and one edge $v_iv_j$ of its central triangle $\tau$.)  This process continues by partitioning $F_{a_1}:=F^x_{a_0}$ recursively.  The process terminates after some number $r$ of iterations, when $F^x_{a_r}=F_x$.
+Now, consider the graph $A$ that contains $F_{a'}$ for all ancestors $a'$ of $x$. See \figref{A}.  It is helpful to think of this graph as follows:  We begin with $F_{a_0}$ where $a_0=r'$ is the root of $K$.  We then cut $F_{a_0}$ into two pieces $F^{\bar{x}}_{a_0}$ and $F^x_{a_0}$ where $F^x_{a_0}$ is the piece that contains $F_x$. (The path that makes this cut contains two legs $Q_i$ and $Q_j$ of a tripod $Y$ and one edge $v_iv_j$ of its central triangle $\tau$.)  This process continues by partitioning $F_{a_1}:=F^x_{a_0}$ recursively.  The process terminates after some number $r$ of iterations, when $F^x_{a_r}=F_x$.
 
 \begin{figure}
   \begin{center}
-    \includegraphics{figs/A}
+      \includegraphics{figs/A-1}
   \end{center}
   \caption{The graph $A$.}
   \figlabel{A}
 \end{figure}
 
-We claim that the curve $C$ begins in $F_x\subseteq F^x_a\subseteq F_a$, remains in the interior of $F_a$, and eventually reaches the boundary $F^{\bar{x}}_a\cap F^x_a$.  The fact that $C$ remains in $F_a$ is due to the fact that, if it crossed the boundary of $F_a$, then one of $vw$ or $wz$ would intersect $Y_{a'}$ for some ancestor $a'$ of $a$.  If $vw$ intersects $Y_{a'}$, then $v\not\in S_x$.  If $wz$ intersects $Y_{a'}$ then $w,z\not\in S_a$. The fact that $C$ eventually reaches follows from the fact that $w\in Y_a$ or $wz$ contains a point of $Y_a$.  We call such a curve an \emph{admissible} curve.
+We claim that the curve $vz$ contains a curve $vz'$ that (o)~does not cross any edge of $A$, (i)~begins in $F_x$, (ii)~remains in the interior of $F_a$, (iii)~terminates at $z'$ on the boundary $F^{\bar{x}}_a\cap F^x_a$, and (iv)~contains at most $2k+1$ vertices of $A$.\note{PM}{$2k+1$ should be $2k+3$, but this carries through and I don't have to update right now.}
+\begin{compactenum}[(i)]
+  \item The curve $vz'$ begins at $v\in V(N_x)$;
+  
+  \item The curve $vz'$ remains in the interior of $F_a$ since, if it intersected the boundary of $F_a$, then one of $vw$ or $wz$ would intersect $Y_{a'}$ for some ancestor $a'\neq a$ of $a$.  If $vw$ contains a vertex of $Y_{a'}$, then $v\not\in S_x$.  If $wz$ contains a vertex of $Y_{a'}$ then $w,z\not\in S_a$. 
 
-Therefore, to upper-bound $|B_x|$, it suffices to upper-bound the number of faces $F^{\bar{x}}_a$ of $A$ that can be reached with curves that begin in $F_x$, remain in the interior of $F_a$, and terminate in $F^{\bar{x}}_a$ without intersecting more than $2k$ edges in $A$.  To avoid triple subscripts we say that a curve visits $a_i$ if it visits $F^{\bar{x}}_{a_i}$.  We can further restrict ourselves to studying curves that cross the fewest number of edges of $A$ since if a curve exists that crosses at most $k$ edges then the curve that crosses the fewest number of possible edges also crosses at most $k$ edges.  We will call such a curve a \emph{lightest} admissible curve from $x$ to $a$.
+  \item That $vz'$ eventually reaches $F^{\bar{x}}_a$ follows from the fact that, in either case (a) or (b), $vz$ contains a vertex of $Y_a$.  The first such vertex encountered walk walking along $vz$ is the endpoint $z'$.
+  
+  \item That $vz'$ contains at most $2k+1$ vertices of $A$ follows from the fact that $vz'$ is contained in a path of length at most 2 in $G$, and $G$ is $k$-planar.
+\end{compactenum}
+We call any curve with properties (i)--(iv) an \emph{admissible $xa$-curve} (for $A$).  Therefore, to upper-bound $|B_x|$, it suffices to upper-bound the number of faces $F^{\bar{x}}_a$ of $A$ such that there exists an admissible $xa$-curve. To avoid triple-subscripts, we will say that an $xa$-curve \emph{visits} $y\in N(K)$ if it contains a vertex of $F^{\bar{x}}_y$.  It is furthermore sufficient to consider $xa$-curves that are \emph{minimal} in the sense that, if the curve visits $x=x_0,x_1,\ldots,x_\ell=a$ in this order, then $x_i\neq a$ for any $i\in\{0,\ldots,\ell-1\}$.
 
-Again, we let $a_0,\ldots,a_r$ denote the vertices of the path, in $K$ from the root $a_0$ to $x=a_r$.  We claim that, there exists a lightest admissible curve from $a_r$ to $a_0$ that is monotonic in the sense that the curve visits $a_{i_0},\ldots,a_{i_t}$ in this order, where $i_0=r > i_1>\cdots>i_t=0$.
-This follows from (PR\ref{ancestor-boundaries}):  For any node $a_i$, $i>0$, there are at most three faces of $A$ that share a part of their boundary with $F_{a_i}$.  Each of these faces also necessarily shares a part of its boundary with $F^{\bar{x}}_{a_i}$.  Therefore no lightest admissible curve ever $a_i$ before $a_j$ for some $j>i$ since the curve will eventually have to return to one of these three faces.
+By \propref{ancestor-boundary}, for every $y\in V(K)$, there are $t\le 3$ $K$-ancestors $y_1,\ldots,y_t$ of $y$ such that $F_y$ has a vertex in common with $F^{\bar{x}}_{y_i}$. For each $i\in\{1,\ldots,t\}$, colour the pair $(y,y_i)$ with the colour $c(y,y_i)=i$. In this way any pair that receives a colour receives one of 3 colours.  The set $y_1,\ldots,y_t$ behaves like a cutset in the following sense:  If a minimal admissible $xa$-curve visits $y$ (so it contains a point in $F^{\bar{x}}_y$) for some $K$-ancestor $y\neq a$ of $x$, then the curve must subsequently visit one of $y_1,\ldots,y_t$.
 
-At this point we are essentially done.  Any lightest admissible curve that visits $a_i$ has at most 3 choices for the next face $a_j$ $j<i$ to visit.  Therefore, the number of faces of $A$ that can be reached from $F_x$ by admissible curves that intersect at most $\ell$ edges of $A$ is at most $3^{\ell}$. Therefore,
-\[
+\begin{figure}
+  \begin{center}
+      \includegraphics{figs/A-2}
+  \end{center}
+  \caption{The colour sequences defined by two minimal admissible $xa$-curves.}
+  \figlabel{colouring}
+\end{figure}
+
+Consider some minimal admissible $xa$-curve that visits $x=x_0,x_1,\ldots,x_\ell=a$ in this order.  Refer to \figref{colouring}.  Let $z_0,\ldots,z_{\ell'}$ be the subsequence of $x_0,\ldots,x_\ell$ consisting only of those $x_i$ that are strict $K$-ancestors of each of $x_0,\ldots,x_{i-1}$.  This yields a colour sequence $c_1,\ldots,c_{\ell'}$, $\ell'\le \ell$, where $c_i=c(z_{i-1},z_i)$ for each $i\in\{1,\ldots,\ell'\}$.   There are at most $3^{\ell'}$ such colour sequences and, if an admissible $xa$-curve has the same colour sequence as a minimal admissible $xa'$-curve then $a=a'$.  Therefore, for some fixed $x\in V(K)$, the $K$-ancestors $a$ of $x$ such that there exists a minimal admissible $xa$-curve is at most
+\begin{equation}
    |B_x| \le \sum_{\ell=0}^{2k+1} 3^\ell = (3^{2k+2}-1)/2 
-       = (9^{k+1}-1)/2 \enspace .
-\]
+       = (9^{k+1}-1)/2 \enspace .  \eqlabel{bag-size}
+\end{equation}
 
 This is all we need to complete the proof of:
 
 \begin{thm}
-    Every $k$-planar graph $G$ has a $((9^{k+1}-1)/2-1,3k^2)$-partition.
+    Every $k$-planar graph $G$ has a layered $H$-partition of layered-width at most $(k+1)(12k + 9)$ in which $H$ has treewidth at most $(9^{k+1}-3)/2$
 \end{thm}
 
 \begin{proof}
-  The $H$-partition $(B_x:x\in V(H))$ of $G$ described above has treewidth $(9^{k+1}-1)/2-1$.  For each $x\in V(H)$ and each integer $i$, $|B_x\cap V_i|\le 3k$. \Eqref{distance-preserving} implies setting $V_i' = V_{ki}\cup\cdots\cup V_{k(i+1)-1}$ yields a layering $(V_0',V_1',\ldots)$ of  $G$ and $|B_x\cap V_i'|\le 3k^2$ for all integers $i\ge 0$ and all $x\in V(H)$.
+  By \eqref{bag-size}, the partition $(S_x:x\in V(K))$ of $G$ described above produces a graph $H$ of treewidth $(9^{k+1}-3)/2$.  For each $x\in V(H)$ and each integer $i$, $|B_x\cap V_i|\le 12k+9$. \Eqref{distance-preserving} implies that setting $V_i' = V_{(k+1)i}\cup\cdots\cup V_{(k+1)(i+1)-1}$ yields a layering $(V_0',V_1',\ldots)$ of  $G$ and $|B_x\cap V_i'|\le (k+1)(12k+9)$ for all integers $i\ge 0$ and all $x\in V(H)$.
 \end{proof}
 
 \bibliographystyle{plain}
