@@ -156,14 +156,14 @@ The nodes of the PS-tree $K$ satisfy several conditions:
   
   \item \label{children} For each node $x\in V(T)$ such that $M_x$ has $f\le 3$ wedges $F_{x,1},\ldots,F_{x,f}$, the node $x$ has exactly $f$ children $y_1,\ldots,y_f$ in $K$ and $F_{y_i} = F_{x,i}$ for each $i\in\{1,\ldots,f\}$.
   
-  \item \label{ancestor-boundary} For each non-root node $x\in V(T)$, there exists a partition of $V(F_x)$ into $g\le 3$ sets $P_1,\ldots,P_g$ such that, for each $i\in\{1,\ldots,g\}$, $F[P_i]$ is a path that is contained in $Y_a$ for some $K$-ancestor $a$ of $x$ \emph{or} $F[P_i]$ is a path in $F_{r'}$.
+  \item \label{ancestor-boundary} For each non-root node $x\in V(T)$, there exists a partition of $V(F_x)$ into $g\le 3$ sets $P_1,\ldots,P_g$ such that, for each $i\in\{1,\ldots,g\}$, $F[P_i]$ is a path that is contained in $Y_a$ for some $K$-ancestor $a$ of $x$ \emph{or} $F[P_i]$ is a path or cycle in $F_{r'}$.
 
   \item \label{partition} $\{Y_x : x\in V(K)\}$ is a partition of $V(G^+)\setminus\{r\}$.
   
-  \item Something else?
+  % \item Something else?
 \end{compactenum}
 
-Properties~(PR1)--(PR3) are defining properties of a PS-tree, and they imply the remaining properties. 
+Properties~(PR1)--(PR3) are defining properties of a PS-tree. Property~(PR4) 
 
 % There are at most three ancestors $a$, $b$, and $c$, of $x$ in $T$ such that the vertices of $F_x$ are contained in $V(Y_a)\cup V(Y_b)\cup V(Y_c)$. (See below for the definition of $Y_a$ $Y_b$, and $Y_c$.)
 % 
@@ -225,23 +225,28 @@ Now, consider the cubic graph $A$ homeomorphic to the union of $F_{a'}$ for all 
   \figlabel{A}
 \end{figure}
 
-We claim that the curve $C$ begins in $F_x\subseteq F^x_a\subseteq F_a$, remains in the interior of $F_a$, and eventually reaches the boundary $F^{\bar{x}}_a\cap F^x_a$.  The fact that $C$ remains in $F_a$ is due to the fact that, if it crossed the boundary of $F_a$, then one of $vw$ or $wz$ would intersect $Y_{a'}$ for some ancestor $a'$ of $a$.  If $vw$ intersects $Y_{a'}$, then $v\not\in S_x$.  If $wz$ intersects $Y_{a'}$ then $w,z\not\in S_a$. The fact that $C$ eventually reaches follows from the fact that $w\in Y_a$ or $wz$ contains a point of $Y_a$.
+We claim that the curve $C$ begins in $F_x\subseteq F^x_a\subseteq F_a$, remains in the interior of $F_a$, and eventually reaches the boundary $F^{\bar{x}}_a\cap F^x_a$.  The fact that $C$ remains in $F_a$ is due to the fact that, if it crossed the boundary of $F_a$, then one of $vw$ or $wz$ would intersect $Y_{a'}$ for some ancestor $a'$ of $a$.  If $vw$ intersects $Y_{a'}$, then $v\not\in S_x$.  If $wz$ intersects $Y_{a'}$ then $w,z\not\in S_a$. The fact that $C$ eventually reaches follows from the fact that $w\in Y_a$ or $wz$ contains a point of $Y_a$.  We call such a curve an \emph{admissible} curve.
 
-Therefore, to upper-bound $|B_x|$, it suffices to upper-bound the number of faces $F^{\bar{x}}_a$ of $A$ that can be reached with curves that begin in $F_x$, remain in the interior of $F_a$, and terminate in $F^{\bar{x}}_a$ without intersecting more than $2k$ edges in $A$.  To avoid triple subscripts we say that a curve visits $a_i$ if it visits $F^{\bar{x}}_{a_i}$.  We can further restrict ourselves to studying curves that cross the fewest number of edges of $A$ since if a curve exists that crosses at most $k$ edges then the curve that crosses the fewest number of possible edges also crosses at most $k$ edges.  We will call such a curve a \emph{lightest} curve from $x$ to $a$.
+Therefore, to upper-bound $|B_x|$, it suffices to upper-bound the number of faces $F^{\bar{x}}_a$ of $A$ that can be reached with curves that begin in $F_x$, remain in the interior of $F_a$, and terminate in $F^{\bar{x}}_a$ without intersecting more than $2k$ edges in $A$.  To avoid triple subscripts we say that a curve visits $a_i$ if it visits $F^{\bar{x}}_{a_i}$.  We can further restrict ourselves to studying curves that cross the fewest number of edges of $A$ since if a curve exists that crosses at most $k$ edges then the curve that crosses the fewest number of possible edges also crosses at most $k$ edges.  We will call such a curve a \emph{lightest} admissible curve from $x$ to $a$.
 
-Again, we let $a_0,\ldots,a_r$ denote the vertices of the path, in $K$ from the root $a_0$ to $x=a_r$.  We claim that, there exists a lightest curve from $a_r$ to $a_0$ that is monotonic in the sense that the curve visits $a_{i_0},\ldots,a_{i_t}$ in this order, where $i_0=r > i_1>\cdots>i_t=0$.
-This follows from (PR\ref{ancestor-boundaries}):  For any node $a_i$, $i>0$, there are at most three faces of $A$ that share a part of their boundary with $F_{a_i}$.  Each of these faces also necessarily shares a part of its boundary with $F^{\bar{x}}_{a_i}$.  Therefore it is never advantageous for a path to go from $a_i$ to $a_j$ for some $j>i$ since the path will eventually have to return to one of these three faces.
+Again, we let $a_0,\ldots,a_r$ denote the vertices of the path, in $K$ from the root $a_0$ to $x=a_r$.  We claim that, there exists a lightest admissible curve from $a_r$ to $a_0$ that is monotonic in the sense that the curve visits $a_{i_0},\ldots,a_{i_t}$ in this order, where $i_0=r > i_1>\cdots>i_t=0$.
+This follows from (PR\ref{ancestor-boundaries}):  For any node $a_i$, $i>0$, there are at most three faces of $A$ that share a part of their boundary with $F_{a_i}$.  Each of these faces also necessarily shares a part of its boundary with $F^{\bar{x}}_{a_i}$.  Therefore no lightest admissible curve ever $a_i$ before $a_j$ for some $j>i$ since the curve will eventually have to return to one of these three faces.
 
-At this point we are essentially done.  Any monotonic curve that visits $a_i$ has at most 3 choices for the next face $a_j$ $j<i$ to visit.  Therefore, the number of faces of $A$ that can be reached from $F_x$ by admissible curves that cross $2k$ edges of $A$ is at most $3^{2k}$. Therefore,
+At this point we are essentially done.  Any lightest admissible curve that visits $a_i$ has at most 3 choices for the next face $a_j$ $j<i$ to visit.  Therefore, the number of faces of $A$ that can be reached from $F_x$ by admissible curves that intersect at most $\ell$ edges of $A$ is at most $3^{\ell}$. Therefore,
 \[
-   |B_x| \le \sum_{j=0}^2k 9^j = (9^{2k+1}-1)/8 \enspace .
+   |B_x| \le \sum_{\ell=0}^{2k+1} 3^\ell = (3^{2k+2}-1)/2 
+       = (9^{k+1}-1)/2 \enspace .
 \]
 
-This completes the proof
+This is all we need to complete the proof of:
 
 \begin{thm}
-    Every $k$-planar graph $G$ has a $(k9^{2k+1}/8,3k)$-partition.
+    Every $k$-planar graph $G$ has a $((9^{k+1}-1)/2-1,3k^2)$-partition.
 \end{thm}
+
+\begin{proof}
+  The $H$-partition $(B_x:x\in V(H))$ of $G$ described above has treewidth $(9^{k+1}-1)/2-1$.  For each $x\in V(H)$ and each integer $i$, $|B_x\cap V_i|\le 3k$. \Eqref{distance-preserving} implies setting $V_i' = V_{ki}\cup\cdots\cup V_{k(i+1)-1}$ yields a layering $(V_0',V_1',\ldots)$ of  $G$ and $|B_x\cap V_i'|\le 3k^2$ for all integers $i\ge 0$ and all $x\in V(H)$.
+\end{proof}
 
 \bibliographystyle{plain}
 \bibliography{warmup}
