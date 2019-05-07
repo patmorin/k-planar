@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
 <ipe version="70206" creator="Ipe 7.2.7">
-<info created="D:20190503161557" modified="D:20190503161816"/>
+<info created="D:20190503161557" modified="D:20190506223106"/>
 <ipestyle name="basic">
 <symbol name="arrow/arc(spx)">
 <path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
@@ -220,13 +220,13 @@ h
 <dashstyle name="dash dotted" value="[4 2 1 2] 0"/>
 <dashstyle name="dash dot dotted" value="[4 2 1 2 1 2] 0"/>
 <textsize name="large" value="\large"/>
+<textsize name="small" value="\small"/>
+<textsize name="tiny" value="\tiny"/>
 <textsize name="Large" value="\Large"/>
 <textsize name="LARGE" value="\LARGE"/>
 <textsize name="huge" value="\huge"/>
 <textsize name="Huge" value="\Huge"/>
-<textsize name="small" value="\small"/>
 <textsize name="footnote" value="\footnotesize"/>
-<textsize name="tiny" value="\tiny"/>
 <textstyle name="center" begin="\begin{center}" end="\end{center}"/>
 <textstyle name="itemize" begin="\begin{itemize}" end="\end{itemize}"/>
 <textstyle name="item" begin="\begin{itemize}\item{}" end="\end{itemize}"/>
@@ -255,6 +255,11 @@ h
 <layer name="alpha"/>
 <layer name="beta"/>
 <view layers="alpha beta" active="beta"/>
+<path layer="beta" stroke="lightgray">
+270.39 574.152 m
+268.33 565.464 l
+277.908 565.087 l
+</path>
 <path layer="alpha" stroke="black">
 136.115 662 m
 249.415 0 0 249.415 385.531 662 260.823 446 a
@@ -313,12 +318,70 @@ h
 </path>
 <use name="mark/disk(sx)" pos="277.908 565.086" size="normal" stroke="black"/>
 <use name="mark/disk(sx)" pos="293.298 592.782" size="normal" stroke="black"/>
-<text matrix="1 0 0 1 87.812 32.9294" transformations="translations" pos="206.733 538.828" stroke="black" type="label" width="11.422" height="6.812" depth="1.49" halign="center" valign="baseline" style="math">F_x</text>
+<text matrix="1 0 0 1 69.7542 44.1298" transformations="translations" pos="206.733 538.828" stroke="black" type="label" width="11.422" height="6.812" depth="1.49" halign="center" valign="baseline" style="math">F_x</text>
 <text matrix="1 0 0 1 82.4652 120.179" transformations="translations" pos="206.733 538.828" stroke="black" type="label" width="15.114" height="7.619" depth="3.46" halign="center" valign="baseline" style="math">F^{\bar{x}}_{a_1}</text>
 <text matrix="1 0 0 1 58.8234 7.59932" transformations="translations" pos="206.733 538.828" stroke="black" type="label" width="15.114" height="7.619" depth="3.46" halign="center" valign="baseline" style="math">F^{\bar{x}}_{a_2}</text>
 <text matrix="1 0 0 1 127.779 34.6185" transformations="translations" pos="206.733 538.828" stroke="black" type="label" width="15.114" height="7.619" depth="3.46" halign="center" valign="baseline" style="math">F^{\bar{x}}_{a_3}</text>
 <text matrix="1 0 0 1 78.2434 82.4649" transformations="translations" pos="206.733 538.828" stroke="black" type="label" width="15.114" height="7.619" depth="3.46" halign="center" valign="baseline" style="math">F^{\bar{x}}_{a_4}</text>
 <text matrix="1 0 0 1 76.5547 64.1707" transformations="translations" pos="206.733 538.828" stroke="black" type="label" width="15.114" height="7.619" depth="3.46" halign="center" valign="baseline" style="math">F^{\bar{x}}_{a_5}</text>
-<text matrix="1 0 0 1 69.7999 45.3136" transformations="translations" pos="206.733 538.828" stroke="black" type="label" width="15.114" height="7.619" depth="3.46" halign="center" valign="baseline" style="math">F^{\bar{x}}_{a_6}</text>
+<path layer="beta" stroke="lightgray">
+215.659 577.186 m
+215.986 562.493 l
+225.426 559.939 l
+</path>
+<path stroke="lightgray">
+215.986 562.493 m
+170.701 535.288 l
+</path>
+<path stroke="lightgray">
+296.669 631.042 m
+304.674 637.009 l
+306.895 628.764 l
+</path>
+<path stroke="lightgray">
+304.674 637.009 m
+317.227 688.954 l
+</path>
+<path stroke="lightgray">
+268.33 565.464 m
+235.432 545.723 l
+</path>
+<path stroke="lightgray">
+309.225 580.079 m
+315.646 577.807 l
+310.981 583.899 l
+</path>
+<path stroke="lightgray">
+315.646 577.807 m
+359.996 552.067 l
+</path>
+<path stroke="lightgray">
+293.373 613.177 m
+297.817 617.352 l
+300.555 611.617 l
+</path>
+<path stroke="lightgray">
+297.817 617.352 m
+296.927 630.992 l
+</path>
+<path stroke="lightgray">
+299.832 591.469 m
+304.674 596.779 l
+305.959 589.687 l
+</path>
+<path stroke="lightgray">
+304.674 596.779 m
+308.325 609.558 l
+</path>
+<path stroke="lightgray">
+281.99 571.348 m
+290.96 569.807 l
+286.315 578.71 l
+</path>
+<path stroke="lightgray">
+290.96 569.807 m
+300.411 563.588 l
+</path>
+<text layer="alpha" matrix="1 0 0 1 89.0005 32.5132" transformations="translations" pos="206.733 538.828" stroke="black" type="label" width="15.114" height="7.619" depth="3.46" halign="center" valign="baseline" style="math">F^{\bar{x}}_{a_6}</text>
 </page>
 </ipe>
