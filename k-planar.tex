@@ -9,6 +9,8 @@
 \usepackage{pat}
 \usepackage{paralist}
 
+\usepackage[longnamesfirst,numbers,sort&compress]{natbib}
+
 \usepackage{tipa}
 \usepackage{upgreek}
 \usepackage{rotating}
@@ -44,21 +46,44 @@
 
 
 \begin{abstract}
-  Layered $H$-partitions of graphs (with small layered width, in which $H$ has small treewidth) are a recently-introduced tool that have been used to solve longstanding problems on queue layouts, non-repetitive colouring, and 3-d graph drawing.  Such partitions are known to exist for planar graphs and, more generally, bounded genus graphs.  In the current paper, we prove that every $k$-planar graph has a layered $H$-partition of layered width $O(k)$ in which $H$ has treewidth $k9^k$. This implies that $k$-planar graphs have both queue number and non-repetitive chromatic number upper-bounded by a function of $k$.
+  Layered $H$-partitions of graphs (with small layered width, in which $H$ has small treewidth) are a recently-introduced tool that have been used to solve longstanding problems on queue layouts, non-repetitive colouring, and 3-d graph drawing.  Such partitions are known to exist for planar graphs and, more generally, bounded genus graphs.  In the current paper, we prove that every $k$-planar graph has a layered $H$-partition of layered width $O(k)$ in which $H$ has treewidth $O(c^k)$, for some constant $c$. This implies that $k$-planar graphs have both queue number and non-repetitive chromatic number upper-bounded by a function of $k$.
 \end{abstract}
 
 \section{Introduction}
 
+A \emph{layering} of a graph $G$ is a partition $\mathcal{L}=\{V_0,V_1,\ldots,V_h\}$ of $V(G)$ so that there is no edge $vw\in E(G)$ such that $v\in V_i$, $w\in V_j$ and $|j-i|>1$.  For any partition $\mathcal{P}=\{S_1,\ldots,S_p$ of $V(G)\}$, the \emph{quotient graph} $H=G/\mathcal{P}$ has $V(H)=\{x_1,\ldots,x_p\}$ and $x_ix_j\in E(H)$ if and only there exists an edge $vw\in E(G)$ such that $v\in S_i$ and $w\in S_j$.  
+% We call $\mathcal{P}$ an \emph{$H$-partition} of $G$ and we write this concisely as $\mathcal{P}=\{S_x : x\in V(H)\}$ so that each element of $\mathcal{P}$ is indexed by the vertex it creates in $H$.
+A layered $H$-partition $(\mathcal{L},\mathcal{P})$ of a graph $G$ consists of a layering $\mathcal{L}$ of $G$ and an $H$-partition $\mathcal{P}$ of $G$. The \emph{layered width} of $(\mathcal{H},\mathcal{P})$ is $\max\{|L\cap P|: L\in\mathcal{L},\, P\in\mathcal{P}\}$.
 
-\section{$1$-Plane Graphs}
+Layered $H$-partition of small layered width in which $H$ has some additional property are a useful tool for a number of graph problems. \citet{dujmovic.joret.ea:planar} show that, if each graph $G$ in some family $\mathcal{G}$ of graphs has a layered $H$-partition for which the layered-width and the treewidth of $H$ are each upper-bounded by some constant $c_\mathcal{G}$, then each of the following quantities are upper bounded by a constant, for every $G\in\mathcal{G}$: queue number \cite{X}, track number \cite{X}, etc \cite{X}, etc \cite{X}, etc \cite{X}. \citet{dujmovic.esperet.ea:planar} add non-repetitive chromatic number to this list.  \citet{dujmovic.joret.ea:planar} show that two common families of graphs have such $H$-partitions: planar graphs and (more generally) bounded-genus graphs.
 
-Let $G$ be an edge-maximal 1-plane multigraph graph.  Here, edge-maximal should be taken to mean that, if any two vertices $u$ and $v$ appear on a common face $F$, then there is an edge $uv\in E(G)$ that is contained in the boundary of $F$.
+In this paper we show that another family of graphs admits layered $H$-partitions of constant layered-width in which $H$ has constant treewidth: $k$-planar graphs. An \emph{embedded graph} $G$ is a graph with $V(G)\subset\R^2$ in which each edge $vw\in E(G)$ is a closed curve\footnote{A closed curve is a continuous function $f:[0,1]\to \R^2$. The points $f(0)$ and $f(1)$ are called the \emph{endpoints} of the curve.  When there is no danger of misunderstanding we treat a curve $f$ as a point set $\{f(t):0\le t\le 1\}$.} with endpoints $v$ and $w$ and not containing any vertex of $G$ in its interior.  A \emph{crossing} in an embedded graph $G$ is a triple $(p,vw,xy)$ with $p\in\R^2$, $vw,xy\in E(G)$ and such that $p\in (vw\cap xy)\setminus\{v,w,x,y\}$. An embedded graph $G$ is \emph{$k$-plane} if each edge of $G$ takes part in at most $k$ crossings.  A (not necessarily embedded) graph $G'$ is \emph{$k$-planar} if there exists $k$-plane graph $G$ isomorphic to $G'$.  We prove the following result:
+
+\begin{thm}\thmlabel{k-planar}
+  Every $k$-planar graph has a layered $H$-partition of layered-width at most $(k+1)(12k + 9)$ in which $H$ has treewidth at most $(9^{k+1}-3)/2$.
+\end{thm}
+
+In the special case $k=1$ we obtain better constants and additional property (planarity) of $H$:
+
+\begin{thm}\thmlabel{1-planar}
+  Every 1-planar graph has a layered $H$-partition of layered width at most 30 where $H$ is planar and has treewidth at most 3.
+\end{thm}
+
+These results imply that, for any constant $k$, $k$-planar graphs have all the graph parameters mentioned above upper-bounded by some constant $c_k$.
+
+In \secref{1-planar} we prove \thmref{1-planar}.  In \secref{k-planar} we prove \thmref{k-planar}.
+
+\section{$1$-Planar Graphs}
+\seclabel{1-planar}
+
+Let $G$ be an edge-maximal 1-plane multigraph.  Here, edge-maximal should be taken to mean that, if any two vertices $u$ and $v$ appear on a common face\footnote{The \emph{faces} of an embedded graph $G$ are the connected components of $\R^2\setminus \bigcup_{vw\in E(G)} vw$.  We say that a vertex $v\in V(G)$ appears on a face $F$ if $v$ is contained in the closure of $F$.} $F$, then there is an edge $uv\in E(G)$ that is contained in the boundary of $F$.
 
 A \emph{kite} in $G$ is the subgraph $K=G[\{v,w,x,y\}]$ induced by the endpoints of a pair of crossing edges $vw,xy\in E(G)$.  It follows from edge-maximality that every kite is isomorphic to the complete graph $K_4$.
 The edges $vw$ and $xy$ are called \emph{spars} of $K$.  The cycle $vxwy$ is called the \emph{sail} of $K$.  It follows from edge-maximality that none of the edges $vx$, $xw$, $wy$, or $yv$ are crossed by any other edges of $G$. Thus any edge that is a spar of a kite $K$ is not part of a sail of any kite $K'$. Observe that any spar of $K$ is incident on exactly four \emph{kite faces} of $G$, each of which has three edges and two vertices of $G$ on its boundary.
 
-The 1-plane graph $G$ has a plane triangulation $G'$ as a subgraph that can be obtained by removing one spar from each kite in $G$.  Observe that, for any spar $vw\in E(G)\setminus E(G')$ that crosses $xy\in E(G')$, $G'$ contains the path $vxw$ (and $vyw$).  It follows that $\dist_{G'}(x,y)\le 2\dist_G(x,y)$ for any pair of vertices $x,y\in V(G)$.
+The 1-plane graph $G$ has a plane triangulation $G'$ as a subgraph that can be obtained by removing one spar from each kite in $G$.  Observe that, for any spar $vw\in E(G)\setminus E(G')$ that crosses $xy\in E(G')$, $G'$ contains the path $vxw$ (and $vyw$).  It follows that $\dist_{G'}(x,y)\le 2\cdot\dist_G(x,y)$ for any pair of vertices $x,y\in V(G)$.
 
+Our proof of \thmref{1-planar} follows quickly from the following technical lemma, which is an extension of Lemma~X in \citet{dujmovic.joret.ea:planar}.
 \begin{lem}\lemlabel{induction} The setup:
   \begin{compactenum}
     \item Let $G$ and $G'$ be defined as above.
@@ -104,16 +129,13 @@ The 1-plane graph $G$ has a plane triangulation $G'$ as a subgraph that can be o
   \end{enumerate}
   Therefore each $C_i$ is a cycle in $G^+$ consisting entirely of uncrossed edges. The vertices of $C_i$ can be partitioned into at most three sets $P_1'$, $P_2'$, and $P_3'$ where $P_1'\subset V(Y^+)$, $P_2'\subseteq P_a$ and $P_3'\subseteq P_b$ for some $a,b\in\{1,2,3\}$. Furthermore $C_i[P_j']$ is a path for each $j\in\{1,\ldots,3\}$. Finally, the subgraph $N_i$ of $G$ consisting of the edges and vertices of $G$ contained in $C_i$ or its interior does not contain one of the three vertices of $\tau$. Therefore, we can apply induction using the cycle $C_i$ and the partition $P_1',P_2',P_3'$ of $V(C_i)$ to obtain the desired $H$-partition and tree decomposition of $N_i$.
   
-  The remainder of the proof is as before. We use $V(Y^+)\setminus V(C)$ as an element of our $H$-partition.  The root bag in the tree decomposition contains the vertices obtained by contracting each of $P_1,\ldots,P_k$ and $Y^+$.
+  The remainder of the proof finishes in the same way as the proof of Lemma~X in \cite{dujmovic.joret.ea:planar}.  $P_1,\ldots,P_k$, and $V(Y^+)\setminus V(C)$ become elements of the $H$-partition.  Elements in each of the $H$-partitions of $N_1,\ldots,N_3$ that intersect $P_1,\ldots,P_k$, or $V(Y^+)\setminus V(C)$ are discarded and all the resulting sets are combined to obtain an $H$-partition of $G$.  The desired tree decomposition of $G$ is obtained in exactly the same way as in the proof of Lemma~X in blah.
   
-  Planarity comes from the fact that if two edges $vw$ and $xy$ cross, then they end up in the same bag of the $H$-partition.  This means that $H$ is actually obtained by contracting connected sets of vertices in the planar graph $G'$.
+  The planarity of $H$ comes from the fact that if two edges $vw$ and $xy$ cross, then they end up in the same bag of the $H$-partition.  This means that $H$ is actually obtained by contracting connected sets of vertices in the planar graph $G'$.  It is well know that any graph obtained by contracting connected sets of vertices in a planar graph is also planar.
 \end{proof}
 
-\begin{thm}\thmlabel{1-plane}
-  Every 1-plane graph $G$ has a layered $H$-partition of layered width at most 30 where $H$ is planar and has treewidth at most 3.
-\end{thm}
 
-\begin{proof}
+\begin{proof}[Proof of \thmref{1-plane}]
   The same as before except that the layered width 15 from \lemref{induction} becomes 30 because \lemref{induction} uses a layering of $G'$ and distances in $G'$ can be a factor of 2 larger than in $G$.
 \end{proof}
 
@@ -253,15 +275,12 @@ Consider some minimal admissible $xa$-curve that visits $x=x_0,x_1,\ldots,x_\ell
 
 This is all we need to complete the proof of:
 
-\begin{thm}
-    Every $k$-planar graph $G$ has a layered $H$-partition of layered-width at most $(k+1)(12k + 9)$ in which $H$ has treewidth at most $(9^{k+1}-3)/2$
-\end{thm}
 
 \begin{proof}
   By \eqref{bag-size}, the partition $(S_x:x\in V(K))$ of $G$ described above produces a graph $H$ of treewidth $(9^{k+1}-3)/2$.  For each $x\in V(H)$ and each integer $i$, $|B_x\cap V_i|\le 12k+9$. \Eqref{distance-preserving} implies that setting $V_i' = V_{(k+1)i}\cup\cdots\cup V_{(k+1)(i+1)-1}$ yields a layering $(V_0',V_1',\ldots)$ of  $G$ and $|B_x\cap V_i'|\le (k+1)(12k+9)$ for all integers $i\ge 0$ and all $x\in V(H)$.
 \end{proof}
 
-\bibliographystyle{plain}
-\bibliography{warmup}
+\bibliographystyle{plainnat}
+\bibliography{k-planar}
 
 \end{document}
