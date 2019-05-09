@@ -141,7 +141,7 @@ Our proof of \thmref{1-planar} follows quickly from the following technical lemm
 
 \section{$k$-Planar Graphs}
 
-\subsection{The PS-Tree}
+\subsection{PS-Trees}
 
 Let $T$ be a rooted tree rooted at $r\in V(T)$. The \emph{depth} of a node $x\in V(T)$ is equal to the length of the path from $x$ to $r$ in $T$. A $P$ path in $T$ is \emph{vertical} if, for each integer $i$, $P$ contains at most one vertex of depth $i$.  The deepest vertex in a vertical path $P$ is called  $P$'s \emph{lower endpoint} and the other (shallowest) vertex in $P$ is called $P$'s \emph{upper endpoint}. For any node $v\in T$, we call each node on the path, in $T$, from $v$ to $r$ a \emph{$T$-ancestor} of $v$.
 
@@ -183,6 +183,13 @@ The nodes of the PS-tree $K$ satisfy several conditions:
   \item \proplabel{partition} $\{Y_x : x\in V(K)\}$ is a partition of $V(G^+)\setminus\{r\}\setminus V(F_{r'})$.
 \end{enumerate}
 
+For any triangulation $\Delta$ in which the outer face has a vertex $r$ of degree 3 and for any BFS spanning-tree of $\Delta$ rooted at $r$, there exists a PS-tree $K=K(\Delta,T,r)$.  Indeed, this tree is constructed (albeit implicitly) by \citet[Proof of Lemma~X]{dujmovic.joret.ea:planar}.
+
+The following property of a PS-Tree $K$ is an immediate consequence of \propref{children} that will be useful for us:
+\begin{compactenum}[(PR5)]
+  \item \proplabel{ancestors} If $v\in V(N_x-F_x)$ and $w\in V(N_y-N_y)$ for some nodes $x,y\in V(K)$, then one of $x$ or $y$ is a $K$-ancestor of the other.
+\end{compactenum}
+
 
 \subsection{$k$-Planar Graphs}
 
@@ -192,31 +199,28 @@ Let $G$ be a $k$-plane graph and let $G^+$ be the graph obtained as follows:
   \item Add a $K_4$ that contains $G$ in one of its inner faces $F_0$.
   \item Add edges to complete the resulting graph to a triangulation.
 \end{compactenum}
-Let $r$ be the vertex of the $K_4$ not incident on $F_0$ and let $T$ be a BFS spanning tree of $G^+$ rooted at $r$.  For each integer $i\ge 0$, let $V_i=\{v\in V(G^+): \dist_{G^+}(r,v)=i\}$.
-
-Observe that, for any edge $vw\in E(G)$, $\dist_{G^+}(v,w) \le k+1$ and therefore, for any two vertices $v,w\in V(G)$,
+Let $r$ be the vertex of the $K_4$ not incident on $F_0$ and let $T$ be a BFS spanning tree of $G^+$ rooted at $r$.    Observe that, for any edge $vw\in E(G)$, $\dist_{G^+}(v,w) \le k+1$ and therefore, for any two vertices $v,w\in V(G)$,
 \begin{equation} 
   \dist_{G^+}(v,w) \le (k+1)\cdot \dist_G(v,w) \eqlabel{distance-preserving}
 \end{equation}
+For each integer $i\ge 0$, let $V_i=\{v\in V(G^+): \dist_{G^+}(r,v)=i\}$ and observe that $V_0,V_1,\ldots,V_{t}$ is a layering of $G^+$ (but not of $G$).
 
-Let $K=K(G^+,T,r)$ be a PS-tree.  We say that a vertex $v\in V(G)$ \emph{appears} at a node $x\in V(K)$ if $v\in Y_x$ or if there exists $vw\in E(G)$ such that $v,w\in V(N_x)$ and $vw$ contains a vertex of $Y_x$, either as an endpoint or in its interior (see \figref{appearances}).
+Let $K=K(G^+,T,r)$ be a PS-tree and observe that the root $r'$ of $K$ has $F_{r'}=F_0$.  This implies:
+\begin{compactenum}[(PR6)]
+  \item \proplabel{all-in}  $V(G)\subseteq V(N_{r'}-F_{r'})$.
+\end{compactenum}
 
-\begin{figure}
-  \begin{center}
-    \includegraphics{figs/K-node-3}
-  \end{center}
-  \caption{Examples of vertices (in peach) that appear at a node $x\in V(K)$.}
-  \figlabel{appearances}
-\end{figure}
+For any pair of vertices $v,w\in V(G)$, consider the set $A_{vw}=\{a\in V(K): v,w\in V(N_a-F_a) \}$.  By \propref{all-in}, $A_{vw}$ contains the root $r'$ of $K$.  By \propref{children}, any node $a\in A_{vw}$ has at most one child in $A_{vw}$ and any node $a\not\in A_{vw}$ has no child in $A_{vw}$.  It follows that $K[A_{vw}]$ is a vertical path in $K$ that contains the root.  We define $a(vw)$ to be the lower endpoint of $K[A_{vw}]$.
 
-Let $S_x$ (the separator at $x$) denote the set of all vertices $v\in V(G)$ such that $v$ appears at $x$ but does not appear at any $K$-ancestor of $x$.  We claim that $(S_x:x\in V(K))$ is a partition of $V(G)$. By \propref{partition} every vertex $v\in  V(G)$ is in $V(Y_x)\subseteq V(N_x)$ for some $x\in V(K)$. Therefore every vertex $v\in V(G)$ appears at some node $x\in V(K)$, so $\bigcup_{x\in V(K)} S_x \supseteq V(G)$.
+For any vertex $v\in V(G)$ define $A_v=\bigcap\{vw\in E(G)} A_{vw}$.  $K[A_v]$ is a vertical path in $K$ that contains the root.  We define $a(v)$ to be the lower endpoint of $K[A_v]$.
 
-Furthermore, if $v$ appears at two nodes $x$ and $y$ then, by definition, $v\in V(N_x)\cap V(N_y)$. If neither $x$ nor $y$ is an ancestor of the other then, by \propref{children}, $V(N_x)\cap V(N_y)=V(F_x)\cap V(F_y)$.  By \propref{ancestor-boundary}, $v\in V(Y_a)$ for some $K$-ancestor $a$ of $x$.  Similarly, $v\in V(Y_{b})$ for some ancestor $b$ of $y$.  By \propref{partition}, $a=b$ is a common $K$-ancestor of $x$ and $y$ and $v$ appears at $a$.  It follows that there is a unique node $a'$ that is a $K$-ancestor of all nodes of $K$ at which $v$ appears, so $a'$ is the only node of $K$ for which $v\in S_{a'}$.
+For every node $x\in V(K)$, we define the \emph{separator} of $X$ as
+\[
+   S_x = \{v\in V(G): a(v)=x \} \enspace .
+\]
+Clearly $\mathcal{S}=\{S_x:x\in V(K)\}$ is a partition of $V(G)$.
 
-
-% Indeed, if $v$ appears at nodes $x$ and $y$ where neither $x$ nor $y$ is an ancestor of the other, then there exists edges $vw,vz\in E(G)$ (possibly $w=z$) such that $vw$ contains a vertex of $Y_x$ (as an endpoint or in its interior) and $vz$ contains a vertex of $Y_y$ (as endpoint or in its interior).  At least one of these two edges contains a vertex $Y_a$ for some common ancestor $a$ of $x$ and $y$.
-
-We use the partition $(S_x: x\in V(K))$ which generates a graph $H$ with vertex set $V(H)=V(K)$ and the edge $xy\in E(H)$ if and only if there exists an edge $vw\in E(G)$ with $v\in S_x$ and $w\in S_y$.  First we argue that this partition has small width with respect to the layering defined by $T$ (note that this is a layering of $G^+$, not a layering of $G$).
+Consider graph $H=G/\mathcal{S}$ that has vertex set $V(H)=V(K)$ and the edge $xy\in E(H)$ if and only if there exists an edge $vw\in E(G)$ with $v\in S_x$ and $w\in S_y$.  First we argue that this partition has small width with respect to the layering defined by $T$ (recall that this is a layering of $G^+$, not a layering of $G$).
 
 \begin{clm}
   For any $x\in V(H)$, and any integer $i\ge 0$, $|S_x\cap V_i|\le 3(4k+3)$.
@@ -227,15 +231,14 @@ We use the partition $(S_x: x\in V(K))$ which generates a graph $H$ with vertex 
   \[  |S_x\cap V_i| \le |V(Y_x)\cap V_i| + 3\cdot 2\cdot (2k+1) \le 12k+9 \enspace . \qedhere \]
 \end{proof}
 
-Next we describe a tree decomposition $(B_x:x\in V(K))$ of $H$.  We deliberately use the same node set $V(H)=V(K)$ here, because the subtree $K[x]:=K[\{z:x\in B_z\}]$ will be rooted at $x$.  We claim that, for every edge $xy\in V(H)$, $x$ is an ancestor of $y$ (or vice-versa).  Suppose that this is not the case and that $xy\in E(H)$ but neither $x$ nor $y$ is an ancestor of the other.  Then, since $xy\in E(H)$, there must exist an edge $vw\in E(G)$ such that $v\in S_x$ and $w\in S_y$.  
+Next we describe a tree decomposition $(B_x:x\in V(K))$ of $H$.  We deliberately use the same node set $V(H)=V(K)$ here, because the subtree $K[x]:=K[\{z:x\in B_z\}]$ will be rooted at $x$.  We claim that, for every edge $xy\in V(H)$, one of $x$ or $y$ is a $K$-ancestor of the other.
+Indeed, since $xy\in E(H)$, there exists an edge $vw\in E(G)$ such that $v\in S_x$ and $w\in S_y$.  By definition, $x\in A_v\subseteq A_{vw}$ and $y\in A_w\subseteq A_{vw}$.  Since $K[A_{vw}]$ is a vertical path in $K$, it follows that one of $x$ or $y$ is a $K$-ancestor of the other. 
 
-Since $v\in S_x$, $v\in V(N_x)$ and similarly $w\in V(N_y)$.  Since neither $x$ nor $y$ are ancestors of each other, the interiors of $F_x$ and $F_y$ are disjoint.   Therefore, the edge $vw$ contains a vertex of $F_x$ (as an endpoint or in its interior). This is also a contradiction, since \propref{ancestor-boundary} then implies that $v\in V(Y_a)$ for some $K$-ancestor $a$ of $x$ and therefore appears at $a$, so $v\not\in S_x$.
+To describe our tree decomposition we define, for each $y\in V(H)$, the subtree $K[y]=K[\{x:y\in B_x\}]$.  The subtree $K[y]$ contains $y$.  Additionally, for every edge $xy\in E(H)$, where $y$ is an ancestor of $x$, $K[y]$ includes the path from $y$ to $x$ in $K$.  That this produces a tree-decomposition is due to the fact, established in the preceding paragraph, that for every edge $xy$ of $H$, $x$ is a $K$-ancestor of $y$ (or vice-versa).  What remains is to upper bound the width of this decomposition.
 
-To describe our tree decomposition we define, for each $x\in V(H)$, the subtree $K[x]=K[\{y:x\in B_y\}]$.  The subtree $K[x]$ contains $x$.  Additionally, for every edge $xz\in E(H)$, where $x$ is an ancestor of $z$, $K[x]$ includes the path from $x$ to $z$ in $K$.  That this produces a tree-decomposition is due to the fact, established in the preceding paragraph, that for every edge $xz$ of $H$, $x$ is an ancestor of $z$ (or vice-versa).  What remains is to upper bound the width of this decomposition.
+Now, fix some node $x\in V(K)$ and consider the contents of $B_x$.  As we have just argued, $B_x$ contains only $K$-ancestors of $x$ (including $x$ itself). If $B_x$ contains some $K$-ancestor $y$ of $x$, it is because there is an edge $vw\in E(G)$ with $v\in S_x$ and $w\in S_y$. Since $v\in S_x$, $v\in V(N_x-F_x)$. Since, $w\in S_y$, $w\in V(N_y-F_y)$.  
 
-First observe that, for every $a\in V(K)$, the subtree $K[a]$ is rooted at $a$, i.e., $a$ is a $K$-ancestor of every node in $x\in B_a$.  Now, fix some node $x\in V(K)$ and consider the contents of $B_x$.  As we have just argued, $B_x$ contains only ancestors of $x$ (including $x$ itself). If $B_x$ contains some $K$-ancestor $a$ of $x$, it is because there is an edge $vw\in E(G)$ with $v\in S_x$ and $w\in S_a$. Since $v\in S_x$, $v\in V(N_x)$. Since, $w\in S_a$, either (a)~$w\in V(Y_a)$ or (b)~there is an edge $wz\in E(G)$ with $w,z\in V(N_a)$ that contains a vertex of $Y_a$.  To avoid having to distinguish between the two cases (a) and (b), we will use $vz$ to denote the embedding of the edge $vw$, in case (a), or the embedding of the path $vwz$, in case~(b). 
-
-Now, consider the graph $A$ that contains $F_{a'}$ for all ancestors $a'$ of $x$. See \figref{A}.  It is helpful to think of this graph as follows:  We begin with $F_{a_0}$ where $a_0=r'$ is the root of $K$.  We then cut $F_{a_0}$ into two pieces $F^{\bar{x}}_{a_0}$ and $F^x_{a_0}$ where $F^x_{a_0}$ is the piece that contains $F_x$. (The path that makes this cut contains two legs $Q_i$ and $Q_j$ of a tripod $Y$ and one edge $v_iv_j$ of its central triangle $\tau$.)  This process continues by partitioning $F_{a_1}:=F^x_{a_0}$ recursively.  The process terminates after some number $r$ of iterations, when $F^x_{a_r}=F_x$.
+Now, consider the graph $A$ that contains $F_{a}$ for all $K$-ancestors $a$ of $x$. See \figref{A}.  It is helpful to think of this graph as follows:  We begin with $F_{a_0}$ where $a_0=r'$ is the root of $K$.  We then cut $F_{a_0}$ into two pieces $F^{\bar{x}}_{a_0}$ and $F^x_{a_0}$ where $F^x_{a_0}$ is the piece that contains $F_x$. (The path that makes this cut contains two legs $Q_i$ and $Q_j$ of a tripod $Y$ and one edge $v_iv_j$ of its central triangle $\tau$.)  This process continues by partitioning $F_{a_1}:=F^x_{a_0}$ recursively.  The process terminates after some number $r$ of iterations, when $F^x_{a_r}=F_x$.
 
 \begin{figure}
   \begin{center}
@@ -245,11 +248,16 @@ Now, consider the graph $A$ that contains $F_{a'}$ for all ancestors $a'$ of $x$
   \figlabel{A}
 \end{figure}
 
-We claim that the curve $vz$ contains a curve $vz'$ that (o)~does not cross any edge of $A$, (i)~begins in $F_x$, (ii)~remains in the interior of $F_a$, (iii)~terminates at $z'$ on the boundary $F^{\bar{x}}_a\cap F^x_a$, and (iv)~contains at most $2k+1$ vertices of $A$.\note{PM}{$2k+1$ should be $2k+3$, but this carries through and I don't have to update right now.}
+The edge $vw$ corresponds to a walk $v=v_0,v_1,\ldots,v_{\ell}$ in $G^+$ that,
+(i)~begins at $v\in V(N_x-F_x)$, (ii)~contains only vertices in $V(N_y-F_y)$, (iii)~ends at $w\in V(N_y-F_y)$, (iv)~has length $\ell\le k+1$.
 \begin{compactenum}[(i)]
-  \item The curve $vz'$ begins at $v\in V(N_x)$;
+  \item $v\in V(N_x)$ since $x\in A_v$ and $v\in V(N_a-F_a)$ for all $a\in A_v$;
   
-  \item The curve $vz'$ remains in the interior of $F_a$ since, if it intersected the boundary of $F_a$, then one of $vw$ or $wz$ would intersect $Y_{a'}$ for some ancestor $a'\neq a$ of $a$.  If $vw$ contains a vertex of $Y_{a'}$, then $v\not\in S_x$.  If $wz$ contains a vertex of $Y_{a'}$ then $w,z\not\in S_a$. 
+  \item $v_0,v_1,\ldots,v_{\ell}\in V(N_a-F_a)$ since, otherwise $v_i\in V(F_y)$.  By \propref{ancestor-boundary}, $v_i\in Y_{a}$ for some $K$-ancestor $a\neq y$ of $y$.  
+  
+  The curve $vz'$ remains in the interior of $F_a$ since, if it intersected the boundary of $F_a$, then one of $vw$ or $wz$ would intersect $Y_{a'}$ for some ancestor $a'\neq a$ of $a$.  If $vw$ contains a vertex of $Y_{a'}$, then $v\not\in S_x$.  If $wz$ contains a vertex of $Y_{a'}$ then $w,z\not\in S_a$. 
+
+  \item $w\in V(N_y)$ since $y\in A_w$ and $w\in V(N_a-F_a)$ for all $a\in A_w$;
 
   \item That $vz'$ eventually reaches $F^{\bar{x}}_a$ follows from the fact that, in either case (a) or (b), $vz$ contains a vertex of $Y_a$.  The first such vertex encountered walk walking along $vz$ is the endpoint $z'$.
   
