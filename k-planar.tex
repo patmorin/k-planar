@@ -239,7 +239,7 @@ Next we describe a tree decomposition $(B_x:x\in V(K))$ of $H$.  We deliberately
  \end{clm}
  
  \begin{proof}
-   Since $xy\in E(H)$, there exists an edge $vw\in E(G)$ such that $v\in S_x$ and $w\in S_y$.  By definition, $x\in P_v\subseteq A_{vw}$ and $y\in P_w\subseteq A_{vw}$.  Since $K[A_{vw}]$ is a vertical path in $K$, it follows that one of $x$ or $y$ is a $K$-ancestor of the other. 
+   Since $xy\in E(H)$, there exists an edge $vw\in E(G)$ such that $v\in S_x$ and $w\in S_y$.  By definition, $x\in A_v\subseteq A_{vw}$ and $y\in A_w\subseteq A_{vw}$.  Since $K[A_{vw}]$ is a vertical path in $K$, it follows that one of $x$ or $y$ is a $K$-ancestor of the other. 
 \end{proof}
 
 The tree decomposition $(B_x:x\in V(K))$ of $H$ is defined as follows: For each edge $xy$ where $y$ is a $K$-ancestor of $x$, we add $y$ to be $B_{x'}$ for every node $x'$ on the path from $x$ to $y$ in $K$.  That this produces a tree-decomposition is due to \clmref{xy-ancestor}.  What remains is to upper bound the width of this decomposition.
@@ -249,8 +249,8 @@ The tree decomposition $(B_x:x\in V(K))$ of $H$ is defined as follows: For each 
 \end{clm}
 
 \begin{proof}
-  Fix some node $x\in V(K)$ and consider the contents of $B_x$.  By \clmref{xy-ancestor}, $B_x$ contains only $K$-ancestors of $x$ (including $x$ itself). If $B_x$ contains some $K$-ancestor $y$ of $x$, it is because there is an edge $vw\in E(G)$ with $v\in S_x$ and $w\in S_y$.   
-
+  Fix some node $x\in V(K)$ and consider the contents of $B_x$.  By \clmref{xy-ancestor}, $B_x$ contains only $K$-ancestors of $x$ (including $x$ itself). 
+  
   Consider the graph $A$ that contains $F_{a}$ for all $K$-ancestors $a$ of $x$. See \figref{A}.  It is helpful to think of this graph as follows:  We begin with $F_{a_0}$ where $a_0=r'$ is the root of $K$.  We then cut $F_{a_0}$ into two pieces $F^{\bar{x}}_{a_0}$ and $F^x_{a_0}$ where $F^x_{a_0}$ is the piece that contains $F_x$. (The path that makes this cut contains two legs $Q_i$ and $Q_j$ of a tripod $Y$ and one edge $v_iv_j$ of its central triangle $\tau$.)  This process continues by partitioning $F_{a_1}:=F^x_{a_0}$ recursively.  The process terminates after some number $r$ of iterations, when $F^x_{a_r}=F_x$.
 
   \begin{figure}
@@ -261,26 +261,29 @@ The tree decomposition $(B_x:x\in V(K))$ of $H$ is defined as follows: For each 
     \figlabel{A}
   \end{figure}
 
-  The edge $vw$ corresponds to a walk $W_{vw}=v_0,v_1,\ldots,v_{\ell}$ in $G^+$ that
-  (i)~begins at $v_0=v\in V(N_x-F_x)$, (ii)~contains only vertices in $V(N_y-F_y)$, (iii)~ends at $w\in V(N_y)$, \note{PM:notation!} (iv)~has length $\ell\le k+1$.
+  If $B_x$ contains some $K$-ancestor $a_i$, $i\in\{0,\ldots,r-1\}$, of $x$, it is because there is an edge $vw\in E(G)$ with $v\in S_x$ and $w\in S_{a_i}$.  The edge $vw$ corresponds to a walk $W_{vw}$ in $G^+$. The walk $W_{vw}$ is contained in $N_x-F_x$, otherwise $x\not\in A_{vw}$ so $x\not\in A_v$.
+  
+  However, $w\in S_a$, so there exists an edge $ww'\in E(G)$ such that 
+  the corresponding walk $W_{ww'}$ is contained in $N_{a_i}-F_{a_i}$ but is not
+  contained in $N_{a_{i+1}}-F_{a_{i+1}}$.  Therefore $W_{ww'}$ must contain a first vertex $w^*\in V(F_{a_{i+1}})\setminus V(F_{a_{i}})$.
+
+  Summarizing, we have a walk $w'=v_0,\ldots,v_\ell=w^*$ in $G^+$ such that
   \begin{compactenum}[(i)]
-    \item $v\in V(N_x-F_x)$ since $x\in P_v$ and $v\in V(N_a-F_a)$ for all $a\in P_v$;
+    \item $v_0\in V(N_x-F_x)$;
     
-    \item $v_0,v_1,\ldots,v_{\ell}\in V(N_y-F_y)$ since, otherwise there exists some $i\in\{1,\ldots,v_k\}$ such that $v_i\not\in V(N_y-F_y)$.  But this implies that $y\not\in P_{v_i}$ which implies that $y\not\in A_{vw}$ which implies that $y\not\in A_w$, a contradiction.
-
-    \item That $V_{wv}$ contains a vertex $w'\in F^\bar{x}_{y}$ is due to the fact that $y\in P_w$ 
+    \item $v_0,\ldots,v_{\ell-1}\in V(N_{a_{i+1}}-F_{a_{i+1}})$;
     
+    \item $v_\ell\in V(F_{F_{a_{i+1}}})-V(F_{a_i})$; and
     
-    and $w\in V(N_y)$.
-    
-    
-    That $vz'$ eventually reaches $F^{\bar{x}}_a$ follows from the fact that, in either case (a) or (b), $vz$ contains a vertex of $Y_a$.  The first such vertex encountered walk walking along $vz$ is the endpoint $z'$.
-    
-    \item That $\ell\le k+1$ follows from the fact that $G$ is $k$-planar and that each of $v_1,\ldots,v_{\ell-1}$ corresponds to a crossing involving $vw$.  Therefore $\ell-1\le k$.
+    \item $\ell\le k+1$.
   \end{compactenum}
-  We call any curve with properties (i)--(iv) an \emph{admissible $xa$-curve} (for $A$).  Therefore, to upper-bound $|B_x|$, it suffices to upper-bound the number of faces $F^{\bar{x}}_a$ of $A$ such that there exists an admissible $xa$-curve. To avoid triple-subscripts, we will say that an $xa$-curve \emph{visits} $y\in N(K)$ if it contains a vertex of $F^{\bar{x}}_y$.  It is furthermore sufficient to consider $xa$-curves that are \emph{minimal} in the sense that, if the curve visits $x=x_0,x_1,\ldots,x_\ell=a$ in this order, then $x_i\neq a$ for any $i\in\{0,\ldots,\ell-1\}$.
-
-  By \propref{ancestor-boundary}, for every $y\in V(K)$, there are $t\le 3$ $K$-ancestors $y_1,\ldots,y_t$ of $y$ such that $F_y$ has a vertex in common with $F^{\bar{x}}_{y_i}$. For each $i\in\{1,\ldots,t\}$, colour the pair $(y,y_i)$ with the colour $c(y,y_i)=i$. In this way any pair that receives a colour receives one of 3 colours.  The set $y_1,\ldots,y_t$ behaves like a cutset in the following sense:  If a minimal admissible $xa$-curve visits $y$ (so it contains a point in $F^{\bar{x}}_y$) for some $K$-ancestor $y\neq a$ of $x$, then the curve must subsequently visit one of $y_1,\ldots,y_t$.
+  We call any walk with properties (i)--(iv) an \emph{$i$-walk}. Therefore, to upper-bound $|B_x|$, it suffices to upper-bound the number of positive integers $i$ such that there exists an $i$-walk.
+  
+  Define $L_r=V(N_{a_r}-F_{a_r})$ and, for each $j\in\{0,\ldots,r-1\}$, define
+  $L_j = V(N_{a_j}- F_{a_j})\setminus L_{a_{j+1}}$ and observe that $L_i,\ldots,L_r$ is a partition of $V(N_{a_i}-F_{a_i})$.  Let $v_0,\ldots,v_\ell$ be an $i$-walk and, for each $j\in\{0,\ldots,\ell\}$, let $x_j$ be the unique node $a_f\in\{a_i,\ldots,a_r\}$ such that $v_j\in L_{f}$.
+  Finally, let $x_0',\ldots,x_{\ell'}'$ be the subsequence of $x_0,\ldots,x_{\ell}$ consisting of $x_0$ and only those nodes $x_j$ such that $V(N_{x_j})\supsetneq \bigcup_{q=0}^{j-1} V(N_{x_q})$.
+  
+  By \propref{ancestor-boundary}, for every $y\in V(K)$, there are $t\le 3$ $K$-ancestors $y_1,\ldots,y_t$ of $y$ such that $F_y$ has a vertex in common with $F^{\bar{x}}_{y}$. For each $j\in\{1,\ldots,t\}$, colour the pair $(y,y_j)$ with the colour $c(y,y_j)=j$. In this way any pair that receives a colour receives one of 3 colours. The set $y_1,\ldots,y_t$ behaves like a cutset in the following sense: If $x_j'=y$ for $j<\ell'$, then $x_{j+1}'\in\{y_1,\ldots,y_t\}$.
 
   \begin{figure}
     \begin{center}
@@ -289,14 +292,15 @@ The tree decomposition $(B_x:x\in V(K))$ of $H$ is defined as follows: For each 
     \caption{The colour sequences defined by two minimal admissible $xa$-curves.}
     \figlabel{colouring}
   \end{figure}
-
-  Consider some minimal admissible $xa$-curve that visits $x=x_0,x_1,\ldots,x_\ell=a$ in this order.  Refer to \figref{colouring}.  Let $z_0,\ldots,z_{\ell'}$ be the subsequence of $x_0,\ldots,x_\ell$ consisting only of those $x_i$ that are strict $K$-ancestors of each of $x_0,\ldots,x_{i-1}$.  This yields a colour sequence $c_1,\ldots,c_{\ell'}$, $\ell'\le \ell$, where $c_i=c(z_{i-1},z_i)$ for each $i\in\{1,\ldots,\ell'\}$.   There are at most $3^{\ell'}$ such colour sequences and, if an admissible $xa$-curve has the same colour sequence as a minimal admissible $xa'$-curve then $a=a'$.  Therefore, for some fixed $x\in V(K)$, the $K$-ancestors $a$ of $x$ such that there exists a minimal admissible $xa$-curve is at most
+  
+  Therefore $x_0',\ldots,x_{\ell'}'$ defines a color sequence
+  $c_1,\ldots,c_{\ell'}$, $\ell'\le \ell$, where $c_j=c(x_{j-1}',x_j')$ for each $j\in\{1,\ldots,\ell'\}$.   There are at most $3^{\ell'}$ such colour sequences and, if an $i$-walk has the same colour sequence as an $i'$-walk,
+  then $i=i'$.  Therefore, the number of positive integers $i$ such that there exists and $i$-walk is at most
   \begin{equation}
      |B_x| \le \sum_{\ell=0}^{2k+1} 3^\ell = (3^{2k+2}-1)/2 
          = (9^{k+1}-1)/2 \enspace .  \eqlabel{bag-size}
   \end{equation}
 \end{proof}
-This is all we need to complete the proof of:
 
 
 \begin{proof}
