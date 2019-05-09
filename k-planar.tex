@@ -195,9 +195,9 @@ The following property of a PS-Tree $K$ is an immediate consequence of \propref{
 
 Let $G$ be a $k$-plane graph and let $G^+$ be the graph obtained as follows:
 \begin{compactenum}
-  \item Make $G$ planar by adding dummy vertices at each crossing.
-  \item Add a $K_4$ that contains $G$ in one of its inner faces $F_0$.
-  \item Add edges to complete the resulting graph to a triangulation.
+  \item Make $G$ planar by adding dummy vertices at each crossing to obtain a graph $G_1$.
+  \item Add a $K_4$ that contains $G_1$ in one of its inner faces $F_0$ to obtaina graph $G_2$.
+  \item Add edges to complete $G_2$ to a triangulation $G^+$.
 \end{compactenum}
 Let $r$ be the vertex of the $K_4$ not incident on $F_0$ and let $T$ be a BFS spanning tree of $G^+$ rooted at $r$.    Observe that, for any edge $vw\in E(G)$, $\dist_{G^+}(v,w) \le k+1$ and therefore, for any two vertices $v,w\in V(G)$,
 \begin{equation} 
@@ -207,14 +207,15 @@ For each integer $i\ge 0$, let $V_i=\{v\in V(G^+): \dist_{G^+}(r,v)=i\}$ and obs
 
 Let $K=K(G^+,T,r)$ be a PS-tree and observe that the root $r'$ of $K$ has $F_{r'}=F_0$.  This implies:
 \begin{compactenum}[(PR6)]
-  \item \proplabel{all-in}  $V(G)\subseteq V(N_{r'}-F_{r'})$.
+  \item \proplabel{all-in}  $V(G_1)\subseteq V(N_{r'}-F_{r'})$.
 \end{compactenum}
 
-For any pair of vertices $v,w\in V(G)$, consider the set $A_{vw}=\{a\in V(K): v,w\in V(N_a-F_a) \}$.  By \propref{all-in}, $A_{vw}$ contains the root $r'$ of $K$.  By \propref{children}, any node $a\in A_{vw}$ has at most one child in $A_{vw}$ and any node $a\not\in A_{vw}$ has no child in $A_{vw}$.  It follows that $K[A_{vw}]$ is a vertical path in $K$ that contains the root.  We define $a(vw)$ to be the lower endpoint of $K[A_{vw}]$.
+For each vertex $v\in V(G_1)$, let $P_v=\{a\in V(K): v\in V(N_a-F_a)\}$.  
+By (PR6), $P_{v}$ contains the root $r'$ of $K$.  By \propref{children}, any node $a\in P_{v}$ has at most one child in $P_{v}$ and any node $a\not\in P_{v}$ has no child in $P_{v}$.  It follows that $K[P_{v}]$ is a vertical path in $K$ that contains the root.  
 
-For any vertex $v\in V(G)$ define $A_v=\bigcap\{vw\in E(G)} A_{vw}$.  $K[A_v]$ is a vertical path in $K$ that contains the root.  We define $a(v)$ to be the lower endpoint of $K[A_v]$.
+For each edge $vw\in E(G)$, consider the walk $W_{vw}$ in $G^+$ that corresponds to $vw$ and define $A_{vw}=\bigcap_{z\in W_{vw}} P_z$.  Since $W_{vw}\subseteq V(G_1)$, $A_{vw}$ is well-defined.  For each $z\in W_{vw}$, $P_{z}$ contains $r'$ and is a vertical path in $K$.  The common intersection of two or more vertical paths is a vertical path.  Therefore $A_{vw}$ is a non-empty vertical path in $K$.  For any vertex $v\in V(G)$ define $A_v=\bigcap_{vw\in E(G)} A_{vw}$.  Again, $K[A_v]$ is a vertical path in $K$ that contains $r'$.  We define $a(v)$ to be the lower endpoint of $K[A_v]$.
 
-For every node $x\in V(K)$, we define the \emph{separator} of $X$ as
+For every node $x\in V(K)$, define the \emph{separator}
 \[
    S_x = \{v\in V(G): a(v)=x \} \enspace .
 \]
@@ -231,56 +232,70 @@ Consider graph $H=G/\mathcal{S}$ that has vertex set $V(H)=V(K)$ and the edge $x
   \[  |S_x\cap V_i| \le |V(Y_x)\cap V_i| + 3\cdot 2\cdot (2k+1) \le 12k+9 \enspace . \qedhere \]
 \end{proof}
 
-Next we describe a tree decomposition $(B_x:x\in V(K))$ of $H$.  We deliberately use the same node set $V(H)=V(K)$ here, because the subtree $K[x]:=K[\{z:x\in B_z\}]$ will be rooted at $x$.  We claim that, for every edge $xy\in V(H)$, one of $x$ or $y$ is a $K$-ancestor of the other.
-Indeed, since $xy\in E(H)$, there exists an edge $vw\in E(G)$ such that $v\in S_x$ and $w\in S_y$.  By definition, $x\in A_v\subseteq A_{vw}$ and $y\in A_w\subseteq A_{vw}$.  Since $K[A_{vw}]$ is a vertical path in $K$, it follows that one of $x$ or $y$ is a $K$-ancestor of the other. 
+Next we describe a tree decomposition $(B_x:x\in V(K))$ of $H$.  We deliberately use the same node set $V(H)=V(K)$ here, because the subtree $K[x]:=K[\{z:x\in B_z\}]$ will be rooted at $x$.  
 
-To describe our tree decomposition we define, for each $y\in V(H)$, the subtree $K[y]=K[\{x:y\in B_x\}]$.  The subtree $K[y]$ contains $y$.  Additionally, for every edge $xy\in E(H)$, where $y$ is an ancestor of $x$, $K[y]$ includes the path from $y$ to $x$ in $K$.  That this produces a tree-decomposition is due to the fact, established in the preceding paragraph, that for every edge $xy$ of $H$, $x$ is a $K$-ancestor of $y$ (or vice-versa).  What remains is to upper bound the width of this decomposition.
+\begin{clm}\clmlabel{xy-ancestor}
+   For every edge $xy\in V(H)$, one of $x$ or $y$ is a $K$-ancestor of the other.
+ \end{clm}
+ 
+ \begin{proof}
+   Since $xy\in E(H)$, there exists an edge $vw\in E(G)$ such that $v\in S_x$ and $w\in S_y$.  By definition, $x\in P_v\subseteq A_{vw}$ and $y\in P_w\subseteq A_{vw}$.  Since $K[A_{vw}]$ is a vertical path in $K$, it follows that one of $x$ or $y$ is a $K$-ancestor of the other. 
+\end{proof}
 
-Now, fix some node $x\in V(K)$ and consider the contents of $B_x$.  As we have just argued, $B_x$ contains only $K$-ancestors of $x$ (including $x$ itself). If $B_x$ contains some $K$-ancestor $y$ of $x$, it is because there is an edge $vw\in E(G)$ with $v\in S_x$ and $w\in S_y$. Since $v\in S_x$, $v\in V(N_x-F_x)$. Since, $w\in S_y$, $w\in V(N_y-F_y)$.  
+The tree decomposition $(B_x:x\in V(K))$ of $H$ is defined as follows: For each edge $xy$ where $y$ is a $K$-ancestor of $x$, we add $y$ to be $B_{x'}$ for every node $x'$ on the path from $x$ to $y$ in $K$.  That this produces a tree-decomposition is due to \clmref{xy-ancestor}.  What remains is to upper bound the width of this decomposition.
 
-Now, consider the graph $A$ that contains $F_{a}$ for all $K$-ancestors $a$ of $x$. See \figref{A}.  It is helpful to think of this graph as follows:  We begin with $F_{a_0}$ where $a_0=r'$ is the root of $K$.  We then cut $F_{a_0}$ into two pieces $F^{\bar{x}}_{a_0}$ and $F^x_{a_0}$ where $F^x_{a_0}$ is the piece that contains $F_x$. (The path that makes this cut contains two legs $Q_i$ and $Q_j$ of a tripod $Y$ and one edge $v_iv_j$ of its central triangle $\tau$.)  This process continues by partitioning $F_{a_1}:=F^x_{a_0}$ recursively.  The process terminates after some number $r$ of iterations, when $F^x_{a_r}=F_x$.
+\begin{clm}
+  The tree decomposition $\{B_x: x\in V(K)\}$ of $H$ contains no bag larger than BLAH.
+\end{clm}
 
-\begin{figure}
-  \begin{center}
-      \includegraphics{figs/A-1}
-  \end{center}
-  \caption{The graph $A$.}
-  \figlabel{A}
-\end{figure}
+\begin{proof}
+  Fix some node $x\in V(K)$ and consider the contents of $B_x$.  By \clmref{xy-ancestor}, $B_x$ contains only $K$-ancestors of $x$ (including $x$ itself). If $B_x$ contains some $K$-ancestor $y$ of $x$, it is because there is an edge $vw\in E(G)$ with $v\in S_x$ and $w\in S_y$.   
 
-The edge $vw$ corresponds to a walk $v=v_0,v_1,\ldots,v_{\ell}$ in $G^+$ that,
-(i)~begins at $v\in V(N_x-F_x)$, (ii)~contains only vertices in $V(N_y-F_y)$, (iii)~ends at $w\in V(N_y-F_y)$, (iv)~has length $\ell\le k+1$.
-\begin{compactenum}[(i)]
-  \item $v\in V(N_x)$ since $x\in A_v$ and $v\in V(N_a-F_a)$ for all $a\in A_v$;
-  
-  \item $v_0,v_1,\ldots,v_{\ell}\in V(N_a-F_a)$ since, otherwise $v_i\in V(F_y)$.  By \propref{ancestor-boundary}, $v_i\in Y_{a}$ for some $K$-ancestor $a\neq y$ of $y$.  
-  
-  The curve $vz'$ remains in the interior of $F_a$ since, if it intersected the boundary of $F_a$, then one of $vw$ or $wz$ would intersect $Y_{a'}$ for some ancestor $a'\neq a$ of $a$.  If $vw$ contains a vertex of $Y_{a'}$, then $v\not\in S_x$.  If $wz$ contains a vertex of $Y_{a'}$ then $w,z\not\in S_a$. 
+  Consider the graph $A$ that contains $F_{a}$ for all $K$-ancestors $a$ of $x$. See \figref{A}.  It is helpful to think of this graph as follows:  We begin with $F_{a_0}$ where $a_0=r'$ is the root of $K$.  We then cut $F_{a_0}$ into two pieces $F^{\bar{x}}_{a_0}$ and $F^x_{a_0}$ where $F^x_{a_0}$ is the piece that contains $F_x$. (The path that makes this cut contains two legs $Q_i$ and $Q_j$ of a tripod $Y$ and one edge $v_iv_j$ of its central triangle $\tau$.)  This process continues by partitioning $F_{a_1}:=F^x_{a_0}$ recursively.  The process terminates after some number $r$ of iterations, when $F^x_{a_r}=F_x$.
 
-  \item $w\in V(N_y)$ since $y\in A_w$ and $w\in V(N_a-F_a)$ for all $a\in A_w$;
+  \begin{figure}
+    \begin{center}
+        \includegraphics{figs/A-1}
+    \end{center}
+    \caption{The graph $A$.}
+    \figlabel{A}
+  \end{figure}
 
-  \item That $vz'$ eventually reaches $F^{\bar{x}}_a$ follows from the fact that, in either case (a) or (b), $vz$ contains a vertex of $Y_a$.  The first such vertex encountered walk walking along $vz$ is the endpoint $z'$.
-  
-  \item That $vz'$ contains at most $2k+1$ vertices of $A$ follows from the fact that $vz'$ is contained in a path of length at most 2 in $G$, and $G$ is $k$-planar.
-\end{compactenum}
-We call any curve with properties (i)--(iv) an \emph{admissible $xa$-curve} (for $A$).  Therefore, to upper-bound $|B_x|$, it suffices to upper-bound the number of faces $F^{\bar{x}}_a$ of $A$ such that there exists an admissible $xa$-curve. To avoid triple-subscripts, we will say that an $xa$-curve \emph{visits} $y\in N(K)$ if it contains a vertex of $F^{\bar{x}}_y$.  It is furthermore sufficient to consider $xa$-curves that are \emph{minimal} in the sense that, if the curve visits $x=x_0,x_1,\ldots,x_\ell=a$ in this order, then $x_i\neq a$ for any $i\in\{0,\ldots,\ell-1\}$.
+  The edge $vw$ corresponds to a walk $W_{vw}=v_0,v_1,\ldots,v_{\ell}$ in $G^+$ that
+  (i)~begins at $v_0=v\in V(N_x-F_x)$, (ii)~contains only vertices in $V(N_y-F_y)$, (iii)~ends at $w\in V(N_y)$, \note{PM:notation!} (iv)~has length $\ell\le k+1$.
+  \begin{compactenum}[(i)]
+    \item $v\in V(N_x-F_x)$ since $x\in P_v$ and $v\in V(N_a-F_a)$ for all $a\in P_v$;
+    
+    \item $v_0,v_1,\ldots,v_{\ell}\in V(N_y-F_y)$ since, otherwise there exists some $i\in\{1,\ldots,v_k\}$ such that $v_i\not\in V(N_y-F_y)$.  But this implies that $y\not\in P_{v_i}$ which implies that $y\not\in A_{vw}$ which implies that $y\not\in A_w$, a contradiction.
 
-By \propref{ancestor-boundary}, for every $y\in V(K)$, there are $t\le 3$ $K$-ancestors $y_1,\ldots,y_t$ of $y$ such that $F_y$ has a vertex in common with $F^{\bar{x}}_{y_i}$. For each $i\in\{1,\ldots,t\}$, colour the pair $(y,y_i)$ with the colour $c(y,y_i)=i$. In this way any pair that receives a colour receives one of 3 colours.  The set $y_1,\ldots,y_t$ behaves like a cutset in the following sense:  If a minimal admissible $xa$-curve visits $y$ (so it contains a point in $F^{\bar{x}}_y$) for some $K$-ancestor $y\neq a$ of $x$, then the curve must subsequently visit one of $y_1,\ldots,y_t$.
+    \item That $V_{wv}$ contains a vertex $w'\in F^\bar{x}_{y}$ is due to the fact that $y\in P_w$ 
+    
+    
+    and $w\in V(N_y)$.
+    
+    
+    That $vz'$ eventually reaches $F^{\bar{x}}_a$ follows from the fact that, in either case (a) or (b), $vz$ contains a vertex of $Y_a$.  The first such vertex encountered walk walking along $vz$ is the endpoint $z'$.
+    
+    \item That $\ell\le k+1$ follows from the fact that $G$ is $k$-planar and that each of $v_1,\ldots,v_{\ell-1}$ corresponds to a crossing involving $vw$.  Therefore $\ell-1\le k$.
+  \end{compactenum}
+  We call any curve with properties (i)--(iv) an \emph{admissible $xa$-curve} (for $A$).  Therefore, to upper-bound $|B_x|$, it suffices to upper-bound the number of faces $F^{\bar{x}}_a$ of $A$ such that there exists an admissible $xa$-curve. To avoid triple-subscripts, we will say that an $xa$-curve \emph{visits} $y\in N(K)$ if it contains a vertex of $F^{\bar{x}}_y$.  It is furthermore sufficient to consider $xa$-curves that are \emph{minimal} in the sense that, if the curve visits $x=x_0,x_1,\ldots,x_\ell=a$ in this order, then $x_i\neq a$ for any $i\in\{0,\ldots,\ell-1\}$.
 
-\begin{figure}
-  \begin{center}
-      \includegraphics{figs/A-2}
-  \end{center}
-  \caption{The colour sequences defined by two minimal admissible $xa$-curves.}
-  \figlabel{colouring}
-\end{figure}
+  By \propref{ancestor-boundary}, for every $y\in V(K)$, there are $t\le 3$ $K$-ancestors $y_1,\ldots,y_t$ of $y$ such that $F_y$ has a vertex in common with $F^{\bar{x}}_{y_i}$. For each $i\in\{1,\ldots,t\}$, colour the pair $(y,y_i)$ with the colour $c(y,y_i)=i$. In this way any pair that receives a colour receives one of 3 colours.  The set $y_1,\ldots,y_t$ behaves like a cutset in the following sense:  If a minimal admissible $xa$-curve visits $y$ (so it contains a point in $F^{\bar{x}}_y$) for some $K$-ancestor $y\neq a$ of $x$, then the curve must subsequently visit one of $y_1,\ldots,y_t$.
 
-Consider some minimal admissible $xa$-curve that visits $x=x_0,x_1,\ldots,x_\ell=a$ in this order.  Refer to \figref{colouring}.  Let $z_0,\ldots,z_{\ell'}$ be the subsequence of $x_0,\ldots,x_\ell$ consisting only of those $x_i$ that are strict $K$-ancestors of each of $x_0,\ldots,x_{i-1}$.  This yields a colour sequence $c_1,\ldots,c_{\ell'}$, $\ell'\le \ell$, where $c_i=c(z_{i-1},z_i)$ for each $i\in\{1,\ldots,\ell'\}$.   There are at most $3^{\ell'}$ such colour sequences and, if an admissible $xa$-curve has the same colour sequence as a minimal admissible $xa'$-curve then $a=a'$.  Therefore, for some fixed $x\in V(K)$, the $K$-ancestors $a$ of $x$ such that there exists a minimal admissible $xa$-curve is at most
-\begin{equation}
-   |B_x| \le \sum_{\ell=0}^{2k+1} 3^\ell = (3^{2k+2}-1)/2 
-       = (9^{k+1}-1)/2 \enspace .  \eqlabel{bag-size}
-\end{equation}
+  \begin{figure}
+    \begin{center}
+        \includegraphics{figs/A-2}
+    \end{center}
+    \caption{The colour sequences defined by two minimal admissible $xa$-curves.}
+    \figlabel{colouring}
+  \end{figure}
 
+  Consider some minimal admissible $xa$-curve that visits $x=x_0,x_1,\ldots,x_\ell=a$ in this order.  Refer to \figref{colouring}.  Let $z_0,\ldots,z_{\ell'}$ be the subsequence of $x_0,\ldots,x_\ell$ consisting only of those $x_i$ that are strict $K$-ancestors of each of $x_0,\ldots,x_{i-1}$.  This yields a colour sequence $c_1,\ldots,c_{\ell'}$, $\ell'\le \ell$, where $c_i=c(z_{i-1},z_i)$ for each $i\in\{1,\ldots,\ell'\}$.   There are at most $3^{\ell'}$ such colour sequences and, if an admissible $xa$-curve has the same colour sequence as a minimal admissible $xa'$-curve then $a=a'$.  Therefore, for some fixed $x\in V(K)$, the $K$-ancestors $a$ of $x$ such that there exists a minimal admissible $xa$-curve is at most
+  \begin{equation}
+     |B_x| \le \sum_{\ell=0}^{2k+1} 3^\ell = (3^{2k+2}-1)/2 
+         = (9^{k+1}-1)/2 \enspace .  \eqlabel{bag-size}
+  \end{equation}
+\end{proof}
 This is all we need to complete the proof of:
 
 
