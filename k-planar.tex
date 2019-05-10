@@ -51,13 +51,13 @@
 
 \section{Introduction}
 
-A \emph{layering} of a graph $G$ is a partition $\mathcal{L}=\{V_0,V_1,\ldots,V_h\}$ of $V(G)$ so that there is no edge $vw\in E(G)$ such that $v\in V_i$, $w\in V_j$ and $|j-i|>1$.  For any partition $\mathcal{P}=\{S_1,\ldots,S_p$ of $V(G)\}$, a \emph{quotient graph} $H=G/\mathcal{P}$ has a $p$-element vertex set $V(H)=\{x_1,\ldots,x_p\}$ and $x_ix_j\in E(H)$ if and only there exists an edge $vw\in E(G)$ such that $v\in S_i$ and $w\in S_j$. To highlight the importance of the quotient graph $H$, we can $\mathcal{P}$ an $H$-partition and write this concisely as $\mathcal{P}=\{S_x : x\in V(H)\}$ so that each element of $\mathcal{P}$ is indexed by the vertex it creates in $H$.\footnote{An alternative definition of a layering of $G$ is a layered $H$-partition of $G$ where $H$ is a path.}  A layered $H$-partition $(\mathcal{L},\mathcal{P})$ of a graph $G$ consists of a layering $\mathcal{L}$ of $G$ and an $H$-partition $\mathcal{P}$ of $G$. The \emph{layered width} of $(\mathcal{H},\mathcal{P})$ is $\max\{|L\cap P|: L\in\mathcal{L},\, P\in\mathcal{P}\}$.
+A \emph{layering} of a graph $G$ is a sequence $\mathcal{L}=\langle V_0,V_1,\ldots,V_h\rangle$ such that $\{V_0,V_1,\ldots,V_h\}$ is a partition of $V(G)$ and there is no edge $vw\in E(G)$ such that $v\in V_i$, $w\in V_j$ and $|j-i|>1$.  For any partition $\mathcal{P}=\{S_1,\ldots,S_p$ of $V(G)\}$, a \emph{quotient graph} $H=G/\mathcal{P}$ has a $p$-element vertex set $V(H)=\{x_1,\ldots,x_p\}$ and $x_ix_j\in E(H)$ if and only there exists an edge $vw\in E(G)$ such that $v\in S_i$ and $w\in S_j$. To highlight the importance of the quotient graph $H$, we call $\mathcal{P}$ an $H$-partition and write this concisely as $\mathcal{P}=\{S_x : x\in V(H)\}$ so that each element of $\mathcal{P}$ is indexed by the vertex it creates in $H$.\footnote{An alternative definition of a layering of $G$ is a layered $H$-partition of $G$ where $H$ is a path.}  A layered $H$-partition $(\mathcal{L},\mathcal{P})$ of a graph $G$ consists of a layering $\mathcal{L}$ of $G$ and an $H$-partition $\mathcal{P}$ of $G$. The \emph{layered width} of $(\mathcal{H},\mathcal{P})$ is $\max\{|L\cap P|: L\in\mathcal{L},\, P\in\mathcal{P}\}$.
 
-Layered $H$-partition of small layered width in which $H$ has some additional property are a useful tool for a number of graph problems. \citet{dujmovic.joret.ea:planar} show that, if each graph $G$ in some family $\mathcal{G}$ of graphs has a layered $H$-partition for which the layered-width of the partition and the treewidth of $H$ are each upper-bounded by some constant $c_\mathcal{G}$, then each of the following quantities are upper bounded by a constant, for every $G\in\mathcal{G}$: queue number \cite{X}, track number \cite{X}, etc \cite{X}, etc \cite{X}, etc \cite{X}. \citet{dujmovic.esperet.ea:planar} add non-repetitive chromatic number to this list.  \citet{dujmovic.joret.ea:planar} show that two common families of graphs have such $H$-partitions: planar graphs and (more generally) bounded-genus graphs.
+Layered $H$-partitions of small layered width in which $H$ has some additional property are a useful tool for a number of graph problems. \citet{dujmovic.joret.ea:planar} show that, if each graph $G$ in some family $\mathcal{G}$ of graphs has a layered $H$-partition for which the layered-width of the partition and the treewidth of $H$ are each upper-bounded by some constant $c_\mathcal{G}$, then each of the following quantities are upper bounded by a constant, for every $G\in\mathcal{G}$: queue number \cite{X}, track number \cite{X}, etc \cite{X}, etc \cite{X}, etc \cite{X}. \citet{dujmovic.esperet.ea:planar} add non-repetitive chromatic number to this list.  \citet{dujmovic.joret.ea:planar} show that two common families of graphs have such $H$-partitions: planar graphs and (more generally) bounded-genus graphs.
 
 In this paper we show that another family of graphs admits layered $H$-partitions of constant layered-width in which $H$ has constant treewidth: $k$-planar graphs, which we now define. An \emph{embedded graph} $G$ is a graph with $V(G)\subset\R^2$ in which each edge $vw\in E(G)$ is a closed curve\footnote{A closed curve is a continuous function $f:[0,1]\to \R^2$. The points $f(0)$ and $f(1)$ are called the \emph{endpoints} of the curve.  When there is no danger of misunderstanding we treat a curve $f$ as a point set $\{f(t):0\le t\le 1\}$.} with endpoints $v$ and $w$ and not containing any vertex of $G$ in its interior.  A \emph{crossing} in an embedded graph $G$ is a triple $(p,vw,xy)$ with $p\in\R^2$, $vw,xy\in E(G)$ and such that $p\in (vw\cap xy)\setminus\{v,w,x,y\}$. An embedded graph $G$ is \emph{$k$-plane} if each edge of $G$ takes part in at most $k$ crossings.  A (not necessarily embedded) graph $G'$ is \emph{$k$-planar} if there exists $k$-plane graph $G$ isomorphic to $G'$.  
 
-Under these definitions $0$-planar graphs are exactly planar graphs and $O$-plane graphs are plane graphs. Thus, like genus-$g$ graphs, $k$-planar graphs are a generalization of planar graphs (which are genus-$0$ graphs).  Unlike genus-$g$ graphs, however, the family of $k$-planar graphs is not minor closed. A graph $G'$ obtained from a $k$-planar graph $G$ by edge deletions and edge contractions may or may not be $k$-planar.
+Under these definitions $0$-planar graphs are exactly planar graphs and $0$-plane graphs are plane graphs. Thus, like genus-$g$ graphs, $k$-planar graphs are a generalization of planar graphs (which are genus-$0$ graphs).  Unlike genus-$g$ graphs, however, the family of $k$-planar graphs is not minor closed. A graph $G'$ obtained from a $k$-planar graph $G$ by edge deletions and edge contractions may or may not be $k$-planar.
 
 We prove the following result:
 \begin{thm}\thmlabel{k-planar}
@@ -84,7 +84,7 @@ We begin by introducing a structural tool for planar graphs, called a PS-tree, t
 
 \subsection{PS-Trees}
 
-Let $T$ be a rooted tree rooted at $r\in V(T)$. The \emph{depth} of a node $x\in V(T)$ is equal to the length of the path from $x$ to $r$ in $T$. A $P$ path in $T$ is \emph{vertical} if, for each integer $i$, $P$ contains at most one vertex of depth $i$.  The deepest vertex in a vertical path $P$ is called  $P$'s \emph{lower endpoint} and the other (shallowest) vertex in $P$ is called $P$'s \emph{upper endpoint}. For any node $v\in T$, we call each node on the path, in $T$, from $v$ to $r$ a \emph{$T$-ancestor} of $v$.
+Let $T$ be a rooted tree rooted at $r\in V(T)$. The \emph{$T$-depth} of a node $x\in V(T)$ is equal to the length of the path from $x$ to $r$ in $T$. A $P$ path in $T$ is \emph{vertical} if, for each integer $i$, $P$ contains at most one vertex of $T$-depth $i$.  The deepest vertex in a vertical path $P$ is called  $P$'s \emph{lower endpoint} and the other (shallowest) vertex in $P$ is called $P$'s \emph{upper endpoint}. For any node $v\in T$, we call each node on the path, in $T$, from $v$ to $r$ a \emph{$T$-ancestor} of $v$.
 
 A \emph{near-triangulation} $N$ is a plane graph whose outer face, $F$, is bounded by a simple cycle in $N$ and each of whose inner faces is bounded by a 3-cycle in $N$.  A \emph{triangulation} is a near-triangulation whose outer face is bounded by a 3-cycle.  For any cycle $F$ in a near-triangulation $N$ we use $N\circledast F$ to denote the near-triangulation consisting of all the edges and vertices of $G$ that are contained in $F$ or its interior.
 
@@ -127,33 +127,33 @@ The nodes of the PS-tree $K$ satisfy several conditions:
 
 For any triangulation $\Delta$ in which the outer face has a vertex $r$ of degree 3 and for any BFS spanning-tree of $\Delta$ rooted at $r$, there exists a PS-tree $K=K(\Delta,T,r)$.  Indeed, this tree is constructed (albeit implicitly) by \citet[Proof of Lemma~14]{dujmovic.joret.ea:planar}.
 
-The following property of a PS-Tree $K$ is an immediate consequence of \propref{children} that will be useful for us: \note{PM}{Do we still use this?}
-\begin{compactenum}[(PR5)]
-  \item \proplabel{ancestors} If $vw\in E(\Delta)$, $v\in V(N_x-F_x)$ and $w\in V(N_y-N_y)$ for some nodes $x,y\in V(K)$, then one of $x$ or $y$ is a $K$-ancestor of the other.
-\end{compactenum}
-
+% The following property of a PS-Tree $K$ is an immediate consequence of \propref{children} that will be useful for us: \note{PM}{Do we still use this?}
+% \begin{compactenum}[(PR5)]
+%   \item \proplabel{ancestors} If $vw\in E(\Delta)$, $v\in V(N_x-F_x)$ and $w\in V(N_y-N_y)$ for some nodes $x,y\in V(K)$, then one of $x$ or $y$ is a $K$-ancestor of the other.
+% \end{compactenum}
 
 \subsection{$k$-Planar Graphs}
 
-Let $G$ be a $k$-plane graph and let $G^+$ be the graph obtained as follows:
+Let $G$ be a $k$-plane graph.  We will assume, for ease of exposition, that any point $p\in\R^2$ is involved in at most one crossing $(p,vw,xy)$ of $G$. This assumption is not critical since it can be enforced by a slight deformation of the edges of $G$. 
+
+Let $G^+$ be the graph obtained as follows:
 \begin{compactenum}
-  \item Make $G$ planar by adding dummy vertices at each crossing to obtain a plane graph and then add edges to this graph to obtain a triangulation $G^+$.
-  \item Add a complete graph $K_4$ that contains $G^{+}$ in one of its inner faces $F_0$ to obtain graph $G^{++}$.
-  \item Add edges to complete $G^{++}$ to a triangulation $G^{+++}$.
+  \item Add a dummy vertex at each crossing in $G$ to obtain a plane graph and then add edges to this graph to obtain a triangulation $G^+$.
+  \item Add a complete graph $K_4$ that contains $G^{+}$ in one of its inner faces, $F_0$, and then add edges to the resulting graph to obtain a triangulation $G^{++}$.
 \end{compactenum}
 Let $r$ be the vertex of the $K_4$ not incident on $F_0$ and let $T$ be a BFS spanning tree of $G^+$ rooted at $r$. Observe that, for any edge $vw\in E(G)$, $\dist_{G^+}(v,w) \le k+1$ and therefore, for any two vertices $v,w\in V(G)$,
 \begin{equation} 
   \dist_{G^+}(v,w) \le (k+1)\cdot \dist_G(v,w) \eqlabel{distance-preserving}
 \end{equation}
-For each integer $i\ge 0$, let $V_i=\{v\in V(G^+): \dist_{T}(r,v)=i\}$ and observe that $\mathcal{L}=V_0,V_1,\ldots,V_{h}$ is a layering of $G^+$ (but not of $G$).
+For each integer $i\ge 0$, let $V_i=\{v\in V(G^+): \dist_{T}(r,v)=i\}$ and observe that $\{V_0,V_1,\ldots,V_{h}\}$ is a layering of $G^+$ (but not of $G$).
 
-Let $K=K(G^{+++},T,r)$ be a PS-tree and observe that the root $r_K$ of $K$ has $F_{r_K}=F_0$.  This implies:
-\begin{compactenum}[(PR6)]
+Let $K=K(G^{++},T,r)$ be a PS-tree and observe that the root $r_K$ of $K$ has $F_{r_K}=F_0$.  This implies:
+\begin{compactenum}[(PR1)]\setcounter{enumi}{4}
   \item \proplabel{all-in}  $V(G^+)\subseteq V(N_{r_K}-F_{r_K})$.
 \end{compactenum}
 
 For each vertex $v\in V(G^+)$, let $P_v=\{a\in V(K): v\in V(N_a-F_a)\}$.  
-By (PR6), $P_{v}$ contains the root $r_K$ of $K$.  By \propref{children}, $K[P_v]$ is a vertical path (whose lower endpoint is the unique node $x\in V(K)$ such that $v\in Y_x$). Therefore $K[P_v]$ is a vertical path in $K$ that contains $r_K$.  We are about to repeatedly use the fact that the common intersection of two or more vertical paths is a vertical path. 
+By \propref{all-in}, $P_{v}$ contains the root $r_K$ of $K$.  By \propref{children}, $K[P_v]$ is a vertical path (whose lower endpoint is the unique node $x\in V(K)$ such that $v\in Y_x$). Therefore $K[P_v]$ is a vertical path in $K$ that contains $r_K$.  We are about to repeatedly use the fact that the common intersection of two or more vertical paths is a vertical path. 
 
 For each edge $vw\in E(G)$, consider the walk $W_{vw}$ in $G^+$ that corresponds to the sequence of vertices in $G^+$ that we encounter while walking along the curve $vw$ from $v$ to $w$. We define $A_{vw}=\bigcap_{z\in W_{vw}} P_z$.  Since $W_{vw}\subseteq V(G^+)$, $A_{vw}$ is well-defined.  For each $z\in W_{vw}$, $K[P_{z}]$ is a vertical path in $K$ that contains $r_K$.   Therefore $A_{vw}$ is a non-empty vertical path in $K$.  For any vertex $v\in V(G)$ define $A_v=\bigcap_{vw\in E(G)} A_{vw}$.  Again, $K[A_v]$ is a non-empty vertical path in $K$ that contains $r_K$.  We define $a(v)$ to be the lower endpoint of $K[A_v]$.  For every node $x\in V(K)$, define the \emph{separator}
 \[
@@ -175,7 +175,7 @@ Clearly $\mathcal{S}=\{S_x:x\in V(K)\}$ is a partition of $V(G)$.  We will use $
   $|\dist_{G^+}(r,v)-\dist_{G^+}(r,v')| \le k+1$ which establishes the claim, since $T$ is BFS tree, so $\dist_{T}(r,z)=\dist_{G^+}(r,z)$ for all $z\in V(G^+)$.
 \end{proof}
 
-\begin{clm}
+\begin{clm}\clmlabel{width-of-g-plus}
   For any $x\in V(H)$, and any integer $i\ge 0$, $|S_x\cap V_i|\le 24k+12$.
 \end{clm}
 
@@ -195,7 +195,7 @@ Next we describe a tree decomposition $(B_x:x\in V(K))$ of $H$.  We deliberately
 
 The tree decomposition $(B_x:x\in V(K))$ of $H$ is defined as follows: For each edge $xy\in E(H)$ where $y$ is a $K$-ancestor of $x$, we add $y$ to $B_{x'}$ for every node $x'$ on the path from $x$ to $y$ in $K$.  That this produces a tree-decomposition is due to \clmref{xy-ancestor}.  What remains is to upper bound the width of this decomposition.
 
-\begin{clm}
+\begin{clm}\clmlabel{bag-size}
   The tree decomposition $\{B_x: x\in V(K)\}$ of $H$ contains no bag larger than $(3^{k+2}-3)/2$.
 \end{clm}
 
@@ -245,7 +245,7 @@ The tree decomposition $(B_x:x\in V(K))$ of $H$ is defined as follows: For each 
     \begin{center}
         \includegraphics{figs/A-2}
     \end{center}
-    \caption{The colour sequences defined by two minimal admissible $xa$-curves.}
+    \caption{The colour sequences defined by two $i$-curves.}
     \figlabel{colouring}
   \end{figure}
 
@@ -264,7 +264,7 @@ We now have all the parts needed for the proof of \thmref{k-planar}.
 \begin{proof}
   We use the layered $H$-partition $(\mathcal{L}, \mathcal{S})$, where $\mathcal{S}=\{S_x:x\in V(K)\}$ and $\mathcal{L}=\{V_i': i=0,1,2\ldots\}$ where $V_i' = V_{(k+1)i}\cup\cdots\cup V_{(k+1)(i+1)-1}$.  \Eqref{distance-preserving} shows that $\mathcal{L}$ is indeed a layering of $G$.
 
-  By \clmref{bag-size}, $\mathcal{S}$ produces a graph $H=G/\mathcal{S}$ of treewidth $(3^{k+2}-1)/2$.  By \clmref{layered-width}, for each $x\in V(H)$ and each integer $i$, $|B_x\cap V_i|\le 24k+12$, so $|B_x\cap V_i'|\le (k+1)(24k + 12) = 24k^2+36k+12$. 
+  By \clmref{bag-size}, $\mathcal{S}$ produces a graph $H=G/\mathcal{S}$ of treewidth $(3^{k+2}-1)/2$.  By \clmref{width-of-g-plus}, for each $x\in V(H)$ and each integer $i$, $|B_x\cap V_i|\le 24k+12$, so $|B_x\cap V_i'|\le (k+1)(24k + 12) = 24k^2+36k+12$. 
 \end{proof}
 
 \section{$1$-Planar Graphs}
