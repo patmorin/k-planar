@@ -46,22 +46,22 @@
 
 
 \begin{abstract}
-  Layered $H$-partitions of graphs (with small layered width, in which $H$ has small treewidth) are a recently-introduced tool that have been used to solve longstanding problems on queue layouts, non-repetitive colouring, and 3-d graph drawing.  Such partitions are known to exist for planar graphs and, more generally, bounded genus graphs.  In the current paper, we prove that every $k$-planar graph has a layered $H$-partition of layered width $O(k)$ in which $H$ has treewidth $O(c^k)$, for some constant $c$. This is the first result of this type of a non-minor closed class of graphs and implies that $k$-planar graphs have both queue number and non-repetitive chromatic number upper-bounded by a function of $k$.  The former result was previously shown using a combination of $H$-partitions for planar graphs with \textit{ad hoc} methods. The latter result is new, for all $k\ge 3$.
+  Layered $H$-partitions of graphs (with small layered width, in which $H$ has small treewidth) are a recently-introduced tool that have been used to solve longstanding problems on queue layouts, non-repetitive colouring, and 3-d graph drawing.  Such partitions are known to exist for planar graphs and, more generally, bounded genus graphs.  In the current paper, we prove that every $k$-planar graph has a layered $H$-partition of layered width $O(k^2)$ in which $H$ has treewidth $O(c^k)$, for some constant $c$. This is the first result of this type for a non-minor-closed class of graphs and implies that $k$-planar graphs have both queue number and non-repetitive chromatic number upper-bounded by a function of $k$.  The former result was previously shown using a combination of $H$-partitions for planar graphs with \textit{ad hoc} methods. The latter result is new, for all $k\ge 1$.
 \end{abstract}
 
 \section{Introduction}
 
-A \emph{layering} of a graph $G$ is a sequence $\mathcal{L}=\langle V_0,V_1,\ldots,V_h\rangle$ such that $\{V_0,V_1,\ldots,V_h\}$ is a partition of $V(G)$ and there is no edge $vw\in E(G)$ such that $v\in V_i$, $w\in V_j$ and $|j-i|>1$.  For any partition $\mathcal{P}=\{S_1,\ldots,S_p$ of $V(G)\}$, a \emph{quotient graph} $H=G/\mathcal{P}$ has a $p$-element vertex set $V(H)=\{x_1,\ldots,x_p\}$ and $x_ix_j\in E(H)$ if and only there exists an edge $vw\in E(G)$ such that $v\in S_i$ and $w\in S_j$. To highlight the importance of the quotient graph $H$, we call $\mathcal{P}$ an $H$-partition and write this concisely as $\mathcal{P}=\{S_x : x\in V(H)\}$ so that each element of $\mathcal{P}$ is indexed by the vertex it creates in $H$.\footnote{An alternative definition of a layering of $G$ is a layered $H$-partition of $G$ where $H$ is a path.}  A layered $H$-partition $(\mathcal{L},\mathcal{P})$ of a graph $G$ consists of a layering $\mathcal{L}$ of $G$ and an $H$-partition $\mathcal{P}$ of $G$. The \emph{layered width} of $(\mathcal{H},\mathcal{P})$ is $\max\{|L\cap P|: L\in\mathcal{L},\, P\in\mathcal{P}\}$.
+A \emph{layering} of a graph $G$ is a sequence $\mathcal{L}=\langle V_0,V_1,\ldots,V_h\rangle$ such that $\{V_0,V_1,\ldots,V_h\}$ is a partition of $V(G)$ and there is no edge $vw\in E(G)$ such that $v\in V_i$, $w\in V_j$ and $|j-i|>1$.  For any partition $\mathcal{P}=\{S_1,\ldots,S_p\}$ of $V(G)$, a \emph{quotient graph} $H=G/\mathcal{P}$ has a $p$-element vertex set $V(H)=\{x_1,\ldots,x_p\}$ and $x_ix_j\in E(H)$ if and only there exists an edge $vw\in E(G)$ such that $v\in S_i$ and $w\in S_j$. To highlight the importance of the quotient graph $H$, we call $\mathcal{P}$ an $H$-partition and write this concisely as $\mathcal{P}=\{S_x : x\in V(H)\}$ so that each element of $\mathcal{P}$ is indexed by the vertex it creates in $H$.\footnote{An alternative definition of a layering of $G$ is a layered $H$-partition of $G$ where $H$ is a path.}  A layered $H$-partition $(\mathcal{L},\mathcal{P})$ of a graph $G$ consists of a layering $\mathcal{L}$ of $G$ and an $H$-partition $\mathcal{P}$ of $G$. The \emph{layered width} of $(\mathcal{H},\mathcal{P})$ is $\max\{|L\cap P|: L\in\mathcal{L},\, P\in\mathcal{P}\}$.
 
-Layered $H$-partitions of small layered width in which $H$ has some additional property are a useful tool for a number of graph problems. \citet{dujmovic.joret.ea:planar} show that, if each graph $G$ in some family $\mathcal{G}$ of graphs has a layered $H$-partition for which the layered-width of the partition and the treewidth of $H$ are each upper-bounded by some constant $c_\mathcal{G}$, then each of the following quantities are upper bounded by a constant, for every $G\in\mathcal{G}$: queue number \cite{X}, track number \cite{X}, etc \cite{X}, etc \cite{X}, etc \cite{X}. \citet{dujmovic.esperet.ea:planar} add non-repetitive chromatic number to this list.  \citet{dujmovic.joret.ea:planar} show that two common families of graphs have such $H$-partitions: planar graphs and (more generally) bounded-genus graphs.
+Layered $H$-partitions of small layered width in which $H$ has some additional property are a useful tool for a number of graph problems. \citet{dujmovic.joret.ea:planar} show that, if each graph $G$ in some family $\mathcal{G}$ of graphs has a layered $H$-partition for which the layered-width of the partition and the treewidth of $H$ are each upper-bounded by some constant $c_\mathcal{G}$, then each of the following quantities are upper bounded by a constant, for every $G\in\mathcal{G}$: queue number \cite{X}, track number \cite{X}, layered treewidth \cite{X}, etc \cite{X}, etc \cite{X}, etc \cite{X}. \citet{dujmovic.esperet.ea:planar} add non-repetitive chromatic number to this list.  \citet{dujmovic.joret.ea:planar} show that two common families of graphs have such $H$-partitions: planar graphs and (more generally) bounded-genus graphs.
 
 In this paper we show that another family of graphs admits layered $H$-partitions of constant layered-width in which $H$ has constant treewidth: $k$-planar graphs, which we now define. An \emph{embedded graph} $G$ is a graph with $V(G)\subset\R^2$ in which each edge $vw\in E(G)$ is a closed curve\footnote{A closed curve is a continuous function $f:[0,1]\to \R^2$. The points $f(0)$ and $f(1)$ are called the \emph{endpoints} of the curve.  When there is no danger of misunderstanding we treat a curve $f$ as a point set $\{f(t):0\le t\le 1\}$.} with endpoints $v$ and $w$ and not containing any vertex of $G$ in its interior.  A \emph{crossing} in an embedded graph $G$ is a triple $(p,vw,xy)$ with $p\in\R^2$, $vw,xy\in E(G)$ and such that $p\in (vw\cap xy)\setminus\{v,w,x,y\}$. An embedded graph $G$ is \emph{$k$-plane} if each edge of $G$ takes part in at most $k$ crossings.  A (not necessarily embedded) graph $G'$ is \emph{$k$-planar} if there exists $k$-plane graph $G$ isomorphic to $G'$.  
 
-Under these definitions $0$-planar graphs are exactly planar graphs and $0$-plane graphs are plane graphs. Thus, like genus-$g$ graphs, $k$-planar graphs are a generalization of planar graphs (which are genus-$0$ graphs).  Unlike genus-$g$ graphs, however, the family of $k$-planar graphs is not minor closed. A graph $G'$ obtained from a $k$-planar graph $G$ by edge deletions and edge contractions may or may not be $k$-planar.
+Under these definitions $0$-planar graphs are exactly planar graphs and $0$-plane graphs are exactly plane graphs. Thus, like genus-$g$ graphs, $k$-planar graphs are a generalization of planar graphs (which are genus-$0$ graphs).  Unlike genus-$g$ graphs, however, the family of $k$-planar graphs is not minor closed. A graph $G'$ obtained from a $k$-planar graph $G$ by edge deletions and edge contractions may or may not be $k$-planar.
 
 We prove the following result:
 \begin{thm}\thmlabel{k-planar}
-  Every $k$-planar graph has a layered $H$-partition of layered-width at most $24k^2 + 36k + 12$ in which $H$ has treewidth at most $(3^{k+2}-3)/2$.
+  Every $k$-planar graph has a layered $H$-partition of layered-width at most $24k^2 + 36k + 12$ in which $H$ has treewidth at most $(3^{k+2}-5)/2$.
 \end{thm}
 
 In the special case $k=1$ we obtain better constants and an additional property (planarity) of $H$:
@@ -78,17 +78,17 @@ The remainder of the paper is organized as follows: In \secref{1-planar} we prov
 \section{$k$-Planar Graphs}
 \seclabel{k-planar}
 
-The purpose of this section is to prove \thmref{k-planar}.  In this section, all graphs are finite, simple, an undirected.  For any graph $G$ and any set $S$ (typically $S\subseteq V(G)$) we use $G[S]$ to denote the graph with vertex set $V(G)\cap S$ and edge set $\{uv\in E(G) : u,v\in S\}$.  We use $G-S$ as a shorthand for $G[V(G)\setminus S]$ and for a graph $G'$, we use $G-G'$ as a shorthand for $G-V(G')$.
+The purpose of this section is to prove \thmref{k-planar}.  In this section, all graphs are finite, simple, an undirected.  For any graph $G$ and any set $S$ (typically $S\subseteq V(G)$) we use $G[S]$ to denote the graph with vertex set $V(G)\cap S$ and edge set $\{uv\in E(G) : u,v\in S\}$.  We use $G-S$ as a shorthand for $G[V(G)\setminus S]$ and for a graph $G'$, we use $G-G'$ as a shorthand for $G-V(G')$.  We use $G'\subseteq G$ to denote subgraph containment, i.e., $V(G')\subseteq V(G)$ and $E(G')\subseteq E(G)$.
 
 We begin by introducing a structural tool for planar graphs, called a PS-tree, that is implicit in previous work on $H$-partitions of planar graphs \cite{dujmovic.joret.ea:planar}.  We then show how the PS-tree of a planarized version of a $k$-planar graph $G$ can be used to find a layered $H$-partition of $G$ of small layered width in which $H$ has small treewidth. 
 
 \subsection{PS-Trees}
 
-Let $T$ be a rooted tree rooted at $r\in V(T)$. The \emph{$T$-depth} of a node $x\in V(T)$ is equal to the length of the path from $x$ to $r$ in $T$. A $P$ path in $T$ is \emph{vertical} if, for each integer $i$, $P$ contains at most one vertex of $T$-depth $i$.  The deepest vertex in a vertical path $P$ is called  $P$'s \emph{lower endpoint} and the other (shallowest) vertex in $P$ is called $P$'s \emph{upper endpoint}. For any node $v\in T$, we call each node on the path, in $T$, from $v$ to $r$ a \emph{$T$-ancestor} of $v$.
+Let $T$ be a rooted tree rooted at some node $r\in V(T)$. The \emph{$T$-depth} of a node $x\in V(T)$ is equal to the length of the path from $x$ to $r$ in $T$. A $P$ path in $T$ is \emph{vertical} if, for each integer $i$, $P$ contains at most one vertex of $T$-depth $i$.  The deepest vertex in a vertical path $P$ is called  $P$'s \emph{lower endpoint} and the shallowest vertex in $P$ is called $P$'s \emph{upper endpoint}. For any node $v\in T$, we call each node on the path, in $T$, from $v$ to $r$ a \emph{$T$-ancestor} of $v$.
 
 A \emph{near-triangulation} $N$ is a plane graph whose outer face, $F$, is bounded by a simple cycle in $N$ and each of whose inner faces is bounded by a 3-cycle in $N$.  A \emph{triangulation} is a near-triangulation whose outer face is bounded by a 3-cycle.  For any cycle $F$ in a near-triangulation $N$ we use $N\circledast F$ to denote the near-triangulation consisting of all the edges and vertices of $G$ that are contained in $F$ or its interior.
 
-For the remainder of this section, $\Delta$ is a triangulation, and $T$ is a BFS spanning tree of $\Delta$ rooted at some degree-3 vertex $r$ on the outer face of $\Delta$.  
+For the remainder of this section, $\Delta$ is a triangulation, $r$ is a degree-3 vertex on the outer face of $\Delta$, and $T$ is a BFS spanning tree of $\Delta$ rooted at $r$.
 
 Fix some cycle $F$ in $\Delta$ and let $N=\Delta\circledast F$.
 Let $\tau=v_1v_2v_3$ be an inner face of $N$ and consider the three minimal vertical paths $Q_1$, $Q_2$, and $Q_3$ in $T$ such that, for each $i\in\{1,2,3\}$ the lower endpoint of $Q_i$ is $v_i$ and the upper endpoint of $Q_i$ is in $V(F)$.  If $Q_1$, $Q_2$, and $Q_3$ are vertex disjoint, then the graph $\overline{Y}=\tau\cup Q_1\cup Q_2\cup Q_3$ is called the \emph{closed tripod} in $N$ determined by $\tau$.  We call $Q_1$, $Q_2$, and $Q_3$ the \emph{legs} of $\overline{Y}$ and we call $\tau$ the \emph{center} of $\overline{Y}$.  We call $Y=\overline{Y}-F$ the \emph{(open) tripod} of $N$ determined by $\tau$.  The graph $M=\overline{Y}\cup F$ is called a \emph{Mercedes graph} and the (at most 3) inner faces of $M$ other than $\tau$ are called the \emph{wedges} of $M$.
@@ -109,7 +109,7 @@ A \emph{PS-tree}  $K=K(\Delta, T, r)$ is a 3-ary tree, such that each node $x\in
 \begin{enumerate}
   \item A cycle $F_x$ in $\Delta$ and the near-triangulation $N_x=\Delta\circledast F_x$.
   
-  \item An inner face $\tau_x$ of $N_x$ that determines a closed tripod $\overline{Y}_x$ and an open tripod $Y_x$ in $N_x$.
+  \item An inner face $\tau_x$ of $N_x$ that determines a closed tripod $\overline{Y}_x$ and an open tripod $Y_x=\overline{Y}_x-F_x$ in $N_x$.
   
   \item The \emph{Mercedes graph} $M_x=F_x\cup \overline{Y}_x$
 \end{enumerate}
@@ -120,8 +120,12 @@ The nodes of the PS-tree $K$ satisfy several conditions:
   
   \item \proplabel{children} For each node $x\in V(K)$ such that $M_x$ has $f\le 3$ wedges $F_{x,1},\ldots,F_{x,f}$, the node $x$ has exactly $f$ children $y_1,\ldots,y_f$ in $K$ and $F_{y_i} = F_{x,i}$ for each $i\in\{1,\ldots,f\}$.
   
-  \item \proplabel{ancestor-boundary} For each non-root node $x\in V(T)$, there exists a partition of $V(F_x)$ into $g\le 3$ sets $P_1,\ldots,P_g$ such that, for each $i\in\{1,\ldots,g\}$, $F[P_i]$ is a path that is contained in $Y_a$ for some $K$-ancestor $a$ of $x$ \emph{or} $F[P_i]$ is a path or cycle in $F_{r_K}$.
-
+  \item \proplabel{ancestor-boundary} For each non-root node $x\in V(T)$, there exists a partition of $V(F_x)$ into $g\le 3$ sets $P_1,\ldots,P_g$ such that, for each $i\in\{1,\ldots,g\}$, either:
+  \begin{compactenum}
+    \item $F[P_i]$ is a path that is contained in $Y_a$ for some $K$-ancestor $a$ of $x$;
+    \item $F[P_i]$ is a cycle and there exists an edge of $P_i$ whose removal produces a path that is contained in $Y_a$ for some $K$-ancestor $a$ of $x$; or 
+    \item $F[P_i]$ is a path or cycle in $F_{r_K}$.
+  \end{compactenum}
   \item \proplabel{partition} $\{Y_x : x\in V(K)\}$ is a partition of $V(\Delta)\setminus\{r\}\setminus V(F_{r_K})$.
 \end{enumerate}
 
@@ -134,17 +138,17 @@ For any triangulation $\Delta$ in which the outer face has a vertex $r$ of degre
 
 \subsection{$k$-Planar Graphs}
 
-Let $G$ be a $k$-plane graph.  We will assume, for ease of exposition, that any point $p\in\R^2$ is involved in at most one crossing $(p,vw,xy)$ of $G$. This assumption is not critical since it can be enforced by a slight deformation of the edges of $G$. 
-
-Let $G^+$ be the graph obtained as follows:
+Let $G$ be a $k$-plane graph.  We will assume, for ease of exposition, that any point $p\in\R^2$ is involved in at most one crossing $(p,vw,xy)$ of $G$. This assumption is not critical since it can be enforced by a slight deformation of the edges of $G$.   Consider the following plane graphs:
 \begin{compactenum}
   \item Add a dummy vertex at each crossing in $G$ to obtain a plane graph and then add edges to this graph to obtain a triangulation $G^+$.
   \item Add a complete graph $K_4$ that contains $G^{+}$ in one of its inner faces, $F_0$, and then add edges to the resulting graph to obtain a triangulation $G^{++}$.
 \end{compactenum}
-Let $r$ be the vertex of the $K_4$ not incident on $F_0$ and let $T$ be a BFS spanning tree of $G^+$ rooted at $r$. Observe that, for any edge $vw\in E(G)$, $\dist_{G^+}(v,w) \le k+1$ and therefore, for any two vertices $v,w\in V(G)$,
-\begin{equation} 
-  \dist_{G^+}(v,w) \le (k+1)\cdot \dist_G(v,w) \eqlabel{distance-preserving}
-\end{equation}
+Let $r$ be the vertex of the $K_4$ not incident on $F_0$ and let $T$ be a BFS spanning tree of $G^{++}$ rooted at $r$. Observe that, for any edge $vw\in E(G)$, 
+\[  \dist_{G^+}(v,w) \le k+1 \enspace . \]
+%  and therefore, for any two vertices $v,w\in V(G)$,
+% \begin{equation} 
+%   \dist_{G^+}(v,w) \le (k+1)\cdot \dist_G(v,w) \eqlabel{distance-preserving}
+% \end{equation}
 For each integer $i\ge 0$, let $V_i=\{v\in V(G^+): \dist_{T}(r,v)=i\}$ and observe that $\{V_0,V_1,\ldots,V_{h}\}$ is a layering of $G^+$ (but not of $G$).
 
 Let $K=K(G^{++},T,r)$ be a PS-tree and observe that the root $r_K$ of $K$ has $F_{r_K}=F_0$.  This implies:
@@ -152,27 +156,27 @@ Let $K=K(G^{++},T,r)$ be a PS-tree and observe that the root $r_K$ of $K$ has $F
   \item \proplabel{all-in}  $V(G^+)\subseteq V(N_{r_K}-F_{r_K})$.
 \end{compactenum}
 
-For each vertex $v\in V(G^+)$, let $P_v=\{a\in V(K): v\in V(N_a-F_a)\}$.  
-By \propref{all-in}, $P_{v}$ contains the root $r_K$ of $K$.  By \propref{children}, $K[P_v]$ is a vertical path (whose lower endpoint is the unique node $x\in V(K)$ such that $v\in Y_x$). Therefore $K[P_v]$ is a vertical path in $K$ that contains $r_K$.  We are about to repeatedly use the fact that the common intersection of two or more vertical paths is a vertical path. 
+For each vertex $z\in V(G^+)$, let $P_z=\{a\in V(K): z\in V(N_a-F_a)\}$.  
+By \propref{all-in}, $P_{z}$ contains the root $r_K$ of $K$.  By \propref{children}, $K[P_z]$ is a vertical path (whose lower endpoint is the unique node $x\in V(K)$ such that $z\in Y_x$). Therefore $K[P_z]$ is a vertical path in $K$ that contains $r_K$.  We are about to repeatedly use the fact that the common intersection of two or more vertical paths is a vertical path. 
 
-For each edge $vw\in E(G)$, consider the walk $W_{vw}$ in $G^+$ that corresponds to the sequence of vertices in $G^+$ that we encounter while walking along the curve $vw$ from $v$ to $w$. We define $A_{vw}=\bigcap_{z\in W_{vw}} P_z$.  Since $W_{vw}\subseteq V(G^+)$, $A_{vw}$ is well-defined.  For each $z\in W_{vw}$, $K[P_{z}]$ is a vertical path in $K$ that contains $r_K$.   Therefore $A_{vw}$ is a non-empty vertical path in $K$.  For any vertex $v\in V(G)$ define $A_v=\bigcap_{vw\in E(G)} A_{vw}$.  Again, $K[A_v]$ is a non-empty vertical path in $K$ that contains $r_K$.  We define $a(v)$ to be the lower endpoint of $K[A_v]$.  For every node $x\in V(K)$, define the \emph{separator}
+For each edge $vw\in E(G)$, consider the walk $W_{vw}$ in $G^+$ that corresponds to the sequence of vertices in $G^+$ encountered while walking along the curve $vw$ from $v$ to $w$. We define $A_{vw}=\bigcap_{z\in W_{vw}} P_z$.  Since $V(W_{vw})\subseteq V(G^+)$, $A_{vw}$ is well-defined.  For each $z\in V(W_{vw})$, $K[P_{z}]$ is a vertical path in $K$ that contains $r_K$.   Therefore $A_{vw}$ is a non-empty vertical path in $K$.  For any vertex $v\in V(G)$ define $A_v=\bigcap_{vw\in E(G)} A_{vw}$.  Again, $K[A_v]$ is a non-empty vertical path in $K$ that contains $r_K$.  We define $a(v)$ to be the lower endpoint of $K[A_v]$.  For every node $x\in V(K)$, define the \emph{separator}
 \[
    S_x = \{v\in V(G): a(v)=x \} \enspace .
 \]
-Clearly $\mathcal{S}=\{S_x:x\in V(K)\}$ is a partition of $V(G)$.  We will use $\mathcal{S}$ as the partition that defines our quotient graph $H=G/\mathcal{S}$ with vertex set $V(H)=V(K)$ and the edge $xy\in E(H)$ if and only if there exists an edge $vw\in E(G)$ with $v\in S_x$ and $w\in S_y$.  First we argue that this partition has small width with respect to the layering defined by $T$ (recall that this is a layering of $G^+$, not a layering of $G$).
+Clearly $\mathcal{S}=\{S_x:x\in V(K)\}$ is a partition of $V(G)$.  We will use $\mathcal{S}$ as the partition that defines our quotient graph $H=G/\mathcal{S}$ with vertex set $V(H)=V(K)$ and the edge $xy\in E(H)$ if and only if there exists an edge $vw\in E(G)$ with $v\in S_x$ and $w\in S_y$.  First we argue that this partition has small width with respect to the layering $\{V_0,\ldots,V_h\}$ defined by $T$ (recall that this is a layering of $G^+$, not a layering of $G$).
 
 \begin{clm}\clmlabel{chargeback-to-y}
    For any $x\in V(K)$ and any vertex $v\in S_x$, there exists a vertex $v'\in Y_x$ such that $|\dist_T(r,v')-\dist_T(r,v)|\le k+1$.  
 \end{clm}
 
 \begin{proof}
-  Since $v\in S_x$, the lower endpoint of $K[A_{vw}]$ is $x$ for some edge $vw\in E(G)$.  This implies that $V(W_{vw})\subset V(N_x-F_x)$ but $V(W_{vw}) \not\subseteq V(N_{x'}-F_{x'})$ for any any child $x'$ of $x$ in $K$.  This implies that $W_{vw}$ contains a vertex $v'\in Y_x$.  Since $G$ is $k$-planar and $v'\in V_{vw}$ this implies that $\dist_{G^+}(v,v') \le k+1$.
+  Since $v\in S_x$, the lower endpoint of $K[A_{vw}]$ is $x$ for some edge $vw\in E(G)$.  This implies that $W_{vw}\subset N_x-F_x$ but $W_{vw} \not\subseteq N_{x'}-F_{x'}$ for any any child $x'$ of $x$ in $K$. Therefore, \propref{children} and \propref{ancestor-boundary} imply that $W_{vw}$ contains a vertex $v'\in Y_x$.  Since $G$ is $k$-planar and $v'\in V(W_{vw})$ this implies that $\dist_{G^+}(v,v') \le k+1$.
   By the triangle inequality,     
   \[
     \dist_{G^+}(r,v') \le \dist_{G^+}(r,v) + \dist_{G^+}(v,v') \le \dist_{G^+}(r,v) + k + 1 \enspace .
   \]
   Similarly, $\dist_{G^+}(r,v) \le \dist_{G^+}(r, v') + k+1$.  Therefore
-  $|\dist_{G^+}(r,v)-\dist_{G^+}(r,v')| \le k+1$ which establishes the claim, since $T$ is BFS tree, so $\dist_{T}(r,z)=\dist_{G^+}(r,z)$ for all $z\in V(G^+)$.
+  $|\dist_{G^+}(r,v)-\dist_{G^+}(r,v')| \le k+1$ which establishes the claim, since $T$ is BFS tree rooted at $r$, so $\dist_{T}(r,z)=\dist_{G^+}(r,z)$ for all $z\in V(G^+)$.
 \end{proof}
 
 \begin{clm}\clmlabel{width-of-g-plus}
@@ -183,7 +187,7 @@ Clearly $\mathcal{S}=\{S_x:x\in V(K)\}$ is a partition of $V(G)$.  We will use $
   Since the vertices of $Y_x$ come from at most 3 vertical paths in $T$, $|V(Y_x)\cap V_i|\le 3$.  \clmref{chargeback-to-y} shows that, for any $v\in S_x\cap V_i$, there exists $v'\in Y_x$ with $\dist_T(v,v')\le k+1$. Therefore, $v'\in V(Y_x)\cap V_{j}$ for some $j\in\{i-k-1,\ldots,i+k+1\}$.  If $v'=v$ (so $v'\in V_i$) then $v'$ contributes only one vertex to $S_x$.  If $v'\neq v$ then $v'\in V(G^+-G)$ is a point where two edges of $G$ cross and $v'$ contributes at most the $4$ endpoints of these edges to $S_x$. In either case every $v'\in V(Y_x)\cap \bigcup_{j=i-k-1}^{i+k+1} V_j$ contributes at most $4$ vertices to $S_x\cap V_i$, so $|S_x\cap V_i|\le 3\times 4\times (2k+1) = 24k+12$.
 \end{proof}
 
-Next we describe a tree decomposition $(B_x:x\in V(K))$ of $H$.  We deliberately use the same node set $V(H)=V(K)$ here, because the subtree $K[x]:=K[\{z:x\in B_z\}]$ will be rooted at $x$.  
+Next we describe a tree decomposition $\{B_x:x\in V(K)\}$ of $H$.  We deliberately use the same node set $V(H)=V(K)$ here, because the subtree $K[x]:=K[\{z:x\in B_z\}]$ will be rooted at $x$.  
 
 \begin{clm}\clmlabel{xy-ancestor}
    For every edge $xy\in V(H)$, one of $x$ or $y$ is a $K$-ancestor of the other.
@@ -202,7 +206,7 @@ The tree decomposition $(B_x:x\in V(K))$ of $H$ is defined as follows: For each 
 \begin{proof}
   Fix some node $x\in V(K)$ and consider the contents of $B_x$.  By \clmref{xy-ancestor}, $B_x$ contains only $K$-ancestors of $x$ (including $x$ itself). 
   
-  Consider the graph $A$ that contains the edges and vertices of $F_{a}$ for all $K$-ancestors $a$ of $x$. See \figref{A}.  It is helpful to think of this graph as follows:  We begin with $F_{a_0}$ where $a_0=r_K$ is the root of $K$.  We then cut $F_{a_0}$ into two pieces $F^{\bar{x}}_{a_0}$ and $F^x_{a_0}$ where $F^x_{a_0}$ is the piece that contains $F_x$. (The path that makes this cut contains two legs $Q_i$ and $Q_j$ of a tripod $Y$ and one edge $v_iv_j$ of its central triangle $\tau$.)  This process continues by partitioning $F_{a_1}:=F^x_{a_0}$ recursively.  The process terminates after some number $d$ of iterations, when $F^x_{a_{d-1}}=F_x=F_{d}$.
+  Consider the graph $A$ that contains the edges and vertices of $F_{a}$ for all $K$-ancestors $a$ of $x$. See \figref{A}.  It is helpful to think of this graph as follows:  We begin with $F_{a_0}$ where $a_0=r_K$ is the root of $K$.  We then cut $F_{a_0}$ into two pieces $F^{\bar{x}}_{a_0}$ and $F^x_{a_0}$ where $F^x_{a_0}$ is the piece that contains $F_x$. (The path that makes this cut contains two legs $Q_i$ and $Q_j$ of a tripod $Y$ and one edge $v_iv_j$ of its central triangle $\tau$.)  This process continues by partitioning $F_{a_1}:=F^x_{a_0}$ recursively.  The process terminates after some number $d$ of iterations, when $F^x_{a_{d-1}}=F_x=F_{a_d}$.
 
   \begin{figure}
     \begin{center}
@@ -214,9 +218,9 @@ The tree decomposition $(B_x:x\in V(K))$ of $H$ is defined as follows: For each 
 
   If $B_x$ contains some $K$-ancestor $a_i$, $i\in\{0,\ldots,d-1\}$, of $x$, it is because there is an edge $vw\in E(G)$ with $v\in S_x$ and $w\in S_{a_i}$.  The edge $vw$ corresponds to a walk $W_{vw}$ in $G^+$. The walk $W_{vw}$ is contained in $N_x-F_x$, otherwise $x\not\in A_{vw}$ so $x\not\in A_v$, and $a(v)\neq x$, contradicting the fact that $v\in S_x$.
   
-  However, $w\in S_a$, so there exists an edge $ww'\in E(G)$ such that   $W_{ww'}$ is contained in $V(W_{ww'})\subseteq V(N_{a_i}-F_{a_i})$ but $V(W_{ww'}\not\subseteq V(N_{a_{i+1}}-F_{a_{i+1}})$.  Therefore $W_{ww'}$ must contain a first vertex $w^*\in V(F_{a_{i+1}}-F_{a_{i}})$.
+  However, $w\in S_{_i}$, so there exists an edge $ww'\in E(G)$ such that   $W_{ww'}$ is contained in $W_{ww'}\subseteq N_{a_i}-F_{a_i}$ but $W_{ww'}\not\subseteq N_{a_{i+1}}-F_{a_{i+1}}$.  Therefore $W_{ww'}$ must contain a first vertex $w^*\in V(F_{a_{i+1}}-F_{a_{i}})\subseteq Y_{a_i}$.
 
-  Summarizing, we have a walk $w'=v_0,\ldots,v_\ell=w^*$ in $G^+$ such that
+  Summarizing, we have a walk $w'=v_0,v_1\ldots,v_{\ell-1},v_\ell=w^*$ in $G^+$ such that
   \begin{compactenum}[(i)]
     \item $v_0\in V(N_x-F_x)$;
     
@@ -226,17 +230,17 @@ The tree decomposition $(B_x:x\in V(K))$ of $H$ is defined as follows: For each 
     
     \item $\ell\le k+1$.
   \end{compactenum}
-  We call any walk with properties (i)--(iv) an \emph{$i$-walk}. Therefore, to upper-bound $|B_x|$, it suffices to upper-bound the number of integers $i\in\{0,\ldots,d-1\}$ such that there exists an $i$-walk.
+  We call any walk with properties (i)--(iv) an \emph{$i$-walk}. Therefore, to upper-bound $|B_x|$, it suffices to upper-bound the number of $i\in\{0,\ldots,d-1\}$ such that there exists an $i$-walk.
   
-  For each $v'\in V(G^+)$, 
+  For each $v'\in V(G^+)$, define
   \[  
       d_{v'}=\max\{j\in\{0,\ldots,d\} : v'\in V(N_{a_j}-F_{a_j})
   \]
   (Intuitively, $d_{v'}$ is the $K$-depth of the lower endpoint of $K[P_{v'}]$ or the $K$-depth ($d$) of $x$, whichever is shallower.)
      
-  Let $v_0,\ldots,v_\ell$ be an $i$-walk and and consider the subsequence $d_0,\ldots,d_{\ell'}$ of $d_{v_0},\ldots,d_{v_\ell}$ consisting of only $d_{v_0}$ and those (record-breaking) $d_{v_i}$ such that $d_{v_i}<\min\{d_{v_0},\ldots,d_{v_{i-1}}\}$.  Observe that $d_0=d$ and $d_{\ell'}=i$.
+  Let $v_0,\ldots,v_\ell$ be an $i$-walk and consider the subsequence $d_0,\ldots,d_{\ell'}$ of $d_{v_0},\ldots,d_{v_\ell}$ consisting of only $d_{v_0}$ and those (record-breaking) $d_{v_j}$ such that $d_{v_j}<\min\{d_{v_0},\ldots,d_{v_{j-1}}\}$.  Observe that $d_0=d$ and $d_{\ell'}=i$.
   
-  By \propref{ancestor-boundary}, for every $j\in\{1,\ldots,d\}$, there is a set $X_{j}$, of at most 3 integers $\alpha < j$ such that such that every vertex $q\in V(F_{a_j})$ is in $V(Y_{a_{\alpha}})$ for some $\alpha\in X_j$.
+  By \propref{ancestor-boundary}, for every $j\in\{1,\ldots,d\}$, there is a set $X_{j}$, of at most 3 integers $\alpha < j$ such that every vertex $q\in V(F_{a_j})$ is in $V(Y_{a_{\alpha}})$ for some $\alpha\in X_j$.
   Assign a distinct colour $c(j,\alpha)\in\{1,2,3\}$ for each $\alpha\in X_j$ and do this assignment for each $j\in\{1,\ldots,d\}$.  By definition, for any $j\in\{1,\ldots,d\}$ and any colour $\gamma\in\{1,2,3\}$, there is at most one $\alpha=\alpha(j,\gamma)$ such that $c(j,\alpha)=\gamma$.
   
   Finally, observe that, for every $j\in\{1,\ldots,\ell'\}$,  $c(d_j,d_{j+1})$ is defined.  Refer to \figref{colouring}. Therefore the \emph{colour sequence} $c_0,\ldots,c_{\ell'-1}$ where $c_j=c(d_j,d_{j+1})$ is well defined.  Since $d_0=d$ and $d_{\ell'-1}=i$, from the preceding discussion, we have $\alpha(\cdots (\alpha(\alpha(\alpha(d,c_0),c_1),c_2)\cdots),c_{\ell'-1}) = i$.
@@ -255,16 +259,17 @@ The tree decomposition $(B_x:x\in V(K))$ of $H$ is defined as follows: For each 
   \]
   so $i=i'$.  Since there are at most $3^{\ell'}$ colour sequences of length $\ell'$ and $\ell'\le \ell \le k+1$, the number of $i\in\{0,\ldots,d-1\}$ such that there exists an $i$-walk is at most
   \[
-     |B_x| \le \sum_{\ell=1}^{k+1} 3^\ell = (3^{k+2}-3)/2 \eqlabel{bag-size} \enspace . \qedhere
+     \sum_{\ell=1}^{k+1} 3^\ell = (3^{k+2}-3)/2 \ge |B_x| \eqlabel{bag-size} \enspace . \qedhere
   \]
 \end{proof}
 
+\note{PM}{I know the analysis in \clmref{bag-width} is not tight---the base $3$ of the exponent can be reduced.  Is it even exponential though?}
 We now have all the parts needed for the proof of \thmref{k-planar}.
 
 \begin{proof}
   We use the layered $H$-partition $(\mathcal{L}, \mathcal{S})$, where $\mathcal{S}=\{S_x:x\in V(K)\}$ and $\mathcal{L}=\{V_i': i=0,1,2\ldots\}$ where $V_i' = V_{(k+1)i}\cup\cdots\cup V_{(k+1)(i+1)-1}$.  \Eqref{distance-preserving} shows that $\mathcal{L}$ is indeed a layering of $G$.
 
-  By \clmref{bag-size}, $\mathcal{S}$ produces a graph $H=G/\mathcal{S}$ of treewidth $(3^{k+2}-1)/2$.  By \clmref{width-of-g-plus}, for each $x\in V(H)$ and each integer $i$, $|B_x\cap V_i|\le 24k+12$, so $|B_x\cap V_i'|\le (k+1)(24k + 12) = 24k^2+36k+12$. 
+  By \clmref{bag-size}, $\mathcal{S}$ produces a graph $H=G/\mathcal{S}$ of treewidth $(3^{k+2}-5)/2$.  By \clmref{width-of-g-plus}, for each $x\in V(H)$ and each integer $i$, $|B_x\cap V_i|\le 24k+12$, so $|B_x\cap V_i'|\le (k+1)(24k + 12) = 24k^2+36k+12$. 
 \end{proof}
 
 \section{$1$-Planar Graphs}
