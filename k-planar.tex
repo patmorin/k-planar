@@ -123,8 +123,8 @@ The nodes of the PS-tree $K$ satisfy several conditions:
   \item \proplabel{ancestor-boundary} For each non-root node $x\in V(T)$, there exists a partition of $V(F_x)$ into $g\le 3$ sets $P_1,\ldots,P_g$ such that, for each $i\in\{1,\ldots,g\}$, either:
   \begin{compactenum}
     \item $F[P_i]$ is a path that is contained in $Y_a$ for some $K$-ancestor $a$ of $x$;
-    \item $F[P_i]$ is a cycle and there exists an edge of $P_i$ whose removal produces a path that is contained in $Y_a$ for some $K$-ancestor $a$ of $x$; or 
-    \item $F[P_i]$ is a path or cycle in $F_{r_K}$.
+    \item $F[P_i]$ is a cycle and there exists an edge of $F[P_i]$ whose removal produces a path that is contained in $Y_a$ for some $K$-ancestor $a$ of $x$; or 
+    \item $F[P_i]\subseteq F_{r_K}$.
   \end{compactenum}
   \item \proplabel{partition} $\{Y_x : x\in V(K)\}$ is a partition of $V(\Delta)\setminus\{r\}\setminus V(F_{r_K})$.
 \end{enumerate}
@@ -272,6 +272,30 @@ We now have all the parts needed for the proof of \thmref{k-planar}.
   By \clmref{bag-size}, $\mathcal{S}$ produces a graph $H=G/\mathcal{S}$ of treewidth $(3^{k+2}-5)/2$.  By \clmref{width-of-g-plus}, for each $x\in V(H)$ and each integer $i$, $|B_x\cap V_i|\le 24k+12$, so $|B_x\cap V_i'|\le (k+1)(24k + 12) = 24k^2+36k+12$. 
 \end{proof}
 
+
+\noindent
+\framebox{
+\begin{minipage}{\textwidth}
+  \note{DW}{%
+    I think we need to define layered treewidth, and
+    give the result of Dujmovic-Eppstein-Wood that (g,k)-planar graphs
+    have O(gk)  layered treewidth. This is the best previous structural
+    description of k-planar graphs. State that layered partitions are
+    richer than  layered treewidth, and lead to O(1) bounds on non-rep
+    chromatic number and queue-number, instead of O(log n) bounds via
+    layered treewidth.
+
+    I also think we should give explicit upper bounds on non-rep chromatic
+    number for k-planar graphs, and also for queue-number (especially if
+    they improve the bound in the FOCS / J.ACM paper).
+
+    I think we should think about generalising the new theorem for
+    (g,k)-planar graphs.
+
+    We should add corollaries for d-map graphs, since they are $d^2$-planar.
+    }
+\end{minipage}
+}
 \section{$1$-Planar Graphs}
 \seclabel{1-planar}
 
