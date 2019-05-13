@@ -1,7 +1,8 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
 <ipe version="70206" creator="Ipe 7.2.7">
-<info created="D:20190502120521" modified="D:20190502154709"/>
+<info created="D:20190502120521" modified="D:20190513154637"/>
+<preamble>\usepackage{kpfonts}</preamble>
 <ipestyle name="basic">
 <symbol name="arrow/arc(spx)">
 <path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
@@ -380,15 +381,15 @@ h
 <use name="mark/disk(sx)" pos="266.192 589.233" size="normal" stroke="black"/>
 <use name="mark/disk(sx)" pos="260.141 570.935" size="normal" stroke="black"/>
 <use name="mark/disk(sx)" pos="254.971 555.303" size="normal" stroke="black"/>
-<text matrix="0.823369 -0.567507 0.567507 0.823369 -328.716 298.283" transformations="rigid" pos="330.283 676.011" stroke="black" type="label" width="25.359" height="7.473" depth="2.49" halign="center" valign="baseline" style="math">F[R_1]</text>
-<text matrix="1 0 0 1 2 1" transformations="translations" pos="229.447 604.723" stroke="black" type="label" width="10.876" height="6.812" depth="1.49" halign="center" valign="baseline" style="math">F_1</text>
-<text matrix="1 0 0 1 4 0" transformations="translations" pos="274.906 650.389" stroke="black" type="label" width="10.876" height="6.812" depth="1.49" halign="center" valign="baseline" style="math">F_2</text>
-<text matrix="1 0 0 1 7 8" transformations="translations" pos="295.156 585.3" stroke="black" type="label" width="10.876" height="6.812" depth="1.49" halign="center" valign="baseline" style="math">F_3</text>
-<text matrix="1 0 0 1 -62.1959 -135.137" transformations="translations" pos="332.143 667.126" stroke="black" type="label" width="25.359" height="7.473" depth="2.49" halign="center" valign="top" style="math">F[R_2]</text>
-<text matrix="0.496242 0.868184 -0.868184 0.496242 627.404 25.1849" transformations="rigid" pos="330.283 676.011" stroke="black" type="label" width="25.359" height="7.473" depth="2.49" halign="center" valign="baseline" style="math">F[R_3]</text>
-<text matrix="1 0 0 1 0 17" transformations="translations" pos="297.031 625.722" stroke="black" type="label" width="14.49" height="8.586" depth="2.65" valign="top" style="math">Q_1^+</text>
-<text matrix="1 0 0 1 -36.579 -56.5142" transformations="translations" pos="297.031 625.722" stroke="black" type="label" width="14.49" height="8.586" depth="2.65" valign="top" style="math">Q_2^+</text>
-<text matrix="1 0 0 1 -37.7374 21.1787" transformations="translations" pos="297.031 625.722" stroke="black" type="label" width="14.49" height="8.586" depth="2.65" halign="right" valign="top" style="math">Q_3^+</text>
+<text matrix="0.823369 -0.567507 0.567507 0.823369 -328.716 298.283" transformations="rigid" pos="330.283 676.011" stroke="black" type="label" width="23.992" height="7.389" depth="2.3" halign="center" valign="baseline" style="math">F[R_1]</text>
+<text matrix="1 0 0 1 2 1" transformations="translations" pos="229.447 604.723" stroke="black" type="label" width="10.283" height="6.697" depth="2.1" halign="center" valign="baseline" style="math">F_1</text>
+<text matrix="1 0 0 1 4 0" transformations="translations" pos="274.906 650.389" stroke="black" type="label" width="10.283" height="6.697" depth="2.1" halign="center" valign="baseline" style="math">F_2</text>
+<text matrix="1 0 0 1 7 8" transformations="translations" pos="295.156 585.3" stroke="black" type="label" width="10.283" height="6.697" depth="2.1" halign="center" valign="baseline" style="math">F_3</text>
+<text matrix="1 0 0 1 -62.1959 -135.137" transformations="translations" pos="332.143 667.126" stroke="black" type="label" width="23.992" height="7.389" depth="2.3" halign="center" valign="top" style="math">F[R_2]</text>
+<text matrix="0.496242 0.868184 -0.868184 0.496242 627.404 25.1849" transformations="rigid" pos="330.283 676.011" stroke="black" type="label" width="23.992" height="7.389" depth="2.3" halign="center" valign="baseline" style="math">F[R_3]</text>
+<text matrix="1 0 0 1 0 17" transformations="translations" pos="297.031 625.722" stroke="black" type="label" width="13.228" height="7.702" depth="3.24" valign="top" style="math">Q_1^+</text>
+<text matrix="1 0 0 1 -36.579 -56.5142" transformations="translations" pos="297.031 625.722" stroke="black" type="label" width="13.228" height="7.702" depth="3.24" valign="top" style="math">Q_2^+</text>
+<text matrix="1 0 0 1 -37.7374 21.1787" transformations="translations" pos="297.031 625.722" stroke="black" type="label" width="13.228" height="7.702" depth="3.24" halign="right" valign="top" style="math">Q_3^+</text>
 <path layer="padding" stroke="black" fill="brew6" opacity="50%">
 239.1 654.586 m
 254.031 606.601 l
@@ -448,7 +449,7 @@ h
 301.486 647.221 l
 h
 </path>
-<text matrix="1 0 0 1 4 -32" transformations="translations" pos="259.902 611.044" stroke="black" type="label" width="20.728" height="7.933" depth="0" halign="center" valign="baseline" style="math">Y^{++}</text>
-<text transformations="translations" pos="207.379 624.69" stroke="black" type="label" width="15.139" height="7.933" depth="0" valign="baseline" style="math">D^+</text>
+<text matrix="1 0 0 1 4 -32" transformations="translations" pos="259.902 611.044" stroke="black" type="label" width="17.39" height="7.432" depth="0.07" halign="center" valign="baseline" style="math">Y^{++}</text>
+<text transformations="translations" pos="207.379 624.69" stroke="black" type="label" width="13.348" height="7.432" depth="0.07" valign="baseline" style="math">D^+</text>
 </page>
 </ipe>
