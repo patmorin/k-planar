@@ -349,7 +349,7 @@ Our proof of \thmref{1-planar} follows quickly from the following technical lemm
     \end{compactenum}
     \item Let $N^+$ and $N^-$ be the subgraphs of $G$ and $G'$ consisting only of those edges and vertices contained in $F$ or the interior of $F$.
   \end{compactenum}
-  Then $N$ has an $H$-partition $\{S_x : x\in V(H)\}$ such that
+  Then $N$ has an $H$-partition $\mathcal{P}=\{S_x : x\in V(H)\}$ such that
   \begin{compactenum}
     \item $H$ is planar;
     \item for all integers $j\ge 0$, and all $x\in V(H)$, $|S_x\cap V_j|\le 15$; 
@@ -378,13 +378,13 @@ Our proof of \thmref{1-planar} follows quickly from the following technical lemm
 
   Finally, the subgraph $N_i$ of $G$ consisting of the edges and vertices of $G$ contained in $F_i$ or its interior does not contain one of the three vertices of $\tau$. Therefore, we can apply induction using the cycle $F_i$ and the partition $P_1',P_2',P_3'$ of $V(C_i)$ to obtain the desired $H$-partition and tree decomposition of $N_i$.
   
-  The remainder of the proof finishes in the same way as the proof of Lemma~14 in \cite{dujmovic.joret.ea:planar}.  $P_1,\ldots,P_k$, and $V(Y^+-F)$ become elements of the $H$-partition.  Elements in each of the $H$-partitions of $N_1,\ldots,N_3$ that intersect $P_1,\ldots,P_k$, or $V(\overline{Y}^+-F)$ are discarded and all the resulting sets are combined to obtain an $H$-partition of $G$.  The desired tree decomposition of $G$ is obtained in exactly the same way as in the proof of Lemma~14 in \cite{dujmovic.joret.ea:planar}.
+  The remainder of the proof finishes in the same way as the proof of Lemma~14 in \cite{dujmovic.joret.ea:planar}.  $P_1,\ldots,P_k$, and $V(Y^+)$ become elements of the $H$-partition.  Elements in each of the $H$-partitions of $N_1,\ldots,N_3$ that intersect $P_1,\ldots,P_k$, or $V(\overline{Y}^+-F)$ are discarded and all the resulting sets are combined to obtain an $H$-partition of $G$.  The desired tree decomposition of $G$ is obtained in exactly the same way as in the proof of Lemma~14 in \cite{dujmovic.joret.ea:planar}.
   
   The planarity of $H$ comes from two properties:
   \begin{enumerate}
-    \item $G/\mathcal{P}$ and $G'\mathcal{P}$ are isomorphic.  This follows immediately from the fact that, for each edge $xy\in E(G-G')$, $x,y\in S_a$ for some $a\in V(H)$.  Indeed, $S_a=Y^+_a$ where $\overline{Y}_a$ contains the edge $vw\in E(G')$ that crosses $xy$. 
+    \item $G/\mathcal{P}$ and $G'/\mathcal{P}$ are isomorphic.  This follows immediately from the fact that, for each edge $xy\in E(G-G')$, $x,y\in S_a$ for some $a\in V(H)$.  Indeed, $S_a=Y^+_a$ where $\overline{Y}_a$ contains the edge $vw\in E(G')$ that crosses $xy$. 
     
-    \item $G[\overline{Y}^+-F]$ is connected. To see why this is so, first observe that $\overline{Y}-F$ is connected, and then observe that every vertex of $\overline{Y^+}$ is either a vertex of $\overline{Y}$ or adjacent to a vertex of $\overline{Y}$.
+    \item $G[\overline{Y}^+-F]$ is connected. To see why this is so, first observe that $\overline{Y}-F$ is connected, and then observe that every vertex of $\overline{Y}^+$ is either a vertex of $\overline{Y}$ or adjacent to a vertex of $\overline{Y}$.
   \end{enumerate}
   Since $G'$ is planar, this implies that $H=G'/\mathcal{P}$ is planar.\footnote{It is well-known and easy to see that any graph $\Delta'$ obtained by contracting an edge in a planar graph $\Delta$ is also planar.  Repeatedly applying this fact implies that $\Delta/\mathcal{P}$ is planar provided that $\Delta[P]$ is connected for every $P\in\mathcal{P}$.}
 \end{proof}
