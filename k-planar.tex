@@ -283,7 +283,7 @@ The tree decomposition $(B_x:x\in V(K))$ of $H$ is defined as follows: For each 
 We now have all the parts needed to complete the proof of \thmref{k-planar}.
 
 \begin{proof}
-  We use the layered $H$-partition $(\mathcal{L}, \mathcal{S})$, where $\mathcal{S}=\{S_x:x\in V(K)\}$ and $\mathcal{L}=\{V_i': i=0,1,2\ldots\}$ where $V_i' = V_{(k+1)i}\cup\cdots\cup V_{(k+1)(i+1)-1}$.  \Eqref{distance-preserving} shows that $\mathcal{L}$ is indeed a layering of $G$.
+  We use the layered $H$-partition $(\mathcal{L}, \mathcal{S})$, where $\mathcal{S}=\{S_x:x\in V(K)\}$ and $\mathcal{L}=\langle V_i': i=0,1,2\ldots\rangle$ where $V_i' = V_{(k+1)i}\cup\cdots\cup V_{(k+1)(i+1)-1}$.  \Eqref{distance-preserving} shows that $\mathcal{L}$ is indeed a layering of $G$.
 
   By \clmref{bag-size}, $\mathcal{S}$ produces a graph $H=G/\mathcal{S}$ of treewidth $(3^{k+2}-5)/2$.  By \clmref{width-of-g-plus}, for each $x\in V(H)$ and each integer $i$, $|B_x\cap V_i|\le 24k+12$, so $|B_x\cap V_i'|\le (k+1)(24k + 12) = 24k^2+36k+12$. 
 \end{proof}
@@ -396,7 +396,7 @@ Finally, we can complete the proof of \thmref{1-planar}.
   
   Let $G'$ be the plane graph obtained by removing one spar from each kite of $\overline{G}$ and let $T$ be a BFS tree of $G'$ rooted at $r$.  Now apply \lemref{induction} with $G=\overline{G}$, $G'$, $F$, and $P_i=\{v_i\}$ for each $i\in\{1,2,3\}$.  This gives an $H$-partition $\{S_x:x\in V(H)\}$ of $\overline{G}-\{r\}\supseteq G$ in which $H$ is planar and has treewidth at most 3.
   
-  Use the layering $\mathcal{L}=\{V_0',\ldots,V_h'\}$ where $V_i'=V_{2i}\cup V_{2i+1}$ for each $i\in\{0,\ldots,h\}$. That this is a layering of $G$ follows from \eqref{spar-distance}.  Since $|V_j\cap S_x|\le 15$ for every integer $i\ge 0$, $|V_i'\cap S_x|\le 30$ for every integer $i\ge 0$ and $x\in V(H)$.
+  Use the layering $\mathcal{L}=\langle V_0',\ldots,V_h'\rangle$ where $V_i'=V_{2i}\cup V_{2i+1}$ for each $i\in\{0,\ldots,h\}$. That this is a layering of $G$ follows from \eqref{spar-distance}.  Since $|V_j\cap S_x|\le 15$ for every integer $i\ge 0$, $|V_i'\cap S_x|\le 30$ for every integer $i\ge 0$ and $x\in V(H)$.
 \end{proof}
 
 % \section{Consequences}
