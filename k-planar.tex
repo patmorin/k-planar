@@ -97,14 +97,14 @@ We begin by introducing a structural tool for planar graphs, called a PS-tree, t
 
 \subsection{PS-Trees}
 
-Let $T$ be a rooted tree rooted at some node $r\in V(T)$. The \emph{$T$-depth} of a node $x\in V(T)$ is equal to the length of the path from $x$ to $r$ in $T$. A $P$ path in $T$ is \emph{vertical} if, for each integer $i$, $P$ contains at most one vertex of $T$-depth $i$.  The deepest vertex in a vertical path $P$ is called  $P$'s \emph{lower endpoint} and the shallowest vertex in $P$ is called $P$'s \emph{upper endpoint}. For any node $v\in T$, we call each node on the path, in $T$, from $v$ to $r$ a \emph{$T$-ancestor} of $v$.
+Let $T$ be a rooted tree rooted at some node $r\in V(T)$. The \emph{$T$-depth} of a node $x\in V(T)$ is equal to the length of the path from $x$ to $r$ in $T$. A $P$ path in $T$ is \emph{vertical} if, for each integer $i$, $P$ contains at most one vertex of $T$-depth $i$.  The deepest vertex in a vertical path $P$ is called  $P$'s \emph{lower endpoint} and the shallowest vertex in $P$ is called $P$'s \emph{upper endpoint}. For any node $v\in V(T)$, we call each node on the path, in $T$, from $v$ to $r$ (including $v$ itself) a \emph{$T$-ancestor} of $v$.  If $v'$ is a $K$-ancestor of $v$, then $v$ is a \emph{$K$-descendant} of $v'$.
 
 A \emph{near-triangulation} $N$ is a plane graph whose outer face, $F$, is bounded by a simple cycle in $N$ and each of whose inner faces is bounded by a 3-cycle in $N$.  A \emph{triangulation} is a near-triangulation whose outer face is bounded by a 3-cycle.  For any cycle $F$ in a near-triangulation $N$ we use $N\circledast F$ to denote the near-triangulation consisting of all the edges and vertices of $G$ that are contained in $F$ or its interior.
 
 For the remainder of this section, $\Delta$ is a triangulation, $r$ is a degree-3 vertex on the outer face of $\Delta$, and $T$ is a BFS spanning tree of $\Delta$ rooted at $r$.
 
 Fix some cycle $F$ in $\Delta$ and let $N=\Delta\circledast F$.
-Let $\tau=v_1v_2v_3$ be an inner face of $N$ and consider the three minimal vertical paths $Q_1$, $Q_2$, and $Q_3$ in $T$ such that, for each $i\in\{1,2,3\}$ the lower endpoint of $Q_i$ is $v_i$ and the upper endpoint of $Q_i$ is in $V(F)$.  If $Q_1$, $Q_2$, and $Q_3$ are vertex disjoint, then the graph $\overline{Y}=\tau\cup Q_1\cup Q_2\cup Q_3$ is called the \emph{closed tripod} in $N$ determined by $\tau$.  We call $Q_1$, $Q_2$, and $Q_3$ the \emph{legs} of $\overline{Y}$ and we call $\tau$ the \emph{center} of $\overline{Y}$.  We call $Y=\overline{Y}-F$ the \emph{(open) tripod} of $N$ determined by $\tau$.  The graph $M=\overline{Y}\cup F$ is called a \emph{Mercedes graph} and the (at most 3) inner faces of $M$ other than $\tau$ are called the \emph{wedges} of $M$.
+Let $\tau=v_1v_2v_3$ be an inner face of $N$ and consider the three minimal vertical paths $Q_1$, $Q_2$, and $Q_3$ in $T$ such that, for each $i\in\{1,2,3\}$ the lower endpoint of $Q_i$ is $v_i$ and the upper endpoint $v_i'$ of $Q_i$ is in $V(F)$.  If $Q_1$, $Q_2$, and $Q_3$ are vertex disjoint, then the graph $\overline{Y}=\tau\cup Q_1\cup Q_2\cup Q_3$ is called the \emph{closed tripod} in $N$ determined by $\tau$.  We call $Q_1$, $Q_2$, and $Q_3$ the \emph{legs}, $v_1'$, $v_2'$ and $v_3'$ the \emph{feet}, and $\tau$ the \emph{crotch} of $\overline{Y}$.  We call $Y=\overline{Y}-F$ the \emph{(open) tripod} of $N$ determined by $\tau$.  The graph $M=\overline{Y}\cup F$ is called a \emph{Mercedes graph} and the (at most 3) inner faces of $M$ other than $\tau$ are called the \emph{wedges} of $M$.
 
 A \emph{PS-tree}  $K=K(\Delta, T, r)$ is a 3-ary tree, such that each non-root node $x\in V(K)$ is associated with several object (refer to \figref{K-node}):
 
@@ -133,12 +133,39 @@ The non-root nodes of the PS-tree $K$ (including the sub-root $r_K$) satisfy sev
 \begin{enumerate}[(PR1)]
   \item \proplabel{children} For each non-root node $x\in V(K)$ such that $M_x$ has $f\le 3$ wedges $F_{x,1},\ldots,F_{x,f}$, the node $x$ has exactly $f$ children $y_1,\ldots,y_f$ in $K$ and $F_{y_i} = F_{x,i}$ for each $i\in\{1,\ldots,f\}$.
   
-  \item \proplabel{ancestor-boundary} For each non-root node $x\in V(T)$, there exists a partition of $V(F_x)$ into $g\le 3$ sets $P_1,\ldots,P_g$ such that, for each $i\in\{1,\ldots,g\}$, $F[P_i]$ is a path that is contained in $Y_a$ for some $K$-ancestor $a$ of $x$. 
+  \item \proplabel{ancestor-boundary} For each non-root node $x\in V(T)$, there exists a partition of $V(F_x)$ into $g\le 3$ non-empty sets $P_1,\ldots,P_g$ such that, for each $i\in\{1,\ldots,g\}$, $F[P_i]$ is a path that is contained in $Y_a$ for some $K$-ancestor $a$ of $x$. 
+  
+  \item \proplabel{tripod-feet} For each $i\in\{1,\ldots,g\}$, at least one vertex in $P_i$ is a foot of the closed tripod $\overline{Y}_x$.
 
   \item \proplabel{partition} $\{Y_x : x\in V(K)\}$ is a partition of $V(\Delta)\setminus\{r\}$.
 \end{enumerate}
 
 For any triangulation $\Delta$ in which the outer face has a vertex $r$ of degree 3 and for any BFS spanning-tree of $\Delta$ rooted at $r$, there exists a PS-tree $K=K(\Delta,T,r)$.  Indeed, this tree is constructed (albeit implicitly) by \citet[Proof of Lemma~14]{dujmovic.joret.ea:planar}.
+
+
+The following claim is not used until later in the paper. However, it's proof is a helpful exercise in understanding the properties of a PS-Tree.
+
+\begin{clm}\clmlabel{strong-ancestor-boundary}
+  Let $K$ be a PS-tree and
+  let $y\in V(K)$ be a non-root node with parent $p$ such that $V(F_y\cap Y_a)\neq\emptyset$ for some $K$-ancestor $a\neq p$ of $p$. Then $V(F_p\cap Y_a)\neq\emptyset$.
+\end{clm}
+
+\begin{proof}
+  By \propref{children}, $F_y$ is a wedge in the Mercedes graph $M_p$, so $V(F_y)$ can be partitioned into  $P_1'=V(F_y\cap Y_p)$ and $P_{2,3}'=V(F_y\cap F_p)$.  Let $P_1,\ldots,P_g$ denote the partition of $V(F_p)$ given by \propref{ancestor-boundary}.  
+  
+  We claim that \propref{tripod-feet} ensures that $P_{2,3}'\subset P_i\cup P_j$ for some $i,j\in \{1,\ldots,g\}$.  If $g=2$, this claim is immediate, so assume $g=3$. Then, $F_y\cap \overline{Y}_p$ is the path formed by two legs $Q_2$ and $Q_3$ of $\overline{Y}_p$ and one edge $v_2v_3$ of $\tau_p$.  
+  By \propref{tripod-feet} and the assumption that $q=3$, $Q_2$ has a foot $v_2'\in P_i$ and $Q_3$ has a foot $v_3'\in P_j$, for some $i\neq j$.  The third foot $v_1'$ of $\overline{Y}_p$ is therefore in $P_\ell$ for the unique $\ell \in\{1,2,3\}\setminus \{i,j\}$.  It follows that $V(P_\ell\cap F_y)=\emptyset$.
+  
+  Setting $P_2'=V(P_i\cup F_y)$ and $P_3'=V(P_j\cup F_y)$ yields a partition $\{P_1',P_2',P_3'\}$ of $V(F_y)$ such that $P_1'\subset V(Y_{p})$,   
+  $P_2'\subset V(Y_{a_2})$, and $P_3'\subset V(Y_{a_3})$  for some $K$-ancestors $a_2$ and $a_3$ of $a$.  Therefore $a_2$ and $a_3$ are the only $K$-ancestors $a\neq p$ of $p$, such that $V(F_y\cap Y_a)\neq\emptyset$.
+  Now, each foot $v_2',v_3'\in V(F_p)$.  Furthermore, $v_2'\in P_i\subseteq V(Y_{a_2})$ and $v_3'\in P_j\subseteq V(Y_{a_3})$. Therefore, $V(F_p\cap Y_{a_2})\supseteq\{v_2'\}\neq\emptyset$ and $V(F_p\cap Y_{a_3})\supseteq\{v_3'\}\neq\emptyset$, as claimed.
+\end{proof}
+
+Contained in the proof of \clmref{strong-ancestor-boundary} is the following addendum to \propref{ancestor-boundary}:
+ 
+\begin{enumerate}[(PR1')]\setcounter{enumi}{1}
+  \item \proplabel{ancestor-boundary-ii} Furthermore, if $g=3$, then  $P_i=V(F_x\cap Y_p)$ where $p$ is the parent of $x$ in $K$, for one $i\in\{1,2,3\}$.
+\end{enumerate}
 
 % \subsubsection{Layered $H$-Partitions from PS-Trees}
 % \seclabel{k-to-h}
@@ -227,7 +254,7 @@ The tree decomposition $(B_x:x\in V(K))$ of $H$ is defined as follows: For each 
 \begin{proof}
   Fix some node $x\in V(K)$ and consider the contents of $B_x$.  By \clmref{xy-ancestor}, $B_x$ contains only $K$-ancestors of $x$ (including $x$ itself). 
   
-  Consider the graph $A$ that contains the edges and vertices of $F_{a}$ for all $K$-ancestors $a$ of $x$. See \figref{A}(a).  It is helpful to think of this graph as follows:  We begin with $F_{a_0}$ where $a_0=r_K$ is the root of $K$.  We then cut $F_{a_0}$ into two pieces $F^{\bar{x}}_{a_0}$ and $F^x_{a_0}$ where $F^x_{a_0}$ is the piece that contains $F_x$. (The path that makes this cut contains two legs $Q_i$ and $Q_j$ of a tripod $Y$ and one edge $v_iv_j$ of its central triangle $\tau$.)  This process continues by partitioning $F_{a_1}:=F^x_{a_0}$ recursively.  The process terminates after some number $d$ of iterations, when $F^x_{a_{d-1}}=F_x=F_{a_d}$.
+  Consider the graph $A$ that contains the edges and vertices of $F_{a}$ for all $K$-ancestors $a$ of $x$. See \figref{A}(a).  It is helpful to think of this graph as follows:  We begin with $F_{a_0}$ where $a_0=r_K$ is the root of $K$.  We then cut $F_{a_0}$ into two pieces $F^{\bar{x}}_{a_0}$ and $F^x_{a_0}$ where $F^x_{a_0}$ is the piece that contains $F_x$. (The path that makes this cut contains two legs $Q_i$ and $Q_j$ of a tripod $Y$ and one edge $v_iv_j$ of its crotch $\tau=v_1v_2v_3$.)  This process continues by partitioning $F_{a_1}:=F^x_{a_0}$ recursively.  The process terminates after some number $d$ of iterations, when $F^x_{a_{d-1}}=F_x=F_{a_d}$.
 
   \begin{figure}
     
@@ -242,51 +269,176 @@ The tree decomposition $(B_x:x\in V(K))$ of $H$ is defined as follows: For each 
   \end{figure}
 
   Refer to \figref{A}(b)
-  If $B_x$ contains some $K$-ancestor $a_i$, $i\in\{0,\ldots,d-1\}$, of $x$, it is because there is an edge $vw\in E(G)$ with $w\in S_{a_i}$ and $v\in S_{x'}$ for some $K$-descendant of $x$.  The edge $vw$ corresponds to a walk $W_{vw}$ in $G^+$. The walk $W_{vw}$ is contained in $N_x-F_x$, otherwise $x\not\in A_{vw}$ so $x'\not\in A_{vw}$, so $x'\not\in A_v$, and $a(v)\neq x'$, contradicting the fact that $v\in S_{x'}$.
+  If $B_x$ contains some $K$-ancestor $a_\delta$, $\delta\in\{0,\ldots,d-1\}$, of $x$, it is because there is an edge $vw\in E(G)$ with $w\in S_{a_\delta}$ and $v\in S_{x'}$ for some $K$-descendant of $x$.  The edge $vw$ corresponds to a walk $W_{vw}$ in $G^+$. The walk $W_{vw}$ is contained in $N_x-F_x$, otherwise $x\not\in A_{vw}$ so $x'\not\in A_{vw}$, so $x'\not\in A_v$, and $a(v)\neq x'$, contradicting the fact that $v\in S_{x'}$.
   
-  However, $w\in S_{a_i}$, so there exists an edge $ww'\in E(G)$ such that   $W_{ww'}$ is contained in $W_{ww'}\subseteq N_{a_i}-F_{a_i}$ but $W_{ww'}\not\subseteq N_{a_{i+1}}-F_{a_{i+1}}$.  Therefore $W_{ww'}$ must contain a first vertex $w^*\in V(F_{a_{i+1}}-F_{a_{i}})\subseteq Y_{a_i}$.
+  However, $w\in S_{a_\delta}$, so there exists an edge $ww'\in E(G)$ such that $W_{ww'}\subseteq N_{a_\delta}-F_{a_\delta}$ but $W_{ww'}\not\subseteq N_{a_{\delta+1}}-F_{a_{\delta+1}}$.  Therefore $W_{ww'}$ must contain a first vertex $w^*\in V(F_{a_{\delta+1}}-F_{a_\delta})\subseteq Y_{a_\delta}$.
 
   Summarizing, we have a walk $w=v_0,v_1\ldots,v_{\ell-1},v_\ell=w^*$ in $G^+$ such that
   \begin{compactenum}[(i)]
     \item $v_0\in V(N_x-F_x)$;
     
-    \item $v_0,\ldots,v_{\ell-1}\in V(N_{a_{i+1}}-F_{a_{i+1}})$;
+    \item $v_0,\ldots,v_{\ell-1}\in V(N_{a_{\delta+1}}-F_{a_{\delta+1}})$;
     
-    \item $v_\ell\in V(F_{a_{i+1}}-F_{a_i})$; and
+    \item $v_\ell\in V(F_{a_{\delta+1}}-F_{a_\delta})$; and
     
     \item $\ell\le k+1$.
   \end{compactenum}
-  We call any walk with properties (i)--(iv) an \emph{$i$-walk}. Therefore, to upper-bound $|B_x|$, it suffices to upper-bound the number of $i\in\{0,\ldots,d-1\}$ such that there exists an $i$-walk.
+  We call any walk with properties (i)--(iv) a \emph{$\delta$-walk}. Therefore, to upper-bound $|B_x|$, it suffices to upper-bound the number of $\delta\in\{0,\ldots,d-1\}$ such that there exists an $\delta$-walk.
   
-  For each $v'\in V(G^+)$, define
+  In the following, when $i$ is an integer, we will use $F_i$, $Y_i$, and so on as shorthands for $F_{a_i}$, $Y_{a_i}$, and so on, respectively.
+  
+  To begin, let $d_0=d$, and $d_1=\min\{i: V(F_d\cap Y_i)\neq\emptyset \}$.  Observe that $F_{d}=F_{d_0}$ is contained in the interior of $F_{d_1}$, i.e., $N_{d_0}\subseteq N_{d_1}-F_{d_1}$.   We claim that 
   \[  
-      d_{v'}=\max\{j\in\{0,\ldots,d\} : v'\in V(N_{a_j}-F_{a_j})
+     |\{\delta\in\{d_1,\ldots,d_0-1\}:  \mbox{there exists a $\delta$-walk} \}| \le \binom{k+1}{2} \enspace .
   \]
-  (Intuitively, $d_{v'}$ is the $K$-depth of the lower endpoint of $K[P_{v'}]$ or the $K$-depth ($d$) of $x$, whichever is shallower.)
-     
-  Let $v_0,\ldots,v_\ell$ be an $i$-walk and consider the subsequence $d_0,\ldots,d_{\ell'}$ of $d_{v_0},\ldots,d_{v_\ell}$ consisting of only $d_{v_0}$ and those (record-breaking) $d_{v_j}$ such that $d_{v_j}<\min\{d_{v_0},\ldots,d_{v_{j-1}}\}$.  Observe that $d_0=d$ and $d_{\ell'}=i$.
+  To prove this claim, consider the graph $I$ with vertex set $V(I)=\{d_1,\ldots,d_0\}$ and $ij\in E(I)$ if and only $i=j$ or $|F_i\cap Y_j|\neq\emptyset$.  Any $\delta$-walk $v_0,\ldots,v_\ell$ with $\delta\in V(I)$ corresponds to a walk $\rho_0,\ldots,\rho_{\ell}$ in $I$, where $\rho_i=\max\{j : v_i\in N_{j}-F_j\}$.
   
-  By \propref{ancestor-boundary}, for every $j\in\{1,\ldots,d\}$, there is a set $X_{j}$, of at most 3 integers $\alpha < j$ such that every vertex $q\in V(F_{a_j})$ is in $V(Y_{a_{\alpha}})$ for some $\alpha\in X_j$.
-  Assign a distinct colour $c(j,\alpha)\in\{1,2,3\}$ for each $\alpha\in X_j$ and do this assignment for each $j\in\{1,\ldots,d\}$.  By definition, for any $j\in\{1,\ldots,d\}$ and any colour $\gamma\in\{1,2,3\}$, there is at most one $\alpha=\alpha(j,\gamma)$ such that $c(j,\alpha)=\gamma$.
-  
-  Finally, observe that, for every $j\in\{1,\ldots,\ell'\}$,  $c(d_j,d_{j+1})$ is defined.  Refer to \figref{colouring}. Therefore the \emph{colour sequence} $c_0,\ldots,c_{\ell'-1}$ where $c_j=c(d_j,d_{j+1})$ is well defined.  Since $d_0=d$ and $d_{\ell'-1}=i$, from the preceding discussion, we have $\alpha(\cdots (\alpha(\alpha(\alpha(d,c_0),c_1),c_2)\cdots),c_{\ell'-1}) = i$.
+  The graph $I$ has the following properties:
+  \begin{enumerate}
+    \item For each $i\in V(I)$, $i$ has at most 2 neighbours among $0,\ldots,i-1$.  If $i$ has two such neighbours, then one of them is $i-1$.
 
+    \item For each $ij\in E(I)$ with $j<i$, and each $i'\in\{j+2,\ldots,i\}$, the vertex $i'$ has at most 2 neighbours and these are contained in $\{i'-1,j\}$.
+  \end{enumerate}
+  These two properties imply that $I$ has a very simple structure.   We call $j\in\{d_1,\ldots,d_0\}$ a \emph{left endpoint} if there exists an edge $ij\in E(I)$ with $j < i - 1$.  Let $j_1>j_1>\cdots> j_p$ denote the sorted sequence of left endpoints and, for convenience, let $j_{0}=d$.  Then 
+  \[
+      E(I) \subseteq \{ (i,i+1): i\in\{d_1,\ldots,d_0-1\} \cup 
+         \bigcup_{t=1}^p \{ ij_t : i\in\{ j_t,\ldots,j_{t-1} \}\} \enspace . 
+  \]
+  (See, \figref{i-graph}.)  Observe that shortest path from in $i$ from $d_0$ to $j_t$ has length at least $t$.  Let $X_t=\{j_t,\ldots,j_{t+1}\}$ and observe that the shortest path from $d_0$ to some value $i\in X_t$ that does not contain any $i' <i$ goes through $j_{t}$.  Therefore, $X_t$ contains at most $k+2-t$ values of $\delta$ such that there exists a $\delta$-walk.  Therefore, 
+  \[  
+     |\{\delta\in\{d_1,\ldots,d_0-1\}:  \mbox{there exists a $\delta$-walk} \}| \le \sum_{t=0}^{k+1} (k+2-t) = \sum_{t=1}^{k+2} t = \binom{k+2}{2} \enspace .
+  \]
+  
   \begin{figure}
     \begin{center}
-        \includegraphics{figs/A-2}
+      \includegraphics{figs/i-graph}
     \end{center}
-    \caption{The colour sequences defined by two $i$-curves.}
-    \figlabel{colouring}
+    \caption{The graph $I$ used in the proof of \clmref{bag-size}}
+    \figlabel{i-graph}
   \end{figure}
-
-  The proof is now almost complete.  Any $i$-walk defines a colour sequence $c_0,\ldots,c_{\ell'}$.  If some $i'$-walk defines the same colour sequence $c_0,\ldots,c_{\ell'}$ then
+    
+  More generally, for $s>1$, let $d_s=\min\{ i: V(F_{d_s}\cap Y_i)\neq\emptyset \}$. Consider some $\delta$-walk $v_0,\ldots,v_\ell$ for $\delta\in \{ d_{s},\ldots,d_{s-1}-1 \}$, for some $s>1$.  Since $v_0\in V(N_{d_0}-F_{d_0})$ and $v_\ell\in F_{\delta+1}-F_\delta$, there exists some maximum value $i$ such that $v_i\in N_{d_{s-1}}-F_{d_{s-1}}$.  Furthermore, $i\ge s-2$ because $v_1,\ldots,v_i$ contains a vertex from each of $F_{d_0},F_{d_1},\ldots,F_{d_{s-2}}$.  But this means that we can treat $v_i,\ldots,v_{\ell}$ as a $\delta$-walk of length at most $\ell-s+2 \le k-s+3$ that begins in $N_{d_{s-1}}-F_{d_{s-1}}$.  By the same argument used above, 
+  \[  |\{\delta\in\{d_s,\ldots,d_{s-1}-1\}:  \mbox{there exists a $\delta$-walk} \}| \le \binom{k-s+3}{2} \enspace .\]
+  
+  We conclude that the maximum number of $\delta\in\{0,\ldots,d-1\}$ such that there exists a $\delta$-walk is at most
   \[
-        i = (\alpha(\alpha(\alpha(d,c_0),c_1),c_2)\cdots),c_{\ell'-1}) = i' \enspace ,
+      \sum_{s=1}^{k+2} \binom{k-s+3}{2} = O(k^3)
   \]
-  so $i=i'$.  Since there are at most $3^{\ell'}$ colour sequences of length $\ell'$ and $\ell'\le \ell \le k+1$, the number of $i\in\{0,\ldots,d-1\}$ such that there exists an $i$-walk is at most
-  \[
-     \sum_{\ell=1}^{k+1} 3^\ell = (3^{k+2}-3)/2 \ge |B_x| \eqlabel{bag-size} \enspace . \qedhere
-  \]
+  \note{PM}{Gotta run!}
+  
+  
+  % 
+  % 
+  % Next observe that, if some $\delta$-walk
+  % 
+  % 
+  % 
+  % 
+  % For each $v'\in V(G^+)$, define
+  % \[  
+  %     d_{v'}=\max\{i\in\{0,\ldots,d\} : v'\in V(N_{a_i}-F_{a_i})
+  % \]
+  % (Intuitively, $d_{v'}$ is the $K$-depth of the lower endpoint of $K[P_{v'}]$ or the $K$-depth ($d$) of $x$, whichever is shallower.)
+  % 
+  % Consider some $\delta$-walk $v_0,\ldots,v_{\ell}$ and, for each $j\in\{0,\ldots,\ell\}$, let $d_j=d_{v_j}$.  Then the sequence $d_0,\ldots,d_{\ell}$ has the following properties, corresponding to properties (i)--(iii) above:
+  % \begin{compactenum}[(i)]
+  %   \item $d_0=d$;
+  %   \item $d_0,\ldots,d_{\ell-1} > \delta$
+  %   \item $d_\ell = \delta$;
+  %   \item $\ell\le k+1$.
+  % \end{compactenum}
+  % 
+  % Consider an auxilliary graph $I$ with vertex set $V(I)=\{0,\ldots,d\}$ and edge $ij\in E(I)$ if and only if $V(F_{a_i}\cap Y_j))\neq\emptyset$. Observe that $d_0,\ldots,d_\ell$ is a walk in $I$.
+  % 
+  % We are particularly interested in the \emph{up neighbours} of $i$, defined as
+  % $U(i) = \{q : iq\in E(I),\, q< i-1\}$.  
+  % 
+  % Claim: For each $j\in\{i_1-2,\ldots,d\}$,  $U(j) = U(d)=\{i_1,i_2\}$.
+  % 
+  % Claim: $U(i_1)= \{i_2, i_3\}$ for some $i_3< i_1-1$.
+  % 
+  % Claim: $U(i_1+1)= \{i_1, i_2, i_3\}$.
+  % 
+  %  U(i)\cup\{i-2\}\setminus\{i-1\}$. 
+  % 
+  % Let $i_0=d$, $i_1=\min U(d)$, and $i_2=U(d)$.  
+  % 
+  % 
+  % 
+  % By \clmref{strong-ancestor-boundary}, $I(j)=U(d)=\{i_1,i_2\}$ for all $j\in\{i_1-1,\ldots,d\}$.  This immediately implies that there can be no $\delta$-walk for any $\delta\in \{ i\in\Z : k+1 < i < i_1 \}$. Indeed, such a walk either has to contain $i_1$ or $i_2$ or it has to contain $d,d-1,\ldots,d-k-2$.  In the former case, the walk violates (ii) or (iii) since it contains values smaller than $\delta$.  In the latter case, the walk violates (iv) since it has length $k+2>k+1$.
+  % 
+  % Next, consider $\max U(i_1)$ and let $i_3=\max U(i_1)$.  By \propref{strong-ancestor-boundary} 
+  % 
+  % 
+  % 
+  %  since $\delta > i_1 > i_2$ 
+  % 
+  % Claim: For all $j\in\{\min(U(i)),\ldots,i\}$, $U(j) = U(i)$. 
+  % 
+  % Proof: 
+  % The proof is by induction on $i-j$.  The base case $i=j$ is immediate.
+  % 
+  % Now consider some $j\in\{\min(U(i)), i-1\}$.  By the inductive hypothesis $U(j+1)=U(i)$ so $F_{j+1}$ contains vertices of $Y_q$ for each $q\in U(i)$. 
+  % These vertices are not in $Y_j$ since, by the definition of $U(j+1)$, $q < (j+1)-1 = j$ for each $q\in U(j+1)$.  
+  % 
+  % 
+  %  Recall that $F_{j+1}$ is a wedge in the Mercedes graph $M_j$. This wedge is determined by the closed tripod $\overline{Y}_j$
+  % 
+  % First the base case $j=i$:
+  % 
+  % Observe that $F_i$ is one wedge of the Mercedes graph $M_i$, so $F_i \subset F_{i-1}\cup \overline{Y}_{i-1}$.  Therefore $V(F_i)$ can be partitioned into $A=V(F_i \cap F_{i-1})$ and $B=V(F_i\cap Y_{i-1})$.  The set $B$ consists entirely of vertices in $N_{i-1}-F_{i-1}-(N_i-F_i)$.  The set $A$ consists of vertices in $V(F_{i-1})$.  By \propref{ancestor-boundary}, 
+  % 
+  % First observe that it is sufficient to prove this for $j=i-1$ since, in this case, we can apply
+  % Consider the vertices of $F_{i}$.  Each of these vertices belongs $Y_{q}$ for some $q\in U(i)$.
+  % 
+  % A critical property of these up edges is that, for any $i' > i$, $U(i') \subseteq \{i'+1,\ldots,i\} \cup U(i)$.  
+  % 
+  % 
+  % , there are at most 3 edges $ij\in E(I)$ with $j<i$.  Furthermore, for each $i'< i$, 
+  % 
+  % 
+  % 
+  % The graph $I$ has some additional structure, which we now describe.  
+  % First, consider the at most three neighbours $i_0>i_1>i_2$ of $d$ in $I$.
+  % In the walk $d_0,\ldots,d_{\ell}$, the first value $d_i\neq d$ is in $\{i_0,i_1,i_2\}$.  Furthermore, 
+  % 
+  % 
+  % 
+  % 
+  % First observe that, for each $i\in\{1,\ldots,d\}$, $(i,(i+1))\in E(I)$.  
+  % 
+  % 
+  % 
+  % $I$ has maximum out-degree $3$ and each directed edge $ij\in E(I)$ has $j < i$.
+  % 
+  % 
+  % 
+  % 
+  % 
+  % 
+  % Let $v_0,\ldots,v_\ell$ be an $i$-walk and consider the subsequence $d_0,\ldots,d_{\ell'}$ of $d_{v_0},\ldots,d_{v_\ell}$ consisting of only $d_{v_0}$ and those (record-breaking) $d_{v_j}$ such that $d_{v_j}<\min\{d_{v_0},\ldots,d_{v_{j-1}}\}$.  Observe that $d_0=d$ and $d_{\ell'}=i$.
+  % 
+  % By \propref{ancestor-boundary}, for every $j\in\{1,\ldots,d\}$, there is a set $X_{j}$, of at most 3 integers $\alpha < j$ such that every vertex $q\in V(F_{a_j})$ is in $V(Y_{a_{\alpha}})$ for some $\alpha\in X_j$.
+  % Assign a distinct colour $c(j,\alpha)\in\{1,2,3\}$ for each $\alpha\in X_j$ and do this assignment for each $j\in\{1,\ldots,d\}$.  By definition, for any $j\in\{1,\ldots,d\}$ and any colour $\gamma\in\{1,2,3\}$, there is at most one $\alpha=\alpha(j,\gamma)$ such that $c(j,\alpha)=\gamma$.
+  % 
+  % Finally, observe that, for every $j\in\{1,\ldots,\ell'\}$,  $c(d_j,d_{j+1})$ is defined.  Refer to \figref{colouring}. Therefore the \emph{colour sequence} $c_0,\ldots,c_{\ell'-1}$ where $c_j=c(d_j,d_{j+1})$ is well defined.  Since $d_0=d$ and $d_{\ell'-1}=i$, from the preceding discussion, we have $\alpha(\cdots (\alpha(\alpha(\alpha(d,c_0),c_1),c_2)\cdots),c_{\ell'-1}) = i$.
+  % 
+  % \begin{figure}
+  %   \begin{center}
+  %       \includegraphics{figs/A-2}
+  %   \end{center}
+  %   \caption{The colour sequences defined by two $i$-curves.}
+  %   \figlabel{colouring}
+  % \end{figure}
+  % 
+  % The proof is now almost complete.  Any $i$-walk defines a colour sequence $c_0,\ldots,c_{\ell'}$.  If some $i'$-walk defines the same colour sequence $c_0,\ldots,c_{\ell'}$ then
+  % \[
+  %       i = (\alpha(\alpha(\alpha(d,c_0),c_1),c_2)\cdots),c_{\ell'-1}) = i' \enspace ,
+  % \]
+  % so $i=i'$.  Since there are at most $3^{\ell'}$ colour sequences of length $\ell'$ and $\ell'\le \ell \le k+1$, the number of $i\in\{0,\ldots,d-1\}$ such that there exists an $i$-walk is at most
+  % \[
+  %    \sum_{\ell=1}^{k+1} 3^\ell = (3^{k+2}-3)/2 \ge |B_x| \eqlabel{bag-size} \enspace . \qedhere
+  % \]
 \end{proof}
 
 \note{PM}{I know the analysis in \clmref{bag-size} is not tight---the base $3$ of the exponent can be reduced.  Is it even exponential though?}
