@@ -242,9 +242,9 @@ The tree decomposition $(B_x:x\in V(K))$ of $H$ is defined as follows: For each 
   \end{figure}
 
   Refer to \figref{A}(b)
-  If $B_x$ contains some $K$-ancestor $a_i$, $i\in\{0,\ldots,d-1\}$, of $x$, it is because there is an edge $vw\in E(G)$ with $v\in S_x$ and $w\in S_{a_i}$.  The edge $vw$ corresponds to a walk $W_{vw}$ in $G^+$. The walk $W_{vw}$ is contained in $N_x-F_x$, otherwise $x\not\in A_{vw}$ so $x\not\in A_v$, and $a(v)\neq x$, contradicting the fact that $v\in S_x$.
+  If $B_x$ contains some $K$-ancestor $a_i$, $i\in\{0,\ldots,d-1\}$, of $x$, it is because there is an edge $vw\in E(G)$ with $w\in S_{a_i}$ and $v\in S_{x'}$ for some $K$-descendant of $x$.  The edge $vw$ corresponds to a walk $W_{vw}$ in $G^+$. The walk $W_{vw}$ is contained in $N_x-F_x$, otherwise $x\not\in A_{vw}$ so $x'\not\in A_{vw}$, so $x'\not\in A_v$, and $a(v)\neq x'$, contradicting the fact that $v\in S_{x'}$.
   
-  However, $w\in S_{_i}$, so there exists an edge $ww'\in E(G)$ such that   $W_{ww'}$ is contained in $W_{ww'}\subseteq N_{a_i}-F_{a_i}$ but $W_{ww'}\not\subseteq N_{a_{i+1}}-F_{a_{i+1}}$.  Therefore $W_{ww'}$ must contain a first vertex $w^*\in V(F_{a_{i+1}}-F_{a_{i}})\subseteq Y_{a_i}$.
+  However, $w\in S_{a_i}$, so there exists an edge $ww'\in E(G)$ such that   $W_{ww'}$ is contained in $W_{ww'}\subseteq N_{a_i}-F_{a_i}$ but $W_{ww'}\not\subseteq N_{a_{i+1}}-F_{a_{i+1}}$.  Therefore $W_{ww'}$ must contain a first vertex $w^*\in V(F_{a_{i+1}}-F_{a_{i}})\subseteq Y_{a_i}$.
 
   Summarizing, we have a walk $w=v_0,v_1\ldots,v_{\ell-1},v_\ell=w^*$ in $G^+$ such that
   \begin{compactenum}[(i)]
