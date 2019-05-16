@@ -271,7 +271,7 @@ The tree decomposition $(B_x:x\in V(K))$ of $H$ is defined as follows: For each 
   \end{figure}
 
   Refer to \figref{A}(b)
-  If $B_x$ contains some $K$-ancestor $a_\delta$, $\delta\in\{0,\ldots,d-1\}$, of $x$, it is because there is an edge $vw\in E(G)$ with $w\in S_{a_\delta}$ and $v\in S_{x'}$ for some $K$-descendant of $x$.  The edge $vw$ corresponds to a walk $W_{vw}$ in $G^+$. The walk $W_{vw}$ is contained in $N_x-F_x$, otherwise $x\not\in A_{vw}$ so $x'\not\in A_{vw}$, so $x'\not\in A_v$, and $a(v)\neq x'$, contradicting the fact that $v\in S_{x'}$.
+  If $B_x$ contains some $K$-ancestor $a_\delta$, $\delta\in\{0,\ldots,d-1\}$, of $x$, it is because there is an edge $vw\in E(G)$ with $w\in S_{a_\delta}$ and $v\in S_{x'}$ for some $K$-descendant $x'$ of $x$.  The edge $vw$ corresponds to a walk $W_{vw}$ in $G^+$. The walk $W_{vw}$ is contained in $N_x-F_x$, otherwise $x\not\in A_{vw}$ so $x'\not\in A_{vw}$, so $x'\not\in A_v$, and $a(v)\neq x'$, contradicting the fact that $v\in S_{x'}$.
   
   However, $w\in S_{a_\delta}$, so there exists an edge $ww'\in E(G)$ such that $W_{ww'}\subseteq N_{a_\delta}-F_{a_\delta}$ but $W_{ww'}\not\subseteq N_{a_{\delta+1}}-F_{a_{\delta+1}}$.  Therefore $W_{ww'}$ must contain a first vertex $w^*\in V(F_{a_{\delta+1}}-F_{a_\delta})\subseteq Y_{a_\delta}$.
 
@@ -287,9 +287,13 @@ The tree decomposition $(B_x:x\in V(K))$ of $H$ is defined as follows: For each 
   \end{compactenum}
   We call any walk with properties (i)--(iv) a \emph{$\delta$-walk}. Therefore, to upper-bound $|B_x|$, it suffices to upper-bound the number of $\delta\in\{0,\ldots,d-1\}$ such that there exists a $\delta$-walk.  This is our goal for the remainder of this proof. 
   
-  In order to avoid excessive levels of subscripts, we introduce the following abbreviated notation: For $i\in\{0,\ldots,d\}$, we use $F_i$, $N_i$, and $Y_i$, as shorthands for $F_{a_i}$, $N_{a_i}$, and $Y_{a_i}$, respectively.
+  In order to avoid excessive levels of subscripts, we introduce the following abbreviated notation: For $i\in\{0,\ldots,d\}$, we use $F_i$, $N_i$, $Y_i$, and $M_i$ as shorthands for $F_{a_i}$, $N_{a_i}$, $Y_{a_i}$, and $M_{a_i}$, respectively.
   
-  Let $d_0=d$, and $d_1=\min\{i: V(F_d\cap Y_i)\neq\emptyset \}$.  By \propref{ancestor-boundary}, $F_d$ is contained in the interior of  $F_{d_1}$, i.e., $N_{d_0}\subseteq N_{d_1}-F_{d_1}$.   Refer to \figref{d0d1}.  We will now prove that 
+  Let $d_0=d$, and $d_1=\min\{i: V(F_d\cap Y_i)\neq\emptyset \}$.  By \propref{ancestor-boundary}, any vertex $z\in V(F_d)$ is contained in 
+  $Y_j$ for some $d_1\le j < d$.  Therefore, $F_d$ is contained in the interior of  $F_{d_1}$, i.e., $N_{d_0}\subseteq N_{d_1}-F_{d_1}$.   
+  
+  
+  Refer to \figref{d0d1}.  We will now prove that 
   \begin{equation}
      |\{\delta\in\{d_1,\ldots,d_0-1\}:  \mbox{there exists a $\delta$-walk} \}| \le \binom{k+1}{2} \enspace . \eqlabel{one-round}
   \end{equation}
@@ -303,42 +307,45 @@ The tree decomposition $(B_x:x\in V(K))$ of $H$ is defined as follows: For each 
   
   To prove this claim, consider the graph $I$, illustrated in \figref{d0d1}, with vertex set $V(I)=\{d_1+1,\ldots,d_0\}$ and $ij\in E(I)$ if and only $i=j$ or $|F_i\cap Y_j|\neq\emptyset$.  Any $\delta$-walk $v_0,\ldots,v_\ell$ with $\delta\in V(I)$ corresponds to a walk $\rho_0,\ldots,\rho_{\ell}$ in $I$, where $\rho_i=\max\{j\in\{0,\ldots,d\} : v_i\in N_{j}-F_j\}$.  To see why this is true, consider $\rho_{t}= i$ and $\rho_{t+1}=j$ for some $t\in\{0,\ldots,\ell-1\}$:
   \begin{compactenum}
-    \item If $i=j$, then $ij$ is an edge of $I$ since $I$ contains the self-loop $ii$ for each $i\in V(I)$.
+    \item If $i=j$, then $ij\in E(I)$ since $ii\in E(I)$ for each $i\in V(I)$.
     
-    \item If $j\neq i$ then assume, without loss of generality, that $j < i$ so that $a_i$ is a $K$-descendant of $a_j$.  Now $v_t\in V(N_i-F_i)$, but $v_{t+1}\not\in V(N_i-F_i)$ otherwise we would have $j\ge i$. Therefore, $v_{t+1}\in V(F_i)$.  By \propref{ancestor-boundary}, $v_{t+1}$ is in $Y_{j'}$ for some $j'< i$ and the edge $ij'\in E(I)$.  By \propref{children}, $v_{t+1}\not\in V(N_{j''}-F_{j''})$ for any $K$-descedant $j''>j'$ of $j'$.  Therefore $j'=\max\{j : v_{t+1}\in N_j-F_j\}$. Therefore, by definition $j'=\rho(v_{t+1})=j$, so the edge $ij=ij'\in E(I)$. 
+    \item If $j\neq i$ then assume, without loss of generality, that $j < i$ so that $a_j$ is a $K$-ancestor of $a_i$.  Now $v_t\in V(N_i-F_i)$, but $v_{t+1}\not\in V(N_i-F_i)$ otherwise we would have $j\ge i$. Therefore, $v_{t+1}\in V(F_i)$.  By \propref{ancestor-boundary}, $v_{t+1}\in V(Y_{j'})$ for some $j'< i$ and therefore $ij'\in E(I)$.  By \propref{children}, $v_{t+1}\not\in V(N_{j''}-F_{j''})$ for any $K$-descedant $j''>j'$ of $j'$.  Therefore $j'=\max\{j : v_{t+1}\in V(N_j-F_j)\}$. By definition $j'=\rho(v_{t+1})=j$, so the edge $ij=ij'\in E(I)$. 
   \end{compactenum}
 
   Properties~(i)--(iv) of $\delta$-walks imply that any walk $\rho_0,\ldots,\rho_\ell$ obtained this way 
   \begin{compactenum}[(i')]
     \item begins at $\rho_0=d_0$ 
-    \item is contained in $I[\delta,\ldots,d_0]$, 
+    \item is contained in $I[\{\delta,\ldots,d_0\}]$, 
     \item ends at $\rho_\ell=\delta$
     \item has length $\ell \le k+1$.
   \end{compactenum}
-  The edges in $E(I)$ can be partitioned into two classes:  A set $B(I)=\{ij\in E(I): |i-j|\le 1\}$ of \emph{boring edges} and a set $J(I)=\{ij\in E(I): |i-j|>1\}$ of \emph{jump edges}.  For a jump edge $ij$ with $i>j$, $j$ is called a \emph{landing} and $i$ is called a \emph{takeoff}.  The jump edges of $I$ satisfy the following properties:
+  We will call any walk in $I$ that satisfies (i')--(iv') a \emph{$\delta$-walk}.
+  
+  The edges in $E(I)$ can be partitioned into two classes:  A set $B(I)=\{ij\in E(I): |i-j|\le 1\}$ of \emph{boring edges} and a set $J(I)=\{ij\in E(I): |i-j|>1\}$ of \emph{jump edges}.  For a jump edge $ij$ with $i>j$, $j$ is called a \emph{landing} and $i$ is called a \emph{takeoff}.  We will show that the jump edges of $I$ satisfy the following properties:
   \begin{enumerate}[(J1)]
     \item \jlabel{single} Every $i\in\{d_1+1,\ldots,d_0\}$ is a takeoff for at most one jump edge.
     
-    \item \jlabel{nested} For every jump edge $ij\in E(I)$ with takeoff $i$ and landing $j$, and for every $q\in\{j+2,\ldots,i\}$, if $q$ is a takeoff some jump edge, then this edge is $qj$.
+    \item \jlabel{nested} For every jump edge $ij\in E(I)$ with takeoff $i$ and landing $j$, and for every $q\in\{j+2,\ldots,i\}$, if $q$ is a takeoff for some jump edge, then this edge is $qj$.
   \end{enumerate}
   Property \jref{nested} can be interpreted informally as saying that jump edges can cross, but barely:  If $i_1j_1$ and $i_2j_2$ are jump edges with $i_1> i_2>j_1>j_2$, then $j_1=i_2-1$.
 
   We now prove that jump edges satisfy \jref{single}.
   First We claim that, for each $i\in\{d_1+1,\ldots,d_0\}$, $F_{i}$ contains a vertex of $Y_{d_1}$.  For $i=d_0$, this is true by definition so $F_{d_0}$ contains some vertex $v\in V(Y_{d_1})$.  For $i>0$, we have $F_{d_0}-F_{i}\subseteq N_i-F_i$, but $N_i-F_i$ contains no vertex of $Y_{d_1}$. It must therefore be the case that $v\in V(F_i)$, otherwise $F_{d_0}-F_i$ would contain $v$. 
   
-  Now, consider the parent $a_{i-1}$ of $a_i$ in $K$.  By \propref{children} $F_i$ is a wedge of the Mercedes graph $M_{i-1}$.  Let $P_1,\ldots,P_3$ be the partition of $V(F_{i-1})$ guaranteed by \propref{ancestor-boundary}.  Without loss of generality, we can assume that $P_1=V(Y_{d_1}\cap F_{i-1})$.  Then, by \propref{tripod-feet}, $V(F_i)$ contains vertices from at most one of $P_2$ or $P_3$---say $P_2$---and suppose $P_2=V(F_{i-1}\cap Y_j)$ for some $j< i-1$.  This accounts for a single jump edge $ij$ for which $i$ is the takeoff.  All remaining vertices of $F_i$ are contained in $Y_{i-1}$, which only introduces the boring edge $(i,i-1)$.  Thus we have established that jump edges satisfy \jref{single}.
+  Now, consider the parent $a_{i-1}$ of $a_i$ in $K$.  By \propref{children} $F_i$ is a wedge of the Mercedes graph $M_{i-1}$.  Let $P_1,\ldots,P_g$ be the partition of $V(F_{i-1})$ guaranteed by \propref{ancestor-boundary}.
+  By \propref{tripod-feet}, $V(F_i) = V(F_i)\cap(P_\alpha \cup P_j\cup V(Y_{i-1}))$ for some $\alpha,j\in \{1,\ldots,g\}$.  Since $F_i$ contains $v\in V(Y_{d_1})$, at least one of $\alpha$ or $j$, say $\alpha$, is equal $d_1$. Since $d_1\not\in V(I)$ and the (possible) edge $(i,i+1)$ is a boring edge, the only (possible) jump edge with $i$ as takeoff is $ij$. This establishes \jref{single}. 
   
-  To establish that jump edges satisfy \jref{nested} we can use the same argument used to establish that each $F_i$ contains a vertex of $Y_{d_1}$ to establish that each $F_q$ contains a vertex of $Y_j$ and therefore $qj\in E(I)$.  Since $q \ge j+2$, $qj$ is a jump edge and, by \propref{single}, it is the only jump edge with takeoff $q$.
+  To establish that jump edges satisfy \jref{nested} we can use the same argument used to establish that each $F_i$ contains a vertex of $Y_{d_1}$ to establish that each $F_q$ contains a vertex of $Y_j$ and therefore $qj\in E(I)$.  Since $q \ge j+2$, $qj$ is a jump edge and, by \jref{single}, it is the only jump edge with takeoff $q$. 
 
-  Let $j_0=d$ and let $j_1>j_2>\cdots> j_p$ denote the sequence of landings, in decreasing order.  Then \jref{single} and \jref{nested} imply that
+  It will be helpful to consider an \emph{edge maximal} version, $I^+$, of $I$ that we now define.  Let $j_0=d$ and let $j_1>j_2>\cdots> j_p$ denote the sequence of landings, in decreasing order.  Then \jref{single} and \jref{nested} imply that
   \[
       J(I) \subseteq J^+(I) :=
          \bigcup_{t=1}^p \{ ij_t : i\in\{ j_t,\ldots,j_{t-1}+1 \}\} \enspace . 
   \]
-  and clearly $B(I)\subseteq B^+(I) := \{(i,i+1): i\in\{d_1+2,\ldots,d_0\}\}$.
-  Any walk in $I$ is also a walk in the supergraph $I^+$ with $V(I^+)=V(I)$ and $E(I^+)=B^+(I)\cup J^+(I)$, so it we can focus our attention on walks $\rho_0,\ldots,\rho_{\ell}$ in $I^+$ that satisify properties (i')--(iv').  We will also call these $\delta$-walks.
+  and clearly $B(I)\subseteq B^+(I) := \{(i,j): i\in\{d_1+2,\ldots,d_0-1\},\, j\in\{i-1,i,i+1\}\}$.
+  Any walk in $I$ is also a walk in the supergraph $I^+$ with $V(I^+)=V(I)$ and $E(I^+)=B^+(I)\cup J^+(I)$, so we can focus our attention on $\delta$-walks in $I^+$.
   
-  We are almost done proving \eqref{one-round}. Refer to \figref{one-round}.  For any landing $j_t$, $t>0$, $I^+[j_t,\ldots,d_0]$ contains the path $d_0,j_1,\ldots,j_t$ of length $t$.  A few moments consideration will also convince the reader that $d_0,j_1,\ldots,j_t$ is a shortest path, in $I[j_{t+1}-1,\ldots,d_0]$, from $d_0$ to $j_t$.  Therefore, by (iv') no $\delta$-walk can containd $j_t$ for any $t> k+1$.
+  We are almost done proving \eqref{one-round}. Refer to \figref{one-round}.  For any landing $j_t$, $t>0$, $I^+[\{j_t,\ldots,d_0\}]$ contains the path $d_0,j_1,\ldots,j_t$ of length $t$.  A few moments consideration will also convince the reader that $d_0,j_1,\ldots,j_t$ is a shortest path, in $I^+[\{j_{t+1}-1,\ldots,d_0\}]$, from $d_0$ to $j_t$.  Therefore, by (iv') no $\delta$-walk contains $j_t$ for any $t> k+1$.
   
   \begin{figure}
     \begin{center}
@@ -348,17 +355,15 @@ The tree decomposition $(B_x:x\in V(K))$ of $H$ is defined as follows: For each 
     \figlabel{one-round}
   \end{figure}
   
-  Next, observe that, in $I^+[j_{t+1}+1,\ldots,d_0]$ every path from $d_0$ to some vertex  $j_{t}+i$, $i\ge 0$ contains $j_t$.  Furthermore, the only edges of $I^+[j_{t+1}+1,\ldots,d_0]$ incident to vertices $j_t+i$, $i>0$ are boring edges.  Therefore, for any $i\ge 0$, the shortest path from $d_0$ to $j_t+i$ in $I^+[j_{t+1}+1,\ldots,d_0]$ has length $t+i$.  It follows that there are at most $k+2-t$ values $\delta\in\{j_{t+1},\ldots,j_t\}$ such that there exists a $\delta$-walk.
+  Next, observe that every path in $I^+[\{j_{t+1}+1,\ldots,d_0\}]$ from $d_0$ to some vertex  $j_{t}+i$, $i\ge 0$, contains $j_t$.  Furthermore, the only edges of $I^+[\{j_{t+1}+1,\ldots,d_0\}]$ incident to vertices $j_t+i$, $i>0$, are boring edges.  Therefore, for any $i\ge 0$, the shortest path from $d_0$ to $j_t+i$ in $I^+[\{j_{t+1}+1,\ldots,d_0\}]$ has length $t+i$.  It follows that there are at most $k+2-t$ values $\delta\in\{j_{t+1},\ldots,j_t\}$ such that there exists a $\delta$-walk.
   
   Therefore, the total number of $\delta\in\{d_1+1,\ldots,d_0\}$ such that there exists a $\delta$-walk is at most
   \[
      \sum_{t=0}^{k+1} (k+2-t) = \sum_{t=1}^{k+2} t = \binom{k+1}{2}
   \]
-  We are now very close to \eqref{one-round}, which asks for the number of $\delta$-walks for $\delta\in\{d_1,\ldots,d_0-1\}$.
-  The preceding formula counts the $d_0$-walk, but does not count the $d_1$ walk.  These two effects cancel each other, thus establishing \eqref{one-round}.
+  We are now very close to \eqref{one-round}, which asks for the number of $\delta\in\{d_1,\ldots,d_0-1\}$ such that there exists a $\delta$-walk.
+  The preceding formula counts $\delta=d_0$, but does not count $\delta=d_1$.  These two effects cancel each other, thus establishing \eqref{one-round}.
   
-  Refer to \figref{nested}.
-  More generally, for $s>1$, let $d_s=\min\{i: V(F_{d_s}\cap Y_i)\neq\emptyset \}$.  
   
   \begin{figure}
     \begin{center}
@@ -368,8 +373,8 @@ The tree decomposition $(B_x:x\in V(K))$ of $H$ is defined as follows: For each 
     \figlabel{nested}
   \end{figure}
   
-  Consider some $\delta$-walk $v_0,\ldots,v_\ell$ for $\delta\in \{ d_{s+1},\ldots,d_{s}-1\}$.  By (i) and (ii), $v_0\in V(N_{d_0}-F_{d_0})\subseteq V(N_{d_s}-F_{d_s})$ and $v_\ell\in F_{\delta+1}-F_\delta$.  Therefore, there exists some maximum value $i$ such that $v_i\in V(N_{d_{s}}-F_{d_{s}})$.  (In words, $i$ is the last time the walk is in the interior of $F_{d_s}$ before it leaves forever.)
-  Observe that $i\ge s-1$ because $v_0,\ldots,v_i$ contains a vertex from each of $F_{d_0},\ldots,F_{d_{s-1}}$.  
+  Refer to \figref{nested}. For $s>1$, let $d_s=\min\{i: V(F_{d_s}\cap Y_i)\neq\emptyset \}$. Consider some $\delta$-walk $v_0,\ldots,v_\ell$ for $\delta\in \{ d_{s+1},\ldots,d_{s}-1\}$.  By (i) and (ii), $v_0\in V(N_{d_0}-F_{d_0})\subseteq V(N_{d_s}-F_{d_s})$ and $v_\ell\in F_{\delta+1}-F_\delta$.  Therefore, there exists some maximum value $i$ such that $v_i\in V(N_{d_{s}}-F_{d_{s}})$.  (In words, $i$ is the last time the walk is in the interior of $F_{d_s}$ before it leaves forever.)
+  Observe that $i\ge s$ because $v_0,\ldots,v_i$ contains $v_0\in N_{d_0}-F_{d_0}$ as well as a vertex from each of $F_{d_0},\ldots,F_{d_{s-1}}$.  
   
   Now, consider the subwalk $v_i,\ldots,v_\ell$.  This subwalk obeys Properties~(i)--(iv) with respect to $F_{d_s}$.  Specifically:
   \begin{compactenum}[(i)]
@@ -379,7 +384,7 @@ The tree decomposition $(B_x:x\in V(K))$ of $H$ is defined as follows: For each 
     
     \item $v_\ell\in V(F_{a_{\delta+1}}-F_{a_\delta})$; and
     
-    \item $\ell\le k+1$, so $\ell-i \le \ell-s \le \le k+1-s$.
+    \item $\ell\le k+1$, so $\ell-i \le \ell-s \le k+1-s$.
   \end{compactenum}
   Exactly the same analysis used to establish \eqref{one-round} shows that
   \begin{equation}
