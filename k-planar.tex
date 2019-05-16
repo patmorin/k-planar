@@ -143,29 +143,29 @@ The non-root nodes of the PS-tree $K$ (including the sub-root $r_K$) satisfy sev
 For any triangulation $\Delta$ in which the outer face has a vertex $r$ of degree 3 and for any BFS spanning-tree of $\Delta$ rooted at $r$, there exists a PS-tree $K=K(\Delta,T,r)$.  Indeed, this tree is constructed (albeit implicitly) by \citet[Proof of Lemma~14]{dujmovic.joret.ea:planar}.
 
 
-The following claim is not used until later in the paper. However, it's proof is a helpful exercise in understanding the properties of a PS-Tree.
-
-\begin{clm}\clmlabel{strong-ancestor-boundary}
-  Let $K$ be a PS-tree and
-  let $y\in V(K)$ be a non-root node with parent $p$ such that $V(F_y\cap Y_a)\neq\emptyset$ for some $K$-ancestor $a\neq p$ of $p$. Then $V(F_p\cap Y_a)\neq\emptyset$.
-\end{clm}
-
-\begin{proof}
-  By \propref{children}, $F_y$ is a wedge in the Mercedes graph $M_p$, so $V(F_y)$ can be partitioned into  $P_1'=V(F_y\cap Y_p)$ and $P_{2,3}'=V(F_y\cap F_p)$.  Let $P_1,\ldots,P_g$ denote the partition of $V(F_p)$ given by \propref{ancestor-boundary}.  
-  
-  We claim that \propref{tripod-feet} ensures that $P_{2,3}'\subset P_i\cup P_j$ for some $i,j\in \{1,\ldots,g\}$.  If $g=2$, this claim is immediate, so assume $g=3$. Then, $F_y\cap \overline{Y}_p$ is the path formed by two legs $Q_2$ and $Q_3$ of $\overline{Y}_p$ and one edge $v_2v_3$ of $\tau_p$.  
-  By \propref{tripod-feet} and the assumption that $q=3$, $Q_2$ has a foot $v_2'\in P_i$ and $Q_3$ has a foot $v_3'\in P_j$, for some $i\neq j$.  The third foot $v_1'$ of $\overline{Y}_p$ is therefore in $P_\ell$ for the unique $\ell \in\{1,2,3\}\setminus \{i,j\}$.  It follows that $V(P_\ell\cap F_y)=\emptyset$.
-  
-  Setting $P_2'=V(P_i\cup F_y)$ and $P_3'=V(P_j\cup F_y)$ yields a partition $\{P_1',P_2',P_3'\}$ of $V(F_y)$ such that $P_1'\subset V(Y_{p})$,   
-  $P_2'\subset V(Y_{a_2})$, and $P_3'\subset V(Y_{a_3})$  for some $K$-ancestors $a_2$ and $a_3$ of $a$.  Therefore $a_2$ and $a_3$ are the only $K$-ancestors $a\neq p$ of $p$, such that $V(F_y\cap Y_a)\neq\emptyset$.
-  Now, each foot $v_2',v_3'\in V(F_p)$.  Furthermore, $v_2'\in P_i\subseteq V(Y_{a_2})$ and $v_3'\in P_j\subseteq V(Y_{a_3})$. Therefore, $V(F_p\cap Y_{a_2})\supseteq\{v_2'\}\neq\emptyset$ and $V(F_p\cap Y_{a_3})\supseteq\{v_3'\}\neq\emptyset$, as claimed.
-\end{proof}
-
-Contained in the proof of \clmref{strong-ancestor-boundary} is the following addendum to \propref{ancestor-boundary}:
- 
-\begin{enumerate}[(PR1')]\setcounter{enumi}{1}
-  \item \proplabel{ancestor-boundary-ii} Furthermore, if $g=3$, then  $P_i=V(F_x\cap Y_p)$ where $p$ is the parent of $x$ in $K$, for one $i\in\{1,2,3\}$.
-\end{enumerate}
+% The following claim is not used until later in the paper. However, it's proof is a helpful exercise in understanding the properties of a PS-Tree.
+% 
+% \begin{clm}\clmlabel{strong-ancestor-boundary}
+%   Let $K$ be a PS-tree and
+%   let $y\in V(K)$ be a non-root node with parent $p$ such that $V(F_y\cap Y_a)\neq\emptyset$ for some $K$-ancestor $a\neq p$ of $p$. Then $V(F_p\cap Y_a)\neq\emptyset$.
+% \end{clm}
+% 
+% \begin{proof}
+%   By \propref{children}, $F_y$ is a wedge in the Mercedes graph $M_p$, so $V(F_y)$ can be partitioned into  $P_1'=V(F_y\cap Y_p)$ and $P_{2,3}'=V(F_y\cap F_p)$.  Let $P_1,\ldots,P_g$ denote the partition of $V(F_p)$ given by \propref{ancestor-boundary}.  
+% 
+%   We claim that \propref{tripod-feet} ensures that $P_{2,3}'\subset P_i\cup P_j$ for some $i,j\in \{1,\ldots,g\}$.  If $g=2$, this claim is immediate, so assume $g=3$. Then, $F_y\cap \overline{Y}_p$ is the path formed by two legs $Q_2$ and $Q_3$ of $\overline{Y}_p$ and one edge $v_2v_3$ of $\tau_p$.  
+%   By \propref{tripod-feet} and the assumption that $q=3$, $Q_2$ has a foot $v_2'\in P_i$ and $Q_3$ has a foot $v_3'\in P_j$, for some $i\neq j$.  The third foot $v_1'$ of $\overline{Y}_p$ is therefore in $P_\ell$ for the unique $\ell \in\{1,2,3\}\setminus \{i,j\}$.  It follows that $V(P_\ell\cap F_y)=\emptyset$.
+% 
+%   Setting $P_2'=V(P_i\cup F_y)$ and $P_3'=V(P_j\cup F_y)$ yields a partition $\{P_1',P_2',P_3'\}$ of $V(F_y)$ such that $P_1'\subset V(Y_{p})$,   
+%   $P_2'\subset V(Y_{a_2})$, and $P_3'\subset V(Y_{a_3})$  for some $K$-ancestors $a_2$ and $a_3$ of $a$.  Therefore $a_2$ and $a_3$ are the only $K$-ancestors $a\neq p$ of $p$, such that $V(F_y\cap Y_a)\neq\emptyset$.
+%   Now, each foot $v_2',v_3'\in V(F_p)$.  Furthermore, $v_2'\in P_i\subseteq V(Y_{a_2})$ and $v_3'\in P_j\subseteq V(Y_{a_3})$. Therefore, $V(F_p\cap Y_{a_2})\supseteq\{v_2'\}\neq\emptyset$ and $V(F_p\cap Y_{a_3})\supseteq\{v_3'\}\neq\emptyset$, as claimed.
+% \end{proof}
+% 
+% Contained in the proof of \clmref{strong-ancestor-boundary} is the following addendum to \propref{ancestor-boundary}:
+% 
+% \begin{enumerate}[(PR1')]\setcounter{enumi}{1}
+%   \item \proplabel{ancestor-boundary-ii} Furthermore, if $g=3$, then  $P_i=V(F_x\cap Y_p)$ where $p$ is the parent of $x$ in $K$, for one $i\in\{1,2,3\}$.
+% \end{enumerate}
 
 % \subsubsection{Layered $H$-Partitions from PS-Trees}
 % \seclabel{k-to-h}
@@ -221,7 +221,8 @@ For each edge $vw\in E(G)$, consider the walk $W_{vw}$ in $G^+$ that corresponds
   Since $v\in S_x$, the lower endpoint of $K[A_{vw}]$ is $x$ for some edge $vw\in E(G)$.  This implies that $W_{vw}\subset N_x-F_x$ but $W_{vw} \not\subseteq N_{x'}-F_{x'}$ for any any child $x'$ of $x$ in $K$. Therefore, \propref{children} and \propref{ancestor-boundary} imply that $W_{vw}$ contains a vertex $v'\in Y_x$.  Since $G$ is $k$-planar and $v'\in V(W_{vw})$ this implies that $\dist_{G^+}(v,v') \le k+1$.
   By the triangle inequality,     
   \[
-    \dist_{G^+}(r,v') \le \dist_{G^+}(r,v) + \dist_{G^+}(v,v') \le \dist_{G^+}(r,v) + k + 1 \enspace .
+    \dist_{G^+}(r,v') \le \dist_{G^+}(r,v) + \dist_{G^+}(v,v') 
+       \le \dist_{G^+}(r,v) + k + 1 \enspace .
   \]
   Similarly, $\dist_{G^+}(r,v) \le \dist_{G^+}(r, v') + k+1$.  Therefore
   $|\dist_{G^+}(r,v)-\dist_{G^+}(r,v')| \le k+1$ which establishes the claim, since $T$ is BFS tree rooted at $r$, so $\dist_{T}(r,z)=\dist_{G^+}(r,z)$ for all $z\in V(G^+)$.
@@ -257,7 +258,6 @@ The tree decomposition $(B_x:x\in V(K))$ of $H$ is defined as follows: For each 
   Consider the graph $A$ that contains the edges and vertices of $F_{a}$ for all $K$-ancestors $a$ of $x$. See \figref{A}(a).  It is helpful to think of this graph as follows:  We begin with $F_{a_0}$ where $a_0=r_K$ is the root of $K$.  We then cut $F_{a_0}$ into two pieces $F^{\bar{x}}_{a_0}$ and $F^x_{a_0}$ where $F^x_{a_0}$ is the piece that contains $F_x$. (The path that makes this cut contains two legs $Q_i$ and $Q_j$ of a tripod $Y$ and one edge $v_iv_j$ of its crotch $\tau=v_1v_2v_3$.)  This process continues by partitioning $F_{a_1}:=F^x_{a_0}$ recursively.  The process terminates after some number $d$ of iterations, when $F^x_{a_{d-1}}=F_x=F_{a_d}$.
 
   \begin{figure}
-    
     \begin{center}
       \begin{tabular}{cc}
         \includegraphics{figs/A-1} &
@@ -287,35 +287,42 @@ The tree decomposition $(B_x:x\in V(K))$ of $H$ is defined as follows: For each 
   
   In the following, when $i$ is an integer, we will use $F_i$, $Y_i$, and so on as shorthands for $F_{a_i}$, $Y_{a_i}$, and so on, respectively.
   
-  To begin, let $d_0=d$, and $d_1=\min\{i: V(F_d\cap Y_i)\neq\emptyset \}$.  Observe that $F_{d}=F_{d_0}$ is contained in the interior of $F_{d_1}$, i.e., $N_{d_0}\subseteq N_{d_1}-F_{d_1}$.   We claim that 
+  To begin, let $d_0=d$, and $d_1=\min\{i: V(F_d\cap Y_i)\neq\emptyset \}$.  Observe that $F_{d}=F_{d_0}$ is contained in the interior of $F_{d_1}$, i.e., $N_{d_0}\subseteq N_{d_1}-F_{d_1}$.   Refer to \figref{d0d1}.  We claim that 
   \[  
      |\{\delta\in\{d_1,\ldots,d_0-1\}:  \mbox{there exists a $\delta$-walk} \}| \le \binom{k+1}{2} \enspace .
   \]
-  To prove this claim, consider the graph $I$ with vertex set $V(I)=\{d_1,\ldots,d_0\}$ and $ij\in E(I)$ if and only $i=j$ or $|F_i\cap Y_j|\neq\emptyset$.  Any $\delta$-walk $v_0,\ldots,v_\ell$ with $\delta\in V(I)$ corresponds to a walk $\rho_0,\ldots,\rho_{\ell}$ in $I$, where $\rho_i=\max\{j : v_i\in N_{j}-F_j\}$.
+  \begin{figure}
+    \begin{center}
+      \includegraphics{figs/d0d1-5}
+    \end{center}
+    \caption{$F_{d_1},\ldots,F_{d_0}$ and the resulting graph $I$.}
+    \figlabel{d0d1}
+  \end{figure}
+  To prove this claim, consider the graph $I$ with vertex set $V(I)=\{d_1,\ldots,d_0\}$ and $ij\in E(I)$ if and only $i=j$ or $|F_i\cap Y_j|\neq\emptyset$.  Any $\delta$-walk $v_0,\ldots,v_\ell$ with $\delta\in V(I)$ corresponds to a walk $\rho_0,\ldots,\rho_{\ell}$ in $I$, where $\rho_i=\max\{j\in\{0,\ldots,d\} : v_i\in N_{j}-F_j\}$.
   
   The graph $I$ has the following properties:
   \begin{enumerate}
-    \item For each $i\in V(I)$, $i$ has at most 2 neighbours among $0,\ldots,i-1$.  If $i$ has two such neighbours, then one of them is $i-1$.
+    \item For each $i\in V(I)$, $i$ has at most 2 neighbours among $d_1,\ldots,i-1$.  If $i$ has two such neighbours, then one of them is $i-1$.
 
     \item For each $ij\in E(I)$ with $j<i$, and each $i'\in\{j+2,\ldots,i\}$, the vertex $i'$ has at most 2 neighbours and these are contained in $\{i'-1,j\}$.
   \end{enumerate}
-  These two properties imply that $I$ has a very simple structure.   We call $j\in\{d_1,\ldots,d_0\}$ a \emph{left endpoint} if there exists an edge $ij\in E(I)$ with $j < i - 1$.  Let $j_1>j_1>\cdots> j_p$ denote the sorted sequence of left endpoints and, for convenience, let $j_{0}=d$.  Then 
+  These two properties imply that $I$ has a very simple structure.   We call $j\in\{d_1,\ldots,d_0\}$ a \emph{left endpoint} if there exists an edge $ij\in E(I)$ with $j < i - 1$.  Let $j_1>j_2>\cdots> j_p$ denote the sorted sequence of left endpoints and, for convenience, let $j_{0}=d$.  Then 
   \[
       E(I) \subseteq \{ (i,i+1): i\in\{d_1,\ldots,d_0-1\} \cup 
          \bigcup_{t=1}^p \{ ij_t : i\in\{ j_t,\ldots,j_{t-1} \}\} \enspace . 
   \]
-  (See, \figref{i-graph}.)  Observe that shortest path from in $i$ from $d_0$ to $j_t$ has length at least $t$.  Let $X_t=\{j_t,\ldots,j_{t+1}\}$ and observe that the shortest path from $d_0$ to some value $i\in X_t$ that does not contain any $i' <i$ goes through $j_{t}$.  Therefore, $X_t$ contains at most $k+2-t$ values of $\delta$ such that there exists a $\delta$-walk.  Therefore, 
+  (See the lower half of \figref{d0d1}.)  Observe that shortest path from in $i$ from $d_0$ to $j_t$ has length at least $t$.  Let $X_t=\{j_t,\ldots,j_{t+1}\}$ and observe that the shortest path from $d_0$ to some value $i\in X_t$ that does not contain any $i' <i$ goes through $j_{t}$.  Therefore, $X_t$ contains at most $k+2-t$ values of $\delta$ such that there exists a $\delta$-walk.  Therefore, 
   \[  
      |\{\delta\in\{d_1,\ldots,d_0-1\}:  \mbox{there exists a $\delta$-walk} \}| \le \sum_{t=0}^{k+1} (k+2-t) = \sum_{t=1}^{k+2} t = \binom{k+2}{2} \enspace .
   \]
   
-  \begin{figure}
-    \begin{center}
-      \includegraphics{figs/i-graph}
-    \end{center}
-    \caption{The graph $I$ used in the proof of \clmref{bag-size}}
-    \figlabel{i-graph}
-  \end{figure}
+  % \begin{figure}
+  %   \begin{center}
+  %     \includegraphics{figs/i-graph}
+  %   \end{center}
+  %   \caption{The graph $I$ used in the proof of \clmref{bag-size}}
+  %   \figlabel{i-graph}
+  % \end{figure}
     
   More generally, for $s>1$, let $d_s=\min\{ i: V(F_{d_s}\cap Y_i)\neq\emptyset \}$. Consider some $\delta$-walk $v_0,\ldots,v_\ell$ for $\delta\in \{ d_{s},\ldots,d_{s-1}-1 \}$, for some $s>1$.  Since $v_0\in V(N_{d_0}-F_{d_0})$ and $v_\ell\in F_{\delta+1}-F_\delta$, there exists some maximum value $i$ such that $v_i\in N_{d_{s-1}}-F_{d_{s-1}}$.  Furthermore, $i\ge s-2$ because $v_1,\ldots,v_i$ contains a vertex from each of $F_{d_0},F_{d_1},\ldots,F_{d_{s-2}}$.  But this means that we can treat $v_i,\ldots,v_{\ell}$ as a $\delta$-walk of length at most $\ell-s+2 \le k-s+3$ that begins in $N_{d_{s-1}}-F_{d_{s-1}}$.  By the same argument used above, 
   \[  |\{\delta\in\{d_s,\ldots,d_{s-1}-1\}:  \mbox{there exists a $\delta$-walk} \}| \le \binom{k-s+3}{2} \enspace .\]
