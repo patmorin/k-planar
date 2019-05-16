@@ -64,9 +64,8 @@ Under these definitions $0$-planar graphs are exactly planar graphs and $0$-plan
 
 We prove the following result:
 \begin{thm}\thmlabel{k-planar}
-  Every $k$-planar graph has a layered $H$-partition of layered-width at most $24k^2 + 36k + 12$ in which $H$ has treewidth at most $k^3/6+k^2/+k/3-1$.
+  Every $k$-planar graph has a layered $H$-partition of layered-width at most $24k^2 + 36k + 12$ in which $H$ has treewidth at most $k^3/6+k^2/2+k/3-1$.
 \end{thm}
-
 
 In the special case $k=1$ we obtain better constants and an additional property (planarity) of $H$:
 
@@ -214,7 +213,7 @@ For each edge $vw\in E(G)$, consider the walk $W_{vw}$ in $G^+$ that corresponds
 \[
    S_x = \{v\in V(G): a(v)=x \} \enspace .
 \]
-\note{PM}{We might be able to save a factor of 2 here on the layered width, because we only need one endpoint of each edge $vw$.}Clearly $\mathcal{S}=\{S_x:x\in V(K)\}$ is a partition of $V(G)$.  We will use $\mathcal{S}$ as the partition that defines our quotient graph $H=G/\mathcal{S}$ with vertex set $V(H)=V(K)$ and the edge $xy\in E(H)$ if and only if there exists an edge $vw\in E(G)$ with $v\in S_x$ and $w\in S_y$.  First we argue that this partition has small width with respect to the layering $\{V_0,\ldots,V_h\}$ defined by $T$ (recall that this is a layering of $G^+$, not a layering of $G$).
+Clearly $\mathcal{S}=\{S_x:x\in V(K)\}$ is a partition of $V(G)$.  We will use $\mathcal{S}$ as the partition that defines our quotient graph $H=G/\mathcal{S}$ with vertex set $V(H)=V(K)$ and the edge $xy\in E(H)$ if and only if there exists an edge $vw\in E(G)$ with $v\in S_x$ and $w\in S_y$.  First we argue that this partition has small width with respect to the layering $\{V_0,\ldots,V_h\}$ defined by $T$ (recall that this is a layering of $G^+$, not a layering of $G$).
 
 \begin{clm}\clmlabel{chargeback-to-y}
    For any $x\in V(K)$ and any vertex $v\in S_x$, there exists a vertex $v'\in Y_x$ such that $|\dist_T(r,v')-\dist_T(r,v)|\le k+1$.  
@@ -398,7 +397,7 @@ The tree decomposition $(B_x:x\in V(K))$ of $H$ is defined as follows: For each 
 \begin{proof}[Proof of \thmref{k-planar}]
   We use the layered $H$-partition $(\mathcal{L}, \mathcal{S})$, where $\mathcal{S}=\{S_x:x\in V(K)\}$ and $\mathcal{L}=\langle V_i': i=0,1,2\ldots\rangle$ where $V_i' = V_{(k+1)i}\cup\cdots\cup V_{(k+1)(i+1)-1}$.  \Eqref{distance-preserving} shows that $\mathcal{L}$ is indeed a layering of $G$.
 
-  By \clmref{bag-size}, $\mathcal{S}$ produces a graph $H=G/\mathcal{S}$ of treewidth at most $k^3/6+k^2/+k/3-1$.  By \clmref{width-of-g-plus}, for each $x\in V(H)$ and each integer $i$, $|B_x\cap V_i|\le 24k+12$, so $|B_x\cap V_i'|\le (k+1)(24k + 12) = 24k^2+36k+12$. 
+  By \clmref{bag-size}, $\mathcal{S}$ produces a graph $H=G/\mathcal{S}$ of treewidth at most $k^3/6+k^2/2+k/3-1$.  By \clmref{width-of-g-plus}, for each $x\in V(H)$ and each integer $i$, $|B_x\cap V_i|\le 24k+12$, so $|B_x\cap V_i'|\le (k+1)(24k + 12) = 24k^2+36k+12$. 
 \end{proof}
 
 
@@ -540,7 +539,7 @@ such that  $W_{i} \cap V(G) \setminus V(Z) = V_i  \setminus V(Z)$ for all $i\geq
      Z' = \{ v : V(W_{vw})\cap Z\neq\emptyset \} \enspace .
   \]
   \note{PM}{We can certainly save a factor of 2 here because we only need one endpoint of each $vw$ that crosses $Z$ to take part in $Z'$.}
-  Since $|Z\cap V_i| \le 2g$, the same argument used in the proof of \lemref{width-of-g-plus} shows that $|Z'\cap V_i|\le 2g\times 4\times (2k+1) = 16gk+8g$ for all $i\in\{1,\ldots,h\}$.  
+  Since $|Z\cap V_i| \le 2g$, the same argument used in the proof of \lemlabel{width-of-g-plus} shows that $|Z'\cap V_i|\le 2g\times 4\times (2k+1) = 16gk+8g$ for all $i\in\{1,\ldots,h\}$.  
   
   Furthermore, for every edge $vw\in E(G-Z')$, $\dist_{G^+-Z}(v,w)\le k+1$, since $W_{vw}\subseteq G^+-Z$.
   
