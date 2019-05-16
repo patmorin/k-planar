@@ -283,9 +283,9 @@ The tree decomposition $(B_x:x\in V(K))$ of $H$ is defined as follows: For each 
     
     \item $\ell\le k+1$.
   \end{compactenum}
-  We call any walk with properties (i)--(iv) a \emph{$\delta$-walk}. Therefore, to upper-bound $|B_x|$, it suffices to upper-bound the number of $\delta\in\{0,\ldots,d-1\}$ such that there exists an $\delta$-walk.
+  We call any walk with properties (i)--(iv) a \emph{$\delta$-walk}. Therefore, to upper-bound $|B_x|$, it suffices to upper-bound the number of $\delta\in\{0,\ldots,d-1\}$ such that there exists a $\delta$-walk.
   
-  In the following, when $i$ is an integer, we will use $F_i$, $Y_i$, and so on as shorthands for $F_{a_i}$, $Y_{a_i}$, and so on, respectively.
+  In order to avoid excessive levels of subscripts the remainder of this proof will slightly abuse notation in the following way: For $i\in\{0,\ldots,d\}$, we use $F_i$, $N_i$, and $Y_i$, as shorthands for $F_{a_i}$, $Y_{a_i}$, respectively.
   
   To begin, let $d_0=d$, and $d_1=\min\{i: V(F_d\cap Y_i)\neq\emptyset \}$.  Observe that $F_{d}=F_{d_0}$ is contained in the interior of $F_{d_1}$, i.e., $N_{d_0}\subseteq N_{d_1}-F_{d_1}$.   Refer to \figref{d0d1}.  We claim that 
   \[  
@@ -298,13 +298,14 @@ The tree decomposition $(B_x:x\in V(K))$ of $H$ is defined as follows: For each 
     \caption{$F_{d_1},\ldots,F_{d_0}$ and the resulting graph $I$.}
     \figlabel{d0d1}
   \end{figure}
-  To prove this claim, consider the graph $I$ with vertex set $V(I)=\{d_1,\ldots,d_0\}$ and $ij\in E(I)$ if and only $i=j$ or $|F_i\cap Y_j|\neq\emptyset$.  Any $\delta$-walk $v_0,\ldots,v_\ell$ with $\delta\in V(I)$ corresponds to a walk $\rho_0,\ldots,\rho_{\ell}$ in $I$, where $\rho_i=\max\{j\in\{0,\ldots,d\} : v_i\in N_{j}-F_j\}$.
+  To prove this claim, consider the graph $I$ with vertex set $V(I)=\{d_1,\ldots,d_0\}$ and $ij\in E(I)$ if and only $i=j$ or $|F_i\cap Y_j|\neq\emptyset$.  Any $\delta$-walk $v_0,\ldots,v_\ell$ with $\delta\in V(I)$ corresponds to a walk $\rho_0,\ldots,\rho_{\ell}$ in $I$, where $\rho_i=\max\{j\in\{0,\ldots,d\} : v_i\in N_{j}-F_j\}$.  Because of Properties~(i)--(iv) of $\delta$-walks, any walk $\rho_0,\ldots,\rho_\ell$ obtained this way has (i)~$\rho_0=d_0$, (ii--iii)~$\delta=\rho_\ell < \min\{\rho_0,\ldots,\rho_{\ell-1}\}$, and (iv)~$\ell \le k+1$.
   
   The graph $I$ has the following properties:
   \begin{enumerate}
-    \item For each $i\in V(I)$, $i$ has at most 2 neighbours among $d_1,\ldots,i-1$.  If $i$ has two such neighbours, then one of them is $i-1$.
+    \item For each $i\in V(i)$, $id_1\in E(I)$.
+    \item For each $i\in V(I)$, $i$ has at most 2 neighbours in $\{d_1+1,\ldots,i-1\}$. If $i$ has 2 such neighbours, then one of them is $i-1$.
 
-    \item For each $ij\in E(I)$ with $j<i$, and each $i'\in\{j+2,\ldots,i\}$, the vertex $i'$ has at most 2 neighbours and these are contained in $\{i'-1,j\}$.
+    \item For each $ij\in E(I)$ with $j<i-1$, and each $i'\in\{j+1,\ldots,i+1\}$, the neighbours of $i'$ in $\{d_1+1,\ldots,i'-1\}$ are contained in $\{i'-1,j\}$.
   \end{enumerate}
   These two properties imply that $I$ has a very simple structure.   We call $j\in\{d_1,\ldots,d_0\}$ a \emph{left endpoint} if there exists an edge $ij\in E(I)$ with $j < i - 1$.  Let $j_1>j_2>\cdots> j_p$ denote the sorted sequence of left endpoints and, for convenience, let $j_{0}=d$.  Then 
   \[

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
 <ipe version="70206" creator="Ipe 7.2.7">
-<info created="D:20190503161557" modified="D:20190515230020"/>
+<info created="D:20190503161557" modified="D:20190516064302"/>
 <preamble>\usepackage{kpfonts}</preamble>
 <ipestyle name="basic">
 <symbol name="arrow/arc(spx)">
@@ -276,11 +276,88 @@ h
 <layer name="d0d1-edges"/>
 <layer name="slabs"/>
 <layer name="i"/>
-<view layers="A third-legs labels" active="xa-curves"/>
+<view layers="d0d1 d0d1-vertices d0d1-edges slabs i" active="d0d1"/>
 <view layers="A xa-curves colours xa" active="xa"/>
 <view layers="walker" active="walker"/>
 <view layers="A third-legs labels xa-curves colours xa walker" active="walker"/>
 <view layers="d0d1 d0d1-vertices d0d1-edges slabs i" active="i"/>
+<path layer="d0d1" matrix="0 -1 -1 -0 880 544" stroke="black">
+96 448 m
+80 432
+96 416
+112 432
+96 448 c
+</path>
+<path matrix="0 -1 1 0 -352 544" stroke="black">
+96 448 m
+80 432
+96 416
+112 432
+96 448 c
+</path>
+<path matrix="1 0 0 1 288 0" stroke="black">
+96 448 m
+80 432
+96 416
+112 432
+96 448 c
+</path>
+<path matrix="1 0 0 1 240 0" stroke="black">
+96 448 m
+80 432
+96 416
+112 432
+96 448 c
+</path>
+<path matrix="1 0 0 1 192 0" stroke="black">
+96 448 m
+80 432
+96 416
+112 432
+96 448 c
+</path>
+<path matrix="1 0 0 1 168 0" stroke="black">
+96 448 m
+80 432
+96 416
+112 432
+96 448 c
+</path>
+<path matrix="1 0 0 1 144 0" stroke="black">
+96 448 m
+80 432
+96 416
+112 432
+96 448 c
+</path>
+<path matrix="1 0 0 1 120 0" stroke="black">
+96 448 m
+80 432
+96 416
+112 432
+96 448 c
+</path>
+<path matrix="1 0 0 1 72 0" stroke="black">
+96 448 m
+80 432
+96 416
+112 432
+96 448 c
+</path>
+<path matrix="1 0 0 1 48 0" stroke="black">
+96 448 m
+80 432
+96 416
+112 432
+96 448 c
+</path>
+<path matrix="1 0 0 1 24 0" stroke="black">
+96 448 m
+80 432
+96 416
+112 432
+96 448 c
+</path>
 <path layer="i" stroke="gray">
 347.774 623.637 m
 164.995 0 0 164.995 260.823 483.412 230.032 645.509 a
@@ -321,7 +398,7 @@ h
 192 448 m
 67.8823 0 0 67.8823 144 400 96 448 a
 </path>
-<path layer="d0d1" matrix="0.7 0 0 0.7 78.2473 171.212" stroke="black">
+<path layer="d0d1" matrix="0.7 0 0 0.7 78.2473 171.212" stroke="black" pen="fat">
 136.115 662 m
 249.416 0 0 249.416 385.531 662 260.823 446 a
 </path>
@@ -348,11 +425,11 @@ h
 <use layer="d0d1" matrix="0.7 0 0 0.7 78.2473 171.212" name="mark/disk(sx)" pos="136.115 662" size="normal" stroke="black"/>
 <use matrix="0.7 0 0 0.7 78.2473 171.212" name="mark/disk(sx)" pos="385.531 662" size="normal" stroke="black"/>
 <use matrix="0.7 0 0 0.7 78.2473 171.212" name="mark/disk(sx)" pos="260.823 446" size="normal" stroke="black"/>
-<path matrix="0.7 0 0 0.7 78.2473 171.212" stroke="black">
+<path matrix="0.7 0 0 0.7 78.2473 171.212" stroke="black" pen="fat">
 385.531 662 m
 249.416 0 0 249.416 260.823 446 136.115 662 a
 </path>
-<path matrix="0.7 0 0 0.7 78.2473 171.212" stroke="black">
+<path matrix="0.7 0 0 0.7 78.2473 171.212" stroke="black" pen="fat">
 260.823 446 m
 249.416 0 0 249.416 136.115 662 385.531 662 a
 </path>
@@ -362,7 +439,7 @@ h
 </path>
 <use name="mark/disk(sx)" pos="231.766 655.568" size="normal" stroke="black"/>
 <use name="mark/disk(sx)" pos="308.226 523.32" size="normal" stroke="black"/>
-<path stroke="black">
+<path stroke="black" pen="fat">
 279.641 575.508 m
 93.9992 0 0 93.9992 260.823 483.412 244.871 576.048 a
 </path>
@@ -849,5 +926,41 @@ h
 <use layer="d0d1-vertices" matrix="1 0 0 1 74.055 30.0606" name="mark/fsquare(sfx)" pos="269.886 601.352" size="normal" stroke="black" fill="brew8"/>
 <use layer="i" matrix="1.5 0 0 1.5 240 -200" name="mark/fsquare(sfx)" pos="128 432" size="large" stroke="black" fill="brew8"/>
 <text matrix="1 0 0 1 336 8" transformations="translations" pos="96 424" stroke="black" type="label" width="24.882" height="7.15" depth="2.1" halign="center" valign="baseline" style="math">d_1+1</text>
+<path layer="d0d1" stroke="black" pen="fat">
+244.871 576.048 m
+118.701 0 0 118.701 348.119 634.612 262.704 552.185 a
+</path>
+<path stroke="black" pen="fat">
+263.046 552.515 m
+121.464 0 0 121.464 173.528 634.612 279.641 575.508 a
+</path>
+<path matrix="1 0 0 1 96 0" stroke="black">
+96 448 m
+80 432
+96 416
+112 432
+96 448 c
+</path>
+<path matrix="1 0 0 1 216 0" stroke="black">
+96 448 m
+80 432
+96 416
+112 432
+96 448 c
+</path>
+<path matrix="1 0 0 1 264 0" stroke="black">
+96 448 m
+80 432
+96 416
+112 432
+96 448 c
+</path>
+<path matrix="1 0 0 1 312 0" stroke="black">
+96 448 m
+80 432
+96 416
+112 432
+96 448 c
+</path>
 </page>
 </ipe>
