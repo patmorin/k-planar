@@ -41,12 +41,15 @@
 \renewcommand{\proplabel}[1]{\label{prop:#1}}
 \renewcommand{\propref}[1]{(PR\ref{prop:#1})}
 
+\newcommand{\jlabel}[1]{\label{j:#1}}
+\newcommand{\jref}[1]{(J\ref{j:#1})}
+
 \begin{document}
 \maketitle
 
 
 \begin{abstract}
-  Layered $H$-partitions of graphs (with small layered width, in which $H$ has small treewidth) are a recently-introduced tool that have been used to solve longstanding problems on queue layouts, non-repetitive colouring, and 3-d graph drawing.  Such partitions are known to exist for planar graphs and, more generally, bounded genus graphs.  In the current paper, we prove that every $k$-planar graph has a layered $H$-partition of layered width $O(k^2)$ in which $H$ has treewidth $O(c^k)$, for some constant $c$. This is the first result of this type for a non-minor-closed class of graphs and implies that $k$-planar graphs have both queue number and non-repetitive chromatic number upper-bounded by a function of $k$.  The former result was previously shown using a combination of $H$-partitions for planar graphs with \textit{ad hoc} methods. The latter result is new, for all $k\ge 1$.  These results extend to $(g,k)$-planar graphs, the natural generalization of $k$-planar graphs to to genus-$g$ surfaces (rather than the genus-$0$ plane).
+  Layered $H$-partitions of graphs (with small layered width, in which $H$ has small treewidth) are a recently-introduced tool that have been used to solve longstanding problems on queue layouts, non-repetitive colouring, and 3-d graph drawing.  Such partitions are known to exist for planar graphs and, more generally, bounded genus graphs.  In the current paper, we prove that every $k$-planar graph has a layered $H$-partition of layered width $O(k^2)$ in which $H$ has treewidth $O(k^3)$. This is the first result of this type for a non-minor-closed class of graphs and implies that $k$-planar graphs have both queue number and non-repetitive chromatic number upper-bounded by a function of $k$.  The former result was previously shown using a combination of $H$-partitions for planar graphs with \textit{ad hoc} methods. The latter result is new, for all $k\ge 1$.  These results extend to $(g,k)$-planar graphs, the natural generalization of $k$-planar graphs to to genus-$g$ surfaces (rather than the genus-$0$ plane).
 \end{abstract}
 
 \section{Introduction}
@@ -61,7 +64,7 @@ Under these definitions $0$-planar graphs are exactly planar graphs and $0$-plan
 
 We prove the following result:
 \begin{thm}\thmlabel{k-planar}
-  Every $k$-planar graph has a layered $H$-partition of layered-width at most $24k^2 + 36k + 12$ in which $H$ has treewidth at most $(3^{k+2}-5)/2$.
+  Every $k$-planar graph has a layered $H$-partition of layered-width at most $24k^2 + 36k + 12$ in which $H$ has treewidth at most $k^3/6+k^2/+k/3-1$.
 \end{thm}
 
 
@@ -249,7 +252,7 @@ Next we describe a tree decomposition $\{B_x:x\in V(K)\}$ of $H$.  We deliberate
 The tree decomposition $(B_x:x\in V(K))$ of $H$ is defined as follows: For each edge $xy\in E(H)$ where $y$ is a $K$-ancestor of $x$, we add $y$ to $B_{x'}$ for every node $x'$ on the path from $x$ to $y$ in $K$.  That this produces a tree-decomposition is due to \clmref{xy-ancestor}.  What remains is to upper bound the width of this decomposition.
 
 \begin{clm}\clmlabel{bag-size}
-  The tree decomposition $\{B_x: x\in V(K)\}$ of $H$ contains no bag larger than $(3^{k+2}-3)/2$.
+  The tree decomposition $\{B_x: x\in V(K)\}$ of $H$ contains no bag larger than $k^3/6 + k^2/2 + k/3$.
 \end{clm}
 
 \begin{proof}
@@ -283,179 +286,119 @@ The tree decomposition $(B_x:x\in V(K))$ of $H$ is defined as follows: For each 
     
     \item $\ell\le k+1$.
   \end{compactenum}
-  We call any walk with properties (i)--(iv) a \emph{$\delta$-walk}. Therefore, to upper-bound $|B_x|$, it suffices to upper-bound the number of $\delta\in\{0,\ldots,d-1\}$ such that there exists a $\delta$-walk.
+  We call any walk with properties (i)--(iv) a \emph{$\delta$-walk}. Therefore, to upper-bound $|B_x|$, it suffices to upper-bound the number of $\delta\in\{0,\ldots,d-1\}$ such that there exists a $\delta$-walk.  This is our goal for the remainder of this proof. 
   
-  In order to avoid excessive levels of subscripts the remainder of this proof will slightly abuse notation in the following way: For $i\in\{0,\ldots,d\}$, we use $F_i$, $N_i$, and $Y_i$, as shorthands for $F_{a_i}$, $Y_{a_i}$, respectively.
+  In order to avoid excessive levels of subscripts, we introduce the following abbreviated notation: For $i\in\{0,\ldots,d\}$, we use $F_i$, $N_i$, and $Y_i$, as shorthands for $F_{a_i}$, $N_{a_i}$, and $Y_{a_i}$, respectively.
   
-  To begin, let $d_0=d$, and $d_1=\min\{i: V(F_d\cap Y_i)\neq\emptyset \}$.  Observe that $F_{d}=F_{d_0}$ is contained in the interior of $F_{d_1}$, i.e., $N_{d_0}\subseteq N_{d_1}-F_{d_1}$.   Refer to \figref{d0d1}.  We claim that 
-  \[  
-     |\{\delta\in\{d_1,\ldots,d_0-1\}:  \mbox{there exists a $\delta$-walk} \}| \le \binom{k+1}{2} \enspace .
-  \]
+  Let $d_0=d$, and $d_1=\min\{i: V(F_d\cap Y_i)\neq\emptyset \}$.  By \propref{ancestor-boundary}, $F_d$ is contained in the interior of  $F_{d_1}$, i.e., $N_{d_0}\subseteq N_{d_1}-F_{d_1}$.   Refer to \figref{d0d1}.  We will now prove that 
+  \begin{equation}
+     |\{\delta\in\{d_1,\ldots,d_0-1\}:  \mbox{there exists a $\delta$-walk} \}| \le \binom{k+1}{2} \enspace . \eqlabel{one-round}
+  \end{equation}
   \begin{figure}
     \begin{center}
-      \includegraphics{figs/d0d1-5}
+      \includegraphics{figs/d0d1}
     \end{center}
-    \caption{$F_{d_1},\ldots,F_{d_0}$ and the resulting graph $I$.}
+    \caption{$F_{d_1},\ldots,F_{d_0}$ and the resulting graph $I$.  For readability, the edges $\{id_1:i\in\{d_1-2,\ldots,d_0\}$ are not shown.}
     \figlabel{d0d1}
   \end{figure}
-  To prove this claim, consider the graph $I$ with vertex set $V(I)=\{d_1,\ldots,d_0\}$ and $ij\in E(I)$ if and only $i=j$ or $|F_i\cap Y_j|\neq\emptyset$.  Any $\delta$-walk $v_0,\ldots,v_\ell$ with $\delta\in V(I)$ corresponds to a walk $\rho_0,\ldots,\rho_{\ell}$ in $I$, where $\rho_i=\max\{j\in\{0,\ldots,d\} : v_i\in N_{j}-F_j\}$.  Because of Properties~(i)--(iv) of $\delta$-walks, any walk $\rho_0,\ldots,\rho_\ell$ obtained this way has (i)~$\rho_0=d_0$, (ii--iii)~$\delta=\rho_\ell < \min\{\rho_0,\ldots,\rho_{\ell-1}\}$, and (iv)~$\ell \le k+1$.
   
-  The graph $I$ has the following properties:
-  \begin{enumerate}
-    \item For each $i\in V(i)$, $id_1\in E(I)$.
-    \item For each $i\in V(I)$, $i$ has at most 2 neighbours in $\{d_1+1,\ldots,i-1\}$. If $i$ has 2 such neighbours, then one of them is $i-1$.
-
-    \item For each $ij\in E(I)$ with $j<i-1$, and each $i'\in\{j+1,\ldots,i+1\}$, the neighbours of $i'$ in $\{d_1+1,\ldots,i'-1\}$ are contained in $\{i'-1,j\}$.
-  \end{enumerate}
-  These two properties imply that $I$ has a very simple structure.   We call $j\in\{d_1,\ldots,d_0\}$ a \emph{left endpoint} if there exists an edge $ij\in E(I)$ with $j < i - 1$.  Let $j_1>j_2>\cdots> j_p$ denote the sorted sequence of left endpoints and, for convenience, let $j_{0}=d$.  Then 
-  \[
-      E(I) \subseteq \{ (i,i+1): i\in\{d_1,\ldots,d_0-1\} \cup 
-         \bigcup_{t=1}^p \{ ij_t : i\in\{ j_t,\ldots,j_{t-1} \}\} \enspace . 
-  \]
-  (See the lower half of \figref{d0d1}.)  Observe that shortest path from in $i$ from $d_0$ to $j_t$ has length at least $t$.  Let $X_t=\{j_t,\ldots,j_{t+1}\}$ and observe that the shortest path from $d_0$ to some value $i\in X_t$ that does not contain any $i' <i$ goes through $j_{t}$.  Therefore, $X_t$ contains at most $k+2-t$ values of $\delta$ such that there exists a $\delta$-walk.  Therefore, 
-  \[  
-     |\{\delta\in\{d_1,\ldots,d_0-1\}:  \mbox{there exists a $\delta$-walk} \}| \le \sum_{t=0}^{k+1} (k+2-t) = \sum_{t=1}^{k+2} t = \binom{k+2}{2} \enspace .
-  \]
-  
-  % \begin{figure}
-  %   \begin{center}
-  %     \includegraphics{figs/i-graph}
-  %   \end{center}
-  %   \caption{The graph $I$ used in the proof of \clmref{bag-size}}
-  %   \figlabel{i-graph}
-  % \end{figure}
+  To prove this claim, consider the graph $I$, illustrated in \figref{d0d1}, with vertex set $V(I)=\{d_1+1,\ldots,d_0\}$ and $ij\in E(I)$ if and only $i=j$ or $|F_i\cap Y_j|\neq\emptyset$.  Any $\delta$-walk $v_0,\ldots,v_\ell$ with $\delta\in V(I)$ corresponds to a walk $\rho_0,\ldots,\rho_{\ell}$ in $I$, where $\rho_i=\max\{j\in\{0,\ldots,d\} : v_i\in N_{j}-F_j\}$.  To see why this is true, consider $\rho_{t}= i$ and $\rho_{t+1}=j$ for some $t\in\{0,\ldots,\ell-1\}$:
+  \begin{compactenum}
+    \item If $i=j$, then $ij$ is an edge of $I$ since $I$ contains the self-loop $ii$ for each $i\in V(I)$.
     
-  More generally, for $s>1$, let $d_s=\min\{ i: V(F_{d_s}\cap Y_i)\neq\emptyset \}$. Consider some $\delta$-walk $v_0,\ldots,v_\ell$ for $\delta\in \{ d_{s},\ldots,d_{s-1}-1 \}$, for some $s>1$.  Since $v_0\in V(N_{d_0}-F_{d_0})$ and $v_\ell\in F_{\delta+1}-F_\delta$, there exists some maximum value $i$ such that $v_i\in N_{d_{s-1}}-F_{d_{s-1}}$.  Furthermore, $i\ge s-2$ because $v_1,\ldots,v_i$ contains a vertex from each of $F_{d_0},F_{d_1},\ldots,F_{d_{s-2}}$.  But this means that we can treat $v_i,\ldots,v_{\ell}$ as a $\delta$-walk of length at most $\ell-s+2 \le k-s+3$ that begins in $N_{d_{s-1}}-F_{d_{s-1}}$.  By the same argument used above, 
-  \[  |\{\delta\in\{d_s,\ldots,d_{s-1}-1\}:  \mbox{there exists a $\delta$-walk} \}| \le \binom{k-s+3}{2} \enspace .\]
+    \item If $j\neq i$ then assume, without loss of generality, that $j < i$ so that $a_i$ is a $K$-descendant of $a_j$.  Now $v_t\in V(N_i-F_i)$, but $v_{t+1}\not\in V(N_i-F_i)$ otherwise we would have $j\ge i$. Therefore, $v_{t+1}\in V(F_i)$.  By \propref{ancestor-boundary}, $v_{t+1}$ is in $Y_{j'}$ for some $j'< i$ and the edge $ij'\in E(I)$.  By \propref{children}, $v_{t+1}\not\in V(N_{j''}-F_{j''})$ for any $K$-descedant $j''>j'$ of $j'$.  Therefore $j'=\max\{j : v_{t+1}\in N_j-F_j\}$. Therefore, by definition $j'=\rho(v_{t+1})=j$, so the edge $ij=ij'\in E(I)$. 
+  \end{compactenum}
+
+  Properties~(i)--(iv) of $\delta$-walks imply that any walk $\rho_0,\ldots,\rho_\ell$ obtained this way 
+  \begin{compactenum}[(i')]
+    \item begins at $\rho_0=d_0$ 
+    \item is contained in $I[\delta,\ldots,d_0]$, 
+    \item ends at $\rho_\ell=\delta$
+    \item has length $\ell \le k+1$.
+  \end{compactenum}
+  The edges in $E(I)$ can be partitioned into two classes:  A set $B(I)=\{ij\in E(I): |i-j|\le 1\}$ of \emph{boring edges} and a set $J(I)=\{ij\in E(I): |i-j|>1\}$ of \emph{jump edges}.  For a jump edge $ij$ with $i>j$, $j$ is called a \emph{landing} and $i$ is called a \emph{takeoff}.  The jump edges of $I$ satisfy the following properties:
+  \begin{enumerate}[(J1)]
+    \item \jlabel{single} Every $i\in\{d_1+1,\ldots,d_0\}$ is a takeoff for at most one jump edge.
+    
+    \item \jlabel{nested} For every jump edge $ij\in E(I)$ with takeoff $i$ and landing $j$, and for every $q\in\{j+2,\ldots,i\}$, if $q$ is a takeoff some jump edge, then this edge is $qj$.
+  \end{enumerate}
+  Property \jref{nested} can be interpreted informally as saying that jump edges can cross, but barely:  If $i_1j_1$ and $i_2j_2$ are jump edges with $i_1> i_2>j_1>j_2$, then $j_1=i_2-1$.
+
+  We now prove that jump edges satisfy \jref{single}.
+  First We claim that, for each $i\in\{d_1+1,\ldots,d_0\}$, $F_{i}$ contains a vertex of $Y_{d_1}$.  For $i=d_0$, this is true by definition so $F_{d_0}$ contains some vertex $v\in V(Y_{d_1})$.  For $i>0$, we have $F_{d_0}-F_{i}\subseteq N_i-F_i$, but $N_i-F_i$ contains no vertex of $Y_{d_1}$. It must therefore be the case that $v\in V(F_i)$, otherwise $F_{d_0}-F_i$ would contain $v$. 
   
+  Now, consider the parent $a_{i-1}$ of $a_i$ in $K$.  By \propref{children} $F_i$ is a wedge of the Mercedes graph $M_{i-1}$.  Let $P_1,\ldots,P_3$ be the partition of $V(F_{i-1})$ guaranteed by \propref{ancestor-boundary}.  Without loss of generality, we can assume that $P_1=V(Y_{d_1}\cap F_{i-1})$.  Then, by \propref{tripod-feet}, $V(F_i)$ contains vertices from at most one of $P_2$ or $P_3$---say $P_2$---and suppose $P_2=V(F_{i-1}\cap Y_j)$ for some $j< i-1$.  This accounts for a single jump edge $ij$ for which $i$ is the takeoff.  All remaining vertices of $F_i$ are contained in $Y_{i-1}$, which only introduces the boring edge $(i,i-1)$.  Thus we have established that jump edges satisfy \jref{single}.
+  
+  To establish that jump edges satisfy \jref{nested} we can use the same argument used to establish that each $F_i$ contains a vertex of $Y_{d_1}$ to establish that each $F_q$ contains a vertex of $Y_j$ and therefore $qj\in E(I)$.  Since $q \ge j+2$, $qj$ is a jump edge and, by \propref{single}, it is the only jump edge with takeoff $q$.
+
+  Let $j_0=d$ and let $j_1>j_2>\cdots> j_p$ denote the sequence of landings, in decreasing order.  Then \jref{single} and \jref{nested} imply that
+  \[
+      J(I) \subseteq J^+(I) :=
+         \bigcup_{t=1}^p \{ ij_t : i\in\{ j_t,\ldots,j_{t-1}+1 \}\} \enspace . 
+  \]
+  and clearly $B(I)\subseteq B^+(I) := \{(i,i+1): i\in\{d_1+2,\ldots,d_0\}\}$.
+  Any walk in $I$ is also a walk in the supergraph $I^+$ with $V(I^+)=V(I)$ and $E(I^+)=B^+(I)\cup J^+(I)$, so it we can focus our attention on walks $\rho_0,\ldots,\rho_{\ell}$ in $I^+$ that satisify properties (i')--(iv').  We will also call these $\delta$-walks.
+  
+  We are almost done proving \eqref{one-round}. Refer to \figref{one-round}.  For any landing $j_t$, $t>0$, $I^+[j_t,\ldots,d_0]$ contains the path $d_0,j_1,\ldots,j_t$ of length $t$.  A few moments consideration will also convince the reader that $d_0,j_1,\ldots,j_t$ is a shortest path, in $I[j_{t+1}-1,\ldots,d_0]$, from $d_0$ to $j_t$.  Therefore, by (iv') no $\delta$-walk can containd $j_t$ for any $t> k+1$.
+  
+  \begin{figure}
+    \begin{center}
+      \includegraphics{figs/one-round}
+    \end{center}
+    \caption{The graph $I^+[\{j_{4}+1,\ldots,d_0\}]$.  The shortest path $d_0,j_1,\ldots,j_3$ is highlighted.}
+    \figlabel{one-round}
+  \end{figure}
+  
+  Next, observe that, in $I^+[j_{t+1}+1,\ldots,d_0]$ every path from $d_0$ to some vertex  $j_{t}+i$, $i\ge 0$ contains $j_t$.  Furthermore, the only edges of $I^+[j_{t+1}+1,\ldots,d_0]$ incident to vertices $j_t+i$, $i>0$ are boring edges.  Therefore, for any $i\ge 0$, the shortest path from $d_0$ to $j_t+i$ in $I^+[j_{t+1}+1,\ldots,d_0]$ has length $t+i$.  It follows that there are at most $k+2-t$ values $\delta\in\{j_{t+1},\ldots,j_t\}$ such that there exists a $\delta$-walk.
+  
+  Therefore, the total number of $\delta\in\{d_1+1,\ldots,d_0\}$ such that there exists a $\delta$-walk is at most
+  \[
+     \sum_{t=0}^{k+1} (k+2-t) = \sum_{t=1}^{k+2} t = \binom{k+1}{2}
+  \]
+  We are now very close to \eqref{one-round}, which asks for the number of $\delta$-walks for $\delta\in\{d_1,\ldots,d_0-1\}$.
+  The preceding formula counts the $d_0$-walk, but does not count the $d_1$ walk.  These two effects cancel each other, thus establishing \eqref{one-round}.
+  
+  Refer to \figref{nested}.
+  More generally, for $s>1$, let $d_s=\min\{i: V(F_{d_s}\cap Y_i)\neq\emptyset \}$.  
+  
+  \begin{figure}
+    \begin{center}
+      \includegraphics{figs/nested}
+    \end{center}
+    \caption{The nested cycles $F_{d_0}, F_{d_1},F_{d_2}\ldots$.}
+    \figlabel{nested}
+  \end{figure}
+  
+  Consider some $\delta$-walk $v_0,\ldots,v_\ell$ for $\delta\in \{ d_{s+1},\ldots,d_{s}-1\}$.  By (i) and (ii), $v_0\in V(N_{d_0}-F_{d_0})\subseteq V(N_{d_s}-F_{d_s})$ and $v_\ell\in F_{\delta+1}-F_\delta$.  Therefore, there exists some maximum value $i$ such that $v_i\in V(N_{d_{s}}-F_{d_{s}})$.  (In words, $i$ is the last time the walk is in the interior of $F_{d_s}$ before it leaves forever.)
+  Observe that $i\ge s-1$ because $v_0,\ldots,v_i$ contains a vertex from each of $F_{d_0},\ldots,F_{d_{s-1}}$.  
+  
+  Now, consider the subwalk $v_i,\ldots,v_\ell$.  This subwalk obeys Properties~(i)--(iv) with respect to $F_{d_s}$.  Specifically:
+  \begin{compactenum}[(i)]
+    \item $v_i\in V(N_{d_s}-F_{d_s})$;
+    
+    \item $v_i,\ldots,v_{\ell-1}\in V(N_{a_{\delta+1}}-F_{a_{\delta+1}})$;
+    
+    \item $v_\ell\in V(F_{a_{\delta+1}}-F_{a_\delta})$; and
+    
+    \item $\ell\le k+1$, so $\ell-i \le \ell-s \le \le k+1-s$.
+  \end{compactenum}
+  Exactly the same analysis used to establish \eqref{one-round} shows that
+  \begin{equation}
+     |\{\delta\in\{d_{s+1},\ldots,d_s-1\}:  \mbox{there exists a $\delta$-walk} \}| \le \binom{k+1-s}{2} \enspace . \eqlabel{one-round-s}
+  \end{equation}
+
   We conclude that the maximum number of $\delta\in\{0,\ldots,d-1\}$ such that there exists a $\delta$-walk is at most
   \[
-      \sum_{s=1}^{k+2} \binom{k-s+3}{2} = O(k^3)
+      \sum_{s=0}^{k+1} \binom{k+1-s}{2}
+      = \sum_{s=0}^{k+1} \binom{s}{2}
+      = \frac{k^3}{6} + \frac{k^2}{2} + \frac{k}{3} \ge |B_x| \enspace . \qedhere
   \]
-  \note{PM}{Gotta run!}
-  
-  
-  % 
-  % 
-  % Next observe that, if some $\delta$-walk
-  % 
-  % 
-  % 
-  % 
-  % For each $v'\in V(G^+)$, define
-  % \[  
-  %     d_{v'}=\max\{i\in\{0,\ldots,d\} : v'\in V(N_{a_i}-F_{a_i})
-  % \]
-  % (Intuitively, $d_{v'}$ is the $K$-depth of the lower endpoint of $K[P_{v'}]$ or the $K$-depth ($d$) of $x$, whichever is shallower.)
-  % 
-  % Consider some $\delta$-walk $v_0,\ldots,v_{\ell}$ and, for each $j\in\{0,\ldots,\ell\}$, let $d_j=d_{v_j}$.  Then the sequence $d_0,\ldots,d_{\ell}$ has the following properties, corresponding to properties (i)--(iii) above:
-  % \begin{compactenum}[(i)]
-  %   \item $d_0=d$;
-  %   \item $d_0,\ldots,d_{\ell-1} > \delta$
-  %   \item $d_\ell = \delta$;
-  %   \item $\ell\le k+1$.
-  % \end{compactenum}
-  % 
-  % Consider an auxilliary graph $I$ with vertex set $V(I)=\{0,\ldots,d\}$ and edge $ij\in E(I)$ if and only if $V(F_{a_i}\cap Y_j))\neq\emptyset$. Observe that $d_0,\ldots,d_\ell$ is a walk in $I$.
-  % 
-  % We are particularly interested in the \emph{up neighbours} of $i$, defined as
-  % $U(i) = \{q : iq\in E(I),\, q< i-1\}$.  
-  % 
-  % Claim: For each $j\in\{i_1-2,\ldots,d\}$,  $U(j) = U(d)=\{i_1,i_2\}$.
-  % 
-  % Claim: $U(i_1)= \{i_2, i_3\}$ for some $i_3< i_1-1$.
-  % 
-  % Claim: $U(i_1+1)= \{i_1, i_2, i_3\}$.
-  % 
-  %  U(i)\cup\{i-2\}\setminus\{i-1\}$. 
-  % 
-  % Let $i_0=d$, $i_1=\min U(d)$, and $i_2=U(d)$.  
-  % 
-  % 
-  % 
-  % By \clmref{strong-ancestor-boundary}, $I(j)=U(d)=\{i_1,i_2\}$ for all $j\in\{i_1-1,\ldots,d\}$.  This immediately implies that there can be no $\delta$-walk for any $\delta\in \{ i\in\Z : k+1 < i < i_1 \}$. Indeed, such a walk either has to contain $i_1$ or $i_2$ or it has to contain $d,d-1,\ldots,d-k-2$.  In the former case, the walk violates (ii) or (iii) since it contains values smaller than $\delta$.  In the latter case, the walk violates (iv) since it has length $k+2>k+1$.
-  % 
-  % Next, consider $\max U(i_1)$ and let $i_3=\max U(i_1)$.  By \propref{strong-ancestor-boundary} 
-  % 
-  % 
-  % 
-  %  since $\delta > i_1 > i_2$ 
-  % 
-  % Claim: For all $j\in\{\min(U(i)),\ldots,i\}$, $U(j) = U(i)$. 
-  % 
-  % Proof: 
-  % The proof is by induction on $i-j$.  The base case $i=j$ is immediate.
-  % 
-  % Now consider some $j\in\{\min(U(i)), i-1\}$.  By the inductive hypothesis $U(j+1)=U(i)$ so $F_{j+1}$ contains vertices of $Y_q$ for each $q\in U(i)$. 
-  % These vertices are not in $Y_j$ since, by the definition of $U(j+1)$, $q < (j+1)-1 = j$ for each $q\in U(j+1)$.  
-  % 
-  % 
-  %  Recall that $F_{j+1}$ is a wedge in the Mercedes graph $M_j$. This wedge is determined by the closed tripod $\overline{Y}_j$
-  % 
-  % First the base case $j=i$:
-  % 
-  % Observe that $F_i$ is one wedge of the Mercedes graph $M_i$, so $F_i \subset F_{i-1}\cup \overline{Y}_{i-1}$.  Therefore $V(F_i)$ can be partitioned into $A=V(F_i \cap F_{i-1})$ and $B=V(F_i\cap Y_{i-1})$.  The set $B$ consists entirely of vertices in $N_{i-1}-F_{i-1}-(N_i-F_i)$.  The set $A$ consists of vertices in $V(F_{i-1})$.  By \propref{ancestor-boundary}, 
-  % 
-  % First observe that it is sufficient to prove this for $j=i-1$ since, in this case, we can apply
-  % Consider the vertices of $F_{i}$.  Each of these vertices belongs $Y_{q}$ for some $q\in U(i)$.
-  % 
-  % A critical property of these up edges is that, for any $i' > i$, $U(i') \subseteq \{i'+1,\ldots,i\} \cup U(i)$.  
-  % 
-  % 
-  % , there are at most 3 edges $ij\in E(I)$ with $j<i$.  Furthermore, for each $i'< i$, 
-  % 
-  % 
-  % 
-  % The graph $I$ has some additional structure, which we now describe.  
-  % First, consider the at most three neighbours $i_0>i_1>i_2$ of $d$ in $I$.
-  % In the walk $d_0,\ldots,d_{\ell}$, the first value $d_i\neq d$ is in $\{i_0,i_1,i_2\}$.  Furthermore, 
-  % 
-  % 
-  % 
-  % 
-  % First observe that, for each $i\in\{1,\ldots,d\}$, $(i,(i+1))\in E(I)$.  
-  % 
-  % 
-  % 
-  % $I$ has maximum out-degree $3$ and each directed edge $ij\in E(I)$ has $j < i$.
-  % 
-  % 
-  % 
-  % 
-  % 
-  % 
-  % Let $v_0,\ldots,v_\ell$ be an $i$-walk and consider the subsequence $d_0,\ldots,d_{\ell'}$ of $d_{v_0},\ldots,d_{v_\ell}$ consisting of only $d_{v_0}$ and those (record-breaking) $d_{v_j}$ such that $d_{v_j}<\min\{d_{v_0},\ldots,d_{v_{j-1}}\}$.  Observe that $d_0=d$ and $d_{\ell'}=i$.
-  % 
-  % By \propref{ancestor-boundary}, for every $j\in\{1,\ldots,d\}$, there is a set $X_{j}$, of at most 3 integers $\alpha < j$ such that every vertex $q\in V(F_{a_j})$ is in $V(Y_{a_{\alpha}})$ for some $\alpha\in X_j$.
-  % Assign a distinct colour $c(j,\alpha)\in\{1,2,3\}$ for each $\alpha\in X_j$ and do this assignment for each $j\in\{1,\ldots,d\}$.  By definition, for any $j\in\{1,\ldots,d\}$ and any colour $\gamma\in\{1,2,3\}$, there is at most one $\alpha=\alpha(j,\gamma)$ such that $c(j,\alpha)=\gamma$.
-  % 
-  % Finally, observe that, for every $j\in\{1,\ldots,\ell'\}$,  $c(d_j,d_{j+1})$ is defined.  Refer to \figref{colouring}. Therefore the \emph{colour sequence} $c_0,\ldots,c_{\ell'-1}$ where $c_j=c(d_j,d_{j+1})$ is well defined.  Since $d_0=d$ and $d_{\ell'-1}=i$, from the preceding discussion, we have $\alpha(\cdots (\alpha(\alpha(\alpha(d,c_0),c_1),c_2)\cdots),c_{\ell'-1}) = i$.
-  % 
-  % \begin{figure}
-  %   \begin{center}
-  %       \includegraphics{figs/A-2}
-  %   \end{center}
-  %   \caption{The colour sequences defined by two $i$-curves.}
-  %   \figlabel{colouring}
-  % \end{figure}
-  % 
-  % The proof is now almost complete.  Any $i$-walk defines a colour sequence $c_0,\ldots,c_{\ell'}$.  If some $i'$-walk defines the same colour sequence $c_0,\ldots,c_{\ell'}$ then
-  % \[
-  %       i = (\alpha(\alpha(\alpha(d,c_0),c_1),c_2)\cdots),c_{\ell'-1}) = i' \enspace ,
-  % \]
-  % so $i=i'$.  Since there are at most $3^{\ell'}$ colour sequences of length $\ell'$ and $\ell'\le \ell \le k+1$, the number of $i\in\{0,\ldots,d-1\}$ such that there exists an $i$-walk is at most
-  % \[
-  %    \sum_{\ell=1}^{k+1} 3^\ell = (3^{k+2}-3)/2 \ge |B_x| \eqlabel{bag-size} \enspace . \qedhere
-  % \]
 \end{proof}
 
-\note{PM}{I know the analysis in \clmref{bag-size} is not tight---the base $3$ of the exponent can be reduced.  Is it even exponential though?}
-We now have all the parts needed to complete the proof of \thmref{k-planar}.
-
-\begin{proof}
+\begin{proof}[Proof of \thmref{k-planar}]
   We use the layered $H$-partition $(\mathcal{L}, \mathcal{S})$, where $\mathcal{S}=\{S_x:x\in V(K)\}$ and $\mathcal{L}=\langle V_i': i=0,1,2\ldots\rangle$ where $V_i' = V_{(k+1)i}\cup\cdots\cup V_{(k+1)(i+1)-1}$.  \Eqref{distance-preserving} shows that $\mathcal{L}$ is indeed a layering of $G$.
 
-  By \clmref{bag-size}, $\mathcal{S}$ produces a graph $H=G/\mathcal{S}$ of treewidth $(3^{k+2}-5)/2$.  By \clmref{width-of-g-plus}, for each $x\in V(H)$ and each integer $i$, $|B_x\cap V_i|\le 24k+12$, so $|B_x\cap V_i'|\le (k+1)(24k + 12) = 24k^2+36k+12$. 
+  By \clmref{bag-size}, $\mathcal{S}$ produces a graph $H=G/\mathcal{S}$ of treewidth at most $k^3/6+k^2/+k/3-1$.  By \clmref{width-of-g-plus}, for each $x\in V(H)$ and each integer $i$, $|B_x\cap V_i|\le 24k+12$, so $|B_x\cap V_i'|\le (k+1)(24k + 12) = 24k^2+36k+12$. 
 \end{proof}
 
 
