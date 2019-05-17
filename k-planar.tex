@@ -44,6 +44,11 @@
 \newcommand{\jlabel}[1]{\label{j:#1}}
 \newcommand{\jref}[1]{(J\ref{j:#1})}
 
+
+\newcommand{\Bagsize}{\ensuremath{\frac{k^3}{6} + \frac{3k^2}{2} + \frac{13k}{3} + 4}}
+\newcommand{\bagsize}{\ensuremath{k^3/6 + 3k^2/2 + 13k/3 + 4}}
+\newcommand{\treewidth}{\ensuremath{k^3/6 + 3k^2/2 + 13k/3 + 3}}
+
 \begin{document}
 \maketitle
 
@@ -64,7 +69,7 @@ Under these definitions $0$-planar graphs are exactly planar graphs and $0$-plan
 
 We prove the following result:
 \begin{thm}\thmlabel{k-planar}
-  Every $k$-planar graph has a layered $H$-partition of layered-width at most $24k^2 + 36k + 12$ in which $H$ has treewidth at most $k^3/6+k^2/2+k/3-1$.
+  Every $k$-planar graph has a layered $H$-partition of layered-width at most $24k^2 + 36k + 12$ in which $H$ has treewidth at most $\treewidth$.
 \end{thm}
 
 In the special case $k=1$ we obtain better constants and an additional property (planarity) of $H$:
@@ -82,13 +87,13 @@ Prior to this work, the strongest structural characterization of $k$-planar grap
 There is a natural generalization of $k$-planar to genus-$g$ surfaces, that we now describe.  A graph $G$ embedded on a surface $S$ is $(S,k)$-plane if no edge of $G$ is involved in more than $k$ crossings.  A (not necessarily embedded) graph $G$ is $(g,k)$-planar if it is isomorphic to some $(S,k)$-plane graph $G'$ where $S$ is a surface with Euler genus $g$.
 
 \begin{thm}\thmlabel{g-k-planar}
-  Every $(g,k)$-planar graph has a layered $H$-partition of layered-width at most $\max\{16gk^2 + 24gk + 8g, 24k^2 + 36k + 12\}$ in which $H$ has treewidth at most $(3^{k+2}-3)/2$.
+  Every $(g,k)$-planar graph has a layered $H$-partition of layered-width at most $\max\{16gk^2 + 24gk + 8g, 24k^2 + 36k + 12\}$ in which $H$ has treewidth at most $\treewidth$.
   
   Every $(g,1)$-planar graph has a layered $H$-partition of layered-width at most $\max\{48g, 30\}$ in which $H$ has treewidth at most $4$.  
 \end{thm}
 
 The remainder of the paper is organized as follows: In \secref{k-planar} we prove \thmref{k-planar}.  In \secref{1-planar} we prove \thmref{1-planar}.  
-In \secref{genus-g} we prove \thmref{g-k-planar}. 
+In \secref{g-k-planar} we prove \thmref{g-k-planar}. 
 
 \section{$k$-Planar Graphs}
 \seclabel{k-planar}
@@ -251,7 +256,7 @@ Next we describe a tree decomposition $\{B_x:x\in V(K)\}$ of $H$.  We deliberate
 The tree decomposition $(B_x:x\in V(K))$ of $H$ is defined as follows: For each edge $xy\in E(H)$ where $y$ is a $K$-ancestor of $x$, we add $y$ to $B_{x'}$ for every node $x'$ on the path from $x$ to $y$ in $K$.  That this produces a tree-decomposition is due to \clmref{xy-ancestor}.  What remains is to upper bound the width of this decomposition.
 
 \begin{clm}\clmlabel{bag-size}
-  The tree decomposition $\{B_x: x\in V(K)\}$ of $H$ contains no bag larger than $k^3/6 + k^2/2 + k/3$.
+  The tree decomposition $\{B_x: x\in V(K)\}$ of $H$ contains no bag larger than $\bagsize$.
 \end{clm}
 
 \begin{proof}
@@ -294,13 +299,13 @@ The tree decomposition $(B_x:x\in V(K))$ of $H$ is defined as follows: For each 
   
   Refer to \figref{d0d1}.  We will now prove that 
   \begin{equation}
-     |\{\delta\in\{d_1,\ldots,d_0-1\}:  \mbox{there exists a $\delta$-walk} \}| \le \binom{k+3}{2} \enspace . \eqlabel{one-round}
+     |\{\delta\in\{d_1+1,\ldots,d_0\}:  \mbox{there exists a $\delta$-walk} \}| \le \binom{k+3}{2} \enspace . \eqlabel{one-round}
   \end{equation}
   \begin{figure}
     \begin{center}
       \includegraphics{figs/d0d1}
     \end{center}
-    \caption{$F_{d_1},\ldots,F_{d_0}$ and the resulting graph $I$.  For readability, the edges $\{id_1:i\in\{d_1-2,\ldots,d_0\}$ are not shown.}
+    \caption{$F_{d_1},\ldots,F_{d_0}$ and the resulting graph $I$.} 
     \figlabel{d0d1}
   \end{figure}
   
@@ -360,10 +365,19 @@ The tree decomposition $(B_x:x\in V(K))$ of $H$ is defined as follows: For each 
   \[
      \sum_{t=0}^{k+1} (k+2-t) = \sum_{t=1}^{k+2} t = \binom{k+3}{2}
   \]
-  We are now very close to \eqref{one-round}, which asks for the number of $\delta\in\{d_1,\ldots,d_0-1\}$ such that there exists a $\delta$-walk.
-  The preceding formula counts $\delta=d_0$, but does not count $\delta=d_1$.  These two effects cancel each other, thus establishing \eqref{one-round}.
+  This establishes \eqref{one-round}.  An illustration of this analysis, showing the case $k=1$ is shown in \figref{one-round-example}.
+  \begin{figure}
+    \begin{center}
+      \includegraphics{figs/one-round-example}
+    \end{center}
+    \caption{The set of $6=\binom{k+3}{2}$ vertices in $I^+$ reachable by paths of walks of length at most $k+1$ (for $k=1$).}
+    \figlabel{one-round-example}
+  \end{figure}
   
   
+  Refer to \figref{nested}. For $s>1$, let $d_s=\min\{i: V(F_{d_s}\cap Y_i)\neq\emptyset \}$. Consider some $\delta$-walk $v_0,\ldots,v_\ell$ for $\delta\in \{ d_{s+1},\ldots,d_{s}-1\}$.  By (i) and (ii), $v_0\in V(N_{d_0}-F_{d_0})\subseteq V(N_{d_s}-F_{d_s})$ and $v_\ell\in F_{\delta+1}-F_\delta$.  Therefore, there exists some maximum value $i$ such that $v_i\in V(N_{d_{s}}-F_{d_{s}})$.  (In words, $i$ is the last time the walk is in the interior of $F_{d_s}$ before it leaves forever.)
+  Observe that $i\ge s$ because $v_0,\ldots,v_i$ contains $v_0\in N_{d_0}-F_{d_0}$ as well as a vertex from each of $F_{d_0},\ldots,F_{d_{s-1}}$.  
+
   \begin{figure}
     \begin{center}
       \includegraphics{figs/nested}
@@ -371,9 +385,6 @@ The tree decomposition $(B_x:x\in V(K))$ of $H$ is defined as follows: For each 
     \caption{The nested cycles $F_{d_0}, F_{d_1},F_{d_2}\ldots$.}
     \figlabel{nested}
   \end{figure}
-  
-  Refer to \figref{nested}. For $s>1$, let $d_s=\min\{i: V(F_{d_s}\cap Y_i)\neq\emptyset \}$. Consider some $\delta$-walk $v_0,\ldots,v_\ell$ for $\delta\in \{ d_{s+1},\ldots,d_{s}-1\}$.  By (i) and (ii), $v_0\in V(N_{d_0}-F_{d_0})\subseteq V(N_{d_s}-F_{d_s})$ and $v_\ell\in F_{\delta+1}-F_\delta$.  Therefore, there exists some maximum value $i$ such that $v_i\in V(N_{d_{s}}-F_{d_{s}})$.  (In words, $i$ is the last time the walk is in the interior of $F_{d_s}$ before it leaves forever.)
-  Observe that $i\ge s$ because $v_0,\ldots,v_i$ contains $v_0\in N_{d_0}-F_{d_0}$ as well as a vertex from each of $F_{d_0},\ldots,F_{d_{s-1}}$.  
   
   Now, consider the subwalk $v_i,\ldots,v_\ell$.  This subwalk obeys Properties~(i)--(iv) with respect to $F_{d_s}$.  Specifically:
   \begin{compactenum}[(i)]
@@ -387,22 +398,26 @@ The tree decomposition $(B_x:x\in V(K))$ of $H$ is defined as follows: For each 
   \end{compactenum}
   Exactly the same analysis used to establish \eqref{one-round} shows that
   \begin{equation}
-     |\{\delta\in\{d_{s+1},\ldots,d_s-1\}:  \mbox{there exists a $\delta$-walk} \}| \le \binom{k+1-s}{2} \enspace . \eqlabel{one-round-s}
+     |\{\delta\in\{d_{s+1}+1,\ldots,d_s\}:  \mbox{there exists a $\delta$-walk} \}| \le \binom{k+3-s}{2} \enspace . \eqlabel{one-round-s}
   \end{equation}
 
-  We conclude that the maximum number of $\delta\in\{0,\ldots,d-1\}$ such that there exists a $\delta$-walk is at most
-  \[
-      \sum_{s=0}^{k+1} \binom{k+3-s}{2}
-      = \sum_{s=2}^{k+3} \binom{s}{2} 
-      = \frac{1}{6}(k+2)(k+3)(k+4) 
-      = \frac{k^3}{6} + \frac{3k^2}{2} + \frac{13k}{3} + 4 \ge |B_x| \enspace . \qedhere
-  \]
+  We conclude the proof with 
+  \begin{align*}
+    |B_x| & \le |\{\delta\in\{0,\ldots,d\}:  \mbox{$\exists$ a $\delta$-walk} \}| \\
+      & = \sum_{s=0}^{k+1}|\{\delta\in\{d_{s+1}+1,\ldots,d_s\}:  \mbox{$\exists$ a $\delta$-walk} \}| \\
+      & \le\sum_{s=0}^{k+1} \binom{k+3-s}{2} \\
+      & = \sum_{s=2}^{k+3} \binom{s}{2} \\
+      & = \frac{1}{6}(k+2)(k+3)(k+4) \\
+      & = \frac{k^3}{6} + \frac{3k^2}{2} + \frac{13k}{3} + 4  \enspace . \qedhere
+  \end{align*}
 \end{proof}
+
+We now have all the pieces needed to complete the proof of \thmref{k-planar}.
 
 \begin{proof}[Proof of \thmref{k-planar}]
   We use the layered $H$-partition $(\mathcal{L}, \mathcal{S})$, where $\mathcal{S}=\{S_x:x\in V(K)\}$ and $\mathcal{L}=\langle V_i': i=0,1,2\ldots\rangle$ where $V_i' = V_{(k+1)i}\cup\cdots\cup V_{(k+1)(i+1)-1}$.  \Eqref{distance-preserving} shows that $\mathcal{L}$ is indeed a layering of $G$.
 
-  By \clmref{bag-size}, $\mathcal{S}$ produces a graph $H=G/\mathcal{S}$ of treewidth at most $k^3/6+k^2/2+k/3-1$.  By \clmref{width-of-g-plus}, for each $x\in V(H)$ and each integer $i$, $|B_x\cap V_i|\le 24k+12$, so $|B_x\cap V_i'|\le (k+1)(24k + 12) = 24k^2+36k+12$. 
+  By \clmref{bag-size}, $\mathcal{S}$ produces a graph $H=G/\mathcal{S}$ of treewidth at most $\treewidth$.  By \clmref{width-of-g-plus}, for each $x\in V(H)$ and each integer $i$, $|B_x\cap V_i|\le 24k+12$, so $|B_x\cap V_i'|\le (k+1)(24k + 12) = 24k^2+36k+12$. 
 \end{proof}
 
 
