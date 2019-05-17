@@ -292,10 +292,9 @@ The tree decomposition $(B_x:x\in V(K))$ of $H$ is defined as follows: For each 
   Let $d_0=d$, and $d_1=\min\{i: V(F_d\cap Y_i)\neq\emptyset \}$.  By \propref{ancestor-boundary}, any vertex $z\in V(F_d)$ is contained in 
   $Y_j$ for some $d_1\le j < d$.  Therefore, $F_d$ is contained in the interior of  $F_{d_1}$, i.e., $N_{d_0}\subseteq N_{d_1}-F_{d_1}$.   
   
-  
   Refer to \figref{d0d1}.  We will now prove that 
   \begin{equation}
-     |\{\delta\in\{d_1,\ldots,d_0-1\}:  \mbox{there exists a $\delta$-walk} \}| \le \binom{k+1}{2} \enspace . \eqlabel{one-round}
+     |\{\delta\in\{d_1,\ldots,d_0-1\}:  \mbox{there exists a $\delta$-walk} \}| \le \binom{k+3}{2} \enspace . \eqlabel{one-round}
   \end{equation}
   \begin{figure}
     \begin{center}
@@ -359,7 +358,7 @@ The tree decomposition $(B_x:x\in V(K))$ of $H$ is defined as follows: For each 
   
   Therefore, the total number of $\delta\in\{d_1+1,\ldots,d_0\}$ such that there exists a $\delta$-walk is at most
   \[
-     \sum_{t=0}^{k+1} (k+2-t) = \sum_{t=1}^{k+2} t = \binom{k+1}{2}
+     \sum_{t=0}^{k+1} (k+2-t) = \sum_{t=1}^{k+2} t = \binom{k+3}{2}
   \]
   We are now very close to \eqref{one-round}, which asks for the number of $\delta\in\{d_1,\ldots,d_0-1\}$ such that there exists a $\delta$-walk.
   The preceding formula counts $\delta=d_0$, but does not count $\delta=d_1$.  These two effects cancel each other, thus establishing \eqref{one-round}.
@@ -393,9 +392,10 @@ The tree decomposition $(B_x:x\in V(K))$ of $H$ is defined as follows: For each 
 
   We conclude that the maximum number of $\delta\in\{0,\ldots,d-1\}$ such that there exists a $\delta$-walk is at most
   \[
-      \sum_{s=0}^{k+1} \binom{k+1-s}{2}
-      = \sum_{s=0}^{k+1} \binom{s}{2}
-      = \frac{k^3}{6} + \frac{k^2}{2} + \frac{k}{3} \ge |B_x| \enspace . \qedhere
+      \sum_{s=0}^{k+1} \binom{k+3-s}{2}
+      = \sum_{s=2}^{k+3} \binom{s}{2} 
+      = \frac{1}{6}(k+2)(k+3)(k+4) 
+      = \frac{k^3}{6} + \frac{3k^2}{2} + \frac{13k}{3} + 4 \ge |B_x| \enspace . \qedhere
   \]
 \end{proof}
 
