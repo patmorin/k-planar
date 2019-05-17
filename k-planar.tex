@@ -93,7 +93,8 @@ There is a natural generalization of $k$-planar to genus-$g$ surfaces, that we n
 \end{thm}
 
 The remainder of the paper is organized as follows: In \secref{k-planar} we prove \thmref{k-planar}.  In \secref{1-planar} we prove \thmref{1-planar}.  
-In \secref{g-k-planar} we prove \thmref{g-k-planar}. 
+In \secref{g-k-planar} we prove \thmref{g-k-planar}. In \secref{consequences} we point out some consequences of these results for some of the other graph parameters mentioned above.
+
 
 \section{$k$-Planar Graphs}
 \seclabel{k-planar}
@@ -502,37 +503,41 @@ Our proof of \thmref{1-planar} follows quickly from the following technical lemm
   
   We claim that, for each integer $i\ge 0$, $|V(Y^+)\cap V_i|\le 15$.  First observe that, since $Q_1,Q_2,Q_3$ are each vertical paths in $T$,  $\overline{Y}$ contains at most 3 vertices of $V_i$, each incident on at most two edges of $\overline{Y}$.  By \eqref{spar-distance}, any vertex $x\in V(\overline{Y}^+-\overline{Y})\cap V_i$, is incident on an edge $xy\in E(G)$ that crosses one of the at most six edges in $\overline{Y}$ having an endpoint in $V_i$.  These at most six edges have at most 12 endpoints.  Therefore $|V(\overline{Y}^+-\overline{Y})\cap V_i|\le 6\times 2=12$, so $|\overline{Y}^+\cap V_i|\le 12+3=15$.
   
-  Finally, let $M$ and $M^+$ denote the subgraph of $G$ containing the edges and vertices of $Y$, respectively $Y^+$, and the edges and vertices of $F$.  The graph $M^+$ has some number of bounded faces, all contained in the interior of $F$. Some of the bounded faces of $M^+$ are kite faces. Let $F_1,\ldots,F_m$ be the non-kite bounded faces of $M^+$.  
+  Let $M$ and $M^+$ denote the subgraph of $G$ containing the edges and vertices of $\overline{Y}$, respectively $\overline{Y}^+$, and the edges and vertices of $F$.  The graph $M^+$ has some number of bounded faces, all contained in the interior of $F$. Some of the bounded faces of $M^+$ are kite faces. Let $F_1,\ldots,F_m$ be the non-kite bounded faces of $M^+$.  
   
-  We claim that, for each $i\in\{1,\ldots,m\}$, the boundary of $F_i$ is a cycle in $G'$.  Otherwise, some edge $vw$ contributes to the boundary of $F_i$ but is crossed by an edge $xy\in E(G)$. Then, $vw\not\in E(F)$ since no edge of $F$ is crossed by any edge of $G$. Therefore $vw\in E(\overline{Y}^+)$ so $xy\in E(Y^+)$. But then the only faces of $M^+$ incident to $vw$ are kite faces.  In particular $vw$ can not be incident the non-kite face $F_i$.
+  We claim that, for each $i\in\{1,\ldots,m\}$, the boundary of $F_i$ is a cycle in $G'$ that contains no spars. Otherwise, some edge $vw$ contributes to the boundary of $F_i$ but is crossed by an edge $xy\in E(G)$. Then, $vw\not\in E(F)$ since no edge of $F$ is crossed by any edge of $G$. Therefore $vw\in E(\overline{Y}^+)$ so $xy\in E(Y^+)$. But then the only faces of $M^+$ incident to $vw$ are kite faces.  In particular $vw$ can not be incident the non-kite face $F_i$.
   
   Note that $M$ is a Mercedes graph and that each of the faces $F_1,\ldots,F_m$ is contained in a single wedge of $M$.   Let $Y^+ = \overline{Y}^+-F$. Therefore, $V(F_i)$ can be partitioned into at most three sets $P_1'$, $P_2'$, and $P_3'$ where $P_1'\subset V(Y^+)$, $P_2'\subseteq P_a$, $P_3'\subseteq P_b$ for some $a,b\in\{1,2,3\}$, and $F_i[P_j']$ is a path, for each $j\in\{1,2,3\}$. 
 
   Finally, the subgraph $N_i$ of $G$ consisting of the edges and vertices of $G$ contained in $F_i$ or its interior does not contain one of the three vertices of $\tau$. Therefore, we can apply induction using the cycle $F_i$ and the partition $P_1',P_2',P_3'$ of $V(C_i)$ to obtain the desired $H$-partition and tree decomposition of $N_i$.
   
-  The remainder of the proof finishes in the same way as the proof of Lemma~14 in \cite{dujmovic.joret.ea:planar}.  $P_1,\ldots,P_k$, and $V(Y^+)$ become elements of the $H$-partition.  Elements in each of the $H$-partitions of $N_1,\ldots,N_3$ that intersect $P_1,\ldots,P_k$, or $V(\overline{Y}^+-F)$ are discarded and all the resulting sets are combined to obtain an $H$-partition of $G$.  The desired tree decomposition of $G$ is obtained in exactly the same way as in the proof of Lemma~14 in \cite{dujmovic.joret.ea:planar}.
+  The remainder of the proof finishes in the same way as the proof of Lemma~14 in \cite{dujmovic.joret.ea:planar}.  $P_1,\ldots,P_k$, and $S=V(Y^+)$ become elements of the $H$-partition.  Elements in each of the $H$-partitions of $N_1,\ldots,N_3$ that intersect $P_1,\ldots,P_k$, or $V(\overline{Y}^+-F)$ are discarded and all the resulting sets are combined to obtain an $H$-partition of $G$.  The desired tree decomposition of $G$ is obtained in exactly the same way as in the proof of Lemma~14 in \cite{dujmovic.joret.ea:planar}, except that now each node $x$ has a child for each face $F_i$ of $M^+_x$ that contains a vertex of $G$ in its interior.
   
   The planarity of $H$ comes from two properties:
   \begin{enumerate}
-    \item $G/\mathcal{P}$ and $G'/\mathcal{P}$ are isomorphic.  This follows immediately from the fact that, for each edge $xy\in E(G-G')$, $x,y\in S_a$ for some $a\in V(H)$.  Indeed, $S_a=Y^+_a$ where $\overline{Y}_a$ contains the edge $vw\in E(G')$ that crosses $xy$. 
+    \item $G/\mathcal{P}$ and $G^+/\mathcal{P^+}$ are isomorphic, where $G^+$ is the triangulation obtained by adding dummy vertices at each crossing in $G$ and $\mathcal{P}^+$ is the partition we obtain by adding a dummy vertex $z$ to $\overline{Y}^+$ if $\overline{Y}^+$ contains an edge $vw$ that contains $z$ in its interior.  
     
-    \item $G[\overline{Y}^+-F]$ is connected. To see why this is so, first observe that $\overline{Y}-F$ is connected, and then observe that every vertex of $\overline{Y}^+$ is either a vertex of $\overline{Y}$ or adjacent to a vertex of $\overline{Y}$.
+    \item $G^+[\overline{Y}^+-F]$ is connected. To see why this is so, first observe that $\overline{Y}-F$ is connected, and then observe that every vertex of $\overline{Y}^+$ is either a vertex of $\overline{Y}$ or adjacent to a vertex of $\overline{Y}$.
   \end{enumerate}
-  Since $G'$ is planar, this implies that $H=G'/\mathcal{P}$ is planar.\footnote{It is well-known and easy to see that any graph $\Delta'$ obtained by contracting an edge in a planar graph $\Delta$ is also planar.  Repeatedly applying this fact implies that $\Delta/\mathcal{P}$ is planar provided that $\Delta[P]$ is connected for every $P\in\mathcal{P}$.}
+  Since $G^+$ is planar, the second point implies that $H=G^+/\mathcal{P}$ is planar.\footnote{It is well-known and easy to see that any graph $\Delta'$ obtained by contracting an edge in a planar graph $\Delta$ is also planar.  Repeatedly applying this fact implies that $\Delta/\mathcal{P}$ is planar provided that $\Delta[P]$ is connected for every $P\in\mathcal{P}$.} The first point then ensures that $G/\mathcal{P}$ is also planar.
 \end{proof}
 
-Finally, we can complete the proof of \thmref{1-planar}.
+Using \lemref{induction}, the proof of \thmref{1-planar} is now straightforward. 
 
 \begin{proof}[Proof of \thmref{1-planar}]
-  Using \lemref{induction}, the proof of \thmref{1-planar} is now straightforward. Given a 1-plane graph $G$, add edges to make it edge maximal so that it has an outer face $F=v_1v_2v_3$. Next, add a vertex $r$ adjacent to $v_1$, $v_2$, and $v_3$ to obtain an edge-maximal 1-plane graph $\overline{G}$ with one vertex $r$ of degree 3 on its outer face. 
+Given a 1-plane graph $G$, add edges to make it edge maximal so that it has an outer face $F=v_1v_2v_3$. Next, add a vertex $r$ adjacent to $v_1$, $v_2$, and $v_3$ to obtain an edge-maximal 1-plane graph $\overline{G}$ with one vertex $r$ of degree 3 on its outer face. 
   
   Let $G'$ be the plane graph obtained by removing one spar from each kite of $\overline{G}$ and let $T$ be a BFS tree of $G'$ rooted at $r$.  Now apply \lemref{induction} with $G=\overline{G}$, $G'$, $F$, and $P_i=\{v_i\}$ for each $i\in\{1,2,3\}$.  This gives an $H$-partition $\{S_x:x\in V(H)\}$ of $\overline{G}-\{r\}\supseteq G$ in which $H$ is planar and has treewidth at most 3.
   
-  Use the layering $\mathcal{L}=\langle V_0',\ldots,V_h'\rangle$ where $V_i'=V_{2i}\cup V_{2i+1}$ for each $i\in\{0,\ldots,h\}$. That this is a layering of $G$ follows from \eqref{spar-distance}.  Since $|V_j\cap S_x|\le 15$ for every integer $i\ge 0$, $|V_i'\cap S_x|\le 30$ for every integer $i\ge 0$ and $x\in V(H)$.
+  Use the layering $\mathcal{L}=\langle V_0',\ldots,V_h'\rangle$ where $V_i'=V_{2i}\cup V_{2i+1}$ for each $i\in\{0,\ldots,h\}$. That this is a layering of $G$ follows from \eqref{spar-distance}.  Since $|V_j\cap S_x|\le 15$ for every integer $i\ge 0$, $|V_i'\cap S_x|\le 30$ for every integer $i\ge 0$ and every $x\in V(H)$.
 \end{proof}
 
 \section{$(g,k)$-Planar Graphs}
 \seclabel{g-k-planar}
+
+Next we consider a generalization of our results to $(g,k)$-plane graphs.  
+
+
 
 \begin{lem} \lemlabel{make-planar}
 Let $G$ be a $(S,0)$-plane graph where $S$ is a surface with Euler genus $g$. 
@@ -575,14 +580,16 @@ such that  $W_{i} \cap V(G) \setminus V(Z) = V_i  \setminus V(Z)$ for all $i\geq
   \note{PM}{All of the above still needs work...}
 \end{proof}
 
+\section{Consequences}
+\seclabel{consequences}
 
+\begin{enumerate}
+  \item $p$-centered colourings;
+  \item non-repetitive chromatic number;
+  \item connection with queue layouts;
+  \item connection with low-treewidth/treedepth colourings
+\end{enumerate}
 
-
-
-
-
-% \section{Consequences}
-% \seclabel{consequences}
 
 \bibliographystyle{plainnat}
 \bibliography{k-planar}
