@@ -290,7 +290,7 @@ The tree decomposition $(B_x:x\in V(K))$ of $H$ is defined as follows: For each 
     
     \item $\ell\le k+1$.
   \end{compactenum}
-  We call any walk with properties (i)--(iv) a \emph{$\delta$-walk}. Therefore, to upper-bound $|B_x|$, it suffices to upper-bound the number of $\delta\in\{0,\ldots,d-1\}$ such that there exists a $\delta$-walk.  This is our goal for the remainder of this proof. 
+  We call any walk with properties (i)--(iv) a \emph{$\delta$-walk}. Therefore, to upper-bound $|B_x|$, it suffices to upper-bound the number of $\delta\in\{0,\ldots,d\}$ such that there exists a $\delta$-walk.\footnote{To account for the fact that $B_x$ contains $x$ we count $\delta=d$.  A $d$-walk corresponds, for example, to a 0-length walk that begins and ends at any vertex $v_0\in V(N_x-F_x)$.}  This is our goal for the remainder of this proof. 
   
   In order to avoid excessive levels of subscripts, we introduce the following abbreviated notation: For $i\in\{0,\ldots,d\}$, we use $F_i$, $N_i$, $Y_i$, and $M_i$ as shorthands for $F_{a_i}$, $N_{a_i}$, $Y_{a_i}$, and $M_{a_i}$, respectively.
   
@@ -559,7 +559,7 @@ such that  $W_{i} \cap V(G) \setminus V(Z) = V_i  \setminus V(Z)$ for all $i\geq
      Z' = \{ v : V(W_{vw})\cap Z\neq\emptyset \} \enspace .
   \]
   \note{PM}{We can certainly save a factor of 2 here because we only need one endpoint of each $vw$ that crosses $Z$ to take part in $Z'$.}
-  Since $|Z\cap V_i| \le 2g$, the same argument used in the proof of \lemlabel{width-of-g-plus} shows that $|Z'\cap V_i|\le 2g\times 4\times (2k+1) = 16gk+8g$ for all $i\in\{1,\ldots,h\}$.  
+  Since $|Z\cap V_i| \le 2g$, the same argument used in the proof of \clmref{width-of-g-plus} shows that $|Z'\cap V_i|\le 2g\times 4\times (2k+1) = 16gk+8g$ for all $i\in\{1,\ldots,h\}$.  
   
   Furthermore, for every edge $vw\in E(G-Z')$, $\dist_{G^+-Z}(v,w)\le k+1$, since $W_{vw}\subseteq G^+-Z$.
   
