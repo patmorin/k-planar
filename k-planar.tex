@@ -37,6 +37,7 @@
 \DeclareMathOperator{\dist}{dist}
 \DeclareMathOperator{\depth}{depth}
 \DeclareMathOperator{\ff}{f}
+\DeclareMathOperator{\tw}{tw}
 
 \renewcommand{\proplabel}[1]{\label{prop:#1}}
 \renewcommand{\propref}[1]{(PR\ref{prop:#1})}
@@ -59,7 +60,7 @@
 
 \section{Introduction}
 
-A \emph{layering} of a graph $G$ is a sequence $\mathcal{L}=\langle V_0,V_1,\ldots,V_h\rangle$ such that $\{V_0,V_1,\ldots,V_h\}$ is a partition of $V(G)$ and there is no edge $vw\in E(G)$ such that $v\in V_i$, $w\in V_j$ and $|j-i|>1$.  For any partition $\mathcal{P}=\{S_1,\ldots,S_p\}$ of $V(G)$, a \emph{quotient graph} $H=G/\mathcal{P}$ has a $p$-element vertex set $V(H)=\{x_1,\ldots,x_p\}$ and $x_ix_j\in E(H)$ if and only there exists an edge $vw\in E(G)$ such that $v\in S_i$ and $w\in S_j$. To highlight the importance of the quotient graph $H$, we call $\mathcal{P}$ an $H$-partition and write this concisely as $\mathcal{P}=\{S_x : x\in V(H)\}$ so that each element of $\mathcal{P}$ is indexed by the vertex it creates in $H$.\footnote{An alternative definition of a layering of $G$ is an $H$-partition of $G$ where $H$ is a path.}  A layered $H$-partition $(\mathcal{L},\mathcal{P})$ of a graph $G$ consists of a layering $\mathcal{L}$ of $G$ and an $H$-partition $\mathcal{P}$ of $G$. The \emph{layered width} of $(\mathcal{H},\mathcal{P})$ is $\max\{|L\cap P|: L\in\mathcal{L},\, P\in\mathcal{P}\}$.
+A \emph{layering} of a graph $G$ is a sequence $\mathcal{L}=\langle V_0,V_1,\ldots\rangle$ such that $\{V_0,V_1,\ldots\}$ is a partition of $V(G)$ and there is no edge $vw\in E(G)$ such that $v\in V_i$, $w\in V_j$ and $|j-i|>1$.  For any partition $\mathcal{P}=\{S_1,\ldots,S_p\}$ of $V(G)$, a \emph{quotient graph} $H=G/\mathcal{P}$ has a $p$-element vertex set $V(H)=\{x_1,\ldots,x_p\}$ and $x_ix_j\in E(H)$ if and only there exists an edge $vw\in E(G)$ such that $v\in S_i$ and $w\in S_j$. To highlight the importance of the quotient graph $H$, we call $\mathcal{P}$ an $H$-partition and write this concisely as $\mathcal{P}=\{S_x : x\in V(H)\}$ so that each element of $\mathcal{P}$ is indexed by the vertex it creates in $H$.\footnote{An alternative definition of a layering of $G$ is an $H$-partition of $G$ where $H$ is a path.}  A layered $H$-partition $(\mathcal{L},\mathcal{P})$ of a graph $G$ consists of a layering $\mathcal{L}$ of $G$ and an $H$-partition $\mathcal{P}$ of $G$. The \emph{layered width} of $(\mathcal{H},\mathcal{P})$ is $\max\{|L\cap P|: L\in\mathcal{L},\, P\in\mathcal{P}\}$.
 
 Layered $H$-partitions of small layered width in which $H$ has some additional property are a useful tool for a number of graph problems. \citet{dujmovic.joret.ea:planar} show that, if each graph $G$ in some family $\mathcal{G}$ of graphs has a layered $H$-partition for which the layered-width of the partition and the treewidth of $H$ are each upper-bounded by some constant $c_\mathcal{G}$, then each of the following quantities are upper bounded by a constant, for every $G\in\mathcal{G}$: queue number, track number, layered treewidth, and 3-D grid drawing volume. \citet{dujmovic.esperet.ea:planar} add non-repetitive chromatic number to this list.  \citet{dujmovic.joret.ea:planar} show that two common families of graphs have such $H$-partitions: planar graphs and (more generally) bounded-genus graphs.
 
@@ -87,7 +88,7 @@ Prior to this work, the strongest structural characterization of $k$-planar grap
 There is a natural generalization of $k$-planar to genus-$g$ surfaces, that we now describe.  A graph $G$ embedded on a surface $S$ is $(S,k)$-plane if no edge of $G$ is involved in more than $k$ crossings.  A (not necessarily embedded) graph $G$ is $(g,k)$-planar if it is isomorphic to some $(S,k)$-plane graph $G'$ where $S$ is a surface with Euler genus $g$.
 
 \begin{thm}\thmlabel{g-k-planar}
-  Every $(g,k)$-planar graph has a layered $H$-partition of layered-width at most $\max\{16gk^2 + 24gk + 8g, 24k^2 + 36k + 12\}$ in which $H$ has treewidth at most $\treewidth$.
+  Every $(g,k)$-planar graph has a layered $H$-partition of layered-width at most $\max\{8gk^2 + 12gk + 4g, 24k^2 + 36k + 12\}$ in which $H$ has treewidth at most $\treewidth$.
   
   Every $(g,1)$-planar graph has a layered $H$-partition of layered-width at most $\max\{48g, 30\}$ in which $H$ has treewidth at most $4$.  
 \end{thm}
@@ -192,7 +193,7 @@ For any triangulation $\Delta$ in which the outer face has a vertex $r$ of degre
 
 \subsection{$k$-Planar Graphs}
 
-Let $G$ be a $k$-plane graph.  We will assume, for ease of exposition, that any point $p\in\R^2$ is involved in at most one crossing $(p,vw,xy)$ of $G$. This assumption is not critical since it can be enforced by a slight deformation of the edges of $G$ and the resulting (deformed) graph is also $k$-plane.   Consider the following plane graphs:
+Let $G$ be a $k$-plane graph.  We will assume, for ease of exposition, that any point $p\in\R^2$ is involved in at most one crossing $(p,vw,xy)$ of $G$. This assumption is not critical since it can be enforced by a slight deformation of the edges of $G$ and the resulting (deformed) graph is also $k$-plane.   Consider the following plane graphs (see \figref{wrapper}(a)):
 \begin{compactenum}
   \item Add a dummy vertex at each crossing in $G$ to obtain a plane graph and then add edges to this graph to obtain a triangulation $G^+$.
   
@@ -203,6 +204,21 @@ Observe that, for any edge $vw\in E(G)$,
   \dist_{G^+}(v,w) \le k+1 \enspace ,  \eqlabel{distance-preserving}
 \end{equation}
 since (the curve) $vw$ contains a sequence $W_{vw}$ of at most $k+2$ vertices of $G^+$ that form a walk from $v$ to $w$ in $G^+$.
+
+\begin{figure}
+  \begin{center}
+    \begin{tabular}{c@{\hspace{2cm}}c}
+      \includegraphics{figs/wrapper-1} &
+      %\includegraphics{figs/wrapper-3} &
+      \includegraphics{figs/wrapper-3} \\
+      (a) & (b) 
+    \end{tabular}
+  \end{center}  
+  \caption{Wrapping a $K_4$ around $G^+$: (a)~the graph $G^{++}$
+  %, (b)~the spanning tree $T$ of $G^{++}$, 
+  and (b)~the modified version of $G^{++}$ used in the proof of \corref{k-planar}.}
+  \figlabel{wrapper}
+\end{figure}
 
 Let $r$ be the vertex of the $K_4$ not incident on $F_0$ and let $T$ be a BFS spanning tree of $G^{++}$ rooted at $r$. 
 For each integer $i\ge 0$, let $V_i=\{v\in V(G^+): \dist_{T}(r,v)=i\}$ and observe that $\{V_0,V_1,\ldots,V_{h}\}$ is a layering of $G^+$ (but not of $G$).
@@ -219,7 +235,7 @@ For each edge $vw\in E(G)$, consider the walk $W_{vw}$ in $G^+$ that corresponds
 \[
    S_x = \{v\in V(G): a(v)=x \} \enspace .
 \]
-Clearly $\mathcal{S}=\{S_x:x\in V(K)\}$ is a partition of $V(G)$.  We will use $\mathcal{S}$ as the partition that defines our quotient graph $H=G/\mathcal{S}$ with vertex set $V(H)=V(K)$ and the edge $xy\in E(H)$ if and only if there exists an edge $vw\in E(G)$ with $v\in S_x$ and $w\in S_y$.  First we argue that this partition has small width with respect to the layering $\{V_0,\ldots,V_h\}$ defined by $T$ (recall that this is a layering of $G^+$, not a layering of $G$).
+Clearly $\mathcal{S}=\{S_x:x\in V(K)\}$ is a partition of $V(G)$.  We will use $\mathcal{S}$ as the partition that defines our quotient graph $H=G/\mathcal{S}$ with vertex set $V(H)=V(K)$ and the edge $xy\in E(H)$ if and only if there exists an edge $vw\in E(G)$ with $v\in S_x$ and $w\in S_y$.  First we argue that this partition has small width with respect to the layering $\{V_0,V_1,\ldots\}$ defined by $T$ (recall that this is a layering of $G^+$, not a layering of $G$).
 
 \begin{clm}\clmlabel{chargeback-to-y}
    For any $x\in V(K)$ and any vertex $v\in S_x$, there exists a vertex $v'\in Y_x$ such that $|\dist_T(r,v')-\dist_T(r,v)|\le k+1$.  
@@ -421,37 +437,26 @@ We now have all the pieces needed to complete the proof of \thmref{k-planar}.
   By \clmref{bag-size}, $\mathcal{S}$ produces a graph $H=G/\mathcal{S}$ of treewidth at most $\treewidth$.  By \clmref{width-of-g-plus}, for each $x\in V(H)$ and each integer $i$, $|B_x\cap V_i|\le 24k+12$, so $|B_x\cap V_i'|\le (k+1)(24k + 12) = 24k^2+36k+12$. 
 \end{proof}
 
+We conclude this section with a small extension of \thmref{k-planar} that is useful when studying $(g,k)$-planar graphs in \secref{g-k-planar}.
 
-\noindent
-\framebox{
-\begin{minipage}{\textwidth}
-  \note{DW}{%
-    % I think we need to define layered treewidth, and
-    % give the result of Dujmovic-Eppstein-Wood that (g,k)-planar graphs
-    % have O(gk)  layered treewidth. This is the best previous structural
-    % description of k-planar graphs. State that layered partitions are
-    % richer than  layered treewidth, and lead to O(1) bounds on non-rep
-    % chromatic number and queue-number, instead of O(log n) bounds via
-    % layered treewidth.
-    I also think we should give explicit upper bounds on non-rep chromatic
-    number for k-planar graphs, and also for queue-number (especially if
-    they improve the bound in the FOCS / J.ACM paper).
+\begin{cor}\corlabel{k-planar}
+  Let $G$ be a $k$-plane graph, let $r_0$ be an arbitrary vertex of $G$, let $G^+$ be a graph obtained by adding a dummy vertex at each crossing in $G$ and then arbitrarily adding non-crossing edges to obtain a triangulation.  Then $G$ has a layered $H$-partition $(\mathcal{L}=\langle V_0',V_1',\ldots\rangle,\mathcal{P})$ satisfying the conditions of \thmref{k-planar} and such that $V_i' = \{v\in V(G): \floor{\dist_{G^+}(r_0,v)/(k+1)}=i\}$ for each integer $i\ge 0$.
+\end{cor}
 
-    I think we should think about generalising the new theorem for
-    (g,k)-planar graphs.
-
-    We should add corollaries for d-map graphs, since they are $d^2$-planar.
-    }
-    
-    \note{PM}{
-    A couple of other things to look into: 
-    \begin{compactenum}
-      \item $p$-centered colourings
-      \item low treewidth colourings
-    \end{compactenum}
-    }
-\end{minipage}
-}
+\begin{proof}
+  Without loss of generality, assume that $r_0$ is on the outer face of $G^+$ and let $v_1$ and $v_2$ be the other two vertices of the outer face of $G^+$.
+  The proof of \thmref{k-planar} begins with the graph $G^+$ and then creates a graph $G^{++}$ consisting of a $K_4$ containing $G^+$ in one of its inner faces, $F_0$, and six edges required to complete $G^{++}$ to a triangulation.  Instead, modify $G^{++}$ by subdividing the edges joining $F_0$ to $v_1$ and $v_2$, as shown in \figref{wrapper}(b).  In this modified version of $G^{++}$, we have $\dist_{G^++}(r,v)=\dist_{T}(r,v)=\dist_{G^+}(r_0,v)+2$
+  which leads to the layering $\langle V_0,V_1,\ldots\rangle$ of $G^+$ where $V_i=\{v\in V(G^+): \dist_{T}(r,v) = i\}$.
+  
+  The rest of proof remains unchanged until the point where we derive the layering $\mathcal{L}=\langle V_0',V_1',\ldots\rangle$ of $G$.  At this point, we set
+  \[  
+    V_i' = \{v\in V(G): \floor{\dist_{T}(r,v)-2}=i\} 
+         = \{v\in V(G): \floor{\dist_{G^+}(r_0,v)/(k+1)}=i\} \enspace ,
+  \]
+  for all integers $i\ge 0$.  This layering satisfies the conditions of the corollary.
+\end{proof}
+  
+  
 \section{$1$-Planar Graphs}
 \seclabel{1-planar}
 
@@ -529,66 +534,113 @@ Given a 1-plane graph $G$, add edges to make it edge maximal so that it has an o
   
   Let $G'$ be the plane graph obtained by removing one spar from each kite of $\overline{G}$ and let $T$ be a BFS tree of $G'$ rooted at $r$.  Now apply \lemref{induction} with $G=\overline{G}$, $G'$, $F$, and $P_i=\{v_i\}$ for each $i\in\{1,2,3\}$.  This gives an $H$-partition $\{S_x:x\in V(H)\}$ of $\overline{G}-\{r\}\supseteq G$ in which $H$ is planar and has treewidth at most 3.
   
-  Use the layering $\mathcal{L}=\langle V_0',\ldots,V_h'\rangle$ where $V_i'=V_{2i}\cup V_{2i+1}$ for each $i\in\{0,\ldots,h\}$. That this is a layering of $G$ follows from \eqref{spar-distance}.  Since $|V_j\cap S_x|\le 15$ for every integer $i\ge 0$, $|V_i'\cap S_x|\le 30$ for every integer $i\ge 0$ and every $x\in V(H)$.
+  Use the layering $\mathcal{L}=\langle V_0',V_1'\ldots\rangle$ where $V_i'=V_{2i}\cup V_{2i+1}$ for each integer $i\ge 0$. That this is a layering of $G$ follows from \eqref{spar-distance}.  Since $|V_j\cap S_x|\le 15$ for every integer $i\ge 0$, $|V_i'\cap S_x|\le 30$ for every integer $i\ge 0$ and every $x\in V(H)$.
 \end{proof}
+
+
+Exactly the same argument used to establish \corref{k-planar} establishes the analagous result for \thmref{1-planar}:
+
+\begin{cor}\corlabel{1-planar}
+  Let $G$ be a $1$-plane graph, let $r_0$ be an arbitrary vertex of $G$, let $G^+$ be a graph obtained by adding a dummy vertex at each crossing in $G$ and then arbitrarily adding non-crossing edges to obtain a triangulation.  Then $G$ has a layered $H$-partition $(\mathcal{L}=\langle V_0',V_1',\ldots\rangle,\mathcal{P})$ satisfying the conditions of \thmref{1-planar} and such that $V_i' = \{v\in V(G): \floor{\dist_{G^+}(r_0,v)/2}=i\}$ for each integer $i\ge 0$.
+\end{cor}
+
 
 \section{$(g,k)$-Planar Graphs}
 \seclabel{g-k-planar}
 
-Next we consider a generalization of our results to $(g,k)$-plane graphs.  
-Here we go....
+Next we prove \thmref{g-k-planar}, which generalizes of our results to $(g,k)$-plane graphs.  We make use of the following lemma due to \citet[Lemma~21]{dujmovic.joret.ea:planar}:
 
 
 \begin{lem} \lemlabel{make-planar}
-Let $G$ be a $(S,0)$-plane graph where $S$ is a surface with Euler genus $g$. 
-%For every BFS layering $(V_0,V_1,\dots)$ of $G$,
-%there is a set $Z\subseteq V(G)$ with at most $2g$ vertices in each layer $V_i$, such that $G-Z$ is planar. 
-%Moreover, there is a connected planar graph $G^+$ containing $G-Z$ as a subgraph, 
-%such that there is a BFS layering $(W_0,W_1,\dots)$ of $G^+$ and $W_{i} \cap V(G-Z) = V_i  \setminus Z$ for all $i\geq 0$. 
-For every BFS spanning tree $T$ of $G$ rooted at some vertex $r\in V(G)$ with corresponding BFS layering $(V_0,V_1,\dots)$, 
-there is a subgraph $Z\subseteq G$ with at most $2g$ vertices in each layer $V_i$, such that $G-V(Z)$ is planar. 
-Moreover, there is a connected planar graph $G^*$ containing $G-V(Z)$ as a subgraph, and 
-there is a BFS spanning tree $T^*$ of $G^*$ rooted at some vertex $r^*$ 
-with corresponding BFS layering $(W_0,W_1,\dots)$ of $G^*$, 
-such that  $W_{i} \cap V(G) \setminus V(Z) = V_i  \setminus V(Z)$ for all $i\geq 0$.
-% , and
-% $P \cap V(G) \setminus V(Z)$ is a vertical path in $T$ for every vertical path $P$ in $T^+$. 
+Let $G^+$ be a $(S,0)$-plane graph where $S$ is a surface with Euler genus $g$. 
+For each $r\in V(G^+)$ there is a vertex set $Z\subseteq V(G^+)$ such that $G^+-V(Z)$ is planar and there is a connected planar graph $G^*$ containing  $G^+-Z$ as a subgraph with a vertex $r^*\in V(G^*)$ such that, for every integer $i\ge 0$,
+\[  \{v\in V(G^*): \dist_{G^*}(r^*,v) = i\} \supseteq \{v\in V(G^+): \dist_{G^+}(r,v) = i\} \]
+and
+\[ |\{v\in V(G^+): \dist_{G^+}(r,v) = i\}| \le 2g \enspace . \]
+
 \end{lem}
 
-
 \begin{proof}[Proof of \thmref{g-k-planar}]
-  Let $G$ be an $(S,k)$-plane graph where $S$ is a surface of Euler genus $g$.  Let $G^+$ be the $(S,0)$-plane graph obtained by adding a dummy vertex at each crossing in $G$.  Let $r$ be any vertex in $V(G)$ and let $T$ be BFS-spanning tree of $G^+$ rooted at $r$ and let $\mathcal{L}=\rangle V_0,ldots,V_h\rangle$ be the resulting layering of $G^+$.
+  Let $G$ be an $(S,k)$-plane graph where $S$ is a surface of Euler genus $g$.  Let $G^+$ be the $(S,0)$-plane graph obtained by adding a dummy vertex at each crossing in $G$.  Let $r_0$ be any vertex in $V(G)$, let $T$ be BFS spanning tree of $G^+$ rooted at $r_0$ and let $\langle V_0,V_1,\ldots\rangle$ be the resulting layering of $G^+$.
     
-  Apply \lemref{make-planar} to $G^{++}$ to obtain the set $Z\subseteq V(G^{++})$, the planar graph $G^*$, and the BFS spanning tree $T^*$ rooted at $r^*$.  For each edge $vw\in E(G)$, let $W_{vw}$ be the corresponding walk in $G^+$. The set $Z$ contains vertices in $V(G)$ as well as dummy vertices in $V(G^+-G)$. Create a new set $Z'\subseteq V(G)$ as
-  \[
-     Z' = \{ v : V(W_{vw})\cap Z\neq\emptyset \} \enspace .
+  Apply \lemref{make-planar} to $G^{+}$ to obtain the set $Z\subseteq V(G^{+})$ and the planar graph $G^*$ with special vertex $r^*$.  For each edge $vw\in E(G)$, let $W_{vw}$ be the corresponding walk in $G^+$. The set $Z$ contains vertices in $V(G)$ as well as dummy vertices in $V(G^+-G)$. Create a new set $Z'\subseteq V(G)$ by taking, for each $vw\in E(G)$ such that $V(W_{vw})\cap Z\neq\emptyset$, one of the vertices $v$ or $w$.  In this way, each vertex $z\in Z$ can be charged for at most two vertices in $v,x\in Z'$ and this happens only if $(z,vw,xy)$ is a crossing in $G$.
+  Since $|Z\cap V_i| \le 2g$, the same argument used in the proof of \clmref{width-of-g-plus} shows that $|Z'\cap V_i|\le 2g\times 2\times (2k+1) = 4g(2k+1)$ for each integer $i\ge 0$.
+  
+  % For every edge $vw\in E(G)$, $W_{vw}$ has length at most $k+1$.  Therefore $\dist_{G^+}(v,w)\le k+1$ for each $v\in E(G)$.  Since $W_{vw}\subseteq G^+-Z$ for each $vw\in E(G-Z')$,  $\dist_{G^+-Z}(v,w)\le k+1$ for each $vw\in E(G-Z')$.  
+  
+  Next, observe that any plane embedding of $G^*\supseteq G^+-Z$ gives a $k$-plane embedding of $G-Z'$. Indeed, for every edge $vw\in E(G-Z')$, $G^+-Z$ contains a walk $W_{vw}$ that contains at most $k$ dummy vertices of $G^+-Z$.  Therefore, replacing edge $vw\in E(G-Z')$ with the corresponding walk in $G^*$ gives a $k$-plane embedding of $G-Z'$.  Call the resulting $k$-plane graph $G^*_0$.
+  
+  Let $G^*_1$ be the supergraph of $G^*_0$ obtained by adding every vertex and edge of $G^*$ that is not contained in some edge of $G^*_0$.  Finally, let $G^{*+}_1$ be the triangulation obtained by adding edges to $G^*$ in such a way that $\dist_{G^*}(r^*,v)=\dist_{G^{*+}}(r^*,v)$ for every $v\in V(G^*)$.\footnote{The fact that $G^*$ can be completed to a triangulation $G^{*+}$ while preserving distances to $r^*$ follows from the fact that any face $F$ of $G^*$ with 4 or more vertices contains two non-adjacent vertices $x$ and $y$ such that $|\dist_{G^*}(r^*,x)-\dist_{G^*}(r^*,y)|\le 1$.  Indeed, if $z$ is a vertex of $F$ that minimizes $\dist_{G^*}(r^*,z)$, then two neighbours $x$ and $y$ of $z$ have this property.} Now, observe that $G^*_1$ is a $k$-plane graph and $G^{*+}_1$ is obtained by adding dummy vertices at crossings in $G^*_1$ and triangulating the resulting graph.    
+  
+  Apply \corref{k-planar} or (in the case $k=1$) \corref{1-planar} to $G^*_1$ using $G^{*+}_1$ and the distinguished vertex $r^*$ to obtain a layered $H$-partition of $G^*_1$.  Since $G^*_1\supseteq G^*_0$ and $G^*_0$ is isomorphic to $G-Z'$, this gives a layered $H$-partition $(\mathcal{L}=\langle V_0',V_1',\ldots\rangle,\mathcal{P})$ of $G-Z'$ that satisfies the conditions of \corref{k-planar} or \corref{1-planar}, as appropriate.  In particular, for every integer $i\ge 0$,
+  \begin{align*} 
+    V_i'& = \{v\in V(G-Z'):\floor{\dist_{G^*}(r^*,v)/(k+1)} = i\} \\
+        & = \{v\in V(G-Z'):\floor{\dist_{G^+}(r_0,v)/(k+1)} = i\} \enspace .
+  \end{align*}
+  It follows that $|V_i'\cap Z'|\le 4g(2k+1)(k+1) = 8gk^2+12gk+4g$.  
+  
+  We turn $\mathcal{P}$, the $H$-partition of $G-Z'$ into a partition $\mathcal{P}'=\mathcal{P}\cup \{Z'\}$ of $G$.  That is, we place all vertices of $Z'$ in a common part.  In the worst-case, the vertex of $H'=G/ \mathcal{P}'$ corresponding to $V(G)\cap Z'$ is adjacent to every vertex of $H=(G-Z')/\mathcal{P}$, so the treewidth of $H'$ is at most one more than the treewidth of $H$. 
+  
+  Summarizing, we obtain an $H'$-partition $(\mathcal{L},\mathcal{P}')$ of $G$ where, for each $P\in\mathcal{P}'$,
+  \[ |V_i' \cap P| \le \begin{cases} 8gk^2+12gk+4g & \text{if $P=Z'$} \\
+                                      30 & \text{if $P\neq Z'$ and $k=1$} \\
+                                  24k^2+36k+12 & \text{otherwise.} 
+                    \end{cases}
   \]
-  \note{PM}{We can certainly save a factor of 2 here because we only need one endpoint of each $vw$ that crosses $Z$ to take part in $Z'$.}
-  Since $|Z\cap V_i| \le 2g$, the same argument used in the proof of \clmref{width-of-g-plus} shows that $|Z'\cap V_i|\le 2g\times 4\times (2k+1) = 16gk+8g$ for all $i\in\{1,\ldots,h\}$.  
-  
-  Furthermore, for every edge $vw\in E(G-Z')$, $\dist_{G^+-Z}(v,w)\le k+1$, since $W_{vw}\subseteq G^+-Z$.
-  
-  Next, observe that any plane embedding of $G^*\supseteq G^+-Z$ gives a $k$-plane embedding of $G-Z'$. Indeed, for every edge $vw\in E(G-Z')$, $G^+-Z$ contains a walk $W_{vw}$ that contains at most $k$ dummy vertices of $G^+-Z$.  Therefore, replacing edge edge $vw\in E(G-Z')$ with the corresponding walk in $G^*$ gives a $k$-plane embedding of $G-Z'$.
-  
-  Apply \thmref{k-planar} or (in the case $k=1$) \thmref{1-planar} to the $k$-plane embedding of $G-Z'$ to obtain a layered $H$-partition $(\mathcal{L}',\mathcal{P})$ of $G-Z'$.  Though not explicitly in the statement of either theorem, the proof of each theorem shows that it is possible to choose a vertex $r^*\in G^*$ so that each layer $V'_i\in \mathcal{L}'$ is contained in at most $k+1$ consecutive layers of $\mathcal{L}$.  Therefore, $|Z'\cap V_i'| \le (k+1)(16gk+8g) = 16gk^2 + 24gk + 8g$.
-  
-  We turn $\mathcal{P}$, the $H$-partition of $G-Z'$ into a partition $\mathcal{P}'=\mathcal{P}\cup \{Z'\}$.  Clearly, the treewidth of $H'=G/\mathcal{P'}$ is at most one more than the treewidth of $H=G/\mathcal{P}$.  Finally
+  and $H'$ has treewidth 
   \[
-      \max\{ |P\cap L| : P\in \mathcal{P}',\, L\in \mathcal{L}' \} \le
-      \max\{ 16gk^2 + 24gk + 8g, 24k^2 + 36k + 12 \} \enspace .
+      \tw(H') 
+        \le \begin{cases}
+              4 & \text{if $k=1$} \\
+              k^3/6 + 3k^2/2 + 13k/3+4 & \text{otherwise.}
+            \end{cases} \qedhere
   \]
-  \note{PM}{All of the above still needs work...}
 \end{proof}
 
 \section{Consequences}
 \seclabel{consequences}
 
+Some possibilities
 \begin{enumerate}
   \item $p$-centered colourings;
+  \item clustered colourings;
   \item non-repetitive chromatic number;
   \item connection with queue layouts;
   \item connection with low-treewidth/treedepth colourings
+  \item An important open question is whether $k$-planar graphs have layered $H$-partitions whose layered width is upper bounded by a function of $k$ but in which the treewidth of $H$ is bounded by an absolute constant, independent of $k$.
+  \item Are our current $H$-partitions $K_{3,s}$-free for some $s=s(k)$?  If so, this is good news for clustered colouring.
 \end{enumerate}
+
+\noindent
+\framebox{
+\begin{minipage}{\textwidth}
+  \note{DW}{%
+    % I think we need to define layered treewidth, and
+    % give the result of Dujmovic-Eppstein-Wood that (g,k)-planar graphs
+    % have O(gk)  layered treewidth. This is the best previous structural
+    % description of k-planar graphs. State that layered partitions are
+    % richer than  layered treewidth, and lead to O(1) bounds on non-rep
+    % chromatic number and queue-number, instead of O(log n) bounds via
+    % layered treewidth.
+    I also think we should give explicit upper bounds on non-rep chromatic
+    number for k-planar graphs, and also for queue-number (especially if
+    they improve the bound in the FOCS / J.ACM paper).
+
+    I think we should think about generalising the new theorem for
+    (g,k)-planar graphs.
+
+    We should add corollaries for d-map graphs, since they are $d^2$-planar.
+    }
+    
+    \note{PM}{
+    A couple of other things to look into: 
+    \begin{compactenum}
+      \item $p$-centered colourings
+      \item low treewidth colourings
+    \end{compactenum}
+    }
+\end{minipage}
+}
 
 
 \bibliographystyle{plainnat}
