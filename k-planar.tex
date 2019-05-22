@@ -607,6 +607,95 @@ and
 \section{Consequences}
 \seclabel{consequences}
 
+For a graph $G$ and a set $C$ of size $c$, any function $\phi\colon V(G)\to C$  is called a \emph{$c$-colouring} of $G$.  
+
+\subsection{Non-Repetitive Colouring}
+
+A $c$-colouring $\phi$ of $G$ is \emph{non-repetitive} if, for every path $v_1,\ldots,v_{2h}$ in $G$, there exists some $i\in\{1,\ldots,k\}$ such that $\phi(v_i)\neq\phi(v_{i+h})$.  The \emph{non-repetitive chromatic number} $\pi(G)$ of $G$ is the minimum value $c$ such that $G$ has a non-repetitive $c$-colouring.
+
+\citet[Corollaries~9 and 10]{dujmovic.esperet.ea:planar} prove the following result:
+
+\begin{lem}\lemlabel{non-repetitive}
+  If a graph $G$ has a layered $H$-partition of layered width at most $\ell$ in which $H$ has treewidth at most $t$, then $\pi(G)\le \ell 4^{t+1}$.
+\end{lem}
+
+Combining \lemref{non-repetitive} with Theorems~\ref{thm:1-planar}--\ref{thm:g-k-planar} we immediately obtain the following corollaries:
+
+\begin{cor}
+  For every $k$-planar graph $G$, $\pi(G)\le 12(2k+3)(k+1)\times 4^{(1/6)(k+2)(k+3)(k+4)}$.
+\end{cor}
+
+\begin{cor}
+  For every $1$-planar graph $G$, $\pi(G)\le 30\times 4^4=7680$. 
+\end{cor}
+
+\begin{cor}
+  For every $(g,k)$-planar graph $G$, $\pi(G)\le \max\{4g(3k+1),12(2k+3)(k+1)\}\times 4^{(1/6)(k+2)(k+3)(k+4)}$.
+\end{cor}
+
+\begin{cor}
+  For every $(g,1)$-planar graph $G$, $g\ge 1$, $\pi(G)\le 48g\times 256= 12288g$.
+\end{cor}
+
+
+\subsection{Centered Colourings}
+
+A $c$-colouring $\phi$ of $G$ is $p$-centered if, for every connected subgraph $X\subseteq G$, $|\{\phi(v):v\in V(X)\}| > p$ or there exists some $v\in V(X)$ such that $\phi(v)\neq \phi(w)$ for every $w\in V(X)\setminus\{v\}$.  In words, either $X$ receives more than $p$ colours or some vertex of $X$ receives a unique colour.  Let $\chi_p(G)$ denote the smallest integer $c$ such that $G$ has a $p$-centered $c$-colouring.
+
+We make use of the following lemma due to \cite{pilipczuk.sieberts:polynomial-arxiv,pilipczuk.sieberts:polynomial-soda}
+\begin{lem}\lemlabel{p-centered-treewidth}
+  Any graph $H$ of treewidth at most $t$ has $\chi_p(H)\in O(p^t)$.
+\end{lem}
+
+The following lemma is due to Micek \cite{micek:personal}. We include the proof here for completeness.
+
+\begin{lem}\lemlabel{p-centered}
+  Any graph $G$ that has a layered $H$-partition of layered width at most $\ell$ in which $H$ has treewidth at most $t$, has $\chi_p(G)\le \ell\times (p+1)\times O(p^t)$.
+\end{lem}
+
+\begin{proof}
+  Let $(\mathcal{L}=\langle V_0,V_1,\ldots\rangle, \mathcal{P}=\{B_x:x\in V(H))$ be an $H$-partition of $G$ having layered width at most $\ell$ where $H$ as treewidth at most $t$.
+  We use a product colouring $\phi:V(G)\to \{1,\ldots,\ell\}\times\{0,\ldots,p\}\times\{1,\ldots,O(p^t)\}$.  For each integer $i\ge 0$ and each $x\in V(H)$, the colour $\phi(v)=(\alpha(v),\beta(v),\gamma(v))$ of a vertex $v\in V_i\cap B_x$ is assigned to satisfy the following conditions:
+  \begin{enumerate}
+    \item $\alpha(v)$ is unique among $\{\phi(w): w\in V_i\cap B_x\}$.
+    
+    \item $\beta(v)= i\bmod (p+1)$.
+    
+    \item $\gamma(v)=\gamma(x)$ where $\gamma:V(H)\to\{1,\ldots,O(p^t)\}$ is a $p$-centered colouring of $H$.
+  \end{enumerate}
+  Condition 1 is easy to satisfy since $|V_i\cap B_x|\le \ell$.  Condition~2 is straightforward.  Condition~3 is possible to satisfy thanks to \lemref{p-centered-treewidth}.  To see why this is a $p$-centered colouring, consider some $X\subseteq V(G)$ such that $G[X]$ is connected.
+  \begin{enumerate}
+    \item If there exists $v,w\in X$ with $v\in V_i$ and $w\in V_j$ with $j-i\ge p$ then, since $G[X]$ is connected, $G[X]$ contains a path from $v$ to $w$.  This path contains at least one vertex from $V_{i'}$ for each $i'\in\{i,i+1,\ldots,j\}$. Therefore, $|\{\beta(v'):v'\in X\}|\ge j-i+1 > p$, so $X$ receives more than $p$ distinct colours.
+    
+    \item Otherwise, $X\subseteq V_{i},\ldots,V_{i+s}$ for some $s<p$.  Let $H'=H[\{x\in V(H):B_x\cap X\neq\emptyset]$.  If $|\{\gamma(x):x\in V(H')\}| > p$ then $|\{\gamma(v):v\in X\}|> p$ so $|\{\phi(v):v\in X\}|> p$ and we are done.  Otherwise, since $\gamma$ is a $p$-centered colouring of $H$, there must exist some $x\in V(H')$ such that $\gamma(x)\neq\gamma(y)$ for every $y\in V(H')\setminus\{x\}$.
+    For any $v,w\in B_x$ with $v\neq w$, either $v,w\in V_{i'}$ for some $i'\in\{i,i+1,\ldots,i+s\}$ in which case $\alpha(v)\neq\alpha(w)$; or $v\in V_{i'}$ and $w\in V_{i''}$ with $|i'-i''|< p$, in which case $\beta(v)\neq\beta(w)$. Therefore every vertex $v\in B_x$ receives a colour $\phi(v)$ distinct from every colour in $\{\phi(z):z\in X\setminus\{x\}\}$. 
+  \end{enumerate}
+\end{proof}
+
+Combining \lemref{p-centered} with Theorems~\ref{thm:1-planar}--\ref{thm:g-k-planar} immediately gives the following results, for every $p\ge 2$:
+
+\begin{cor}
+  For every $k$-planar graph $G$, $\chi_p(G)\le p^{O(k^3)}$.
+\end{cor}
+
+\begin{cor}
+  For every $1$-planar graph $G$, $\chi_p(G)\le O(p^4)$. 
+\end{cor}
+
+\begin{cor}
+  For every $(g,k)$-planar graph $G$, $\chi_p(G)\le O(gk^2)\times p^{O(k^3)}$. 
+\end{cor}
+
+\begin{cor}
+  For every $(g,1)$-planar graph $G$, $g\ge 1$, $\chi_p(G)\le O(gp^4)$.
+\end{cor}
+
+
+
+
+
+
+
 Some possibilities
 \begin{enumerate}
   \item $p$-centered colourings;
