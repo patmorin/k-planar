@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
 <ipe version="70206" creator="Ipe 7.2.7">
-<info created="D:20190521114737" modified="D:20190521133953"/>
+<info created="D:20190521114737" modified="D:20190522105602"/>
 <ipestyle name="basic">
 <symbol name="arrow/arc(spx)">
 <path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
@@ -262,15 +262,45 @@ h
 <color name="brew7" value="0.701 0.87 0.411"/>
 <color name="brew8" value="0.988 0.803 0.898"/>
 </ipestyle>
+<ipestyle>
+<opacity name="10%" value="0.1"/>
+<opacity name="30%" value="0.3"/>
+<opacity name="50%" value="0.5"/>
+<opacity name="20%" value="0.2"/>
+<opacity name="40%" value="0.4"/>
+<opacity name="60%" value="0.6"/>
+<opacity name="70%" value="0.7"/>
+<opacity name="80%" value="0.8"/>
+<opacity name="90%" value="0.9"/>
+</ipestyle>
 <page>
 <layer name="base"/>
 <layer name="bfs-tree"/>
 <layer name="modified"/>
 <layer name="modified-bst"/>
-<view layers="base" active="base"/>
-<view layers="base bfs-tree" active="modified"/>
+<layer name="F_0"/>
+<view layers="base F_0" active="F_0"/>
+<view layers="base bfs-tree" active="F_0"/>
 <view layers="base modified" active="modified"/>
 <view layers="base modified modified-bst" active="modified"/>
+<path layer="F_0" fill="brew8">
+322.143 628.654 m
+265.609 568.169 l
+378.677 568.171 l
+h
+</path>
+<path matrix="-1.02 0 0 -1.02 650.729 1229.13" fill="brew8">
+377.569 648 m
+110.851 0 0 110.851 322.144 552 266.718 648 a
+</path>
+<path matrix="-0.51 0 0 0.51 486.436 299.77" fill="brew8">
+322.143 644.874 m
+146.785 0 0 146.785 356.067 502.063 211.292 526.275 a
+</path>
+<path matrix="0.51 0 0 0.51 157.85 299.769" fill="brew8">
+322.143 644.874 m
+146.785 0 0 146.785 356.067 502.063 211.292 526.275 a
+</path>
 <path layer="base" matrix="0.51 0 0 0.51 157.85 299.769" stroke="black">
 322.143 621.851 m
 322.142 718.275 l
@@ -481,5 +511,6 @@ h
 322.144 616.912 m
 67.2122 0 0 67.2122 345.283 553.808 279.6 568.062 a
 </path>
+<text layer="F_0" matrix="1 0 0 1 0 -3" transformations="translations" pos="328.417 631.322" stroke="brew8" type="label" width="10.876" height="6.812" depth="1.49" valign="baseline" style="math">F_0</text>
 </page>
 </ipe>
