@@ -637,12 +637,13 @@ Combining \lemref{non-repetitive} with Theorems~\ref{thm:1-planar}--\ref{thm:g-k
   For every $(g,1)$-planar graph $G$, $g\ge 1$, $\pi(G)\le 48g\times 256= 12288g$.
 \end{cor}
 
+Prior to the current work, the strongest upper bound on the non-repetitive chromatic number of $n$-vertex planar $k$-planar graphs was $O(k\log n)$ \cite{dujmovic.morin.ea:layered}.
 
 \subsection{Centered Colourings}
 
 A $c$-colouring $\phi$ of $G$ is $p$-centered if, for every connected subgraph $X\subseteq G$, $|\{\phi(v):v\in V(X)\}| > p$ or there exists some $v\in V(X)$ such that $\phi(v)\neq \phi(w)$ for every $w\in V(X)\setminus\{v\}$.  In words, either $X$ receives more than $p$ colours or some vertex of $X$ receives a unique colour.  Let $\chi_p(G)$ denote the smallest integer $c$ such that $G$ has a $p$-centered $c$-colouring.
 
-We make use of the following lemma due to \cite{pilipczuk.sieberts:polynomial-arxiv,pilipczuk.sieberts:polynomial-soda}
+We make use of the following lemma due to \citet{pilipczuk.siebertz:polynomial-arxiv,pilipczuk.siebertz:polynomial-soda}
 \begin{lem}\lemlabel{p-centered-treewidth}
   Any graph $H$ of treewidth at most $t$ has $\chi_p(H)\in O(p^t)$.
 \end{lem}
@@ -663,12 +664,12 @@ The following lemma is due to Micek \cite{micek:personal}. We include the proof 
     
     \item $\gamma(v)=\gamma(x)$ where $\gamma:V(H)\to\{1,\ldots,O(p^t)\}$ is a $p$-centered colouring of $H$.
   \end{enumerate}
-  Condition 1 is easy to satisfy since $|V_i\cap B_x|\le \ell$.  Condition~2 is straightforward.  Condition~3 is possible to satisfy thanks to \lemref{p-centered-treewidth}.  To see why this is a $p$-centered colouring, consider some $X\subseteq V(G)$ such that $G[X]$ is connected.
+  Condition 1 is easy to satisfy since $|V_i\cap B_x|\le \ell$.  Condition~2 is straightforward.  Condition~3 is possible to satisfy thanks to \lemref{p-centered-treewidth}.  To see why this is a $p$-centered colouring, consider some connected subgraph $X\subseteq G$.
   \begin{enumerate}
-    \item If there exists $v,w\in X$ with $v\in V_i$ and $w\in V_j$ with $j-i\ge p$ then, since $G[X]$ is connected, $G[X]$ contains a path from $v$ to $w$.  This path contains at least one vertex from $V_{i'}$ for each $i'\in\{i,i+1,\ldots,j\}$. Therefore, $|\{\beta(v'):v'\in X\}|\ge j-i+1 > p$, so $X$ receives more than $p$ distinct colours.
+    \item If there exists $v,w\in V(X)$ with $v\in V_i$ and $w\in V_j$ with $j-i\ge p$ then, since $G[X]$ is connected, $G[X]$ contains a path from $v$ to $w$.  By the definition of layering, this path contains at least one vertex from $V_{i'}$ for each $i'\in\{i,i+1,\ldots,j\}$. Therefore, $|\{\beta(v'):v'\in X\}|\ge j-i+1 > p$, so $X$ receives more than $p$ distinct colours.
     
     \item Otherwise, $X\subseteq V_{i},\ldots,V_{i+s}$ for some $s<p$.  Let $H'=H[\{x\in V(H):B_x\cap X\neq\emptyset]$.  If $|\{\gamma(x):x\in V(H')\}| > p$ then $|\{\gamma(v):v\in X\}|> p$ so $|\{\phi(v):v\in X\}|> p$ and we are done.  Otherwise, since $\gamma$ is a $p$-centered colouring of $H$, there must exist some $x\in V(H')$ such that $\gamma(x)\neq\gamma(y)$ for every $y\in V(H')\setminus\{x\}$.
-    For any $v,w\in B_x$ with $v\neq w$, either $v,w\in V_{i'}$ for some $i'\in\{i,i+1,\ldots,i+s\}$ in which case $\alpha(v)\neq\alpha(w)$; or $v\in V_{i'}$ and $w\in V_{i''}$ with $|i'-i''|< p$, in which case $\beta(v)\neq\beta(w)$. Therefore every vertex $v\in B_x$ receives a colour $\phi(v)$ distinct from every colour in $\{\phi(z):z\in X\setminus\{x\}\}$. 
+    For any $v,w\in B_x$ with $v\neq w$, either $v,w\in V_{i'}$ for some $i'\in\{i,i+1,\ldots,i+s\}$ in which case $\alpha(v)\neq\alpha(w)$; or $v\in V_{i'}$ and $w\in V_{i''}$ with $|i'-i''|< p$, in which case $\beta(v)\neq\beta(w)$. Therefore every vertex $v\in B_x$ receives a colour $\phi(v)$ distinct from every colour in $\{\phi(z):z\in X\setminus\{x\}\}$. Therefore, every vertex in $B_x$ receives colour distinct from every other vertex in $X$.
   \end{enumerate}
 \end{proof}
 
@@ -690,17 +691,13 @@ Combining \lemref{p-centered} with Theorems~\ref{thm:1-planar}--\ref{thm:g-k-pla
   For every $(g,1)$-planar graph $G$, $g\ge 1$, $\chi_p(G)\le O(gp^4)$.
 \end{cor}
 
+Prior to the current work, the strongest upper bounds on the number of colours required for $p$-centered colourings of $k$-planar graphs used the fact that $k$-planar graphs have bounded expansion.  \note{PM}{I didn't follow the discussion on the previous best-known bounds for $p$-centered colourings.  Can someone fill me in?}
 
 
+\subsection{More Stuff}
 
-
-
-
-Some possibilities
 \begin{enumerate}
-  \item $p$-centered colourings;
   \item clustered colouring;
-  \item non-repetitive chromatic number;
   \item connection with queue layouts;
   \item $d$-map graphs, which are $d^2$-planar;
   \item connection with low-treewidth/treedepth colourings;
