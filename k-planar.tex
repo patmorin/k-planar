@@ -722,11 +722,11 @@ The following lemma comes from the natural drawing of a map graph obtained by po
 For a surface $S$ and a graph $G$, an \emph{$S$-string representation} $f$ of $G$ is obtained by representing each vertex of $v\in V(G)$ as a curve $f(v)$ in $S$ so that, for any pair of vertices $v,w\in V(G)$, the curves $f(v)$ and $f(w)$ intersect if and only if $vw\in E(G)$.  If $G$ has maximum degree $\delta$, then an $S$-representation of $G$ is also called an $(S,\delta)$-string representation.  A graph $G$ is a \emph{$(g,\delta)$-string graph} if it has an $(S,\delta)$-string representation where $S$ is a surface of Euler genus $g$.
 
 \begin{lem}
-  Every $(g,\delta)$-string graph $G$ is a $(g,\delta^2)$-planar graph.
+  Every $(g,\delta)$-string graph $G$ is a $(g,2\delta^2)$-planar graph.
 \end{lem}
 
 \begin{proof}
-  Consider some $(S,\delta)$-string representation, $f$, of $G$.  We will describe an embedding of $G$ into $S$ that is an $(S,k)$-plane graph.  Each vertex $v\in v(G)$ is embedded at $f(v)(0)$. For each edge $vw\in E(G)$ there is an intersection point $p$ between $f(v)$ and $f(w)$, i.e., $f(v)(t_0)=f(w)(t_1)=p$ for some $t_0,t_1\in[0,1]$.  Embed the edge $vw$ very close to the curve whose image is $\{f(v)(t): 0\le t\le t_1\}\cup f(w)(t): 0 \le t\le t_2\}$. In this embedding, for every vertex $x\in V(G)$, every portion of the curve $f(x)$ between two crossing points has up to $\delta$ edges of $G$ embedded close to it. The embedding of any edge $vw\in E(G)$ crosses at most $\delta$ other curves $f(x_1),\ldots,f(x_d)$ and each of these curves $f(x_i)$ is used to embed at most $\delta$ edges incident to $x_i$.  Therefore the embedding of any edge $vw\in E(G)$ crosses at most $\delta^2$ other edges.  
+  Consider some $(S,\delta)$-string representation, $f$, of $G$.  We will describe an embedding of $G$ into $S$ that is an $(S,k)$-plane graph.  Each vertex $v\in v(G)$ is embedded at $f(v)(0)$. For each edge $vw\in E(G)$ there is an intersection point $p$ between $f(v)$ and $f(w)$, i.e., $f(v)(t_0)=f(w)(t_1)=p$ for some $t_0,t_1\in[0,1]$.  Embed the edge $vw$ very close to the curve whose image is $\{f(v)(t): 0\le t\le t_1\}\cup f(w)(t): 0 \le t\le t_2\}$. The embedding of any edge $vw\in E(G)$ is contained in $f(v)$ and $f(w)$.  Therefore the embedding of $vw$ crosses at most $2\delta$ other curves $f(x_1),\ldots,f(x_d)$.  Each curve $f(x_i)$ is used to embed at most $\delta$ edges incident to $x_i$.  Therefore the embedding of any edge $vw\in E(G)$ crosses at most $2\delta^2$ other edges.  
 \end{proof}
 
 
