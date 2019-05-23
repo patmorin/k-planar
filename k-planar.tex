@@ -52,13 +52,17 @@
 %\renewcommand{\le}{\leqslant}
 
 \begin{document}
+\begin{titlepage}
 \maketitle
 
 
 \begin{abstract}
   Layered partitions of graphs (with small layered width, in which the quotient has small treewidth) are a recently-introduced tool that have been used to solve longstanding problems on queue layouts, non-repetitive colouring, and 3-d graph drawing.  Such partitions are known to exist for planar graphs and, more generally, apex-minor-free graphs.  In the current paper, we prove that every $k$-planar graph has a layered partition of layered width $O(k^2)$ in  which the quotient graph has treewidth $O(k^3)$. This is the first result of this type for a non-minor-closed class of graphs and implies that $k$-planar graphs have both queue number and non-repetitive chromatic number upper-bounded by a function of $k$. The former result was previously shown by combining layered partitions of planar graphs with \textit{ad hoc} methods. The latter result is new, for all $k\ge 1$.  These results extend to $(g,k)$-planar graphs, the natural generalization of $k$-planar graphs to to genus-$g$ surfaces (rather than the genus-$0$ plane).
 \end{abstract}
+\end{titlepage}
 
+\tableofcontents
+\newpage
 \section{Introduction}
 
 A \emph{layering} of a graph $G$ is a sequence $\mathcal{L}=\langle V_0,V_1,\ldots\rangle$ such that $\{V_0,V_1,\ldots\}$ is a partition of $V(G)$ and there is no edge $vw\in E(G)$ such that $v\in V_i$, $w\in V_j$ and $|j-i|>1$.  For any partition $\mathcal{P}=\{S_1,\ldots,S_p\}$ of $V(G)$, a \emph{quotient graph} $H=G/\mathcal{P}$ has a $p$-element vertex set $V(H)=\{x_1,\ldots,x_p\}$ and $x_ix_j\in E(H)$ if and only if there exists an edge $vw\in E(G)$ such that $v\in S_i$ and $w\in S_j$. To highlight the importance of the quotient graph $H$, we call $\mathcal{P}$ an \emph{$H$-partition} and write this concisely as $\mathcal{P}=\{S_x : x\in V(H)\}$ so that each element of $\mathcal{P}$ is indexed by the vertex it creates in $H$.\footnote{An alternative definition of a layering of $G$ is an $H$-partition of $G$ where $H$ is a path.}  A layered $H$-partition $(\mathcal{L},\mathcal{P})$ of a graph $G$ consists of a layering $\mathcal{L}$ of $G$ and an $H$-partition $\mathcal{P}$ of $G$. The \emph{layered width} of $(\mathcal{L},\mathcal{P})$ is $\max\{|L\cap P|: L\in\mathcal{L},\, P\in\mathcal{P}\}$.
@@ -607,9 +611,13 @@ and
 \section{Consequences}
 \seclabel{consequences}
 
+Here we discuss some of the consequences of Theorems~\ref{thm:1-planar}--\ref{thm:g-k-planar} for other graph parameters that can be bounded using layered partitions and other graph classes that are $k$-planar.
+
+\subsection{Applications to Colouring}
+
 For a graph $G$ and a set $C$ of size $c$, any function $\phi\colon V(G)\to C$  is called a \emph{$c$-colouring} of $G$.  
 
-\subsection{Non-Repetitive Colouring}
+\subsubsection{Non-Repetitive Colouring}
 
 A $c$-colouring $\phi$ of $G$ is \emph{non-repetitive} if, for every path $v_1,\ldots,v_{2h}$ in $G$, there exists some $i\in\{1,\ldots,k\}$ such that $\phi(v_i)\neq\phi(v_{i+h})$.  The \emph{non-repetitive chromatic number} $\pi(G)$ of $G$ is the minimum value $c$ such that $G$ has a non-repetitive $c$-colouring.
 
@@ -621,7 +629,7 @@ A $c$-colouring $\phi$ of $G$ is \emph{non-repetitive} if, for every path $v_1,\
 
 Combining \lemref{non-repetitive} with Theorems~\ref{thm:1-planar}--\ref{thm:g-k-planar} we immediately obtain the following corollaries:
 
-\begin{cor}
+\begin{cor}\corlabel{first}
   For every $k$-planar graph $G$, $\pi(G)\le 12(2k+3)(k+1)\times 4^{(1/6)(k+2)(k+3)(k+4)}$.
 \end{cor}
 
@@ -639,7 +647,7 @@ Combining \lemref{non-repetitive} with Theorems~\ref{thm:1-planar}--\ref{thm:g-k
 
 Prior to the current work, the strongest upper bound on the non-repetitive chromatic number of $n$-vertex planar $k$-planar graphs was $O(k\log n)$ \cite{dujmovic.morin.ea:layered}.
 
-\subsection{Centered Colourings}
+\subsubsection{Centered Colourings}
 
 A $c$-colouring $\phi$ of $G$ is $p$-centered if, for every connected subgraph $X\subseteq G$, $|\{\phi(v):v\in V(X)\}| > p$ or there exists some $v\in V(X)$ such that $\phi(v)\neq \phi(w)$ for every $w\in V(X)\setminus\{v\}$.  In words, either $X$ receives more than $p$ colours or some vertex of $X$ receives a unique colour.  Let $\chi_p(G)$ denote the smallest integer $c$ such that $G$ has a $p$-centered $c$-colouring.
 
@@ -687,19 +695,49 @@ Combining \lemref{p-centered} with Theorems~\ref{thm:1-planar}--\ref{thm:g-k-pla
   For every $(g,k)$-planar graph $G$, $\chi_p(G)\le O(gk^2)\times p^{O(k^3)}$. 
 \end{cor}
 
-\begin{cor}
+\begin{cor}\corlabel{last}
   For every $(g,1)$-planar graph $G$, $g\ge 1$, $\chi_p(G)\le O(gp^4)$.
 \end{cor}
 
 Prior to the current work, the strongest upper bounds on the number of colours required for $p$-centered colourings of $k$-planar graphs used the fact that $k$-planar graphs have bounded expansion.  \note{PM}{I didn't follow the discussion on the previous best-known bounds for $p$-centered colourings.  Can someone fill me in?}
 
+\subsection{Other Graph Classes}
+
+We conclude by pointing out two other graph classes, namely $(g,d)$-map graphs and $(g,\delta)$-string graphs that are $(g,k)$-planar for $k=O(d^2)$ and $k=\delta^2$, respectively.  This implies that Theorems~\ref{thm:1-planar}--\ref{thm:g-k-planar} and Corollaries~\ref{cor:first}--\ref{cor:last} apply to $(g,d)$-map graphs and to $(g,\delta)$-string graphs.
+
+
+\subsubsection{Map Graphs}
+
+Map graphs are defined as follows. Start with a graph $G_0$ embedded in a surface of Euler genus $g$, with each face labelled a `nation' or a `lake', where each vertex of $G_0$ is incident with at most $d$ nations. Let $G$ be the graph whose vertices are the nations of $G_0$, where two vertices are adjacent in $G$ if the corresponding faces in $G_0$ share a vertex. Then $G$ is called a \emph{$(g,d)$-map graph}. 
+% A $(0,d)$-map graph is called a (plane) \emph{$d$-map graph}; such graphs have been extensively studied \citep{FLS-SODA12,DFHT05,CGP02,Chen07,Chen01}. The $(g,3)$-map graphs are precisely the graphs of Euler genus at most $g$ (see \citep{DEW17}). So $(g,d)$-map graphs provide a natural generalisation of graphs embedded in a surface.
+
+The following lemma comes from the natural drawing of a map graph obtained by positioning each vertex of $G$ inside the corresponding nation and each edge of $G$ as a curve passing through the corresponding vertex of $G_0$. See \citet[Page~4]{dujmovic.eppstein.ea:structure}.
+
+\begin{lem}
+  Every $(g, d)$-map graph is $(g, \floor{\frac{d-2}{2}}\ceil{\frac{d-2}{2}})$-planar.
+\end{lem}
+
+\subsubsection{String Graphs}
+
+For a surface $S$ and a graph $G$, an \emph{$S$-string representation} $f$ of $G$ is obtained by representing each vertex of $v\in V(G)$ as a curve $f(v)$ in $S$ so that, for any pair of vertices $v,w\in V(G)$, the curves $f(v)$ and $f(w)$ intersect if and only if $vw\in E(G)$.  If $G$ has maximum degree $\delta$, then an $S$-representation of $G$ is also called an $(S,\delta)$-string representation.  A graph $G$ is a \emph{$(g,\delta)$-string graph} if it has an $(S,\delta)$-string representation where $S$ is a surface of Euler genus $g$.
+
+\begin{lem}
+  Every $(g,\delta)$-string graph $G$ is a $(g,\delta^2)$-planar graph.
+\end{lem}
+
+\begin{proof}
+  Consider some $(S,\delta)$-string representation, $f$, of $G$.  We will describe an embedding of $G$ into $S$ that is an $(S,k)$-plane graph.  Each vertex $v\in v(G)$ is embedded at $f(v)(0)$. For each edge $vw\in E(G)$ there is an intersection point $p$ between $f(v)$ and $f(w)$, i.e., $f(v)(t_0)=f(w)(t_1)=p$ for some $t_0,t_1\in[0,1]$.  Embed the edge $vw$ very close to the curve whose image is $\{f(v)(t): 0\le t\le t_1\}\cup f(w)(t): 0 \le t\le t_2\}$. In this embedding, for every vertex $x\in V(G)$, every portion of the curve $f(x)$ between two crossing points has up to $\delta$ edges of $G$ embedded close to it. The embedding of any edge $vw\in E(G)$ crosses at most $\delta$ other curves $f(x_1),\ldots,f(x_d)$ and each of these curves $f(x_i)$ is used to embed at most $\delta$ edges incident to $x_i$.  Therefore the embedding of any edge $vw\in E(G)$ crosses at most $\delta^2$ other edges.  
+\end{proof}
+
+
+
 
 \subsection{More Stuff}
 
 \begin{enumerate}
-  \item clustered colouring;
+  % \item clustered colouring;
   \item connection with queue layouts;
-  \item $d$-map graphs, which are $d^2$-planar;
+  % \item $d$-map graphs, which are $d^2$-planar;
   \item connection with low-treewidth/treedepth colourings;
   \item An important open question is whether $k$-planar graphs have layered $H$-partitions whose layered width is upper bounded by a function of $k$ but in which the treewidth of $H$ is bounded by an absolute constant, independent of $k$.
   \item Are our current $H$-partitions $K_{3,s}$-free for some $s=s(k)$?  If so, this is good news for clustered colouring.
