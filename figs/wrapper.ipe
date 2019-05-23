@@ -1,7 +1,8 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
 <ipe version="70206" creator="Ipe 7.2.7">
-<info created="D:20190521114737" modified="D:20190522105602"/>
+<info created="D:20190521114737" modified="D:20190523112609"/>
+<preamble>\usepackage{kpfonts}</preamble>
 <ipestyle name="basic">
 <symbol name="arrow/arc(spx)">
 <path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
@@ -341,7 +342,7 @@ h
 377.569 648 l
 h
 </path>
-<text matrix="-0.51 0 0 -0.51 486.436 892.433" transformations="translations" pos="320.519 614.251" stroke="black" type="label" width="14.447" height="7.933" depth="0" halign="center" valign="baseline" style="math">G^+</text>
+<text matrix="-0.51 0 0 -0.51 486.436 892.433" transformations="translations" pos="320.519 614.251" stroke="black" type="label" width="12.73" height="7.434" depth="0.29" halign="center" valign="baseline" style="math">G^+</text>
 <path matrix="-0.51 0 0 -0.51 486.437 898.432" stroke="black" fill="brew2">
 322.144 552 m
 110.851 0 0 110.851 266.718 648 377.569 648 a
@@ -394,7 +395,7 @@ h
 266.718 648 m
 110.851 0 0 110.851 377.569 648 322.144 552 a
 </path>
-<text layer="modified" matrix="0.51 0 0 0.51 167.01 299.769" transformations="translations" pos="309.592 624.203" stroke="black" type="label" width="8.964" height="4.294" depth="1.49" valign="baseline" style="math">r_0</text>
+<text layer="modified" matrix="0.51 0 0 0.51 167.01 299.769" transformations="translations" pos="309.592 624.203" stroke="black" type="label" width="8.321" height="4.57" depth="2.1" valign="baseline" style="math">r_0</text>
 <path layer="modified-bst" matrix="0.51 0 0 0.51 157.85 299.769" stroke="black" pen="ultrafat">
 211.292 526.28 m
 238.725 526.065 l
@@ -497,7 +498,7 @@ h
 322.144 616.912 m
 86.1748 0 0 -86.1748 299.691 533.714 378.677 568.17 a
 </path>
-<text matrix="0.51 0 0 0.51 157.85 297.199" transformations="translations" pos="322.862 729.159" stroke="black" type="label" width="4.771" height="4.289" depth="0" halign="center" valign="baseline" style="math">r</text>
+<text matrix="0.51 0 0 0.51 157.85 297.199" transformations="translations" pos="322.862 729.159" stroke="black" type="label" width="4.394" height="4.57" depth="0.07" halign="center" valign="baseline" style="math">r</text>
 <use matrix="1.02 0 0 1.02 -6.4432 -10.0181" name="mark/disk(sx)" pos="322.144 662.851" size="normal" stroke="black"/>
 <path stroke="black">
 350.411 567.952 m
@@ -511,6 +512,6 @@ h
 322.144 616.912 m
 67.2122 0 0 67.2122 345.283 553.808 279.6 568.062 a
 </path>
-<text layer="F_0" matrix="1 0 0 1 0 -3" transformations="translations" pos="328.417 631.322" stroke="brew8" type="label" width="10.876" height="6.812" depth="1.49" valign="baseline" style="math">F_0</text>
+<text layer="F_0" matrix="1 0 0 1 0 -3" transformations="translations" pos="328.417 631.322" stroke="brew8" type="label" width="10.283" height="6.697" depth="2.1" valign="baseline" style="math">F_0</text>
 </page>
 </ipe>
