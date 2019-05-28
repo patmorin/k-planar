@@ -246,7 +246,7 @@ For each node $x\in V(K)$, define the \emph{separator}
 \[
    S_x = \{v\in V(G): a(v)=x \} \enspace .
 \]
-Clearly $\mathcal{S}=\{S_x:x\in V(K)\}$ is a partition of $V(G)$.  We will use $\mathcal{S}$ as the partition that defines our quotient graph $H=G/\mathcal{S}$ with vertex set $V(H)=V(K)$ and the edge $xy\in E(H)$ if and only if there exists an edge $vw\in E(G)$ with $v\in S_x$ and $w\in S_y$.  First we argue that this partition has small width with respect to the layering $\{V_2,V_3,\ldots\}$ of $G^+$ defined by $T$ (recall that this is a layering of $G^+$, not a layering of $G$).
+Clearly $\mathcal{S}=\{S_x:x\in V(K)\}$ is a partition of $V(G)$.  We will use $\mathcal{S}$ as the partition that defines our quotient graph $H=G/\mathcal{S}$ with vertex set $V(H)=V(K)$ and the edge $xy\in E(H)$ if and only if there exists an edge $vw\in E(G)$ with $v\in S_x$ and $w\in S_y$.  First we argue that this partition has small layered width with respect to the layering $\{V_2,V_3,\ldots\}$ of $G^+$ defined by $T$ (recall that this is a layering of $G^+$, not a layering of $G$).
 
 \begin{clm}\clmlabel{chargeback-to-y}
    For any $x\in V(K)$ and any vertex $v\in S_x$, there exists an edge $vw\in E(G)$ and a vertex $v'\in Y_x\cap V(W_{vw})$ such that $|\dist_T(r,v')-\dist_T(r,v)|\le k+1$.
