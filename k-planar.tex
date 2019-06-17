@@ -703,7 +703,7 @@ Prior to the current work, the strongest upper bounds on the number of colours r
 
 \subsection{Other Graph Classes}
 
-We conclude by pointing out two other graph classes, namely $(g,d)$-map graphs and $(g,\delta)$-string graphs that are $(g,k)$-planar for $k=O(d^2)$ and $k=\delta^2$, respectively.  This implies that Theorems~\ref{thm:k-planar}--\ref{thm:g-k-planar} and Corollaries~\ref{cor:first}--\ref{cor:last} apply to $(g,d)$-map graphs and to $(g,\delta)$-string graphs.
+We conclude by pointing out three other graph classes, namely $(g,d)$-map graphs, $(g,\delta)$-string graphs, and $k$-nearest-neighbour graphs that are $(g,k)$-planar for $k=O(d^2)$ and $k=\delta^2$, respectively.  This implies that Theorems~\ref{thm:k-planar}--\ref{thm:g-k-planar} and Corollaries~\ref{cor:first}--\ref{cor:last} apply to $(g,d)$-map graphs, $(g,\delta)$-string graphs, and $k$-nearest-neighbour graphs.
 
 
 \subsubsection{Map Graphs}
@@ -729,6 +729,42 @@ For a surface $S$ and a graph $G$, an \emph{$S$-string representation} $f$ of $G
   Consider some $(S,\delta)$-string representation, $f$, of $G$.  We will describe an embedding of $G$ into $S$ that is an $(S,k)$-plane graph.  Each vertex $v\in v(G)$ is embedded at $f(v)(0)$. For each edge $vw\in E(G)$ there is an intersection point $p$ between $f(v)$ and $f(w)$, i.e., $f(v)(t_0)=f(w)(t_1)=p$ for some $t_0,t_1\in[0,1]$.  Embed the edge $vw$ very close to the curve whose image is $\{f(v)(t): 0\le t\le t_1\}\cup f(w)(t): 0 \le t\le t_2\}$. The embedding of any edge $vw\in E(G)$ is contained in $f(v)$ and $f(w)$.  Therefore the embedding of $vw$ crosses at most $2\delta$ other curves $f(x_1),\ldots,f(x_d)$.  Each curve $f(x_i)$ is used to embed at most $\delta$ edges incident to $x_i$.  Therefore the embedding of any edge $vw\in E(G)$ crosses at most $2\delta^2$ other edges.  
 \end{proof}
 
+\section{$k$-Nearest-Neighbour Graphs}
+
+In this section, we show that $k$-Nearest neighbour graphs of point in the plane are $O(k^2)$-planar.  For two points $x,y\in\R^2$, let $d_2(x,y)$ denote the Euclidean distance between $x$ and $y$. The $k$-nearest-neighbour graph of a point set $P\subset\R^2$ is the geometric graph $G$ with vertex set $V(G)=P$ and edge set
+\[  
+  E= \{vw : v,w\in V(G),\, |\{x\in P\setminus\{v\}: d_2(v,x)\le d_2(v,w)\}|\le k\} \enspace .
+\] 
+(The edges of $G$ are straight-line segments joining their endpoints.)
+
+The following result, which is immediate from \citet[Corollary~4.2.6]{abrego.munroy.ea:on} states that $k$-nearest-neighbour graphs have bounded maximum degree:
+\begin{lem}\lemlabel{k-nn-max-degree}
+  The degree of any vertex in a $k$-nearest-neighbour graph is at most $6k$.
+\end{lem}
+
+We make use of the following well-known observation (see e.g., \citet[Lemma~2]{bose.morin.ea:routing}):
+\begin{obs}\obslabel{convex}
+  If $v_0,\ldots,v_3$ are the vertices of a convex quadrilateral in counterclockwise order then there exists at least one $i\in\{0,\ldots,3\}$ such that $\max\{d_2(v_i,v_{i-1}), d_2(v_i,v_{i+1})\} < d_2(v_{i-1},v_{i+1})$, where subscripts are taken modulo 4.
+\end{obs}
+
+\begin{lem}
+  Every $k$-nearest-neighbour graph is $O(k^2)$ planar.
+\end{lem}
+
+\begin{proof}
+  Let $G$ be a $k$-nearest-neighbour graph and consider any edge $vw\in E(G)$.
+  Let $xy\in E(G)$ be an edge that crosses $vw$.  Note that $vxwy$ are the vertices of a convex quadrilateral in (without loss of generality) counterclockwise order. Then we say that 
+  \begin{compactenum}
+    \item $xy$ is of Type~$v$ if $\max\{d_2(v,x), d_2(v,y)\}< d_2(x,y)$;
+    \item $xy$ is of Type~$w$ if $\max\{d_2(w,x), d_2(w,y)\}< d_2(x,y)$; or
+    \item $xy$ is of Type~C otherwise.
+  \end{compactenum}
+  If $xy$ is of Type~C, then \obsref{convex} implies that (without loss of generality) $\max\{d_2(x,v),d_2(x,w)\} < d_2(v,w)$.  In this case, we call $x$ a Type~C vertex.  We claim that $V(G)$ contains at most $k-1$ Type~C vertices.  Indeed, more than $k-1$ Type~C vertices would contradict the fact that $vw\in E(G)$ since every Type~C vertex is closer to both $v$ and $w$ than $d_2(v,w)$.
+  
+  Next oberve that, if $xy$ is of Type~$v$, then at least one of $xv$ or $yv$ is in $E(G)$ in which case we call $x$ (respectively $y$) a Type~$v$ vertex.  By \lemref{k-nn-max-degree}, there are at most $6k$ Type~$v$ vertices.  Similarly, there are at most $6k$ Type~$w$ vertices.
+  
+  Thus, in all, there are at most $13k-1$ Type~$v$, Type~$w$, and Type~C vertices in total. By \lemref{k-nn-max-degree}, each of these vertices is incident on at most $6k$ edges that cross $vw$. Therefore, there are at most $78k^2-6k$ edges of $G$ that cross $vw$.  Since this is true for every edge $vw\in E(G)$, $G$ is $(78k^2-6k)$-planar.
+\end{proof}
 
 
 
