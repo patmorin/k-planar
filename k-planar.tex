@@ -747,7 +747,7 @@ We make use of the following well-known observation (see e.g., \citet[Lemma~2]{b
   If $v_0,\ldots,v_3$ are the vertices of a convex quadrilateral in counterclockwise order then there exists at least one $i\in\{0,\ldots,3\}$ such that $\max\{d_2(v_i,v_{i-1}), d_2(v_i,v_{i+1})\} < d_2(v_{i-1},v_{i+1})$, where subscripts are taken modulo 4.
 \end{obs}
 
-\begin{lem}
+\begin{lem}\lemlabel{nearest-neighbour}
   Every $k$-nearest-neighbour graph is $O(k^2)$ planar.
 \end{lem}
 
@@ -766,7 +766,7 @@ We make use of the following well-known observation (see e.g., \citet[Lemma~2]{b
   Thus, in all, there are at most $13k-1$ Type~$v$, Type~$w$, and Type~C vertices in total. By \lemref{k-nn-max-degree}, each of these vertices is incident on at most $6k$ edges that cross $vw$. Therefore, there are at most $78k^2-6k$ edges of $G$ that cross $vw$.  Since this is true for every edge $vw\in E(G)$, $G$ is $(78k^2-6k)$-planar.
 \end{proof}
 
-We note that \lemref{nearest-neighbour} is tight up to the leading constant:  Every $n$-vertex nearest neighbour graph has at least $kn/2$ at at most $kn$ edges.  For $k\ge 8$, the Crossing Lemma \cite{X} implies that the total number of crossings is therefore $\Omega(k^3n)$ so that the average number of crossings per edge is at $\Omega(k^2)$.
+We note that \lemref{nearest-neighbour} is tight up to the leading constant:  Every $n$-vertex nearest neighbour graph has at least $kn/2$ at at most $kn$ edges.  For $k\ge 8$, the Crossing Lemma \cite{ajtai.chvatal.ea:crossing-free,leighton:complexity} implies that the total number of crossings is therefore $\Omega(k^3n)$ so that the average number of crossings per edge is at $\Omega(k^2)$.
 
 \subsection{More Stuff}
 
