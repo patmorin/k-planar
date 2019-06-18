@@ -8,15 +8,9 @@
 \usepackage{enumerate}
 \usepackage{pat}
 \usepackage{paralist}
+\usepackage{stmaryrd}
 
 \usepackage[longnamesfirst,numbers,sort&compress]{natbib}
-
-% \usepackage{tipa}
-% \usepackage{upgreek}
-% \usepackage{rotating}
-% \newcommand{\V}{\rotatebox[origin=c]{180}{$V$}}
-% \newcommand{\Y}{\rotatebox[origin=c]{180}{$Y$}}
-%\usepackage{hyperref}
 
 \setlength{\parskip}{1ex}
 
@@ -65,22 +59,29 @@
 \newpage
 \section{Introduction}
 
-In 1965, \citet{ringel:sechsfarbenproblem} introduced the notion of $1$-planar graphs, a generalization of planar graphs that allows crossings provided that no edge is involved in more than one crossing. This simple generalization is a rich source of problems and results.  Indeed, the annotated bibliography on 1-planar graphs by \cite{kobourov.liotta.ea:annotated} contains more than 140 entries.
+In 1965, \citet{ringel:sechsfarbenproblem} introduced the notion of $1$-planar graphs, a generalization of planar graphs that allows edges to cross provided that no edge is involved in more than one crossing. This simple generalization has since become a rich source of problems and results.  Indeed, the annotated bibliography on 1-planar graphs by \cite{kobourov.liotta.ea:annotated} contains more than 140 entries.
 
-The natural generalization of $1$-planar graphs, $k$-planar graphs (that allow crossings so long that no edge is involved in more than $k$ crossings), has been the topic of important recent work on graph drawing. Though planar graphs are, by now, quite well-understood, the situation is much less clear for $k$-planar graphs.  Even the maximum edge-density of $k$-planar graphs is not completely settled.  For $k\le 4$, the maximum number of edges in an $n$-vertex $k$-planar graph is $(k+3)(n-2)$, which is tight for $k=1,2$ \cite{pach.toth:graphs}.  A near-tight bound of $11(n-2)/2$ is known for $k=3$ \cite{pach.radoici.ea:improving} but for general $k$, the current best upper bound is $4.108\sqrt{k}n$ \cite{pach.toth:graphs}.
+The natural generalization of $1$-planar graphs, $k$-planar graphs (that allow edge to be involved in up to $k$ crossings), has been the topic of important recent work on graph drawing. Though planar graphs are, by now, quite well-understood, the situation is much less clear for $k$-planar graphs; even the maximum edge-density of $k$-planar graphs is not completely settled.  For $k\le 4$, the maximum number of edges in an $n$-vertex $k$-planar graph is $(k+3)(n-2)$, which is tight for $k=1,2$ \cite{pach.toth:graphs}.  A near-tight bound of $11(n-2)/2$ is known for $k=3$ \cite{pach.radoicic.ea:improving} but for $k>4$, the current best upper bound is $4.108\sqrt{k}n$ \cite{pach.toth:graphs}.
 
-In the current paper we investigate the structure of $k$-planar graphs.  Since planarity is closed under taking minors, planar graphs can be characterized by a finite set of forbidden minors.  Indeed, Wagner's Theorem states that this set consists of the complete 5-vertex graph $K_5$ and the complete bipartite graph $K_{3,3}$.  Unfortunately, $k$-planarity is not closed under taking minors, ruling out this kind of clean structural result.  Rather, we present a rough structural characterization of $k$-planar graphs that, despite its roughness, provides several new results for $k$-planar and related graph families.  At the heart of this characterization is layered $H$-partitions, which we now define.
+% In the current paper we investigate the structure of $k$-planar graphs.  Since planarity is closed under taking minors, planar graphs can be characterized by a finite set of forbidden minors.  Indeed, Wagner's Theorem states that this set consists of the complete 5-vertex graph $K_5$ and the complete bipartite graph $K_{3,3}$.  Unfortunately, $k$-planarity is not closed under taking minors, ruling out this kind of clean structural result.  The purpose of the current paper is to extend a new structural result for planar graphs to $k$-planar graphs.
+
+The purpose of the current paper is to show that new structural results for planar graphs can be extended to $k$-planar graphs.  These results can be used to give a rough characterization of $k$-planar graphs of powers of bounded-degree planar graphs
+% Rather, we present a rough structural characterization of $k$-planar graphs that, despite its roughness, provides several new results for $k$-planar and related graph families.  
+All of these results are based on layered $H$-partitions, which we now define.
+{\color{red}TODO: Help.}
 
 A \emph{layering} of a graph $G$ is a sequence $\mathcal{L}=\langle V_0,V_1,\ldots\rangle$ such that $\{V_0,V_1,\ldots\}$ is a partition of $V(G)$ and there is no edge $vw\in E(G)$ such that $v\in V_i$, $w\in V_j$ and $|j-i|>1$.  For any partition $\mathcal{P}=\{S_1,\ldots,S_p\}$ of $V(G)$, a \emph{quotient graph} $H=G/\mathcal{P}$ has a $p$-element vertex set $V(H)=\{x_1,\ldots,x_p\}$ and $x_ix_j\in E(H)$ if and only if there exists an edge $vw\in E(G)$ such that $v\in S_i$ and $w\in S_j$. To highlight the importance of the quotient graph $H$, we call $\mathcal{P}$ an \emph{$H$-partition} and write this concisely as $\mathcal{P}=\{S_x : x\in V(H)\}$ so that each element of $\mathcal{P}$ is indexed by the vertex it creates in $H$.\footnote{An alternative definition of a layering of $G$ is an $H$-partition of $G$ where $H$ is a path.}  A layered $H$-partition $(\mathcal{L},\mathcal{P})$ of a graph $G$ consists of a layering $\mathcal{L}$ of $G$ and an $H$-partition $\mathcal{P}$ of $G$. The \emph{layered width} of $(\mathcal{L},\mathcal{P})$ is $\max\{|L\cap P|: L\in\mathcal{L},\, P\in\mathcal{P}\}$.
 
-Layered $H$-partitions of small layered width in which $H$ has some additional property are a useful tool for a number of graph problems.  One such useful property is small \emph{treewidth}, which we now define. A \emph{tree-decomposition} $\mathcal{K}$ of a graph $G$ consists of a tree $K$ and a collection $\mathcal{K}=\{B_x:x\in V(K)\}$ of subsets of $V(G)$ indexed by nodes of $K$ such that (i)~for every $vw\in E(G)$, there exists some $x\in V(K)$ with $v,w\in B_x$; and (ii)~for every $v\in V(G)$, $K[x] = K[\{y: x\in B_y\}]$ is connected.  The \emph{width} of the tree-decomposition $\mathcal{K}$ is $\max\{|B_x|:x\in V(K)\}-1$.  The \emph{treewidth} $\tw(G)$ of a graph $G$ is the minimum integer $t$ such that $G$ has a tree-decomposition of width $t$.  
+Layered $H$-partitions of small layered width in which $H$ has some additional property are a useful tool for a number of graph problems.  One such useful property is small \emph{treewidth}, which we now define. A \emph{tree-decomposition} $\mathcal{K}$ of a graph $G$ consists of a tree $K$ and a collection $\mathcal{K}=(B_x:x\in V(K))$ of subsets of $V(G)$ indexed by nodes of $K$ such that (i)~for every $vw\in E(G)$, there exists some $x\in V(K)$ with $v,w\in B_x$; and (ii)~for every $v\in V(G)$, the induced subgraph $K[x] := K[\{y: x\in B_y\}]$ is connected.  The \emph{width} of the tree-decomposition $\mathcal{K}$ is $\max\{|B_x|:x\in V(K)\}-1$.  The \emph{treewidth} $\tw(G)$ of a graph $G$ is the minimum width of a tree-decomposition of $G$.  
 
- \citet{dujmovic.joret.ea:planar} show that, if each graph $G$ in some family $\mathcal{G}$ of graphs has a layered $H$-partition for which the layered width of the partition and the treewidth of $H$ are each upper-bounded by some constant $c_\mathcal{G}$, then each of the following quantities are upper bounded by a constant, for every $G\in\mathcal{G}$: queue number, track number, and layered treewidth. \citet{dujmovic.esperet.ea:planar} add non-repetitive chromatic number to this list.  \citet{dujmovic.joret.ea:planar} show that two common families of graphs have such $H$-partitions: planar graphs and (more generally) apex-minor-free graphs.\footnote{A graph $G$ is $t$-apex if it contains a set $A$ of at most $t$ vertices such that $G-A$ is planar. A graph $M$ is a \textit{minor} of a graph $G$ if a graph isomorphic to $M$ can be obtained from a subgraph of $G$ by contracting edges. \note{PM}{Help me finish this definition of apex-minor-free.}}
+ \citet{dujmovic.joret.ea:planar} show that, if each graph $G$ in some family $\mathcal{G}$ of graphs has a layered $H$-partition for which the layered width of the partition and the treewidth of $H$ are each upper-bounded by some constant $c_\mathcal{G}$, then each of the following quantities are upper bounded by a constant, for every $G\in\mathcal{G}$: queue number, track number, and layered treewidth. \citet{dujmovic.esperet.ea:planar} add non-repetitive chromatic number to this list.  \citet{dujmovic.joret.ea:planar} show that two common families of graphs have such $H$-partitions: planar graphs, graphs of bounded genus, and (more generally) apex-minor-free graphs.\footnote{A graph $M$ is a \textit{minor} of a graph $G$ if a graph isomorphic to $M$ can be obtained from a subgraph of $G$ by contracting edges. A class $\mathcal{G}$ of graphs is \emph{minor-closed} if for every graph $G\in\mathcal{G}$, every minor of $G$ is in $\mathcal{G}$. A minor-closed class is \emph{proper} if it is not the class of all graphs. For example, for fixed $g\geq 0$, the class of graphs with Euler genus at most $g$ is a proper minor-closed class.
+ 
+ A graph $G$ is $t$-apex if it contains a set $A$ of at most $t$ vertices such that $G-A$ is planar. A 1-apex graph is \emph{apex}.  A minor-closed class $\mathcal{G}$ is apex-minor-free if some apex graph is not in $\mathcal{G}$.}
 
 % In this paper we show that another family of graphs admits layered $H$-partitions of bounded layered width in which $H$ has bounded treewidth:
-In the current paper we show that $k$-planar graphs also admit layered $H$-partitions in which $H$ has bounded treewidth. First, we formally define $k$-planar graphs.  An \emph{embedded graph} $G$ is a graph with $V(G)\subset\R^2$ in which each edge $vw\in E(G)$ is a closed curve\footnote{A closed curve in a surface $S$ is a continuous function $f:[0,1]\to S$. The points $f(0)$ and $f(1)$ are called the \emph{endpoints} of the curve.  When there is no danger of misunderstanding we treat a curve $f$ as the point set $\{f(t):0\le t\le 1\}$.} in $\R^2$ with endpoints $v$ and $w$ and not containing any vertex of $G$ in its interior.  A \emph{crossing} in an embedded graph $G$ is a triple $(p,vw,xy)$ with $p\in\R^2$, $vw,xy\in E(G)$ and such that $p\in (vw\cap xy)\setminus\{v,w,x,y\}$. An embedded graph $G$ is \emph{$k$-plane} if each edge of $G$ takes part in at most $k$ crossings.  A (not necessarily embedded) graph $G'$ is \emph{$k$-planar} if there exists $k$-plane graph $G$ isomorphic to $G'$.  
+In the current paper we show that $k$-planar graphs also admit layered $H$-partitions in which $H$ has bounded treewidth. First, we formally define $k$-planar graphs.  An \emph{embedded graph} $G$ is a graph with $V(G)\subset\R^2$ in which each edge $vw\in E(G)$ is a closed curve\footnote{A closed curve in a surface $\Sigma$ is a continuous function $f:[0,1]\to \Sigma$. The points $f(0)$ and $f(1)$ are called the \emph{endpoints} of the curve.  When there is no danger of misunderstanding we treat a curve $f$ as the point set $\{f(t):0\le t\le 1\}$.} in $\R^2$ with endpoints $v$ and $w$ and not containing any vertex of $G$ in its interior.  A \emph{crossing} in an embedded graph $G$ is a triple $(p,vw,xy)$ with $p\in\R^2$, $vw,xy\in E(G)$ and such that $p\in (vw\cap xy)\setminus\{v,w,x,y\}$. An embedded graph $G$ is \emph{$k$-plane} if each edge of $G$ takes part in at most $k$ crossings.  A (not necessarily embedded) graph $G'$ is \emph{$k$-planar} if there exists $k$-plane graph $G$ isomorphic to $G'$.  
 
-Under these definitions, $0$-planar graphs are exactly planar graphs and $0$-plane graphs are exactly plane graphs. Thus, like genus-$g$ graphs,\footnote{The \textit{Euler genus} of the orientable surface with $h$ handles is $2h$. The \textit{Euler genus} of the non-orientable surface with $c$ cross-caps is $c$. The \textit{Euler genus} of a graph $G$ is the minimum integer $g$ such that $G$ embeds in a surface of Euler genus $g$. Of course, a graph is planar if and only if it has Euler genus 0; see \citep{mohar.thomassen:graphs} for more about graph embeddings in surfaces.} $k$-planar graphs are a generalization of planar graphs (which are genus-$0$ graphs).  Unlike genus-$g$ graphs, however, the family of $k$-planar graphs is not minor-closed.\footnote{A class $\mathcal{G}$ of graphs is \emph{minor-closed} if for every graph $G\in\mathcal{G}$, every minor of $G$ is in $\mathcal{G}$. A minor-closed class is \emph{proper} if it is not the class of all graphs. For example, for fixed $g\geq 0$, the class of graphs with Euler genus at most $g$ is a proper minor-closed class.}  A graph $G'$ obtained from a $k$-planar graph $G$ by edge deletions and edge contractions may or may not be $k$-planar. Indeed, \citet{dujmovic.eppstein.ea:structure} construct 1-planar graphs that contain arbitrarily large complete graph minors.
+Under these definitions, $0$-planar graphs are exactly planar graphs and $0$-plane graphs are exactly plane graphs. Thus, like genus-$g$ graphs,\footnote{The \textit{Euler genus} of the orientable surface with $h$ handles is $2h$. The \textit{Euler genus} of the non-orientable surface with $c$ cross-caps is $c$. The \textit{Euler genus} of a graph $G$ is the minimum integer $g$ such that $G$ embeds in a surface of Euler genus $g$. Of course, a graph is planar if and only if it has Euler genus 0; see \citep{mohar.thomassen:graphs} for more about graph embeddings in surfaces.} $k$-planar graphs are a generalization of planar graphs (which are genus-$0$ graphs).  Unlike genus-$g$ graphs, however, the family of $k$-planar graphs is not minor-closed.  A graph $G'$ obtained from a $k$-planar graph $G$ by edge deletions and edge contractions may or may not be $k$-planar. Indeed, \citet{dujmovic.eppstein.ea:structure} construct 1-planar graphs that contain arbitrarily large complete graph minors.
 
 We prove the following result:
 \begin{thm}\thmlabel{k-planar}
@@ -108,9 +109,7 @@ There is a natural generalization of $k$-planar to genus-$g$ surfaces, that we n
 \end{thm}
 
 
-
-TODO: Write here about applications. $(g,k)$-planar, map graphs, $k$-NN, David's rough characterization.
-
+\note{PM}{TODO: Write here about applications. non-repetitive colouring, $p$-centered colouring, $(g,k)$-planar graph, $(g,d)$-map graphs, $k$-NN graphs, David's rough characterization.}
 
 
 The remainder of the paper is organized as follows: In \secref{k-planar} we prove \thmref{k-planar}.  In \secref{1-planar} we prove \thmref{1-planar}.  
@@ -120,25 +119,24 @@ In \secref{g-k-planar} we prove \thmref{g-k-planar}. In \secref{consequences} we
 \section{$k$-Planar Graphs}
 \seclabel{k-planar}
 
-The purpose of this section is to prove \thmref{k-planar}.  In this section, all graphs are finite, simple, and undirected.  For any graph $G$ and any set $S$ (typically $S\subseteq V(G)$) we use $G[S]$ to denote the graph with vertex set $V(G)\cap S$ and edge set $\{uv\in E(G) : u,v\in S\}$.  We use $G-S$ as a shorthand for $G[V(G)\setminus S]$ and for a graph $G'$, we use $G-G'$ as a shorthand for $G-V(G')$.  We use $G'\subseteq G$ to denote subgraph containment, i.e., $V(G')\subseteq V(G)$ and $E(G')\subseteq E(G)$. \note{PM}{TODO: Hunt down occurrences of $G-G'$ and replace with $G-V(G')$.}
+The purpose of this section is to prove \thmref{k-planar}.  In this paper, all graphs are finite and undirected. Unless specifically mentioned otherwise, all graphs are also simple.  For any graph $G$ and any set $S$ (typically $S\subseteq V(G)$) we use $G[S]$ to denote the graph with vertex set $V(G)\cap S$ and edge set $\{uv\in E(G) : u,v\in S\}$.  We use $G-S$ as a shorthand for $G[V(G)\setminus S]$ and for a graph $G'$, we use $G-G'$ as a shorthand for $G-V(G')$.  We use $G'\subseteq G$ to denote subgraph containment; that is, $V(G')\subseteq V(G)$ and $E(G')\subseteq E(G)$.
 
-We begin by introducing a structural tool for planar graphs, called a PS-tree, that is implicit in previous work on $H$-partitions of planar graphs \cite{dujmovic.joret.ea:planar}.  We then show how the PS-tree of a planarized version of a $k$-planar graph $G$ can be used to find a layered $H$-partition of $G$ of small layered width in which $H$ has small treewidth. 
+We begin by introducing a structural tool for planar graphs, called a tripod decomposition, that is implicit in previous work on $H$-partitions of planar graphs \cite{dujmovic.joret.ea:planar}.  We then show how the tripod decomposition of a planarized version of a $k$-planar graph $G$ can be used to find a layered $H$-partition of $G$ of small layered width in which $H$ has small treewidth. 
 
 \subsection{PS-Trees}
 
-Let $T$ be a tree rooted at some node $r\in V(T)$. The \emph{$T$-depth} of a node $x\in V(T)$ is equal to the length of the path from $x$ to $r$ in $T$. A path $P$ in $T$ is \emph{vertical} if, for each integer $i$, $P$ contains at most one vertex of $T$-depth $i$.  The deepest vertex in a vertical path $P$ is called  the \emph{lower endpoint} of $P$ and the shallowest vertex in $P$ is called the \emph{upper endpoint} of $P$. For each node $v\in V(T)$, we call each node on the path, in $T$, from $v$ to $r$ (including $v$ itself) a \emph{$T$-ancestor} of $v$.  If $v'$ is a $K$-ancestor of $v$, then $v$ is a \emph{$K$-descendant} of $v'$.
+Let $T$ be a tree rooted at some node $r\in V(T)$. The \emph{$T$-depth} of a node $x\in V(T)$ is equal to the length of the path from $x$ to $r$ in $T$. A path $P$ in $T$ is \emph{vertical} if, for each integer $i$, $P$ contains at most one vertex of $T$-depth $i$.  The deepest vertex in a vertical path $P$ is called  the \emph{lower endpoint} of $P$ and the shallowest vertex in $P$ is called the \emph{upper endpoint} of $P$. For each node $v\in V(T)$, we call each node on the path, in $T$, from $v$ to $r$ (including $v$ itself) a \emph{$T$-ancestor} of $v$.  If $v'$ is a $T$-ancestor of $v$, then $v$ is a \emph{$T$-descendant} of $v'$.
 
-A \emph{near-triangulation} $N$ is a plane graph whose outer face, $F$, is bounded by a simple cycle in $N$ and each of whose inner faces is bounded by a 3-cycle in $N$.  A \emph{triangulation} is a near-triangulation whose outer face is bounded by a 3-cycle.  For any cycle $F$ in a near-triangulation $N$ we use $N\circledast F$ to denote the near-triangulation consisting of all the edges and vertices of $N$ that are contained in $F$ or its interior.
+A \emph{near-triangulation} $N$ is a plane graph whose outer face, $F$, is bounded by a simple cycle in $N$ and each of whose inner faces is bounded by a 3-cycle in $N$.  A \emph{triangulation} is a near-triangulation whose outer face is bounded by a 3-cycle.  For any cycle $F$ in a near-triangulation $N$ we use $N\llparenthesis F\rrparenthesis$ to denote the near-triangulation consisting of all the edges and vertices of $N$ that are contained in $F$ or its interior.
 
-For a connected graph $G$ and two vertices $v,w\in V(G)$, we use $\dist_{G}(v,w)$ to denote the length of a shortest path, in $G$, with endpoints $v$ and $w$.  For a vertex $r\in V(G)$, the \emph{BFS layering} of $G$ from $r$ is the layering $\langle V_0,V_1,\ldots\rangle$ of $G$ where $V_i=\{v\in V(G): \dist_{G}(r,v)=i\}$ for each integer $i\ge 0$.  A \emph{BFS spanning tree} $T$ of $G$ rooted at $r$ is a spanning tree of $G$ rooted at $r$ where, for every $v\in V(G)\setminus\{r\}$, the parent $v'$ of $v$ in $T$ has $\dist_G(r,v')= \dist_G(r,v)-1$.
-
+For a connected graph $G$ and two vertices $v,w\in V(G)$, we use $\dist_{G}(v,w)$ to denote the length of a shortest path, in $G$, with endpoints $v$ and $w$.  For a vertex $r\in V(G)$, the \emph{BFS layering} of $G$ from $r$ is the layering $\langle V_0,V_1,\ldots\rangle$ of $G$ where $V_i=\{v\in V(G): \dist_{G}(r,v)=i\}$ for each integer $i\ge 0$.  A \emph{BFS spanning tree} $T$ of $G$ rooted at $r$ is a spanning tree of $G$ rooted at $r$ where, for every $v\in V(G)$, $\dist_T(v,r)=\dist_G(v,r)$.
 
 For the remainder of this section, $\Delta$ is a triangulation, $r$ is a degree-3 vertex on the outer face of $\Delta$, and $T$ is a BFS spanning tree of $\Delta$ rooted at $r$.
 
-Fix some cycle $F$ in $\Delta$ and let $N=\Delta\circledast F$.
-Let $\tau=v_1v_2v_3$ be an inner face of $N$ and consider the three minimal vertical paths $Q_1$, $Q_2$, and $Q_3$ in $T$ such that, for each $i\in\{1,2,3\}$ the lower endpoint of $Q_i$ is $v_i$ and the upper endpoint $v_i'$ of $Q_i$ is in $V(F)$.  If $Q_1$, $Q_2$, and $Q_3$ are vertex disjoint, then the graph $\overline{Y}=\tau\cup Q_1\cup Q_2\cup Q_3$ is called the \emph{closed tripod} in $N$ determined by $\tau$.  We call $Q_1$, $Q_2$, and $Q_3$ the \emph{legs}, $v_1'$, $v_2'$ and $v_3'$ the \emph{feet}, and $\tau$ the \emph{crotch} of $\overline{Y}$.  We call $Y=\overline{Y}-F$ the \emph{(open) tripod} of $N$ determined by $\tau$.  The graph $M=\overline{Y}\cup F$ is called a \emph{Mercedes graph} and the (at most three) inner faces of $M$ other than $\tau$ are called the \emph{wedges} of $M$.
+Fix some cycle $F$ in $\Delta$ and let $N=\Delta\llparenthesis F\rrparenthesis$.
+Let $\tau=v_1v_2v_3$ be an inner face of $N$ and consider the three minimal vertical paths $Q_1$, $Q_2$, and $Q_3$ in $T$ such that, for each $i\in\{1,2,3\}$ the lower endpoint of $Q_i$ is $v_i$ and the upper endpoint $v_i'$ of $Q_i$ is in $V(F)$.  If $Q_1$, $Q_2$, and $Q_3$ are vertex-disjoint, then the graph $\overline{Y}:=\tau\cup Q_1\cup Q_2\cup Q_3$ is called the \emph{closed tripod} in $N$ determined by $\tau$.  We call $Q_1$, $Q_2$, and $Q_3$ the \emph{legs}, $v_1'$, $v_2'$ and $v_3'$ the \emph{feet}, and $\tau$ the \emph{crotch} of $\overline{Y}$.  We call $Y:=\overline{Y}-F$ the \emph{(open) tripod} of $N$ determined by $\tau$.  The graph $M:=\overline{Y}\cup F$ is called a \emph{Mercedes graph} and the (at most three) inner faces of $M$ other than $\tau$ are called the \emph{wedges} of $M$.
 
-Let $r$ be a degree-3 node on the outer face of a triangulation $\Delta$.  A \emph{PS-tree}  $K=K(\Delta, T, r)$ is a rooted tree in which each non-root node $x\in V(K)$ is associated with several objects (refer to \figref{K-node}):
+Let $r$ be a degree-3 node on the outer face of a triangulation $\Delta$.  A \emph{tripod decomposition}  $K=K(\Delta, T, r)$ is a rooted tree in which each non-root node $x\in V(K)$ is associated with several objects (refer to \figref{K-node}):
 
 \begin{figure}
   \begin{center}
@@ -152,16 +150,16 @@ Let $r$ be a degree-3 node on the outer face of a triangulation $\Delta$.  A \em
 \end{figure}
 
 \begin{enumerate}
-  \item A cycle $F_x$ in $\Delta$ and the near-triangulation $N_x=\Delta\circledast F_x$.
+  \item A cycle $F_x$ in $\Delta$ and the near-triangulation $N_x:=\Delta\llparenthesis F_x\rrparenthesis$.
   
-  \item An inner face $\tau_x$ of $N_x$ that determines a closed tripod $\overline{Y}_x$ and an open tripod $Y_x=\overline{Y}_x-F_x$ in $N_x$.
+  \item An inner face $\tau_x$ of $N_x$ that determines a closed tripod $\overline{Y}_x$ and an open tripod $Y_x:=\overline{Y}_x-F_x$ in $N_x$, both with crotch $\tau_x$.
   
-  \item The \emph{Mercedes graph} $M_x=F_x\cup \overline{Y}_x$
+  \item The \emph{Mercedes graph} $M_x:=F_x\cup \overline{Y}_x$
 \end{enumerate}
 
-The root node $r^0_K$ of $K$ is exceptional.  We define $F_{r^0_K}$ to be the single-vertex graph containing $r$, we define $\overline{Y}_{r^0_K}$ to be the star formed by $r$ and its three neighbours in $\Delta$, and (as usual) $Y_{r^0_K}=\overline{Y}_{r^0_K}-F_{r^0_K}$.  The root node $r^0_K$ has exactly one child $r_K$, that we call the \emph{sub-root} of $K$, for which $F_{r_K}$ is the 3-cycle formed by the neighbours of $r$ in $\Delta$.
+The root node $r^0_K$ of $K$ is exceptional.  We define $F_{r^0_K}$ to be the single-vertex graph containing $r$, we define $\overline{Y}_{r^0_K}$ to be the star formed by $r$ and its three neighbours in $\Delta$, and (as usual) $Y_{r^0_K}:=\overline{Y}_{r^0_K}-F_{r^0_K}$.  The root node $r^0_K$ has exactly one child $r_K$, called the \emph{sub-root} of $K$, for which $F_{r_K}$ is the 3-cycle formed by the neighbours of $r$ in $\Delta$.
 
-The non-root nodes of the PS-tree $K$ (including the sub-root $r_K$) satisfy the following conditions:
+The non-root nodes of the tripod decomposition $K$ (including the sub-root $r_K$) satisfy the following conditions:
 \begin{enumerate}[(PR1)]
   \item \proplabel{children} For each non-root node $x\in V(K)$ such that $M_x$ has $f\le 3$ wedges $F_{x,1},\ldots,F_{x,f}$, the node $x$ has exactly $f$ children $y_1,\ldots,y_f$ in $K$ and $F_{y_i} = F_{x,i}$ for each $i\in\{1,\ldots,f\}$.
   
@@ -172,7 +170,7 @@ The non-root nodes of the PS-tree $K$ (including the sub-root $r_K$) satisfy the
   \item \proplabel{partition} $\{Y_x : x\in V(K)\}$ is a partition of $V(\Delta)\setminus\{r\}$.
 \end{enumerate}
 
-For any triangulation $\Delta$ in which the outer face has a vertex $r$ of degree 3 and for any BFS spanning tree of $\Delta$ rooted at $r$, there exists a PS-tree $K=K(\Delta,T,r)$.  Indeed, this tree is constructed (albeit implicitly) by \citet[Proof of Lemma~14]{dujmovic.joret.ea:planar}.\footnote{\citet{dujmovic.joret.ea:planar} do not require that $T$ be a BFS spanning tree, only that its root, $r$ have degree 3 in $\Delta$ and in $T$.}
+For any triangulation $\Delta$ in which the outer face has a vertex $r$ of degree 3 and for any BFS spanning tree of $\Delta$ rooted at $r$, there exists a tripod decomposition $K=K(\Delta,T,r)$.  Indeed, this tree is constructed (albeit implicitly) by \citet[Proof of Lemma~14]{dujmovic.joret.ea:planar}.\footnote{\citet{dujmovic.joret.ea:planar} do not require that $T$ be a BFS spanning tree, only that its root, $r$ has degree 3 in $\Delta$ and in $T$.}
 
 
 % The following claim is not used until later in the paper. However, it's proof is a helpful exercise in understanding the properties of a PS-Tree.
@@ -244,22 +242,23 @@ since (the curve) $vw$ contains a sequence $W_{vw}$ of at most $k+2$ vertices of
 \end{figure}
 
 Let $r$ be the vertex of the $K_4$ not incident on $F_0$ and let $T$ be a BFS spanning tree of $G^{++}$ rooted at $r$. 
-For each integer $i\ge 0$, let $V_i=\{v\in V(G^+): \dist_{T}(r,v)=i\}$ and observe that $\{V_2,V_3,\ldots,V_{h}\}$ is a layering of $G^+$ (but not of $G$).
+For each integer $i\ge 0$, let $V_i:=\{v\in V(G^+): \dist_{T}(r,v)=i\}$ and observe that $\{V_2,V_3,\ldots,V_{h}\}$ is a layering of $G^+$ (but not of $G$).
 
-Let $K=K(G^{++},T,r)$ be a PS-tree and observe that the sub-root $r_K$ of $K$ has $F_{r_K}=F_0$.  This implies:
+Let $K=K(G^{++},T,r)$ be a tripod decomposition and observe that the sub-root $r_K$ of $K$ has $F_{r_K}=F_0$.  This implies:
 \begin{compactenum}[(PR1)]\setcounter{enumi}{4}
   \item \proplabel{all-in}  $G^+\subseteq N_{r_K}-F_{r_K}$.
 \end{compactenum}
 
-By \propref{all-in}, $P_{z}$ contains the sub-root $r_K$ of $K$.  By \propref{children}, any node $x\in P_z$ has at most one of its children in $P_z$ and any node $x'\not\in P_z$ has none of its children in $P_z$.  Therefore $K[P_z]$ is a vertical path that contains $r_K$ (and whose lower endpoint is the unique node $x\in V(K)$ such that $z\in Y_x$). We are about to repeatedly use the fact that the common intersection of two or more vertical paths is a vertical path. 
+For each vertex $z\in V(G^+)$, let $P_z=\{a\in V(K): z\in V(N_a-F_a)\}$.  By \propref{all-in}, $P_{z}$ contains the sub-root $r_K$ of $K$.  By \propref{children}, any node $x\in P_z$ has at most one of its children in $P_z$ and any node $x'\not\in P_z$ has none of its children in $P_z$.  Therefore $K[P_z]$ is a vertical path in $K$ that contains $r_K$ (and whose lower endpoint is the unique node $x\in V(K)$ such that $z\in Y_x$). We are about to repeatedly use the fact that the common intersection of two or more vertical paths is a vertical path. 
 
-For each edge $vw\in E(G)$, consider the walk $W_{vw}$ in $G^+$ that corresponds to the sequence of vertices in $G^+$ encountered while walking along the curve $vw$ from $v$ to $w$. We define $A_{vw}=\bigcap_{z\in W_{vw}} P_z$.  Since $V(W_{vw})\subseteq V(G^+)$, $A_{vw}$ is well-defined.  For each $z\in V(W_{vw})$, $K[P_{z}]$ is a vertical path in $K$ that contains $r_K$.   Therefore $K[A_{vw}]$ is a vertical path in $K$ that contains $r_K$.  For each vertex $v\in V(G)$ define $A_v=\bigcap_{vw\in E(G)} A_{vw}$.  Again, $K[A_v]$ is a vertical path in $K$ that contains $r_K$.  We define $a(v)$ to be the lower endpoint of $K[A_v]$.  In words, $a(v)$ is the lowest node in $K$ such that the interior of $F_{a(v)}$ contains all the edges of $G$ incident to $v$.
+For each edge $vw\in E(G)$, consider the walk $W_{vw}$ in $G^+$ that corresponds to the sequence of vertices in $G^+$ encountered while walking along the curve $vw$ from $v$ to $w$. We define $A_{vw}:=\bigcap_{z\in W_{vw}} P_z$.  Since $V(W_{vw})\subseteq V(G^+)$, $A_{vw}$ is well-defined.  For each $z\in V(W_{vw})$, $K[P_{z}]$ is a vertical path in $K$ that contains $r_K$.   Therefore $K[A_{vw}]$ is a vertical path in $K$ that contains $r_K$.  For each vertex $v\in V(G)$ define $A_v:=\bigcap_{vw\in E(G)} A_{vw}$.  Again, $K[A_v]$ is a vertical path in $K$ that contains $r_K$.  We define $a(v)$ to be the lower endpoint of $K[A_v]$.  In words, $a(v)$ is the lowest node in $K$ such that the interior of $F_{a(v)}$ contains all the edges of $G$ incident to $v$.
 
 For each node $x\in V(K)$, define the \emph{separator}
 \[
-   S_x = \{v\in V(G): a(v)=x \} \enspace .
+   S_x := \{v\in V(G): a(v)=x \} \enspace .
 \]
-Clearly $\mathcal{S}=\{S_x:x\in V(K)\}$ is a partition of $V(G)$.  We will use $\mathcal{S}$ as the partition that defines our quotient graph $H=G/\mathcal{S}$ with vertex set $V(H)=V(K)$ and the edge $xy\in E(H)$ if and only if there exists an edge $vw\in E(G)$ with $v\in S_x$ and $w\in S_y$.  First we argue that this partition has small layered width with respect to the layering $\{V_2,V_3,\ldots\}$ of $G^+$ defined by $T$ (recall that this is a layering of $G^+$, not a layering of $G$).
+Clearly $\mathcal{S}:=\{S_x:x\in V(K)\}$ is a partition of $V(G)$.  We will use $\mathcal{S}$ as the partition that defines our quotient graph $H:=G/\mathcal{S}$ with vertex set $V(H):=V(K)$ and the edge $xy\in E(H)$ if and only if there exists an edge $vw\in E(G)$ with $v\in S_x$ and $w\in S_y$.  First we argue that this partition has small layered width with respect to the layering $\{V_2,V_3,\ldots\}$ of $G^+$ defined by $T$.
+ % (recall that this is a layering of $G^+$, not a layering of $G$).
 
 \begin{clm}\clmlabel{chargeback-to-y}
    For any $x\in V(K)$ and any vertex $v\in S_x$, there exists an edge $vw\in E(G)$ and a vertex $v'\in Y_x\cap V(W_{vw})$ such that $|\dist_T(r,v')-\dist_T(r,v)|\le k+1$.
@@ -273,18 +272,18 @@ Clearly $\mathcal{S}=\{S_x:x\in V(K)\}$ is a partition of $V(G)$.  We will use $
        \le \dist_{G^{++}}(r,v) + k + 1 \enspace .
   \]
   Similarly, $\dist_{G^{++}}(r,v) \le \dist_{G^{++}}(r, v') + k+1$.  Therefore
-  $|\dist_{G^+}(r,v)-\dist_{G^+}(r,v')| \le k+1$ which establishes the claim, since $T$ is BFS spanning tree of $G^{++}$ rooted at $r$, so $\dist_{T}(r,z)=\dist_{G^{++}}(r,z)$ for all $z\in V(G^+)$.
+  $|\dist_{G^{++}}(r,v)-\dist_{G^{++}}(r,v')| \le k+1$ which establishes the claim, since $T$ is BFS spanning tree of $G^{++}$ rooted at $r$, so $\dist_{T}(r,z)=\dist_{G^{++}}(r,z)$ for all $z\in V(G^+)$.
 \end{proof}
 
 \begin{clm}\clmlabel{width-of-g-plus}
-  For any $x\in V(H)$, and any integer $i\ge 0$, $|S_x\cap V_i|\le 24k+12$.
+  For any $x\in V(H)$, and any integer $i\ge 0$, $|S_x\cap V_i|\le 24k+36$.
 \end{clm}
 
 \begin{proof}
-  Since the vertices of $Y_x$ come from at most three vertical paths in $T$, $|V(Y_x)\cap V_i|\le 3$.  \clmref{chargeback-to-y} shows that, for any $v\in S_x\cap V_i$, there exists $vw\in E(G)$ and $v'\in Y_x\cap V(W_{vw})$ with $\dist_T(v,v')\le k+1$. Therefore, $v'\in V(Y_x)\cap V_{j}$ for some $j\in\{i-k-1,\ldots,i+k+1\}$.  If $v'=v$ (so $v'\in V_i$) then $v'$ contributes only one vertex to $S_x$.  If $v'\neq v$ then $v'\in V(G^+-G)$ is a point where two edges of $G$ cross and $v'$ contributes at most the four endpoints of these edges to $S_x$. In either case each $v'\in V(Y_x)\cap \bigcup_{j=i-k-1}^{i+k+1} V_j$ contributes at most four vertices to $S_x\cap V_i$, so $|S_x\cap V_i|\le 3\times 4\times (2k+3) = 24k+36$.
+  Since the vertices of $Y_x$ come from at most three vertical paths in $T$, $|V(Y_x)\cap V_i|\le 3$.  \clmref{chargeback-to-y} shows that, for any $v\in S_x\cap V_i$, there exists $vw\in E(G)$ and $v'\in Y_x\cap V(W_{vw})$ with $\dist_T(v,v')\le k+1$. Therefore, $v'\in V(Y_x)\cap V_{j}$ for some $j\in\{i-k-1,\ldots,i+k+1\}$.  If $v'=v$ (so $v'\in V_i$) then $v'$ contributes only one vertex to $S_x$.  If $v'\neq v$ then $v'\in V(G^+-G)$ is a point where two edges of $G$ cross and $v'$ contributes at most the four endpoints of these edges to $S_x$. In either case, each $v'\in V(Y_x)\cap \bigcup_{j=i-k-1}^{i+k+1} V_j$ contributes at most four vertices to $S_x\cap V_i$, so $|S_x\cap V_i|\le 3\times 4\times (2k+3) = 24k+36$.
 \end{proof}
 
-Next we describe a tree decomposition $\{B_x:x\in V(K)\}$ of $H$.  We deliberately use the same node set $V(H)=V(K)$ here, because the subtree $K[x]:=K[\{z:x\in B_z\}]$ will be rooted at $x$.  
+Next we describe a tree decomposition $(B_x:x\in V(K))$ of $H$.  We deliberately use the same node set $V(H)=V(K)$ here, because the subtree $K[x]:=K[\{z:x\in B_z\}]$ will be rooted at $x$.  
 
 \begin{clm}\clmlabel{xy-ancestor}
    For every edge $xy\in V(H)$, one of $x$ or $y$ is a $K$-ancestor of the other.
@@ -294,16 +293,16 @@ Next we describe a tree decomposition $\{B_x:x\in V(K)\}$ of $H$.  We deliberate
    Since $xy\in E(H)$, there exists an edge $vw\in E(G)$ such that $v\in S_x$ and $w\in S_y$.  By definition, $x\in A_v\subseteq A_{vw}$ and $y\in A_w\subseteq A_{vw}$.  Since $K[A_{vw}]$ is a vertical path in $K$, it follows that one of $x$ or $y$ is a $K$-ancestor of the other. 
 \end{proof}
 
-The tree decomposition $\{B_x:x\in V(K)\}$ of $H$ is defined as follows: For each edge $xy\in E(H)$ where $y$ is a $K$-ancestor of $x$, we add $y$ to $B_{x'}$ for every node $x'$ on the path from $x$ to $y$ in $K$.  That this produces a tree-decomposition is due to \clmref{xy-ancestor}.  What remains is to upper bound the width of this decomposition.
+The tree decomposition $(B_x:x\in V(K))$ of $H$ is defined as follows: For each edge $xy\in E(H)$ where $y$ is a $K$-ancestor of $x$, we add $y$ to $B_{x'}$ for every node $x'$ on the path from $x$ to $y$ in $K$.  That this produces a tree-decomposition is due to \clmref{xy-ancestor}.  What remains is to upper bound the width of this decomposition.
 
 \begin{clm}\clmlabel{bag-size}
-  The tree decomposition $\{B_x: x\in V(K)\}$ of $H$ contains no bag larger than $\bagsize$.
+  The tree decomposition $(B_x: x\in V(K))$ of $H$ contains no bag larger than $\bagsize$.
 \end{clm}
 
 \begin{proof}
   Fix some node $x\in V(K)$ and consider the contents of $B_x$.  By \clmref{xy-ancestor}, $B_x$ contains only $K$-ancestors of $x$ (including $x$ itself). 
   
-  Consider the graph $A$ that contains the edges and vertices of $F_{a}$ for all $K$-ancestors $a$ of $x$. See \figref{A}(a).  It is helpful to think of this graph as follows:  We begin with $F_{a_0}$ where $a_0=r_K$ is the root of $K$.  We then cut $F_{a_0}$ into two pieces $F^{\bar{x}}_{a_0}$ and $F^x_{a_0}$ where $F^x_{a_0}$ is the piece that contains $F_x$. (The path that makes this cut contains two legs $Q_i$ and $Q_j$ of a tripod $Y$ and one edge $v_iv_j$ of its crotch $\tau=v_1v_2v_3$.)  This process continues by partitioning $F_{a_1}:=F^x_{a_0}$ recursively.  The process terminates after some number $d$ of iterations, when $F^x_{a_{d-1}}=F_x=F_{a_d}$.
+  Consider the graph $A$ that contains the edges and vertices of $F_{a}$ for all $K$-ancestors $a$ of $x$. See \figref{A}(a).  It is helpful to think of this graph as follows:  We begin with $F_{a_0}$ where $a_0:=r_K$ is the root of $K$.  We then cut $F_{a_0}$ into two pieces $F^{\bar{x}}_{a_0}$ and $F^x_{a_0}$ where $F^x_{a_0}$ is the piece that contains $F_x$. (The path that makes this cut contains two legs $Q_i$ and $Q_j$ of a tripod $Y$ and one edge $v_iv_j$ of its crotch $\tau=v_1v_2v_3$.)  This process continues by partitioning $F_{a_1}:=F^x_{a_0}$ recursively.  The process terminates after some number $d$ of iterations, when $F^x_{a_{d-1}}=F_x=F_{a_d}$.
 
   \begin{figure}
     \begin{center}
@@ -316,7 +315,7 @@ The tree decomposition $\{B_x:x\in V(K)\}$ of $H$ is defined as follows: For eac
     \figlabel{A}
   \end{figure}
 
-  Refer to \figref{A}(b).  If $B_x$ contains some $K$-ancestor $a_\delta$, $\delta\in\{0,\ldots,d-1\}$, of $x$, it is because there is an edge $vw\in E(G)$ with $w\in S_{a_\delta}$ and $v\in S_{x'}$ for some $K$-descendant $x'$ of $x$.  The edge $vw$ corresponds to a walk $W_{vw}$ in $G^+$. The walk $W_{vw}$ is contained in $N_x-F_x$, otherwise $x\not\in A_{vw}$ so $x'\not\in A_{vw}$, so $x'\not\in A_v$, and $a(v)\neq x'$, contradicting the fact that $v\in S_{x'}$.
+  Refer to \figref{A}(b).  If $B_x$ contains some $K$-ancestor $a_\delta$, $\delta\in\{0,\ldots,d-1\}$, of $x$, it is because there is an edge $vw\in E(G)$ with $w\in S_{a_\delta}$ and $v\in S_{x'}$ for some $K$-descendant $x'$ of $x$.  The edge $vw$ corresponds to a walk $W_{vw}$ in $G^+$. The walk $W_{vw}$ is contained in $N_x-F_x$, otherwise $x\not\in A_{vw}$ which would imply that $x'\not\in A_{vw}$, $x'\not\in A_v$, and $a(v)\neq x'$, contradicting the fact that $v\in S_{x'}$.
   
   However, $w\in S_{a_\delta}$, so there exists an edge $ww'\in E(G)$ such that $W_{ww'}\subseteq N_{a_\delta}-F_{a_\delta}$ but $W_{ww'}\not\subseteq N_{a_{\delta+1}}-F_{a_{\delta+1}}$.  Therefore $W_{ww'}$ must contain a first vertex $w^*\in V(F_{a_{\delta+1}}-F_{a_\delta})\subseteq Y_{a_\delta}$.
 
@@ -330,12 +329,12 @@ The tree decomposition $\{B_x:x\in V(K)\}$ of $H$ is defined as follows: For eac
     
     \item $\ell\le k+1$.
   \end{compactenum}
-  We call any walk with properties (i)--(iv) a \emph{$\delta$-walk}. Therefore, to upper-bound $|B_x|$, it suffices to upper-bound the number of $\delta\in\{0,\ldots,d\}$ such that there exists a $\delta$-walk.\footnote{To account for the fact that $B_x$ contains $x$ we count $\delta=d$.  A $d$-walk corresponds, for example, to a 0-length walk that begins and ends at any vertex $v_0\in V(N_x-F_x)$.}  This is our goal for the remainder of this proof. 
+  We call any walk with properties (i)--(iv) a \emph{$\delta$-walk}. Therefore, to upper-bound $|B_x|$, it suffices to upper-bound the number of $\delta\in\{0,\ldots,d\}$ such that there exists a $\delta$-walk.\footnote{To account for the fact that $B_x$ contains $x$ we count $\delta=d$.  A $d$-walk corresponds, for example, to a length-0 walk that begins and ends at any vertex $v_0\in V(N_x-F_x)$.}  This is our goal for the remainder of this proof. 
   
   In order to avoid excessive levels of subscripts, we introduce the following abbreviated notation: For $i\in\{0,\ldots,d\}$, we use $F_i$, $N_i$, $Y_i$, and $M_i$ as shorthands for $F_{a_i}$, $N_{a_i}$, $Y_{a_i}$, and $M_{a_i}$, respectively.
   
-  Let $d_0=d$, and $d_1=\min\{i: V(F_d\cap Y_i)\neq\emptyset \}$.  By \propref{ancestor-boundary}, any vertex $z\in V(F_d)$ is contained in 
-  $Y_j$ for some $d_1\le j < d$.  Therefore, $F_d$ is contained in the interior of  $F_{d_1}$, i.e., $N_{d_0}\subseteq N_{d_1}-F_{d_1}$.   
+  Let $d_0:=d$, and $d_1:=\min\{i: V(F_d\cap Y_i)\neq\emptyset \}$.  By \propref{ancestor-boundary}, any vertex $z\in V(F_d)$ is contained in 
+  $Y_j$ for some $j\in \{d_1,d_1+1,\ldots,d-1\}$.  Therefore, $F_d$ is contained in the interior of  $F_{d_1}$, that is, $N_{d_0}\subseteq N_{d_1}-F_{d_1}$.   
   
   Refer to \figref{d0d1}.  We will now prove that 
   \begin{equation}
@@ -349,7 +348,7 @@ The tree decomposition $\{B_x:x\in V(K)\}$ of $H$ is defined as follows: For eac
     \figlabel{d0d1}
   \end{figure}
   
-  To prove this claim, consider the graph $I$, illustrated in \figref{d0d1}, with vertex set $V(I)=\{d_1+1,\ldots,d_0\}$ and $ij\in E(I)$ if and only $i=j$ or $|F_i\cap Y_j|\neq\emptyset$.  Any $\delta$-walk $v_0,\ldots,v_\ell$ with $\delta\in V(I)$ corresponds to a walk $\rho_0,\ldots,\rho_{\ell}$ in $I$, where $\rho_i=\max\{j\in\{0,\ldots,d\} : v_i\in N_{j}-F_j\}$.  To see why this is true, consider $\rho_{t}= i$ and $\rho_{t+1}=j$ for some $t\in\{0,\ldots,\ell-1\}$:
+  To prove \eqref{one-round}, consider the graph $I$, illustrated in \figref{d0d1}, with vertex set $V(I)=\{d_1+1,\ldots,d_0\}$ and $ij\in E(I)$ if and only $i=j$ or $|F_i\cap Y_j|\neq\emptyset$.  Any $\delta$-walk $v_0,\ldots,v_\ell$ with $\delta\in V(I)$ corresponds to a walk $\rho_0,\ldots,\rho_{\ell}$ in $I$, where $\rho_i:=\max\{j\in\{0,\ldots,d\} : v_i\in N_{j}-F_j\}$.  To see why this is true, consider $\rho_{t}= i$ and $\rho_{t+1}=j$ for some $t\in\{0,\ldots,\ell-1\}$:
   \begin{compactenum}
     \item If $i=j$, then $ij\in E(I)$ since $ii\in E(I)$ for each $i\in V(I)$.
     
@@ -365,7 +364,7 @@ The tree decomposition $\{B_x:x\in V(K)\}$ of $H$ is defined as follows: For eac
   \end{compactenum}
   We will call any walk in $I$ that satisfies (i')--(iv') a \emph{$\delta$-walk}.
   
-  The edges in $E(I)$ can be partitioned into two classes:  A set $B(I)=\{ij\in E(I): |i-j|\le 1\}$ of \emph{boring edges} and a set $J(I)=\{ij\in E(I): |i-j|>1\}$ of \emph{jump edges}.  For a jump edge $ij$ with $i>j$, $j$ is called a \emph{landing} and $i$ is called a \emph{takeoff}.  We will show that the jump edges of $I$ satisfy the following properties:
+  The edges in $E(I)$ can be partitioned into two classes:  A set $B(I):=\{ij\in E(I): |i-j|\le 1\}$ of \emph{boring edges} and a set $J(I):=\{ij\in E(I): |i-j|>1\}$ of \emph{jump edges}.  For a jump edge $ij$ with $i>j$, $j$ is called a \emph{landing} and $i$ is called a \emph{takeoff}.  We will show that the jump edges of $I$ satisfy the following properties:
   \begin{enumerate}[(J1)]
     \item \jlabel{single} Every $i\in\{d_1+1,\ldots,d_0\}$ is a takeoff for at most one jump edge.
     
@@ -374,10 +373,10 @@ The tree decomposition $\{B_x:x\in V(K)\}$ of $H$ is defined as follows: For eac
   Property \jref{nested} can be interpreted informally as saying that jump edges can cross, but barely:  If $i_1j_1$ and $i_2j_2$ are jump edges with $i_1> i_2>j_1>j_2$, then $j_1=i_2-1$.
 
   We now prove that jump edges satisfy \jref{single}.
-  First We claim that, for each $i\in\{d_1+1,\ldots,d_0\}$, $F_{i}$ contains a vertex of $Y_{d_1}$.  For $i=d_0$, this is true by definition so $F_{d_0}$ contains some vertex $v\in V(Y_{d_1})$.  For $i>0$, we have $F_{d_0}-F_{i}\subseteq N_i-F_i$, but $N_i-F_i$ contains no vertex of $Y_{d_1}$. It must therefore be the case that $v\in V(F_i)$, otherwise $F_{d_0}-F_i$ would contain $v$. 
+  First we claim that, for each $i\in\{d_1+1,\ldots,d_0\}$, $F_{i}$ contains a vertex of $Y_{d_1}$.  For $i=d_0$, this is true by definition so $F_{d_0}$ contains some vertex $v\in V(Y_{d_1})$.  For $i>0$, we have $F_{d_0}-F_{i}\subseteq N_i-F_i$, but $N_i-F_i$ contains no vertex of $Y_{d_1}$. It must therefore be the case that $v\in V(F_i)$, otherwise $F_{d_0}-F_i$ would contain $v$. 
   
-  Now, consider the parent $a_{i-1}$ of $a_i$ in $K$.  By \propref{children} $F_i$ is a wedge of the Mercedes graph $M_{i-1}$.  Let $P_1,\ldots,P_g$ be the partition of $V(F_{i-1})$ guaranteed by \propref{ancestor-boundary}.
-  By \propref{tripod-feet}, $V(F_i) = V(F_i)\cap(P_\alpha \cup P_j\cup V(Y_{i-1}))$ for some $\alpha,j\in \{1,\ldots,g\}$.  Since $F_i$ contains $v\in V(Y_{d_1})$, at least one of $\alpha$ or $j$, say $\alpha$, is equal $d_1$. Since $d_1\not\in V(I)$ and the (possible) edge $(i,i+1)$ is a boring edge, the only (possible) jump edge with $i$ as takeoff is $ij$. This establishes \jref{single}. 
+  Now, consider the parent $a_{i-1}$ of $a_i$ in $K$.  By \propref{children}, $F_i$ is a wedge of the Mercedes graph $M_{i-1}$.  Let $P_1,\ldots,P_g$ be the partition of $V(F_{i-1})$ guaranteed by \propref{ancestor-boundary}.
+  By \propref{tripod-feet}, $V(F_i) = V(F_i)\cap(P_\alpha \cup P_j\cup V(Y_{i-1}))$ for some $\alpha,j\in \{1,\ldots,g\}$.  Since $F_i$ contains $v\in V(Y_{d_1})$, at least one of $\alpha$ or $j$, say $\alpha$, is equal $d_1$. Since $d_1\not\in V(I)$ and the (possible) edge $(i,i+1)$ is boring, the only (possible) jump edge with $i$ as takeoff is $ij$. This establishes \jref{single}. 
   
   To establish that jump edges satisfy \jref{nested} we can use the same argument used to establish that each $F_i$ contains a vertex of $Y_{d_1}$ to establish that each $F_q$ contains a vertex of $Y_j$ and therefore $qj\in E(I)$.  Since $q \ge j+2$, $qj$ is a jump edge and, by \jref{single}, it is the only jump edge with takeoff $q$. 
 
@@ -406,7 +405,7 @@ The tree decomposition $\{B_x:x\in V(K)\}$ of $H$ is defined as follows: For eac
      \sum_{t=0}^{k+1} (k+2-t) = \sum_{t=1}^{k+2} t = \binom{k+3}{2}
   \]
   This establishes \eqref{one-round}.  An illustration of this analysis, showing the case $k=1$ is shown in \figref{one-round-example}.
-  \begin{figure}
+  \begin{figure}[htbp]
     \begin{center}
       \includegraphics{figs/one-round-example}
     \end{center}
@@ -415,7 +414,7 @@ The tree decomposition $\{B_x:x\in V(K)\}$ of $H$ is defined as follows: For eac
   \end{figure}
   
   
-  Refer to \figref{nested}. For $s>1$, let $d_s=\min\{i: V(F_{d_s}\cap Y_i)\neq\emptyset \}$. Consider some $\delta$-walk $v_0,\ldots,v_\ell$ for $\delta\in \{ d_{s+1},\ldots,d_{s}-1\}$.  By (i) and (ii), $v_0\in V(N_{d_0}-F_{d_0})\subseteq V(N_{d_s}-F_{d_s})$ and $v_\ell\in F_{\delta+1}-F_\delta$.  Therefore, there exists some maximum value $i$ such that $v_i\in V(N_{d_{s}}-F_{d_{s}})$.  (In words, $i$ is the last time the walk is in the interior of $F_{d_s}$ before it leaves forever.)
+  Refer to \figref{nested}. For $s>1$, let $d_s:=\min\{i: V(F_{d_s}\cap Y_i)\neq\emptyset \}$. Consider some $\delta$-walk $v_0,\ldots,v_\ell$ for $\delta\in \{ d_{s+1},\ldots,d_{s}-1\}$.  By (i) and (ii), $v_0\in V(N_{d_0}-F_{d_0})\subseteq V(N_{d_s}-F_{d_s})$ and $v_\ell\in F_{\delta+1}-F_\delta$.  Therefore, there exists some maximum value $i$ such that $v_i\in V(N_{d_{s}}-F_{d_{s}})$.  (In words, $i$ is the last time the walk is in the interior of $F_{d_s}$ before it leaves forever.)
   Observe that $i\ge s$ because $v_0,\ldots,v_i$ contains $v_0\in N_{d_0}-F_{d_0}$ as well as a vertex from each of $F_{d_0},\ldots,F_{d_{s-1}}$.  
 
   \begin{figure}
@@ -457,13 +456,13 @@ We now have all the pieces needed to complete the proof of \thmref{k-planar}.
 \begin{proof}[Proof of \thmref{k-planar}]
   We use the layered $H$-partition $(\mathcal{L}, \mathcal{S})$, where $\mathcal{S}=\{S_x:x\in V(K)\}$ and $\mathcal{L}=\langle V_i': i=0,1,2\ldots\rangle$ where $V_i' = V_{(k+1)i}\cup\cdots\cup V_{(k+1)(i+1)-1}$.  \Eqref{distance-preserving} shows that $\mathcal{L}$ is indeed a layering of $G$.
 
-  By \clmref{bag-size}, $\mathcal{S}$ produces a graph $H=G/\mathcal{S}$ of treewidth at most $\treewidth$.  By \clmref{width-of-g-plus}, for each $x\in V(H)$ and each integer $i$, $|B_x\cap V_i|\le 24k+36$, so $|B_x\cap V_i'|\le (k+1)(24k + 36) = 24k^2+60k+36$. 
+  By \clmref{bag-size}, $\mathcal{S}$ produces a quotient graph $H=G/\mathcal{S}$ of treewidth at most $\treewidth$.  By \clmref{width-of-g-plus}, for each $x\in V(H)$ and each integer $i$, $|B_x\cap V_i|\le 24k+36$, so $|B_x\cap V_i'|\le (k+1)(24k + 36) = 24k^2+60k+36$. 
 \end{proof}
 
 We conclude this section with a small extension of \thmref{k-planar} that is useful when studying $(g,k)$-planar graphs in \secref{g-k-planar}.
 
 \begin{cor}\corlabel{k-planar}
-  Let $G$ be a $k$-plane graph, let $r_0$ be an arbitrary vertex of $G$, let $G^+$ be a graph obtained by adding a dummy vertex at each crossing in $G$ and then arbitrarily adding non-crossing edges to obtain a triangulation.  Then $G$ has a layered $H$-partition $(\mathcal{L}=\langle V_0',V_1',\ldots\rangle,\mathcal{P})$ satisfying the conditions of \thmref{k-planar} and such that $V_i' = \{v\in V(G): \floor{\dist_{G^+}(r_0,v)/(k+1)}=i\}$ for each integer $i\ge 0$.
+  Let $G$ be a $k$-plane graph, let $r_0$ be an arbitrary vertex of $G$, let $G^+$ be a graph obtained by adding a dummy vertex at each crossing in $G$ and then arbitrarily adding non-crossing edges to obtain a triangulation.  Then $G$ has a layered $H$-partition $(\mathcal{L}=\langle V_0',V_1',\ldots\rangle,\mathcal{P})$ satisfying the conditions of \thmref{k-planar} and such that $V_i' := \{v\in V(G): \floor{\dist_{G^+}(r_0,v)/(k+1)}=i\}$ for each integer $i\ge 0$.
 \end{cor}
 
 \begin{proof}
@@ -473,7 +472,7 @@ We conclude this section with a small extension of \thmref{k-planar} that is use
   
   The rest of proof remains unchanged until the point where we derive the layering $\mathcal{L}=\langle V_0',V_1',\ldots\rangle$ of $G$.  At this point, we set
   \[  
-    V_i' = \{v\in V(G): \floor{\dist_{T}(r,v)-2}=i\} 
+    V_i' := \{v\in V(G): \floor{\dist_{T}(r,v)-2}=i\} 
          = \{v\in V(G): \floor{\dist_{G^+}(r_0,v)/(k+1)}=i\} \enspace ,
   \]
   for all integers $i\ge 0$.  This layering satisfies the conditions of the corollary.
@@ -483,32 +482,32 @@ We conclude this section with a small extension of \thmref{k-planar} that is use
 \section{$1$-Planar Graphs}
 \seclabel{1-planar}
 
-Let $G$ be an edge-maximal 1-plane multigraph.  Here, edge-maximal should be taken to mean that, if any two vertices $v$ and $w$ appear on a common face\footnote{The \emph{faces} of an embedded graph $G$ are the connected components of $\R^2\setminus \bigcup_{vw\in E(G)} vw$.  We say that a vertex $v\in V(G)$ appears on a face $F$ if $v$ is contained in the closure of $F$.} $F$, then there is an edge $vw\in E(G)$ that is contained in the boundary of $F$.
+Let $G$ be an edge-maximal 1-plane multigraph with no two parallel edges on the boundary of a single face.  Here, edge-maximal should be taken to mean that, if any two vertices $v$ and $w$ appear on a common face\footnote{The \emph{faces} of an embedded graph $G$ are the connected components of $\R^2\setminus \bigcup_{vw\in E(G)} vw$.  We say that a vertex $v\in V(G)$ appears on a face $F$ if $v$ is contained in the closure of $F$.} $F$, then there is an edge $vw\in E(G)$ that is contained in the boundary of $F$.  We assume that no two edges incident to a common vertex cross each other since, in a 1-plane graph, such a crossing can always be removed by a local modification to obtain an isomorphic 1-plane graph in which the two edges do not cross.\footnote{While this is true for 1-plane graphs it is not true for $k$-plane graphs with $k\ge 3$; the uncrossing operation can increase the number of crossing on a particular edge from $k$ to $2(k-1)$.}
 
 A \emph{kite} in $G$ is the subgraph $K=G[\{v,w,x,y\}]$ induced by the endpoints of a pair of crossing edges $vw,xy\in E(G)$.  It follows from edge-maximality that every kite is isomorphic to the complete graph $K_4$.
 The edges $vw$ and $xy$ are called \emph{spars} of $K$.  The cycle $vxwy$ is called the \emph{sail} of $K$.  It follows from edge-maximality that none of the edges $vx$, $xw$, $wy$, or $yv$ are crossed by any other edges of $G$. Thus any edge that is a spar of a kite $K$ is not part of a sail of any kite $K'$. Observe that any spar of $K$ is incident on exactly four \emph{kite faces} of $G$, each of which has three edges and two vertices of $G$ on its boundary.
 
-The 1-plane graph $G$ has a plane triangulation $G'$ as a subgraph that can be obtained by removing one spar from each kite in $G$.  Observe that, for any spar $xy\in E(G-G')$ that crosses $vw\in E(G')$, $G'$ contains the path $vxw$ (and $vyw$).  It follows that 
+The 1-plane graph $G$ has a plane triangulation $G'$ as a subgraph that can be obtained by removing one spar from each kite in $G$.  Observe that, for any spar $xy\in E(G)\setminus E(G')$ that crosses $vw\in E(G')$, $G'$ contains the path $vxw$ (and $vyw$).  It follows that 
 \begin{equation}
   \dist_{G'}(v,w)\le 2 \enspace . \eqlabel{spar-distance}
 \end{equation}
 
-Our proof of \thmref{1-planar} follows quickly from the following technical lemma, which is an extension of the equivalent result for plane graphs \cite{dujmovic.joret.ea:planar}.
+Our proof of \thmref{1-planar} follows quickly from the following technical lemma, which is an extension of the analagous result for plane graphs \cite{dujmovic.joret.ea:planar}.
 \begin{lem}\lemlabel{induction} The setup:
   \begin{compactenum}
     \item Let $G$ and $G'$ be defined as above.
-    \item Let $T$ be a BFS tree of $G'$ rooted at some vertex $r$.
+    \item Let $T$ be a BFS spanning tree of $G'$ rooted at some vertex $r$.
     \item For each integer $j\ge 0$, let $V_j=\{v\in V(G):\dist_T(r,v)=j\}$. 
     \item Let $F$ be a cycle in $G'$ with $r$ in the exterior of $F$ and such that
     \begin{compactenum} 
       \item No edge of $F$ is crossed by any edge of $G$; and
-      \item $V(F)$ can be partitioned into $P_1,\ldots,P_k$, $k\le 3$ such that for each $i\in\{1,\ldots,k\}$,
+      \item $V(F)$ can be partitioned into $P_1,\ldots,P_k$, for some $k\in\{1,2,3\}$ such that for each $i\in\{1,\ldots,k\}$,
       \begin{compactenum}
         \item $F[P_i]$ is a path; and
         \item $|V(P_i)\cap V_j| \le 15$ for all integers $j\ge 0$.
       \end{compactenum}
     \end{compactenum}
-    \item Let $N^+$ and $N^-$ be the subgraphs of $G$ and $G'$ consisting only of those edges and vertices contained in $F$ or the interior of $F$.
+    \item Let $N$ and $N'$ be the subgraphs of $G$ and $G'$ consisting only of those edges and vertices contained in $F$ or the interior of $F$.
   \end{compactenum}
   Then $N$ has an $H$-partition $\mathcal{P}=\{S_x : x\in V(H)\}$ such that
   \begin{compactenum}
@@ -520,26 +519,26 @@ Our proof of \thmref{1-planar} follows quickly from the following technical lemm
 \end{lem}
 
 \begin{proof}
-  This proof very similar to the proof of Lemma~14 in \citet{dujmovic.joret.ea:planar}. Rather than duplicate every detail of that proof here, we focus on the differences and refer the reader to the original proof for the remaining details.
+  This proof is very similar to the proof of Lemma~14 in \citet{dujmovic.joret.ea:planar}. Rather than duplicate every detail of that proof here, we focus on the differences and refer the reader to the original proof for the remaining details.
   
   The proof is by induction on the number of vertices of $N$.
-  First note that $N'$ is a near-triangulation.  If $k=3$, set $R_i=P_i$ for each $i\in\{1,2,3\}$.  Otherwise, as in \citet{dujmovic.joret.ea:planar}, split $P_1,\ldots,P_k$ to partition $V(C)$ into three sets $R_1$, $R_2$, and $R_3$ such that each $F[R_i]$ is a path and each $R_i$ contains vertices from at most one of $P_1,\ldots,P_k$. 
+  First note that $N'$ is a near-triangulation.  If $k=3$, set $R_i=P_i$ for each $i\in\{1,2,3\}$.  Otherwise, as in \citet{dujmovic.joret.ea:planar}, split $P_1,\ldots,P_k$ to partition $V(F)$ into three sets $R_1$, $R_2$, and $R_3$ such that each $F[R_i]$ is a non-empty path and each $R_i$ contains vertices from exactly one of $P_1,\ldots,P_k$. 
   
-  Next, as in \citet{dujmovic.joret.ea:planar}, use Sperner's Lemma to find an inner face $\tau=v_1v_2v_3$ of $N'$ such that, $T$ contains disjoint vertical paths $Q_1,Q_2,Q_3$ such that each $Q_i$ begins at $v_i$, ends at some vertex in $R_i$, and whose internal vertices (if any) are contained in $V(N'-F)$.
+  Next, as in \citet{dujmovic.joret.ea:planar}, use Sperner's Lemma to find an inner face $\tau=v_1v_2v_3$ of $N'$ such that, $T$ contains disjoint vertical paths $Q_1,Q_2,Q_3$ such that each $Q_i$ begins at $v_i$, ends at some vertex in $R_i$, and whose internal vertices (if any) are contained in $N'-V(F)$.
   
   Let $\overline{Y}$ denote the subgraph of $N'$ consisting of vertices and edges of $Q_1$, $Q_2$, $Q_3$, and $\tau$.  Let $\overline{Y}^+$ denote the subgraph of $N$ consisting of the vertices and edges of $\overline{Y}$ plus the vertices and edges of every kite formed by a crossing between an edge of $G$ and an edge of $\overline{Y}$.
   
-  We claim that, for each integer $i\ge 0$, $|V(Y^+)\cap V_i|\le 15$.  First observe that, since $Q_1,Q_2,Q_3$ are each vertical paths in $T$,  $\overline{Y}$ contains at most 3 vertices of $V_i$, each incident on at most two edges of $\overline{Y}$.  By \eqref{spar-distance}, any vertex $x\in V(\overline{Y}^+-\overline{Y})\cap V_i$, is incident on an edge $xy\in E(G)$ that crosses one of the at most six edges in $\overline{Y}$ having an endpoint in $V_i$.  These at most six edges have at most 12 endpoints.  Therefore $|V(\overline{Y}^+-\overline{Y})\cap V_i|\le 6\times 2=12$, so $|\overline{Y}^+\cap V_i|\le 12+3=15$.
+  We claim that, for each integer $i\ge 0$, $|V(\overline{Y}^+)\cap V_i|\le 15$.  First observe that, since $Q_1,Q_2,Q_3$ are each vertical paths in $T$,  $\overline{Y}$ contains at most three vertices of $V_i$, each incident on at most two edges of $\overline{Y}$.  By \eqref{spar-distance}, any vertex $x\in V(\overline{Y}^+)\setminus V(\overline{Y})\cap V_i$, is incident to an edge $xy\in E(G)$ that crosses one of the at most six edges in $\overline{Y}$ having an endpoint in $V_i$.  These at most six edges have at most 12 endpoints.  Therefore $|V(\overline{Y}^+)\setminus V(\overline{Y})\cap V_i|\le 6\times 2=12$, so $|V(\overline{Y}^+)\cap V_i|\le 12+3=15$.
   
   Let $M$ and $M^+$ denote the subgraph of $G$ containing the edges and vertices of $\overline{Y}$, respectively $\overline{Y}^+$, and the edges and vertices of $F$.  The graph $M^+$ has some number of bounded faces, all contained in the interior of $F$. Some of the bounded faces of $M^+$ are kite faces. Let $F_1,\ldots,F_m$ be the non-kite bounded faces of $M^+$.  
   
-  We claim that, for each $i\in\{1,\ldots,m\}$, the boundary of $F_i$ is a cycle in $G'$ that contains no spars. Otherwise, some edge $vw$ contributes to the boundary of $F_i$ but is crossed by an edge $xy\in E(G)$. Then, $vw\not\in E(F)$ since no edge of $F$ is crossed by any edge of $G$. Therefore $vw\in E(\overline{Y}^+)$ so $xy\in E(Y^+)$. But then the only faces of $M^+$ incident to $vw$ are kite faces.  In particular $vw$ can not be incident the non-kite face $F_i$.
+  We claim that, for each $i\in\{1,\ldots,m\}$, the boundary of $F_i$ is a cycle in $G'$ that contains no spars. Otherwise, some edge $vw$ contributes to the boundary of $F_i$ but is crossed by an edge $xy\in E(G)$. Then, $vw\not\in E(F)$ since no edge of $F$ is crossed by any edge of $G$. Therefore $vw\in E(\overline{Y}^+)$ so $xy\in E(Y^+)$. But then the only faces of $M^+$ incident to $vw$ are kite faces.  In particular $vw$ cannot be incident to the non-kite face $F_i$.
   
-  Note that $M$ is a Mercedes graph and that each of the faces $F_1,\ldots,F_m$ is contained in a single wedge of $M$.   Let $Y^+ = \overline{Y}^+-F$. Therefore, $V(F_i)$ can be partitioned into at most three sets $P_1'$, $P_2'$, and $P_3'$ where $P_1'\subset V(Y^+)$, $P_2'\subseteq P_a$, $P_3'\subseteq P_b$ for some $a,b\in\{1,2,3\}$, and $F_i[P_j']$ is a path, for each $j\in\{1,2,3\}$. 
+  Note that $M$ is a Mercedes graph and that each of the faces $F_1,\ldots,F_m$ is contained in a single wedge of $M$.   Let $Y^+ := \overline{Y}^+-F$. Therefore, $V(F_i)$ can be partitioned into at most three sets $P_1'$, $P_2'$, and $P_3'$ where $P_1'\subset V(Y^+)$, $P_2'\subseteq P_a$, $P_3'\subseteq P_b$ for some $a,b\in\{1,2,3\}$, and $F_i[P_j']$ is a path, for each $j\in\{1,2,3\}$. 
 
   Finally, the subgraph $N_i$ of $G$ consisting of the edges and vertices of $G$ contained in $F_i$ or its interior does not contain one of the three vertices of $\tau$. Therefore, we can apply induction using the cycle $F_i$ and the partition $P_1',P_2',P_3'$ of $V(C_i)$ to obtain the desired $H$-partition and tree decomposition of $N_i$.
   
-  The remainder of the proof finishes in the same way as the proof of Lemma~14 in \cite{dujmovic.joret.ea:planar}.  $P_1,\ldots,P_k$, and $S=V(Y^+)$ become elements of the $H$-partition.  Elements in each of the $H$-partitions of $N_1,\ldots,N_3$ that intersect $P_1,\ldots,P_k$, or $V(\overline{Y}^+-F)$ are discarded and all the resulting sets are combined to obtain an $H$-partition of $G$.  The desired tree decomposition of $G$ is obtained in exactly the same way as in the proof of Lemma~14 in \cite{dujmovic.joret.ea:planar}, except that now each node $x$ has a child for each face $F_i$ of $M^+_x$ that contains a vertex of $G$ in its interior.
+  The remainder of the proof finishes in the same way as the proof of Lemma~14 in \cite{dujmovic.joret.ea:planar}.  The paths $P_1,\ldots,P_k$, and $S=V(Y^+)$ become elements of the $H$-partition.  Elements in each of the $H$-partitions of $N_1,\ldots,N_3$ that intersect $P_1,\ldots,P_k$, or $V(\overline{Y}^+-F)$ are discarded and all the resulting sets are combined to obtain an $H$-partition of $G$.  The desired tree decomposition of $G$ is obtained in exactly the same way as in the proof of Lemma~14 in \cite{dujmovic.joret.ea:planar}, except that now each node $x$ has a child for each face $F_i$ of $M^+_x$ that contains a vertex of $G$ in its interior.
   
   The planarity of $H$ comes from two properties:
   \begin{enumerate}
@@ -547,7 +546,8 @@ Our proof of \thmref{1-planar} follows quickly from the following technical lemm
     
     \item $G^+[\overline{Y}^+-F]$ is connected. To see why this is so, first observe that $\overline{Y}-F$ is connected, and then observe that every vertex of $\overline{Y}^+$ is either a vertex of $\overline{Y}$ or adjacent to a vertex of $\overline{Y}$.
   \end{enumerate}
-  Since $G^+$ is planar, the second point implies that $H=G^+/\mathcal{P}$ is planar.\footnote{It is well-known and easy to see that any graph $\Delta'$ obtained by contracting an edge in a planar graph $\Delta$ is also planar.  Repeatedly applying this fact implies that $\Delta/\mathcal{P}$ is planar provided that $\Delta[P]$ is connected for every $P\in\mathcal{P}$.} The first point then ensures that $G/\mathcal{P}$ is also planar.
+  Since $G^+$ is planar, the second point implies that $H=G^+/\mathcal{P}$ is planar.
+  % \footnote{It is well-known and easy to see that any graph $\Delta'$ obtained by contracting an edge in a planar graph $\Delta$ is also planar.  Repeatedly applying this fact implies that $\Delta/\mathcal{P}$ is planar provided that $\Delta[P]$ is connected for every $P\in\mathcal{P}$.} The first point then ensures that $G/\mathcal{P}$ is also planar.
 \end{proof}
 
 Using \lemref{induction}, the proof of \thmref{1-planar} is now straightforward. 
@@ -560,8 +560,7 @@ Given a 1-plane graph $G$, add edges to make it edge maximal so that it has an o
   Use the layering $\mathcal{L}=\langle V_0',V_1'\ldots\rangle$ where $V_i'=V_{2i}\cup V_{2i+1}$ for each integer $i\ge 0$. That this is a layering of $G$ follows from \eqref{spar-distance}.  Since $|V_j\cap S_x|\le 15$ for every integer $i\ge 0$, $|V_i'\cap S_x|\le 30$ for every integer $i\ge 0$ and every $x\in V(H)$.
 \end{proof}
 
-
-Exactly the same argument used to establish \corref{k-planar} establishes the analagous result for \thmref{1-planar}:
+Exactly the same argument used to establish \corref{k-planar} as a consequence of \thmref{k-planar} establishes the following result as a consequence of \thmref{1-planar}:
 
 \begin{cor}\corlabel{1-planar}
   Let $G$ be a $1$-plane graph, let $r_0$ be an arbitrary vertex of $G$, let $G^+$ be a graph obtained by adding a dummy vertex at each crossing in $G$ and then arbitrarily adding non-crossing edges to obtain a triangulation.  Then $G$ has a layered $H$-partition $(\mathcal{L}=\langle V_0',V_1',\ldots\rangle,\mathcal{P})$ satisfying the conditions of \thmref{1-planar} and such that $V_i' = \{v\in V(G): \floor{\dist_{G^+}(r_0,v)/2}=i\}$ for each integer $i\ge 0$.
@@ -571,29 +570,29 @@ Exactly the same argument used to establish \corref{k-planar} establishes the an
 \section{$(g,k)$-Planar Graphs}
 \seclabel{g-k-planar}
 
-Next we prove \thmref{g-k-planar}, which generalizes of our results to $(g,k)$-plane graphs.  We make use of the following lemma due to \citet[Lemma~21]{dujmovic.joret.ea:planar}:
+Next we prove \thmref{g-k-planar}, which generalizes our results to $(g,k)$-plane graphs.  We make use of the following lemma due to \citet[Lemma~21]{dujmovic.joret.ea:planar}:
 
 
 \begin{lem} \lemlabel{make-planar}
-Let $G^+$ be a $(S,0)$-plane graph where $S$ is a surface with Euler genus $g$. 
+Let $G^+$ be a $(\Sigma,0)$-plane graph where $\Sigma$ is a surface with Euler genus $g$. 
 For each $r\in V(G^+)$ there is a vertex set $Z\subseteq V(G^+)$ such that $G^+-V(Z)$ is planar and there is a connected planar graph $G^*$ containing  $G^+-Z$ as a subgraph with a vertex $r^*\in V(G^*)$ such that, for every integer $i\ge 0$,
 \[  \{v\in V(G^*): \dist_{G^*}(r^*,v) = i\} \supseteq \{v\in V(G^+): \dist_{G^+}(r,v) = i\} \]
 and
-\[ |\{v\in V(G^+): \dist_{G^+}(r,v) = i\}| \le 2g \enspace . \]
+\[ |\{v\in Z: \dist_{G^+}(r,v) = i\}| \le 2g \enspace . \]
 
 \end{lem}
 
 \begin{proof}[Proof of \thmref{g-k-planar}]
-  Let $G$ be an $(S,k)$-plane graph where $S$ is a surface of Euler genus $g$.  Let $G^+$ be the $(S,0)$-plane graph obtained by adding a dummy vertex at each crossing in $G$.  Let $r_0$ be any vertex in $V(G)$, let $T$ be BFS spanning tree of $G^+$ rooted at $r_0$ and let $\langle V_0,V_1,\ldots\rangle$ be the resulting layering of $G^+$.
+  Let $G$ be an $(\Sigma,k)$-plane graph where $\Sigma$ is a surface of Euler genus $g$.  Let $G^+$ be the $(\Sigma,0)$-plane graph obtained by adding a dummy vertex at each crossing in $G$.  Let $r_0$ be any vertex in $V(G)$, let $T$ be BFS spanning tree of $G^+$ rooted at $r_0$ and let $\langle V_0,V_1,\ldots\rangle$ be the resulting layering of $G^+$.
     
-  Apply \lemref{make-planar} to $G^{+}$ to obtain the set $Z\subseteq V(G^{+})$ and the planar graph $G^*$ with special vertex $r^*$.  For each edge $vw\in E(G)$, let $W_{vw}$ be the corresponding walk in $G^+$. The set $Z$ contains vertices in $V(G)$ as well as dummy vertices in $V(G^+-G)$. Create a new set $Z'\subseteq V(G)$ by taking, for each $vw\in E(G)$ such that $V(W_{vw})\cap Z\neq\emptyset$, one of the vertices $v$ or $w$.  In this way, each vertex $z\in Z$ can be charged for at most two vertices in $v,x\in Z'$ and this happens only if $(z,vw,xy)$ is a crossing in $G$.
+  Apply \lemref{make-planar} to $G^{+}$ to obtain the set $Z\subseteq V(G^{+})$ and the planar graph $G^*$ with special vertex $r^*$.  For each edge $vw\in E(G)$, let $W_{vw}$ be the corresponding walk in $G^+$. The set $Z$ contains vertices in $V(G)$ as well as dummy vertices in $V(G^+)-V(G)$. Create a new set $Z'\subseteq V(G)$ from $Z$ by replacing each dummy vertex $z\in Z\cap (V(G^+)\setminus V(G))$ with one endpoint from each of the edges that cross $vw,xy\in E(G)$ that cross at $Z$.  In this way, each vertex $z\in Z\cap V(G^+)\setminus V(G)$ can be charged for at most two vertices in $v,x\in Z'$ and this happens only if $(z,vw,xy)$ is a crossing in $G$.
   Since $|Z\cap V_i| \le 2g$, the same argument used in the proof of \clmref{width-of-g-plus} shows that $|Z'\cap V_i|\le 2g\times 2\times (2k+1) = 4g(2k+1)$ for each integer $i\ge 0$.
   
   % For every edge $vw\in E(G)$, $W_{vw}$ has length at most $k+1$.  Therefore $\dist_{G^+}(v,w)\le k+1$ for each $v\in E(G)$.  Since $W_{vw}\subseteq G^+-Z$ for each $vw\in E(G-Z')$,  $\dist_{G^+-Z}(v,w)\le k+1$ for each $vw\in E(G-Z')$.  
   
   Next, observe that any plane embedding of $G^*\supseteq G^+-Z$ gives a $k$-plane embedding of $G-Z'$. Indeed, for every edge $vw\in E(G-Z')$, $G^+-Z$ contains a walk $W_{vw}$ that contains at most $k$ dummy vertices of $G^+-Z$.  Therefore, replacing edge $vw\in E(G-Z')$ with the corresponding walk in $G^*$ gives a $k$-plane embedding of $G-Z'$.  Call the resulting $k$-plane graph $G^*_0$.
   
-  Let $G^*_1$ be the supergraph of $G^*_0$ obtained by adding every vertex and edge of $G^*$ that is not contained in some edge of $G^*_0$.  Finally, let $G^{*+}_1$ be the triangulation obtained by adding edges to $G^*$ in such a way that $\dist_{G^*}(r^*,v)=\dist_{G^{*+}}(r^*,v)$ for every $v\in V(G^*)$.\footnote{The fact that $G^*$ can be completed to a triangulation $G^{*+}$ while preserving distances to $r^*$ follows from the fact that any face $F$ of $G^*$ with 4 or more vertices contains two non-adjacent vertices $x$ and $y$ such that $|\dist_{G^*}(r^*,x)-\dist_{G^*}(r^*,y)|\le 1$.  Indeed, if $z$ is a vertex of $F$ that minimizes $\dist_{G^*}(r^*,z)$, then two neighbours $x$ and $y$ of $z$ have this property.} Now, observe that $G^*_1$ is a $k$-plane graph and $G^{*+}_1$ is obtained by adding dummy vertices at crossings in $G^*_1$ and triangulating the resulting graph.    
+  Let $G^*_1$ be the supergraph of $G^*_0$ obtained by adding every vertex and edge of $G^*$ that is not contained in some edge of $G^*_0$.  Finally, let $G^{*+}_1$ be the triangulation obtained by adding edges to $G^*$ so that $\dist_{G^*}(r^*,v)=\dist_{G^{*+}}(r^*,v)$ for every $v\in V(G^*)$.  The fact that $G^*$ can be completed to a triangulation $G^{*+}$ while preserving distances to $r^*$ follows from the fact that any face $F$ of $G^*$ with four or more vertices contains two non-adjacent vertices $x$ and $y$ such that $|\dist_{G^*}(r^*,x)-\dist_{G^*}(r^*,y)|\le 1$.  Indeed, if $z$ is a vertex of $F$ that minimizes $\dist_{G^*}(r^*,z)$, then two neighbours $x$ and $y$ of $z$ have this property. Now, observe that $G^*_1$ is a $k$-plane graph and $G^{*+}_1$ is obtained by adding dummy vertices at crossings in $G^*_1$ and triangulating the resulting graph.    
   
   Apply \corref{k-planar} or (in the case $k=1$) \corref{1-planar} to $G^*_1$ using $G^{*+}_1$ and the distinguished vertex $r^*$ to obtain a layered $H$-partition of $G^*_1$.  Since $G^*_1\supseteq G^*_0$ and $G^*_0$ is isomorphic to $G-Z'$, this gives a layered $H$-partition $(\mathcal{L}=\langle V_0',V_1',\ldots\rangle,\mathcal{P})$ of $G-Z'$ that satisfies the conditions of \corref{k-planar} or \corref{1-planar}, as appropriate.  In particular, for every integer $i\ge 0$,
   \begin{align*} 
@@ -602,14 +601,16 @@ and
   \end{align*}
   It follows that $|V_i'\cap Z'|\le 4g(2k+1)(k+1) = 8gk^2+12gk+4g$.  
   
-  We turn $\mathcal{P}$, the $H$-partition of $G-Z'$ into a partition $\mathcal{P}'=\mathcal{P}\cup \{Z'\}$ of $G$.  That is, we place all vertices of $Z'$ in a common part.  In the worst-case, the vertex of $H'=G/ \mathcal{P}'$ corresponding to $V(G)\cap Z'$ is adjacent to every vertex of $H=(G-Z')/\mathcal{P}$, so the treewidth of $H'$ is at most one more than the treewidth of $H$.
+  We now turn $\mathcal{P}$, the $H$-partition of $G-Z'$, into a partition $\mathcal{P}'=\mathcal{P}\cup \{Z'\}$ of $G$ by placing all vertices of $Z'$ into one new common part.  Let $H'=G/ \mathcal{P}'$.  Then the treewidth of $H'$ is at most one more than the treewidth of $H$.
+  
+  % In the worst-case, the vertex of $H'=G/ \mathcal{P}'$ corresponding to $V(G)\cap Z'$ is adjacent to every vertex of $H=(G-Z')/\mathcal{P}$, so the treewidth of $H'$ is at most one more than the treewidth of $H$.
    
   Summarizing, we obtain an $H'$-partition $(\mathcal{L},\mathcal{P}')$ of $G$ where $H'$ has treewidth 
   \[
       \tw(H') 
         \le \begin{cases}
               4 & \text{if $k=1$} \\
-              k^3/6 + 3k^2/2 + 13k/3+4 & \text{otherwise}
+              k^3/6 + 3k^2/2 + 13k/3+5 & \text{otherwise}
             \end{cases} 
   \]
   and, for each $P\in\mathcal{P}'$,
@@ -643,7 +644,7 @@ A $c$-colouring $\phi$ of $G$ is \emph{non-repetitive} if, for every path $v_1,\
 Combining \lemref{non-repetitive} with Theorems~\ref{thm:k-planar}--\ref{thm:g-k-planar} we immediately obtain the following corollaries:
 
 \begin{cor}\corlabel{first}
-  For every $k$-planar graph $G$, $\pi(G)\le 12(2k+3)(k+1)\times 4^{(1/6)(k+2)(k+3)(k+4)}$.
+  For every $k$-planar graph $G$, $\pi(G)\le 12(2k+3)(k+1)\times 4^{(k+2)(k+3)(k+4)/6}$.
 \end{cor}
 
 \begin{cor}
@@ -651,18 +652,22 @@ Combining \lemref{non-repetitive} with Theorems~\ref{thm:k-planar}--\ref{thm:g-k
 \end{cor}
 
 \begin{cor}
-  For every $(g,k)$-planar graph $G$, $\pi(G)\le \max\{4g(3k+1),12(2k+3)(k+1)\}\times 4^{(1/6)(k+2)(k+3)(k+4)}$.
+  For every $(g,k)$-planar graph $G$, 
+  \[ 
+    \pi(G)\le \max\{4g(3k+1),12(2k+3)(k+1)\}\times 4^{(k+2)(k+3)(k+4)/6} 
+    \enspace .
+  \]
 \end{cor}
 
 \begin{cor}
-  For every $(g,1)$-planar graph $G$, $g\ge 1$, $\pi(G)\le 48g\times 256= 12288g$.
+  For every $g\ge 1$ and every $(g,1)$-planar graph $G$, $\pi(G)\le 48g\times 256= 12288g$.
 \end{cor}
 
 Prior to the current work, the strongest upper bound on the non-repetitive chromatic number of $n$-vertex planar $k$-planar graphs was $O(k\log n)$ \cite{dujmovic.morin.ea:layered}.
 
 \subsubsection{Centered Colourings}
 
-A $c$-colouring $\phi$ of $G$ is \emph{$p$-centered} if, for every connected subgraph $X\subseteq G$, $|\{\phi(v):v\in V(X)\}| > p$ or there exists some $v\in V(X)$ such that $\phi(v)\neq \phi(w)$ for every $w\in V(X)\setminus\{v\}$.  In words, either $X$ receives more than $p$ colours or some vertex of $X$ receives a unique colour.  Let $\chi_p(G)$ denote the smallest integer $c$ such that $G$ has a $p$-centered $c$-colouring.
+A $c$-colouring $\phi$ of $G$ is \emph{$p$-centered} if, for every connected subgraph $X\subseteq G$, $|\{\phi(v):v\in V(X)\}| > p$ or there exists some $v\in V(X)$ such that $\phi(v)\neq \phi(w)$ for every $w\in V(X)\setminus\{v\}$.  In words, either $X$ receives more than $p$ colours or some vertex in $X$ receives a unique colour.  Let $\chi_p(G)$ denote the smallest integer $c$ such that $G$ has a $p$-centered $c$-colouring.
 
 We make use of the following lemma due to \citet{pilipczuk.siebertz:polynomial-arxiv,pilipczuk.siebertz:polynomial-soda}
 \begin{lem}\lemlabel{p-centered-treewidth}
@@ -676,7 +681,7 @@ The following lemma is due to Micek \cite{micek:personal}. We include the proof 
 \end{lem}
 
 \begin{proof}
-  Let $(\mathcal{L}=\langle V_0,V_1,\ldots\rangle, \mathcal{P}=\{B_x:x\in V(H))$ be an $H$-partition of $G$ having layered width at most $\ell$ where $H$ as treewidth at most $t$.
+  Let $(\mathcal{L}=\langle V_0,V_1,\ldots\rangle, \mathcal{P}=(B_x:x\in V(H))$ be an $H$-partition of $G$ having layered width at most $\ell$ where $H$ as treewidth at most $t$.
   We use a product colouring $\phi:V(G)\to \{1,\ldots,\ell\}\times\{0,\ldots,p\}\times\{1,\ldots,O(p^t)\}$.  For each integer $i\ge 0$ and each $x\in V(H)$, the colour $\phi(v)=(\alpha(v),\beta(v),\gamma(v))$ of a vertex $v\in V_i\cap B_x$ is assigned to satisfy the following conditions:
   \begin{enumerate}
     \item $\alpha(v)$ is unique among $\{\phi(w): w\in V_i\cap B_x\}$.
@@ -712,7 +717,11 @@ Combining \lemref{p-centered} with Theorems~\ref{thm:k-planar}--\ref{thm:g-k-pla
   For every $(g,1)$-planar graph $G$, $g\ge 1$, $\chi_p(G)\le O(gp^4)$.
 \end{cor}
 
-Prior to the current work, the strongest upper bounds on the number of colours required for $p$-centered colourings of $k$-planar graphs used the fact that $k$-planar graphs have bounded expansion.  \note{PM}{I didn't follow the discussion on the previous best-known bounds for $p$-centered colourings.  Can someone fill me in?}
+Prior to the current work, the strongest upper bounds on the number of colours required for $p$-centered colourings of $(g,k)$-planar graphs used the fact that $(g,k)$-planar graphs are have layered treewidth $O(gk)$ \cite{dujmovic.eppstein.ea:structure} and therefore have bounded (indeed, linear) expansion \cite{dujmovic.morin.ea:layered}.  Using a result of \citet{zhu:colouring} this leads to bounds on $\chi_p(G)$ that are doubly-exponential in $gk$.
+
+\note{PM}{Please check the preceding paragraph.}
+
+% \note{PM}{I didn't follow the discussion on the previous best-known bounds for $p$-centered colourings.  Can someone fill me in?}
 
 \subsection{Other Graph Classes}
 
@@ -781,45 +790,48 @@ We make use of the following well-known observation (see e.g., \citet[Lemma~2]{b
 
 We note that \lemref{nearest-neighbour} is tight up to the leading constant:  Every $n$-vertex nearest neighbour graph has at least $kn/2$ at at most $kn$ edges.  For $k\ge 8$, the Crossing Lemma \cite{ajtai.chvatal.ea:crossing-free,leighton:complexity} implies that the total number of crossings is therefore $\Omega(k^3n)$ so that the average number of crossings per edge is at $\Omega(k^2)$.
 
-\subsection{More Stuff}
+% \subsection{More Stuff}
+% 
+% \begin{enumerate}
+%   % \item clustered colouring;
+%   \item connection with queue layouts;
+%   % \item $d$-map graphs, which are $d^2$-planar;
+%   \item connection with low-treewidth/treedepth colourings;
+%   \item An important open question is whether $k$-planar graphs have layered $H$-partitions whose layered width is upper bounded by a function of $k$ but in which the treewidth of $H$ is bounded by an absolute constant, independent of $k$.
+%   \item Are our current $H$-partitions $K_{3,s}$-free for some $s=s(k)$?  If so, this is good news for clustered colouring.
+% \end{enumerate}
+% 
+% \noindent
+% \framebox{
+% \begin{minipage}{\textwidth}
+%   \note{DW}{%
+%     % I think we need to define layered treewidth, and
+%     % give the result of Dujmovic-Eppstein-Wood that (g,k)-planar graphs
+%     % have O(gk)  layered treewidth. This is the best previous structural
+%     % description of k-planar graphs. State that layered partitions are
+%     % richer than  layered treewidth, and lead to O(1) bounds on non-rep
+%     % chromatic number and queue-number, instead of O(log n) bounds via
+%     % layered treewidth.
+%     I also think we should give explicit upper bounds on non-rep chromatic
+%     number for k-planar graphs, and also for queue-number (especially if
+%     they improve the bound in the FOCS / J.ACM paper).
+% 
+%     We should add corollaries for d-map graphs, since they are $d^2$-planar.
+%     }
+% 
+%     \note{PM}{
+%     A couple of other things to look into: 
+%     \begin{compactenum}
+%       \item $p$-centered colourings
+%       \item low treewidth colourings
+%     \end{compactenum}
+%     }
+% \end{minipage}
+% }
 
-\begin{enumerate}
-  % \item clustered colouring;
-  \item connection with queue layouts;
-  % \item $d$-map graphs, which are $d^2$-planar;
-  \item connection with low-treewidth/treedepth colourings;
-  \item An important open question is whether $k$-planar graphs have layered $H$-partitions whose layered width is upper bounded by a function of $k$ but in which the treewidth of $H$ is bounded by an absolute constant, independent of $k$.
-  \item Are our current $H$-partitions $K_{3,s}$-free for some $s=s(k)$?  If so, this is good news for clustered colouring.
-\end{enumerate}
+\section{Conclusions}
 
-\noindent
-\framebox{
-\begin{minipage}{\textwidth}
-  \note{DW}{%
-    % I think we need to define layered treewidth, and
-    % give the result of Dujmovic-Eppstein-Wood that (g,k)-planar graphs
-    % have O(gk)  layered treewidth. This is the best previous structural
-    % description of k-planar graphs. State that layered partitions are
-    % richer than  layered treewidth, and lead to O(1) bounds on non-rep
-    % chromatic number and queue-number, instead of O(log n) bounds via
-    % layered treewidth.
-    I also think we should give explicit upper bounds on non-rep chromatic
-    number for k-planar graphs, and also for queue-number (especially if
-    they improve the bound in the FOCS / J.ACM paper).
-
-    We should add corollaries for d-map graphs, since they are $d^2$-planar.
-    }
-    
-    \note{PM}{
-    A couple of other things to look into: 
-    \begin{compactenum}
-      \item $p$-centered colourings
-      \item low treewidth colourings
-    \end{compactenum}
-    }
-\end{minipage}
-}
-
+We have shown that $k$-planar graphs and several related graph families have layered $H$-partitions of layered width $O(k^2)$ in which $H$ has treewidth $O(k^3)$.  We conclude with the following question:  Does there exist a function $f:\N\to\N$ and a universal constant $C$ such that every $k$-planar graph has a layered $H$-partition of layered width at most $f(k)$ in which $H$ has treewidth at most $C$?  Perhaps $C=3$.
 
 \bibliographystyle{plainnat}
 \bibliography{k-planar}

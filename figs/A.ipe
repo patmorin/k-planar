@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
 <ipe version="70206" creator="Ipe 7.2.7">
-<info created="D:20190503161557" modified="D:20190515213614"/>
+<info created="D:20190503161557" modified="D:20190617230401"/>
 <preamble>\usepackage{kpfonts}</preamble>
 <ipestyle name="basic">
 <symbol name="arrow/arc(spx)">
@@ -277,7 +277,7 @@ h
 <view layers="walker" active="walker"/>
 <view layers="A third-legs labels xa-curves colours xa walker" active="walker"/>
 <view layers="walker d0d1" active="d0d1"/>
-<path layer="third-legs" matrix="0.7 0 0 0.7 78.2469 171.212" stroke="lightgray">
+<path layer="third-legs" matrix="0.7 0 0 0.7 78.2469 171.212" stroke="darkgray">
 270.39 574.152 m
 268.33 565.464 l
 277.908 565.087 l
@@ -340,52 +340,52 @@ h
 <text matrix="0.7 0 0 0.7 167.692 195.445" transformations="translations" pos="206.733 538.828" stroke="black" type="label" width="13.615" height="8.216" depth="4.04" halign="center" valign="baseline" style="math">F^{\bar{x}}_{a_3}</text>
 <text matrix="0.7 0 0 0.7 133.017 227.938" transformations="translations" pos="206.733 538.828" stroke="black" type="label" width="13.615" height="8.216" depth="4.04" halign="center" valign="baseline" style="math">F^{\bar{x}}_{a_4}</text>
 <text matrix="0.7 0 0 0.7 131.835 215.132" transformations="translations" pos="206.733 538.828" stroke="black" type="label" width="13.615" height="8.216" depth="4.04" halign="center" valign="baseline" style="math">F^{\bar{x}}_{a_5}</text>
-<path layer="third-legs" matrix="0.7 0 0 0.7 78.2469 171.212" stroke="lightgray">
+<path layer="third-legs" matrix="0.7 0 0 0.7 78.2469 171.212" stroke="darkgray">
 215.659 577.186 m
 215.986 562.493 l
 225.426 559.939 l
 </path>
-<path matrix="0.7 0 0 0.7 78.2469 171.212" stroke="lightgray">
+<path matrix="0.7 0 0 0.7 78.2469 171.212" stroke="darkgray">
 215.986 562.493 m
 170.701 535.288 l
 </path>
-<path matrix="0.7 0 0 0.7 78.2469 171.212" stroke="lightgray">
+<path matrix="0.7 0 0 0.7 78.2469 171.212" stroke="darkgray">
 296.669 631.042 m
 304.674 637.009 l
 306.895 628.764 l
 </path>
-<path matrix="0.7 0 0 0.7 78.2469 171.212" stroke="lightgray">
+<path matrix="0.7 0 0 0.7 78.2469 171.212" stroke="darkgray">
 304.674 637.009 m
 317.227 688.954 l
 </path>
-<path matrix="0.7 0 0 0.7 78.2469 171.212" stroke="lightgray">
+<path matrix="0.7 0 0 0.7 78.2469 171.212" stroke="darkgray">
 268.33 565.464 m
 235.432 545.723 l
 </path>
-<path matrix="0.7 0 0 0.7 78.2469 171.212" stroke="lightgray">
+<path matrix="0.7 0 0 0.7 78.2469 171.212" stroke="darkgray">
 309.225 580.079 m
 315.646 577.807 l
 310.981 583.899 l
 </path>
-<path matrix="0.7 0 0 0.7 78.2469 171.212" stroke="lightgray">
+<path matrix="0.7 0 0 0.7 78.2469 171.212" stroke="darkgray">
 315.646 577.807 m
 359.996 552.067 l
 </path>
-<path matrix="0.7 0 0 0.7 78.2469 171.212" stroke="lightgray">
+<path matrix="0.7 0 0 0.7 78.2469 171.212" stroke="darkgray">
 293.373 613.177 m
 297.817 617.352 l
 300.555 611.617 l
 </path>
-<path matrix="0.7 0 0 0.7 78.2469 171.212" stroke="lightgray">
+<path matrix="0.7 0 0 0.7 78.2469 171.212" stroke="darkgray">
 297.817 617.352 m
 296.927 630.992 l
 </path>
-<path matrix="0.7 0 0 0.7 78.2469 171.212" stroke="lightgray">
+<path matrix="0.7 0 0 0.7 78.2469 171.212" stroke="darkgray">
 299.832 591.469 m
 304.674 596.779 l
 305.959 589.687 l
 </path>
-<path matrix="0.7 0 0 0.7 78.2469 171.212" stroke="lightgray">
+<path matrix="0.7 0 0 0.7 78.2469 171.212" stroke="darkgray">
 304.674 596.779 m
 308.325 609.558 l
 </path>
