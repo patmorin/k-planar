@@ -477,6 +477,83 @@ We conclude this section with a small extension of \thmref{k-planar} that is use
   \]
   for all integers $i\ge 0$.  This layering satisfies the conditions of the corollary.
 \end{proof}
+
+
+
+\section{A Generalization}
+
+We now generalize \thmref{k-planar} to a more abstract setting.
+
+\begin{lem}\lemlabel{nice-decomposition}
+  Let $H$ be a graph of treewidth $t-1$.  Then there exists a graph $H'$ isomorphic to $H$ that has a tree-decomposition $(B_x:x\in V(T))$ of width $t-1$ where $T$ is rooted a vertex $x_1\in V(T)$ and has following additional properties:  
+  \begin{compactenum}
+    \item $V(H')\subseteq V(T)$;
+    \item For each $v'\in V(H')$, the subtree $T[v']:=T[\{x\in V(T):v'\in B_x\}]$ is rooted at $v'$.
+  \end{compactenum}
+\end{lem}
+
+\begin{proof}
+  Begin with a width-$t$ tree-decomposition $(C_x:x\in V(T_0))$ of $H$ using a tree $T_0$ with the property that, for any edge $xy\in E(T_0)$, $|C_x\ominus C_y|=2$, where $\ominus$ denotes the symmetric difference between two sets.  That is, $C_x$ contains exactly one vertex not in $C_y$ and $C_y$ contains exactly one vertex not in $C_x$.  It is well-known that such a tree-decomposition exists.  (Note that this implies that $|C_x|=t$ for every $x\in V(T_0)$.)
+  
+  Next, select an arbitrary node $x\in V(T_0)$ and let $C_x:=\{v_1,\ldots,v_t\}$ denote the contents of $C_x$.
+  Create a new tree $T$ from $T_0$ by adding a path of nodes $x_1,x_2,\ldots,x_{t-1},x_t=x$ and assign bags to these new nodes so that $C_{x_i}:=\{v_1,\ldots,v_i\}$.  Note that $(C_x: x\in V(T))$ is a width-$t$ tree-decomposition of $H$.
+  
+  Let $T$ be rooted at $x_1$.
+  For each $v\in V(H)$, let $v'\in V(T)$ be the unique node such that $v\in C_{v'}$ and $v'$ has minimum $T$-depth.  Finally, for each $x\in V(T)$, let $B_x=\{v' : v\in C_x\}$.  Observe that $(B_x: x\in V(T))$ is a tree-decomposition satisfying the conditions of the lemma.
+\end{proof}
+
+
+\begin{lem}
+  Let $H$ be a graph of treewidth $t$ and let $H'$ and $(B_x:x\in V(T))$ be a graph (isomorphic to $H$) and a tree-decomposition of $H'$ satisyfing the conditions of \lemref{nice-decomposition}.  Then, each $w'\in V(H)$ has at most at most $t$ $T$-ancestors $w'$ such that there exists a $T$-descendant $v'_0$ of $w'$ with $v'v'_0\in E(H)$.
+\end{lem}
+
+\begin{proof}
+  Since $vv_0\in E(H)$, $v'$ is the root of $T[v']$, and $v'_0$ is the root of $T[v'_0]$, the node $v'$ is contained in $B_x$ for every node $x$ on the path, in $T$, from $v'$ to $v'_0$. In particular, $w'$ is a node on this path, so $v'\in B_{w'}$.  The lemma then follows from the fact $|B_w'|\le t$.
+\end{proof}
+
+\begin{thm}
+  Let $t\ge 2$, $d\ge 1$, and $k\ge 1$ be integers, let $G$ be a graph having a layered $H$-partition of width 1 in which $H$ has treewidth at most $t-1$ and let $G'$ be the supergraph of $G$ where, for each distinct pair $v,w\in V(G)$, $vw\in E(G')$ if and only if $G$ contains a path from $v$ to $w$ of length at most $k$ whose internal vertices each have degree at most $d$.  Then $G'$ has a layered $I$-partition of layered width $O(kd^k)$ where the treewidth of $I$ is at most $(td)^k$.
+\end{thm}
+
+\begin{proof}
+  Apply \lemref{nice-decomposition} to $H$ to obtain a tree-decomposition $(C_x: x\in V(T))$ of $H$. (We skip the introduction of the isomorphic graph $H'$ and assume from the outset that $V(H)\subseteq V(T))$.)
+
+  For $v,w\in V(G)$, a \emph{$vw$-shortcut} is any path in $G$ with endpoints $v$ and $w$ of length at most $k$ and whose internal vertices each have degree at most $d$.  That is, $vw\in E(G')$ if and only if $G$ contains a $vw$-shortcut.
+  
+  Let $(Q_x: x\in V(H))$ denote the given $H$-partition of $G$.  For a node $y\in V(T)$, we abuse notation slightly and let $Q_y=\bigcup_{x\in C_y} Q_{x}$. For a node $y\in V(T)$, we say that a $vw$-shortcut $P$ \emph{touches} $x$ if $V(P)\cap Q_y\neq\emptyset$.  If $G$ contains a $vw$-shortcut that touches $x$, then we say that $v$ and $w$ \emph{participate} in $x$. 
+  
+  For any $v\in V(G)$, the union of all shortcuts in $G$ that have $v$ as an endpoint is a connected subgraph of $G$.  It follows that the set of nodes $x\in V(T)$ in which $v$ participates is a (connected) subtree $T_v$ of $T$ we let $a(v)$ denote the root of $T_v$.  For each $x\in V(T)$, we define the \emph{separator}
+  \[  
+       S_x := \{v\in V(G): a(v)= x\} \enspace .
+  \]
+  Observe that $(S_x : x\in V(T))$ is a partition of $V(G)$.  We let $I:=G'/(S_x : x\in V(T))$ denote the resulting quotient graph and we let $V(I)=V(T)$ in the obvious way.
+  
+  We claim that, for any edge $xy\in E(I)$, $x$ is a $T$-ancestor of $y$ or $y$ is a $T$-ancestor of $x$.  Indeed, if $xy\in E(I)$, then there exists an edge $vw\in E(G')$ with $v\in S_x$ and $w\in S_y$.  Therefore $G$ contains a $vw$-shortcut $P$ where $v\in Q_{x'}$ for some $T$-descendant $x'$ of $x$ and $w\in Q_{y'}$ for some $T$-descendant $y'$ of $y$.  If neither $x$ nor $y$ is were a $T$-ancestor of the other, then neither $x'$ nor $y'$ would be an ancestor of the the other, but both $v$ and $w$ would participate in a node $z$ that is a $T$-ancestor of both $x$ and $y$.  This would contradict the fact that $v\in S_x$ and $w\in S_y$.
+  
+  We construct a tree-decomposition $\mathcal{T}:=(B_x:x\in V(T))$ of $I$ as follows: For each edge $xy\in E(I)$ we include $x$ in $B_z$ for each node $z$ on the path, in $T$ from $x$ to $y$.  This is clearly a tree-decomposition of $I$ and it has the property that, for any $x\in V(I)$, $T[x]$ is rooted at $x$.  All that remains is to bound the width of $\mathcal{T}$.  
+
+  We now focus on one particular bag $B_x$ for some $x\in V(T)$.  
+  Let $x_0,\ldots,x_d$ be the path from $x_0:=x$ to the root of $T$.  
+  Let $T_i$ denote the subtree of $T$ rooted at $x_i$ and let
+  \[ 
+      G_i := G[\bigcup_{x'\in V(T_i)}\bigcup Q_{x'}]-Q_{x_{i-1}} \enspace .
+  \]
+  In other words, $G_i$ is the part of $G$ that contains that is separated by the removal of $S$
+  
+  
+  
+  
+  Define $N_{x_0}:=G$ and, for each $i\in\{1,\ldots,d\}$, define $N_{x_i}$ to be the subgraph of $G$ induced by the union, over all $x'$ in the subtree of 
+  
+  
+  
+  containing exactly those components of $N_{x_{i-1}}-Q_{x_i}$ that contain vertices in $
+  
+  
+  As discussed above, for any node $x\in V(T)$, the bag $B_x$ contains only $T$-ancestors of $x$ (including $x$ itself).  If $B_x$ contains some $T$-ancestor $y$ then this is because $xy\in E(I)$ which implies that there exists $vw\in E(G')$ with $v\in S_{x'}$ and $w\in S_y$ for some $T$-descendant $x'$ of $x$.  This implies that $G$ contains a $vw$-shortcut $P=v_0,\ldots,v_p$ with $v_0=v$ and $v_p=w$.   
+  Note that neither $v$ nor $w$ participates any $T$-ancestor of $y$ other than $y$.  Therefore $P$ does not contain any vertices of $Q_{y'}$ for any ancestor $y'$ of $y$.
+\end{proof}
+
   
   
 \section{$1$-Planar Graphs}
