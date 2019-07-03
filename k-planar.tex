@@ -491,7 +491,7 @@ We now generalize \thmref{k-planar} to a more abstract setting.  For two sets $A
   \begin{compactenum}[(T1)]
     \item\label{t:rooted}\label{t:first} $T$ is rooted at some node $x_0\in V(T)$ with $B_{x_0}=\emptyset$.
     \item\label{t:node-set} $V(H')\subseteq V(T)$.
-    \item\label{t:diff} For each edge $xy\in E(T)$, $|B_x\ominus B_y||\le 1$.
+    \item\label{t:diff} For each edge $xy\in E(T)$, $|B_x\ominus B_y|\le 1$.
     \item\label{t:subtree-root} For each $v'\in V(H')$, the subtree $T[v']:=T[\{x\in V(T):v'\in B_x\}]$ is rooted at $v'$.
     \item\label{t:ancestor-edge}\label{t:last} For each edge $v'w'\in E(H)$, one of $v'$ or $w'$ is a $T$-ancestor of the other.
   \end{compactenum}
@@ -516,8 +516,8 @@ We now generalize \thmref{k-planar} to a more abstract setting.  For two sets $A
 
 Let $G$ be a graph and let $(\mathcal{L}:=\langle V_1,\ldots,V_h\rangle,\mathcal{P}:=(Q_x: x\in V(H)))$ be a layered partition of $G$ of layered width $\ell$ where the treewidth of the quotient graph $H=G/\mathcal{P}$ is at most $t$.  In this section we define a hierarchical structure on $G$ that can be obtained from $(\mathcal{L},\mathcal{P})$.
 
-\begin{thm}
-  There exists a tree $T$ rooted at a node $x_0$ where each node $x\in V(T)$ is associated with a subset $Y_x\subseteq V(G)$ that defines several related sets $V_x = \bigcup_{y\in V(T_x) Y_y}$, $F_x=\{w\in V(G): vw\in E(G), v\in V_x,\, w\not\in V_x\}$, and $N_x=V_x\cup F_x$ that satisfy the following properties:
+\begin{thm}\thmlabel{generalized-tripod}
+  There exists a tree $T$ rooted at a node $x_0$ where each node $x\in V(T)$ is associated with a subset $Y_x\subseteq V(G)$ that defines several related sets $V_x = \bigcup_{y\in V(T_x)} Y_y$, $F_x=\{w\in V(G): vw\in E(G), v\in V_x,\, w\not\in V_x\}$, and $N_x=V_x\cup F_x$ that satisfy the following properties:
   \begin{compactenum}[(Y1)]
     \item\ylabel{thickness} $\mathcal{Y}:=(Y_x: x\in V(T))$ is a partition of $V(G)$ of layered width (with respect to $\mathcal{L}$) at most $t\ell$.
     \item\ylabel{separator} There is no edge $vw\in E(G)$ with $v\in V_x$ and $w\in V(G)\setminus N_x$. 
@@ -525,22 +525,26 @@ Let $G$ be a graph and let $(\mathcal{L}:=\langle V_1,\ldots,V_h\rangle,\mathcal
   \end{compactenum}
 \end{thm}
 
+Before proving \thmref{generalized-tripod} we point out another properties that are immediately implied by it:
+
+\begin{compactenum}[(Y1)]\setcounter{enumi}{3}
+  \item\ylabel{containment} $V_x\subseteq V_a$ and $N_x\subseteq N_a$ for every $T$-ancestor $a$ of $x$.
+\end{compactenum}
+
 \begin{proof}
   Apply \lemref{nice-decomposition} to $I$ to obtain a tree-decomposition $(B_x: x\in V(T))$ of $I$ where $T$ is rooted at some node $x_0$ and that satisifies Properties~\tref{t:first}--\tref{t:last}. (We skip the introduction of the isomorphic graph $H'$ and assume from the outset that $V(I)\subseteq V(T))$.)
 
-  For each $v\in V(G)$, let $q(v)$ denote the unique node $q\in V(I)$ such that $v\in Q_q$ and let $b(v)$ denote the root of the subtree $T[v]:=T[\{x\in V(T):q(v)\in B_x]$. For each $x\in V(T)$, define $Y_x=\{v\in V(G):c(v)=x\}$.  
-  Clearly, $\mathcal{Y}:=(Y_x:x\in V(T))$ is a partition of $V(G)$.  Furthermore, for any $i\in\in\{1,\ldots,h\}$ 
-  \[  |Y_x| = \sum_{y\in C_x}|Q_y\cap V_i|\le |C_x|\ell \le t\ell ,
+  For each $v\in V(G)$, let $q(v)$ denote the unique node $q\in V(I)$ such that $v\in Q_q$ and let $b(v)$ denote the root of the subtree $T[v]:=T[\{x\in V(T):q(v)\in B_x\}]$. For each $x\in V(T)$, define $Y_x=\{v\in V(G):c(v)=x\}$.  
+  Clearly, $\mathcal{Y}:=(Y_x:x\in V(T))$ is a partition of $V(G)$.  Furthermore, for any $i\in\{1,\ldots,h\}$ 
+  \[  |Y_x\cap V_i| = \sum_{y\in C_x}|Q_y\cap V_i|\le |C_x|\ell \le t\ell ,
   \] 
   so $\mathcal{Y}$ has layered width at most $t\ell$ with respect to $\mathcal{L}$.  This establishes \yref{thickness}. 
 
   Property \yref{separator} is immediate from the definitions of $F_x$ and $N_x$.  In particular, $(N_x,V(G)\setminus V_x)$ is a separation of $G$ with $F_x=N_x\cap(V(G)\setminus V_x)$. 
 
   To establish Property~\yref{ancestor-edge}, consider some edge $vw\in E(G)$ with $v\in V_x$ and $w\not\in V_x$.  By the definition of $V_x$, $v\in Y_{x'}$ for some $T$-descendant $x'$ of $x$ (possibly $x=x'$). 
-  Since $\mathcal{Y}$ is a partition, $w\in Y_{a}$ for some $a\in V(T)$, $a\neq x$.  Since $v\in Y_{x'}$ and $w\in Y_a$, $q(v)=x'$ and $q(w)=a$, so $x'\in Q_v$ and $w\in Q_a$.  Therefore $H$ contains the edge $ax'$.
-  
-  
-  By \tref{ancestor-edge}, $a$ is an ancestor of $x'$  
+  Since $\mathcal{Y}$ is a partition, $w\in Y_{a}$ for some $a\in V(T)$, $a\neq x$.  Since $v\in Y_{x'}$ and $w\in Y_a$, $q(v)=x'$ and $q(w)=a$, so $x'\in Q_v$ and $w\in Q_a$.  Therefore $H$ contains the edge $ax'$.  By \tref{ancestor-edge}, $a$ is an ancestor of $x'$ or $x'$ is an ancestor of $a$.  However, \yref{containment} rules out the possibility that $x'$ is a $T$-ancestor of $a$. Therefore, $a$ is a $T$-ancestor of $x$ which is a $T$-ancestor of $x'$.  Let $x'=z_0,\ldots,z_r=a$ be the path, in $T$ from $x'$ to $a$.  For each $i\in\{0,\ldots,r\}$, at least one of $a$ or $x'$ is in $C_{z_i}$.  However, $b(x')=x'$, so $x'$ is not contained in $C_{x_i}$ for any $i\in\{1,\ldots,r\}$.  Therefore $a\in C_{x_i}$ for each $i\in\{0,\ldots,r\}$.  In particular, $a$ is contained in $C_x$.
+  Property~\yref{ancestor-edge} then immediately follows from the fact that $|C_x|\le t$.
 \end{proof}
 
 \newpage
