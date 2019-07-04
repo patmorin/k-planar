@@ -521,13 +521,14 @@ Let $G$ be a graph and let $(\mathcal{L}:=\langle V_1,\ldots,V_h\rangle,\mathcal
   \begin{compactenum}[(Y1)]
     \item\ylabel{thickness} $\mathcal{Y}:=(Y_x: x\in V(T))$ is a partition of $V(G)$ of layered width (with respect to $\mathcal{L}$) at most $t\ell$.
     \item\ylabel{separator} There is no edge $vw\in E(G)$ with $v\in V_x$ and $w\in V(G)\setminus N_x$. 
-    \item\ylabel{ancestor-edge} $x$ has $t'\le t$ $T$-ancestors $a_1,\ldots,a_{t'}$ such that $F_x \subseteq \bigcup_{i=1}^{t'} Y_{a_i}$.
+    \item\ylabel{ancestor-edge} $x$ has $t'\le t$ strict $T$-ancestors $a_1,\ldots,a_{t'}$ such that $F_x \subseteq \bigcup_{i=1}^{t'} Y_{a_i}$.
   \end{compactenum}
 \end{thm}
 
-Before proving \thmref{generalized-tripod} we point out another properties that are immediately implied by it:
+Before proving \thmref{generalized-tripod} we point two another properties that are immediately implied by it:
 
 \begin{compactenum}[(Y1)]\setcounter{enumi}{3}
+  \item\ylabel{y-subsets} $Y_x\subseteq V_x$ for every $x\in V(T)$. 
   \item\ylabel{containment} $V_x\subseteq V_a$ and $N_x\subseteq N_a$ for every $T$-ancestor $a$ of $x$.
 \end{compactenum}
 
@@ -552,7 +553,64 @@ Before proving \thmref{generalized-tripod} we point out another properties that 
 
 For non-negative integers $k$ and $d$, a graph $G$ and distinct vertices $v,w\in V(G)$, a \emph{$(k,d)$ $vw$-shortcut} is a path in $G$ with endpoints $v$ and $w$ of length at most $k$ and whose internal vertices each have degree at most $d$.  The \emph{$(k,d)$th power of $G$}, denoted $G^{k,d}$, is the graph with vertex $V(G^{k,d})=V(G)$ in which, for each distinct pair $v,w\in V(G)$, $vw\in E(G^{d,k})$ if and only if $G$ contains a $(k,d)$ $vw$-shortcut.
 
+Let $T$ and, for each $x\in V(T)$, $Y_x$, $V_x$, $F_x$, and $N_x$ be the decomposition obtained by applying \thmref{generalized-tripod} ot $G$.
+For a node $x\in V(T)$, we say that a $(k,d)$ $vw$-shortcut $P$ in $G$ \emph{touches} $x$ if $v\in Y_x$ or $V_x$ contains an internal vertex of $P$.  If $G$ contains a $vw$-shortcut that touches $x$, then we say that $v$ and $w$ \emph{participate} in $x$. 
 
+For any $v\in V(G)$, the union of all $(k,d)$ shortcuts in $G$ that have $v$ as an endpoint is a connected subgraph of $G$.  It follows that the set of nodes $x\in V(T)$ in which $v$ participates is a non-empty (connected) subtree of $T$ and we let $a(v)$ denote the root of this subtree. For each $x\in V(T)$, we define the \emph{separator}
+\[  
+     S_x := \{v\in V(G): a(v)= x\} \enspace .
+\]
+Observe that $\mathcal{S}:=(S_x : x\in V(T))$ is a partition of $V(G)$.  We let $I:=G^{k,d}/(S_x : x\in V(T))$ denote the resulting quotient graph and we let $V(I)\subseteq V(T)$ in the obvious way, so that each $x\in V(I)$ is the vertex obtained by contracting $S_x$ in $G^{k,d}$. (Nodes $x\in V(T)$ with $S_x=\emptyset$ do not contribute a vertex to $I$.)
+
+\begin{clm}
+  For every $x\in V(T)$, $S_x\subseteq N_x$.
+\end{clm}
+
+\begin{proof}
+  For the sake of contradiction, assume otherwise.
+  Then, $G$ contains a $(k,d)$ $vw$-shortcut $P$ that contains an internal vertex $v'\in Y_x$ and such that $w\not\in N_x$.  By \yref{separator}, $P$ contains an internal vertex $v''\in F_x$.  By \yref{ancestor-edge}, $v''\in Y_a$ for some strict $T$-ancestor $a$ of $x$, contradicting the assumption that $v\in S_x$ (since $v$ would would be in $Y_{a'}$ for some $T$-ancestor $a'$ of $a$). 
+\end{proof}
+
+Next we show that $\mathcal{S}$ has small layered width with respect to $\mathcal{L}$:
+
+\begin{clm}
+  For each $i\in\{1,\ldots,h\}$ and each $x\in V(I)$, $|S_x\cap V_i|\le t\ell(1+(d-1)^{k-1})$.  
+\end{clm}
+
+\begin{proof}
+  Consider some vertex $v\in S_x\cap L_i$.  There are two cases to consider:
+  \begin{enumerate}
+    \item $v\in Y_x$.  By \yref{thickness}, there are at most $t\ell$ such vertices in $S_x\cap L_i$.
+    \item $G$ contains a $(k,d)$ $vw$-shortcut $P$ and $Y_x$ contains an internal vertex $v'$ of $P$. In this case, $v'\in L_{i+j}\cap Y_x$ for some $j\in\{-k+1,\ldots,k-1\}$.   Since $|L_{i+j}\cap Y_x|\le t\ell$, the length of $P$ is at most $k-1$, and the internal vertices of $P$ have degree at most $d$ in $G$, there are at most $t\ell(d-1)^{k-1}$ such vertices in $S_x\cap L_i$. \qedhere
+  \end{enumerate}
+\end{proof}
+
+\begin{clm}
+  For each edge $xy\in E(I)$, one of $x$ or $y$ is a $T$-ancestor of the other.
+\end{clm}
+
+\begin{proof}
+  Consider the lowest common $T$-ancestor $a$ of $x$ and $y$ and assume, for the sake of contradiction that $a\not\in\{x,y\}$.  
+  
+  
+  
+  By \yref{separator}, $G-(F_a\cup Y_a)$ does not contain any path from a vertex $v\in V_x$ to a vertex $w\in V_y$.  
+\end{proof}
+
+
+
+\begin{clm}
+  The graph $I$ has a tree-decomposition whose largest bag has size at most $t^k$.
+\end{clm}
+
+\begin{proof}
+  For the tree-decomposition of $I$ we use the same tree $T$ used in the tree-decomposition of $H$.  First we claim that, for each edge
+  
+\end{proof}
+
+
+
+\newpage 
 
 \begin{thm}
   Let $\ell\ge 1$, $t\ge 2$, $d\ge 1$, and $k\ge 1$ be integers, let $G$ be a graph having a layered $I$-partition of layered width $\ell$ in which $I$ has treewidth at most $t-1$.  Then $G^{k,d}$ has a layered $H$-partition of layered width $O(\ell kd^k)$ where the treewidth of $H$ is at most $\binom{t+k-1}{k}$.
@@ -584,7 +642,10 @@ For non-negative integers $k$ and $d$, a graph $G$ and distinct vertices $v,w\in
   
   
     
-  Let $(Q_x: x\in V(I))$ denote the given $I$-partition of $G$.  For a node $x\in V(T)$, let $R_x:=\bigcup_{y\in C_x} Q_{y}$. For a node $x\in V(T)$, we say that a $(k,d)$ $vw$-shortcut $P$ in $G$ \emph{touches} $x$ if $V(P)\cap R_x\neq\emptyset$.  If $G$ contains a $vw$-shortcut that touches $x$, then we say that $v$ and $w$ \emph{participate} in $x$. 
+  Let $(Q_x: x\in V(I))$ denote the given $I$-partition of $G$.  For a node $x\in V(T)$, let $R_x:=\bigcup_{y\in C_x} Q_{y}$. 
+  
+  
+  For a node $x\in V(T)$, we say that a $(k,d)$ $vw$-shortcut $P$ in $G$ \emph{touches} $x$ if $V(P)\cap R_x\neq\emptyset$.  If $G$ contains a $vw$-shortcut that touches $x$, then we say that $v$ and $w$ \emph{participate} in $x$. 
   
   For any $v\in V(G)$, the union of all $(k,d)$ shortcuts in $G$ that have $v$ as an endpoint is a connected subgraph of $G$.  It follows that the set of nodes $x\in V(T)$ in which $v$ participates is a non-empty (connected) subtree of $T$ and we let $a(v)$ denote the root of this subtree. For each $x\in V(T)$, we define the \emph{separator}
   \[  
