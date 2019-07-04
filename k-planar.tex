@@ -481,11 +481,10 @@ We conclude this section with a small extension of \thmref{k-planar} that is use
   for all integers $i\ge 0$.  This layering satisfies the conditions of the corollary.
 \end{proof}
 
-
 \newpage
 \section{A Generalization}
 
-We now generalize \thmref{k-planar} to a more abstract setting.  For two sets $A$ and $B$, we use $A\ominus B := (A\cup B)\setminus(A\cap B)$ to denote the symmetric difference between $A$ and $B$.  We begin with a lemma about normalized tree decompositions:
+We now generalize \thmref{k-planar} to a more abstract setting.  For two sets $A$ and $B$, we use $A\ominus B := (A\cup B)\setminus(A\cap B)$ to denote the symmetric difference between $A$ and $B$.  We begin with a fairly standard lemma about normalized tree decompositions:
 
 \begin{lem}\lemlabel{nice-decomposition}
   Let $H$ be a graph of treewidth $t-1$.  Then there exists a graph $H'$ isomorphic to $H$ that has a tree-decomposition $(B_x:x\in V(T))$ of width at most $t-1$ that has following additional properties:  
@@ -508,23 +507,21 @@ We now generalize \thmref{k-planar} to a more abstract setting.  For two sets $A
   
   For each $x\in V(T)$, let $B_x=\{v' : v\in C_x\}$.  Now define the graph $H'$ to have vertex set $V(H')=\{v':v\in V(H)\}$ and edge set $E(H')=\{v'w': vw\in E(H)\}$.  Obviously, $H'$ isomorphic to $H$ and $V(H')\subseteq V(T)$ and $(B_x: x\in V(T))$ is a width=$(t-1)$ tree-decomposition of $H'$.  The decomposition $(B_x: x\in V(T))$ inherits Properties~\tref{rooted} and \tref{diff} from $(C_x:x\in V(T))$ and satisfies Property~\tref{node-set} and \tref{subtree-root} by definition.
   
-  To see that $(B_:x\in V(T))$ satisifies Property~\tref{ancestor-edge}, observe that, if $vw\in E(H)$, then at least one of $v'$ or $w'$ is contained in $B_x$ for every node $x$ on the path from $v'$ to $w'$ in $T$.  If neither $v'$ nor $w'$ is an ancestor of the other, then some node $x$ on this path has $T$-depth less than that of $v'$ and $w'$.  If $v'\in B_x$ this contradicts the fact that $v'$ is the root of $T[v']$.  If $w'\in B_x$ this contradicts the fact that $w'$ is the root of $T[w']$.
+  To see that $(B_x:x\in V(T))$ satisifies Property~\tref{ancestor-edge}, observe that, if $vw\in E(H)$, then at least one of $v'$ or $w'$ is contained in $B_x$ for every node $x$ on the path from $v'$ to $w'$ in $T$.  If neither $v'$ nor $w'$ is an ancestor of the other, then some node $x$ on this path has $T$-depth less than that of $v'$ and $w'$.  If $v'\in B_x$ this contradicts the fact that $v'$ is the root of $T[v']$.  If $w'\in B_x$ this contradicts the fact that $w'$ is the root of $T[w']$.
 \end{proof}
 
-
-\newpage
-\subsection{Generalized Tripod Decompositions}
+\subsection{Generalized Tripod Partitions}
 
 Let $G$ be a graph and let $(\mathcal{L}:=\langle V_1,\ldots,V_h\rangle,\mathcal{P}:=(Q_x: x\in V(H)))$ be a layered partition of $G$ of layered width $\ell$ where the treewidth of the quotient graph $H=G/\mathcal{P}$ is at most $t$.  In this section we define a hierarchical structure on $G$ that can be obtained from $(\mathcal{L},\mathcal{P})$.
 
-\begin{thm}\thmlabel{generalized-tripod}
+\begin{lem}\thmlabel{generalized-tripod}
   There exists a tree $T$ rooted at a node $x_0$ where each node $x\in V(T)$ is associated with a subset $Y_x\subseteq V(G)$ that defines several related sets $V_x = \bigcup_{y\in V(T_x)} Y_y$, $F_x=\{w\in V(G): vw\in E(G), v\in V_x,\, w\not\in V_x\}$, and $N_x=V_x\cup F_x$ that satisfy the following properties:
   \begin{compactenum}[(Y1)]
     \item\ylabel{thickness} $\mathcal{Y}:=(Y_x: x\in V(T))$ is a partition of $V(G)$ of layered width (with respect to $\mathcal{L}$) at most $t\ell$.
     \item\ylabel{separator} There is no edge $vw\in E(G)$ with $v\in V_x$ and $w\in V(G)\setminus N_x$. 
     \item\ylabel{ancestor-edge} $x$ has $t'\le t$ strict $T$-ancestors $a_1,\ldots,a_{t'}$ such that $F_x \subseteq \bigcup_{i=1}^{t'} Y_{a_i}$.
   \end{compactenum}
-\end{thm}
+\end{lem}
 
 Before proving \thmref{generalized-tripod} we point two properties that are immediately implied by it:
 
@@ -551,7 +548,6 @@ Property~\yref{y-subsets} follows from the fact that $V_x$ is the union of sever
   Property~\yref{ancestor-edge} now follows from the fact that $|C_x|\le t$.
 \end{proof}
 
-\newpage
 \subsection{Low-Degree Powers}
 
 For non-negative integers $k$ and $d$, a graph $G$ and distinct vertices $v,w\in V(G)$, a \emph{$(k,d)$ $vw$-shortcut} is a path in $G$ with endpoints $v$ and $w$ of length at most $k$ and whose internal vertices each have degree at most $d$.  The \emph{$(k,d)$th power of $G$}, denoted $G^{k,d}$, is the graph with vertex $V(G^{k,d})=V(G)$ in which, for each distinct pair $v,w\in V(G)$, $vw\in E(G^{d,k})$ if and only if $G$ contains a $(k,d)$ $vw$-shortcut.
@@ -615,27 +611,55 @@ Next we show that $\mathcal{S}$ has small layered width with respect to $\mathca
 
 
 \begin{clm}\clmlabel{general-bag-size}
-  The graph $I$ has a tree-decomposition whose largest bag has size at most $t^k$.
+  The graph $I$ has a tree-decomposition whose largest bag has size at most $\binom{k+t}{t}$.
 \end{clm}
 
 \begin{proof}
-  For the tree-decomposition $(B_x:x\in V(T))$ of $I$ we use the same tree $T$ used in the tree-decomposition of $H$. For each node $x$ of $T$, $B_x$ contains $x$ as well as every $T$-ancestor $a$ of $x$ such that $I$ contains an edge $ax'$ where $x$ is a $T$-ancestor of $x'$ (including the possibility that $x=x'$).
-  \clmref{i-ancestor} ensures that, for every edge $ax'\in E(I)$, $a,x'\in B_{x'}$ and the connectivity of $T[a]:=T[\{x\in V(T):a\in B_x]$ is obvious.  Therefore $(B_x:x\in V(T))$ is indeed a tree-decomposition of $I$.  What remains is to bound the size of the largest bag.
+  For the tree-decomposition $(C_x:x\in V(T))$ of $I$ we use the same tree $T$ used in the tree-decomposition of $H$. For each node $x$ of $T$, $C_x$ contains $x$ as well as every $T$-ancestor $a$ of $x$ such that $I$ contains an edge $ax'$ where $x$ is a $T$-ancestor of $x'$ (including the possibility that $x=x'$).
+  \clmref{i-ancestor} ensures that, for every edge $ax'\in E(I)$, $a,x'\in C_{x'}$ and the connectivity of $T[a]:=T[\{x\in V(T):a\in C_x]$ is obvious.  Therefore $(C_x:x\in V(T))$ is indeed a tree-decomposition of $I$.  What remains is to bound the size, $\max\{|C_x|:x\in V(T)\}$, of the largest bag.
   
-  Consider an arbitray node $x\in V(T)$ whose ancestors are $x_0,\ldots,x_{r-1},x_r=x$.  If $x_\delta\in B_x$, it is because $x_\delta x'\in E(I)$ for some $T$-descendant $x'$ of $x$.  This implies $G^{k,d}$ contains an edge $vw$ with $v\in S_{x'}$ and $w\in S_{x_i}$.  This implies that $G$ contains a $(k,d)$ $vw$-shortcut.  Since $w\in S_{x_i}$, $G$ contains a $(k,d)$ $ww'$-longcut $P_{ww'}$ that has an internal vertex in $w''\in Y_{x_i}$.
+  Consider an arbitray node $x\in V(T)$ whose ancestors are $x_0,\ldots,x_{r-1},x_r=x$.  To avoid triple-subscripts in what follows, we abuse notation slightly by using $V_i$, $F_i$, and $N_i$,  as shorthands for $V_{x_i}$, $F_{x_i}$ and $N_{x_i}$, respectively.   
+
+  If $x_\delta\in C_x$, it is because $x_\delta x'\in E(I)$ for some $T$-descendant $x'$ of $x$.  This implies $G^{k,d}$ contains an edge $vw$ with $v\in S_{x'}$ and $w\in S_{x_\delta}=S_\delta$.  This implies that $G$ contains a $(k,d)$ $vw$-shortcut $P_{vw}$.  Let $v'$ be the second-last vertex of $P_{vw}$ (so $v'w\in E(G)$).  
   
-  Let $w_0,\ldots,w_p$ be the subpath of $P_{ww'}$ that begins at $w_0:=w$ and ends at $w_p:=w''$.  For each $i\in\{0,\ldots,p\}$, let $s_i=\max\{j: \{w_0,\ldots,w_i\}\subseteq V_{x_j}\}\}$.  Note that $s_0,\ldots,s_p$ is a non-increasing sequence with $s_0=r$ and $s_p=\delta$.  By \yref{ancestor-edge}, given $s_i$, there are at most $t+1$ possible values of $s_{i+1}$:  Either $s_{i+1}=s_i$ or $s_{i+1}$ is the index of one of the $t$ ancestors described in \yref{ancestor-edge}.  This immediately implies that $|B_x|\le \sum_{i=0}^{k-1} t^i < t^k$ for $t\ge 2$.  But we can do better....
+  Since $w\in S_{\delta}$, at least one of the following is true:
+  \begin{enumerate}
+    \item $w\in Y_\delta$; or 
+    \item $G$ contains a $(k,d)$ $ww'$-longcut $P_{ww'}$ that has an internal vertex in $Y_{\delta}$.
+  \end{enumerate}
+  In the former case we define $P_{ww'}$ to be the path of length 0 that contains only $w=w'$.  Let $w''$ denote the first vertex of $P_{ww'}$ contained in $Y_{x_i}$.
+  
+  Let $w_0,w_1,\ldots,w_p$ be the path that begins $w_0:=v'$ and then follows the subpath of $P_{ww'}$ that begins at $w_1:=w$ and ends at $w_p:=w''$.  For each $i\in\{0,\ldots,p\}$, let $s_i=\max\{j\in\{1,\ldots,r\}: \{w_0,\ldots,w_i\}\subseteq V_{j}\}\}$, and let $a_i=x_{s_i}$.  Note that $s_0,\ldots,s_p$ is a non-increasing sequence and $a_0,\ldots,a_p$ is a sequence of nodes of $T$ whose distance from the root is non-decreasing.
+
+  By definition, $a_0=x_r$.  We claim that $a_p=x_\delta$, i.e., $s_p=\delta$. 
+  To see this, first observe that, for each $i\in\{1,\ldots,p\}$, $w_p\in V_{\delta}$ since, otherwise, an internal vertex of $P_{ww'}$ belong to $F_\delta$, which would imply (by \yref{ancestor-edge}) that $w\in S_{\delta'}$ for some $\delta' < \delta$, contradicting the assumption that $w\in S_\delta$.  Therefore $s_p\ge\delta$.  To see that $s_p>\delta-1$,
+  observe that either $w=w''\in Y_\delta$ or $P_{ww'}$ contains an internal vertex $w''$ in $Y_\delta$.  By \yref{thickness} and the defnition of $V_x$, $V_{\delta-1}$ does not contain $w''$, so $s_p>\delta-1$.
+  
+  Let $H^+$ denote the supergraph of $H$ with vertex set $V(T)$ and in which $xy\in E(H^+)$ if and only there exists some $z\in V(T)$ such that $x,y\in B_z$. Note that, by \tref{ancestor-edge}, $xy\in E(H^+)$ if and only if $x\in B_y$ or $y\in B_x$.
+  
+  Next we observe that $a_0,\ldots,a_p$ is a lazy walk\footnote{A \emph{lazy walk} in a graph $H$ is a walk in the non-simple graph $H'$ obtained by adding a self loop to each vertex of $H$.} in $H$.  Indeed, if $a_i\neq a_{i+1}$ for some $i\in\{0,\ldots,p-1\}$ then this is precisely because $w_i\in V_{a_i}$ but $w_{i+1}\not\in V_{a_i}$.  By definition, $w_i\in Y_{a_i'}$ for some $T$-descendant $a_i'$ of $a_i$.
+  By \yref{separator}, $w_{i+1}\in F_{a_i}$ so by \yref{ancestor-edge} $w_{i+1}\in Y_{a_i''}$ for some strict $T$-ancestor $a_i''$ of $a_i$.  Since $w_iw_{i+1}\in E(G)$, $a_i'a_i''\in E(H)$.  By \tref{subtree-root}, $a_i''\in B_{a_i''}$ and $a_i''\in B_{a_i'}$.  Since $a_i$ is on the path from $a_i'$ to $a_i''$ in $T$ this implies that $a_i''\in B_{a_i}$.  Therefore $a_ia_i''\in E(H^+)$ as claimed.
+  
+  Thus, $a_0,\ldots,a_p$ is a lazy walk in $H^+$ of length $p\le k$ where the distance $s_i$ between $a_i$ and the root $x_0$ of $T$ is non-decreasing.  By removing repeated vertices this gives a path in the directed graph $\overrightarrow{H}^+$ obtained by directing each edge $xy\in E(H^+)$ from its $T$-descendant $x$ towards its $T$-ancestor $y$. 
+  Finally, we are in a position to appeal to \cite[Lemma~24]{pilipczuk.siebertz:polynomial-arxiv} which states that the number of nodes in $\overrightarrow{H}^+$ that can be reached from any node $x$ by a directed path of length at most $k$ is at most $\binom{k+t-1}{t}$.
 \end{proof}
-
-
 
 Together, \clmref{general-width} and \clmref{general-bag-size} imply the following generalization of \thmref{k-planar}:
 
-\begin{thm}
-  Let $\ell\ge 1$, $t\ge 2$, $d\ge 1$, and $k\ge 1$ be integers, let $G$ be a graph having a layered $I$-partition of layered width $\ell$ in which $I$ has treewidth at most $t-1$.  Then $G^{k,d}$ has a layered $H$-partition of layered width $O(\ell kd^k)$ where the treewidth of $H$ is at most $\binom{t+k-1}{k}$.
+\begin{thm}\thmlabel{modern-major-general}
+  Let $\ell\ge 1$, $t\ge 2$, $d\ge 1$, and $k\ge 1$ be integers, let $G$ be a graph having a layered $H$-partition of layered width $\ell$ in which $H$ has treewidth at most $t-1$.  Then $G^{k,d}$ has a layered $I$-partition of layered width at most $O(t\ell k^2d^k)$ where the treewidth of $H$ is at most $\binom{k+t-1}{t}-1$.
 \end{thm}
 
-  
+\begin{proof}
+  The proof is almost immediate, except that the layering $\mathcal{L}$ of $G$ may not be a valid layering of $G^{k,d}$.  In particular, $G^{k,d}$ may contain an edge $vw$ with $v\in V_i$ and $w\in V_{i+j}$ for any $j\in\{0,\ldots,k\}$.  To resolve this, we use a new layering $\mathcal{L}':=\langle V_0',\ldots,V_h'\rangle$ in which $V_i'=\bigcup_{j=ki}^{ki+k-1} V_i$.  This increases the thickness given by \clmref{general-width} from $O(t\ell kd^k)$ to $O(t\ell k^2d^k)$.
+\end{proof}
+
+It is natural to ask if \thmref{modern-major-general} is tight.  We do not answer this question, but we do point out that, even when $t=1$ and $d=3$, an exponential dependence on $k$ is necessary.  If $G$ is a complete binary tree on $2^{k/2}$ leaves, then $G^{k,3}$ contains a clique $K$ of size  $s=2^{k/2+1}-1$.  If these vertices appear in $r$ parts of the $I$-partition, then the treewidth of $I$ is at least $r-1$.  On the other hand, these vertices must all appear on two consecutive layers, so the layered width of the partition is at least $s/(2r)$. Therefore any layered $I$ partition of $G^{k,d}$ of layered width $\ell'$ in which the treewidth of $I$ is at most $t'-1$ must satisfy
+\[
+    \ell'\times t' \ge 2^{k/2}-1/2 \enspace .
+\]   
+
+\newpage
   
 \section{$1$-Planar Graphs}
 \seclabel{1-planar}
