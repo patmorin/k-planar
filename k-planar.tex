@@ -25,7 +25,8 @@
 \renewcommand{\propref}[1]{(PR\ref{prop:#1})}
 \newcommand{\jlabel}[1]{\label{j:#1}}
 \newcommand{\jref}[1]{(J\ref{j:#1})}
-\newcommand{\tref}[1]{(T\ref{#1})}
+\newcommand{\tlabel}[1]{\label{t:#1}}
+\newcommand{\tref}[1]{(T\ref{t:#1})}
 \newcommand{\ylabel}[1]{\label{y:#1}}
 \newcommand{\yref}[1]{(Y\ref{y:#1})}
 
@@ -489,11 +490,11 @@ We now generalize \thmref{k-planar} to a more abstract setting.  For two sets $A
 \begin{lem}\lemlabel{nice-decomposition}
   Let $H$ be a graph of treewidth $t-1$.  Then there exists a graph $H'$ isomorphic to $H$ that has a tree-decomposition $(B_x:x\in V(T))$ of width at most $t-1$ that has following additional properties:  
   \begin{compactenum}[(T1)]
-    \item\label{t:rooted}\label{t:first} $T$ is rooted at some node $x_0\in V(T)$ with $B_{x_0}=\emptyset$.
-    \item\label{t:node-set} $V(H')\subseteq V(T)$.
-    \item\label{t:diff} For each edge $xy\in E(T)$, $|B_x\ominus B_y|\le 1$.
-    \item\label{t:subtree-root} For each $v'\in V(H')$, the subtree $T[v']:=T[\{x\in V(T):v'\in B_x\}]$ is rooted at $v'$.
-    \item\label{t:ancestor-edge}\label{t:last} For each edge $v'w'\in E(H)$, one of $v'$ or $w'$ is a $T$-ancestor of the other.
+    \item\tlabel{rooted}\tlabel{first} $T$ is rooted at some node $x_0\in V(T)$ with $B_{x_0}=\emptyset$.
+    \item\tlabel{node-set} $V(H')\subseteq V(T)$.
+    \item\tlabel{diff} For each edge $xy\in E(T)$, $|B_x\ominus B_y|\le 1$.
+    \item\tlabel{subtree-root} For each $v'\in V(H')$, the subtree $T[v']:=T[\{x\in V(T):v'\in B_x\}]$ is rooted at $v'$.
+    \item\tlabel{ancestor-edge}\tlabel{last} For each edge $v'w'\in E(H)$, one of $v'$ or $w'$ is a $T$-ancestor of the other.
   \end{compactenum}
 \end{lem}
 
@@ -501,13 +502,13 @@ We now generalize \thmref{k-planar} to a more abstract setting.  For two sets $A
   Begin with a width-$(t-1)$ tree-decomposition $(C_x:x\in V(T_0))$ of $H$ using a tree $T_0$ with the property that, for any edge $xy\in E(T_0)$, $|C_x\ominus C_y|\le 1$. That is, $C_x$ contains exactly one vertex not in $C_y$ or vice-versa. It is well-known that such a tree-decomposition exists.
   
   Next, select an arbitrary node $x\in V(T_0)$ and let $C_x:=\{v_1,\ldots,v_{t'}\}$ denote the contents of $C_x$.
-  Create a new tree $T$ from $T_0$ by adding a path of nodes $x_0,x_1,x_2,\ldots,x_{t'-1},x_{t'}=x$. Let $C_{x_0}:=\emptyset$ and, for each $i\in\{1,\ldots,t'\}$, $C_{x_i}:=\{v_1,\ldots,v_i\}$.  Note that $(C_x: x\in V(T))$ is a width-$(t-1)$ tree-decomposition of $H$. Let $T$ be rooted at $x_0$. Note that $(C_x:x\in V(T))$ satisfies Properties~\tref{t:rooted}, and \tref{t:diff}.  For the remaining properties some renaming is required, which we now describe.
+  Create a new tree $T$ from $T_0$ by adding a path of nodes $x_0,x_1,x_2,\ldots,x_{t'-1},x_{t'}=x$. Let $C_{x_0}:=\emptyset$ and, for each $i\in\{1,\ldots,t'\}$, $C_{x_i}:=\{v_1,\ldots,v_i\}$.  Note that $(C_x: x\in V(T))$ is a width-$(t-1)$ tree-decomposition of $H$. Let $T$ be rooted at $x_0$. Note that $(C_x:x\in V(T))$ satisfies Properties~\tref{rooted}, and \tref{diff}.  For the remaining properties some renaming is required, which we now describe.
   
-  For each $v\in V(H)$, let $v'\in V(T)$ be the unique node such that $v\in C_{v'}$ and $v'$ has minimum $T$-depth.  The uniqueness of $v'$ follows from the fact that $T[v]:=T[\{x\in V(T):v\in B_x\}]$ is connected, so $v'$ is the root of $T[v]$.  Furthermore, for any pair of distinct vertices $v,w\in V(H)$, \tref{t:rooted} and \tref{t:diff} ensure that $v'\neq w'$ since, otherwise, $C_{v'}\ominus C_{x'}\supseteq \{v',w'\}$ where $x'$ is the parent of $v'=w'$.  Property~\tref{t:rooted} would ensure that $x'$ exists and Property~\tref{t:diff} would ensure that $|C_{x'}\ominus C_{v'}|\le 1$.
+  For each $v\in V(H)$, let $v'\in V(T)$ be the unique node such that $v\in C_{v'}$ and $v'$ has minimum $T$-depth.  The uniqueness of $v'$ follows from the fact that $T[v]:=T[\{x\in V(T):v\in B_x\}]$ is connected, so $v'$ is the root of $T[v]$.  Furthermore, for any pair of distinct vertices $v,w\in V(H)$, \tref{rooted} and \tref{diff} ensure that $v'\neq w'$ since, otherwise, $C_{v'}\ominus C_{x'}\supseteq \{v',w'\}$ where $x'$ is the parent of $v'=w'$.  Property~\tref{rooted} would ensure that $x'$ exists and Property~\tref{diff} would ensure that $|C_{x'}\ominus C_{v'}|\le 1$.
   
-  For each $x\in V(T)$, let $B_x=\{v' : v\in C_x\}$.  Now define the graph $H'$ to have vertex set $V(H')=\{v':v\in V(H)\}$ and edge set $E(H')=\{v'w': vw\in E(H)\}$.  Obviously, $H'$ isomorphic to $H$ and $V(H')\subseteq V(T)$ and $(B_x: x\in V(T))$ is a width=$(t-1)$ tree-decomposition of $H'$.  The decomposition $(B_x: x\in V(T))$ inherits Properties~\tref{t:rooted} and \tref{t:diff} from $(C_x:x\in V(T))$ and satisfies Property~\tref{t:node-set} and \tref{t:subtree-root} by definition.
+  For each $x\in V(T)$, let $B_x=\{v' : v\in C_x\}$.  Now define the graph $H'$ to have vertex set $V(H')=\{v':v\in V(H)\}$ and edge set $E(H')=\{v'w': vw\in E(H)\}$.  Obviously, $H'$ isomorphic to $H$ and $V(H')\subseteq V(T)$ and $(B_x: x\in V(T))$ is a width=$(t-1)$ tree-decomposition of $H'$.  The decomposition $(B_x: x\in V(T))$ inherits Properties~\tref{rooted} and \tref{diff} from $(C_x:x\in V(T))$ and satisfies Property~\tref{node-set} and \tref{subtree-root} by definition.
   
-  To see that $(B_:x\in V(T))$ satisifies Property~\tref{t:ancestor-edge}, observe that, if $vw\in E(H)$, then at least one of $v'$ or $w'$ is contained in $B_x$ for every node $x$ on the path from $v'$ to $w'$ in $T$.  If neither $v'$ nor $w'$ is an ancestor of the other, then some node $x$ on this path has $T$-depth less than that of $v'$ and $w'$.  If $v'\in B_x$ this contradicts the fact that $v'$ is the root of $T[v']$.  If $w'\in B_x$ this contradicts the fact that $w'$ is the root of $T[w']$.
+  To see that $(B_:x\in V(T))$ satisifies Property~\tref{ancestor-edge}, observe that, if $vw\in E(H)$, then at least one of $v'$ or $w'$ is contained in $B_x$ for every node $x$ on the path from $v'$ to $w'$ in $T$.  If neither $v'$ nor $w'$ is an ancestor of the other, then some node $x$ on this path has $T$-depth less than that of $v'$ and $w'$.  If $v'\in B_x$ this contradicts the fact that $v'$ is the root of $T[v']$.  If $w'\in B_x$ this contradicts the fact that $w'$ is the root of $T[w']$.
 \end{proof}
 
 
@@ -525,15 +526,18 @@ Let $G$ be a graph and let $(\mathcal{L}:=\langle V_1,\ldots,V_h\rangle,\mathcal
   \end{compactenum}
 \end{thm}
 
-Before proving \thmref{generalized-tripod} we point two another properties that are immediately implied by it:
+Before proving \thmref{generalized-tripod} we point two properties that are immediately implied by it:
 
 \begin{compactenum}[(Y1)]\setcounter{enumi}{3}
   \item\ylabel{y-subsets} $Y_x\subseteq V_x$ for every $x\in V(T)$. 
-  \item\ylabel{containment} $V_x\subseteq V_a$ and $N_x\subseteq N_a$ for every $T$-ancestor $a$ of $x$.
+  \item\ylabel{containment-i} $V_x\subseteq V_a$ for every $T$-ancestor $a$ of $x$. 
+  \item\ylabel{containment-ii}$N_x\subseteq N_a$ for every $T$-ancestor $a$ of $x$.
 \end{compactenum}
 
-\begin{proof}
-  Apply \lemref{nice-decomposition} to $I$ to obtain a tree-decomposition $(B_x: x\in V(T))$ of $I$ where $T$ is rooted at some node $x_0$ and that satisifies Properties~\tref{t:first}--\tref{t:last}. (We skip the introduction of the isomorphic graph $H'$ and assume from the outset that $V(I)\subseteq V(T))$.)
+Property~\yref{y-subsets} follows from the fact that $V_x$ is the union of several sets, one of which is $Y_x$.  Property~\yref{containment-i} follows from the definitions of $V_x$ and the fact that the subtree $V(T_x)\subseteq V(T_a)$. To show Property~\yref{containment-ii} first note that, by \yref{containment-i} it suffices to consider vertices in $w\in F_x=N_x\setminus V_x$. By definition, every vertex $w\in F_x$ is adjacent, in $G$, to a vertex $v\in V_x$.  By \yref{containment-i}, $v\in V_a$, so $w$ is either in $V_a$ or $w$ satisfies the condition $vw\in E(G)$, $v\in V_a$, and $w\not\in V_a$, so $w\in F_a$.  In either case $w\in N_a=V_a\cup F_a$.  Note that none of \yref{y-subsets}--\yref{containment-ii} depends on \yref{ancestor-edge} (which is important, since \yref{containment-i} is used to establish \yref{ancestor-edge} below).
+
+\begin{proof}[Proof of \thmref{generalized-tripod}]
+  Apply \lemref{nice-decomposition} to $I$ to obtain a tree-decomposition $(B_x: x\in V(T))$ of $I$ where $T$ is rooted at some node $x_0$ and that satisifies Properties~\tref{first}--\tref{last}. (We skip the introduction of the isomorphic graph $H'$ and assume from the outset that $V(I)\subseteq V(T))$.)
 
   For each $v\in V(G)$, let $q(v)$ denote the unique node $q\in V(I)$ such that $v\in Q_q$ and let $b(v)$ denote the root of the subtree $T[v]:=T[\{x\in V(T):q(v)\in B_x\}]$. For each $x\in V(T)$, define $Y_x=\{v\in V(G):c(v)=x\}$.  
   Clearly, $\mathcal{Y}:=(Y_x:x\in V(T))$ is a partition of $V(G)$.  Furthermore, for any $i\in\{1,\ldots,h\}$ 
@@ -543,9 +547,8 @@ Before proving \thmref{generalized-tripod} we point two another properties that 
 
   Property \yref{separator} is immediate from the definitions of $F_x$ and $N_x$.  In particular, $(N_x,V(G)\setminus V_x)$ is a separation of $G$ with $F_x=N_x\cap(V(G)\setminus V_x)$. 
 
-  To establish Property~\yref{ancestor-edge}, consider some edge $vw\in E(G)$ with $v\in V_x$ and $w\not\in V_x$.  By the definition of $V_x$, $v\in Y_{x'}$ for some $T$-descendant $x'$ of $x$ (possibly $x=x'$). 
-  Since $\mathcal{Y}$ is a partition, $w\in Y_{a}$ for some $a\in V(T)$, $a\neq x$.  Since $v\in Y_{x'}$ and $w\in Y_a$, $q(v)=x'$ and $q(w)=a$, so $x'\in Q_v$ and $w\in Q_a$.  Therefore $H$ contains the edge $ax'$.  By \tref{ancestor-edge}, $a$ is an ancestor of $x'$ or $x'$ is an ancestor of $a$.  However, \yref{containment} rules out the possibility that $x'$ is a $T$-ancestor of $a$. Therefore, $a$ is a $T$-ancestor of $x$ which is a $T$-ancestor of $x'$.  Let $x'=z_0,\ldots,z_r=a$ be the path, in $T$ from $x'$ to $a$.  For each $i\in\{0,\ldots,r\}$, at least one of $a$ or $x'$ is in $C_{z_i}$.  However, $b(x')=x'$, so $x'$ is not contained in $C_{x_i}$ for any $i\in\{1,\ldots,r\}$.  Therefore $a\in C_{x_i}$ for each $i\in\{0,\ldots,r\}$.  In particular, $a$ is contained in $C_x$.
-  Property~\yref{ancestor-edge} then immediately follows from the fact that $|C_x|\le t$.
+  To establish Property~\yref{ancestor-edge}, consider some vertex $w\in F_x$.  Since $w\in F_x$, there exists an edge $vw\in E(G)$ with $v\in V_x$ and $w\not\in V_x$.  Since $v\in V_x$, $v\in Y_{x'}$ for some $T$-descendant $x'$ of $x$ (possibly $x=x'$). Since $\mathcal{Y}$ is a partition, $w\in Y_{a}$ for some $a\in V(T)$, $a\neq x$.  Since $v\in Y_{x'}$ and $w\in Y_a$, $q(v)=x'$ and $q(w)=a$, so $x'\in Q_v$ and $w\in Q_a$.  Therefore $H$ contains the edge $ax'$.  By \tref{ancestor-edge}, $a$ is an ancestor of $x'$ or $x'$ is an ancestor of $a$.  Since $w\in Y_a\subseteq V_a$ and $w\not\in V_x\supseteq V_{x'}$, \yref{containment-i} rules out the possibility that $x'$ is a $T$-ancestor of $a$. Therefore, $a$ is a $T$-ancestor of $x$ which is a $T$-ancestor of $x'$.  Let $x'=z_0,\ldots,z_r=a$ be the path, in $T$ from $x'$ to $a$.  For each $i\in\{0,\ldots,r\}$, at least one of $a$ or $x'$ is in $C_{z_i}$.  However, $b(x')=x'$, so $x'$ is not contained in $C_{x_i}$ for any $i\in\{1,\ldots,r\}$.  Therefore $a\in C_{x_i}$ for each $i\in\{0,\ldots,r\}$.  In particular, $a$ is contained in $C_x$.
+  Property~\yref{ancestor-edge} now follows from the fact that $|C_x|\le t$.
 \end{proof}
 
 \newpage
@@ -553,143 +556,84 @@ Before proving \thmref{generalized-tripod} we point two another properties that 
 
 For non-negative integers $k$ and $d$, a graph $G$ and distinct vertices $v,w\in V(G)$, a \emph{$(k,d)$ $vw$-shortcut} is a path in $G$ with endpoints $v$ and $w$ of length at most $k$ and whose internal vertices each have degree at most $d$.  The \emph{$(k,d)$th power of $G$}, denoted $G^{k,d}$, is the graph with vertex $V(G^{k,d})=V(G)$ in which, for each distinct pair $v,w\in V(G)$, $vw\in E(G^{d,k})$ if and only if $G$ contains a $(k,d)$ $vw$-shortcut.
 
-Let $T$ and, for each $x\in V(T)$, $Y_x$, $V_x$, $F_x$, and $N_x$ be the decomposition obtained by applying \thmref{generalized-tripod} ot $G$.
-For a node $x\in V(T)$, we say that a $(k,d)$ $vw$-shortcut $P$ in $G$ \emph{touches} $x$ if $v\in Y_x$ or $V_x$ contains an internal vertex of $P$.  If $G$ contains a $vw$-shortcut that touches $x$, then we say that $v$ and $w$ \emph{participate} in $x$. 
+Let $T$ and, for each $x\in V(T)$, $Y_x$, $V_x$, $F_x$, and $N_x$ be a decomposition obtained by applying \thmref{generalized-tripod} ot $G$, let $H:=G/\{Y_x:x\in V(T)\}$ denote the resulting quotient graph, and let $(B_x:x\in V(T))$ be a tree-decomposition of $H$ given by \lemref{nice-decomposition}.  For simplicity, we bypass the graph $H'$ and assume, from the outset, that $V(H)\subseteq V(T)$.
 
-For any $v\in V(G)$, the union of all $(k,d)$ shortcuts in $G$ that have $v$ as an endpoint is a connected subgraph of $G$.  It follows that the set of nodes $x\in V(T)$ in which $v$ participates is a non-empty (connected) subtree of $T$ and we let $a(v)$ denote the root of this subtree. For each $x\in V(T)$, we define the \emph{separator}
+For two nodes $vw\in V(G)$, a $(k,d)$ \emph{$vw$-longcut} is a walk $W=v_0,\ldots,v_{r}$ in $G$ of length $r\le k$ with $v_0=v$, $v_r=w$, in which, for each $i\in\{1,\ldots,r-1\}$, the degree of $v_i$ in $G$ is at most $d$.  Observe that every $(k,d)$ $vw$-shortcut is also a $(k,d)$ $vw$-longcut and that $G$ contains a $(k,d)$ $vw$-shortcut if and only if it contains a $(k,d)$ $vw$-longcut. 
+
+For a node $x\in V(T)$, we say that a $(k,d)$ $vw$-longcut $P$ in $G$ \emph{crosses} $x$ if $Y_x$ contains an internal vertex of $P$.  We say that a vertex $v\in V(G)$ \emph{participates} in $x$ if $v\in Y_x$ or $G$ contains a $vw$-longcut that crosses $x$.
+
+\begin{clm}
+  For every vertex $v\in V(G)$, there is a (unique) node $a(v)\in V(T)$ such that $v$ participates in $a(v)$ and $a(v)$ is a $T$-ancestor of every node in which $x$ participates. 
+\end{clm}
+
+\begin{proof}
+  Consider the subset $X$ of vertices $v'\in V(G)$ such that $G$ contains a path from $v$ to $v'$ of length at most $k$ in which every vertex other than (possibly) $v$ has degree at most $d$.  Clearly $G[X]$ is connected and, by definition, $v$ participates in a node $x\in V(T)$ if and only if $X\cap Y_x\neq\emptyset$.
+
+  Let $X_H:=\{x\in V(H): X\cap Y_x\neq\emptyset\}$.  The connectivity of $G[X]$ implies that $H[X_H]$ is connected.  Property~\tref{ancestor-edge} implies that, for every $xy\in E(H)$, one of $x$ or $y$ is a $T$-ancestor of the other. Choose $a(v)\in X_H$ to be any member of $X_H$ that does not have a strict $T$-ancestor in $X_H$.  Transitivity of the $T$-ancestor relationship, \tref{ancestor-edge}, and connectivity of $H[X_H]$ implies that $a(v)$ is a $T$-ancestor of every node $x\in X_H$, as required.
+\end{proof}
+
+For each $x\in V(T)$, we define the \emph{separator}
 \[  
      S_x := \{v\in V(G): a(v)= x\} \enspace .
 \]
 Observe that $\mathcal{S}:=(S_x : x\in V(T))$ is a partition of $V(G)$.  We let $I:=G^{k,d}/(S_x : x\in V(T))$ denote the resulting quotient graph and we let $V(I)\subseteq V(T)$ in the obvious way, so that each $x\in V(I)$ is the vertex obtained by contracting $S_x$ in $G^{k,d}$. (Nodes $x\in V(T)$ with $S_x=\emptyset$ do not contribute a vertex to $I$.)
 
-\begin{clm}
-  For every $x\in V(T)$, $S_x\subseteq N_x$.
+\begin{clm}\clmlabel{s-subset}
+  For every $x\in V(T)$, $S_x\subseteq V_x$.
 \end{clm}
 
 \begin{proof}
-  For the sake of contradiction, assume otherwise.
-  Then, $G$ contains a $(k,d)$ $vw$-shortcut $P$ that contains an internal vertex $v'\in Y_x$ and such that $w\not\in N_x$.  By \yref{separator}, $P$ contains an internal vertex $v''\in F_x$.  By \yref{ancestor-edge}, $v''\in Y_a$ for some strict $T$-ancestor $a$ of $x$, contradicting the assumption that $v\in S_x$ (since $v$ would would be in $Y_{a'}$ for some $T$-ancestor $a'$ of $a$). 
+  For the sake of contradiction, assume otherwise, so there exists some $v\in S_x\setminus V_x$.
+  
+  By \yref{y-subsets}, $Y_x\subseteq V_x$, so $v\not\in Y_x$.  Therefore, $G$ contains a path $v=v_0,v_1,\ldots,v_{r}$ such that $r <k$, $v_r\in Y_x$ and the degree of $v_i$ in $G$ is at most $d$ for each $i\in\{1,\ldots,r\}$.  Since $v\not\in V_x$ and $v_r\in V_x$, \yref{separator}, implies that $v_i\in F_x$ for some $i\in\{0,\ldots,r-1\}$. Now \yref{ancestor-edge} implies $v_i\in Y_a$ for some srict $T$-ancestor $a$ of $x$.  But the existence of the path $v_0,\ldots,v_i$ in $G$ implies that $v=v_0\in S_{a'}$ for some ancestor $a'$ of $a$, contradicting the assumption that $v\in S_x$.
 \end{proof}
 
 Next we show that $\mathcal{S}$ has small layered width with respect to $\mathcal{L}$:
 
-\begin{clm}
-  For each $i\in\{1,\ldots,h\}$ and each $x\in V(I)$, $|S_x\cap V_i|\le t\ell(1+(d-1)^{k-1})$.  
+\begin{clm}\clmlabel{general-width}
+  For each $i\in\{1,\ldots,h\}$ and each $x\in V(I)$, $|S_x\cap V_i|\le t\ell(1 + 2(k-1)d^{k-1})$.  
 \end{clm}
 
 \begin{proof}
   Consider some vertex $v\in S_x\cap L_i$.  There are two cases to consider:
   \begin{enumerate}
     \item $v\in Y_x$.  By \yref{thickness}, there are at most $t\ell$ such vertices in $S_x\cap L_i$.
-    \item $G$ contains a $(k,d)$ $vw$-shortcut $P$ and $Y_x$ contains an internal vertex $v'$ of $P$. In this case, $v'\in L_{i+j}\cap Y_x$ for some $j\in\{-k+1,\ldots,k-1\}$.   Since $|L_{i+j}\cap Y_x|\le t\ell$, the length of $P$ is at most $k-1$, and the internal vertices of $P$ have degree at most $d$ in $G$, there are at most $t\ell(d-1)^{k-1}$ such vertices in $S_x\cap L_i$. \qedhere
+    \item $G$ contains a path $v=v_0,\ldots,v_r$ with $r<k$ such that $v_r\in Y_x$ and the degree of $v_i$ in $G$ is at most $d$.
+    In this case, $v_r\in L_{i+j}\cap Y_x$ for some $j\in\{-k+1,\ldots,k-1\}$.
+    For each $w\in L_{i+j}\cap Y_x$, the number of such paths originating from $w$ is at most $d^{k-1}$. Therefore, there are at most $t\ell(d-1)^{k-1}$ such vertices in $S_x\cap L_i$. \qedhere
   \end{enumerate}
 \end{proof}
 
-\begin{clm}
+\begin{clm}\clmlabel{i-ancestor}
   For each edge $xy\in E(I)$, one of $x$ or $y$ is a $T$-ancestor of the other.
 \end{clm}
 
 \begin{proof}
-  Consider the lowest common $T$-ancestor $a$ of $x$ and $y$ and assume, for the sake of contradiction that $a\not\in\{x,y\}$.  
-  
-  
-  
-  By \yref{separator}, $G-(F_a\cup Y_a)$ does not contain any path from a vertex $v\in V_x$ to a vertex $w\in V_y$.  
+  Suppose, for the sake of contradiction, that neither $x$ nor $y$ is a $T$-ancestor of the other.  Since $xy\in E(I)$, $G^{k,d}$ contains an edge $vw$ with $v\in S_x$ and $w\in S_y$.  Therefore $G$ contains a $(k,d)$ $vw$-shortcut $P$.  By \clmref{s-subset}, $v\in V_x$ and $w\in V_y$.  If neither $x$ nor $y$ is a $T$-ancestor of the other, then $V_x$ and $V_y$ are disjoint.  By \yref{ancestor-edge} $N_x$ and $V_y$ are also disjoint.  By \yref{separator} $P$ contains an internal vertex $v'\in F_x$.  By \yref{ancestor-edge}, $v'\in Y_a$ for some strict $T$-ancestor $a$ of $x$.  But this implies that $v\in S_{a'}$ for some $T$-ancestor $a'$ of $a$, contradicting the assumption that $v\in S_x$.
 \end{proof}
 
 
 
-\begin{clm}
+\begin{clm}\clmlabel{general-bag-size}
   The graph $I$ has a tree-decomposition whose largest bag has size at most $t^k$.
 \end{clm}
 
 \begin{proof}
-  For the tree-decomposition of $I$ we use the same tree $T$ used in the tree-decomposition of $H$.  First we claim that, for each edge
+  For the tree-decomposition $(B_x:x\in V(T))$ of $I$ we use the same tree $T$ used in the tree-decomposition of $H$. For each node $x$ of $T$, $B_x$ contains $x$ as well as every $T$-ancestor $a$ of $x$ such that $I$ contains an edge $ax'$ where $x$ is a $T$-ancestor of $x'$ (including the possibility that $x=x'$).
+  \clmref{i-ancestor} ensures that, for every edge $ax'\in E(I)$, $a,x'\in B_{x'}$ and the connectivity of $T[a]:=T[\{x\in V(T):a\in B_x]$ is obvious.  Therefore $(B_x:x\in V(T))$ is indeed a tree-decomposition of $I$.  What remains is to bound the size of the largest bag.
   
+  Consider an arbitray node $x\in V(T)$ whose ancestors are $x_0,\ldots,x_{r-1},x_r=x$.  If $x_\delta\in B_x$, it is because $x_\delta x'\in E(I)$ for some $T$-descendant $x'$ of $x$.  This implies $G^{k,d}$ contains an edge $vw$ with $v\in S_{x'}$ and $w\in S_{x_i}$.  This implies that $G$ contains a $(k,d)$ $vw$-shortcut.  Since $w\in S_{x_i}$, $G$ contains a $(k,d)$ $ww'$-longcut $P_{ww'}$ that has an internal vertex in $w''\in Y_{x_i}$.
+  
+  Let $w_0,\ldots,w_p$ be the subpath of $P_{ww'}$ that begins at $w_0:=w$ and ends at $w_p:=w''$.  For each $i\in\{0,\ldots,p\}$, let $s_i=\max\{j: \{w_0,\ldots,w_i\}\subseteq V_{x_j}\}\}$.  Note that $s_0,\ldots,s_p$ is a non-increasing sequence with $s_0=r$ and $s_p=\delta$.  By \yref{ancestor-edge}, given $s_i$, there are at most $t+1$ possible values of $s_{i+1}$:  Either $s_{i+1}=s_i$ or $s_{i+1}$ is the index of one of the $t$ ancestors described in \yref{ancestor-edge}.  This immediately implies that $|B_x|\le \sum_{i=0}^{k-1} t^i < t^k$ for $t\ge 2$.  But we can do better....
 \end{proof}
 
 
 
-\newpage 
+Together, \clmref{general-width} and \clmref{general-bag-size} imply the following generalization of \thmref{k-planar}:
 
 \begin{thm}
   Let $\ell\ge 1$, $t\ge 2$, $d\ge 1$, and $k\ge 1$ be integers, let $G$ be a graph having a layered $I$-partition of layered width $\ell$ in which $I$ has treewidth at most $t-1$.  Then $G^{k,d}$ has a layered $H$-partition of layered width $O(\ell kd^k)$ where the treewidth of $H$ is at most $\binom{t+k-1}{k}$.
 \end{thm}
-
-\begin{proof}
-  Let $(Q_x: x\in V(I))$ denote the given $I$-partition of $G$ and let $\langle V_1,\ldots,V_h\rangle$ be the given layering of $G$.  For a node $x\in V(T)$, let $R_x:=\bigcup_{y\in C_x} Q_{y}$.
-  Apply \lemref{nice-decomposition} to $I$ to obtain a tree-decomposition $(C_x: x\in V(T))$ of $I$ where $T$ is rooted at some node $x_0$ and that satisifies Properties~\tref{t:first}--\tref{t:last}. (We skip the introduction of the isomorphic graph $H'$ and assume from the outset that $V(I)\subseteq V(T))$.)
-  
-  For each $v\in V(G)$, let $q(v)$ denote the unique node $q\in V(I)$ such that $v\in Q_q$ and let $c(v)$ denote the root of the subtree $T[v]:=T[\{x\in V(T):q(v)\in C_x]$. For each $x\in V(T)$, define the following objects:
-  \begin{enumerate}
-    \item $Y_x=\{v\in V(G):c(v)=x\}$.  
-    \item $V_x=\bigcup_{y\in V(T_x)} V(Y_y)$.  
-    \item $F_x = \{w\in V(G): vw\in E(G), w\in V_x$. 
-    \item $N_x = G[V_x\cup V(F_x)]$.  
-  \end{enumerate}
-  
-  These objects have the following properties:
-
-  \begin{enumerate}
-    \item $(Y_x: x\in V(T))$ is a partition of $V(G)$.
-    \item For all $i\in\{1,\ldots,h\}$, $|Y_x\cap L_i| \le t\ell$. (Since $Y_x\subseteq\bigcup_{y\in C_x} Q_y$, $|C_x|\le t$, and $|Q_y\cap L_i|\le\ell$.)
-    \item $N_x\subseteq N_{y}$ for every $T$-ancestor $y$ of $x$.
-    \item $x$ has $t'\le t$ $T$-ancestors $a_1,\ldots,a_{t'}$ such that $F_x \subseteq \bigcup_{i=1}^{t'} Y_{a_i}$.
-  \end{enumerate}
-  Property~4 follows from \tref{t:ancestor-edge}:  For each edge $vw\in E(G)$ with $w\in V_x$ and $v\in Y_{a_i}$, the graph $I$ contains the edge $q(v)q(w)=a_ix'$ where (by Property~3) $x'$ is a $T$-descendant of $x$ (possibly $x'=x$).  By \tref{t:ancestor-edge} one of $x'$ or $a_i$ is a $T$-ancestor of the other. For some reason (????) $a_i$ is an ancestor of $x'$.  Therefore $a_i$ is contained in $C_x$.  Property~4 then follows from the fact that $|C_x|\le t$.
-  
-  =====  
-  
-  
-    
-  Let $(Q_x: x\in V(I))$ denote the given $I$-partition of $G$.  For a node $x\in V(T)$, let $R_x:=\bigcup_{y\in C_x} Q_{y}$. 
-  
-  
-  For a node $x\in V(T)$, we say that a $(k,d)$ $vw$-shortcut $P$ in $G$ \emph{touches} $x$ if $V(P)\cap R_x\neq\emptyset$.  If $G$ contains a $vw$-shortcut that touches $x$, then we say that $v$ and $w$ \emph{participate} in $x$. 
-  
-  For any $v\in V(G)$, the union of all $(k,d)$ shortcuts in $G$ that have $v$ as an endpoint is a connected subgraph of $G$.  It follows that the set of nodes $x\in V(T)$ in which $v$ participates is a non-empty (connected) subtree of $T$ and we let $a(v)$ denote the root of this subtree. For each $x\in V(T)$, we define the \emph{separator}
-  \[  
-       S_x := \{v\in V(G): a(v)= x\} \enspace .
-  \]
-  Observe that $(S_x : x\in V(T))$ is a partition of $V(G)$.  We let $H:=G^{k,d}/(S_x : x\in V(T))$ denote the resulting quotient graph and we let $V(H)=V(T)$ in the obvious way, so $x\in V(H)$ is the vertex obtained by contracting $S_x$ in $G^{k,d}$.
-  
-  For a node $x$ in $T$ with ancestors $x_0,x_1,\ldots,x_r=x$ that roots a maximal subtree $T_x$, we define several subgraphs of $G$:  $\overline{G}_x = G[\bigcup_{y\in V(T_x)} R_y$, $G_x=\overline{G}_x\setminus(\bigcup_{i=1}^{r-1} R_{x_i})$, $F_x=G[\{w\in V(G): vw\in E(G), v\in V(G_x)\}]$, $Y_x=G[\{v\in V(G): a(v)=x]$
-  
-  
-   $F_x=G[R_x\setminus \bigcup_{i=1}^{r-1} R_{x_i}]$.  We let $T_x$ denote the subtree of $T$ rooted at $x$ and let $G_x := G[\bigcup_{y\in V(T_x)} R_y\setminus R_x]$.
-  
-  
-  
-  
-  
-  We claim that, for any edge $xy\in E(H)$, $x$ is a $T$-ancestor of $y$ or vice-versa.  Indeed, if $xy\in E(H)$, then there exists an edge $vw\in E(G^{k,d})$ with $v\in S_x$ and $w\in S_y$.  
-  
-  
-  Therefore $G$ contains a $vw$-shortcut $P$ where $v\in Q_{x'}$ for some $T$-descendant $x'$ of $x$ and $w\in Q_{y'}$ for some $T$-descendant $y'$ of $y$.  If neither $x$ nor $y$ is were a $T$-ancestor of the other, then neither $x'$ nor $y'$ would be an ancestor of the the other, but both $v$ and $w$ would participate in a node $z$ that is a $T$-ancestor of both $x$ and $y$.  This would contradict the fact that $v\in S_x$ and $w\in S_y$.
-  
-  We construct a tree-decomposition $\mathcal{T}:=(B_x:x\in V(T))$ of $I$ as follows: For each edge $xy\in E(I)$ we include $x$ in $B_z$ for each node $z$ on the path, in $T$ from $x$ to $y$.  This is clearly a tree-decomposition of $I$ and it has the property that, for any $x\in V(I)$, $T[x]$ is rooted at $x$.  All that remains is to bound the width of $\mathcal{T}$.  
-
-  We now focus on one particular bag $B_x$ for some $x\in V(T)$.  
-  Let $x_0,\ldots,x_d$ be the path from $x_0:=x$ to the root of $T$.  
-  Let $T_i$ denote the subtree of $T$ rooted at $x_i$ and let
-  \[ 
-      G_i := G[\bigcup_{x'\in V(T_i)}\bigcup Q_{x'}]-Q_{x_{i-1}} \enspace .
-  \]
-  In other words, $G_i$ is the part of $G$ that contains that is separated by the removal of $S$
-  
-  
-  
-  
-  Define $N_{x_0}:=G$ and, for each $i\in\{1,\ldots,d\}$, define $N_{x_i}$ to be the subgraph of $G$ induced by the union, over all $x'$ in the subtree of 
-  
-  
-  
-  % containing exactly those components of $N_{x_{i-1}}-Q_{x_i}$ that contain vertices in $
-  
-  
-  As discussed above, for any node $x\in V(T)$, the bag $B_x$ contains only $T$-ancestors of $x$ (including $x$ itself).  If $B_x$ contains some $T$-ancestor $y$ then this is because $xy\in E(I)$ which implies that there exists $vw\in E(G')$ with $v\in S_{x'}$ and $w\in S_y$ for some $T$-descendant $x'$ of $x$.  This implies that $G$ contains a $vw$-shortcut $P=v_0,\ldots,v_p$ with $v_0=v$ and $v_p=w$.   
-  Note that neither $v$ nor $w$ participates any $T$-ancestor of $y$ other than $y$.  Therefore $P$ does not contain any vertices of $Q_{y'}$ for any ancestor $y'$ of $y$.
-\end{proof}
 
   
   
