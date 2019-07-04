@@ -484,7 +484,8 @@ We conclude this section with a small extension of \thmref{k-planar} that is use
 \newpage
 \section{A Generalization}
 
-We now generalize \thmref{k-planar} to a more abstract setting.  For two sets $A$ and $B$, we use $A\ominus B := (A\cup B)\setminus(A\cap B)$ to denote the symmetric difference between $A$ and $B$.  We begin with a fairly standard lemma about normalized tree decompositions:
+We now generalize \thmref{k-planar} to a more abstract setting.  For two sets $A$ and $B$, we use $A\ominus B := (A\cup B)\setminus(A\cap B)$ to denote the symmetric difference between $A$ and $B$.  For a rooted tree $T$ and any node $x\in V(T)$, we define $T_x := T[\{y\in V(T):\mbox{$x$ is a $T$-ancestor of $y$}\}]$ to be the maximal subtree of $T$ rooted at $x$.
+We begin with a fairly standard lemma about normalized tree decompositions:
 
 \begin{lem}\lemlabel{nice-decomposition}
   Let $H$ be a graph of treewidth $t$.  Then there exists a graph $H'$ isomorphic to $H$ that has a tree-decomposition $(B_x:x\in V(T))$ of width at most $t$ that has following additional properties:  
@@ -511,18 +512,18 @@ We now generalize \thmref{k-planar} to a more abstract setting.  For two sets $A
 
 \subsection{Generalized Tripod Partitions}
 
-Let $G$ be a graph and let $(\mathcal{L}:=\langle V_1,\ldots,V_h\rangle,\mathcal{P}:=(Q_x: x\in V(H)))$ be a layered partition of $G$ of layered width $\ell$ where the treewidth of the quotient graph $H=G/\mathcal{P}$ is at most $t$.  In this section we define a hierarchical structure on $G$ that can be obtained from $(\mathcal{L},\mathcal{P})$.
+For the remainder of this section, $G$ is a graph and $(\mathcal{L}:=\langle V_1,\ldots,V_h\rangle,\mathcal{P}:=(Q_x: x\in V(H)))$ is a layered partition of $G$ of layered width $\ell$ where the treewidth of the quotient graph $H=G/\mathcal{P}$ is at most $t-1$.  The following lemma shows how to use $(\mathcal{L},\mathcal{P})$ to define a hierarchical decomposition of $G$.
 
 \begin{lem}\thmlabel{generalized-tripod}
   There exists a tree $T$ rooted at a node $x_0$ where each node $x\in V(T)$ is associated with a subset $Y_x\subseteq V(G)$ that defines several related sets $V_x = \bigcup_{y\in V(T_x)} Y_y$, $F_x=\{w\in V(G): vw\in E(G), v\in V_x,\, w\not\in V_x\}$, and $N_x=V_x\cup F_x$ that satisfy the following properties:
   \begin{compactenum}[(Y1)]
-    \item\ylabel{thickness} $\mathcal{Y}:=(Y_x: x\in V(T))$ is a partition of $V(G)$ of layered width (with respect to $\mathcal{L}$) at most $t\ell$.
+    \item\ylabel{thickness} $\mathcal{Y}:=(Y_x: x\in V(T))$ is a partition of $V(G)$ of layered width (with respect to $\mathcal{L}$) at most $\ell$.
     \item\ylabel{separator} There is no edge $vw\in E(G)$ with $v\in V_x$ and $w\in V(G)\setminus N_x$. 
     \item\ylabel{ancestor-edge} $x$ has $t'\le t$ strict $T$-ancestors $a_1,\ldots,a_{t'}$ such that $F_x \subseteq \bigcup_{i=1}^{t'} Y_{a_i}$.
   \end{compactenum}
 \end{lem}
 
-Before proving \thmref{generalized-tripod} we point two properties that are immediately implied by it:
+Before proving \thmref{generalized-tripod} we point out more properties that are immediately implied by it:
 
 \begin{compactenum}[(Y1)]\setcounter{enumi}{3}
   \item\ylabel{y-subsets} $Y_x\subseteq V_x$ for every $x\in V(T)$. 
@@ -530,21 +531,27 @@ Before proving \thmref{generalized-tripod} we point two properties that are imme
   \item\ylabel{containment-ii}$N_x\subseteq N_a$ for every $T$-ancestor $a$ of $x$.
 \end{compactenum}
 
-Property~\yref{y-subsets} follows from the fact that $V_x$ is the union of several sets, one of which is $Y_x$.  Property~\yref{containment-i} follows from the definitions of $V_x$ and the fact that the subtree $V(T_x)\subseteq V(T_a)$. To show Property~\yref{containment-ii} first note that, by \yref{containment-i} it suffices to consider vertices in $w\in F_x=N_x\setminus V_x$. By definition, every vertex $w\in F_x$ is adjacent, in $G$, to a vertex $v\in V_x$.  By \yref{containment-i}, $v\in V_a$, so $w$ is either in $V_a$ or $w$ satisfies the condition $vw\in E(G)$, $v\in V_a$, and $w\not\in V_a$, so $w\in F_a$.  In either case $w\in N_a=V_a\cup F_a$.  Note that none of \yref{y-subsets}--\yref{containment-ii} depends on \yref{ancestor-edge} (which is important, since \yref{containment-i} is used to establish \yref{ancestor-edge} below).
+Property~\yref{y-subsets} follows from the fact that $V_x$ is the union of several sets, one of which is $Y_x$.  Property~\yref{containment-i} follows from the definition of $V_x$ and the fact that $V(T_x)\subseteq V(T_a)$. To show Property~\yref{containment-ii} first note that, by \yref{containment-i} it suffices to consider vertices in $w\in F_x=N_x\setminus V_x$. By definition, every vertex $w\in F_x$ is adjacent, in $G$, to a vertex $v\in V_x$.  By \yref{containment-i}, $v\in V_a$, so $w$ is either in $V_a$ or $w$ satisfies the condition $vw\in E(G)$, $v\in V_a$, and $w\not\in V_a$, so $w\in F_a$.  In either case $w\in N_a=V_a\cup F_a$.  Note that none of \yref{y-subsets}--\yref{containment-ii} depends on \yref{ancestor-edge} (which is important, since \yref{containment-i} is used to establish \yref{ancestor-edge} in the following proof).
 
 \begin{proof}[Proof of \thmref{generalized-tripod}]
-  Apply \lemref{nice-decomposition} to $I$ to obtain a tree-decomposition $(B_x: x\in V(T))$ of $I$ where $T$ is rooted at some node $x_0$ and that satisifies Properties~\tref{first}--\tref{last}. (We skip the introduction of the isomorphic graph $H'$ and assume from the outset that $V(I)\subseteq V(T))$.)
+  Apply \lemref{nice-decomposition} to $H$ to obtain a tree-decomposition $(B_x: x\in V(T))$ of $H$ where $T$ is rooted at some node $x_0$ and that satisifies Properties~\tref{first}--\tref{last}. (We skip the introduction of the isomorphic graph $H'$ and assume from the outset that $V(H)\subseteq V(T))$.)
 
-  For each $v\in V(G)$, let $q(v)$ denote the unique node $q\in V(I)$ such that $v\in Q_q$ and let $b(v)$ denote the root of the subtree $T[v]:=T[\{x\in V(T):q(v)\in B_x\}]$. For each $x\in V(T)$, define $Y_x=\{v\in V(G):c(v)=x\}$.  
-  Clearly, $\mathcal{Y}:=(Y_x:x\in V(T))$ is a partition of $V(G)$.  Furthermore, for any $i\in\{1,\ldots,h\}$ 
-  \[  |Y_x\cap V_i| = \sum_{y\in C_x}|Q_y\cap V_i|\le |C_x|\ell \le t\ell ,
-  \] 
+  For each $v\in V(G)$, let $q(v)$ denote the unique node $q\in V(H)$ such that $v\in Q_q$.  For each $x\in V(T)$, define
+  \[
+      Y_x = \begin{cases} Q_x & \text{if $x\in V(H)$} \\
+                          \emptyset & \text{otherwise} .
+            \end{cases}
+  \]
+   % 
+   % 
+   % and let $b(v)$ denote the root of the subtree $T[v]:=T[\{x\in V(T):q(v)\in B_x\}]$. For each $x\in V(T)$, define $Y_x=\{v\in V(G):c(v)=x\}$.  
+  Clearly, $\mathcal{Y}:=(Y_x:x\in V(T))$ is a partition of $V(G)$ and, for any $i\in\{1,\ldots,h\}$ $|Y_x\cap V_i|\le \ell$.
   so $\mathcal{Y}$ has layered width at most $t\ell$ with respect to $\mathcal{L}$.  This establishes \yref{thickness}. 
 
   Property \yref{separator} is immediate from the definitions of $F_x$ and $N_x$.  In particular, $(N_x,V(G)\setminus V_x)$ is a separation of $G$ with $F_x=N_x\cap(V(G)\setminus V_x)$. 
 
-  To establish Property~\yref{ancestor-edge}, consider some vertex $w\in F_x$.  Since $w\in F_x$, there exists an edge $vw\in E(G)$ with $v\in V_x$ and $w\not\in V_x$.  Since $v\in V_x$, $v\in Y_{x'}$ for some $T$-descendant $x'$ of $x$ (possibly $x=x'$). Since $\mathcal{Y}$ is a partition, $w\in Y_{a}$ for some $a\in V(T)$, $a\neq x$.  Since $v\in Y_{x'}$ and $w\in Y_a$, $q(v)=x'$ and $q(w)=a$, so $x'\in Q_v$ and $w\in Q_a$.  Therefore $H$ contains the edge $ax'$.  By \tref{ancestor-edge}, $a$ is an ancestor of $x'$ or $x'$ is an ancestor of $a$.  Since $w\in Y_a\subseteq V_a$ and $w\not\in V_x\supseteq V_{x'}$, \yref{containment-i} rules out the possibility that $x'$ is a $T$-ancestor of $a$. Therefore, $a$ is a $T$-ancestor of $x$ which is a $T$-ancestor of $x'$.  Let $x'=z_0,\ldots,z_r=a$ be the path, in $T$ from $x'$ to $a$.  For each $i\in\{0,\ldots,r\}$, at least one of $a$ or $x'$ is in $C_{z_i}$.  However, $b(x')=x'$, so $x'$ is not contained in $C_{x_i}$ for any $i\in\{1,\ldots,r\}$.  Therefore $a\in C_{x_i}$ for each $i\in\{0,\ldots,r\}$.  In particular, $a$ is contained in $C_x$.
-  Property~\yref{ancestor-edge} now follows from the fact that $|C_x|\le t$.
+  To establish Property~\yref{ancestor-edge}, consider some vertex $w\in F_x$.  Since $w\in F_x$, there exists an edge $vw\in E(G)$ with $v\in V_x$ and $w\not\in V_x$.  Since $v\in V_x$, $v\in Y_{x'}=Q_{x'}$ for some $T$-descendant $x'$ of $x$ (possibly $x=x'$). Since $\mathcal{Y}$ is a partition, $w\in Y_{a}=Q_a$ for some $a\not\in V(T_x)$.  Since $vw\in E(G)$, $x'a\in E(H)$.  By \tref{ancestor-edge}, one of $a$ or $x'$ is a $T$-ancestor of the other. Since $w\in Y_a\subseteq V_a$ and $w\not\in V_x\supseteq V_{x'}$, \yref{containment-i} rules out the possibility that $x'$ is a $T$-ancestor of $a$. Therefore, $a$ is a $T$-ancestor of $x$ which is a $T$-ancestor of $x'$.  Let $x'=z_0,\ldots,z_r=a$ be the path, in $T$ from $x'$ to $a$.  For each $i\in\{0,\ldots,r\}$, at least one of $a$ or $x'$ is in $C_{z_i}$.  However, by \tref{subtree-root} $x'$ is not contained in $C_{x_i}$ for any $i\in\{1,\ldots,r\}$.  Therefore $a\in C_{x_i}$ for each $i\in\{0,\ldots,r\}$.  In particular, $a$ is contained in $C_x$.
+  Property~\yref{ancestor-edge} now follows from the fact that $|C_x|\le t+1$.
 \end{proof}
 
 \subsection{Low-Degree Powers}
