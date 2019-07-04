@@ -487,7 +487,7 @@ We conclude this section with a small extension of \thmref{k-planar} that is use
 We now generalize \thmref{k-planar} to a more abstract setting.  For two sets $A$ and $B$, we use $A\ominus B := (A\cup B)\setminus(A\cap B)$ to denote the symmetric difference between $A$ and $B$.  We begin with a fairly standard lemma about normalized tree decompositions:
 
 \begin{lem}\lemlabel{nice-decomposition}
-  Let $H$ be a graph of treewidth $t-1$.  Then there exists a graph $H'$ isomorphic to $H$ that has a tree-decomposition $(B_x:x\in V(T))$ of width at most $t-1$ that has following additional properties:  
+  Let $H$ be a graph of treewidth $t$.  Then there exists a graph $H'$ isomorphic to $H$ that has a tree-decomposition $(B_x:x\in V(T))$ of width at most $t$ that has following additional properties:  
   \begin{compactenum}[(T1)]
     \item\tlabel{rooted}\tlabel{first} $T$ is rooted at some node $x_0\in V(T)$ with $B_{x_0}=\emptyset$.
     \item\tlabel{node-set} $V(H')\subseteq V(T)$.
@@ -498,16 +498,15 @@ We now generalize \thmref{k-planar} to a more abstract setting.  For two sets $A
 \end{lem}
 
 \begin{proof}
-  Begin with a width-$(t-1)$ tree-decomposition $(C_x:x\in V(T_0))$ of $H$ using a tree $T_0$ with the property that, for any edge $xy\in E(T_0)$, $|C_x\ominus C_y|\le 1$. That is, $C_x$ contains exactly one vertex not in $C_y$ or vice-versa. It is well-known that such a tree-decomposition exists.
+  Begin with a width-$t$ tree-decomposition $(C_x:x\in V(T_0))$ of $H$ using a tree $T_0$ with the property that, for any edge $xy\in E(T_0)$, $|C_x\ominus C_y|\le 1$. That is, $C_x$ contains exactly one vertex not in $C_y$ or vice-versa. It is well-known that such a tree-decomposition exists.  Indeed, any tree-decomposition of $H$ can be made to have this property adding $|C_x\ominus C_y|-1$ subdivision vertices along each edge $xy\in E(T_0)$ and assigning approriate bags to the newly introduced subdivision vertices.
   
-  Next, select an arbitrary node $x\in V(T_0)$ and let $C_x:=\{v_1,\ldots,v_{t'}\}$ denote the contents of $C_x$.
-  Create a new tree $T$ from $T_0$ by adding a path of nodes $x_0,x_1,x_2,\ldots,x_{t'-1},x_{t'}=x$. Let $C_{x_0}:=\emptyset$ and, for each $i\in\{1,\ldots,t'\}$, $C_{x_i}:=\{v_1,\ldots,v_i\}$.  Note that $(C_x: x\in V(T))$ is a width-$(t-1)$ tree-decomposition of $H$. Let $T$ be rooted at $x_0$. Note that $(C_x:x\in V(T))$ satisfies Properties~\tref{rooted}, and \tref{diff}.  For the remaining properties some renaming is required, which we now describe.
+  Next, select an arbitrary node $x\in V(T_0)$ and let $\{v_1,\ldots,v_{t'}\}:=C_x$ denote the contents of $C_x$. Create a new tree $T$ from $T_0$ by adding a path of nodes $x_0,x_1,x_2,\ldots,x_{t'-1},x_{t'}=x$. Let $C_{x_0}:=\emptyset$ and, for each $i\in\{1,\ldots,t'\}$, $C_{x_i}:=\{v_1,\ldots,v_i\}$.  Root $T_0$ at $x_0$ and note that $(C_x: x\in V(T))$ is a width-$t$ tree-decomposition of $H$ that satisfies Properties~\tref{rooted}, and \tref{diff}.  For the remaining properties some renaming is required, which we now describe.
   
-  For each $v\in V(H)$, let $v'\in V(T)$ be the unique node such that $v\in C_{v'}$ and $v'$ has minimum $T$-depth.  The uniqueness of $v'$ follows from the fact that $T[v]:=T[\{x\in V(T):v\in B_x\}]$ is connected, so $v'$ is the root of $T[v]$.  Furthermore, for any pair of distinct vertices $v,w\in V(H)$, \tref{rooted} and \tref{diff} ensure that $v'\neq w'$ since, otherwise, $C_{v'}\ominus C_{x'}\supseteq \{v',w'\}$ where $x'$ is the parent of $v'=w'$.  Property~\tref{rooted} would ensure that $x'$ exists and Property~\tref{diff} would ensure that $|C_{x'}\ominus C_{v'}|\le 1$.
+  For each $v\in V(H)$, let $v'\in V(T)$ be the unique node such that $v\in C_{v'}$ and $v'$ has minimum $T$-depth.  The uniqueness of $v'$ follows from the fact that $T[v]:=T[\{x\in V(T):v\in B_x\}]$ is connected, so $v'$ is the root of $T[v]$.  Furthermore, for any pair of distinct vertices $v,w\in V(H)$, \tref{rooted} and \tref{diff} ensure that $v'\neq w'$: Otherwise, $C_{v'}\ominus C_{x'}\supseteq \{v',w'\}$ where $x'$ is the parent of $v'=w'$.  Property~\tref{rooted} ensures that $x'$ exists but then Property~\tref{diff} contradicts $C_{v'}\ominus C_{x'}\supseteq \{v',w'\}$.
   
-  For each $x\in V(T)$, let $B_x=\{v' : v\in C_x\}$.  Now define the graph $H'$ to have vertex set $V(H')=\{v':v\in V(H)\}$ and edge set $E(H')=\{v'w': vw\in E(H)\}$.  Obviously, $H'$ isomorphic to $H$ and $V(H')\subseteq V(T)$ and $(B_x: x\in V(T))$ is a width=$(t-1)$ tree-decomposition of $H'$.  The decomposition $(B_x: x\in V(T))$ inherits Properties~\tref{rooted} and \tref{diff} from $(C_x:x\in V(T))$ and satisfies Property~\tref{node-set} and \tref{subtree-root} by definition.
+  For each $x\in V(T)$, let $B_x=\{v' : v\in C_x\}$.  Now define the graph $H'$ to have vertex set $V(H')=\{v':v\in V(H)\}$ and edge set $E(H')=\{v'w': vw\in E(H)\}$.  Obviously, $H'$ isomorphic to $H$, $V(H')\subseteq V(T)$ and $(B_x: x\in V(T))$ is a width-$t$ tree-decomposition of $H'$.  The decomposition $(B_x: x\in V(T))$ inherits Properties~\tref{rooted} and \tref{diff} from $(C_x:x\in V(T))$ and satisfies \tref{node-set} and \tref{subtree-root} by definition.
   
-  To see that $(B_x:x\in V(T))$ satisifies Property~\tref{ancestor-edge}, observe that, if $vw\in E(H)$, then at least one of $v'$ or $w'$ is contained in $B_x$ for every node $x$ on the path from $v'$ to $w'$ in $T$.  If neither $v'$ nor $w'$ is an ancestor of the other, then some node $x$ on this path has $T$-depth less than that of $v'$ and $w'$.  If $v'\in B_x$ this contradicts the fact that $v'$ is the root of $T[v']$.  If $w'\in B_x$ this contradicts the fact that $w'$ is the root of $T[w']$.
+  To see that $(B_x:x\in V(T))$ satisifies \tref{ancestor-edge}, observe that, if $vw\in E(H)$, then at least one of $v'$ or $w'$ is contained in $B_x$ for every node $x$ on the path from $v'$ to $w'$ in $T$.  If neither $v'$ nor $w'$ is an ancestor of the other, then some node $x$ on this path has $T$-depth less than that of $v'$ and $w'$.  If $v'\in B_x$ this contradicts the fact that $v'$ is the root of $T[v']$.  If $w'\in B_x$ this contradicts the fact that $w'$ is the root of $T[w']$.
 \end{proof}
 
 \subsection{Generalized Tripod Partitions}
@@ -658,7 +657,6 @@ It is natural to ask if \thmref{modern-major-general} is tight.  We do not answe
 \[
     \ell'\times t' \ge 2^{k/2}-1/2 \enspace .
 \]   
-
 \newpage
   
 \section{$1$-Planar Graphs}
