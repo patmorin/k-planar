@@ -512,7 +512,7 @@ We begin with a fairly standard lemma about normalized tree decompositions:
 
 \subsection{Generalized Tripod Partitions}
 
-For the remainder of this section, $G$ is a graph and $(\mathcal{L}:=\langle V_1,\ldots,V_h\rangle,\mathcal{P}:=(Q_x: x\in V(H)))$ is a layered partition of $G$ of layered width $\ell$ where the treewidth of the quotient graph $H=G/\mathcal{P}$ is at most $t-1$.  The following lemma shows how to use $(\mathcal{L},\mathcal{P})$ to define a hierarchical decomposition of $G$.
+For the remainder of this section, $G$ is a graph and $(\mathcal{L}:=\langle V_1,\ldots,V_h\rangle,\mathcal{P}:=(Q_x: x\in V(H)))$ is a layered partition of $G$ of layered width $\ell$ where the treewidth of the quotient graph $H=G/\mathcal{P}$ is at most $t$.  The following lemma shows how to use $(\mathcal{L},\mathcal{P})$ to define a hierarchical decomposition of $G$.
 
 \begin{lem}\thmlabel{generalized-tripod}
   There exists a tree $T$ rooted at a node $x_0$ where each node $x\in V(T)$ is associated with a subset $Y_x\subseteq V(G)$ that defines several related sets $V_x = \bigcup_{y\in V(T_x)} Y_y$, $F_x=\{w\in V(G): vw\in E(G), v\in V_x,\, w\not\in V_x\}$, and $N_x=V_x\cup F_x$ that satisfy the following properties:
@@ -550,13 +550,13 @@ Property~\yref{y-subsets} follows from the fact that $V_x$ is the union of sever
 
   Property \yref{separator} is immediate from the definitions of $F_x$ and $N_x$.  In particular, $(N_x,V(G)\setminus V_x)$ is a separation of $G$ with $F_x=N_x\cap(V(G)\setminus V_x)$. 
 
-  To establish Property~\yref{ancestor-edge}, consider some vertex $w\in F_x$.  Since $w\in F_x$, there exists an edge $vw\in E(G)$ with $v\in V_x$ and $w\not\in V_x$.  Since $v\in V_x$, $v\in Y_{x'}=Q_{x'}$ for some $T$-descendant $x'$ of $x$ (possibly $x=x'$). Since $\mathcal{Y}$ is a partition, $w\in Y_{a}=Q_a$ for some $a\not\in V(T_x)$.  Since $vw\in E(G)$, $x'a\in E(H)$.  By \tref{ancestor-edge}, one of $a$ or $x'$ is a $T$-ancestor of the other. Since $w\in Y_a\subseteq V_a$ and $w\not\in V_x\supseteq V_{x'}$, \yref{containment-i} rules out the possibility that $x'$ is a $T$-ancestor of $a$. Therefore, $a$ is a $T$-ancestor of $x$ which is a $T$-ancestor of $x'$.  Let $x'=z_0,\ldots,z_r=a$ be the path, in $T$ from $x'$ to $a$.  For each $i\in\{0,\ldots,r\}$, at least one of $a$ or $x'$ is in $C_{z_i}$.  However, by \tref{subtree-root} $x'$ is not contained in $C_{x_i}$ for any $i\in\{1,\ldots,r\}$.  Therefore $a\in C_{x_i}$ for each $i\in\{0,\ldots,r\}$.  In particular, $a$ is contained in $C_x$.
-  Property~\yref{ancestor-edge} now follows from the fact that $|C_x|\le t+1$.
+  To establish Property~\yref{ancestor-edge}, consider some vertex $w\in F_x$.  Since $w\in F_x$, there exists an edge $vw\in E(G)$ with $v\in V_x$ and $w\not\in V_x$.  Since $v\in V_x$, $v\in Y_{x'}=Q_{x'}$ for some $T$-descendant $x'$ of $x$ (possibly $x=x'$). Since $\mathcal{Y}$ is a partition, $w\in Y_{a}=Q_a$ for some $a\not\in V(T_x)$.  Since $vw\in E(G)$, $x'a\in E(H)$.  By \tref{ancestor-edge}, one of $a$ or $x'$ is a $T$-ancestor of the other. Since $w\in Y_a\subseteq V_a$ and $w\not\in V_x\supseteq V_{x'}$, \yref{containment-i} rules out the possibility that $x'$ is a $T$-ancestor of $a$. Therefore, $a$ is a $T$-ancestor of $x$ which is a $T$-ancestor of $x'$.  Let $z_0,\ldots,z_r$ be the path, in $T$ from $z_0:=x'$ to $z_r:=a$.  For each $i\in\{0,\ldots,r\}$, at least one of $a$ or $x'$ is in $B_{z_i}$.  However, by \tref{subtree-root} $x'$ is not contained in $B_{x_i}$ for any $i\in\{1,\ldots,r\}$.  Therefore $a\in B_{x_i}$ for each $i\in\{0,\ldots,r\}$.  In particular, $a$ is contained in $B_x$.
+  Property~\yref{ancestor-edge} now follows from the fact that $|B_x|\le t+1$ and $C_x$ contains $x$.
 \end{proof}
 
 \subsection{Low-Degree Powers}
 
-For non-negative integers $k$ and $d$, a graph $G$ and distinct vertices $v,w\in V(G)$, a \emph{$(k,d)$ $vw$-shortcut} is a path in $G$ with endpoints $v$ and $w$ of length at most $k$ and whose internal vertices each have degree at most $d$.  The \emph{$(k,d)$th power of $G$}, denoted $G^{k,d}$, is the graph with vertex $V(G^{k,d})=V(G)$ in which, for each distinct pair $v,w\in V(G)$, $vw\in E(G^{d,k})$ if and only if $G$ contains a $(k,d)$ $vw$-shortcut.
+For non-negative integers $k$ and $d$, a graph $G$ and distinct vertices $v,w\in V(G)$, a \emph{$(k,d)$ $vw$-shortcut} in $G$ is a path in $G$ with endpoints $v$ and $w$ of length at most $k$ and whose internal vertices each have degree at most $d$.  The \emph{$(k,d)$th power of $G$}, denoted $G^{k,d}$, is the graph with vertex $V(G^{k,d})=V(G)$ in which, for each distinct pair $v,w\in V(G)$, $vw\in E(G^{d,k})$ if and only if $G$ contains a $(k,d)$ $vw$-shortcut.
 
 Let $T$ and, for each $x\in V(T)$, $Y_x$, $V_x$, $F_x$, and $N_x$ be a decomposition obtained by applying \thmref{generalized-tripod} ot $G$, let $H:=G/\{Y_x:x\in V(T)\}$ denote the resulting quotient graph, and let $(B_x:x\in V(T))$ be a tree-decomposition of $H$ given by \lemref{nice-decomposition}.  For simplicity, we bypass the graph $H'$ and assume, from the outset, that $V(H)\subseteq V(T)$.
 
