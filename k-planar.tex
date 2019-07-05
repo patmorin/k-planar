@@ -488,17 +488,25 @@ We now generalize \thmref{k-planar} to a more abstract setting.  For two sets $A
 We begin with a fairly standard lemma about normalized tree decompositions:
 
 \begin{lem}\lemlabel{nice-decomposition}
-  Let $H$ be a graph of treewidth $t$.  Then there exists a graph $H'$ isomorphic to $H$ that has a tree-decomposition $(B_x:x\in V(T))$ of width at most $t$ that has following additional properties:  
+  For any graph $H$ of treewidth $t$, there is a rooted tree $T$ with $V(T)=V(H)$ and a $T$-decomposition $(B_x:x\in V(T))$ of $H$ that has following additional properties:  
   \begin{compactenum}[(T1)]
-    \item\tlabel{rooted}\tlabel{first} $T$ is rooted at some node $x_0\in V(T)$ with $B_{x_0}=\emptyset$.
-    \item\tlabel{node-set} $V(H')\subseteq V(T)$.
-    \item\tlabel{diff} For each edge $xy\in E(T)$, $|B_x\ominus B_y|\le 1$.
-    \item\tlabel{subtree-root} For each $v'\in V(H')$, the subtree $T[v']:=T[\{x\in V(T):v'\in B_x\}]$ is rooted at $v'$.
-    \item\tlabel{ancestor-edge}\tlabel{last} For each edge $v'w'\in E(H)$, one of $v'$ or $w'$ is a $T$-ancestor of the other.
+    % \item\tlabel{rooted}\tlabel{first} $T$ is rooted at some node $x_0\in V(T)$ with $B_{x_0}=\emptyset$.
+    % \item\tlabel{node-set} $V(T)= V(H)$.
+    % \item\tlabel{diff} For each edge $xy\in E(T)$, $|B_x\ominus B_y|\le 1$.
+    \item\tlabel{subtree-root} For each $x\in V(H)$, the subtree $T[x]:=T[\{y\in V(T):x\in B_y\}]$ is rooted at $x$.
+    \item\tlabel{ancestor-edge}\tlabel{last} For each edge $xy\in E(H)$, one of $x$ or $y$ is a $T$-ancestor of the other.
   \end{compactenum}
 \end{lem}
 
 \begin{proof}
+  Begin with any width-$t$ tree decomposition $(B_x:x\in V(T_0))$ of $H$ that uses some rooted tree $T_0$ that is rooted at some node $x_0$ with $C_{B_0}=\emptyset$.  Let $f:V(H)\to V(T)$ be function that maps each $x\in V(H)$ onto the root of the subtree $T_0[x]:=T_0[\{y\in V(T_0): x\in B_y]$.  If $f$ is one-to-one, then proceed to the next paragraph. Otherwise, as long as there exists some distinct pair $x,y\in V(H)$ with $a:=f(x)=f(y)$ we subdivide the edge between $a$ and its parent by introducing a new node $a'$ with $B_{a'}=B_{a}\setminus\{x\}$.  This modification reduces the number of distinct pairs $x,y\in V(H)$ with $f(x)=f(y)$, so repeatedly performing this modification will eventually produce a tree-decomposition $(B_x:x\in V(T_0))$ of $H$ in which $f$ is one-to-one.
+  
+  Now, consider any node $a\in V(T_0)$ such that there is no vertex $x\in V(H)$ with $f(x)=a$.  In this case, $B_{a}\subseteq B_{a'}$ where $a'$ is the parent of $a$ since any $x\in B_a\setminus B_{a'}$ would have $f(x)=a$.  In this case, contract the edge $aa'$ in $T_0$, eliminating the node $a$.  Repeating this operation will eventually produce a width-$t$ tree-decomposition of $(B_x:x\in V(T_0))$ where $f$ is a bijection between $V(H)$ and $V(T_0)$.  Renaming each node $a\in T_0$ as $f^{-1}(a)$ gives a tree-decomposition $(B_x:x\in V(T))$ with $V(T)=V(H)$.  
+  
+
+  Now, for each vertex $x\in V(H)$, rename the node $f(x)$ in $T_0$ as $x$. The resulting tree decomposition uses a tree $T_0$ with $V(H)\subseteq V(T_0)$. 
+  
+     (or introduce a new node)   
   Begin with a width-$t$ tree-decomposition $(C_x:x\in V(T_0))$ of $H$ using a tree $T_0$ with the property that, for any edge $xy\in E(T_0)$, $|C_x\ominus C_y|\le 1$. That is, $C_x$ contains exactly one vertex not in $C_y$ or vice-versa. It is well-known that such a tree-decomposition exists.  Indeed, any tree-decomposition of $H$ can be made to have this property adding $|C_x\ominus C_y|-1$ subdivision vertices along each edge $xy\in E(T_0)$ and assigning approriate bags to the newly introduced subdivision vertices.
   
   Next, select an arbitrary node $x\in V(T_0)$ and let $\{v_1,\ldots,v_{t'}\}:=C_x$ denote the contents of $C_x$. Create a new tree $T$ from $T_0$ by adding a path of nodes $x_0,x_1,x_2,\ldots,x_{t'-1},x_{t'}=x$. Let $C_{x_0}:=\emptyset$ and, for each $i\in\{1,\ldots,t'\}$, $C_{x_i}:=\{v_1,\ldots,v_i\}$.  Root $T_0$ at $x_0$ and note that $(C_x: x\in V(T))$ is a width-$t$ tree-decomposition of $H$ that satisfies Properties~\tref{rooted}, and \tref{diff}.  For the remaining properties some renaming is required, which we now describe.
