@@ -242,7 +242,7 @@ The following is the main result of this paper; it shows that $k$-planar graphs 
 
 \begin{thm}
 \label{k-planar}
-Every $k$-planar graph has a layered $H$-partition of layered width at most $15k^2 + 30k$ in which $H$ has treewidth at most $\treewidth$.
+Every $k$-planar graph has a layered $H$-partition of layered width at most $18k^2 + 30k$ in which $H$ has treewidth at most $\treewidth$.
 \end{thm}
 
  
@@ -299,11 +299,11 @@ For a rooted tree $T$ and any node $x\in V(T)$, we define $T_x := T[\{y\in V(T):
 For the remainder of this section, $G$ is a graph and $(\mathcal{L}:=\langle V_1,\ldots,V_h\rangle,\mathcal{Y}:=(Y_x: x\in V(H)))$ is a layered partition of $G$ of layered width $\ell$ where the treewidth of the quotient graph $H=G/\mathcal{Y}$ is at most $t$.  In addition, $(B_x:x\in V(T))$ is a tree-decomposition of $H$ obtained by applying \lemref{nice-decomposition} to $H$.  The following lemma shows how to interpret these objects as a hierarchical decomposition of $G$.
 
 \begin{clm}\clmlabel{generalized-tripod}
-  For each $x\in V(T)$, let $V_x = \bigcup_{y\in V(T_x)} Y_y$, $F_x=\{w\in V(G): vw\in E(G), v\in V_x,\, w\not\in V_x\}$, and $N_x=V_x\cup F_x$.  Then, 
+  For each $x\in V(T)$, let $V_x := \bigcup_{y\in V(T_x)} Y_y$, $F_x:=\{w\in V(G): vw\in E(G), v\in V_x,\, w\not\in V_x\}$, and $N_x:=V_x\cup F_x$.  Then, 
   \begin{compactenum}[(Y1)]
     \item\ylabel{thickness} $\mathcal{Y}:=(Y_x: x\in V(T))$ is a partition of $V(G)$ of layered width (with respect to $\mathcal{L}$) at most $\ell$.
-    \item\ylabel{separator} For every $x\in V(T)$, there is no edge $vw\in E(G)$ with $v\in V_x$ and $w\in V(G)\setminus N_x$. 
-    \item\ylabel{ancestor-edge} For every $x\in V(T)$, $x$ has $t'\le t$ strict $T$-ancestors $a_1,\ldots,a_{t'}$ such that $F_x \subseteq \bigcup_{i=1}^{t'} Y_{a_i}$.
+    \item\ylabel{separator} For each $x\in V(T)$, there is no edge $vw\in E(G)$ with $v\in V_x$ and $w\in V(G)\setminus N_x$. 
+    \item\ylabel{ancestor-edge} For each $x\in V(T)$, there is a set $\{a_1,\ldots,a_{t'}\}$ of $t'\le t$ strict $T$-ancestors of $x$ such that $F_x \subseteq \bigcup_{i=1}^{t'} Y_{a_i}$.
   \end{compactenum}
 \end{clm}
 
@@ -320,8 +320,8 @@ Property~\yref{y-subsets} follows from the fact that $V_x$ is the union of sever
 \begin{proof}[Proof of \clmref{generalized-tripod}]
   Property~\yref{thickness} follows immediately from the fact that $V(T)=V(H)$ and the fact that $(\mathcal{L},\mathcal{Y})$ is a layered partition of layered width $\ell$.  Property \yref{separator} is immediate from the definitions of $F_x$ and $N_x$.  In particular, $(N_x,V(G)\setminus V_x)$ is a separation of $G$ with $F_x=N_x\cap(V(G)\setminus V_x)$. 
 
-  To establish Property~\yref{ancestor-edge}, consider some vertex $w\in F_x$.  Since $w\in F_x$, there exists an edge $vw\in E(G)$ with $v\in V_x$ and $w\not\in V_x$.  Since $v\in V_x$, $v\in Y_{x'}=Q_{x'}$ for some $T$-descendant $x'$ of $x$ (possibly $x=x'$). Since $\mathcal{Y}$ is a partition, $w\in Y_{a}=Q_a$ for some $a\not\in V(T_x)$.  Since $vw\in E(G)$, $x'a\in E(H)$.  By \tref{ancestor-edge}, one of $a$ or $x'$ is a $T$-ancestor of the other. Since $w\in Y_a\subseteq V_a$ and $w\not\in V_x\supseteq V_{x'}$, \yref{containment-i} rules out the possibility that $x'$ is a $T$-ancestor of $a$. Therefore, $a$ is a $T$-ancestor of $x$ which is a $T$-ancestor of $x'$.  Let $z_0,\ldots,z_r$ be the path, in $T$ from $z_0:=x'$ to $z_r:=a$.  For each $i\in\{0,\ldots,r\}$, at least one of $a$ or $x'$ is in $B_{z_i}$.  However, by \tref{subtree-root} $x'$ is not contained in $B_{x_i}$ for any $i\in\{1,\ldots,r\}$.  Therefore $a\in B_{x_i}$ for each $i\in\{0,\ldots,r\}$.  In particular, $a$ is contained in $B_x$.
-  Property~\yref{ancestor-edge} now follows from the fact that $|B_x|\le t+1$ and $C_x$ contains $x$.
+  To establish Property~\yref{ancestor-edge}, consider some vertex $w\in F_x$.  Since $w\in F_x$, there exists an edge $vw\in E(G)$ with $v\in V_x$ and $w\not\in V_x$.  Since $v\in V_x$, $v\in Y_{x'}$ for some $T$-descendant $x'$ of $x$ (possibly $x=x'$). Since $\mathcal{Y}$ is a partition, $w\in Y_{a}$ for some $a\not\in V(T_x)$.  Since $vw\in E(G)$, we have $x'a\in E(H)$.  By \tref{ancestor-edge}, one of $a$ or $x'$ is a $T$-ancestor of the other. Since $w\in Y_a\subseteq V_a$ and $w\not\in V_x\supseteq V_{x'}$, \yref{containment-i} rules out the possibility that $x'$ is a $T$-ancestor of $a$. Therefore, $a$ is a $T$-ancestor of $x$ which is a $T$-ancestor of $x'$.  Let $z_0,\ldots,z_r$ be the path in $T$ from $z_0:=x'$ to $z_r:=a$.  For each $i\in\{0,\ldots,r\}$, at least one of $a$ or $x'$ is in $B_{z_i}$.  However, by \tref{subtree-root} $x'$ is not contained in $B_{x_i}$ for any $i\in\{1,\ldots,r\}$.  Therefore $a\in B_{x_i}$ for each $i\in\{0,\ldots,r\}$.  In particular, $a$ is contained in $B_x$.
+  Property~\yref{ancestor-edge} now follows from the fact that $|B_x|\le t+1$ and $B_x$ contains $x$.
 \end{proof}
 
 \subsubsection{Shortcut Systems}
@@ -427,7 +427,7 @@ Next we show that $\mathcal{S}$ has small layered width with respect to $\mathca
   
   Let $H^+$ denote the supergraph of $H$ with vertex set $V(T)$ and in which $xy\in E(H^+)$ if and only there exists some $z\in V(T)$ such that $x,y\in B_z$. 
   % Note that, by \tref{ancestor-edge}, $xy\in E(H^+)$ if and only if $x\in B_y$ or $y\in B_x$.
-  We claim that $a_0,\ldots,a_p$ is a lazy walk\footnote{A \emph{lazy walk} in a graph $H$ is a walk in the non-simple graph $H'$ obtained by adding a self loop to each vertex of $H$.} in $H^+$.  Indeed, if $a_i\neq a_{i+1}$ for some $i\in\{0,\ldots,p-1\}$ then this is precisely because $w_i\in V_{a_i}$ but $w_{i+1}\not\in V_{a_i}$.  By definition, $w_i\in Y_{a_i'}$ for some $T$-descendant $a_i'$ of $a_i$.
+  We claim that $a_0,\ldots,a_p$ is a lazy walk\footnote{A \emph{lazy walk} in a graph $H$ is a walk in the pseudograph $H'$ obtained by adding a self loop to each vertex of $H$.} in $H^+$.  Indeed, if $a_i\neq a_{i+1}$ for some $i\in\{0,\ldots,p-1\}$ then this is precisely because $w_i\in V_{a_i}$ but $w_{i+1}\not\in V_{a_i}$.  By definition, $w_i\in Y_{a_i'}$ for some $T$-descendant $a_i'$ of $a_i$.
   By \yref{separator}, $w_{i+1}\in F_{a_i}$ so by \yref{ancestor-edge} $w_{i+1}\in Y_{a_i''}$ for some strict $T$-ancestor $a_i''$ of $a_i$.  Since $w_iw_{i+1}\in E(G)$, $a_i'a_i''\in E(H)$.  By \tref{subtree-root}, $a_i''\in B_{a_i''}$ and $a_i''\in B_{a_i'}$.  Since $a_i$ is on the path from $a_i'$ to $a_i''$ in $T$ this implies that $a_i''\in B_{a_i}$.  Therefore $a_ia_i''\in E(H^+)$ as claimed.
   
   Thus, $a_0,\ldots,a_p$ is a lazy walk in $H^+$ of length $p\le k$ where the distance $s_i$ between $a_i$ and the root $x_0$ of $T$ is non-decreasing.  By removing repeated vertices this gives a path in the directed graph $\overrightarrow{H}^+$ obtained by directing each edge $xy\in E(H^+)$ from its $T$-descendant $x$ towards its $T$-ancestor $y$. 
@@ -459,7 +459,21 @@ We can reduce the layered width of the $H$-partition of $G$ from $O(k^3)$ to $O(
   \item Contributes at most 1 vertex to $S_x\cap V_j$ for $j\in\{\floor{(k+1)/2},\ldots,k+1\}$; 
   \item Contributes no vertices to $S_x\cap V_j$ for $j > k+1$.
 \end{enumerate}
-Redoing the calculation at the end of the proof of \cref{clm:general-width} then yields $|S_x\cap Y_i|\le d\ell(5k/2+5)=15k+30$.  With this change, the layered width of the partition given by \cref{modern-major-general} becomes $15k^2+30k$.  This establishes \cref{k-planar}.
+Redoing the calculation at the end of the proof of \cref{clm:general-width} then yields 
+\begin{align*}
+    |S_x\cap Y_i| &\le d\ell\left( 
+       2 
+       + 4\left\lfloor\frac{k+1}{2}\right\rfloor 
+       + 2\left(k+1-\left\lfloor\frac{k+1}{2}\right\rfloor\right)
+       \right)\\
+       & =
+       d\ell\left(
+         2k + 2\left\lfloor\frac{k+1}{2}\right\rfloor + 4
+       \right) \\
+       & \le
+       d\ell(3k+5) = 18k+30 \enspace .
+\end{align*}    
+With this change, the layered width of the partition given by \cref{modern-major-general} becomes $18k^2+30k$.  This establishes \cref{k-planar}.
   
   
 \subsection{$1$-Planar Graphs}
@@ -562,10 +576,10 @@ The definition of $k$-planar graphs naturally generalises for other surfaces. A 
 \begin{thm}
 \label{g-k-planar}
 Every $(g,k)$-planar graph has a layered $H$-partition of layered width at most 
-$\max\{2g,3\}(5k^2 + 10k)$ in which $H$ has treewidth at most $\binom{k+5}{4}$.
+$\max\{2g,3\}\cdot(6k^2 + 10k)$ in which $H$ has treewidth at most $\binom{k+5}{4}$.
 \end{thm}
 
-\note{PM}{I remove the $(g,1)$-specialization. It requires cutting surfaces.  For reference, the statement was:
+\note{PM}{I removed (commented out) the $(g,1)$-specialization. It requires cutting surfaces.  For reference, the statement was:
 \begin{thm}
 \label{g-1-planar}
 Every $(g,1)$-planar graph has a layered $H$-partition of layered width at most $\max\{48g, 30\}$ in which $H$ has treewidth at most $4$.  
@@ -795,6 +809,10 @@ For every $(g,k)$-planar graph $G$ and integer $c\geq 2$,
 \label{Characterisation}
 
 This section presents a rough characterisation of $(g,k)$-planar graphs, which is interesting in its own right, and is useful for showing that various classes of graphs are $(g,k)$-planar. 
+
+\note{PM}{By now this rough characterization is closely related to $(k+1,2)$-shortcut systems.  Let's think about how to present this.}
+
+
 
 \begin{lem} 
 \label{DrawG}
