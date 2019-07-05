@@ -37,7 +37,7 @@
 \title{\MakeUppercase{The Structure of $k$-Planar Graphs}%
     \thanks{This work was partly funded by NSERC and MRI.}}
 
-\author{Vida Dujmovi\'c%
+\author{Vida Dujmović%
         \thanks{School of Computer Science and Electrical Engineering,
                 University of Ottawa},\,\,
         Pat Morin%
@@ -512,7 +512,7 @@ We begin with a fairly standard lemma about normalized tree decompositions:
 
 \subsection{Generalized Tripod Partitions}
 
-For the remainder of this section, $G$ is a graph and $(\mathcal{L}:=\langle V_1,\ldots,V_h\rangle,\mathcal{P}:=(Q_x: x\in V(H)))$ is a layered partition of $G$ of layered width $\ell$ where the treewidth of the quotient graph $H=G/\mathcal{P}$ is at most $t$.  The following lemma shows how to use $(\mathcal{L},\mathcal{P})$ to define a hierarchical decomposition of $G$.
+For the remainder of this section, $G$ is a graph and $(\mathcal{L}:=\langle V_1,\ldots,V_h\rangle,\mathcal{Q}:=(Q_x: x\in V(H)))$ is a layered partition of $G$ of layered width $\ell$ where the treewidth of the quotient graph $H=G/\mathcal{Q}$ is at most $t$.  The following lemma shows how to use $(\mathcal{L},\mathcal{Q})$ to define a hierarchical decomposition of $G$.
 
 \begin{lem}\thmlabel{generalized-tripod}
   There exists a tree $T$ rooted at a node $x_0$ where each node $x\in V(T)$ is associated with a subset $Y_x\subseteq V(G)$ that defines several related sets $V_x = \bigcup_{y\in V(T_x)} Y_y$, $F_x=\{w\in V(G): vw\in E(G), v\in V_x,\, w\not\in V_x\}$, and $N_x=V_x\cup F_x$ that satisfy the following properties:
@@ -554,24 +554,36 @@ Property~\yref{y-subsets} follows from the fact that $V_x$ is the union of sever
   Property~\yref{ancestor-edge} now follows from the fact that $|B_x|\le t+1$ and $C_x$ contains $x$.
 \end{proof}
 
-\subsection{Low-Degree Powers}
+\subsection{Shortcut Systems}
 
-For non-negative integers $k$ and $d$, a graph $G$ and distinct vertices $v,w\in V(G)$, a \emph{$(k,d)$ $vw$-shortcut} in $G$ is a path in $G$ with endpoints $v$ and $w$ of length at most $k$ and whose internal vertices each have degree at most $d$.  The \emph{$(k,d)^\text{th}$ power of $G$}, denoted $G^{k,d}$, is the graph with vertex $V(G^{k,d})=V(G)$ in which, for each distinct pair $v,w\in V(G)$, $vw\in E(G^{k,d})$ if and only if $G$ contains a $(k,d)$ $vw$-shortcut.
+% For non-negative integers $k$ and $d$, a graph $G$ and distinct vertices $v,w\in V(G)$, a \emph{$(k,d)$ $vw$-shortcut} in $G$ is a path in $G$ with endpoints $v$ and $w$ of length at most $k$ and whose internal vertices each have degree at most $d$.  The \emph{$(k,d)^\text{th}$ power of $G$}, denoted $G^{k,d}$, is the graph with vertex $V(G^{k,d})=V(G)$ in which, for each distinct pair $v,w\in V(G)$, $vw\in E(G^{k,d})$ if and only if $G$ contains a $(k,d)$ $vw$-shortcut.
 
-Let $T$ and, for each $x\in V(T)$, $Y_x$, $V_x$, $F_x$, and $N_x$ be a decomposition obtained by applying \thmref{generalized-tripod} to $G$, let $H:=G/\{Y_x:x\in V(T)\}$ denote the resulting quotient graph, and let $(B_x:x\in V(T))$ be a tree-decomposition of $H$ given by \lemref{nice-decomposition}.  For simplicity, we bypass the graph $H'$ and assume, from the outset, that $V(H)\subseteq V(T)$.
+A collection $\mathcal{P}$ of paths in a graph $G$ is a \emph{$(k,d)$-shortcut system} (for $G$) if every path in $\mathcal{P}$ has length at most $k$ and if, for every $v\in V(G)$, the number of paths in $\mathcal{P}$ that use $v$ as an internal vertex is at most $d$. Each path in $P\in\mathcal{P}$ is called a \emph{shortcut}; if $P$ has endpoints $v$ and $w$ then it is a \emph{$vw$-shortcut}.  A $vw$-shortcut is also referred to as \emph{$v$-shortcut} (and a \emph{$w$-shortcut}). Given a graph $G$ and a $(k,d)$-shortcut system $\mathcal{P}$ for $G$, we use $G^{\mathcal{P}}$ to denote the supergraph of $G$ obtained by adding the edge $vw$ for each $vw$-shortcut in $\mathcal{P}$.
 
-For two nodes $v,w\in V(G)$, a $(k,d)$ \emph{$vw$-longcut} is a walk $W=v_0,\ldots,v_{r}$ in $G$ of length $r\le k$ with $v_0=v$, $v_r=w$, in which, for each $i\in\{1,\ldots,r-1\}$, the degree of $v_i$ in $G$ is at most $d$.  Observe that every $(k,d)$ $vw$-shortcut is also a $(k,d)$ $vw$-longcut and that $G$ contains a $(k,d)$ $vw$-shortcut if and only if it contains a $(k,d)$ $vw$-longcut. 
+In this section we will show how, given a $(k,d)$-shortcut system $\mathcal{P}$, a layered $H$-partition of $G$ can be used to obtain a layered $I$-partition of $G^{\mathcal{P}}$ where the layered width of the partition does not increase dramatically and the treewidth of $I$ is not much more than the treewidth of $H$.  
 
-For a node $x\in V(T)$, we say that a $(k,d)$ $vw$-longcut $W$ in $G$ \emph{crosses} $x$ if $Y_x$ contains an internal vertex of $W$.  We say that a vertex $v\in V(G)$ \emph{participates} in $x$ if $v\in Y_x$ or $G$ contains a $vw$-longcut that crosses $x$.
+For convenience, it will be helpful to assume that $\mathcal{P}$ contains a
+length-1 $vw$-shortcut for every edge $vw\in E(G)$.  This assumption has no effect on the resulting graph $G^{\mathcal{P}}$ but avoids special cases in some of our proofs.
+
+As in the rest of this section, $(\mathcal{L},\mathcal{Q})$ denotes a layered $H$-partition of $G$; $T$ is a tree used in a tree-decomposition $(B_x:x\in V(T))$ of $H:=G/\mathcal{Q}$ satisfying the conditions of \lemref{nice-decomposition}; and, for each $x\in V(T)$, $Y_x$, $V_x$, $F_x$, and $N_x$ are obtained obtained by applying \thmref{generalized-tripod} to $G$ $(\mathcal{L},\mathcal{Q})$, and $H$.
+
+For a node $x\in V(T)$, we say that a shortcut $P\in\mathcal{P}$ \emph{crosses} $x$ if $Y_x$ contains an internal vertex of $P$, that is, $P=(v_0,\ldots,v_r)$ and $\{v_1,\ldots,v_{r-1}\}\cap Y_x\neq\emptyset$.  We say that a vertex $v\in V(G)$ \emph{participates} in $x$ if $v\in Y_x$ or $\mathcal{P}$ contains a shortcut $P$ with $v\in V(P)$ and $P$ crosses $x$. We let $X_v$ denote the set of nodes $x\in V(T)$ such that $v$ participates in $x$.
 
 \begin{clm}
-  For every vertex $v\in V(G)$, there is a (unique) node $a(v)\in V(T)$ such that $v$ participates in $a(v)$ and $a(v)$ is a $T$-ancestor of every node $x$ in which $v$ participates. 
+  For any $v\in V(G)$ there exists a (unique) node $a(v)\in X_v$ such that
+  $a(v)$ is a $T$-ancestor of every node in $X_v$.
 \end{clm}
 
 \begin{proof}
-  Consider the subset $X$ of vertices $v'\in V(G)$ such that $G$ contains a path from $v$ to $v'$ of length at most $k$ in which every vertex other than (possibly) $v$ has degree at most $d$.  Clearly $G[X]$ is connected and, by definition, $v$ participates in a node $x\in V(T)$ if and only if $X\cap Y_x\neq\emptyset$.
+  Let 
+  \[
+     Z := \{v\} \cup \{\{v_1,\ldots,v_{r-1}\}:\mbox{$(v_0,\ldots,v_r)\in\mathcal{P}$, $v\in \{v_0,\ldots,v_r\}$}\}
+  \]
+  Clearly $G[Z]$ is connected because $Z$ is the union of (vertex sets of) paths in $G$, each of which contains $v$. 
+  
+  We claim that $v$ participates in a node $x\in V(T)$ if and only if $Z\cap Y_x\neq\emptyset$.  If $v$ participates in $x$ then either $v\in Y_x$, so $Z\cap Y_x\supseteq\{v\}$; or $v\in \{v_0,\ldots,v_r\}$ for some shortcut $(v_0,\ldots,v_r)\in\mathcal{P}$ that crosses $x$, so $Z\cap Y_x\supseteq \{v_i\}$ for some $i\in\{1,\ldots,r-1\}$.  In the other direction, if $Z\cap Y_x\neq\emptyset$, then either $Z\cap Y_x\supseteq \{v\}$, so $v\in Y_x$; or $Z\cap Y_x\supseteq \{v_i\}$ where $i\in\{1,\ldots,r\}$ and $v\in\{v_0,\ldots,v_r\}$, so $v\in V(P)$ for a path $P=(v_0,\ldots,v_r)\in\mathcal{P}$ that crosses $x$. 
 
-  Let $X_H:=\{x\in V(H): X\cap Y_x\neq\emptyset\}$.  The connectivity of $G[X]$ implies that $H[X_H]$ is connected.  
+  Let $Z_H:=\{x\in V(H): Z\cap Y_x\neq\emptyset\}$.  The connectivity of $G[Z]$ implies that $H[X_H]$ is connected.  
   %Property~\tref{ancestor-edge} implies that, for every $xy\in E(H)$, one of $x$ or $y$ is a $T$-ancestor of the other. 
   Choose $a(v)\in X_H$ to be any member of $X_H$ that does not have a strict $T$-ancestor in $X_H$.  Transitivity of the $T$-ancestor relationship, \tref{ancestor-edge}, and connectivity of $H[X_H]$ implies that $a(v)$ is a $T$-ancestor of every node $x\in X_H$, as required.
 \end{proof}
@@ -580,7 +592,7 @@ For each $x\in V(T)$, we define the \emph{separator}
 \[  
      S_x := \{v\in V(G): a(v)= x\} \enspace .
 \]
-Observe that $\mathcal{S}:=(S_x : x\in V(T))$ is a partition of $V(G)$.  We let $I:=G^{k,d}/\mathcal{S}$ denote the resulting quotient graph and we let $V(I)\subseteq V(T)$ in the obvious way, so that each $x\in V(I)$ is the vertex obtained by contracting $S_x$ in $G^{k,d}$. (Nodes $x\in V(T)$ with $S_x=\emptyset$ do not contribute a vertex to $I$.)
+Observe that $\mathcal{S}:=(S_x : x\in V(T))$ is a partition of $V(G)$.  We let $I:=G^\mathcal{P}/\mathcal{S}$ denote the resulting quotient graph and we let $V(I)\subseteq V(T)$ in the obvious way, so that each $x\in V(I)$ is the vertex obtained by contracting $S_x$ in $G^{k,d}$. (Nodes $x\in V(T)$ with $S_x=\emptyset$ do not contribute a vertex to $I$.)
 
 \begin{clm}\clmlabel{s-subset}
   For every $x\in V(T)$, $S_x\subseteq V_x$.
@@ -589,18 +601,25 @@ Observe that $\mathcal{S}:=(S_x : x\in V(T))$ is a partition of $V(G)$.  We let 
 \begin{proof}
   For the sake of contradiction, assume otherwise, so there exists some $v\in S_x\setminus V_x$.
   
-  By \yref{y-subsets}, $Y_x\subseteq V_x$, so $v\not\in Y_x$.  Therefore, $G$ contains a path $v_0,v_1,\ldots,v_{r}$ such that $r <k$, $v_0=v$, $v_r\in Y_x$ and the degree of $v_i$ in $G$ is at most $d$ for each $i\in\{1,\ldots,r\}$.  Since $v\not\in V_x$ and $v_r\in V_x$, \yref{separator}, implies that $v_i\in F_x$ for some $i\in\{0,\ldots,r-1\}$. Now \yref{ancestor-edge} implies $v_i\in Y_a$ for some strict $T$-ancestor $a$ of $x$.  But the existence of the path $v_0,\ldots,v_i$ in $G$ implies that $v=v_0\in S_{a'}$ for some ancestor $a'$ of $a$, contradicting the assumption that $v\in S_x$.
+  By \yref{y-subsets}, $Y_x\subseteq V_x$, so $v\not\in Y_x$.  Therefore, $\mathcal{P}$ contains a path $P$ that crosses $x$.  The path $P$ contains a subpath $v_0,v_1,\ldots,v_{r}$ such that $v=v_0$ and $v_r\in Y_x$. Since $v\not\in V_x$ and $v_r\in Y_x\subseteq V_x$, \yref{separator}, implies that $v_i\in F_x$ for some $i\in\{0,\ldots,r-1\}$. Now \yref{ancestor-edge} implies $v_i\in Y_a$ for some strict $T$-ancestor $a$ of $x$.  Therefore, either $v\in Y_a$ or $P$ crosses $a$. But this implies that $a(v)$ is an ancestor of $a$, contradicting the assumption that $v\in S_x$.
 \end{proof}
 
 Next we show that $\mathcal{S}$ has small layered width with respect to $\mathcal{L}$:
 
 \begin{clm}\clmlabel{general-width}
-  For each $i\in\{1,\ldots,h\}$ and each $x\in V(I)$, $|S_x\cap V_i|\le (2k-1)\ell d^k$.  
+  For each $i\in\{1,\ldots,h\}$ and each $x\in V(I)$, $|S_x\cap V_i|\le d\ell(k^2+k+4)/2$.  
 \end{clm}
 
 \begin{proof}
-  Consider some vertex $v\in S_x\cap L_i$.  Since $v\in S_x$, $G$ contains a path $v_0,\ldots,v_r$ such that $r<k$, $v_0\in Y_x$, $v_r=v$, and the degree of $v_i$ in $G$ is at most $d$, for each $i\in\{0,\ldots,r-1\}$.  Note that $v_0$ is one of the at most $(2k-1)\ell$ vertices in $Z=\bigcup_{j=-k+1}^{k-1}(V_i\cap Y_x)$. For each $w\in Z$, the number of such paths originating from $w$ is at most $\sum_{r=0}^{k-1} d^{r}< d^k$ (for $d\ge 2$). Therefore, $|S_x\cap L_i|\le |Z|d^k\le (2k-1)\ell d^k$.
-  % \end{enumerate}
+  We will count the number of vertices in $S_x\cap V_i$ by upper-bounding the number of vertices contributed to $S_x\cap V_i$ by each vertex $w\in Y_x$.
+  If $w\in Y_x\cap V_i$ and no path in $\mathcal{P}$ includes $w$ as an internal vertex then $w$ contributes only one vertex, itself, to $S_x\cap V_i$.
+  
+  Otherwise, consider some path $P\in\mathcal{P}$ that contains $w$ as an internal vertex.  If $w\in V_{i}$, then $P$ contributes at most $k+1$ vertices to $S_x\cap V_i$.  If $w\in V_{i-1}\cup V_{i+1}$, then $P$ contributes at most $k$ vertices to $S_x\cap V_i$. If $w\in V_{i-j}\cup V_{i+j}$ for $j\ge 2$, then $P$ contributes at most $k-j$ vertices to $S_x\cap V_i$.
+  
+  For any $j$, the number of vertices $w\in V_{i+j}\cap Y_x$ is at most $\ell$. Each such vertex $w$ is an internal vertex of at most $d$ paths in $\mathcal{P}$. Therefore, 
+  \[  |S_x\cap V_i|\le d\ell\cdot\left(k+1 + k + \sum_{j=2}^k (k-j)\right) %= d(2k+1) + \sum_{i=1}^{k-2} i
+      = d\ell(k^2 +k + 4)/2 \enspace . \qedhere
+  \]
 \end{proof}
 
 \begin{clm}\clmlabel{i-ancestor}
@@ -608,13 +627,11 @@ Next we show that $\mathcal{S}$ has small layered width with respect to $\mathca
 \end{clm}
 
 \begin{proof}
-  Suppose, for the sake of contradiction, that neither $x$ nor $y$ is a $T$-ancestor of the other.  Since $xy\in E(I)$, $G^{k,d}$ contains an edge $vw$ with $v\in S_x$ and $w\in S_y$.  Therefore $G$ contains a $(k,d)$ $vw$-shortcut $P$.  By \clmref{s-subset}, $v\in V_x$ and $w\in V_y$.  By \yref{containment-i}, if neither $x$ nor $y$ is a $T$-ancestor of the other, then $V_x$ and $V_y$ are disjoint.  By \yref{ancestor-edge} $N_x$ and $V_y$ are also disjoint.  By \yref{separator} $P$ contains an internal vertex $v'\in F_x$.  By \yref{ancestor-edge}, $v'\in Y_a$ for some strict $T$-ancestor $a$ of $x$.  But this implies that $v\in S_{a'}$ for some $T$-ancestor $a'$ of $a$, contradicting the assumption that $v\in S_x$.
+  Suppose, for the sake of contradiction, that neither $x$ nor $y$ is a $T$-ancestor of the other.  Since $xy\in E(I)$, $G^\mathcal{P}$ contains an edge $vw$ with $v\in S_x$ and $w\in S_y$.  Since $xy\in E(G^{\mathcal{P}})$,  $\mathcal{P}$ contains a $vw$-shortcut $P$.  By \clmref{s-subset}, $v\in V_x$ and $w\in V_y$.  By \yref{containment-i}, if neither $x$ nor $y$ is a $T$-ancestor of the other, then $V_x$ and $V_y$ are disjoint.  By \yref{ancestor-edge} $N_x$ and $V_y$ are also disjoint.  By \yref{separator} $P$ contains an internal vertex $v'\in F_x$.  By \yref{ancestor-edge}, $v'\in Y_a$ for some strict $T$-ancestor $a$ of $x$.  But this implies that $v\in S_{a'}$ for some $T$-ancestor $a'$ of $a$, contradicting the assumption that $v\in S_x$.
 \end{proof}
 
-
-
 \begin{clm}\clmlabel{general-bag-size}
-  The graph $I$ has a tree-decomposition whose largest bag has size at most $\binom{k+t}{t}$.
+  The graph $I$ has a tree-decomposition in which every bag has size at most $\binom{k+t}{t}$.
 \end{clm}
 
 \begin{proof}
@@ -623,14 +640,14 @@ Next we show that $\mathcal{S}$ has small layered width with respect to $\mathca
   
   Consider an arbitrary node $x\in V(T)$ whose ancestors are $x_0,\ldots,x_{r-1},x_r$ where $x_0$ is the root of $T$ and $x_r:=x$.  To avoid triple-subscripts in what follows, we abuse notation slightly by using $V_i$, $F_i$, and $N_i$,  as shorthands for $V_{x_i}$, $F_{x_i}$ and $N_{x_i}$, respectively.   
 
-  If $x_\delta\in C_x$, it is because $x_\delta x'\in E(I)$ for some $T$-descendant $x'$ of $x$.  This implies $G^{k,d}$ contains an edge $vw$ with $v\in S_{x'}$ and $w\in S_{x_\delta}=S_\delta$.  This implies that $G$ contains a $(k,d)$ $vw$-shortcut $P_{vw}$.  Let $v'$ be the second-last vertex of $P_{vw}$ (so $v'w\in E(G)$).  
+  If $x_\delta\in C_x$, it is because $x_\delta x'\in E(I)$ for some $T$-descendant $x'$ of $x$.  This implies $G^{\mathcal{P}}$ contains an edge $vw$ with $v\in S_{x'}$ and $w\in S_{x_\delta}=S_\delta$.  This implies that $\mathcal{P}$ a $vw$-shortcut $P_{vw}$.  Let $v'$ be the second-last vertex of $P_{vw}$ (so $v'w\in E(G)$).  
   
   Since $w\in S_{\delta}$, at least one of the following is true:
   \begin{enumerate}
-    \item $w\in Y_\delta$; or 
-    \item $G$ contains a $(k,d)$ $ww'$-longcut $P_{ww'}$ that has an internal vertex in $Y_{\delta}$.
+    \item $\mathcal{P}$ contains a $ww'$-shortcut $P_{ww'}$ that has an internal vertex in $Y_{\delta}$; or
+    \item $w\in Y_\delta$.  In this case, we define $P_{ww'}$ to be the path of length 0 that contains only $w=w'$. 
   \end{enumerate}
-  In the former case we define $P_{ww'}$ to be the path of length 0 that contains only $w=w'$.  Let $w''$ denote the first vertex of $P_{ww'}$ contained in $Y_{\delta}$.
+  Let $w''$ denote the first vertex of $P_{ww'}$ contained in $Y_{\delta}$.
   
   Let $w_0,w_1,\ldots,w_p$ be the path that begins $w_0:=v'$ and then follows the subpath of $P_{ww'}$ that begins at $w_1:=w$ and ends at $w_p:=w''$.  For each $i\in\{0,\ldots,p\}$, let $s_i=\max\{j\in\{1,\ldots,r\}: \{w_0,\ldots,w_i\}\subseteq V_{j}\}\}$, and let $a_i=x_{s_i}$.  Note that $s_0,\ldots,s_p$ is a non-increasing sequence and $a_0,\ldots,a_p$ is a sequence of nodes of $T$ whose distance from the root is non-increasing.
 
@@ -647,10 +664,10 @@ Next we show that $\mathcal{S}$ has small layered width with respect to $\mathca
   Finally, we are in a position to appeal to \cite[Lemma~24]{pilipczuk.siebertz:polynomial-arxiv} which states that the number of nodes in $\overrightarrow{H}^+$ that can be reached from any node $x$ by a directed path of length at most $k$ is at most $\binom{k+t}{t}$.
 \end{proof}
 
-Together, \clmref{general-width} and \clmref{general-bag-size} imply the following generalization of \thmref{k-planar}:
+% Together, \clmref{general-width} and \clmref{general-bag-size} imply the following generalization of \thmref{k-planar}:
 
 \begin{thm}\thmlabel{modern-major-general}
-  Let $\ell\ge 1$, $t\ge 2$, $d\ge 1$, and $k\ge 1$ be integers, let $G$ be a graph having a layered $H$-partition of layered width $\ell$ in which $H$ has treewidth at most $t-1$.  Then $G^{k,d}$ has a layered $I$-partition of layered width at most $O(k^2\ell d^k)$ where the treewidth of $H$ is at most $\binom{k+t}{t}-1$.
+  Let $G$ be a graph having a layered $H$-partition of layered width $\ell$ in which $H$ has treewidth at most $t$ and let $\mathcal{P}$ be a $(k,d)$-shortcut system for $G$.  Then $G^{\mathcal{P}}$ has a layered $I$-partition of layered width at most $d\ell(k^3+k^2+4k)/2$ where the treewidth of $H$ is at most $\binom{k+t}{t}-1$.
 \end{thm}
 
 \begin{proof}
