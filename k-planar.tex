@@ -63,7 +63,7 @@
 \renewcommand{\geq}{\geqslant}
 \renewcommand{\leq}{\leqslant}
 
-\newcommand{\Bagsize}{\ensuremath{\frac{k^3}{6} + \frac{3k^2}{2} + \frac{13k}{3} + 4}}
+%\newcommand{\Bagsize}{\ensuremath{\frac{k^3}{6} + \frac{3k^2}{2} + \frac{13k}{3} + 4}}
 % \newcommand{\bagsize}{\ensuremath{k^3/6 + 3k^2/2 + 13k/3 + 4}}
 \newcommand{\treewidth}{\ensuremath{\binom{k+4}{3}}-1}
 
@@ -237,7 +237,7 @@ $H \boxtimes P \boxtimes K_\ell$ for some path $P$.
 If a graph $G$ has an $H$-partition of layered width $\ell$ with respect to layering $\langle V_0,V_1,\dots\rangle$, for some graph $H$ of treewidth at most $k$, then $G$ has an $H'$-partition of layered width 1 with respect to the same layering, for some graph $H'$ of treewidth at most $(k+1)\ell-1$.  That is, if $G\subseteq H\boxtimes P\boxtimes K_\ell$ for some graph $H$ of treewidth at most $k$  and for some path $P$, then $G\subseteq H' \boxtimes P$ for some graph $H'$ of treewidth at most $(k+1)\ell-1$.
 \end{lem}
 
-\citet{dujmovic.joret.ea:planar} proved the following result, which with \cref{PartitionProduct}, implies \cref{PlanarBasic}. 
+\citet{dujmovic.joret.ea:planar} proved the following result, which with \cref{MakeWidth1}, implies \cref{PlanarBasic}. 
 
 \begin{thm}[\citep{dujmovic.joret.ea:planar}]
 \label{PlanarPartition}
@@ -247,6 +247,7 @@ Every planar graph has:
 \item an $H$-partition of layered width $3$ for some planar graph $H$ of treewidth at most $3$.
 \end{compactitem}
 \end{thm}
+Their proof is constructive and gives a simple quadratic-time algorithm for finding these partitions.
 
 %Layered $H$-partitions of small layered width in which $H$ has some additional property are a useful tool for a number of graph problems.  One such useful property is small \emph{treewidth}, which we now define. 
 
@@ -270,7 +271,7 @@ Equivalently, every graph of Euler genus $g$ has:
 \item an $H$-partition with layered width at most $\max\{2g,3\}$ such that $H$ has treewidth at most $4$; 
 \item an $H$-partition with layered width at most $1$ such that $H$ has treewidth at most $2g+7$. 
 \end{compactenum}
-\textcolor{red}{eliminate some of these results? just keep (b)? }
+%PM: Keep 'em all: \textcolor{red}{eliminate some of these results? just keep (b)? }
 \end{thm}
 
 \citet{dujmovic.joret.ea:planar} generalised \cref{SurfacePartition} further to show that for every apex\footnote{A graph $M$ is a \textit{minor} of a graph $G$ if a graph isomorphic to $M$ can be obtained from a subgraph of $G$ by contracting edges. A class $\mathcal{G}$ of graphs is \emph{minor-closed} if for every graph $G\in\mathcal{G}$, every minor of $G$ is in $\mathcal{G}$. A minor-closed class is \emph{proper} if it is not the class of all graphs. For example, for fixed $g\geq 0$, the class of graphs with Euler genus at most $g$ is a proper minor-closed class. A graph $G$ is $t$-apex if it contains a set $A$ of at most $t$ vertices such that $G-A$ is planar. A 1-apex graph is \emph{apex}.  A minor-closed class $\mathcal{G}$ is apex-minor-free if some apex graph is not in $\mathcal{G}$.}
@@ -281,7 +282,7 @@ Equivalently, every graph of Euler genus $g$ has:
 The following result is the main theorem of the paper. Loosely speaking, it shows that if a graph $G$ admits bounded layered partitions, then so to does $G^\PP$ for every $(k,d)$-shortcut system $\PP$. 
 
 \begin{thm}\label{modern-major-general}
-  Let $G$ be a graph having a layered $H$-partition of layered width $\ell$ in which $H$ has treewidth at most $t$ and let $\PP$ be a $(k,d)$-shortcut system for $G$.  Then $G^\PP$ has a layered $J$-partition of layered width at most $d\ell(k^3+k^2+4k)$ for some graph $J$ with treewidth at most $\binom{k+t}{t}-1$.
+  Let $G$ be a graph having a layered $H$-partition of layered width $\ell$ in which $H$ has treewidth at most $t$ and let $\PP$ be a $(k,d)$-shortcut system for $G$.  Then $G^\PP$ has a layered $J$-partition of layered width at most $d\ell(k^3+3k)$ for some graph $J$ with treewidth at most $\binom{k+t}{t}-1$.
 \end{thm}
 
 \cref{modern-major-general,PartitionProduct,MakeWidth1} immediately imply \cref{ShortcutProduct} in the introduction.
@@ -517,7 +518,7 @@ Next we show that $\mathcal{S}$ has small layered width with respect to $\mathca
 We are now ready to prove the main result of the paper. 
 
 \begin{proof}[Proof of \cref{modern-major-general}] 
-  The proof is almost immediate, except that the layering $\mathcal{L}$ of $G$ may not be a valid layering of $G^{\mathcal{P}}$.  In particular, $G^{\mathcal{P}}$ may contain an edge $vw$ with $v\in V_i$ and $w\in V_{i+j}$ for any $j\in\{0,\ldots,k\}$.  To resolve this, we use a new layering $\mathcal{L}':=\langle V_0',\ldots,V_h'\rangle$ in which $V_i'=\bigcup_{j=ki}^{ki+k-1} V_i$.  This increases the layered width given by \clmref{general-width} from $d\ell(k^2+k+4)$ to $d\ell(k^3+k^2+4k)$.
+  The proof is almost immediate, except that the layering $\mathcal{L}$ of $G$ may not be a valid layering of $G^{\mathcal{P}}$.  In particular, $G^{\mathcal{P}}$ may contain an edge $vw$ with $v\in V_i$ and $w\in V_{i+j}$ for any $j\in\{0,\ldots,k\}$.  To resolve this, we use a new layering $\mathcal{L}':=\langle V_0',\ldots,V_h'\rangle$ in which $V_i'=\bigcup_{j=ki}^{ki+k-1} V_i$.  This increases the layered width given by \clmref{general-width} from $d\ell(k^2+3)$ to $d\ell(k^3+3k)$.
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%
@@ -528,7 +529,7 @@ Let $G$ be a $k$-plane graph.  We will assume, for ease of exposition, that any 
 
 Let $G_0$ be the plane graph obtained by adding a dummy vertex at each crossing in $G$. In this way, each edge $vw\in E(G)$ corresponds naturally to a path $P_{vw}$ of length at most $k+1$ in $G_0$.  Let $\PP := \{P_{vw}: vw\in E(G)\}$. Observe that $\PP$ is a $(k+1,2)$-shortcut for $G_0$ and that $G_0^{\mathcal{P}}\supseteq G$.  Specifically, $G_0^{\mathcal{P}}$ contains every edge and vertex of $G$ as well as the dummy vertices in $V(G_0)\setminus V(G)$ and their incident edges.  
 
-Since $G_0$ is planar, the second part of \cref{PlanarPartition} implies that $G_0$ has an $H$-partition of layered width 3 for some planar graph $H$ of treewidth at most 3.  Applying \cref{modern-major-general} to $G_0$ and $\mathcal{P}$ immediately implies that $G$ (an arbitrary $k$-planar graph) has a layered $H$-partition of layered width $3(k^3+k^2+4k)$ for some graph $H$ of treewidth at most $\binom{k+4}{3}-1$.
+Since $G_0$ is planar, the second part of \cref{PlanarPartition} implies that $G_0$ has an $H$-partition of layered width 3 for some planar graph $H$ of treewidth at most 3.  Applying \cref{modern-major-general} to $G_0$ and $\mathcal{P}$ immediately implies that $G$ (an arbitrary $k$-planar graph) has a layered $H$-partition of layered width $3(k^3+3k)$ for some graph $H$ of treewidth at most $\binom{k+4}{3}-1$.
 
 We can reduce the layered width of the $H$-partition of $G$ from $O(k^3)$ to $O(k^2)$ by observing that the dummy vertices in $V(G_0)\setminus V(G)$ do not contribute to the layered width of this partition.  In this setting, the proof of \cref{clm:general-width} is simpler since each vertex $w\in Y_x$ contributes at most two vertices to $V_i\cap Y_x$.  More precisely, a path $P\in\mathcal{P}$ containing an internal (dummy) vertex $w\in Y_x\cap (V_{i-j}\cup V_{i+j})$
 \begin{compactenum}
@@ -1047,10 +1048,13 @@ Hence $\PP$ is a $(k, 2k \Delta^k)$-shortcut system.
 Let $G$ be a graph of Euler genus $g$ and maximum degree $\Delta$. Let $k$ be a positive integer. 
 Then $G^k$ has a layered $H$-partition of layered width at most $\max\{2g,3\} (2k^4+2k^3+8k^2) \Delta^{k} $ for some graph $J$ with treewidth at most $\binom{k+4}{4}-1$.
 \end{thm}
+\note{PM}{TODO: Deal with the change caused by the change to layered-width in \cref{modern-major-general}}.
 
 \cref{DrawG,qn,p-centered,PowerPartition} immediately imply the following result:
 
 \noindent\note{PM}{We can probably do better now by using a $(k,(\Delta-1)^{k-1})$-shortcut system and \cref{modern-major-general}.} \note{DW}{An exponent of $k-1$ here is false for $k=2$.}
+
+\note{PM}{TODO: Deal with the change caused by the change to layered-width in \cref{modern-major-general}}.
 
 \begin{cor}
 For all integers $k\geq 1$ and $g\geq 0$, if $G$ is a graph with Euler genus $g$ and maximum degree $\Delta$, then:
@@ -1116,9 +1120,7 @@ If $v_0,\ldots,v_3$ are the vertices of a convex quadrilateral in counterclockwi
   Thus, in total, there are at most $13k-1$ Type~$v$, Type~$w$, and Type~C vertices. By \cref{k-nn-max-degree}, each of these vertices is incident with at most $6k$ edges that cross $vw$. Therefore, there are at most $78k^2-6k$ edges of $G$ that cross $vw$.  Since this is true for every edge $vw\in E(G)$, $G$ is $(78k^2-6k)$-planar.
 \end{proof}
 
-We note that \cref{nearest-neighbour} is tight up to the leading constant:  Every $k$-nearest neighbour graph on $n$ vertices has at least $kn/2$ edges and at most $kn$ edges.  For $k\ge 8$, the Crossing Lemma~\citep{ajtai.chvatal.ea:crossing-free,leighton:complexity} implies that the total number of crossings is therefore $\Omega(k^3n)$ so that the average number of crossings per edge is at $\Omega(k^2)$.
-
-\note{DW}{This actually works for $k\geq 7$, since the crossing lemma holds for graphs with at least $(3+\epsilon)n$ edges, for any fixed $\epsilon$. Of course, delete this comment.}
+We note that \cref{nearest-neighbour} is tight up to the leading constant:  Every $k$-nearest neighbour graph on $n$ vertices has at least $kn/2$ edges and at most $kn$ edges.  For $k\ge 7$, the Crossing Lemma~\citep{ajtai.chvatal.ea:crossing-free,leighton:complexity} implies that the total number of crossings is therefore $\Omega(k^3n)$ so that the average number of crossings per edge is at $\Omega(k^2)$.
 
 \cref{nearest-neighbour,k-planar,qn,p-centered} imply:
 
