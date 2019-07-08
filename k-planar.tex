@@ -143,7 +143,7 @@ We prove the following theorem.
 \begin{thm}
 \label{ShortcutProduct}
 Let $G$ be a subgraph of $H\boxtimes P$, for some graph $H$ of treewidth at most $t$ and for some path $P$. 
-Let $\PP$ be a $(k,d)$-shortcut system for $G$. Then $G^\PP$ is a subgraph of $J\boxtimes P$ for some graph $J$ of treewidth at most $d(k^3+k^2+4k)\binom{k+t}{t}-1$ and some path $P$. 
+Let $\PP$ be a $(k,d)$-shortcut system for $G$. Then $G^\PP$ is a subgraph of $J\boxtimes P$ for some graph $J$ of treewidth at most $d(k^3+3k)\binom{k+t}{t}-1$ and some path $P$. 
 \end{thm}
 
 \cref{ShortcutProduct,AddDummy} immediately imply \cref{kPlanarBasic} with $O(k^{11})$ instead of $O(k^5)$. Some further observations reduce the bound to $O(k^5)$; see \cref{Tools}. All of these results  generalise for graphs that have a drawing on an arbitrary surface with a bounded number of crossings per edge. 
@@ -234,7 +234,7 @@ $H \boxtimes P \boxtimes K_\ell$ for some path $P$.
 
 \begin{lem}[\citep{dujmovic.joret.ea:planar}] 
 \label{MakeWidth1}
-If a graph $G$ has an $H$-partition of layered width $\ell$ with respect to layering $\langle V_0,V_1,\dots\rangle$, for some graph $H$ of treewidth at most $k$, then $G$ has an $H'$-partition of layered width 1 with respect to the same layering, for some graph $H'$ of treewidth at most $(k+1)\ell-1$.  That is, if $G\subseteq H\boxtimes P\boxtimes K_\ell$ for some graph $H$ of treewidth at most $k$  and for some path $P$, then $G\subseteq H' \boxtimes P$ for some graph $H'$ of treewidth at most $(k+1)\ell-1$.
+If a graph $G$ has an $H$-partition of layered width $\ell$ with respect to layering $\langle V_0,V_1,\dots\rangle$, for some graph $H$ of treewidth at most $t$, then $G$ has an $H'$-partition of layered width 1 with respect to the same layering, for some graph $H'$ of treewidth at most $(t+1)\ell-1$.  That is, if $G\subseteq H\boxtimes P\boxtimes K_\ell$ for some graph $H$ of treewidth at most $t$  and for some path $P$, then $G\subseteq H' \boxtimes P$ for some graph $H'$ of treewidth at most $(t+1)\ell-1$.
 \end{lem}
 
 \citet{dujmovic.joret.ea:planar} proved the following result, which with \cref{MakeWidth1}, implies \cref{PlanarBasic}. 
