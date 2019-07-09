@@ -97,9 +97,9 @@ We generalise this result for $k$-planar graphs, where a graph is \emph{$k$-plan
 \section{Introduction}
 \label{Introduction}
 
-A graph is \emph{$k$-planar} if it has a drawing in the plane in which each edge is involved in at most $k$ crossings. Such graphs provide a natural generalisation of planar graphs, and are important in graph drawing research; see the recent bibliography on 1-planar graphs and the 140 references therein \citep{kobourov.liotta.ea:annotated}. The present paper studies the structure of $k$-planar graphs (and other more general classes). Various structural results about planar graphs generalise for $k$-planar graphs. For example, \citet{FP08} generalised the Lipton-Tarjan separator theorem to show that every $k$-planar graph with $n$ vertices has a balanced separator of order $O(\sqrt{kn})$.\note{PM}{I must be missing something.  The planarized graph $G'$ has $O(kn)$ vertices.  Let $S$ be the set of non-dummy vertices and take a separation $(A,B)$ of $G'$ with $|A\cap B|=O(\sqrt{kn})$, $|S\cap (A\setminus B)|\le 2|S|/3$ and $|S\cap (B\setminus A)|\le 2|S|/3$.  Now take $X=A\cap B$ plus the endpoints of every edge of $G$ that contains a dummy vertex in $A\cap B$.  $|X|\le 5|A\cap B|=O(\sqrt{kn})$ and $X$ is a separator of $G$.} \note{DW}{I think you have just found a new proof of this fact. Note that you are actually using that $G'$ has treewidth $O(\sqrt{kn})$ and then applying the Robertson-Seymour separator lemma for graphs of given treewidth (so that $|S\cap (A\setminus B)|\le 2|S|/3$ and $|S\cap (B\setminus A)|\le 2|S|/3$). }
-
-The main results of this paper generalise the following recent theorem of \citet{dujmovic.joret.ea:planar} to the setting of $k$-planar graphs (and other more general classes). 
+A graph is \emph{$k$-planar} if it has a drawing in the plane in which each edge is involved in at most $k$ crossings. Such graphs provide a natural generalisation of planar graphs, and are important in graph drawing research; see the recent bibliography on 1-planar graphs and the 140 references therein \citep{kobourov.liotta.ea:annotated}. The present paper studies the structure of $k$-planar graphs and other more general classes of graphs. 
+% Various structural results about planar graphs generalise for $k$-planar graphs. For example, \citet{FP08} generalised the Lipton-Tarjan separator theorem to show that every $k$-planar graph with $n$ vertices has a balanced separator of order $O(\sqrt{kn})$.\note{PM}{I must be missing something.  The planarized graph $G'$ has $O(kn)$ vertices.  Let $S$ be the set of non-dummy vertices and take a separation $(A,B)$ of $G'$ with $|A\cap B|=O(\sqrt{kn})$, $|S\cap (A\setminus B)|\le 2|S|/3$ and $|S\cap (B\setminus A)|\le 2|S|/3$.  Now take $X=A\cap B$ plus the endpoints of every edge of $G$ that contains a dummy vertex in $A\cap B$.  $|X|\le 5|A\cap B|=O(\sqrt{kn})$ and $X$ is a separator of $G$.} \note{DW}{I think you have just found a new proof of this fact. Note that you are actually using that $G'$ has treewidth $O(\sqrt{kn})$ and then applying the Robertson-Seymour separator lemma for graphs of given treewidth (so that $|S\cap (A\setminus B)|\le 2|S|/3$ and $|S\cap (B\setminus A)|\le 2|S|/3$). }
+The main results of this paper generalise the following recent theorem of \citet{dujmovic.joret.ea:planar} to this setting, and are the first results of this type for non-proper-minor-closed graph classes.
 
 \begin{thm}[\citep{dujmovic.joret.ea:planar}] 
 \label{PlanarBasic}
@@ -107,14 +107,14 @@ Every planar graph is a subgraph of $H\boxtimes P$, for some graph $H$ of treewi
 \end{thm}
 
 Here $\boxtimes$ is the strong product, and treewidth is an invariant that measures how `tree-like' a given graph is; see \cref{Tools} for formal definitions and see \cref{ProductExample} for an example.  
-So, loosely speaking, \cref{PlanarBasic} says that every planar graph is contained in the product of a tree-like graph and a path. This enables combinatorial results for graphs of bounded 
+Loosely speaking, \cref{PlanarBasic} says that every planar graph is contained in the product of a tree-like graph and a path. This enables combinatorial results for graphs of bounded 
 \begin{wrapfigure}{r}{0.5\textwidth} 
 \centering
 \includegraphics{ProductExample}
 \caption{Example of a strong product.}
 \label{ProductExample}
 \end{wrapfigure}
-treewidth to be generalised for planar graphs (with different constants). \cref{kPlanarBasic} has been the key tool in solving several well-known open problems. In particular, \citet{dujmovic.joret.ea:planar} proved that planar graphs have bounded queue-number (resolving a conjecture of \citet{HLR92} from 1992), and \citet{dujmovic.esperet.ea:planar}  proved that planar graphs have bounded non-repetitive chromatic number (resolving a conjecture of \citet{AGHR-RSA02} from 2002). 
+treewidth to be generalised for planar graphs (with different constants). \cref{PlanarBasic} has been the key tool in solving several well-known open problems. In particular, \citet{dujmovic.joret.ea:planar} proved that planar graphs have bounded queue-number (resolving a conjecture of \citet{HLR92} from 1992), and \citet{dujmovic.esperet.ea:planar}  proved that planar graphs have bounded non-repetitive chromatic number (resolving a conjecture of \citet{AGHR-RSA02} from 2002). 
 
 We generalise \cref{PlanarBasic} as follows. 
 
@@ -125,7 +125,7 @@ Every $k$-planar graph is a subgraph of $H\boxtimes P$, for some graph $H$ of tr
 
 We actually prove a substantially stronger result than \cref{kPlanarBasic} using the following definition. A collection $\mathcal{P}$ of paths in a graph $G$ is a \emph{$(k,d)$-shortcut system} (for $G$) if:
 \begin{compactitem}
-\item every path in $\mathcal{P}$ has length at most $k$, and
+\item every path in $\mathcal{P}$ has length at most $k$,\footnote{A path of length $k$ consists of $k$ edges and $k+1$ vertices.} and
 \item for every $v\in V(G)$, the number of paths in $\mathcal{P}$ that use $v$ as an internal vertex is at most $d$.
 \end{compactitem} 
 Each path $P\in\mathcal{P}$ is called a \emph{shortcut}; if $P$ has endpoints $v$ and $w$ then it is a \emph{$vw$-shortcut}. Given a graph $G$ and a $(k,d)$-shortcut system $\mathcal{P}$ for $G$, let $G^{\mathcal{P}}$ denote the supergraph of $G$ obtained by adding the edge $vw$ for each $vw$-shortcut in $\mathcal{P}$. 
@@ -147,9 +147,9 @@ Let $G$ be a subgraph of $H\boxtimes P$, for some graph $H$ of treewidth at most
 Let $\PP$ be a $(k,d)$-shortcut system for $G$. Then $G^\PP$ is a subgraph of $J\boxtimes P$ for some graph $J$ of treewidth at most $d(k^3+3k)\binom{k+t}{t}-1$ and some path $P$. 
 \end{thm}
 
-\cref{ShortcutProduct,AddDummy} immediately imply \cref{kPlanarBasic} with $O(k^{11})$ instead of $O(k^5)$. Some further observations reduce the bound to $O(k^5)$; see \cref{Tools}. 
+\cref{PlanarBasic,ShortcutProduct,AddDummy} immediately imply \cref{kPlanarBasic} with $O(k^{11})$ instead of $O(k^5)$. Some further observations reduce the bound to $O(k^5)$; see \cref{Tools}. 
 
-\cref{ShortcutProduct} leads to several other results of interest. Here is one example. The \emph{$k$-th power} of a graph $G$ is the graph $G^k$ with vertex set $V(G^k):=V(G)$, where $vw\in E(G^k)$ if and only if $\dist_G(v,w)\leq k$. If $G$ has maximum degree $\Delta$, then $G^k = G^\PP$ for some $(k,2k\Delta^{k})$-shortcut system $\PP$; see \cref{PowerShortcut}. \cref{kPlanarBasic,ShortcutProduct} then imply:
+\cref{ShortcutProduct} leads to several other results of interest. Here is one example. The \emph{$k$-th power} of a graph $G$ is the graph $G^k$ with vertex set $V(G^k):=V(G)$, where $vw\in E(G^k)$ if and only if $\dist_G(v,w)\leq k$.\footnote{For a graph $G$ and two vertices $v,w\in V(G)$, we use $\dist_G(v,w)$ to denote the length of a shortest path with endpoints $v$ and $w$.  If $v$ and $w$ are in different components of $G$ then we use the convention that $\dist_G(v,w)=\infty$.} If $G$ has maximum degree $\Delta$, then $G^k = G^\PP$ for some $(k,2k\Delta^{k})$-shortcut system $\PP$; see \cref{PowerShortcut}. \cref{kPlanarBasic,ShortcutProduct} then imply:
 
 \begin{thm}
 \label{kPowerBasic}
@@ -157,7 +157,8 @@ For every planar graph $G$ with maximum degree $\Delta$ and for every integer $k
 $\Delta^{k} (2k^4+6k^2)\binom{k+8}{8}-1$. 
 \end{thm}
 
-Note that the dependence on $k$ in the bound on the treewidth of $H$ in \cref{kPowerBasic} is improved from $O(k^{12})$ to $O(k^7)$ in \cref{Powers}. 
+% Note that the dependence on $k$ in the bound on the treewidth of $H$ in \cref{kPowerBasic} is improved from $O(k^{12})$ to $O(k^7)$ in \cref{Powers}. 
+% PM: I removed this because the bound is exponential in $k$ anyway. You only see the difference when you separate treewidth and layered width.
 
 %This theorem and several related results are proved in \cref{Structure}. In particular, in \cref{sec-1-planar} we present a refinement of \cref{kPlanarBasic} in the case $k=1$. In \cref{sec-g-k-planar} we generalise \cref{kPlanarBasic} for 
 
@@ -167,9 +168,7 @@ which we explore in \cref{Applications}. For example, we prove that $k$-planar g
 
 %\cref{Characterisation} presents a rough characterisation of $k$-planar graphs in terms of an underlying planar graph. This is useful for showing that various families of graphs are $k$-planar. For example, we conclude that bounded powers of bounded-degree planar graphs are $k$-planar, for a suitable constant $k$. Thus  \cref{kPlanarBasic} and the above applications are applicable to this class. These results also generalise for arbitrary surfaces. 
 
-\cref{Examples} presents several examples of graph classes that can be obtained from a shortcut system applied to a planar graphs, including graph powers, map graphs, string graphs, and nearest neighbour graphs. All of the above results are applicable to these examples. 
-
-All of the above results apply, where instead of planar graphs, we consider graphs of bounded Euler genus. 
+\cref{Examples} presents several examples of graph classes that can be obtained from a shortcut system applied to a planar graph, including graph powers, map graphs, string graphs, and nearest neighbour graphs. All of these results also apply, where instead of planar graphs, we consider graphs of bounded Euler genus.   All of the applications in \cref{Applications}  are applicable to these examples. 
 
 %\citet{dujmovic.joret.ea:planar} generalised their result for planar graphs for graphs embeddable on any surface. In particular, they proved that every graph of Euler genus $g$ is a subgraph of $H\boxtimes P$ for some graph $H$ of treewidth at most $???k$ and for some path $P$. We provide a further generalisation allowing crossings. Say a graph is $(g,k)$-planar if it has a drawing in a surface of Euler genus at most $g$ in which each edge is involved in at most $k$ crossings. 
 %
@@ -202,7 +201,7 @@ All of the above results apply, where instead of planar graphs, we consider grap
 \section{Layerings, Decompositions and Partitions}
 \label{Tools}
 
-This section defines concepts from from the literature that will be important for our work. 
+This section defines concepts and results from the literature that will be important for our work. 
 
 In this paper, all graphs are finite and undirected. Unless specifically mentioned otherwise, all graphs are also simple. For any graph $G$ and any set $S$ (typically $S\subseteq V(G)$), let $G[S]$  denote the graph with vertex set $V(G)\cap S$ and edge set $\{uv\in E(G) : u,v\in S\}$.  We use $G-S$ as a shorthand for $G[V(G)\setminus S]$. We use $G'\subseteq G$ to denote subgraph containment; that is, $V(G')\subseteq V(G)$ and $E(G')\subseteq E(G)$.
 
@@ -225,6 +224,7 @@ While strong products enable an easy statement of the theorems in \cref{Introduc
 
 \note{DW}{I  prefer to not define ``layered $H$-partition''. Just define the ``layered width'' of an $H$-partition, which is what we did in \citep{dujmovic.joret.ea:planar}. There are many places where we write ``$H$-partition with layered width'' without writing ``layered $H$-partition''. I prefer it this way.}
 
+\subsection{Previous Work on Partitions of Minor-Closed Classes}
 \citet{dujmovic.joret.ea:planar} introduced the study of partitions with bounded layered width such that the quotient has bounded treewidth. They defined a class $\mathcal{G}$ of graphs to \emph{admit bounded layered partitions} if there exist $t,\ell\in\mathbb{N}$ such that every graph $G\in \mathcal{G}$ has an $H$-partition with layered width at most $\ell$ such that $H$ has treewidth at most $t$. 
 
 These definitions relate to strong products as follows. 
@@ -287,19 +287,20 @@ For every apex graph $X$, there exists $c\in\mathbb{N}$ such that every $X$-mino
 an $H$-partition with layered width 1 such that $H$ has treewidth at most $c$. Equivalently, $G\subseteq H\boxtimes P$ for some path $P$. 
 \end{thm}
 
-Apex-minor-free graphs are the largest minor-closed class that admit bounded layered partitions~\citep{dujmovic.joret.ea:planar}. However, the family of $k$-planar graphs is not minor-closed.  A graph $G'$ obtained from a $k$-planar graph $G$ by edge deletions and edge contractions may or may not be $k$-planar. Indeed, \citet{dujmovic.eppstein.ea:structure} construct 1-planar graphs that contain arbitrarily large complete graph minors. Our results for $k$-planar graphs are the first of this type for a non-minor-closed class. 
 
-\section{Our Results}
+\section{New Results}
 
-The following result is the main theorem of the paper. Loosely speaking, it shows that if a graph $G$ admits bounded layered partitions, then so to does $G^\PP$ for every $(k,d)$-shortcut system $\PP$. 
+Apex-minor-free graphs, addressed by \cref{ApexMinorFree}, are the largest minor-closed class that admit bounded layered partitions~\citep{dujmovic.joret.ea:planar}. However, the family of $k$-planar graphs is not minor-closed.  A graph $G'$ obtained from a $k$-planar graph $G$ by edge deletions and edge contractions may or may not be $k$-planar. Indeed, \citet{dujmovic.eppstein.ea:structure} construct 1-planar graphs that contain arbitrarily large complete graph minors. Our results for $k$-planar graphs are the first of this type for a non-minor-closed class. 
+
+The following result is the main theorem of the paper. Loosely speaking, it shows that if a graph $G$ admits bounded layered partitions, then so to does $G^\PP$ for every $(k,d)$-shortcut system $\PP$ of $G$. 
 
 \begin{thm}\label{modern-major-general}
   Let $G$ be a graph having a layered $H$-partition of layered width $\ell$ in which $H$ has treewidth at most $t$ and let $\PP$ be a $(k,d)$-shortcut system for $G$.  Then $G^\PP$ has a layered $J$-partition of layered width at most $d\ell(k^3+3k)$ for some graph $J$ with treewidth at most $\binom{k+t}{t}-1$.
 \end{thm}
 
-\cref{modern-major-general,MakeWidth1} immediately imply \cref{ShortcutProduct} in the introduction.
+\cref{modern-major-general,MakeWidth1} immediately imply \cref{ShortcutProduct} in the introduction. 
 
-The following result shows that $k$-planar graphs admit bounded layered partitions. With \cref{PartitionProduct,MakeWidth1}, this proves \cref{kPlanarBasic}. % with $c_k\leq(4+o(1))k^5$.
+The relationship between $k$-planar graphs and $(k+1,2)$-shortcut systems of planar graphs shows that \cref{modern-major-general} has immediate applications to $k$-planar graphs.  The following result shows that $k$-planar graphs admit bounded layered partitions. With \cref{PartitionProduct,MakeWidth1}, this proves \cref{kPlanarBasic}. % with $c_k\leq(4+o(1))k^5$.
 
 \begin{thm}
 \label{k-planar}
@@ -347,7 +348,7 @@ For every apex graph $X$ and for all integers $k,d\geq 1$, there is an integer $
 \end{thm}
 
 %%%%%%%%%%%%%%%%
-\subsection{Prior Work}
+\subsection{Previous Work on the Structure of $(g,k)$-Planar Graphs}
 \label{PriorWork}
 
 %\note{DW}{should this subsection be moved to the end of \cref{Tools}?}\note{PM}{No, I don't think so. The information given in Section 2 isn't detailed enough to compare with layered treewidth versus layered partitions.}
@@ -355,7 +356,9 @@ For every apex graph $X$ and for all integers $k,d\geq 1$, there is an integer $
 Prior to this work, the strongest structural description of $k$-planar or $(g,k)$-planar graphs was in terms of layered treewidth, which we now define.  A \emph{layered tree-decomposition} $(\mathcal{L},\mathcal{T})$ consists of a layering $\mathcal{L}$ and a tree-decomposition $\mathcal{T}$ of $G$. The layered width of $(\mathcal{L},\mathcal{T})$ is $\max\{|L\cap B|: L\in \mathcal{L},\, B\in \mathcal{T}\}$.  The \emph{layered treewidth} of $G$ is the minimum layered width of any layered tree-decomposition of $G$. \citet{dujmovic.morin.ea:layered} proved that planar graphs have layered treewidth at most 3, that graphs of Euler genus $g$ have layered treewidth at most $2g+3$, and more generally that a minor-closed class has bounded layered treewidth if and only if it excludes some apex graph. \citet{dujmovic.eppstein.ea:structure} show that every $k$-planar graph has layered treewidth at most $6(k+1)$, and more generally that 
 every $(g,k)$-planar graph has layered treewidth at most $(4g+6)(k+1)$.
 
-If a graph class admits bounded layered partitions, then it also has bounded layered treewidth. In particular, suppose that an $n$-vertex graph $G$ has an $H$-partition with layered width at most $\ell$ such that $H$ has treewidth at most $k$. \citet{dujmovic.joret.ea:planar} proved that $G$ has layered treewidth at most $(k+1)\ell$. So any property that holds for graphs of bounded layered treewidth also holds for $G$. For example, Norin proved that every $n$-vertex graph with layered treewidth at most $t$ has treewidth less than $2\sqrt{tn}$ (see \citep{dujmovic.morin.ea:layered}). Thus, $G$ has treewidth at most $2\sqrt{(k+1)\ell n}$. This in turn leads to a $O(\sqrt{(k+1)\ell n})$ balanced separator theorem for such graphs \citep{RS-II}. So, in the case of $k$-planar graphs, \cref{k-planar} implies an analogue of the separator theorem of \citet{FP08} mentioned in the introduction, albeit with worse dependence on $k$. What sets layered partitions apart from layered treewidth is that they lead to constant upper bounds on the queue-number  and non-repetitive chromatic number, whereas for both these parameters, the best known upper bound obtainable via layered treewidth is $O(\log n)$; see \cref{Applications}. 
+If a graph class admits bounded layered partitions, then it also has bounded layered treewidth. In particular, suppose that an $n$-vertex graph $G$ has an $H$-partition with layered width at most $\ell$ such that $H$ has treewidth at most $k$. \citet{dujmovic.joret.ea:planar} proved that $G$ has layered treewidth at most $(k+1)\ell$. 
+% So any property that holds for graphs of bounded layered treewidth also holds for $G$. For example, Norin proved that every $n$-vertex graph with layered treewidth at most $t$ has treewidth less than $2\sqrt{tn}$ (see \citep{dujmovic.morin.ea:layered}). Thus, $G$ has treewidth at most $2\sqrt{(k+1)\ell n}$. This in turn leads to a $O(\sqrt{(k+1)\ell n})$ balanced separator theorem for such graphs \citep{RS-II}. So, in the case of $k$-planar graphs, \cref{k-planar} implies an analogue of the separator theorem of \citet{FP08} mentioned in the introduction, albeit with worse dependence on $k$. 
+What sets layered partitions apart from layered treewidth is that they lead to constant upper bounds on the queue-number  and non-repetitive chromatic number, whereas for both these parameters, the best known upper bound obtainable via layered treewidth is $O(\log n)$; see \cref{Applications}. 
 
 %Indeed the former structure leads to $O(1)$ bounds on the queue-number, instead of $O(\log n)$ bounds obtained via layered treewidth. That said, it is open whether graphs of bounded layered treewidth have bounded queue-number. It is even possible that graphs of bounded layered treewidth have partitions of bounded layered width, whose quotient has bounded treewidth.
 %
