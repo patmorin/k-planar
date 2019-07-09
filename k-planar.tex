@@ -18,6 +18,34 @@
 
 \usepackage{doi} % To make plainnat handle doi's properly 
 
+
+\usepackage[mathlines]{lineno}
+% \setlength{\linenumbersep}{2em}
+\linenumbers
+% \rightlinenumbers
+% \linenumbers
+\newcommand*\patchAmsMathEnvironmentForLineno[1]{%
+ \expandafter\let\csname old#1\expandafter\endcsname\csname #1\endcsname
+ \expandafter\let\csname oldend#1\expandafter\endcsname\csname end#1\endcsname
+ \renewenvironment{#1}%
+    {\linenomath\csname old#1\endcsname}%
+    {\csname oldend#1\endcsname\endlinenomath}}% 
+\newcommand*\patchBothAmsMathEnvironmentsForLineno[1]{%
+ \patchAmsMathEnvironmentForLineno{#1}%
+ \patchAmsMathEnvironmentForLineno{#1*}}%
+\AtBeginDocument{%
+\patchBothAmsMathEnvironmentsForLineno{equation}%
+\patchBothAmsMathEnvironmentsForLineno{align}%
+\patchBothAmsMathEnvironmentsForLineno{flalign}%
+\patchBothAmsMathEnvironmentsForLineno{alignat}%
+\patchBothAmsMathEnvironmentsForLineno{gather}%
+\patchBothAmsMathEnvironmentsForLineno{multline}%
+}
+
+
+
+
+
 \allowdisplaybreaks
 %\sloppy
 %%%%%%%%%%
@@ -179,7 +207,8 @@ $\Delta^{k} (2k^4+6k^2)\binom{k+8}{8}-1$.
 
 %This theorem and several related results are proved in \cref{Structure}. In particular, in \cref{sec-1-planar} we present a refinement of \cref{kPlanarBasic} in the case $k=1$. In \cref{sec-g-k-planar} we generalise \cref{kPlanarBasic} for 
 
-These theorems have applications in diverse areas, including queue layouts  \citep{dujmovic.joret.ea:planar}, non-repetitive colouring  \citep{dujmovic.esperet.ea:planar}, $p$-centred colouring  \citep{micek:personal}, and succinct graph representations \citep{bonamy.gavoille.ea:shorter}, some of which
+These theorems have applications in diverse areas, including queue layouts  \citep{dujmovic.joret.ea:planar}, non-repetitive colouring  \citep{dujmovic.esperet.ea:planar}, and $p$-centred colouring  \citep{micek:personal}, 
+% and succinct graph representations \citep{bonamy.gavoille.ea:shorter}, some of which
 %, and graph encoding \citep{BGP}. 
 which we explore in \cref{Applications}. For example, we prove that $k$-planar graphs have bounded non-repetitive chromatic number (for fixed $k$). Prior to the recent work of \citet{dujmovic.esperet.ea:planar}, it was even open whether planar graphs have bounded non-repetitive chromatic number.
 
@@ -230,7 +259,7 @@ We now define two concepts used in the theorems in \cref{Introduction}: strong p
 \item  $x=y$ and $vw\in E(A)$, or  
 \item  $vw\in E(A)$ and $xy\in E(B)$. 
 \end{compactitem}
-A \emph{tree-decomposition} $\mathcal{T}$ of a graph $G$ consists of a tree $T$ and a collection $\mathcal{T}=(B_x:x\in V(T))$ of subsets of $V(G)$ indexed by the nodes of $K$ such that:
+A \emph{tree-decomposition} $\mathcal{T}$ of a graph $G$ consists of a tree $T$ and a collection $\mathcal{T}=(B_x:x\in V(T))$ of subsets of $V(G)$ indexed by the nodes of $T$ such that:
 \begin{compactenum}[(i)]
 \item for every $vw\in E(G)$, there exists some node $x\in V(T)$ with $v,w\in B_x$; and 
 \item for every $v\in V(G)$, the induced subgraph $T[v] := T[\{x: v\in B_x\}]$ is connected.  
@@ -324,7 +353,7 @@ The following result is the main theorem of the paper. Loosely speaking, it show
 \begin{restatable}{thm}{mmg}
   %\begin{thm}
   \label{modern-major-general}
-    Let $G$ be a graph having an $H$-partition of layered width $\ell$ in which $H$ has treewidth at most $t$ and let $\PP$ be a $(k,d)$-shortcut system for $G$.  Then $G^\PP$ has a $J$-partition of layered width at most $d\ell(k^3+3k)$ for some graph $J$ with treewidth at most $\binom{k+t}{t}-1$.
+    Let $G$ be a graph having an $H$-partition of layered width $\ell$ in which $H$ has treewidth at most $t$ and let $\PP$ be a $(k,d)$-shortcut system for $G$.  Then $G^\PP$ has a $J$-partition of layered width at most $d\ell(k^3+3k)$ for some graph $J$ of treewidth at most $\binom{k+t}{t}-1$.
   %\end{thm}
 \end{restatable}
 
@@ -373,7 +402,7 @@ Every $(g,k)$-planar graph has an $H$-partition of layered width at most
 $\max\{2g,3\}\cdot(6k^2 + 10k)$ in which $H$ has treewidth at most $\binom{k+5}{4}-1$.
 \end{thm}
 
-Again, a direct application of \cref{modern-major-general} using \cref{SurfacePartition}(b) implies \cref{k-planar} with a weaker bound on the layered width. We prove the stronger bound in \cref{sec-k-planar}. 
+Again, a direct application of \cref{modern-major-general} using \cref{SurfacePartition}(b) implies \cref{g-k-planar} with a weaker bound on the layered width. We prove the stronger bound in \cref{sec-k-planar}. 
 
 Finally, we state the following corollary of \cref{ApexMinorFree,modern-major-general,MakeWidth1}. This is the most general result that follows from \cref{modern-major-general} and that of \citet{dujmovic.joret.ea:planar}. 
 
@@ -407,11 +436,12 @@ What sets layered partitions apart from layered treewidth is that they lead to c
 
 The purpose of this section is to prove our main result, \cref{modern-major-general}. This theorem shows how, given a $(k,d)$-shortcut system $\mathcal{P}$ of a graph $G$, a $H$-partition of $G$ can be used to obtain a $J$-partition of $G^{\mathcal{P}}$ where the layered width  does not increase dramatically and the treewidth of $J$ is not much more than the treewidth of $H$.  Our main results for $k$-planar graphs (\cref{k-planar}) and $(g,k)$-planar graphs (\cref{g-k-planar}) follow; see \cref{sec-k-planar}.
 
-For convenience, it will be helpful to assume that $\mathcal{P}$ contains a length-1 $vw$-shortcut for every edge $vw\in E(G)$.  Since $G^\PP$ is defined to be a supergraph of $G$, this assumption has no effect on $G^{\mathcal{P}}$ but avoids special cases in some of our proofs.
+For convenience, it will be helpful to assume that $\mathcal{P}$ contains a length-1 $vw$-shortcut for every edge $vw\in E(G)$.  Since $G^\PP$ is defined to be a supergraph of $G$, this assumption has no effect on $G^{\mathcal{P}}$ but eliminates special cases in some of our proofs.
 
-For a tree $T$ rooted at some node $x_0\in V(T)$, we we say that a node $a\in V(T)$ is a \emph{$T$-ancestor} of $x\in V(T)$ (and $x$ is a \emph{$T$-descendant} of $a$) if $a$ is a vertex of the path, in $T$, from $x_0$ to $x$.  Note that each node $x\in v(T)$ is a $T$-ancestor and $T$-descendant of itself.  We say that a $T$-ancestor $a\in V(T)$ of $x\in V(T)$ is a \emph{strict} $T$-ancestor of $x$ if $a\neq x$. For a rooted tree $T$ and any node $x\in V(T)$, let  
+For a tree $T$ rooted at some node $x_0\in V(T)$, we we say that a node $a\in V(T)$ is a \emph{$T$-ancestor} of $x\in V(T)$ (and $x$ is a \emph{$T$-descendant} of $a$) if $a$ is a vertex of the path, in $T$, from $x_0$ to $x$.  Note that each node $x\in v(T)$ is a $T$-ancestor and $T$-descendant of itself.  We say that a $T$-ancestor $a\in V(T)$ of $x\in V(T)$ is a \emph{strict} $T$-ancestor of $x$ if $a\neq x$. 
+The \emph{$T$-depth} of a node $x\in V(T)$ is the length of the path, in $T$, from $x_0$ to $x$.  For any node $x\in V(T)$, define
 \[T_x := T[\{y\in V(T):\mbox{$x$ is a $T$-ancestor of $y$}\}] \]
-be the maximal subtree of $T$ rooted at $x$.  
+to be the maximal subtree of $T$ rooted at $x$.  
 
 We begin with a fairly standard lemma about normalized tree decompositions. 
 
@@ -441,7 +471,7 @@ We begin with a fairly standard lemma about normalized tree decompositions.
   \begin{center}
     \includegraphics{figs/tripoddo}
   \end{center}
-  \caption{The sets $Y_x$, $F_x$, and $N_x$ associated with $x\in V(T)$
+  \caption{The sets $Y_x$, $F_x$, and $V_x$ associated with $x\in V(T)$
   and the ancestors $a_1,\ldots,a_{t'}$ of $X$ such that $F_x \subseteq \bigcup_{i=1}^{t'} Y_{a_i}$.}
   \label{fig:generalized-tripod}
 \end{figure}
@@ -456,7 +486,7 @@ The following lemma shows how to interpret an $H$-partition of $G$ and a tree-pa
 \begin{lem}\label{generalized-tripod}
   Let $G$ be a graph; let $\mathcal{L}:=\langle V_1,\ldots,V_h\rangle$ be a layering of $G$; let $\mathcal{Y}:=(Y_x: x\in V(H))$ be an $H$-partition of $G$ of layered width at most $\ell$ with respect to $\mathcal{L}$ where $H$ has treewidth at most $t$; and let $\mathcal{T}:=(B_x:x\in V(T))$ be a tree-decomposition of $H$ satisfying the conditions of \lemref{nice-decomposition}.  For each $x\in V(T)$, let $V_x := \bigcup_{y\in V(T_x)} Y_y$, $F_x:=\{w\in V(G): vw\in E(G), v\in V_x,\, w\not\in V_x\}$, and $N_x:=V_x\cup F_x$.  Then, 
   \begin{compactenum}[(Y1)]
-    \item\ylabel{thickness} $\mathcal{Y}:=(Y_x: x\in V(T))$ is a partition of $V(G)$ of layered width (with respect to $\mathcal{L}$) at most $\ell$.
+    \item\ylabel{thickness} $\mathcal{Y}:=(Y_x: x\in V(T))$ is a partition of $V(G)$ of layered width at most $\ell$ with respect to $\mathcal{L}$.
     \item\ylabel{separator} For each $x\in V(T)$, there is no edge $vw\in E(G)$ with $v\in V_x$ and $w\in V(G)\setminus N_x$. 
     \item\ylabel{ancestor-edge} For each $x\in V(T)$, there is a set $\{a_1,\ldots,a_{t'}\}$ of $t'\le t$ strict $T$-ancestors of $x$ such that $F_x \subseteq \bigcup_{i=1}^{t'} Y_{a_i}$.
   \end{compactenum}
@@ -470,7 +500,7 @@ Before proving \cref{generalized-tripod} we point out more properties that are i
   \item\ylabel{containment-ii}$N_x\subseteq N_a$ for every $T$-ancestor $a$ of $x$.
 \end{compactenum}
 
-Property~\yref{y-subsets} follows from the fact that $V_x$ is the union of several sets, one of which is $Y_x$.  Property~\yref{containment-i} follows from the definition of $V_x$ and the fact that $V(T_x)\subseteq V(T_a)$. To show Property~\yref{containment-ii} first note that, by \yref{containment-i} it suffices to consider vertices in $w\in F_x=N_x\setminus V_x$. By definition, every vertex $w\in F_x$ is adjacent, in $G$, to a vertex $v\in V_x$.  By \yref{containment-i}, $v\in V_a$, so $w$ is either in $V_a$ or $w$ satisfies the condition $vw\in E(G)$, $v\in V_a$, and $w\not\in V_a$, so $w\in F_a$.  In either case $w\in N_a=V_a\cup F_a$.  Note that none of \yref{y-subsets}--\yref{containment-ii} depends on \yref{ancestor-edge} (which is important, since \yref{containment-i} is used to establish \yref{ancestor-edge} in the following proof).
+Property~\yref{y-subsets} follows from the fact that $V_x$ is the union of several sets, one of which is $Y_x$.  Property~\yref{containment-i} follows from the definition of $V_x$ and the fact that $V(T_x)\subseteq V(T_a)$. To show Property~\yref{containment-ii} first note that, by \yref{containment-i} it suffices to consider vertices $w\in F_x=N_x\setminus V_x$. By definition, every vertex $w\in F_x$ is adjacent, in $G$, to a vertex $v\in V_x$.  By \yref{containment-i}, $v\in V_a$, so $w$ is either in $V_a$ or $w$ satisfies the condition $vw\in E(G)$, $v\in V_a$, and $w\not\in V_a$, so $w\in F_a$.  In either case $w\in N_a=V_a\cup F_a$.  Note that none of \yref{y-subsets}--\yref{containment-ii} depends on \yref{ancestor-edge} (which is important, since \yref{containment-i} is used to establish \yref{ancestor-edge} in the following proof).
 
 
 \begin{proof}[Proof of \cref{generalized-tripod}]
@@ -490,13 +520,12 @@ Property~\yref{y-subsets} follows from the fact that $V_x$ is the union of sever
 % %$(\mathcal{L},\mathcal{Y})$ denotes a layered $H$-partition of $G$;
 % $\mathcal{T}=(B_x:x\in V(T))$ is a tree-decomposition of $H:=G/\mathcal{Y}$ satisfying the conditions of \lemref{nice-decomposition} and, for each $x\in V(T)$, $Y_x$, $V_x$, $F_x$, and $N_x$ are defined as in \clmref{generalized-tripod}.
 
-We are now ready to prove our main result, which we now restate for convenience:
+We are now ready to prove our main result, which we restate here convenience:
 
 \mmg*
 
 \begin{proof}
-Apply \cref{generalized-tripod} to $G$ and let 
-let $\mathcal{L}$, $\mathcal{Y}$, $\mathcal{T}$, $T$, $Y_x$, $V_x$, $F_x$, and $N_x$ be defined as in \cref{generalized-tripod}.
+Apply \cref{generalized-tripod} to $G$ and let $\mathcal{L}$, $\mathcal{Y}$, $\mathcal{T}$, $T$, $Y_x$, $V_x$, $F_x$, and $N_x$ be defined as in \cref{generalized-tripod}.
 
 For a node $x\in V(T)$, we say that a shortcut $P\in\mathcal{P}$ \emph{crosses} $x$ if $Y_x$ contains an internal vertex of $P$, that is, $P=(v_0,\ldots,v_r)$ and $\{v_1,\ldots,v_{r-1}\}\cap Y_x\neq\emptyset$.  We say that a vertex $v\in V(G)$ \emph{participates} in $x$ if $v\in Y_x$ or $\mathcal{P}$ contains a shortcut $P$ with $v\in V(P)$ and $P$ crosses $x$. We let $X_v$ denote the set of nodes $x\in V(T)$ such that $v$ participates in $x$.
 
@@ -512,7 +541,7 @@ For a node $x\in V(T)$, we say that a shortcut $P\in\mathcal{P}$ \emph{crosses} 
   \]
   Clearly $G[Z]$ is connected because $Z$ is the union of (vertex sets of) paths in $G$, each of which contains $v$. 
   
-  We claim that $v$ participates in a node $x\in V(T)$ if and only if $Z\cap Y_x\neq\emptyset$.  If $v$ participates in $x$ then either $v\in Y_x$, so $Z\cap Y_x\supseteq\{v\}$; or $v\in \{v_0,\ldots,v_r\}$ for some shortcut $(v_0,\ldots,v_r)\in\mathcal{P}$ that crosses $x$, so $Z\cap Y_x\supseteq \{v_i\}$ for some $i\in\{1,\ldots,r-1\}$.  In the other direction, if $Z\cap Y_x\neq\emptyset$, then either $Z\cap Y_x\supseteq \{v\}$, so $v\in Y_x$; or $Z\cap Y_x\supseteq \{v_i\}$ where $i\in\{1,\ldots,r\}$ and $v\in\{v_0,\ldots,v_r\}$, so $v\in V(P)$ for a path $P=(v_0,\ldots,v_r)\in\mathcal{P}$ that crosses $x$. 
+  We claim that $v$ participates in a node $x\in V(T)$ if and only if $Z\cap Y_x\neq\emptyset$.  If $v$ participates in $x$ then either $v\in Y_x$, so $Z\cap Y_x\supseteq\{v\}$; or $v\in \{v_0,\ldots,v_r\}$ for some shortcut $(v_0,\ldots,v_r)\in\mathcal{P}$ that crosses $x$, so $Z\cap Y_x\supseteq \{v_i\}$ for some $i\in\{1,\ldots,r-1\}$.  In the other direction, if $Z\cap Y_x\neq\emptyset$, then either $Z\cap Y_x\supseteq \{v\}$, so $v\in Y_x$; or $Z\cap Y_x\supseteq \{v_i\}$ where $i\in\{1,\ldots,r\}$, $(v_0,\ldots,v_r)\in\PP$ and $v\in\{v_0,\ldots,v_r\}$, so $v\in V(P)$ for a path $P=(v_0,\ldots,v_r)\in\mathcal{P}$ that crosses $x$. 
 
   Let $Z_H:=\{x\in V(H): Z\cap Y_x\neq\emptyset\}$.  The connectivity of $G[Z]$ implies that $H[X_H]$ is connected.  
   %Property~\tref{ancestor-edge} implies that, for every $xy\in E(H)$, one of $x$ or $y$ is a $T$-ancestor of the other. 
@@ -530,7 +559,7 @@ Observe that $\mathcal{S}:=(S_x : x\in V(T))$ is a partition of $V(G)$.  We let 
 \end{clm}
 
 \begin{proof}
-  For the sake of contradiction, assume otherwise, so there exists some $v\in S_x\setminus V_x$. By \yref{y-subsets}, $Y_x\subseteq V_x$, so $v\not\in Y_x$.  Therefore, $\mathcal{P}$ contains a path $P$ that crosses $x$.  The path $P$ contains a subpath $v_0,v_1,\ldots,v_{r}$ such that $v=v_0$ and $v_r\in Y_x$. Since $v\not\in V_x$ and $v_r\in Y_x\subseteq V_x$, \yref{separator}, implies that $v_i\in F_x$ for some $i\in\{0,\ldots,r-1\}$. Now \yref{ancestor-edge} implies $v_i\in Y_a$ for some strict $T$-ancestor $a$ of $x$.  Therefore, either $v\in Y_a$ or $P$ crosses $a$. But this implies that $a(v)$ is a $T$-ancestor of $a$, which is a strict $T$-ancestor of $x$, contradicting the assumption that $v\in S_x$.
+  For the sake of contradiction, assume otherwise, so there exists some $v\in S_x\setminus V_x$. By \yref{y-subsets}, $Y_x\subseteq V_x$, so $v\not\in Y_x$.  Therefore, $\mathcal{P}$ contains a path $P$, with $v\in V(P)$, that crosses $x$.  The path $P$ contains a subpath $v_0,v_1,\ldots,v_{r}$ such that $v=v_0$ and $v_r\in Y_x$. Since $v\not\in V_x$ and $v_r\in Y_x\subseteq V_x$, \yref{separator}, implies that $v_i\in F_x$ for some $i\in\{0,\ldots,r-1\}$. Now \yref{ancestor-edge} implies $v_i\in Y_a$ for some strict $T$-ancestor $a$ of $x$.  Therefore, either $v\in Y_a$ or $P$ crosses $a$. But this implies that $a(v)$ is a $T$-ancestor of $a$, which is a strict $T$-ancestor of $x$, contradicting the assumption that $v\in S_x$.
 \end{proof}
 
 Next we show that $\mathcal{S}$ has small layered width with respect to $\mathcal{L}$:
@@ -540,7 +569,7 @@ Next we show that $\mathcal{S}$ has small layered width with respect to $\mathca
 \end{clm}
 
 \begin{proof}
-  We will count the number of vertices in $S_x\cap V_i$ by upper-bounding the number of vertices contributed to $S_x\cap V_i$ by each vertex $w\in Y_x$. Refer to \cref{contribute}.
+  We count the number of vertices in $S_x\cap V_i$ by upper-bounding the number of vertices contributed to $S_x\cap V_i$ by each vertex $w\in Y_x$. Refer to \cref{contribute}.
   If $w\in Y_x\cap V_i$ and no path in $\mathcal{P}$ includes $w$ as an internal vertex then $w$ contributes only one vertex, itself, to $S_x\cap V_i$.
   
   \begin{figure}[htbp]
@@ -564,7 +593,7 @@ Next we show that $\mathcal{S}$ has small layered width with respect to $\mathca
 \end{clm}
 
 \begin{proof}
-  Suppose, for the sake of contradiction, that neither $x$ nor $y$ is a $T$-ancestor of the other.  Since $xy\in E(J)$, $G^\mathcal{P}$ contains an edge $vw$ with $v\in S_x$ and $w\in S_y$.  Since $xy\in E(G^{\mathcal{P}})$,  $\mathcal{P}$ contains a $vw$-shortcut $P$.  By \clmref{s-subset}, $v\in V_x$ and $w\in V_y$.  By \yref{containment-i}, if neither $x$ nor $y$ is a $T$-ancestor of the other, then $V_x$ and $V_y$ are disjoint.  By \yref{ancestor-edge} $N_x$ and $V_y$ are also disjoint.  By \yref{separator} $P$ contains an internal vertex $v'\in F_x$.  By \yref{ancestor-edge}, $v'\in Y_a$ for some strict $T$-ancestor $a$ of $x$.  But this implies that $v\in S_{a'}$ for some $T$-ancestor $a'$ of $a$, contradicting the assumption that $v\in S_x$.
+  Suppose, for the sake of contradiction, that neither $x$ nor $y$ is a $T$-ancestor of the other.  Since $xy\in E(J)$, $G^\mathcal{P}$ contains an edge $vw$ with $v\in S_x$ and $w\in S_y$.  Since $vw\in E(G^{\mathcal{P}})$,  $\mathcal{P}$ contains a $vw$-shortcut $P$.  By \clmref{s-subset}, $v\in V_x$ and $w\in V_y$.  By \yref{containment-i}, if neither $x$ nor $y$ is a $T$-ancestor of the other, then $V_x$ and $V_y$ are disjoint.  By \yref{ancestor-edge} $N_x$ and $V_y$ are also disjoint.  By \yref{separator} $P$ contains an internal vertex $v'\in F_x$.  By \yref{ancestor-edge}, $v'\in Y_a$ for some strict $T$-ancestor $a$ of $x$.  But this implies that $a(v)=a'$ so $v\in S_{a'}$ for some $T$-ancestor $a'$ of $a$, contradicting the assumption that $v\in S_x$.
 \end{proof}
 
 \begin{clm}\clmlabel{general-bag-size}
@@ -575,9 +604,9 @@ Next we show that $\mathcal{S}$ has small layered width with respect to $\mathca
   For the tree-decomposition $(C_x:x\in V(T))$ of $J$ we use the same tree $T$ used in the tree-decomposition $(B_x:x\in V(T))$ of $H$. For each node $x$ of $T$, $C_x$ contains $x$ as well as every $T$-ancestor $a$ of $x$ such that $J$ contains an edge $ax'$ where $x$ is a $T$-ancestor of $x'$ (including the possibility that $x=x'$).
   \clmref{i-ancestor} ensures that, for every edge $ax'\in E(J)$, $a,x'\in C_{x'}$ and the connectivity of $T[a]:=T[\{x\in V(T):a\in C_x]$ is obvious.  Therefore $(C_x:x\in V(T))$ is indeed a tree-decomposition of $J$.  It remains to bound the size of each bag $C_x$. 
   
-  Consider an arbitrary node $x\in V(T)$ whose ancestors are $x_0,\ldots,x_{r-1},x_r$ where $x_0$ is the root of $T$ and $x_r:=x$.  To avoid triple-subscripts in what follows, we abuse notation slightly by using $V_i$, $F_i$, and $N_i$,  as shorthands for $V_{x_i}$, $F_{x_i}$ and $N_{x_i}$, respectively.   
+  Consider an arbitrary node $x\in V(T)$ where $x_0,\ldots,x_r$ is the path from the root $x_0$ of $T$ to $x_r:=x$.  To avoid triple-subscripts in what follows, we abuse notation slightly by using $V_i$, $F_i$, and $N_i$,  as shorthands for $V_{x_i}$, $F_{x_i}$ and $N_{x_i}$, respectively.   
 
-  If $x_\delta\in C_x$, it is because $x_\delta x'\in E(J)$ for some $T$-descendant $x'$ of $x$.  This implies $G^{\mathcal{P}}$ contains an edge $vw$ with $v\in S_{x'}$ and $w\in S_{x_\delta}=S_\delta$.  This implies that $\mathcal{P}$ a $vw$-shortcut $P_{vw}$.  Let $v'$ be the second-last vertex of $P_{vw}$ (so $v'w\in E(G)$).  
+  If $x_\delta\in C_x$, it is because $x_\delta x'\in E(J)$ for some $T$-descendant $x'$ of $x$.  This implies $G^{\mathcal{P}}$ contains an edge $vw$ with $v\in S_{x'}$ and $w\in S_{x_\delta}=S_\delta$.  This implies that $\mathcal{P}$ contains a $vw$-shortcut $P_{vw}$.  Let $v'$ be the second-last vertex of $P_{vw}$ (so $v'w\in E(G)$).  
   
   Since $w\in S_{\delta}$, at least one of the following is true:
   \begin{enumerate}
@@ -586,7 +615,7 @@ Next we show that $\mathcal{S}$ has small layered width with respect to $\mathca
   \end{enumerate}
   Let $w''$ denote the first vertex of $P_{ww'}$ contained in $Y_{\delta}$.
   
-  Let $w_0,w_1,\ldots,w_p$ be the path that begins $w_0:=v'$ and then follows the subpath of $P_{ww'}$ that begins at $w_1:=w$ and ends at $w_p:=w''$.  For each $i\in\{0,\ldots,p\}$, let $s_i=\max\{j\in\{1,\ldots,r\}: \{w_0,\ldots,w_i\}\subseteq V_{j}\}\}$, and let $a_i=x_{s_i}$.  Note that $s_0,\ldots,s_p$ is a non-increasing sequence and $a_0,\ldots,a_p$ is a sequence of nodes of $T$ whose distance from the root is non-increasing.
+  Let $w_0,w_1,\ldots,w_p$ be the path that begins $w_0:=v'$ and then follows the subpath of $P_{ww'}$ that begins at $w_1:=w$ and ends at $w_p:=w''$.  For each $i\in\{0,\ldots,p\}$, let $s_i=\max\{j\in\{1,\ldots,r\}: \{w_0,\ldots,w_i\}\subseteq V_{j}\}\}$, and let $a_i=x_{s_i}$.  Note that $s_0,\ldots,s_p$ is a non-increasing sequence and $a_0,\ldots,a_p$ is a sequence of nodes of $T$ whose distance from the root, $x_0$, of $T$ is non-increasing.
 
   By definition, $a_0=x_r$.  We claim that $a_p=x_\delta$, i.e., $s_p=\delta$. 
   To see this, first observe that, for each $i\in\{1,\ldots,p\}$, $w_i\in V_{\delta}$ since, otherwise, an internal vertex of $P_{ww'}$ belong to $F_\delta$, which would imply (by \yref{ancestor-edge}) that $w\in S_{\delta'}$ for some $\delta' < \delta$, contradicting the assumption that $w\in S_\delta$.  Therefore $s_p\ge\delta$.  To see that $s_p<\delta-1$,
@@ -603,7 +632,7 @@ Next we show that $\mathcal{S}$ has small layered width with respect to $\mathca
 
 % Together, \clmref{general-width} and \clmref{general-bag-size} imply the following generalization of \thmref{k-planar}:
 
-  At this point, the proof of \cref{modern-major-general} is almost immediate from \clmref{general-width} and \clmref{general-bag-size}, except that the layering $\mathcal{L}$ of $G$ may not be a valid layering of $G^{\mathcal{P}}$.  In particular, $G^{\mathcal{P}}$ may contain an edge $vw$ with $v\in V_i$ and $w\in V_{i+j}$ for any $j\in\{0,\ldots,k\}$.  To resolve this, we use a new layering $\mathcal{L}':=\langle V_0',\ldots,V_h'\rangle$ in which $V_i'=\bigcup_{j=ki}^{ki+k-1} V_i$.  This increases the layered width given by \clmref{general-width} from $d\ell(k^2+3)$ to $d\ell(k^3+3k)$.  Therefore $G$ has an $H$-partition of layered width at most $d\ell(k^3+3k)$ in which $H$ has treewidth at most $\binom{k+t}{t}$, completing the proof of \cref{modern-major-general}.
+  At this point, the proof of \cref{modern-major-general} is almost immediate from \clmref{general-width} and \clmref{general-bag-size}, except that the layering $\mathcal{L}$ of $G$ may not be a valid layering of $G^{\mathcal{P}}$.  In particular, $G^{\mathcal{P}}$ may contain edges $vw$ with $v\in V_i$ and $w\in V_{i+j}$ for any $j\in\{0,\ldots,k\}$.  To resolve this, we use a new layering $\mathcal{L}':=\langle V_0',\ldots,V_h'\rangle$ in which $V_i'=\bigcup_{j=ki}^{ki+k-1} V_i$.  This increases the layered width given by \clmref{general-width} from $d\ell(k^2+3)$ to $d\ell(k^3+3k)$.  Therefore $G$ has an $H$-partition of layered width at most $d\ell(k^3+3k)$ in which $H$ has treewidth at most $\binom{k+t}{t}$, completing the proof of \cref{modern-major-general}.
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%
@@ -820,7 +849,7 @@ For an integer $k\geq 0$, a \textit{$k$-queue layout} of a graph $G$ consists of
 \begin{lem}[\citep{dujmovic.joret.ea:planar}]
 \label{qn}
 If a graph $G$ has an $H$-partition of layered width $\ell$, then 
-$$\qn(G)\le 3 \ell \, \qn(H) + \floor{\tfrac{3}{2}\ell}\enspace.$$
+\[ \qn(G)\le 3 \ell \, \qn(H) + \floor{\tfrac{3}{2}\ell}\enspace.\]
 \end{lem}
 
 \citet{dujmovic.morin.ea:layered} proved that queue-number is bounded by a function of treewidth. 
@@ -946,7 +975,7 @@ Every graph $G$ that has an $H$-partition of layered width at most $\ell$ has $\
 For every $k$-planar graph $G$, 
 %for some integer $t\leq \binom{k+4}{3}-1$, 
 %$$\chi_p(G)\le (18k^2+30k)(p+1) (t+1)\tbinom{p+t}{t}\enspace.$$
-$$\chi_p(G)\le (18k^2+30k)(p+1) \binom{k+4}{3} \binom{p+ \binom{k+4}{3}-1}{ \binom{k+4}{3}-1}\enspace.$$
+\[ \chi_p(G)\le (18k^2+30k)(p+1) \binom{k+4}{3} \binom{p+ \binom{k+4}{3}-1}{ \binom{k+4}{3}-1}\enspace. \]
 %\note{DW}{I previously wrote ``for some integer $t\leq \binom{k+4}{3}-1$'' thinking that $\binom{p+t}{t}$ might not be monotone with $t$, but it is because of the $+t$.}
 %Every $k$-planar graph has a layered $H$-partition of layered width at most $18k^2 + 30k$ in which $H$ has treewidth at most $\binom{k+4}{3}-1$. %$\treewidth$.
 %Every graph $G$ that has a layered $H$-partition of layered width at most $\ell$ in which $H$ has treewidth at most $t$ satisfies $\chi_p(G)\le \ell (p+1) (t+1)\binom{p+t}{t}$. 
@@ -955,7 +984,7 @@ $$\chi_p(G)\le (18k^2+30k)(p+1) \binom{k+4}{3} \binom{p+ \binom{k+4}{3}-1}{ \bin
 \begin{cor}
 \label{pc1}
 For every $1$-planar graph $G$, 
-$$\chi_p(G)\le 20 (p+3)(p+2)(p+1)^2\enspace.$$
+\[ \chi_p(G)\le 20 (p+3)(p+2)(p+1)^2\enspace. \]
 %120 (p+1) \binom{p+3}{3} 
 %Every graph $G$ that has a layered $H$-partition of layered width at most $\ell$ in which $H$ has treewidth at most $t$ satisfies $\chi_p(G)\le \ell (p+1) (t+1)\binom{p+t}{t}$. 
 %Every 1-planar graph has a layered $H$-partition of layered width at most 30 where $H$ is planar and has treewidth at most 3.
@@ -966,7 +995,7 @@ $$\chi_p(G)\le 20 (p+3)(p+2)(p+1)^2\enspace.$$
 For every $(g,k)$-planar graph $G$,  
 %for some integer $t\leq \binom{k+5}{4}-1$, 
 %$$\chi_p(G) \le \max\{2g,3\}\cdot(6k^2 + 10k) (p+1) (t+1)\tbinom{p+t}{t}\enspace.$$
-$$\chi_p(G) \le \max\{2g,3\}\cdot(6k^2 + 10k) (p+1) \binom{k+5}{4}\binom{p+\binom{k+5}{4}-1}{\binom{k+5}{4}-1}\enspace.$$
+\[ \chi_p(G) \le \max\{2g,3\}\cdot(6k^2 + 10k) (p+1) \binom{k+5}{4}\binom{p+\binom{k+5}{4}-1}{\binom{k+5}{4}-1}\enspace. \]
 %O(gk^2)\times p^{O(k^3)}$. 
 %%Every graph $G$ that has a layered $H$-partition of layered width at most $\ell$ in which $H$ has treewidth at most $t$ satisfies $\chi_p(G)\le \ell (p+1) (t+1)\binom{p+t}{t}$. 
 %Every $(g,k)$-planar graph has a layered $H$-partition of layered width at most 
@@ -1046,13 +1075,13 @@ For a vertex $x$ of $G_0$ with degree at most $\Delta$, and for $i\in\{1,\dots,k
 For each edge $vw$ of $G$, say that $vw$ \emph{passes through} each internal vertex on $P_{vw}$. 
 Say $vw$ passes through $x$. Then $v$ is $i$-close to $x$ and $w$ is $j$-close to $x$ for some $i,j\in\{1,\dots,k-1\}$ with $i+j\leq k$. At most $\Delta^{i}$ vertices are $i$-close to $x$. 
 Thus, the number of edges of $G$ that pass through $x$ is at most 
-$$
+\[
 \sum_{i=1}^{k-1} \sum_{j=1}^{k-i} \Delta^i \Delta^j 
 = \sum_{i=1}^{k-1} \Delta^i  \sum_{j=1}^{k-i} \Delta^j 
 < \sum_{i=1}^{k-1} \Delta^i  2 \Delta^{k-i}
 = \sum_{i=1}^{k-1} 2\Delta^k 
 < 2k \Delta^k \enspace.
-$$
+\]
 Draw each edge $vw$ of $G$ alongside $P_{vw}$ in $G_0$, so that every pair of edges cross at most once. 
 Every edge of $G$ that crosses $vw$ passes through a vertex on $P_{vw}$ (including $v$ and/or $w$ if they too have degree at most $\Delta$). Since $P_{vw}$ has at most $k+1$ vertices, and less than $2k\Delta^{k}$ edges of $G$ pass through each vertex on $P_{vw}$, the edge $vw$ is crossed by less than $2k(k+1)\Delta^{k}$ edges in $G$. Hence $G$ is $(g, 2k(k+1)\Delta^{k} )$-planar.
 \end{proof}
@@ -1116,9 +1145,9 @@ $\pi(G) \le  21 \cdot 4^{10} \, d(d-3)$.
 
 \begin{cor}
 Every $(g,d)$-map graph has $p$-centred chromatic number  
-$$\chi_p(G)\le 105\, d(d-3)\, \max\{2g,3\}\, (p+1) \tbinom{p+14}{14}\enspace,$$
+\[ \chi_p(G)\le 105\, d(d-3)\, \max\{2g,3\}\, (p+1) \tbinom{p+14}{14}\enspace, \]
 and every plane $d$-map graph has $p$-centred chromatic number  
-$$\chi_p(G)\le 210\,d(d-3)\, (p+1) \tbinom{p+9}{9}\enspace.$$
+\[ \chi_p(G)\le 210\,d(d-3)\, (p+1) \tbinom{p+9}{9}\enspace. \]
 \end{cor}
 
 \cref{MapPartition,qn,qn-tw} imply the best known bounds on the queue-number of map graphs:
@@ -1187,11 +1216,11 @@ and treewidth at most $\binom{ \delta+4}{3}-1$ if $g=0$.
 
 \begin{cor}
 Every $(g,\delta)$-string graph has $p$-centred chromatic number  
-$$\chi_p(G)\le \max\{2g,3\} \,(\delta^4 + 4 \delta^3 + 9 \delta^2 + 10 \delta + 4) (p+1) 
-\tbinom{ \delta+5}{4} \binom{p+\binom{ \delta+5}{4}-1}{\binom{ \delta+5}{4}-1}\enspace,$$
+\[ \chi_p(G)\le \max\{2g,3\} \,(\delta^4 + 4 \delta^3 + 9 \delta^2 + 10 \delta + 4) (p+1) 
+\tbinom{ \delta+5}{4} \binom{p+\binom{ \delta+5}{4}-1}{\binom{ \delta+5}{4}-1}\enspace, \]
 and every plane $(0,\delta)$-string graph has $p$-centred chromatic number  
-$$\chi_p(G)\le \max\{2g,3\} \,(\delta^4 + 4 \delta^3 + 9 \delta^2 + 10 \delta + 4) (p+1) 
-\tbinom{ \delta+4}{3}\binom{p+\binom{ \delta+4}{3}-1}{\binom{ \delta+4}{3}-1}\enspace.$$
+\[ \chi_p(G)\le \max\{2g,3\} \,(\delta^4 + 4 \delta^3 + 9 \delta^2 + 10 \delta + 4) (p+1) 
+\tbinom{ \delta+4}{3}\binom{p+\binom{ \delta+4}{3}-1}{\binom{ \delta+4}{3}-1}\enspace.\]
 \end{cor}
 %\label{p-centered}
 %Every graph $G$ that has a layered $H$-partition of layered width at most $\ell$ in which $H$ has treewidth at most $t$ satisfies $\chi_p(G)\le \ell (p+1) (t+1)\binom{p+t}{t}$. 
@@ -1200,9 +1229,9 @@ $$\chi_p(G)\le \max\{2g,3\} \,(\delta^4 + 4 \delta^3 + 9 \delta^2 + 10 \delta + 
 
 \begin{cor}
 Every $(g,\delta)$-string graph has queue-number at most 
-$$3 \max\{2g,3\} \,(\delta^4 + 4 \delta^3 + 9 \delta^2 + 10 \delta + 4)  2^{\binom{ \delta+5}{4}-1} \enspace.$$
+\[3 \max\{2g,3\} \,(\delta^4 + 4 \delta^3 + 9 \delta^2 + 10 \delta + 4)  2^{\binom{ \delta+5}{4}-1} \enspace.\]
 and every plane $(0,\delta)$-map graph  has queue-number at most 
-$$ 9 (\delta^4 + 4 \delta^3 + 9 \delta^2 + 10 \delta + 4)  2^{\binom{ \delta+4}{3}-1} \enspace.$$
+\[ 9 (\delta^4 + 4 \delta^3 + 9 \delta^2 + 10 \delta + 4)  2^{\binom{ \delta+4}{3}-1} \enspace.\]
 %If a graph $G$ has a layered $H$-partition of layered width $\ell$, then 
 %$$\qn(G)\le 3 \ell ( 2^t- 1/2) \enspace.$$
 \end{cor}
@@ -1230,10 +1259,10 @@ If a graph $G$ has maximum degree $\Delta$, then $G^k = G^\PP$ for some $(k,2k \
 \begin{proof}
 For each pair of vertices $x$ and $y$ in $G$ with $\dist_G(x,y)\in\{1,\dots,k\}$, fix an $xy$-path $P_{xy}$ of length 
 $\dist_G(x,y)$  in $G$. Let $\PP:=\{P_{xy}: \dist_G(x,y)\in\{1,\dots,k\} \}$. Say $P_{xy}$ uses some vertex $v$ as an internal vertex. If $\dist_G(v,x)=i$ and $\dist_G(v,y)=j$, then $i,j\in\{1,\dots,k-1\}$ and $i+j\leq k$. The number of vertices at distance $i$ from $v$ is at most $\Delta^i$. Thus the number of paths in $\PP$ that use $v$ as an internal vertex is at most 
-$$\sum_{i=1}^{k-1} \sum_{j=1}^{k-i} \Delta^i\Delta^j 
+\[\sum_{i=1}^{k-1} \sum_{j=1}^{k-i} \Delta^i\Delta^j 
 = \sum_{i=1}^{k-1} \Delta^i \sum_{j=1}^{k-i} \Delta^j 
 < \sum_{i=1}^{k-1} \Delta^i ( 2 \Delta^{k-i} )
-< 2k \Delta^k\enspace.$$
+< 2k \Delta^k\enspace.\]
 Hence $\PP$ is a $(k, 2k \Delta^k)$-shortcut system. 
 \end{proof}
 
@@ -1260,12 +1289,12 @@ For all integers $k\geq 1$ and $g\geq 0$, if $G$ is a graph with Euler genus $g$
 \item $G^k$ is $(g, 2k(k+1)\Delta^{k} )$-planar, 
 %%%%%%
 \item $G^k$ has queue-number at most 
-$$3\,\max\{2g,3\} (2k^4+6k^2) \,\Delta^{k}\, 2^{\binom{k+4}{4}-1},$$
+\[3\,\max\{2g,3\} (2k^4+6k^2) \,\Delta^{k}\, 2^{\binom{k+4}{4}-1},\]
 %If a graph $G$ has a layered $H$-partition of layered width $\ell$ in which $H$ has treewidth at most $t$, then $\qn(G)\le 3 \ell (2^t-1) + \floor{\tfrac{3}{2}\ell} \le 3 \ell (2^t-\frac12 )$.
 %%%%%%
 \item $G^k$ has  $p$-centred chromatic number at most 
-$$\max\{2g,3\}(2k^4+6k^2) \Delta^{k}  (p+1) \tbinom{k+4}{4} 
-\binom{p+\binom{k+4}{4}-1}{\binom{k+4}{4}-1}\enspace.$$
+\[\max\{2g,3\}(2k^4+6k^2) \Delta^{k}  (p+1) \tbinom{k+4}{4} 
+\binom{p+\binom{k+4}{4}-1}{\binom{k+4}{4}-1}\enspace.\]
 %\label{p-centered} Every graph $G$ that has a layered $H$-partition of layered width at most $\ell$ in which $H$ has treewidth at most $t$ satisfies $\chi_p(G)\le \ell (p+1) (t+1)\binom{p+t}{t}$. 
 \end{compactitem}
 \end{cor}
@@ -1311,7 +1340,7 @@ If $v_0,\ldots,v_3$ are the vertices of a convex quadrilateral in counterclockwi
     \item $xy$ is of Type~C otherwise.
   \end{compactenum}
   If $xy$ is of Type~C, then \cref{convex} implies that (without loss of generality) 
-  $$\max\{d_2(x,v),d_2(x,w)\} < d_2(v,w)\enspace.$$ 
+  \[\max\{d_2(x,v),d_2(x,w)\} < d_2(v,w)\enspace.\] 
    In this case, we call $x$ a Type~C vertex.  We claim that $V(G)$ contains at most $k-1$ Type~C vertices.  Indeed, more than $k-1$ Type~C vertices would contradict the fact that $vw\in E(G)$ since every Type~C vertex is closer to both $v$ and $w$ than $d_2(v,w)$.
   
   Next oberve that, if $xy$ is of Type~$v$, then at least one of $xv$ or $yv$ is in $E(G)$ in which case we call $x$ (respectively $y$) a Type~$v$ vertex.  By \cref{k-nn-max-degree}, there are at most $6k$ Type~$v$ vertices.  Similarly, there are at most $6k$ Type~$w$ vertices.
@@ -1430,9 +1459,9 @@ $P^{(d)} \boxtimes K_{t}$.
 
 A result of \citet{Wood-Queue-DMTCS05} implies that $\qn(H \boxtimes P ) \leq 3 \qn(H)+ 1$ for every graph $H$ and path $P$. It follows that  $\qn( P^{(d)} \boxtimes H ) \leq \frac{1}{6} (  3^{d+1} (2 \qn(H) + 1 ) -3 )$. 
 Since $\qn(K_n)=\floor{\frac{n}{2}}$, by \cref{UnitDiscGraph}, every unit disc graph $G$ in $\mathbb{R}^d$ with no $(k+1)$-clique satisfies
-$$\qn(G) \leq \qn( P^{(d)} \boxtimes K_{k \ceil{\sqrt{d}}^d} ) 
+\[\qn(G) \leq \qn( P^{(d)} \boxtimes K_{k \ceil{\sqrt{d}}^d} ) 
 \leq
-\frac{1}{6} (  3^{d+1} (k \ceil{\sqrt{d}}^d + 1 ) -3 )\enspace.$$
+\frac{1}{6} (  3^{d+1} (k \ceil{\sqrt{d}}^d + 1 ) -3 )\enspace.\]
 
 \note{DW}{Add non-rep and $p$-centred colouring}
 
@@ -1440,13 +1469,13 @@ $$\qn(G) \leq \qn( P^{(d)} \boxtimes K_{k \ceil{\sqrt{d}}^d} )
 \label{TWhighDimProduct}
 Let $G$ be an $n$-vertex subgraph of $P^{(d)} \boxtimes H$ for some graph $H$. 
 Then 
-$$\tw(G) \leq 2  ( \tw(H)+1)^{ 1/(d+1) } (dn)^{1- 1/(d+1)}   -  1\enspace.$$
-$$\pw(G) \leq 2  ( \pw(H)+1)^{ 1/(d+1) } (dn)^{1- 1/(d+1)}   -  1\enspace.$$
+\[\tw(G) \leq 2  ( \tw(H)+1)^{ 1/(d+1) } (dn)^{1- 1/(d+1)}   -  1\enspace.\]
+\[\pw(G) \leq 2  ( \pw(H)+1)^{ 1/(d+1) } (dn)^{1- 1/(d+1)}   -  1\enspace.\]
 \end{lem}
 
 \begin{proof}
 Let $\langle{V^i_0,V^i_1,\dots}\rangle$ be the layering of $G$ determined by the $i$-th dimension. 
-Let $$m:= \ceil*{ \left(\frac{dn}{t+1} \right)^{1/(d+1)} } \enspace.$$ 
+Let \[m:= \ceil*{ \left(\frac{dn}{t+1} \right)^{1/(d+1)} } \enspace.\]
 For $\alpha\in[0,m-1]$, let $V^{i,\alpha} := \bigcup\{ V^i_j : j\equiv \alpha \pmod{m} \}$. 
 Thus $V^{i,0},\dots,V^{i,m-1}$ is a partition of $V(G)$. 
 Hence $|V^{i,\alpha_i}| \leq \frac{n}{m}$ for some $\alpha_i\in[0,m-1]$. 
@@ -1466,7 +1495,7 @@ at most $2k \ceil{\sqrt{d}}^d-1$) imply:
 \begin{cor}
 For every unit disc graph $G$ in $\mathbb{R}^d$ on $n$ vertices and with no $(k+1)$-clique,
 %$$\pw(G) \leq 2  k^{ 1/(d+1) }  \ceil{\sqrt{d}}^{d/(d+1) } (dn)^{1- 1/(d+1)}   -  1\enspace.$$
-$$\pw(G) \leq 2  (2k)^{ 1/d } \ceil{\sqrt{d}} ((d-1)n)^{1- 1/d}   -  1\enspace.$$
+\[\pw(G) \leq 2  (2k)^{ 1/d } \ceil{\sqrt{d}} ((d-1)n)^{1- 1/d}   -  1\enspace.\]
 \end{cor}
 
 
