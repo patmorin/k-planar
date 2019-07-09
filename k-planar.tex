@@ -11,9 +11,13 @@
 \usepackage{pat}
 \usepackage{paralist}
 \usepackage{stmaryrd}
+\usepackage{thm-restate}
 
 \usepackage[longnamesfirst,numbers,sort&compress]{natbib}
 \usepackage[noabbrev,capitalise]{cleveref}
+
+\usepackage{doi} % To make plainnat handle doi's properly 
+
 \allowdisplaybreaks
 %\sloppy
 %%%%%%%%%%
@@ -34,7 +38,9 @@
 
 \setlength{\parskip}{1ex}
 
-\newcommand{\note}[2]{{\color{red}[#1:~#2]}}
+% \newcommand{\note}[2]{{\color{red}[#1:~#2]}}
+% \newcommand{\notex}[2]{{\color{blue}[#1:~#2]}}
+\newcommand{\notex}[2]{}
 
 \DeclareMathOperator{\dist}{dist}
 \DeclareMathOperator{\depth}{depth}
@@ -63,6 +69,10 @@
 \renewcommand{\geq}{\geqslant}
 \renewcommand{\leq}{\leqslant}
 
+
+% \newcommand*{\doi}[1]{\href{https://dx.doi.org/#1}{\verb+doi: #1+}}
+
+
 %\newcommand{\Bagsize}{\ensuremath{\frac{k^3}{6} + \frac{3k^2}{2} + \frac{13k}{3} + 4}}
 % \newcommand{\bagsize}{\ensuremath{k^3/6 + 3k^2/2 + 13k/3 + 4}}
 \newcommand{\treewidth}{\ensuremath{\binom{k+4}{3}}-1}
@@ -85,36 +95,39 @@
 \maketitle
 
 \begin{abstract}
-Dujmovi\'c~et~al.~(FOCS 2019) recently proved that every planar graph is a subgraph of the strong product of a graph of bounded treewidth and a path. This tool has been used to solve longstanding problems on queue layouts, non-repetitive colouring, and $p$-centred colouring. %, and graph encoding. 
-We generalise this result for $k$-planar graphs, where a graph is \emph{$k$-planar} if it has a drawing in the plane in which each edge is involved in at most $k$ crossings. In particular, we prove that every $k$-planar graph is a subgraph of the strong product of a graph of treewidth $O(k^5)$ and a path. This is the first result of this type for a non-minor-closed class of graphs. It implies, amongst other results, that $k$-planar graphs have non-repetitive chromatic number upper-bounded by a function of $k$. All these results generalise for drawings of graphs on arbitrary surfaces. In fact, we work in a much more general setting based on so-called shortcut systems that are of independent interest. 
+Dujmovi\'c~et~al.~(FOCS 2019) recently proved that every planar graph is a subgraph of the strong product of a graph of bounded treewidth and a path. This tool has been used to solve longstanding problems on queue layouts, non-repetitive colouring, $p$-centred colouring, and implicit graph encoding. We generalise this result for $k$-planar graphs, where a graph is \emph{$k$-planar} if it has a drawing in the plane in which each edge is involved in at most $k$ crossings. In particular, we prove that every $k$-planar graph is a subgraph of the strong product of a graph of treewidth $O(k^5)$ and a path. This is the first result of this type for a non-minor-closed class of graphs. It implies, amongst other results, that $k$-planar graphs have non-repetitive chromatic number upper-bounded by a function of $k$. All these results generalise for drawings of graphs on arbitrary surfaces. In fact, we work in a much more general setting based on so-called shortcut systems that are of independent interest. 
 \end{abstract}
 \end{titlepage}
 
 % Layered partitions of graphs (with small layered width, in which the quotient has small treewidth) are a recently-introduced tool that have been used to solve longstanding problems on queue layouts, non-repetitive colouring, and 3-d graph drawing.  Such partitions are known to exist for planar graphs and, more generally, apex-minor-free graphs.  In the current paper, we prove that every $k$-planar graph has a layered partition of layered width $O(k^2)$ in  which the quotient graph has treewidth $O(k^3)$. This is the first result of this type for a non-minor-closed class of graphs and implies that $k$-planar graphs have both queue number and non-repetitive chromatic number upper-bounded by a function of $k$. The former result was previously shown by combining layered partitions of planar graphs with \textit{ad hoc} methods. The latter result is new, for all $k\ge 1$.  These results extend to $(g,k)$-planar graphs, the natural generalization of $k$-planar graphs to to genus-$g$ surfaces (rather than the genus-$0$ plane).
 
-\tableofcontents
-\newpage
+% \tableofcontents
+% \newpage
+
+%\setcounter{\page}{1}
 \section{Introduction}
 \label{Introduction}
 
 A graph is \emph{$k$-planar} if it has a drawing in the plane in which each edge is involved in at most $k$ crossings. Such graphs provide a natural generalisation of planar graphs, and are important in graph drawing research; see the recent bibliography on 1-planar graphs and the 140 references therein \citep{kobourov.liotta.ea:annotated}. The present paper studies the structure of $k$-planar graphs and other more general classes of graphs. 
-% Various structural results about planar graphs generalise for $k$-planar graphs. For example, \citet{FP08} generalised the Lipton-Tarjan separator theorem to show that every $k$-planar graph with $n$ vertices has a balanced separator of order $O(\sqrt{kn})$.\note{PM}{I must be missing something.  The planarized graph $G'$ has $O(kn)$ vertices.  Let $S$ be the set of non-dummy vertices and take a separation $(A,B)$ of $G'$ with $|A\cap B|=O(\sqrt{kn})$, $|S\cap (A\setminus B)|\le 2|S|/3$ and $|S\cap (B\setminus A)|\le 2|S|/3$.  Now take $X=A\cap B$ plus the endpoints of every edge of $G$ that contains a dummy vertex in $A\cap B$.  $|X|\le 5|A\cap B|=O(\sqrt{kn})$ and $X$ is a separator of $G$.} \note{DW}{I think you have just found a new proof of this fact. Note that you are actually using that $G'$ has treewidth $O(\sqrt{kn})$ and then applying the Robertson-Seymour separator lemma for graphs of given treewidth (so that $|S\cap (A\setminus B)|\le 2|S|/3$ and $|S\cap (B\setminus A)|\le 2|S|/3$). }
-The main results of this paper generalise the following recent theorem of \citet{dujmovic.joret.ea:planar} to this setting, and are the first results of this type for non-proper-minor-closed graph classes.
+\notex{PM}{I removed the following sentences because neither Vida nor could find anything about $k$-planar graphs in \cite{FP08} and, in any case, the proof is easy.  This could easily upset a referee.
+% \note{PM}{I must be missing something.  The planarized graph $G'$ has $O(kn)$ vertices.  Let $S$ be the set of non-dummy vertices and take a separation $(A,B)$ of $G'$ with $|A\cap B|=O(\sqrt{kn})$, $|S\cap (A\setminus B)|\le 2|S|/3$ and $|S\cap (B\setminus A)|\le 2|S|/3$.  Now take $X=A\cap B$ plus the endpoints of every edge of $G$ that contains a dummy vertex in $A\cap B$.  $|X|\le 5|A\cap B|=O(\sqrt{kn})$ and $X$ is a separator of $G$.} \note{DW}{I think you have just found a new proof of this fact. Note that you are actually using that $G'$ has treewidth $O(\sqrt{kn})$ and then applying the Robertson-Seymour separator lemma for graphs of given treewidth (so that $|S\cap (A\setminus B)|\le 2|S|/3$ and $|S\cap (B\setminus A)|\le 2|S|/3$). }
+Various structural results about planar graphs generalise for $k$-planar graphs. For example, \citet{FP08} generalised the Lipton-Tarjan separator theorem to show that every $k$-planar graph with $n$ vertices has a balanced separator of order $O(\sqrt{kn})$.}
+The main results of this paper generalise the following recent theorem of \citet{dujmovic.joret.ea:planar} to a setting that includes $k$-planar graphs.
+ % as well as some other interesting non-minor-closed graph families.
 
 \begin{thm}[\citep{dujmovic.joret.ea:planar}] 
 \label{PlanarBasic}
 Every planar graph is a subgraph of $H\boxtimes P$, for some graph $H$ of treewidth at most $8$ and for some path $P$. 
 \end{thm}
 
-Here $\boxtimes$ is the strong product, and treewidth is an invariant that measures how `tree-like' a given graph is; see \cref{Tools} for formal definitions and see \cref{ProductExample} for an example.  
-Loosely speaking, \cref{PlanarBasic} says that every planar graph is contained in the product of a tree-like graph and a path. This enables combinatorial results for graphs of bounded 
+Here $\boxtimes$ is the strong product, and treewidth is an invariant that measures how `tree-like' a given graph is; see \cref{Tools} for formal definitions and see \cref{ProductExample} for an example. Loosely speaking, \cref{PlanarBasic} says that every planar graph is contained in the product of a tree-like graph and a path. This enables combinatorial results for graphs of bounded 
 \begin{wrapfigure}{r}{0.5\textwidth} 
 \centering
 \includegraphics{ProductExample}
 \caption{Example of a strong product.}
 \label{ProductExample}
 \end{wrapfigure}
-treewidth to be generalised for planar graphs (with different constants). \cref{PlanarBasic} has been the key tool in solving several well-known open problems. In particular, \citet{dujmovic.joret.ea:planar} proved that planar graphs have bounded queue-number (resolving a conjecture of \citet{HLR92} from 1992), and \citet{dujmovic.esperet.ea:planar}  proved that planar graphs have bounded non-repetitive chromatic number (resolving a conjecture of \citet{AGHR-RSA02} from 2002). 
+treewidth to be generalised for planar graphs (with different constants). \cref{PlanarBasic} has been the key tool in solving several well-known open problems. In particular, \citet{dujmovic.joret.ea:planar} use it to prove that planar graphs have bounded queue-number (resolving a conjecture of \citet{HLR92} from 1992), \citet{dujmovic.esperet.ea:planar} use it to prove that planar graphs have bounded non-repetitive chromatic number (resolving a conjecture of \citet{AGHR-RSA02} from 2002), \citet{bonamy.gavoille.ea:shorter} use it to find shorter implicit representations of planar graphs. 
 
 We generalise \cref{PlanarBasic} as follows. 
 
@@ -123,7 +136,7 @@ We generalise \cref{PlanarBasic} as follows.
 Every $k$-planar graph is a subgraph of $H\boxtimes P$, for some graph $H$ of treewidth $(18k^3+30k)\binom{k+4}{3}-1$ and for some path $P$. 
 \end{thm}
 
-We actually prove a substantially stronger result than \cref{kPlanarBasic} using the following definition. A collection $\mathcal{P}$ of paths in a graph $G$ is a \emph{$(k,d)$-shortcut system} (for $G$) if:
+Although $k$-planar graphs are the most high-profile target for a generalization \cref{PlanarBasic}, we actually prove a substantially stronger result than \cref{kPlanarBasic} using the following definition. A collection $\mathcal{P}$ of paths in a graph $G$ is a \emph{$(k,d)$-shortcut system} (for $G$) if:
 \begin{compactitem}
 \item every path in $\mathcal{P}$ has length at most $k$,\footnote{A path of length $k$ consists of $k$ edges and $k+1$ vertices.} and
 \item for every $v\in V(G)$, the number of paths in $\mathcal{P}$ that use $v$ as an internal vertex is at most $d$.
@@ -137,7 +150,7 @@ This definition is related to $k$-planarity because of the following observation
 Every $k$-planar graph is isomorphic to a subgraph of $G^\PP$ for some planar graph $G$ and some $(k+1,2)$-shortcut system $\PP$ for $G$. 
 \end{obs}
 
-The proof of \cref{AddDummy} is trivial: Given a $k$-planar graph $G'$, create a planar graph $G$ by adding a dummy vertex at each crossing point. For each edge $vw\in E(G')\setminus E(G)$ there is a path $P$ in $G$ between $v$ and $w$ of length at most $k+1$. Let $\PP$ be the set of such paths $P$. For each vertex $v$ of $G$, at most two paths in $\PP$ use $v$ as an internal vertex (since no original vertex of $G'$ is an internal vertex of a path in $\PP$). Thus $\PP$ is a $(k+1,2)$-shortcut system for $G$, such that $G'=G^\PP$. 
+The proof of \cref{AddDummy} is trivial: Given a $k$-plane embedding of a graph $G'$, create a planar graph $G$ by adding a dummy vertex at each crossing point. For each edge $vw\in E(G')$ there is a path $P$ in $G$ between $v$ and $w$ of length at most $k+1$. Let $\PP$ be the set of such paths $P$. For each vertex $v$ of $G$, at most two paths in $\PP$ use $v$ as an internal vertex (since no original vertex of $G'$ is an internal vertex of a path in $\PP$). Thus $\PP$ is a $(k+1,2)$-shortcut system for $G$, such that $G'\subseteq G^\PP$. 
 
 We prove the following theorem that shows if a graph $G$ is a subgraph of $H\boxtimes P$ and $\PP$ is a shortcut system for $G$, then $G^{\mathcal{P}}$ is a subgraph of $J\boxtimes P$, where the treewidth of $J$ is bounded by a function of the treewidth of $H$. 
 
@@ -149,7 +162,7 @@ Let $\PP$ be a $(k,d)$-shortcut system for $G$. Then $G^\PP$ is a subgraph of $J
 
 \cref{PlanarBasic,ShortcutProduct,AddDummy} immediately imply \cref{kPlanarBasic} with $O(k^{11})$ instead of $O(k^5)$. Some further observations reduce the bound to $O(k^5)$; see \cref{Tools}. 
 
-\cref{ShortcutProduct} leads to several other results of interest. Here is one example. The \emph{$k$-th power} of a graph $G$ is the graph $G^k$ with vertex set $V(G^k):=V(G)$, where $vw\in E(G^k)$ if and only if $\dist_G(v,w)\leq k$.\footnote{For a graph $G$ and two vertices $v,w\in V(G)$, we use $\dist_G(v,w)$ to denote the length of a shortest path with endpoints $v$ and $w$.  If $v$ and $w$ are in different components of $G$ then we use the convention that $\dist_G(v,w)=\infty$.} If $G$ has maximum degree $\Delta$, then $G^k = G^\PP$ for some $(k,2k\Delta^{k})$-shortcut system $\PP$; see \cref{PowerShortcut}. \cref{kPlanarBasic,ShortcutProduct} then imply:
+\cref{ShortcutProduct} leads to several other results of interest. Here is one example. The \emph{$k$-th power} of a graph $G$ is the graph $G^k$ with vertex set $V(G^k):=V(G)$, where $vw\in E(G^k)$ if and only if $\dist_G(v,w)\leq k$.\footnote{For a graph $G$ and two vertices $v,w\in V(G)$, $\dist_G(v,w)$  denotes the length of a shortest path, in $G$, with endpoints $v$ and $w$.  We define $\dist_G(v,w):=\infty$ if $v$ and $w$ are in different connected components of $G$.} If $G$ has maximum degree $\Delta$, then $G^k = G^\PP$ for some $(k,2k\Delta^{k})$-shortcut system $\PP$; see \cref{PowerShortcut}. \cref{kPlanarBasic,ShortcutProduct} then imply:
 
 \begin{thm}
 \label{kPowerBasic}
@@ -162,13 +175,13 @@ $\Delta^{k} (2k^4+6k^2)\binom{k+8}{8}-1$.
 
 %This theorem and several related results are proved in \cref{Structure}. In particular, in \cref{sec-1-planar} we present a refinement of \cref{kPlanarBasic} in the case $k=1$. In \cref{sec-g-k-planar} we generalise \cref{kPlanarBasic} for 
 
-These theorems have applications in diverse areas, including queue layouts  \citep{dujmovic.joret.ea:planar}, non-repetitive colouring  \citep{dujmovic.esperet.ea:planar}, and $p$-centred colouring  \citep{micek:personal}, 
+These theorems have applications in diverse areas, including queue layouts  \citep{dujmovic.joret.ea:planar}, non-repetitive colouring  \citep{dujmovic.esperet.ea:planar}, $p$-centred colouring  \citep{micek:personal}, and succinct graph representations \citep{bonamy.gavoille.ea:shorter}, some of which
 %, and graph encoding \citep{BGP}. 
 which we explore in \cref{Applications}. For example, we prove that $k$-planar graphs have bounded non-repetitive chromatic number (for fixed $k$). Prior to the recent work of \citet{dujmovic.esperet.ea:planar}, it was even open whether planar graphs have bounded non-repetitive chromatic number.
 
 %\cref{Characterisation} presents a rough characterisation of $k$-planar graphs in terms of an underlying planar graph. This is useful for showing that various families of graphs are $k$-planar. For example, we conclude that bounded powers of bounded-degree planar graphs are $k$-planar, for a suitable constant $k$. Thus  \cref{kPlanarBasic} and the above applications are applicable to this class. These results also generalise for arbitrary surfaces. 
 
-\cref{Examples} presents several examples of graph classes that can be obtained from a shortcut system applied to a planar graph, including graph powers, map graphs, string graphs, and nearest neighbour graphs. All of these results also apply, where instead of planar graphs, we consider graphs of bounded Euler genus.   All of the applications in \cref{Applications}  are applicable to these examples. 
+\cref{Examples} presents several examples of graph classes that can be obtained from a shortcut system applied to a planar graph, including graph powers, map graphs, string graphs, and nearest neighbour graphs. All of these results also apply, where instead of planar graphs, we consider graphs of bounded Euler genus.   All of the applications discussed in \cref{Applications} work on these graph classes.
 
 %\citet{dujmovic.joret.ea:planar} generalised their result for planar graphs for graphs embeddable on any surface. In particular, they proved that every graph of Euler genus $g$ is a subgraph of $H\boxtimes P$ for some graph $H$ of treewidth at most $???k$ and for some path $P$. We provide a further generalisation allowing crossings. Say a graph is $(g,k)$-planar if it has a drawing in a surface of Euler genus at most $g$ in which each edge is involved in at most $k$ crossings. 
 %
@@ -220,12 +233,24 @@ A \emph{tree-decomposition} $\mathcal{T}$ of a graph $G$ consists of a tree $T$ 
 \end{compactenum}
 The \emph{width} of the tree-decomposition $\mathcal{T}$ is $\max\{|B_x|:x\in V(T)\}-1$.  The \emph{treewidth} $\tw(G)$ of a graph $G$ is the minimum width of a tree-decomposition of $G$.  Treewidth is the standard measure of how similar a graph is to a tree. Indeed, a connected graph has treewidth 1 if and only if it is a tree. Treewidth is of fundamental importance in structural and algorithmic graph theory; see \citep{Reed03,HW17,Bodlaender-TCS98} for surveys. 
 
-While strong products enable an easy statement of the theorems in \cref{Introduction}, to prove such results it is helpful to work with layerings and partitions, which we now introduce. A \emph{layering} of a graph $G$ is a sequence $\mathcal{L}=\langle V_0,V_1,\ldots\rangle$ such that $\{V_0,V_1,\ldots\}$ is a partition of $V(G)$ and for every edge $vw\in E(G)$, if $v\in V_i$ and $w\in V_j$ then $|j-i|\leq 1$.  For any partition $\mathcal{P}=\{S_1,\ldots,S_p\}$ of $V(G)$, a \emph{quotient graph} $H=G/\mathcal{P}$ has a $p$-element vertex set $V(H)=\{x_1,\ldots,x_p\}$ and $x_ix_j\in E(H)$ if and only if there exists an edge $vw\in E(G)$ such that $v\in S_i$ and $w\in S_j$. To highlight the importance of the quotient graph $H$, we call $\mathcal{P}$ an \emph{$H$-partition} and write this concisely as $\mathcal{P}=\{S_x : x\in V(H)\}$ so that each element of $\mathcal{P}$ is indexed by the vertex it creates in $H$.\footnote{An alternative definition of a layering of $G$ is an $H$-partition of $G$ where $H$ is a path.}  A layered $H$-partition $(\mathcal{L},\mathcal{P})$ of a graph $G$ consists of a layering $\mathcal{L}$ of $G$ and an $H$-partition $\mathcal{P}$ of $G$. The \emph{layered width} of $(\mathcal{L},\mathcal{P})$ is $\max\{|L\cap P|: L\in\mathcal{L},\, P\in\mathcal{P}\}$. 
+While strong products enable concise statements of the theorems in \cref{Introduction}, to prove such results it is helpful to work with layerings and partitions, which we now introduce. 
 
-\note{DW}{I  prefer to not define ``layered $H$-partition''. Just define the ``layered width'' of an $H$-partition, which is what we did in \citep{dujmovic.joret.ea:planar}. There are many places where we write ``$H$-partition with layered width'' without writing ``layered $H$-partition''. I prefer it this way.}
+A \emph{layering} of a graph $G$ is a sequence $\mathcal{L}=\langle V_0,V_1,\ldots\rangle$ such that $\{V_0,V_1,\ldots\}$ is a partition of $V(G)$ and for every edge $vw\in E(G)$, if $v\in V_i$ and $w\in V_j$ then $|j-i|\leq 1$.  For any partition $\mathcal{P}=\{S_1,\ldots,S_p\}$ of $V(G)$, a \emph{quotient graph} $H=G/\mathcal{P}$ has a $p$-element vertex set $V(H)=\{x_1,\ldots,x_p\}$ and $x_ix_j\in E(H)$ if and only if there exists an edge $vw\in E(G)$ such that $v\in S_i$ and $w\in S_j$. To highlight the importance of the quotient graph $H$, we call $\mathcal{P}$ an \emph{$H$-partition} and write this concisely as $\mathcal{P}=\{S_x : x\in V(H)\}$ so that each element of $\mathcal{P}$ is indexed by the vertex it creates in $H$.  
+
+For any partition $\mathcal{P}$ of $V(G)$ and any layering $\mathcal{L}$ of $G$ we define the \emph{layered width} of $\mathcal{P}$ with respect to $\mathcal{L}$ as $\max\{|L\cap P|: L\in\mathcal{L},\, P\in\mathcal{P}\}$.  For any partition $\mathcal{P}$ of $V(G)$, we define the \emph{layered width} of $\mathcal{P}$ as the minimum, over all layerings $\mathcal{L}$ of $G$, of the layered width of $\mathcal{P}$ with respect to $\mathcal{L}$.
+
+
+% \footnote{An alternative definition of a layering of $G$ is an $H$-partition of $G$ where $H$ is a path.}  
+
+% A \emph{layered $H$-partition} $(\mathcal{L},\mathcal{P})$ of a graph $G$ consists of a layering $\mathcal{L}$ of $G$ and an $H$-partition $\mathcal{P}$ of $G$. The \emph{layered width} of $(\mathcal{L},\mathcal{P})$ is $\max\{|L\cap P|: L\in\mathcal{L},\, P\in\mathcal{P}\}$. 
+
+% \note{DW}{I  prefer to not define ``layered $H$-partition''. Just define the ``layered width'' of an $H$-partition, which is what we did in \citep{dujmovic.joret.ea:planar}. There are many places where we write ``$H$-partition with layered width'' without writing ``layered $H$-partition''. I prefer it this way.}
 
 \subsection{Previous Work on Partitions of Minor-Closed Classes}
-\citet{dujmovic.joret.ea:planar} introduced the study of partitions with bounded layered width such that the quotient has bounded treewidth. They defined a class $\mathcal{G}$ of graphs to \emph{admit bounded layered partitions} if there exist $t,\ell\in\mathbb{N}$ such that every graph $G\in \mathcal{G}$ has an $H$-partition with layered width at most $\ell$ such that $H$ has treewidth at most $t$. 
+
+\citet{dujmovic.joret.ea:planar} introduced the study of partitions with bounded layered width such that the quotient has some additional desirable property, like small treewidth. 
+% Say that a graph $G$ admits a $(t,\ell)$-partition if $V(G)$ has a partition $\mathcal{P}$ of layered width at most $\ell$ and the treewidth of $H:=G/\mathcal{P}$ is at most $t$. 
+They defined a class $\mathcal{G}$ of graphs to \emph{admit bounded layered partitions} if there exist $t,\ell\in\mathbb{N}$ such that every graph $G\in \mathcal{G}$ has an $H$-partition of layered width at most $\ell$ for some graph $H=H(G)$ of treewidth at most $t$.
 
 These definitions relate to strong products as follows. 
 
@@ -252,15 +277,13 @@ Every planar graph has:
 \item an $H$-partition of layered width $3$ for some planar graph $H$ of treewidth at most $3$.
 \end{compactenum}
 \end{thm}
-Their proof is constructive and gives a simple quadratic-time algorithm for finding these partitions.
-
+Their proof is constructive and gives a simple quadratic-time algorithm for finding these partitions and corresponding layerings.
 %Layered $H$-partitions of small layered width in which $H$ has some additional property are a useful tool for a number of graph problems.  One such useful property is small \emph{treewidth}, which we now define. 
-
+%
 % \citet{dujmovic.joret.ea:planar} show that, if each graph $G$ in some family $\mathcal{G}$ of graphs has a layered $H$-partition for which the layered width of the partition and the treewidth of $H$ are each upper-bounded by some constant $c_\mathcal{G}$, then each of the following quantities are upper bounded by a constant, for every $G\in\mathcal{G}$: queue number, track number, and layered treewidth. \citet{dujmovic.esperet.ea:planar} add non-repetitive chromatic number to this list.  \citet{dujmovic.joret.ea:planar} show that two common families of graphs have such $H$-partitions: planar graphs, graphs of bounded genus, and (more generally) apex-minor-free graphs.
-
+%
 % In this paper we show that another family of graphs admits layered $H$-partitions of bounded layered width in which $H$ has bounded treewidth:
-
-\citet{dujmovic.joret.ea:planar} proved the following generalisation of \cref{PlanarBasic,PlanarPartition} for graphs embeddable on other surfaces.\footnote{The \textit{Euler genus} of the orientable surface with $h$ handles is $2h$. The \textit{Euler genus} of the non-orientable surface with $c$ cross-caps is $c$. The \textit{Euler genus} of a graph $G$ is the minimum integer $g$ such that $G$ embeds in a surface of Euler genus $g$. Of course, a graph is planar if and only if it has Euler genus 0; see \citep{mohar.thomassen:graphs} for more about graph embeddings in surfaces.}
+The same authors proved the following generalisation of \cref{PlanarBasic,PlanarPartition} for graphs embeddable on other surfaces.\footnote{The \textit{Euler genus} of the orientable surface with $h$ handles is $2h$. The \textit{Euler genus} of the non-orientable surface with $c$ cross-caps is $c$. The \textit{Euler genus} of a graph $G$ is the minimum integer $g$ such that $G$ embeds in a surface of Euler genus $g$. Of course, a graph is planar if and only if it has Euler genus 0; see \citep{mohar.thomassen:graphs} for more about graph embeddings in surfaces.}
 
 \begin{thm}[\citep{dujmovic.joret.ea:planar}]
 \label{SurfacePartition}
@@ -294,54 +317,61 @@ Apex-minor-free graphs, addressed by \cref{ApexMinorFree}, are the largest minor
 
 The following result is the main theorem of the paper. Loosely speaking, it shows that if a graph $G$ admits bounded layered partitions, then so to does $G^\PP$ for every $(k,d)$-shortcut system $\PP$ of $G$. 
 
-\begin{thm}\label{modern-major-general}
-  Let $G$ be a graph having a layered $H$-partition of layered width $\ell$ in which $H$ has treewidth at most $t$ and let $\PP$ be a $(k,d)$-shortcut system for $G$.  Then $G^\PP$ has a layered $J$-partition of layered width at most $d\ell(k^3+3k)$ for some graph $J$ with treewidth at most $\binom{k+t}{t}-1$.
-\end{thm}
+\begin{restatable}{thm}{mmg}
+  %\begin{thm}
+  \label{modern-major-general}
+    Let $G$ be a graph having an $H$-partition of layered width $\ell$ in which $H$ has treewidth at most $t$ and let $\PP$ be a $(k,d)$-shortcut system for $G$.  Then $G^\PP$ has a $J$-partition of layered width at most $d\ell(k^3+3k)$ for some graph $J$ with treewidth at most $\binom{k+t}{t}-1$.
+  %\end{thm}
+\end{restatable}
 
 \cref{modern-major-general,MakeWidth1} immediately imply \cref{ShortcutProduct} in the introduction. 
 
-The relationship between $k$-planar graphs and $(k+1,2)$-shortcut systems of planar graphs shows that \cref{modern-major-general} has immediate applications to $k$-planar graphs.  The following result shows that $k$-planar graphs admit bounded layered partitions. With \cref{PartitionProduct,MakeWidth1}, this proves \cref{kPlanarBasic}. % with $c_k\leq(4+o(1))k^5$.
+Using relationship between $k$-planar graphs and $(k+1,2)$-shortcut systems along with a direct application of \cref{modern-major-general} we can obtain a slightly weaker version of \cref{k-planar}, below. The minor modifications needed to obtain the stronger bound are described in \cref{sec-k-planar}. 
+
+ % of planar graphs shows that \cref{modern-major-general} has immediate applications to $k$-planar graphs.  The following result shows that $k$-planar graphs admit bounded layered partitions. With \cref{PartitionProduct,MakeWidth1}, this proves \cref{kPlanarBasic}. % with $c_k\leq(4+o(1))k^5$.
 
 \begin{thm}
 \label{k-planar}
-Every $k$-planar graph has a layered $H$-partition of layered width at most $18k^2 + 30k$ in which $H$ has treewidth at most $\binom{k+4}{3}-1$. %$\treewidth$.
+Every $k$-planar graph has an $H$-partition of layered width at most $18k^2 + 30k$ in which $H$ has treewidth at most $\binom{k+4}{3}-1$. %$\treewidth$.
 \end{thm}
 
-\cref{PlanarPartition,modern-major-general} imply \cref{k-planar} with the weaker bound of $(2\times 3)((k+1)^3+3(k+1))=6k^3 + 18k^2 + 36k+24$ on the layered width. 
-\note{DW}{I would just write, ``\cref{PlanarPartition,modern-major-general} imply \cref{k-planar} with a weaker bound on the layered width.}
-We prove the stronger bound in \cref{sec-k-planar}. 
-%Also note that \cref{k-planar,MakeWidth1} imply \cref{kPlanarBasic} with the $O(k^5)$ bound on the treewidth of $H$, as promised. 
-% PM: I removed the last line because it's already stated in the line preceding the theorem
+% \cref{PlanarPartition,modern-major-general} imply \cref{k-planar} with the weaker bound of $O(k^3)$
+%  % $(2\times 3)((k+1)^3+3(k+1))=6k^3 + 18k^2 + 36k+24$
+% on the layered width. 
+% % \note{DW}{I would just write, ``\cref{PlanarPartition,modern-major-general} imply \cref{k-planar} with a weaker bound on the layered width.}
+% We prove the stronger bound in \cref{sec-k-planar}. 
+% %Also note that \cref{k-planar,MakeWidth1} imply \cref{kPlanarBasic} with the $O(k^5)$ bound on the treewidth of $H$, as promised. 
+% % PM: I removed the last line because it's already stated in the line preceding the theorem
 
 In the important special case of $k=1$ we obtain better constants and an additional property (planarity) of $H$ (see \cref{sec-1-planar} for the proof):
 
 \begin{thm}
 \label{1-planar}
-Every 1-planar graph has a layered $H$-partition of layered width at most 30 where $H$ is planar and has treewidth at most 3.
+Every 1-planar graph has an $H$-partition of layered width at most 30 where $H$ is planar and has treewidth at most 3.
 \end{thm}
 
 %These results imply that $k$-planar graphs have all the graph parameters mentioned above upper-bounded by some constant $c_k$.
 
-The definition of $k$-planar graphs naturally generalises for other surfaces. A graph $G$ drawn on a surface $\Sigma$ is $(\Sigma,k)$-plane if every edge of $G$ is involved in at most $k$ crossings.  A graph $G$ is $(g,k)$-planar if it is isomorphic to some $(\Sigma,k)$-plane graph, for some surface $\Sigma$ with Euler genus at most $g$. 
+The definition of $k$-planar graphs naturally generalises for other surfaces. A graph $G$ drawn on a surface $\Sigma$ is $(\Sigma,k)$-plane if every edge of $G$ is involved in at most $k$ crossings.  A graph $G$ is $(g,k)$-planar if it is isomorphic to some $(\Sigma,k)$-plane graph, for some surface $\Sigma$ with Euler genus at most $g$. \citet{grigoriev.bodlaender:algorithms} study approximation algorithms for $(g,k)$-plane graphs.
  %\citet[Theorem~22]{dujmovic.joret.ea:planar} show that every genus-$g$ graph has a layered $H$-partition of layered width at most $\max\{2g,3\}$ such that $H$ has treewidth at most 4. 
 \cref{AddDummy} immediately generalises as follows:
 
 \begin{obs}
 \label{gAddDummy}
-Every $(g,k)$-planar graph is isomorphic to $G^\PP$ for some graph $G$ of Euler genus at most $g$ and some $(k+1,2)$-shortcut system $\PP$ for $G$. 
+Every $(g,k)$-planar graph is isomorphic to a subgraph of $G^\PP$ for some graph $G$ of Euler genus at most $g$ and some $(k+1,2)$-shortcut system $\PP$ for $G$. 
 \end{obs}
 
 We prove that $(g,k)$-planar graphs admit bounded layered partitions. 
 
 \begin{thm}
 \label{g-k-planar}
-Every $(g,k)$-planar graph has a layered $H$-partition of layered width at most 
+Every $(g,k)$-planar graph has an $H$-partition of layered width at most 
 $\max\{2g,3\}\cdot(6k^2 + 10k)$ in which $H$ has treewidth at most $\binom{k+5}{4}-1$.
 \end{thm}
 
-Note that \cref{SurfacePartition}(b) and \cref{modern-major-general} imply \cref{k-planar} with a weaker bound on the layered width. We prove the stronger bound in \cref{sec-k-planar}. 
+Again, a direct application of \cref{modern-major-general} using \cref{SurfacePartition}(b) implies \cref{k-planar} with a weaker bound on the layered width. We prove the stronger bound in \cref{sec-k-planar}. 
 
-Finally, we state the following corollary of \cref{ApexMinorFree,modern-major-general,MakeWidth1,PartitionProduct}. This is the strongest result that follows from our work and that of \citet{dujmovic.joret.ea:planar}. 
+Finally, we state the following corollary of \cref{ApexMinorFree,modern-major-general,MakeWidth1}. This is the most general result that follows from \cref{modern-major-general} and that of \citet{dujmovic.joret.ea:planar}. 
 
 \begin{thm}
 For every apex graph $X$ and for all integers $k,d\geq 1$, there is an integer $c$ such that for every $X$-minor-free graph $G$ and for every $(k,d)$-shortcut system $\PP$ for $G$,  $G^\PP$ has an $H$-partition of layered width 1 such that $H$ has treewidth at most $c$; that is $G^\PP \subseteq H \boxtimes P$ for some path $P$. 
@@ -371,7 +401,7 @@ What sets layered partitions apart from layered treewidth is that they lead to c
 \section{Shortcut Systems}
 \label{Structure}
 
-The purpose of this section is to prove our main result, \cref{modern-major-general}. This theorem shows how, given a $(k,d)$-shortcut system $\mathcal{P}$ of a graph $G$, a layered $H$-partition of $G$ can be used to obtain a layered $J$-partition of $G^{\mathcal{P}}$ where the layered width  does not increase dramatically and the treewidth of $J$ is not much more than the treewidth of $H$.  Our main results for $k$-planar graphs (\cref{k-planar}) and $(g,k)$-planar graphs (\cref{g-k-planar}) follow; see \cref{sec-k-planar}.
+The purpose of this section is to prove our main result, \cref{modern-major-general}. This theorem shows how, given a $(k,d)$-shortcut system $\mathcal{P}$ of a graph $G$, a $H$-partition of $G$ can be used to obtain a $J$-partition of $G^{\mathcal{P}}$ where the layered width  does not increase dramatically and the treewidth of $J$ is not much more than the treewidth of $H$.  Our main results for $k$-planar graphs (\cref{k-planar}) and $(g,k)$-planar graphs (\cref{g-k-planar}) follow; see \cref{sec-k-planar}.
 
 For convenience, it will be helpful to assume that $\mathcal{P}$ contains a length-1 $vw$-shortcut for every edge $vw\in E(G)$.  Since $G^\PP$ is defined to be a supergraph of $G$, this assumption has no effect on $G^{\mathcal{P}}$ but avoids special cases in some of our proofs.
 
@@ -402,7 +432,6 @@ We begin with a fairly standard lemma about normalized tree decompositions.
 
 %\subsection{Generalized Tripod Partitions}
 
-For the remainder of this section, $G$ is a graph and $(\mathcal{L}:=\langle V_1,\ldots,V_h\rangle,\mathcal{Y}:=(Y_x: x\in V(H)))$ is a layered partition of $G$ of layered width $\ell$ where the treewidth of the quotient graph $H=G/\mathcal{Y}$ is at most $t$.  In addition, $\mathcal{T}:=(B_x:x\in V(T))$ is a tree-decomposition of $H$ obtained by applying \lemref{nice-decomposition} to $H$.  The following lemma shows how to interpret the pair $(\mathcal{Y},\mathcal{T})$ as a hierarchical decomposition of $G$; refer to \cref{fig:generalized-tripod}.
 
 \begin{figure}
   \begin{center}
@@ -413,20 +442,23 @@ For the remainder of this section, $G$ is a graph and $(\mathcal{L}:=\langle V_1
   \label{fig:generalized-tripod}
 \end{figure}
 
-\note{W}{I think \clmref{generalized-tripod} should be presented as a stand-alone lemma. Then we repeat the statement of \cref{modern-major-general} followed by $\\begin \{proof\} .... \\end\{proof\}$.}
+% \notex{W}{I think \clmref{generalized-tripod} should be presented as a stand-alone lemma. Then we repeat the statement of \cref{modern-major-general} followed by $\\begin \{proof\} .... \\end\{proof\}$.}
 
-\note{DW}{Is some sort of converse to \clmref{generalized-tripod}  also true? \clmref{generalized-tripod}  shows that if a graph $G$ has a layered partition with all the nice properties, then $G$ has this generalised tripod partition. Isn't also true that if $G$ has a generalised tripod partition, then $G$ has a layered partition with all the nice properties. The proof is basically in \citep{dujmovic.joret.ea:planar}, right?}
+\notex{DW}{Is some sort of converse to \cref{generalized-tripod}  also true? \cref{generalized-tripod}  shows that if a graph $G$ has a layered partition with all the nice properties, then $G$ has this generalised tripod partition. Isn't also true that if $G$ has a generalised tripod partition, then $G$ has a layered partition with all the nice properties. The proof is basically in \citep{dujmovic.joret.ea:planar}, right?}
+\notex{PM}{Yes, if by generalized tripod partition you mean $T$ and $\mathcal{Y}=(Y_x:x\in V(T))$ that satisify \yref{thickness}, \yref{separator}, and \yref{ancestor-edge}.  From \yref{separator} and \yref{ancestor-edge} you can construct a width-$t$ $T$-decomposition of $H=G/\mathcal{Y}$.  By \yref{thickness}, $\mathcal{Y}$, has layered width at most $\ell$.}
 
-\begin{clm}\clmlabel{generalized-tripod}
-  For each $x\in V(T)$, let $V_x := \bigcup_{y\in V(T_x)} Y_y$, $F_x:=\{w\in V(G): vw\in E(G), v\in V_x,\, w\not\in V_x\}$, and $N_x:=V_x\cup F_x$.  Then, 
+The following lemma shows how to interpret an $H$-partition of $G$ and a tree-partition of $H$ as a hierarchical decomposition of $G$; refer to \cref{fig:generalized-tripod}.
+  
+\begin{lem}\label{generalized-tripod}
+  Let $G$ be a graph; let $\mathcal{L}:=\langle V_1,\ldots,V_h\rangle$ be a layering of $G$; let $\mathcal{Y}:=(Y_x: x\in V(H))$ be an $H$-partition of $G$ of layered width at most $\ell$ with respect to $\mathcal{L}$ where $H$ has treewidth at most $t$; and let $\mathcal{T}:=(B_x:x\in V(T))$ be a tree-decomposition of $H$ satisfying the conditions of \lemref{nice-decomposition}.  For each $x\in V(T)$, let $V_x := \bigcup_{y\in V(T_x)} Y_y$, $F_x:=\{w\in V(G): vw\in E(G), v\in V_x,\, w\not\in V_x\}$, and $N_x:=V_x\cup F_x$.  Then, 
   \begin{compactenum}[(Y1)]
     \item\ylabel{thickness} $\mathcal{Y}:=(Y_x: x\in V(T))$ is a partition of $V(G)$ of layered width (with respect to $\mathcal{L}$) at most $\ell$.
     \item\ylabel{separator} For each $x\in V(T)$, there is no edge $vw\in E(G)$ with $v\in V_x$ and $w\in V(G)\setminus N_x$. 
     \item\ylabel{ancestor-edge} For each $x\in V(T)$, there is a set $\{a_1,\ldots,a_{t'}\}$ of $t'\le t$ strict $T$-ancestors of $x$ such that $F_x \subseteq \bigcup_{i=1}^{t'} Y_{a_i}$.
   \end{compactenum}
-\end{clm}
+\end{lem}
 
-Before proving \clmref{generalized-tripod} we point out more properties that are immediately implied by it:
+Before proving \cref{generalized-tripod} we point out more properties that are immediately implied by it:
 
 \begin{compactenum}[(Y1)]\setcounter{enumi}{3}
   \item\ylabel{y-subsets} $Y_x\subseteq V_x$ for every $x\in V(T)$. 
@@ -436,8 +468,10 @@ Before proving \clmref{generalized-tripod} we point out more properties that are
 
 Property~\yref{y-subsets} follows from the fact that $V_x$ is the union of several sets, one of which is $Y_x$.  Property~\yref{containment-i} follows from the definition of $V_x$ and the fact that $V(T_x)\subseteq V(T_a)$. To show Property~\yref{containment-ii} first note that, by \yref{containment-i} it suffices to consider vertices in $w\in F_x=N_x\setminus V_x$. By definition, every vertex $w\in F_x$ is adjacent, in $G$, to a vertex $v\in V_x$.  By \yref{containment-i}, $v\in V_a$, so $w$ is either in $V_a$ or $w$ satisfies the condition $vw\in E(G)$, $v\in V_a$, and $w\not\in V_a$, so $w\in F_a$.  In either case $w\in N_a=V_a\cup F_a$.  Note that none of \yref{y-subsets}--\yref{containment-ii} depends on \yref{ancestor-edge} (which is important, since \yref{containment-i} is used to establish \yref{ancestor-edge} in the following proof).
 
-\begin{proof}[Proof of \clmref{generalized-tripod}]
-  Property~\yref{thickness} follows immediately from the fact that $V(T)=V(H)$ and the fact that $(\mathcal{L},\mathcal{Y})$ is a layered partition of layered width $\ell$.  Property \yref{separator} is immediate from the definitions of $F_x$ and $N_x$.  In particular, $(N_x,V(G)\setminus V_x)$ is a separation of $G$ with $F_x=N_x\cap(V(G)\setminus V_x)$. 
+
+\begin{proof}[Proof of \cref{generalized-tripod}]
+  Property~\yref{thickness} follows immediately from the fact that $V(T)=V(H)$
+  and the fact that $\mathcal{Y}$ has layered width at most $\ell$ with respect to $\mathcal{L}$.  Property \yref{separator} is immediate from the definitions of $F_x$ and $N_x$.  In particular, $(N_x,V(G)\setminus V_x)$ is a separation of $G$ with $F_x=N_x\cap(V(G)\setminus V_x)$. 
 
   To establish Property~\yref{ancestor-edge}, consider some vertex $w\in F_x$.  Since $w\in F_x$, there exists an edge $vw\in E(G)$ with $v\in V_x$ and $w\not\in V_x$.  Since $v\in V_x$, $v\in Y_{x'}$ for some $T$-descendant $x'$ of $x$ (possibly $x=x'$). Since $\mathcal{Y}$ is a partition, $w\in Y_{a}$ for some $a\not\in V(T_x)$.  Since $vw\in E(G)$, we have $x'a\in E(H)$.  By \tref{ancestor-edge}, one of $a$ or $x'$ is a $T$-ancestor of the other. Since $w\in Y_a\subseteq V_a$ and $w\not\in V_x\supseteq V_{x'}$, \yref{containment-i} rules out the possibility that $x'$ is a $T$-ancestor of $a$. Therefore, $a$ is a $T$-ancestor of $x$ which is a $T$-ancestor of $x'$.  Let $z_0,\ldots,z_r$ be the path in $T$ from $z_0:=x'$ to $z_r:=a$.  For each $i\in\{0,\ldots,r\}$, at least one of $a$ or $x'$ is in $B_{z_i}$.  However, by \tref{subtree-root} $x'$ is not contained in $B_{x_i}$ for any $i\in\{1,\ldots,r\}$.  Therefore $a\in B_{x_i}$ for each $i\in\{0,\ldots,r\}$.  In particular, $a$ is contained in $B_x$.
   Property~\yref{ancestor-edge} now follows from the fact that $|B_x|\le t+1$ and $B_x$ contains $x$.
@@ -448,13 +482,21 @@ Property~\yref{y-subsets} follows from the fact that $V_x$ is the union of sever
 %A collection $\mathcal{P}$ of paths in a graph $G$ is a \emph{$(k,d)$-shortcut system} (for $G$) if every path in $\mathcal{P}$ has length at most $k$ and if, for every $v\in V(G)$, the number of paths in $\mathcal{P}$ that use $v$ as an internal vertex is at most $d$. Each path in $P\in\mathcal{P}$ is called a \emph{shortcut}; if $P$ has endpoints $v$ and $w$ then it is a \emph{$vw$-shortcut}. Given a graph $G$ and a $(k,d)$-shortcut system $\mathcal{P}$ for $G$, we use $G^{\mathcal{P}}$ to denote the supergraph of $G$ obtained by adding the edge $vw$ for each $vw$-shortcut in $\mathcal{P}$.
 
 
-In the rest of this section, 
-%$(\mathcal{L},\mathcal{Y})$ denotes a layered $H$-partition of $G$;
-$\mathcal{T}=(B_x:x\in V(T))$ is a tree-decomposition of $H:=G/\mathcal{Y}$ satisfying the conditions of \lemref{nice-decomposition} and, for each $x\in V(T)$, $Y_x$, $V_x$, $F_x$, and $N_x$ are defined as in \clmref{generalized-tripod}.
+% In the rest of this section, 
+% %$(\mathcal{L},\mathcal{Y})$ denotes a layered $H$-partition of $G$;
+% $\mathcal{T}=(B_x:x\in V(T))$ is a tree-decomposition of $H:=G/\mathcal{Y}$ satisfying the conditions of \lemref{nice-decomposition} and, for each $x\in V(T)$, $Y_x$, $V_x$, $F_x$, and $N_x$ are defined as in \clmref{generalized-tripod}.
+
+We are now ready to prove our main result, which we now restate for convenience:
+
+\mmg*
+
+\begin{proof}
+Apply \cref{generalized-tripod} to $G$ and let 
+let $\mathcal{L}$, $\mathcal{Y}$, $\mathcal{T}$, $T$, $Y_x$, $V_x$, $F_x$, and $N_x$ be defined as in \cref{generalized-tripod}.
 
 For a node $x\in V(T)$, we say that a shortcut $P\in\mathcal{P}$ \emph{crosses} $x$ if $Y_x$ contains an internal vertex of $P$, that is, $P=(v_0,\ldots,v_r)$ and $\{v_1,\ldots,v_{r-1}\}\cap Y_x\neq\emptyset$.  We say that a vertex $v\in V(G)$ \emph{participates} in $x$ if $v\in Y_x$ or $\mathcal{P}$ contains a shortcut $P$ with $v\in V(P)$ and $P$ crosses $x$. We let $X_v$ denote the set of nodes $x\in V(T)$ such that $v$ participates in $x$.
 
-\begin{clm}
+\begin{clm}\label{x-v-ancestor}
   For any $v\in V(G)$ there exists a (unique) node $a(v)\in X_v$ such that
   $a(v)$ is a $T$-ancestor of every node in $X_v$.
 \end{clm}
@@ -555,10 +597,8 @@ Next we show that $\mathcal{S}$ has small layered width with respect to $\mathca
 \end{proof}
 
 % Together, \clmref{general-width} and \clmref{general-bag-size} imply the following generalization of \thmref{k-planar}:
-We are now ready to prove the main result of the paper. 
 
-\begin{proof}[Proof of \cref{modern-major-general}] 
-  The proof is almost immediate from \clmref{general-width} and \clmref{general-bag-size}, except that the layering $\mathcal{L}$ of $G$ may not be a valid layering of $G^{\mathcal{P}}$.  In particular, $G^{\mathcal{P}}$ may contain an edge $vw$ with $v\in V_i$ and $w\in V_{i+j}$ for any $j\in\{0,\ldots,k\}$.  To resolve this, we use a new layering $\mathcal{L}':=\langle V_0',\ldots,V_h'\rangle$ in which $V_i'=\bigcup_{j=ki}^{ki+k-1} V_i$.  This increases the layered width given by \clmref{general-width} from $d\ell(k^2+3)$ to $d\ell(k^3+3k)$.
+  At this point, the proof of \cref{modern-major-general} is almost immediate from \clmref{general-width} and \clmref{general-bag-size}, except that the layering $\mathcal{L}$ of $G$ may not be a valid layering of $G^{\mathcal{P}}$.  In particular, $G^{\mathcal{P}}$ may contain an edge $vw$ with $v\in V_i$ and $w\in V_{i+j}$ for any $j\in\{0,\ldots,k\}$.  To resolve this, we use a new layering $\mathcal{L}':=\langle V_0',\ldots,V_h'\rangle$ in which $V_i'=\bigcup_{j=ki}^{ki+k-1} V_i$.  This increases the layered width given by \clmref{general-width} from $d\ell(k^2+3)$ to $d\ell(k^3+3k)$.  Therefore $G$ has an $H$-partition of layered width at most $d\ell(k^3+3k)$ in which $H$ has treewidth at most $\binom{k+t}{t}$, completing the proof of \cref{modern-major-general}.
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%
@@ -569,15 +609,11 @@ This section shows that the constants in \cref{modern-major-general} can be impr
 
 As in the proof of \cref{AddDummy}, let $G_0$ be the plane graph obtained by adding a dummy vertex at each crossing in $G$. In this way, each edge $vw\in E(G)$ corresponds naturally to a path $P_{vw}$ of length at most $k+1$ in $G_0$.  Let $\PP := \{P_{vw}: vw\in E(G)\}$. Observe that $\PP$ is a $(k+1,2)$-shortcut system for $G_0$ and that $G_0^{\mathcal{P}}\supseteq G$.  Specifically, $G_0^{\mathcal{P}}$ contains every edge and vertex of $G$ as well as the dummy vertices in $V(G_0)\setminus V(G)$ and their incident edges.  
 
-Since $G_0$ is planar,  \cref{PlanarPartition}(b) implies that $G_0$ has an $H$-partition of layered width 3 for some planar graph $H$ of treewidth at most 3.  Applying \cref{modern-major-general} to $G_0$ and $\mathcal{P}$ immediately implies that $G$ (an arbitrary $k$-planar graph) has a layered $H$-partition of layered width $6((k+1)^3+3(k+1))$ for some graph $H$ of treewidth at most $\binom{k+4}{3}-1$.
+Since $G_0$ is planar,  \cref{PlanarPartition}(b) implies that $G_0$ has an $H$-partition of layered width 3 for some planar graph $H$ of treewidth at most 3.  Applying \cref{modern-major-general} to $G_0$ and $\mathcal{P}$ immediately implies that $G$ (an arbitrary $k$-planar graph) has an $H$-partition of layered width $6((k+1)^3+3(k+1))$ for some graph $H$ of treewidth at most $\binom{k+4}{3}-1$.
 
-We can reduce the layered width of the $H$-partition of $G$ from $O(k^3)$ to $O(k^2)$ by observing that the dummy vertices in $V(G_0)\setminus V(G)$ do not contribute to the layered width of this partition.  In this setting, the proof of \cref{clm:general-width} is simpler since each vertex $w\in Y_x$ contributes at most two vertices to $V_i\cap Y_x$.  More precisely, each path $P\in\mathcal{P}$ containing an internal (dummy) vertex $w\in Y_x\cap (V_{i-j}\cup V_{i+j})$ contributes:
-\begin{compactitem}
-  \item  at most two vertices to $S_x\cap V_i$ for $j\in\{0,\ldots,\floor{(k+1)/2}\}$;
-  \item at most one vertex to $S_x\cap V_j$ for $j\in\{\floor{(k+1)/2},\ldots,k+1\}$; 
-  \item no vertices to $S_x\cap V_j$ for $j > k+1$.
-\end{compactitem}
-\note{DW}{do we need the bulletted list here?}
+We can reduce the layered width of the $H$-partition of $G$ from $O(k^3)$ to $O(k^2)$ by observing that the dummy vertices in $V(G_0)\setminus V(G)$ do not contribute to the layered width of this partition.  In this setting, the proof of \cref{clm:general-width} is simpler since each vertex $w\in Y_x$ contributes at most two vertices to $V_i\cap Y_x$.  More precisely, each path $P\in\mathcal{P}$ containing an internal (dummy) vertex $w\in Y_x\cap (V_{i-j}\cup V_{i+j})$ contributes: (i)~at most two vertices to $S_x\cap V_i$ for $j\in\{0,\ldots,\floor{(k+1)/2}\}$; (ii)~at most one vertex to $S_x\cap V_j$ for $j\in\{\floor{(k+1)/2},\ldots,k+1\}$; or (iii)~no vertices to $S_x\cap V_j$ for $j > k+1$.
+% \end{compactitem}
+% \note{DW}{do we need the bulletted list here?}
 Redoing the calculation at the end of the proof of \cref{clm:general-width} then yields 
 \begin{align*}
     |S_x\cap Y_i| &\le d\ell\left( 
@@ -606,10 +642,7 @@ This section shows that the constants in \cref{modern-major-general} can be furt
 A \emph{kite} in $G$ is the subgraph $K=G[\{v,w,x,y\}]$ induced by the endpoints of a pair of crossing edges $vw,xy\in E(G)$.  It follows from edge-maximality that every kite is isomorphic to the complete graph $K_4$.
 The edges $vw$ and $xy$ are called \emph{spars} of $K$.  The cycle $vxwy$ is called the \emph{sail} of $K$.  It follows from edge-maximality that none of the edges $vx$, $xw$, $wy$, or $yv$ are crossed by any other edges of $G$. Thus any edge that is a spar of a kite $K$ is not part of a sail of any kite $K'$. Observe that any spar of $K$ is incident on exactly four \emph{kite faces} of $G$, each of which has three edges and two vertices of $G$ on its boundary.
 
-The 1-plane graph $G$ has a plane triangulation $G'$ as a subgraph that can be obtained by removing one spar from each kite in $G$.  Observe that, for any spar $xy\in E(G)\setminus E(G')$ that crosses $vw\in E(G')$, $G'$ contains the path $vxw$ (and $vyw$).  It follows that 
-\begin{equation}
-  \dist_{G'}(v,w)\le 2 \enspace . \eqlabel{spar-distance}
-\end{equation}
+The 1-plane graph $G$ has a plane triangulation $G'$ as a subgraph that can be obtained by removing one spar from each kite in $G$.  Observe that, for any spar $xy\in E(G)\setminus E(G')$ that crosses $vw\in E(G')$, $G'$ contains the path $vxw$ (and $vyw$).  It follows that $\dist_{G'}(v,w)\le 2$. 
 
 Our proof of \cref{1-planar} follows quickly from the following technical lemma, which is an extension of the analagous result for plane graphs \cite{dujmovic.joret.ea:planar}.
 \begin{lem}
@@ -648,19 +681,21 @@ Our proof of \cref{1-planar} follows quickly from the following technical lemma,
   
   Let $\overline{Y}$ denote the subgraph of $N'$ consisting of vertices and edges of $Q_1$, $Q_2$, $Q_3$, and $\tau$.  Let $\overline{Y}^+$ denote the subgraph of $N$ consisting of the vertices and edges of $\overline{Y}$ plus the vertices and edges of every kite formed by a crossing between an edge of $G$ and an edge of $\overline{Y}$.
   
-  We claim that, for each integer $i\ge 0$, $|V(\overline{Y}^+)\cap V_i|\le 15$.  First observe that, since $Q_1,Q_2,Q_3$ are each vertical paths in $T$,  $\overline{Y}$ contains at most three vertices of $V_i$, each incident on at most two edges of $\overline{Y}$.  By \eqref{spar-distance}, any vertex $x\in V(\overline{Y}^+)\setminus V(\overline{Y})\cap V_i$, is incident to an edge $xy\in E(G)$ that crosses one of the at most six edges in $\overline{Y}$ having an endpoint in $V_i$.  These at most six edges have at most 12 endpoints.  Therefore $|V(\overline{Y}^+)\setminus V(\overline{Y})\cap V_i|\le 6\times 2=12$, so $|V(\overline{Y}^+)\cap V_i|\le 12+3=15$.
+  We claim that, for each integer $i\ge 0$, $|V(\overline{Y}^+)\cap V_i|\le 15$.  First observe that, since $Q_1,Q_2,Q_3$ are each vertical paths in $T$,  $\overline{Y}$ contains at most three vertices of $V_i$, each incident on at most two edges of $\overline{Y}$.  Since $\dist_{G'}(v,w)\le 2$ for each $vw\in E(G)$, any vertex $x\in V(\overline{Y}^+)\setminus V(\overline{Y})\cap V_i$, is incident to an edge $xy\in E(G)$ that crosses one of the at most six edges in $\overline{Y}$ having an endpoint in $V_i$.  These at most six edges have at most 12 endpoints.  Therefore $|V(\overline{Y}^+)\setminus V(\overline{Y})\cap V_i|\le 6\times 2=12$, so $|V(\overline{Y}^+)\cap V_i|\le 12+3=15$.
   
   Let $M$ and $M^+$ denote the subgraph of $G$ containing the edges and vertices of $\overline{Y}$, respectively $\overline{Y}^+$, and the edges and vertices of $F$.  The graph $M^+$ has some number of bounded faces, all contained in the interior of $F$. Some of the bounded faces of $M^+$ are kite faces. Let $F_1,\ldots,F_m$ be the non-kite bounded faces of $M^+$.  
   
   We claim that, for each $i\in\{1,\ldots,m\}$, the boundary of $F_i$ is a cycle in $G'$ that contains no spars. Otherwise, some edge $vw$ contributes to the boundary of $F_i$ but is crossed by an edge $xy\in E(G)$. Then, $vw\not\in E(F)$ since no edge of $F$ is crossed by any edge of $G$. Therefore $vw\in E(\overline{Y}^+)$ so $xy\in E(Y^+)$. But then the only faces of $M^+$ incident to $vw$ are kite faces.  In particular $vw$ cannot be incident to the non-kite face $F_i$.
   
-  Note that $M$ is a Mercedes graph 
-  \note{DW}{``Mercedes'' not defined} and that each of the faces $F_1,\ldots,F_m$ is contained in a single wedge of $M$.   Let $Y^+ := \overline{Y}^+-F$. Therefore, $V(F_i)$ can be partitioned into at most three sets $P_1'$, $P_2'$, and $P_3'$ where $P_1'\subset V(Y^+)$, $P_2'\subseteq P_a$, $P_3'\subseteq P_b$ for some $a,b\in\{1,2,3\}$, and $F_i[P_j']$ is a path, for each $j\in\{1,2,3\}$. 
+  % Note that $M$ is a Mercedes graph 
+  % \note{DW}{``Mercedes'' not defined} and that each of the faces 
+  
+  Observe that each of the faces $F_1,\ldots,F_m$ is contained in a single internal face of $M$.   Let $Y^+ := \overline{Y}^+-F$. Therefore, $V(F_i)$ can be partitioned into at most three sets $P_1'$, $P_2'$, and $P_3'$ where $P_1'\subset V(Y^+)$, $P_2'\subseteq P_a$, $P_3'\subseteq P_b$ for some $a,b\in\{1,2,3\}$, and $F_i[P_j']$ is a path, for each $j\in\{1,2,3\}$. 
 
   Finally, the subgraph $N_i$ of $G$ consisting of the edges and vertices of $G$ contained in $F_i$ or its interior does not contain one of the three vertices of $\tau$. Therefore, we can apply induction using the cycle $F_i$ and the partition $P_1',P_2',P_3'$ of $V(C_i)$ to obtain the desired $H$-partition and tree decomposition of $N_i$.
   
   The proof finishes in the same way as the proof in \cite{dujmovic.joret.ea:planar}.  The paths $P_1,\ldots,P_k$, and $S=V(Y^+)$ become elements of the $H$-partition. 
-  \note{DW}{Do we need $S$ here?}
+  % \note{DW}{Do we need $S$ here?}
    Elements in each of the $H$-partitions of $N_1,\ldots,N_3$ that intersect $P_1,\ldots,P_k$, or $V(\overline{Y}^+-F)$ are discarded and all the resulting sets are combined to obtain an $H$-partition of $G$.  The desired tree decomposition of $G$ is obtained in exactly the same way as in the proof of Lemma~14 in \cite{dujmovic.joret.ea:planar}, except that now each node $x$ has a child for each face $F_i$ of $M^+_x$ that contains a vertex of $G$ in its interior.
   
   The planarity of $H$ comes from two properties:
@@ -680,7 +715,7 @@ Given a 1-plane graph $G$, add edges to make it edge maximal so that it has an o
   
   Let $G'$ be the plane graph obtained by removing one spar from each kite of $\overline{G}$ and let $T$ be a BFS tree of $G'$ rooted at $r$.  Now apply \cref{induction} with $G=\overline{G}$, $G'$, $F$, and $P_i=\{v_i\}$ for each $i\in\{1,2,3\}$.  This gives an $H$-partition $\{S_x:x\in V(H)\}$ of $\overline{G}-\{r\}\supseteq G$ in which $H$ is planar and has treewidth at most 3.
   
-  Use the layering $\mathcal{L}=\langle V_0',V_1'\ldots\rangle$ where $V_i'=V_{2i}\cup V_{2i+1}$ for each integer $i\ge 0$. That this is a layering of $G$ follows from \eqref{spar-distance}.  Since $|V_j\cap S_x|\le 15$ for every integer $i\ge 0$, \note{DW}{replace $i$ by $j$?} $|V_i'\cap S_x|\le 30$ for every integer $i\ge 0$ and every $x\in V(H)$.
+  Use the layering $\mathcal{L}=\langle V_0',V_1'\ldots\rangle$ where $V_i'=V_{2i}\cup V_{2i+1}$ for each integer $i\ge 0$. That this is a layering of $G$ follows from the fact that $\dist_{G'}(v,w)\le 2$ for every edge $vw\in E(G)$.  Since $|V_j\cap S_x|\le 15$ for every integer $j\ge 0$, $|V_i'\cap S_x|\le 30$ for every integer $i\ge 0$ and every $x\in V(H)$.
 \end{proof}
 
 % Exactly the same argument used to establish \cref{cor-k-planar} as a consequence of \cref{k-planar} establishes the following result as a consequence of \cref{1-planar}:
@@ -779,7 +814,7 @@ For an integer $k\geq 0$, a \textit{$k$-queue layout} of a graph $G$ consists of
 
 \begin{lem}[\citep{dujmovic.joret.ea:planar}]
 \label{qn}
-If a graph $G$ has a layered $H$-partition of layered width $\ell$, then 
+If a graph $G$ has an $H$-partition of layered width $\ell$, then 
 $$\qn(G)\le 3 \ell \, \qn(H) + \floor{\tfrac{3}{2}\ell}\enspace.$$
 \end{lem}
 
@@ -818,7 +853,7 @@ A $c$-colouring $\phi$ of $G$ is \emph{non-repetitive} if, for every path $v_1,\
 
 \begin{lem}[\citep{dujmovic.esperet.ea:planar}]
 \label{non-repetitive}
-If a graph $G$ has a layered $H$-partition of layered width at most $\ell$ in which $H$ has treewidth at most $t$, then $\pi(G)\le \ell\, 4^{t+1}$.
+If a graph $G$ has an $H$-partition of layered width at most $\ell$ in which $H$ has treewidth at most $t$, then $\pi(G)\le \ell\, 4^{t+1}$.
 \end{lem}
 
 
@@ -875,7 +910,7 @@ The following lemma is due to \citet{micek:personal}. We include the proof  for 
 
 \begin{lem}[\citep{micek:personal}]
 \label{p-centered}
-Every graph $G$ that has a layered $H$-partition of layered width at most $\ell$ in which $H$ has treewidth at most $t$ satisfies $\chi_p(G)\le \ell (p+1) (t+1)\binom{p+t}{t}$. 
+Every graph $G$ that has an $H$-partition of layered width at most $\ell$ in which $H$ has treewidth at most $t$ satisfies $\chi_p(G)\le \ell (p+1) (t+1)\binom{p+t}{t}$. 
 \end{lem}
 
 \begin{proof}
@@ -938,7 +973,7 @@ $$\chi_p(G) \le \max\{2g,3\}\cdot(6k^2 + 10k) (p+1) \binom{k+5}{4}\binom{p+\bino
 
 %Prior to the current work, the strongest upper bounds on the number of colours required for $p$-centered colourings of $(g,k)$-planar graphs used the fact that $(g,k)$-planar graphs have layered treewidth $O(gk)$ \cite{dujmovic.eppstein.ea:structure} and therefore have bounded (indeed, linear) expansion \cite{dujmovic.morin.ea:layered}.  Using a result of \citet{zhu:colouring} this leads to bounds on $\chi_p(G)$ that are doubly-exponential in $gk$.
 
-Prior to the current work, the strongest known upper bounds on the $p$-centered chromatic number of $(g,k)$-planar graphs $G$ were doubly exponential in $p$, as we now explain. 
+Prior to the current work, the strongest known upper bounds on the $p$-centered chromatic number of $(g,k)$-planar graphs $G$ were doubly-exponential in $p$, as we now explain. 
 \citet{dujmovic.eppstein.ea:structure} proved that $G$ has layered treewidth $(4g+6)(k+1)$. 
 Van den Heuvel and Wood~\citep{vdHW17} showed that this implies that $G$  has $r$-strong colouring number at most $(4g + 6)(k + 1)(2r + 1)$. By a result of \citet{zhu:colouring}, $G$ has $r$-weak colouring number at most $( (4g + 6)(k + 1)(2r + 1) )^r$, which by another result of  \citet{zhu:colouring} implies that $G$ has  $p$-centred chromatic number at most $( (4g+6)(k+1)(2^{p-1} + 1) )^{2^{p-2}}$. 
 \cref{pc1,pck,pcgk} are substantial improvements over these results, providing bounds on $\chi_p(G)$ that are polynomial in $p$ for fixed $g$ and $k$. 
@@ -987,7 +1022,7 @@ in $G_0$.
 
 %Recall that \cref{gAddDummy} says that every $(g,k)$-planar graph is isomorphic to $G^\PP$ for some graph $G$ of Euler genus $g$ and some $(k+1,2)$-shortcut system $\PP$ for $G$. Here $G$ is the graph obtained by adding a degree-4 dummy vertex at each crossing point. Thus for each path $P\in \PP$ each internal vertex in $P$ has degree 4. 
 
-The following converse of \cref{gAddDummyDegree} provides a sufficient condition for a graph to be $(g,k)$-planar that is slightly more restrictive than being obtained from a $(k,d)$-shortcut system of a $(g,k)$-planar graph. \note{DW}{Is this sentence clear enough?}
+The following converse of \cref{gAddDummyDegree} provides a sufficient condition for a graph to be $(g,k)$-planar that is slightly more restrictive than being obtained from a $(k,d)$-shortcut system of a $(g,k)$-planar graph. \notex{DW}{Is this sentence clear enough?}\notex{PM}{Sure.}
 
 \begin{lem} 
 \label{DrawG}
@@ -1128,7 +1163,7 @@ A similar proof to that of \cref{StringShortcut} shows that every $(g,\delta)$-s
 
 \begin{thm}
 \label{StringPartition}
-Every $(g,\delta)$-string graph has a layered $H$-partition of layered 
+Every $(g,\delta)$-string graph has an $H$-partition of layered 
 width at most $\max\{2g,3\} \,(\delta^4 + 4 \delta^3 + 9 \delta^2 + 10 \delta + 4)$ 
 for some graph $H$ with treewidth at most $\binom{ \delta+5}{4}-1$, 
 and treewidth at most $\binom{ \delta+4}{3}-1$ if $g=0$. 
@@ -1200,7 +1235,7 @@ Hence $\PP$ is a $(k, 2k \Delta^k)$-shortcut system.
 \begin{thm}
 \label{PowerPartition}
 Fix $k\geq 1$. Let $G$ be a graph of Euler genus $g$ and maximum degree $\Delta$. 
-Then $G^k$ has a layered $H$-partition of layered width at most $\max\{2g,3\} (2k^4+6k^2) \Delta^{k}$ 
+Then $G^k$ has an $H$-partition of layered width at most $\max\{2g,3\} (2k^4+6k^2) \Delta^{k}$ 
 for some graph $H$ with treewidth at most $\binom{k+4}{4}-1$, and treewidth 
 at most $\binom{k+3}{3}-1$ if $g=0$. 
 \end{thm}
@@ -1285,7 +1320,7 @@ We note that \cref{nearest-neighbour} is tight up to the leading constant:  Ever
 \label{k-nn}
 Every $k$-nearest-neighbour graph has:
 \begin{compactitem}
-\item a layered $H$-partition of layered width $O(k^4)$ in which $H$ has treewidth $O(k^6)$,
+\item an $H$-partition of layered width $O(k^4)$ in which $H$ has treewidth $O(k^6)$,
 \item queue-number at most $2^{O(k^6)}$,
 \item $p$-centred chromatic number at most $O(k^4) (p+1) (t+1)\binom{p+t}{t}$, for some integer $t\leq O(k^6)$.
 \end{compactitem}
@@ -1296,7 +1331,7 @@ Every $k$-nearest-neighbour graph has:
 
 \section{An Open Problem}
 
-\cref{k-planar} shows that $k$-planar graphs have layered $H$-partitions of layered width $O(k^2)$ in which $H$ has treewidth $O(k^3)$.  We conclude with the following question:  Does there exist a function $f:\N\to\N$ and a universal constant $C$ such that every $k$-planar graph has a layered $H$-partition of layered width at most $f(k)$ in which $H$ has treewidth at most $C$?  Perhaps $C=3$. Note that $C\geq 3$ even for planar graphs \citep{dujmovic.joret.ea:planar}.  
+\cref{k-planar} shows that $k$-planar graphs have $H$-partitions of layered width $O(k^2)$ in which $H$ has treewidth $O(k^3)$.  We conclude with the following question:  Does there exist a function $f:\N\to\N$ and a universal constant $C$ such that every $k$-planar graph has an $H$-partition of layered width at most $f(k)$ in which $H$ has treewidth at most $C$?  Perhaps $C=3$. Note that $C\geq 3$ even for planar graphs \citep{dujmovic.joret.ea:planar}.  
 
 \bibliographystyle{plainnat}
 \bibliography{k-planar}
