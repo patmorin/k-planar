@@ -121,13 +121,17 @@ Every planar graph is a subgraph of $H\boxtimes P$, for some graph $H$ of treewi
 \end{thm}
 
 Here $\boxtimes$ is the strong product, and treewidth is an invariant that measures how `tree-like' a given graph is; see \cref{Tools} for formal definitions and see \cref{ProductExample} for an example. Loosely speaking, \cref{PlanarBasic} says that every planar graph is contained in the product of a tree-like graph and a path. This enables combinatorial results for graphs of bounded 
-\begin{wrapfigure}{r}{0.5\textwidth} 
-\centering
+treewidth to be generalised for planar graphs (with different constants). \cref{PlanarBasic} has been the key tool in solving several well-known open problems. In particular, \citet{dujmovic.joret.ea:planar} use it to prove that planar graphs have bounded queue-number (resolving a conjecture of \citet{HLR92} from 1992), \citet{dujmovic.esperet.ea:planar} use it to prove that planar graphs have bounded non-repetitive chromatic number (resolving a conjecture of \citet{AGHR-RSA02} from 2002), and \citet{bonamy.gavoille.ea:shorter} use it to find shorter implicit representations of planar graphs (making progress on a sequence of results going back to 1988 \citep{kannan.naor.ea:implicit-stoc,kannan.naor.ea:implicit}). 
+
+% \begin{wrapfigure}{r}{0.5\textwidth} 
+\begin{figure}[hbtp]
+\begin{center}
 \includegraphics{ProductExample}
+\end{center}
 \caption{Example of a strong product.}
 \label{ProductExample}
-\end{wrapfigure}
-treewidth to be generalised for planar graphs (with different constants). \cref{PlanarBasic} has been the key tool in solving several well-known open problems. In particular, \citet{dujmovic.joret.ea:planar} use it to prove that planar graphs have bounded queue-number (resolving a conjecture of \citet{HLR92} from 1992), \citet{dujmovic.esperet.ea:planar} use it to prove that planar graphs have bounded non-repetitive chromatic number (resolving a conjecture of \citet{AGHR-RSA02} from 2002), \citet{bonamy.gavoille.ea:shorter} use it to find shorter implicit representations of planar graphs. 
+\end{figure}
+% \end{wrapfigure}
 
 We generalise \cref{PlanarBasic} as follows. 
 
@@ -433,7 +437,7 @@ We begin with a fairly standard lemma about normalized tree decompositions.
 %\subsection{Generalized Tripod Partitions}
 
 
-\begin{figure}
+\begin{figure}[htbp]
   \begin{center}
     \includegraphics{figs/tripoddo}
   \end{center}
@@ -538,7 +542,8 @@ Next we show that $\mathcal{S}$ has small layered width with respect to $\mathca
 \begin{proof}
   We will count the number of vertices in $S_x\cap V_i$ by upper-bounding the number of vertices contributed to $S_x\cap V_i$ by each vertex $w\in Y_x$. Refer to \cref{contribute}.
   If $w\in Y_x\cap V_i$ and no path in $\mathcal{P}$ includes $w$ as an internal vertex then $w$ contributes only one vertex, itself, to $S_x\cap V_i$.
-  \begin{figure}
+  
+  \begin{figure}[htbp]
     \begin{center}
       \includegraphics{figs/contribute}
     \end{center}
@@ -904,33 +909,35 @@ We make use of the following lemma due to \citet{pilipczuk.siebertz:polynomial-s
 Every graph $H$ of treewidth at most $t$ has $\chi_p(H)\in (t+1)\binom{p+t}{t}$.
 \end{lem}
 
-The following lemma is due to \citet{micek:personal}. We include the proof  for completeness. 
+The following lemma is due to \citet{micek:personal}. 
+% We include the proof  for completeness. 
 % \note{DW}{can we replace by a result of \citet{micek:personal}?}
 % \note{PM}{I didn't see a statement of this exact result in the last draft Piotr sent.  Though their Theorem~7 is this proof for the special case of planar graphs.}
 
 \begin{lem}[\citep{micek:personal}]
 \label{p-centered}
-Every graph $G$ that has an $H$-partition of layered width at most $\ell$ in which $H$ has treewidth at most $t$ satisfies $\chi_p(G)\le \ell (p+1) (t+1)\binom{p+t}{t}$. 
+Every graph $G$ that has an $H$-partition of layered width at most $\ell$ has $\chi_p(G)\le \ell (p+1)\chi_p(H)$. 
 \end{lem}
 
-\begin{proof}
-  Let $(\mathcal{L}=\langle V_0,V_1,\ldots\rangle, \mathcal{P}=(B_x:x\in V(H))$ be an $H$-partition of $G$ having layered width at most $\ell$ where $H$ as treewidth at most $t$.
-  We use a product colouring $\phi:V(G)\to \{1,\ldots,\ell\}\times\{0,\ldots,p\}\times\{1,\ldots,
-  (t+1)\binom{p+t}{t}\}$.  For each integer $i\ge 0$ and each $x\in V(H)$, assign the colour $\phi(v):=(\alpha(v),\beta(v),\gamma(v))$ to each vertex $v\in V_i\cap B_x$ such that:
-  \begin{compactenum}
-    \item $\alpha(v)$ is unique among $\{\phi(w): w\in V_i\cap B_x\}$, which is possible 
-    since $|V_i\cap B_x|\le \ell$,
-    \item $\beta(v)= i\bmod (p+1)$, and     
-    \item $\gamma(v)=\gamma(x)$ where $\gamma:V(H)\to\{1,\ldots,(t+1)\binom{p+t}{t}\}$ is a $p$-centered colouring of $H$ from \cref{p-centered-treewidth}.
-  \end{compactenum}
-To show this is a $p$-centered colouring, consider some connected subgraph $X\subseteq G$.
-  
-First suppose that there exists $v,w\in V(X)$ with $v\in V_i$ and $w\in V_j$ with $j-i\ge p$. Since $G[X]$ is connected, $G[X]$ contains a path from $v$ to $w$.  By the definition of layering, this path contains at least one vertex from $V_{i'}$ for each $i'\in\{i,i+1,\ldots,j\}$. Therefore, $|\{\beta(v'):v'\in X\}|\ge j-i+1 > p$, so $X$ receives more than $p$ distinct colours.
-    
-Otherwise, $X\subseteq V_{i},\ldots,V_{i+s}$ for some $s<p$.  Let $H':=H[\{x\in V(H):B_x\cap X\neq\emptyset]$.  If $|\{\gamma(x):x\in V(H')\}| > p$ then $|\{\gamma(v):v\in X\}|> p$ so $|\{\phi(v):v\in X\}|> p$ and we are done.  Otherwise, since $\gamma$ is a $p$-centered colouring of $H$, there must exist some $x\in V(H')$ such that $\gamma(x)\neq\gamma(y)$ for every $y\in V(H')\setminus\{x\}$.
-    For any $v,w\in B_x$ with $v\neq w$, either $v,w\in V_{i'}$ for some $i'\in\{i,i+1,\ldots,i+s\}$ in which case $\alpha(v)\neq\alpha(w)$; or $v\in V_{i'}$ and $w\in V_{i''}$ with $|i'-i''|< p$, in which case $\beta(v)\neq\beta(w)$. Therefore every vertex $v\in B_x$ receives a colour $\phi(v)$ distinct from every colour in $\{\phi(z):z\in X\setminus\{x\}\}$. Therefore, every vertex in $B_x$ receives colour distinct from every other vertex in $X$.\end{proof}
+% \begin{proof}
+%   Let $(\mathcal{L}=\langle V_0,V_1,\ldots\rangle, \mathcal{P}=(B_x:x\in V(H))$ be an $H$-partition of $G$ having layered width at most $\ell$.
+%   Use a product colouring $\phi:V(G)\to \{1,\ldots,\ell\}\times\{0,\ldots,p\}\times\{1,\ldots,
+%   (t+1)\binom{p+t}{t}\}$.  For each integer $i\ge 0$ and each $x\in V(H)$, assign the colour $\phi(v):=(\alpha(v),\beta(v),\gamma(v))$ to each vertex $v\in V_i\cap B_x$ such that:
+%   \begin{compactenum}
+%     \item $\alpha(v)$ is unique among $\{\phi(w): w\in V_i\cap B_x\}$, which is possible 
+%     since $|V_i\cap B_x|\le \ell$,
+%     \item $\beta(v)= i\bmod (p+1)$, and     
+%     \item $\gamma(v)=\gamma(x)$ where $\gamma:V(H)\to\{1,\ldots,\chi_p(H)\}$ is a $p$-centered colouring of $H$.
+%   \end{compactenum}
+% To show this is a $p$-centered colouring, consider some connected subgraph $X\subseteq G$.
+% 
+% First suppose that there exists $v,w\in V(X)$ with $v\in V_i$ and $w\in V_j$ with $j-i\ge p$. Since $G[X]$ is connected, $G[X]$ contains a path from $v$ to $w$.  By the definition of layering, this path contains at least one vertex from $V_{i'}$ for each $i'\in\{i,i+1,\ldots,j\}$. Therefore, $|\{\beta(v'):v'\in X\}|\ge j-i+1 > p$, so $X$ receives more than $p$ distinct colours.
+% 
+% Otherwise, $X\subseteq V_{i},\ldots,V_{i+s}$ for some $s<p$.  Let $H':=H[\{x\in V(H):B_x\cap X\neq\emptyset]$.  If $|\{\gamma(x):x\in V(H')\}| > p$ then $|\{\gamma(v):v\in X\}|> p$ so $|\{\phi(v):v\in X\}|> p$ and we are done.  Otherwise, since $\gamma$ is a $p$-centered colouring of $H$, there must exist some $x\in V(H')$ such that $\gamma(x)\neq\gamma(y)$ for every $y\in V(H')\setminus\{x\}$.
+% For any $v,w\in B_x$ with $v\neq w$, either $v,w\in V_{i'}$ for some $i'\in\{i,i+1,\ldots,i+s\}$ in which case $\alpha(v)\neq\alpha(w)$; or $v\in V_{i'}$ and $w\in V_{i''}$ with $|i'-i''|< p$, in which case $\beta(v)\neq\beta(w)$. Therefore every vertex $v\in B_x$ receives a colour $\phi(v)$ distinct from every colour in $\{\phi(z):z\in X\setminus\{x\}\}$. Therefore, every vertex in $B_x$ receives a colour distinct from every other vertex in $X$.
+% \end{proof}
 
-\cref{p-centered,k-planar,1-planar,g-k-planar} immediately imply the following results, for every $p\ge 2$:
+\cref{p-centered,p-centered-treewidth,k-planar,1-planar,g-k-planar} immediately imply the following results, for every $p\ge 2$:
 
 % \noindent\note{PM}{Double-check the calculation for \cref{k-planar} and \cref{g-k-planar} and then fix the constants here.} \note{DW}{done}
 
