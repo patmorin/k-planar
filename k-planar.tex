@@ -419,7 +419,7 @@ For every apex graph $X$ and for all integers $k,d\geq 1$, there is an integer $
 Prior to this work, the strongest structural description of $k$-planar or $(g,k)$-planar graphs was in terms of layered treewidth, which we now define.  A \emph{layered tree-decomposition} $(\mathcal{L},\mathcal{T})$ consists of a layering $\mathcal{L}$ and a tree-decomposition $\mathcal{T}$ of $G$. The layered width of $(\mathcal{L},\mathcal{T})$ is $\max\{|L\cap B|: L\in \mathcal{L},\, B\in \mathcal{T}\}$.  The \emph{layered treewidth} of $G$ is the minimum layered width of any layered tree-decomposition of $G$. \citet{dujmovic.morin.ea:layered} proved that planar graphs have layered treewidth at most 3, that graphs of Euler genus $g$ have layered treewidth at most $2g+3$, and more generally that a minor-closed class has bounded layered treewidth if and only if it excludes some apex graph. \citet{dujmovic.eppstein.ea:structure} show that every $k$-planar graph has layered treewidth at most $6(k+1)$, and more generally that 
 every $(g,k)$-planar graph has layered treewidth at most $(4g+6)(k+1)$.
 
-If a graph class admits bounded layered partitions, then it also has bounded layered treewidth. In particular, suppose that an $n$-vertex graph $G$ has an $H$-partition with layered width at most $\ell$ such that $H$ has treewidth at most $k$. \citet{dujmovic.joret.ea:planar} proved that $G$ has layered treewidth at most $(k+1)\ell$. 
+If a graph class admits bounded layered partitions, then it also has bounded layered treewidth. In particular, suppose that an $n$-vertex graph $G$ has an $H$-partition with layered width at most $\ell$ such that $H$ has treewidth at most $t$. \citet{dujmovic.joret.ea:planar} proved that $G$ has layered treewidth at most $(t+1)\ell$. 
 % So any property that holds for graphs of bounded layered treewidth also holds for $G$. For example, Norin proved that every $n$-vertex graph with layered treewidth at most $t$ has treewidth less than $2\sqrt{tn}$ (see \citep{dujmovic.morin.ea:layered}). Thus, $G$ has treewidth at most $2\sqrt{(k+1)\ell n}$. This in turn leads to a $O(\sqrt{(k+1)\ell n})$ balanced separator theorem for such graphs \citep{RS-II}. So, in the case of $k$-planar graphs, \cref{k-planar} implies an analogue of the separator theorem of \citet{FP08} mentioned in the introduction, albeit with worse dependence on $k$. 
 What sets layered partitions apart from layered treewidth is that they lead to constant upper bounds on the queue-number  and non-repetitive chromatic number, whereas for both these parameters, the best known upper bound obtainable via layered treewidth is $O(\log n)$; see \cref{Applications}. 
 
@@ -1364,6 +1364,25 @@ Every $k$-nearest-neighbour graph has:
 
 \cref{non-repetitive,k-nn} also give bounds on the non-repetitive chromatic number of a $k$-nearest neighbour graph $G$. However, the bound is weak, since $G$ has maximum degree at most $6k$, implying that $\pi(G) \leq (36+o(1))k^2$ by a result of \citet{DJKW16}.
 
+Finally, we show that these results cannot be generalized to $k$-nearest-neighbour graphs of points in $\R^3$, even for $k=4$.
+\begin{prop}\label{3d-4nn}
+  The class of $4$-nearest-neighbour graphs of point sets in $\R^3$ does not admit bounded layered partitions.
+\end{prop}
+  
+\begin{proof}
+  We actually prove something stronger, that 4-nearest-neighbour graphs of point sets in $\R^3$ do not have bounded layered treewidth. As discussed in \cref{PriorWork}, if $G$ is a graph with an $H$-partition of layered width $\ell$ in which $\tw(H)\le t$, then the layered treewidth of $G$ is at most $(t+1)\ell$.  Next we give an examples of arbitrarily large $n$-vertex $4$-nearest-neighbour graphs in $\R^3$ having layered treewidth $\Omega(\sqrt{n}/\log n)$, thus establishing \cref{3d-4nn}.
+
+  Let $r:=2^h$ for any integer $h>0$. For $i\in\{0,\ldots,h\}$, let $q_i:=\sum_{j=1}^i2^{i-2}$, let
+  \[
+     Z_i:=\left\{ q_i+x2^i, q_i+y2^i, 2^i)   : x,y\in\{0,r/2^{i}-1\} \right\}
+  \]
+  and define the quadtree-like point set $P = \bigcup_{i=0}^{h} Z_i$.  Let $G_P$ denote the $4$-nearest-neighbour graph of $P$. For any $p\in Z_0$, the distance to any point $q\in P\setminus Z_0$ is at least 
+  \[ \sqrt{(1/2)^2 + (1/2)^2 + (2^1-2^0)} > 1 \enspace .\]
+  Therefore $G_P[Z_0]$ contains an $r\times r$ grid. Therefore $G_P$ has treewidth at least $r-1$ and any tree decomposition $\mathcal{T}=(B_x:x\in V(T))$ of $G_P$ contains a bag $B_x$ of size at least $r$.
+
+  We can readily verify that $G_P$ contains a complete $4$-ary spanning tree $T_4$ of height $h$.  Indeed, $T_4$ is rooted at the unique point in $Z_h$ and, for each $i\in\{0,\ldots,h\}$, the points in $Z_i$ have $T_4$-depth $h-i$.  Therefore $G_P$ has diameter at most $2h$. Therefore, any layering of $G_P$ has at most $2h$ non-empty layers.  Therefore, in any layering $\mathcal{L}:=\langle V_1,\ldots,V_{2h}\rangle$ of $G_P$, there is a layer $L_i\in\mathcal{L}$ such that $|L_i\cap B_x| > r/(2h) = r/(2\log_2 r)$.  Therefore the layered treewidth of $G_P$ is least $r/(2\log_2 r)$. Letting $n:=|V(G)| = \sum_{i=0}^h r^2/4^i < 2r^2$ we see that $G_P$ has layered treewidth $\Omega(\sqrt{n}/\log n)$.
+\end{proof}
+
 
 \section{An Open Problem}
 
@@ -1430,7 +1449,7 @@ It might be true that ``treewidth at most $f(k,d)$'' can be replaced by ``pathwi
 }
 
 \note{PM}{
-I'm not sure what the role of $P_1,\ldots,P_{d-1}$ is here.  If the result is true, then for some graph $H$ with $\tw(H)\le f(k,d)$, $G\subseteq H\boxtimes P_1 \boxtimes\dots \boxtimes P_{d-1} \subseteq H\boxtimes P\boxtimes K_{d-1}$  so, $G\subgraph H'\boxtimes P$ where $tw(H')\le f'(k,d):=(f(k,d)+1))(d-1)$ by \cref{MakeWidth1}.  On the other hand, if $G\subgraph H'\boxtimes P$ then $G\subgraph H'\boxtimes P_1\boxtimes\cdots\boxtimes P_{d-1}$ so the two statements are equivalent up to a factor of $d-1$ in $f(k,d)$..
+I'm not sure what the role of $P_1,\ldots,P_{d-1}$ is here.  If the result is true, then for some graph $H$ with $\tw(H)\le f(k,d)$, $G\subseteq H\boxtimes P_1 \boxtimes\dots \boxtimes P_{d-1} \subseteq H\boxtimes P\boxtimes K_{d-1}$  so, $G\subgraph H'\boxtimes P$ where $tw(H')\le f'(k,d):=(f(k,d)+1))(d-1)$ by \cref{MakeWidth1}.  On the other hand, if $G\subgraph H'\boxtimes P$ then $G\subgraph H'\boxtimes P_1\boxtimes\cdots\boxtimes P_{d-1}$ so the two statements are equivalent up to a factor of $d-1$ in $f(k,d)$.  It would be quite cool, though, if the statement were true with $f(k)$.
 }
 
 
