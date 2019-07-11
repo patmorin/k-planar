@@ -1429,6 +1429,10 @@ treewidth at most $f(k,d)$.\\ This  is true for $d=1$ and $d=2$.
 It might be true that ``treewidth at most $f(k,d)$'' can be replaced by ``pathwidth at most $f(k,d)$'', which is true for $d=1$ and open for $d=2$. The obvious counterexample, is $T^+:=$ the complete binary tree plus one dominant vertex (since if $T^+$ is a subgraph of $H\boxtimes P$ then $H$ has unbounded pathwidth). But $T^+$ has unbounded degree, so it is not  a $k$-nearest neighbour graph for any fixed $k$. 
 }
 
+\note{PM}{
+I'm not sure what the role of $P_1,\ldots,P_{d-1}$ is here.  If the result is true, then for some graph $H$ with $\tw(H)\le f(k,d)$, $G\subseteq H\boxtimes P_1 \boxtimes\dots \boxtimes P_{d-1} \subseteq H\boxtimes P\boxtimes K_{d-1}$  so, $G\subgraph H'\boxtimes P$ where $tw(H')\le f'(k,d):=(f(k,d)+1))(d-1)$ by \cref{MakeWidth1}.  On the other hand, if $G\subgraph H'\boxtimes P$ then $G\subgraph H'\boxtimes P_1\boxtimes\cdots\boxtimes P_{d-1}$ so the two statements are equivalent up to a factor of $d-1$ in $f(k,d)$..
+}
+
 
 %%%%%%%%%%%%%%%%%%
 \subsection{Unit Disc Graphs}
