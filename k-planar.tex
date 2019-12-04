@@ -158,7 +158,7 @@ We extend \cref{PlanarBasic} as follows.
 
 \begin{thm}
 \label{kPlanarBasic}
-Every $k$-planar graph is a subgraph of $H\boxtimes P$, for some graph $H$ of treewidth $(18k^2+30k)\binom{k+4}{3}-1$ and for some path $P$. 
+Every $k$-planar graph is a subgraph of $H\boxtimes P$, for some graph $H$ of treewidth $(18k^2+48k+30)\binom{k+4}{3}-1$ and for some path $P$. 
 \end{thm}
 
 Although $k$-planar graphs are the most high-profile target for a generalization of \cref{PlanarBasic}, we actually prove a substantially stronger result than \cref{kPlanarBasic} using the following definition. A non-empty set $\mathcal{P}$ of non-trivial paths in a graph $G$ is a \emph{$(k,d)$-shortcut system} (for $G$) if:
@@ -360,7 +360,7 @@ Using the relationship between $k$-planar graphs and $(k+1,2)$-shortcut systems 
 
 \begin{thm}
 \label{k-planar}
-Every $k$-planar graph has an $H$-partition of layered width at most $18k^2 + 30k$ in which $H$ has treewidth at most $\binom{k+4}{3}-1$. %$\treewidth$.
+Every $k$-planar graph has an $H$-partition of layered width at most $18k^2 + 48k+30$ in which $H$ has treewidth at most $\binom{k+4}{3}-1$. %$\treewidth$.
 \end{thm}
 
 % \cref{PlanarPartition,modern-major-general} imply \cref{k-planar} with the weaker bound of $O(k^3)$
@@ -394,7 +394,7 @@ We prove that $(g,k)$-planar graphs admit bounded layered partitions.
 \begin{thm}
 \label{g-k-planar}
 Every $(g,k)$-planar graph has an $H$-partition of layered width at most 
-$\max\{2g,3\}\cdot(6k^2 + 10k)$ in which $H$ has treewidth at most $\binom{k+5}{4}-1$.
+$\max\{2g,3\}\cdot(6k^2+16k+10)$ in which $H$ has treewidth at most $\binom{k+5}{4}-1$.
 \end{thm}
 
 
@@ -658,7 +658,8 @@ Redoing the calculation at the end of the proof of \cref{clm:general-width} then
        d\ell(3k+5) 
       = 18k+30 \enspace .
 \end{align*}    
-With this change, the layered width of the partition given by \cref{modern-major-general} becomes $18k^2+30k$.  This establishes \cref{k-planar}.
+With this change, the layered width of the partition given by \cref{modern-major-general} becomes $(18k+30)(k+1)=18k^2+48k+30$.  This establishes \cref{k-planar}.
+% Note to self-and-others. In our original SODA submission we had 18k^2+30k here because we forgot that the layer compression step has compress k+1 consecutive layers, not just k consecutive layers.
 
 Exactly the same approach using \cref{SurfacePartition}(b) instead of \cref{PlanarPartition}(b) establishes 
 \cref{g-k-planar} for $(g,k)$-planar graphs. 
@@ -891,7 +892,7 @@ If a graph $G$ has an $H$-partition of layered width at most $\ell$ in which $H$
 \begin{cor}\corlabel{first}
   For every $k$-planar graph $G$, 
   %$\pi(G)\le 12(2k+3)(k+1)\times 4^{(k+2)(k+3)(k+4)/6}$.
-  $\pi(G)\le (18k^2 + 30k) 4^{\binom{k+4}{3}}$.
+  $\pi(G)\le (18k^2+48k+30) 4^{\binom{k+4}{3}}$.
 %  Every $k$-planar graph has a layered $H$-partition of layered width at most $18k^2 + 30k$ in which $H$ has treewidth at most $\binom{k+4}{3}}-1$.
 \end{cor}
 
@@ -904,7 +905,7 @@ If a graph $G$ has an $H$-partition of layered width at most $\ell$ in which $H$
   For every $(g,k)$-planar graph $G$, 
   \[ 
 %    \pi(G)\le \max\{4g(3k+1),12(2k+3)(k+1)\}\times 4^{(k+2)(k+3)(k+4)/6} 
-    \pi(G)\le \max\{2g,3\}\cdot(6k^2 + 10k) 4^{\binom{k+5}{4}}. 
+    \pi(G)\le \max\{2g,3\}\cdot(6k^2+16k+10) 4^{\binom{k+5}{4}}. 
      \]
 %  \label{g-k-planar} Every $(g,k)$-planar graph has a layered $H$-partition of layered width at most  
 % $\max\{2g,3\}\cdot(6k^2 + 10k)$ in which $H$ has treewidth at most $\binom{k+5}{4}$.
@@ -965,7 +966,7 @@ Every graph $G$ that has an $H$-partition of layered width at most $\ell$ has $\
 For every $k$-planar graph $G$, 
 %for some integer $t\leq \binom{k+4}{3}-1$, 
 %$$\chi_p(G)\le (18k^2+30k)(p+1) (t+1)\tbinom{p+t}{t}\enspace.$$
-\[ \chi_p(G)\le (18k^2+30k)(p+1) \binom{k+4}{3} \binom{p+ \binom{k+4}{3}-1}{ \binom{k+4}{3}-1}\enspace. \]
+\[ \chi_p(G)\le (18k^2+48k+30)(p+1) \binom{k+4}{3} \binom{p+ \binom{k+4}{3}-1}{ \binom{k+4}{3}-1}\enspace. \]
 %\note{DW}{I previously wrote ``for some integer $t\leq \binom{k+4}{3}-1$'' thinking that $\binom{p+t}{t}$ might not be monotone with $t$, but it is because of the $+t$.}
 %Every $k$-planar graph has a layered $H$-partition of layered width at most $18k^2 + 30k$ in which $H$ has treewidth at most $\binom{k+4}{3}-1$. %$\treewidth$.
 %Every graph $G$ that has a layered $H$-partition of layered width at most $\ell$ in which $H$ has treewidth at most $t$ satisfies $\chi_p(G)\le \ell (p+1) (t+1)\binom{p+t}{t}$. 
@@ -986,7 +987,7 @@ For every $1$-planar graph $G$,
 For every $(g,k)$-planar graph $G$,  
 %for some integer $t\leq \binom{k+5}{4}-1$, 
 %$$\chi_p(G) \le \max\{2g,3\}\cdot(6k^2 + 10k) (p+1) (t+1)\tbinom{p+t}{t}\enspace.$$
-\[ \chi_p(G) \le \max\{2g,3\}\cdot(6k^2 + 10k) (p+1) \binom{k+5}{4}\binom{p+\binom{k+5}{4}-1}{\binom{k+5}{4}-1}\enspace. \]
+\[ \chi_p(G) \le \max\{2g,3\}\cdot(6k^2+16k+10) (p+1) \binom{k+5}{4}\binom{p+\binom{k+5}{4}-1}{\binom{k+5}{4}-1}\enspace. \]
 %O(gk^2)\times p^{O(k^3)}$. 
 %%Every graph $G$ that has a layered $H$-partition of layered width at most $\ell$ in which $H$ has treewidth at most $t$ satisfies $\chi_p(G)\le \ell (p+1) (t+1)\binom{p+t}{t}$. 
 %Every $(g,k)$-planar graph has a layered $H$-partition of layered width at most 
