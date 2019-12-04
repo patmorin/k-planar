@@ -117,7 +117,7 @@
 \maketitle
 
 \begin{abstract}
-Dujmovi\'c~et~al.~(FOCS 2019) recently proved that every planar graph is a subgraph of the strong product of a graph of bounded treewidth and a path. This tool has been used to solve longstanding problems on queue layouts, non-repetitive colouring, $p$-centered colouring, and implicit graph encoding. We generalise this result for $k$-planar graphs, where a graph is \emph{$k$-planar} if it has a drawing in the plane in which each edge is involved in at most $k$ crossings. In particular, we prove that every $k$-planar graph is a subgraph of the strong product of a graph of treewidth $O(k^5)$ and a path. This is the first result of this type for a non-minor-closed class of graphs. It implies, amongst other results, that $k$-planar graphs have non-repetitive chromatic number upper-bounded by a function of $k$. All these results generalise for drawings of graphs on arbitrary surfaces. In fact, we work in a much more general setting based on so-called shortcut systems that are of independent interest. 
+Dujmovi\'c~et~al.~(FOCS 2019) recently proved that every planar graph is a subgraph of the strong product of a graph of bounded treewidth and a path. This tool has been used to solve longstanding problems on queue layouts, non-repetitive colouring, $p$-centered colouring, and implicit graph encoding. We extend this result for $k$-planar graphs, where a graph is \emph{$k$-planar} if it has a drawing in the plane in which each edge is involved in at most $k$ crossings. In particular, we prove that every $k$-planar graph is a subgraph of the strong product of a graph of treewidth $O(k^5)$ and a path. This is the first result of this type for a non-minor-closed class of graphs. It implies, amongst other results, that $k$-planar graphs have non-repetitive chromatic number upper-bounded by a function of $k$. All these results generalise for drawings of graphs on arbitrary surfaces. In fact, we work in a much more general setting based on so-called shortcut systems that are of independent interest. 
 \end{abstract}
 \end{titlepage}
 
@@ -133,7 +133,7 @@ A graph is \emph{$k$-planar} if it has a drawing in the plane in which each edge
 % \note{PM}{I must be missing something.  The planarized graph $G'$ has $O(kn)$ vertices.  Let $S$ be the set of non-dummy vertices and take a separation $(A,B)$ of $G'$ with $|A\cap B|=O(\sqrt{kn})$, $|S\cap (A\setminus B)|\le 2|S|/3$ and $|S\cap (B\setminus A)|\le 2|S|/3$.  Now take $X=A\cap B$ plus the endpoints of every edge of $G$ that contains a dummy vertex in $A\cap B$.  $|X|\le 5|A\cap B|=O(\sqrt{kn})$ and $X$ is a separator of $G$.} \note{DW}{I think you have just found a new proof of this fact. Note that you are actually using that $G'$ has treewidth $O(\sqrt{kn})$ and then applying the Robertson-Seymour separator lemma for graphs of given treewidth (so that $|S\cap (A\setminus B)|\le 2|S|/3$ and $|S\cap (B\setminus A)|\le 2|S|/3$). }
 Various structural results about planar graphs generalise for $k$-planar graphs. For example, \citet{FP08} generalised the Lipton-Tarjan separator theorem to show that every $k$-planar graph with $n$ vertices has a balanced separator of order $O(\sqrt{kn})$.}
 
-Our main results generalise the following recent theorem of \citet{dujmovic.joret.ea:planar} to a setting that includes $k$-planar graphs.
+Our main results extends the following recent theorem of \citet{dujmovic.joret.ea:planar} to a setting that includes $k$-planar graphs.
  % as well as some other interesting non-minor-closed graph families.
 
 \begin{thm}[\citep{dujmovic.joret.ea:planar}] 
@@ -154,16 +154,16 @@ treewidth to be generalised for planar graphs (with different constants). \cref{
 \end{figure}
 % \end{wrapfigure}
 
-We generalise \cref{PlanarBasic} as follows. 
+We extend \cref{PlanarBasic} as follows. 
 
 \begin{thm}
 \label{kPlanarBasic}
 Every $k$-planar graph is a subgraph of $H\boxtimes P$, for some graph $H$ of treewidth $(18k^2+30k)\binom{k+4}{3}-1$ and for some path $P$. 
 \end{thm}
 
-Although $k$-planar graphs are the most high-profile target for a generalization of \cref{PlanarBasic}, we actually prove a substantially stronger result than \cref{kPlanarBasic} using the following definition. A non-empty set $\mathcal{P}$ of paths in a graph $G$ is a \emph{$(k,d)$-shortcut system} (for $G$) if:
+Although $k$-planar graphs are the most high-profile target for a generalization of \cref{PlanarBasic}, we actually prove a substantially stronger result than \cref{kPlanarBasic} using the following definition. A non-empty set $\mathcal{P}$ of non-trivial paths in a graph $G$ is a \emph{$(k,d)$-shortcut system} (for $G$) if:
 \begin{compactitem}
-\item every path in $\mathcal{P}$ has length at most $k$,\footnote{A path of length $k$ consists of $k$ edges and $k+1$ vertices.} and
+\item every path in $\mathcal{P}$ has length at most $k$,\footnote{A path of length $k$ consists of $k$ edges and $k+1$ vertices.  A path is \emph{trivial} if it has length 0 and \emph{non-trivial} otherwise.} and
 \item for every $v\in V(G)$, the number of paths in $\mathcal{P}$ that use $v$ as an internal vertex is at most $d$.
 \end{compactitem} 
 Each path $P\in\mathcal{P}$ is called a \emph{shortcut}; if $P$ has endpoints $v$ and $w$ then it is a \emph{$vw$-shortcut}. Given a graph $G$ and a $(k,d)$-shortcut system $\mathcal{P}$ for $G$, let $G^{\mathcal{P}}$ denote the supergraph of $G$ obtained by adding the edge $vw$ for each $vw$-shortcut in $\mathcal{P}$. 
@@ -642,17 +642,17 @@ As in the proof of \cref{AddDummy}, let $G_0$ be the plane graph obtained by add
 
 Since $G_0$ is planar,  \cref{PlanarPartition}(b) implies that $G_0$ has an $H$-partition of layered width 3 for some planar graph $H$ of treewidth at most 3.  Applying \cref{modern-major-general} to $G_0$ and $\mathcal{P}$ immediately implies that $G$ (an arbitrary $k$-planar graph) has an $H$-partition of layered width $6((k+1)^3+3(k+1))$ for some graph $H$ of treewidth at most $\binom{k+4}{3}-1$.
 
-We can reduce the layered width of the $H$-partition of $G$ from $O(k^3)$ to $O(k^2)$ by observing that the dummy vertices in $V(G_0)\setminus V(G)$ do not contribute to the layered width of this partition.  In this setting, the proof of \cref{clm:general-width} is simpler since each vertex $w\in Y_x$ contributes at most two vertices to $V_i\cap Y_x$.  More precisely, each path $P\in\mathcal{P}$ containing an internal (dummy) vertex $w\in Y_x\cap (V_{i-j}\cup V_{i+j})$ contributes: (i)~at most two vertices to $S_x\cap V_i$ for $j\in\{0,\ldots,\floor{(k+1)/2}\}$; (ii)~at most one vertex to $S_x\cap V_j$ for $j\in\{\floor{(k+1)/2},\ldots,k+1\}$; or (iii)~no vertices to $S_x\cap V_j$ for $j > k+1$.
+We can reduce the layered width of the $H$-partition of $G$ from $O(k^3)$ to $O(k^2)$ by observing that the dummy vertices in $V(G_0)\setminus V(G)$ do not contribute to the layered width of this partition.  In this setting, the proof of \cref{clm:general-width} is simpler since each vertex $w\in Y_x$ contributes at most two vertices to $V_i\cap Y_x$.  More precisely, each path $P\in\mathcal{P}$ containing an internal (dummy) vertex $w\in Y_x\cap (V_{i-j}\cup V_{i+j})$ contributes: (i)~at most two vertices to $S_x\cap V_i$ for $j\in\{0,\ldots,\floor{(k+1)/2}\}$; (ii)~at most one vertex to $S_x\cap V_j$ for $j\in\{\floor{(k+1)/2}+1,\ldots,k+1\}$; or (iii)~no vertices to $S_x\cap V_j$ for $j > k+1$.
 Redoing the calculation at the end of the proof of \cref{clm:general-width} then yields 
 \begin{align*}
     |S_x\cap Y_i| \le d\ell\left( 
        2 
        + 4\left\lfloor\frac{k+1}{2}\right\rfloor 
-       + 2\left(k+1-\left\lfloor\frac{k+1}{2}\right\rfloor\right)
+       + 2\left\lceil\frac{k+1}{2}\right\rceil
        \right)
        & =
        d\ell\left(
-         2k + 2\left\lfloor\frac{k+1}{2}\right\rfloor + 4
+         2 + 2(k+1) + 2\left\lfloor\frac{k+1}{2}\right\rfloor
        \right) \\
        & \le
        d\ell(3k+5) 
