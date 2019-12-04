@@ -1,4 +1,7 @@
-\documentclass{patmorin}
+\documentclass[a4paper,UKenglish,cleveref, autoref]{lipics-v2019}
+
+% \documentclass{socg-lipics-v2019}
+
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath,wrapfig}
@@ -18,28 +21,28 @@
 
 \usepackage{doi} % To make plainnat handle doi's properly 
 
-\usepackage[mathlines]{lineno}
-% \setlength{\linenumbersep}{2em}
-\linenumbers
-% \rightlinenumbers
+% \usepackage[mathlines]{lineno}
+% % \setlength{\linenumbersep}{2em}
 % \linenumbers
-\newcommand*\patchAmsMathEnvironmentForLineno[1]{%
- \expandafter\let\csname old#1\expandafter\endcsname\csname #1\endcsname
- \expandafter\let\csname oldend#1\expandafter\endcsname\csname end#1\endcsname
- \renewenvironment{#1}%
-    {\linenomath\csname old#1\endcsname}%
-    {\csname oldend#1\endcsname\endlinenomath}}% 
-\newcommand*\patchBothAmsMathEnvironmentsForLineno[1]{%
- \patchAmsMathEnvironmentForLineno{#1}%
- \patchAmsMathEnvironmentForLineno{#1*}}%
-\AtBeginDocument{%
-\patchBothAmsMathEnvironmentsForLineno{equation}%
-\patchBothAmsMathEnvironmentsForLineno{align}%
-\patchBothAmsMathEnvironmentsForLineno{flalign}%
-\patchBothAmsMathEnvironmentsForLineno{alignat}%
-\patchBothAmsMathEnvironmentsForLineno{gather}%
-\patchBothAmsMathEnvironmentsForLineno{multline}%
-}
+% % \rightlinenumbers
+% % \linenumbers
+% \newcommand*\patchAmsMathEnvironmentForLineno[1]{%
+%  \expandafter\let\csname old#1\expandafter\endcsname\csname #1\endcsname
+%  \expandafter\let\csname oldend#1\expandafter\endcsname\csname end#1\endcsname
+%  \renewenvironment{#1}%
+%     {\linenomath\csname old#1\endcsname}%
+%     {\csname oldend#1\endcsname\endlinenomath}}% 
+% \newcommand*\patchBothAmsMathEnvironmentsForLineno[1]{%
+%  \patchAmsMathEnvironmentForLineno{#1}%
+%  \patchAmsMathEnvironmentForLineno{#1*}}%
+% \AtBeginDocument{%
+% \patchBothAmsMathEnvironmentsForLineno{equation}%
+% \patchBothAmsMathEnvironmentsForLineno{align}%
+% \patchBothAmsMathEnvironmentsForLineno{flalign}%
+% \patchBothAmsMathEnvironmentsForLineno{alignat}%
+% \patchBothAmsMathEnvironmentsForLineno{gather}%
+% \patchBothAmsMathEnvironmentsForLineno{multline}%
+% }
 
 
 \allowdisplaybreaks
@@ -62,9 +65,9 @@
 
 \setlength{\parskip}{0.82ex}
 
- \newcommand{\note}[2]{{\color{red}[#1:~#2]}}
+ % \newcommand{\note}[2]{{\color{red}[#1:~#2]}}
 % \newcommand{\notex}[2]{{\color{blue}[#1:~#2]}}
-\newcommand{\notex}[2]{}
+% \newcommand{\notex}[2]{}
 
 \DeclareMathOperator{\dist}{dist}
 \DeclareMathOperator{\depth}{depth}
@@ -101,25 +104,33 @@
 % \newcommand{\bagsize}{\ensuremath{k^3/6 + 3k^2/2 + 13k/3 + 4}}
 \newcommand{\treewidth}{\ensuremath{\binom{k+4}{3}}-1}
 
-\title{\MakeUppercase{The Structure of $k$-Planar Graphs}}
+% \title{\MakeUppercase{The Structure of $k$-Planar Graphs}}
+\title{The Structure of $k$-Planar Graphs}
+\titlerunning{The Structure of $k$-Planar Graphs}
 
-\author{Vida Dujmovi\'c%
-        \thanks{School of Computer Science and Electrical Engineering,
-                University of Ottawa, Ottawa, Canada (\texttt{vida.dujmovic@uottawa.ca}).
-                Research  supported by NSERC and the Ontario Ministry of Research and Innovation.},\,\,
-        Pat Morin%
-        \thanks{School of Computer Science, Carleton University, Ottawa, Canada (\texttt{morin@scs.carleton.ca}).                 Research  supported by NSERC and the Ontario Ministry of Research and Innovation.},\,\, and
-        David R. Wood\thanks{School of Mathematics, Monash University, Melbourne, Australia (\texttt{david.wood@monash.edu}). Research supported by the Australian Research Council.}
-}
+\author{Vida Dujmović}{School of Computer Science and Electrical Engineering, University of Ottawa}{vida.dujmovic@uottawa.ca}{[0000-0003-0471-4118]}{Research  supported by NSERC and the Ontario Ministry of Research and Innovation.}
+% , Ottawa, Canada (\texttt{vida.dujmovic@uottawa.ca}).
+%                 Research  supported by NSERC and the Ontario Ministry of Research and Innovation.},\,\,
+\author{Pat Morin}{School of Computer Science, Carleton University}{morin@scs.carleton.ca}{[0000-0003-0471-4118]}{Research supported by NSERC.}
+% , Ottawa, Canada (\texttt{morin@scs.carleton.ca}).                 Research  supported by NSERC and the Ontario Ministry of Research and Innovation.},\,\, and
+\author{David R. Wood}{School of Mathematics, Monash University}{david.wood@monash.edu}{[0000-0003-0471-4118]}{Research supported by the Australian Research Council.}
+% , Melbourne, Australia (\texttt{david.wood@monash.edu}). Research supported by the Australian Research Council.}
+% }
+
+\authorrunning{V. Dujmović, P. Morin, and D. R. Wood}
+
+\keywords{$k$-planar graphs, layered partitions, queue-number, nonrepetitive colouring, centered colouring, $k$-nearest-neighbour graphs}
+
+\Copyright{Vida Dujmović, Pat Morin, and David R. Wood}
 
 \begin{document}
-\begin{titlepage}
+% \begin{titlepage}
 \maketitle
 
 \begin{abstract}
 Dujmovi\'c~et~al.~(FOCS 2019) recently proved that every planar graph is a subgraph of the strong product of a graph of bounded treewidth and a path. This tool has been used to solve longstanding problems on queue layouts, non-repetitive colouring, $p$-centered colouring, and implicit graph encoding. We extend this result for $k$-planar graphs, where a graph is \emph{$k$-planar} if it has a drawing in the plane in which each edge is involved in at most $k$ crossings. In particular, we prove that every $k$-planar graph is a subgraph of the strong product of a graph of treewidth $O(k^5)$ and a path. This is the first result of this type for a non-minor-closed class of graphs. It implies, amongst other results, that $k$-planar graphs have non-repetitive chromatic number upper-bounded by a function of $k$. All these results generalise for drawings of graphs on arbitrary surfaces. In fact, we work in a much more general setting based on so-called shortcut systems that are of independent interest. 
 \end{abstract}
-\end{titlepage}
+% \end{titlepage}
 
 % \tableofcontents
 % \newpage
@@ -129,9 +140,9 @@ Dujmovi\'c~et~al.~(FOCS 2019) recently proved that every planar graph is a subgr
 \label{Introduction}
 
 A graph is \emph{$k$-planar} if it has a drawing in the plane in which each edge is involved in at most $k$ crossings. Such graphs provide a natural generalisation of planar graphs, and are important in graph drawing research; see the recent bibliography on 1-planar graphs and the 140 references therein \citep{kobourov.liotta.ea:annotated}. The present paper studies the structure of $k$-planar graphs and other more general classes of graphs. 
-\notex{PM}{I removed the following sentences because neither Vida nor could find anything about $k$-planar graphs in \cite{FP08} and, in any case, the proof is easy.  This could easily upset a referee.
-% \note{PM}{I must be missing something.  The planarized graph $G'$ has $O(kn)$ vertices.  Let $S$ be the set of non-dummy vertices and take a separation $(A,B)$ of $G'$ with $|A\cap B|=O(\sqrt{kn})$, $|S\cap (A\setminus B)|\le 2|S|/3$ and $|S\cap (B\setminus A)|\le 2|S|/3$.  Now take $X=A\cap B$ plus the endpoints of every edge of $G$ that contains a dummy vertex in $A\cap B$.  $|X|\le 5|A\cap B|=O(\sqrt{kn})$ and $X$ is a separator of $G$.} \note{DW}{I think you have just found a new proof of this fact. Note that you are actually using that $G'$ has treewidth $O(\sqrt{kn})$ and then applying the Robertson-Seymour separator lemma for graphs of given treewidth (so that $|S\cap (A\setminus B)|\le 2|S|/3$ and $|S\cap (B\setminus A)|\le 2|S|/3$). }
-Various structural results about planar graphs generalise for $k$-planar graphs. For example, \citet{FP08} generalised the Lipton-Tarjan separator theorem to show that every $k$-planar graph with $n$ vertices has a balanced separator of order $O(\sqrt{kn})$.}
+% \notex{PM}{I removed the following sentences because neither Vida nor could find anything about $k$-planar graphs in \cite{FP08} and, in any case, the proof is easy.  This could easily upset a referee.
+% % \note{PM}{I must be missing something.  The planarized graph $G'$ has $O(kn)$ vertices.  Let $S$ be the set of non-dummy vertices and take a separation $(A,B)$ of $G'$ with $|A\cap B|=O(\sqrt{kn})$, $|S\cap (A\setminus B)|\le 2|S|/3$ and $|S\cap (B\setminus A)|\le 2|S|/3$.  Now take $X=A\cap B$ plus the endpoints of every edge of $G$ that contains a dummy vertex in $A\cap B$.  $|X|\le 5|A\cap B|=O(\sqrt{kn})$ and $X$ is a separator of $G$.} \note{DW}{I think you have just found a new proof of this fact. Note that you are actually using that $G'$ has treewidth $O(\sqrt{kn})$ and then applying the Robertson-Seymour separator lemma for graphs of given treewidth (so that $|S\cap (A\setminus B)|\le 2|S|/3$ and $|S\cap (B\setminus A)|\le 2|S|/3$). }
+% Various structural results about planar graphs generalise for $k$-planar graphs. For example, \citet{FP08} generalised the Lipton-Tarjan separator theorem to show that every $k$-planar graph with $n$ vertices has a balanced separator of order $O(\sqrt{kn})$.}
 
 Our main results extends the following recent theorem of \citet{dujmovic.joret.ea:planar} to a setting that includes $k$-planar graphs.
  % as well as some other interesting non-minor-closed graph families.
@@ -475,8 +486,8 @@ We begin with a fairly standard lemma about normalised tree decompositions.
 
 % \notex{W}{I think \clmref{generalized-tripod} should be presented as a stand-alone lemma. Then we repeat the statement of \cref{modern-major-general} followed by $\\begin \{proof\} .... \\end\{proof\}$.}
 
-\notex{DW}{Is some sort of converse to \cref{generalized-tripod}  also true? \cref{generalized-tripod}  shows that if a graph $G$ has a layered partition with all the nice properties, then $G$ has this generalised tripod partition. Isn't also true that if $G$ has a generalised tripod partition, then $G$ has a layered partition with all the nice properties. The proof is basically in \citep{dujmovic.joret.ea:planar}, right?}
-\notex{PM}{Yes, if by generalized tripod partition you mean $T$ and $\mathcal{Y}=(Y_x:x\in V(T))$ that satisify \yref{thickness}, \yref{separator}, and \yref{ancestor-edge}.  From \yref{separator} and \yref{ancestor-edge} you can construct a width-$t$ $T$-decomposition of $H=G/\mathcal{Y}$.  By \yref{thickness}, $\mathcal{Y}$, has layered width at most $\ell$.}
+% \notex{DW}{Is some sort of converse to \cref{generalized-tripod}  also true? \cref{generalized-tripod}  shows that if a graph $G$ has a layered partition with all the nice properties, then $G$ has this generalised tripod partition. Isn't also true that if $G$ has a generalised tripod partition, then $G$ has a layered partition with all the nice properties. The proof is basically in \citep{dujmovic.joret.ea:planar}, right?}
+% \notex{PM}{Yes, if by generalized tripod partition you mean $T$ and $\mathcal{Y}=(Y_x:x\in V(T))$ that satisify \yref{thickness}, \yref{separator}, and \yref{ancestor-edge}.  From \yref{separator} and \yref{ancestor-edge} you can construct a width-$t$ $T$-decomposition of $H=G/\mathcal{Y}$.  By \yref{thickness}, $\mathcal{Y}$, has layered width at most $\ell$.}
 
 The following lemma shows how to interpret an $H$-partition of $G$ and a tree-decomposition of $H$ as a hierarchical decomposition of $G$; refer to \cref{fig:generalized-tripod}.
   
@@ -1048,7 +1059,7 @@ $k+1$, such that every internal vertex in $P$ has degree at most $4$
 in $G_0$.
 \end{lem}
 
-The following converse of \cref{gAddDummyDegree} provides a sufficient condition for a graph to be $(g,k)$-planar that is slightly more restrictive than being obtained from a $(k,d)$-shortcut system of a $(g,k)$-planar graph. \notex{DW}{Is this sentence clear enough?}\notex{PM}{Sure.}
+The following converse of \cref{gAddDummyDegree} provides a sufficient condition for a graph to be $(g,k)$-planar that is slightly more restrictive than being obtained from a $(k,d)$-shortcut system of a $(g,k)$-planar graph. 
 
 \begin{lem} 
 \label{DrawG}
