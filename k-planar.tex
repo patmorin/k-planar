@@ -182,7 +182,7 @@ Every $k$-planar graph is a subgraph of $G^\PP$ for some planar graph $G$ and so
 
 The proof of \cref{AddDummy} is trivial: Given a $k$-plane embedding of a graph $G'$, create a planar graph $G$ by adding a dummy vertex at each crossing point. For each edge $vw\in E(G')$ there is a path $P$ in $G$ between $v$ and $w$ of length at most $k+1$. Let $\PP$ be the set of such paths $P$. For each vertex $v$ of $G$, at most two paths in $\PP$ use $v$ as an internal vertex (since no original vertex of $G'$ is an internal vertex of a path in $\PP$). Thus $\PP$ is a $(k+1,2)$-shortcut system for $G$, such that $G'\subseteq G^\PP$.
 
-We prove the following theorem that shows if a graph $G$ is a subgraph of $H\boxtimes P$ and $\PP$ is a shortcut system for $G$, then $G^{\mathcal{P}}$ is a subgraph of $J\boxtimes P$, where the treewidth of $J$ is bounded by a function of $k$, $d$, and the treewidth of $H$.
+We prove the following theorem that shows if a graph $G$ is a subgraph of $H\boxtimes P$ and $\PP$ is a $(k,d)$-shortcut system for $G$, then $G^{\mathcal{P}}$ is a subgraph of $J\boxtimes P$, where the treewidth of $J$ is bounded by a function of $k$, $d$, and the treewidth of $H$.
 
 \begin{thm}
 \label{ShortcutProduct}
@@ -463,8 +463,8 @@ We begin with a standard technique that allows us to work with a normalised tree
     % \item\tlabel{rooted}\tlabel{first} $T$ is rooted at some node $x_0\in V(T)$ with $B_{x_0}=\emptyset$.
     % \item\tlabel{node-set} $V(T)= V(H)$.
     % \item\tlabel{diff} For each edge $xy\in E(T)$, $|B_x\ominus B_y|\le 1$.
-    \item\tlabel{subtree-root} For each node $x\in V(H)$, the subtree $T[x]:=T[\{y\in V(T):x\in B_y\}]$ is rooted at $x$.
-    \item\tlabel{ancestor-edge}\tlabel{last} For each edge $xy\in E(H)$, one of $x$ or $y$ is a $T$-ancestor of the other.
+    \item\tlabel{subtree-root} for each node $x\in V(H)$, the subtree $T[x]:=T[\{y\in V(T):x\in B_y\}]$ is rooted at $x$; and consequently
+    \item\tlabel{ancestor-edge}\tlabel{last} for each edge $xy\in E(H)$, one of $x$ or $y$ is a $T$-ancestor of the other.
   \end{compactenum}
 \end{lem}
 
