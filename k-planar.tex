@@ -205,7 +205,7 @@ $\Delta^{k} (2k^4+6k^2)\binom{k+8}{8}-1$.
 
 %This theorem and several related results are proved in \cref{Structure}. In particular, in \cref{sec-1-planar} we present a refinement of \cref{kPlanarBasic} in the case $k=1$. In \cref{sec-g-k-planar} we generalise \cref{kPlanarBasic} for
 
-These theorems have applications in diverse areas, including queue layouts  \citep{dujmovic.joret.ea:planar}, non-repetitive colouring  \citep{dujmovic.esperet.ea:planar}, and $p$-centered colouring  \citep{micek:personal},
+These theorems have applications in diverse areas, including queue layouts  \citep{dujmovic.joret.ea:planar}, non-repetitive colouring  \citep{dujmovic.esperet.ea:planar}, and $p$-centered colouring  \citep{debski.felsner.ea:improved},
 % and succinct graph representations \citep{bonamy.gavoille.ea:shorter}, some of which
 %, and graph encoding \citep{BGP}.
 which we explore in \cref{Applications}. For example, we prove that $k$-planar graphs have bounded non-repetitive chromatic number (for fixed $k$). Prior to the recent work of \citet{dujmovic.esperet.ea:planar}, it was even open whether planar graphs have bounded non-repetitive chromatic number.
@@ -281,7 +281,7 @@ For any partition $\mathcal{P}$ of $V(G)$ and any layering $\mathcal{L}$ of $G$ 
 
 \citet{dujmovic.joret.ea:planar} introduced the study of partitions with bounded layered width such that the quotient has some additional desirable property, like small treewidth.
 % Say that a graph $G$ admits a $(t,\ell)$-partition if $V(G)$ has a partition $\mathcal{P}$ of layered width at most $\ell$ and the treewidth of $H:=G/\mathcal{P}$ is at most $t$.
-They defined a class $\mathcal{G}$ of graphs to \emph{admit bounded layered partitions} if there exist $t,\ell\in\mathbb{N}$ such that every graph $G\in \mathcal{G}$ has an $H$-partition of layered width at most $\ell$ for some graph $H=H(G)$ of treewidth at most $t$.
+Dujmović \etal\ define a class $\mathcal{G}$ of graphs to \emph{admit bounded layered partitions} if there exist $t,\ell\in\mathbb{N}$ such that every graph $G\in \mathcal{G}$ has an $H$-partition of layered width at most $\ell$ for some graph $H=H(G)$ of treewidth at most $t$.
 
 These definitions relate to strong products as follows.
 
@@ -306,8 +306,8 @@ Equivalently (by \cref{PartitionProduct}), if $G\subseteq H\boxtimes P\boxtimes 
 \label{PlanarPartition}
 Every planar graph has:
 \begin{compactenum}[(a)]
-\item an $H$-partition of layered width $1$ for some planar graph $H$ of treewidth at most $8$, and
-\item an $H$-partition of layered width $3$ for some planar graph $H$ of treewidth at most $3$.
+\item an $H$-partition of layered width $1$ for some planar graph $H$ of treewidth at most $8$, and \label{subthm:eight-one}
+\item an $H$-partition of layered width $3$ for some planar graph $H$ of treewidth at most $3$.\label{subthm:three-tree}
 \end{compactenum}
 \end{thm}
 Their proof is constructive and gives a simple quadratic-time algorithm for finding these partitions and corresponding layerings.
@@ -343,6 +343,13 @@ For every apex graph $X$, there exists $c\in\mathbb{N}$ such that every $X$-mino
 an $H$-partition with layered width 1 such that $H$ has treewidth at most $c$. Equivalently, $G\subseteq H\boxtimes P$ for some path $P$.
 \end{thm}
 
+At the core of their work is an elegant proof of the following result of  \citet{pilipczuk.siebertz:polynomial-soda} that was introduced in the context of centered colourings (see \cref{sec:centered-colourings}):
+\begin{thm}[\citep{pilipczuk.siebertz:polynomial-soda}]\thmlabel{ps}
+  Every planar triangulation $G$ has an $H$-partition $\mathcal{P}$
+  such that $H$ has treewidth at most 8 and, for each $P\in\mathcal{P}$, $G[P]$ is a shortest path in $G$.
+\end{thm}
+
+Indeed, \cref{PlanarPartition}.\ref{subthm:eight-one} is a slight strengthening of \cref{thm:ps} in which $G$ has a distinguished vertex $r$ and, for each $P\in\mathcal{P}$ no two vertices of $P$ have the same distance to $r$.  
 
 \section{New Results}
 
@@ -574,7 +581,8 @@ Next we show that $\mathcal{S}$ has small layered width with respect to the laye
 \end{clm}
 
 \begin{proof}
-  We count the number of vertices in $S_x\cap L_i$ by upper-bounding the number of vertices contributed to $S_x\cap L_i$ by each vertex $w\in Y_x$. Refer to \cref{contribute}.  If $w\in Y_x\cap L_i$ and no path in $\mathcal{P}$ includes $w$ as an internal vertex then $w$ contributes only one vertex, itself, to $S_x\cap L_i$.
+  Recall that $S_x$ is defined by vertices that participate in $x$, and these are vertices that are either in $Y_x$ or in shortcuts that cross $Y_x$.  We say that a vertex $w\in Y_x$ \emph{contributes} a vertex $v\in S_x$ if $v$ participates in $x$.
+  We upper bound the number of vertices in $S_x\cap L_i$ by upper-bounding the number of vertices contributed to $S_x\cap L_i$ by each $w\in Y_x$. Refer to \cref{contribute}.  If $w\in Y_x\cap L_i$ and no path in $\mathcal{P}$ includes $w$ as an internal vertex then $w$ contributes at most one vertex, itself, to $S_x\cap L_i$.
 
   \begin{figure}[htbp]
     \begin{center}
@@ -932,9 +940,11 @@ Prior to the current work, the strongest upper bound on the non-repetitive chrom
 
 %%%%%%%%%%%%%%%%%%%
 \subsection{Centered Colourings}
+\seclabel{centered-colourings}
 
-A $c$-colouring $\phi$ of $G$ is \emph{$p$-centered} if, for every connected subgraph $X\subseteq G$, $|\{\phi(v):v\in V(X)\}| > p$ or there exists some $v\in V(X)$ such that $\phi(v)\neq \phi(w)$ for every $w\in V(X)\setminus\{v\}$.  In words, either $X$ receives more than $p$ colours or some vertex in $X$ receives a unique colour.  Let $\chi_p(G)$ be the minimum integer $c$ such that $G$ has a $p$-centered $c$-colouring.
-Centered colourings are important since they characterise classes of bounded expansion, which is a key concept in the sparsity theory of \citet{Sparsity}.
+A $c$-colouring $\phi$ of $G$ is \emph{$p$-centered} if, for every connected subgraph $X\subseteq G$, $|\{\phi(v):v\in V(X)\}| > p$ or there exists some $v\in V(X)$ such that $\phi(v)\neq \phi(w)$ for every $w\in V(X)\setminus\{v\}$.  In words, either $X$ receives more than $p$ colours or some vertex in $X$ receives a unique colour.  Let $\chi_p(G)$ be the minimum integer $c$ such that $G$ has a $p$-centered $c$-colouring. Centered colourings are important since they characterise classes of bounded expansion, which is a key concept in the sparsity theory of \citet{Sparsity}.
+
+\citet{pilipczuk.siebertz:polynomial-soda} and \citet{debski.felsner.ea:improved} use \cref{thm:ps} and \cref{PlanarPartition}.\ref{subthm:three-tree}
 
 We make use of the following lemma due to \citet{pilipczuk.siebertz:polynomial-soda}.
 
@@ -943,12 +953,12 @@ We make use of the following lemma due to \citet{pilipczuk.siebertz:polynomial-s
 Every graph $H$ of treewidth at most $t$ has $\chi_p(H)\leq  (t+1)\binom{p+t}{t}$.
 \end{lem}
 
-The following lemma is implicitly due to \citet{micek:personal}. We include the proof for completeness.
+The following lemma is implicitly in the work of \citet[Proof of Theorem 2.1]{debski.felsner.ea:improved}. We include the proof for completeness.
 
 % \note{DW}{can we replace by a result of \citet{micek:personal}?}
 % \note{PM}{I didn't see a statement of this exact result in the last draft Piotr sent.  Though their Theorem~7 is this proof for the special case of planar graphs.}
 
-\begin{lem}[\citep{micek:personal}]
+\begin{lem}[\citep{debski.felsner.ea:improved}]
 \label{p-centered}
 Every graph $G$ that has an $H$-partition of layered width at most $\ell$ has $\chi_p(G)\le \ell (p+1)\, \chi_p(H)$.
 \end{lem}
