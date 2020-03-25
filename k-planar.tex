@@ -974,7 +974,7 @@ Every graph $G$ that has an $H$-partition of layered width at most $\ell$ has $\
 
  First suppose that there exists $v,w\in V(X)$ with $v\in L_i$ and $w\in L_j$ with $j-i\ge p$. Since $X$ is connected, $X$ contains a path from $v$ to $w$.  By the definition of layering, this path contains at least one vertex from $L_{i'}$ for each $i'\in\{i,i+1,\ldots,j\}$. Therefore, $|\{\beta(v'):v'\in V(X)\}|\ge j-i+1 > p$, so $X$ receives more than $p$ distinct colours.
 
- Otherwise, $V(X)\subseteq L_{i},\ldots,L_{i+s}$ for some $s<p$.  Let $H':=H[\{x\in V(H):B_x\cap V(X)\neq\emptyset]$.  If $|\{\gamma(x):x\in V(H')\}| > p$ then $|\{\gamma(v):v\in V(X)\}|> p$ so $|\{\phi(v):v\in V(X)\}|> p$ and we are done.  Otherwise, since $\gamma$ is a $p$-centered colouring of $H$, there must exist some $x\in V(H')$ such that $\gamma(x)\neq\gamma(y)$ for every $y\in V(H')\setminus\{x\}$.
+ Otherwise, $V(X)\subseteq L_{i}\cup\cdots\cup L_{i+s}$ for some $s<p$.  Let $H':=H[\{x\in V(H):B_x\cap V(X)\neq\emptyset]$.  If $|\{\gamma(x):x\in V(H')\}| > p$ then $|\{\gamma(v):v\in V(X)\}|> p$ so $|\{\phi(v):v\in V(X)\}|> p$ and we are done.  Otherwise, since $\gamma$ is a $p$-centered colouring of $H$, there must exist some $x\in V(H')$ such that $\gamma(x)\neq\gamma(y)$ for every $y\in V(H')\setminus\{x\}$.
  For any $v,w\in B_x$ with $v\neq w$, either $v,w\in L_{i'}$ for some $i'\in\{i,i+1,\ldots,i+s\}$ in which case $\alpha(v)\neq\alpha(w)$; or $v\in L_{i'}$ and $w\in L_{i''}$ with $|i'-i''|< p$, in which case $\beta(v)\neq\beta(w)$. Therefore every vertex $v\in B_x$ receives a colour $\phi(v)$ distinct from every colour in $\{\phi(z):z\in X\setminus\{x\}\}$. Therefore, every vertex in $B_x$ receives a colour distinct from every other vertex in $X$.
  \end{proof}
 
@@ -1219,17 +1219,19 @@ for some graph $H$ with treewidth at most $\binom{ \delta+5}{4}-1$ or treewidth 
 % an $H$-partition with layered width at most $\max\{2g,3\}$ such that $H$ has treewidth at most $4$;
 \end{thm}
 
-
-\cref{p-centered,p-centered-treewidth,StringPartition} imply the first known bounds on the $p$-centered chromatic number of map graphs that are polynomial in $p$.
-
-\begin{cor}
-Every $(g,\delta)$-string graph has $p$-centered chromatic number
-\[ \chi_p(G)\le \max\{2g,3\} \,(\delta^4 + 4 \delta^3 + 9 \delta^2 + 10 \delta + 4) (p+1)
-\tbinom{ \delta+5}{4} \binom{p+\binom{ \delta+5}{4}-1}{\binom{ \delta+5}{4}-1}\enspace, \]
-and every plane $(0,\delta)$-string graph has $p$-centered chromatic number
-\[ \chi_p(G)\le \max\{2g,3\} \,(\delta^4 + 4 \delta^3 + 9 \delta^2 + 10 \delta + 4) (p+1)
-\tbinom{ \delta+4}{3}\binom{p+\binom{ \delta+4}{3}-1}{\binom{ \delta+4}{3}-1}\enspace.\]
-\end{cor}
+% \snote{Deleted results on p-centered colouring since the bounded-degree results by \citet{debski.felsner.ea:improved} give better dependence on $\delta$.}
+%
+%
+% \cref{p-centered,p-centered-treewidth,StringPartition} imply the first known bounds on the $p$-centered chromatic number of map graphs that are polynomial in $p$.
+%
+% \begin{cor}
+% Every $(g,\delta)$-string graph has $p$-centered chromatic number
+% \[ \chi_p(G)\le \max\{2g,3\} \,(\delta^4 + 4 \delta^3 + 9 \delta^2 + 10 \delta + 4) (p+1)
+% \tbinom{ \delta+5}{4} \binom{p+\binom{ \delta+5}{4}-1}{\binom{ \delta+5}{4}-1}\enspace, \]
+% and every plane $(0,\delta)$-string graph has $p$-centered chromatic number
+% \[ \chi_p(G)\le \max\{2g,3\} \,(\delta^4 + 4 \delta^3 + 9 \delta^2 + 10 \delta + 4) (p+1)
+% \tbinom{ \delta+4}{3}\binom{p+\binom{ \delta+4}{3}-1}{\binom{ \delta+4}{3}-1}\enspace.\]
+% \end{cor}
 %\label{p-centered}
 %Every graph $G$ that has a layered $H$-partition of layered width at most $\ell$ in which $H$ has treewidth at most $t$ satisfies $\chi_p(G)\le \ell (p+1) (t+1)\binom{p+t}{t}$.
 
@@ -1251,7 +1253,7 @@ and every plane $(0,\delta)$-map graph  has queue-number at most
 
 % from previous paper: For all integers $g\geq 0$ and $k\geq 2$, every $(g,k)$-string graph has queue-number at most $2(40g+490)^{2k+1}$.
 
-\cref{non-repetitive,StringPartition} also give bounds on the non-repetitive chromatic number of $(g,\delta)$-string graphs, but the bound is weak, since such graphs $G$ have maximum degree at most $2\delta$, implying that $\pi(G) \leq (4+o(1))\delta^2$ by a result of \citet{DJKW16}.
+\cref{non-repetitive,StringPartition} also give bounds on the non-repetitive chromatic number and the $p$-centered colouring number of $(g,\delta)$-string graphs, but the bounds are weak, since such graphs $G$ have maximum degree at most $2\delta$, implying that $\pi(G) \leq (4+o(1))\delta^2$ and $\chi_p(G)\le p(64\delta)^2$ by results of \citet{DJKW16} and \citet{debski.felsner.ea:improved}, respectively.
 
 %%%%%%%%%%
 \subsection{Powers of Bounded Degree Graphs}
@@ -1274,7 +1276,7 @@ $\dist_G(x,y)$  in $G$. Let $\PP:=\{P_{xy}: \dist_G(x,y)\in\{1,\dots,k\} \}$. Sa
 Hence $\PP$ is a $(k, 2k \Delta^k)$-shortcut system.
 \end{proof}
 
-\cref{PlanarPartition}(b), \cref{SurfacePartition}(b), \cref{modern-major-general,PowerShortcut} imply the following result, which with \cref{PartitionProduct} implies \cref{kPowerBasic} in \cref{Introduction}.
+\cref{PlanarPartition}(b), \cref{SurfacePartition}(b), \cref{modern-major-general,PowerShortcut} imply the following result, which with \cref{PartitionProduct} implies \cref{kPowerBasic} in the introduction.
 
 \begin{thm}
 \label{PowerPartition}
@@ -1302,7 +1304,7 @@ For all integers $k\geq 1$ and $g\geq 0$, if $G$ is a graph with Euler genus $g$
 %If a graph $G$ has a layered $H$-partition of layered width $\ell$ in which $H$ has treewidth at most $t$, then $\qn(G)\le 3 \ell (2^t-1) + \floor{\tfrac{3}{2}\ell} \le 3 \ell (2^t-\frac12 )$.
 %%%%%%
 \item $G^k$ has  $p$-centered chromatic number
-\[\chi_p(G^k) \leq \max\{2g,3\}(2k^4+6k^2) \Delta^{k}  (p+1) \tbinom{k+4}{4}
+\[\chi_p(G^k) \leq \max\{2g,3\}(2k^4+6k^2) \Delta^{k}  (p+1)
 \binom{p+\binom{k+4}{4}-1}{\binom{k+4}{4}-1}\enspace,\]
 %\label{p-centered} Every graph $G$ that has a layered $H$-partition of layered width at most $\ell$ in which $H$ has treewidth at most $t$ satisfies $\chi_p(G)\le \ell (p+1) (t+1)\binom{p+t}{t}$.
 \item $G^k$ has  non-repetitive chromatic number
@@ -1311,7 +1313,7 @@ For all integers $k\geq 1$ and $g\geq 0$, if $G$ is a graph with Euler genus $g$
 \end{compactitem}
 \end{cor}
 
-This result is the first constant upper bound on the queue-number and $p$-centered chromatic number of bounded powers of graphs with bounded degree and bounded Euler genus.  For every graph $G$, since $G^k$ has maximum degree at most $\Delta^k$, a result of \citet{DJKW16} implies that $\pi(G^k) \leq (1+o(1))\Delta^{2k}$. \cref{PowerCor} improves upon this bound when $k\ll\Delta$ and $G$ has Euler genus $g$.
+This result is the first constant upper bound on the queue-number of bounded powers of graphs with bounded degree and bounded Euler genus.  For every graph $G$, since $G^k$ has maximum degree at most $\Delta^k$, a result of \citet{DJKW16} implies that $\pi(G^k) \leq (1+o(1))\Delta^{2k}$. \cref{PowerCor} improves upon this bound when $k\ll\Delta$ and $G$ has Euler genus $g$.  Similarly, a result of \citet{debski.felsner.ea:improved} implies that $\chi_p(G^k)\le 1024p\Delta^{2k}$ and \cref{PowerCor} improves upon this bound when $p,k\ll\Delta$ and $G$ has Euler genus $g$.
 
 %Also note that the above results in conjunction with the comments about separators in \cref{PriorWork} imply that for fixed integers $g,k,\Delta$, the $k$-th power of a graph with Euler genus $g$ and maximum degree $\Delta$ has $O(\sqrt{n})$ treewidth  and thus admits balanced separators of order $O(\sqrt{n})$.  \note{PM}{How interesting is this last note?  A $\sqrt{n}$-separator of the genus-$g$ graph $G$ has a $k$-neighbourhood of size at most $\sqrt{n}\Delta^k$ and is this neighbourhood is a separator of the $G^k$.}
 
@@ -1358,7 +1360,7 @@ If $v_0,\ldots,v_3$ are the vertices of a convex quadrilateral in counterclockwi
   Thus, in total, there are at most $13k-1$ Type~$v$, Type~$w$, and Type~C vertices. By \cref{k-nn-max-degree}, each of these vertices is incident with at most $6k$ edges that cross $vw$. Therefore, there are at most $78k^2-6k$ edges of $G$ that cross $vw$.  Since this is true for every edge $vw\in E(G)$, $G$ is $(78k^2-6k)$-planar.
 \end{proof}
 
-We note that \cref{nearest-neighbour} is tight up to the leading constant:  Every $k$-nearest neighbour graph on $n$ vertices has at least $kn/2$ edges and at most $kn$ edges.  For $k\ge 7$, the Crossing Lemma~\citep{ajtai.chvatal.ea:crossing-free,leighton:complexity} implies that the total number of crossings is therefore $\Omega(k^3n)$ so that the average number of crossings per edge is $\Omega(k^2)$.
+We note that \cref{nearest-neighbour} is tight up to the leading constant:  Every $k$-nearest neighbour graph on $n\ge k+1$ vertices has at least $kn/2$ edges and at most $kn$ edges.  For $k\ge 7$, the Crossing Lemma~\citep{ajtai.chvatal.ea:crossing-free,leighton:complexity} implies that the total number of crossings is therefore $\Omega(k^3n)$ so that the average number of crossings per edge is $\Omega(k^2)$.
 
 \cref{nearest-neighbour,k-planar,qn,p-centered,p-centered-treewidth} imply:
 
