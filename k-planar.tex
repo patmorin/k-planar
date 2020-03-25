@@ -349,12 +349,12 @@ At the core of their work is an elegant proof of the following result of  \citet
   such that $H$ has treewidth at most 8 and, for each $P\in\mathcal{P}$, $G[P]$ is a shortest path in $G$.
 \end{thm}
 
-Indeed, \cref{PlanarPartition}.\ref{subthm:eight-one} is a slight strengthening of \cref{thm:ps} in which $G$ has a distinguished vertex $r$ and, for each $P\in\mathcal{P}$ no two vertices of $P$ have the same distance to $r$.  
+Indeed, \cref{PlanarPartition}.\ref{subthm:eight-one} is a slight strengthening of \cref{thm:ps} in which $G$ has a distinguished vertex $r$ and, for each $P\in\mathcal{P}$ no two vertices of $P$ have the same distance to $r$.
 
 \section{New Results}
 
 Apex-minor-free graphs, addressed by \cref{ApexMinorFree}, are the largest minor-closed class that admit bounded layered partitions~\citep{dujmovic.joret.ea:planar}. However, the family of $k$-planar graphs is not minor-closed.  A graph $G'$ obtained from a $k$-planar graph $G$ by edge deletions and edge contractions may or may not be $k$-planar. \snote{DCG Reviewer \#1 writes: \emph{Isn't this trivial? A grid with all
-diagonals will do.}  Are they correct? If so, what to do?} Indeed, \citet{dujmovic.eppstein.ea:structure} construct 1-planar graphs that contain arbitrarily large complete graph minors. Our results for $k$-planar graphs are the first of this type for a non-minor-closed class.
+diagonals will do.}  Is the reviewer correct? If so, what to do?} Indeed, \citet{dujmovic.eppstein.ea:structure} construct 1-planar graphs that contain arbitrarily large complete graph minors. Our results for $k$-planar graphs are the first of this type for a non-minor-closed class.
 
 The following result is the main theorem of the paper. Loosely speaking, it shows that if a graph $G$ admits bounded layered partitions, then so to does $G^\PP$ for every $(k,d)$-shortcut system $\PP$ of $G$.
 
@@ -944,13 +944,11 @@ Prior to the current work, the strongest upper bound on the non-repetitive chrom
 
 A $c$-colouring $\phi$ of $G$ is \emph{$p$-centered} if, for every connected subgraph $X\subseteq G$, $|\{\phi(v):v\in V(X)\}| > p$ or there exists some $v\in V(X)$ such that $\phi(v)\neq \phi(w)$ for every $w\in V(X)\setminus\{v\}$.  In words, either $X$ receives more than $p$ colours or some vertex in $X$ receives a unique colour.  Let $\chi_p(G)$ be the minimum integer $c$ such that $G$ has a $p$-centered $c$-colouring. Centered colourings are important since they characterise classes of bounded expansion, which is a key concept in the sparsity theory of \citet{Sparsity}.
 
-\citet{pilipczuk.siebertz:polynomial-soda} and \citet{debski.felsner.ea:improved} use \cref{thm:ps} and \cref{PlanarPartition}.\ref{subthm:three-tree}
-
-We make use of the following lemma due to \citet{pilipczuk.siebertz:polynomial-soda}.
+\citet{pilipczuk.siebertz:polynomial-soda} and \citet{debski.felsner.ea:improved} use \cref{thm:ps} and \cref{PlanarPartition}.\ref{subthm:three-tree}, respectively, to show that, when $G$ is planar, or of bounded genus, $\chi_p(G)$ is polynomial in $p$.  We make use of the following lemma due to \citet[Lemma~15]{pilipczuk.siebertz:polynomial-arxiv}.
 
 \begin{lem}[\citep{pilipczuk.siebertz:polynomial-soda}]
 \label{p-centered-treewidth}
-Every graph $H$ of treewidth at most $t$ has $\chi_p(H)\leq  (t+1)\binom{p+t}{t}$.
+  Every graph $H$ of treewidth at most $t$ has $\chi_p(H)\leq \binom{p+t}{t}$.
 \end{lem}
 
 The following lemma is implicitly in the work of \citet[Proof of Theorem 2.1]{debski.felsner.ea:improved}. We include the proof for completeness.
@@ -974,9 +972,9 @@ Every graph $G$ that has an $H$-partition of layered width at most $\ell$ has $\
    \end{compactenum}
  To show this is a $p$-centered colouring, consider some connected subgraph $X\subseteq G$.
 
- First suppose that there exists $v,w\in V(X)$ with $v\in L_i$ and $w\in L_j$ with $j-i\ge p$. Since $G[X]$ is connected, $G[X]$ contains a path from $v$ to $w$.  By the definition of layering, this path contains at least one vertex from $L_{i'}$ for each $i'\in\{i,i+1,\ldots,j\}$. Therefore, $|\{\beta(v'):v'\in X\}|\ge j-i+1 > p$, so $X$ receives more than $p$ distinct colours.
+ First suppose that there exists $v,w\in V(X)$ with $v\in L_i$ and $w\in L_j$ with $j-i\ge p$. Since $X$ is connected, $X$ contains a path from $v$ to $w$.  By the definition of layering, this path contains at least one vertex from $L_{i'}$ for each $i'\in\{i,i+1,\ldots,j\}$. Therefore, $|\{\beta(v'):v'\in V(X)\}|\ge j-i+1 > p$, so $X$ receives more than $p$ distinct colours.
 
- Otherwise, $X\subseteq L_{i},\ldots,L_{i+s}$ for some $s<p$.  Let $H':=H[\{x\in V(H):B_x\cap X\neq\emptyset]$.  If $|\{\gamma(x):x\in V(H')\}| > p$ then $|\{\gamma(v):v\in X\}|> p$ so $|\{\phi(v):v\in X\}|> p$ and we are done.  Otherwise, since $\gamma$ is a $p$-centered colouring of $H$, there must exist some $x\in V(H')$ such that $\gamma(x)\neq\gamma(y)$ for every $y\in V(H')\setminus\{x\}$.
+ Otherwise, $V(X)\subseteq L_{i},\ldots,L_{i+s}$ for some $s<p$.  Let $H':=H[\{x\in V(H):B_x\cap V(X)\neq\emptyset]$.  If $|\{\gamma(x):x\in V(H')\}| > p$ then $|\{\gamma(v):v\in V(X)\}|> p$ so $|\{\phi(v):v\in V(X)\}|> p$ and we are done.  Otherwise, since $\gamma$ is a $p$-centered colouring of $H$, there must exist some $x\in V(H')$ such that $\gamma(x)\neq\gamma(y)$ for every $y\in V(H')\setminus\{x\}$.
  For any $v,w\in B_x$ with $v\neq w$, either $v,w\in L_{i'}$ for some $i'\in\{i,i+1,\ldots,i+s\}$ in which case $\alpha(v)\neq\alpha(w)$; or $v\in L_{i'}$ and $w\in L_{i''}$ with $|i'-i''|< p$, in which case $\beta(v)\neq\beta(w)$. Therefore every vertex $v\in B_x$ receives a colour $\phi(v)$ distinct from every colour in $\{\phi(z):z\in X\setminus\{x\}\}$. Therefore, every vertex in $B_x$ receives a colour distinct from every other vertex in $X$.
  \end{proof}
 
@@ -987,7 +985,7 @@ Every graph $G$ that has an $H$-partition of layered width at most $\ell$ has $\
 For every $k$-planar graph $G$,
 %for some integer $t\leq \binom{k+4}{3}-1$,
 %$$\chi_p(G)\le (18k^2+30k)(p+1) (t+1)\tbinom{p+t}{t}\enspace.$$
-\[ \chi_p(G)\le (18k^2+48k+30)(p+1) \binom{k+4}{3} \binom{p+ \binom{k+4}{3}-1}{ \binom{k+4}{3}-1}\enspace. \]
+\[ \chi_p(G)\le (18k^2+48k+30)(p+1) \binom{p+ \binom{k+4}{3}-1}{ \binom{k+4}{3}-1}\enspace. \]
 %\note{DW}{I previously wrote ``for some integer $t\leq \binom{k+4}{3}-1$'' thinking that $\binom{p+t}{t}$ might not be monotone with $t$, but it is because of the $+t$.}
 %Every $k$-planar graph has a layered $H$-partition of layered width at most $18k^2 + 30k$ in which $H$ has treewidth at most $\binom{k+4}{3}-1$. %$\treewidth$.
 %Every graph $G$ that has a layered $H$-partition of layered width at most $\ell$ in which $H$ has treewidth at most $t$ satisfies $\chi_p(G)\le \ell (p+1) (t+1)\binom{p+t}{t}$.
@@ -996,7 +994,7 @@ For every $k$-planar graph $G$,
 \begin{cor}
 \label{pc1}
 For every $1$-planar graph $G$,
-\[ \chi_p(G)\le 20 (p+3)(p+2)(p+1)^2\enspace. \]
+\[ \chi_p(G)\le 5 (p+3)(p+2)(p+1)^2\enspace. \]
 %120 (p+1) \binom{p+3}{3}
 %Every graph $G$ that has a layered $H$-partition of layered width at most $\ell$ in which $H$ has treewidth at most $t$ satisfies $\chi_p(G)\le \ell (p+1) (t+1)\binom{p+t}{t}$.
 %Every 1-planar graph has a layered $H$-partition of layered width at most 30 where $H$ is planar and has treewidth at most 3.
@@ -1008,7 +1006,7 @@ For every $1$-planar graph $G$,
 For every $(g,k)$-planar graph $G$,
 %for some integer $t\leq \binom{k+5}{4}-1$,
 %$$\chi_p(G) \le \max\{2g,3\}\cdot(6k^2 + 10k) (p+1) (t+1)\tbinom{p+t}{t}\enspace.$$
-\[ \chi_p(G) \le \max\{2g,3\}\cdot(6k^2+16k+10) (p+1) \binom{k+5}{4}\binom{p+\binom{k+5}{4}-1}{\binom{k+5}{4}-1}\enspace. \]
+\[ \chi_p(G) \le \max\{2g,3\}\cdot(6k^2+16k+10) (p+1) \binom{p+\binom{k+5}{4}-1}{\binom{k+5}{4}-1}\enspace. \]
 %O(gk^2)\times p^{O(k^3)}$.
 %%Every graph $G$ that has a layered $H$-partition of layered width at most $\ell$ in which $H$ has treewidth at most $t$ satisfies $\chi_p(G)\le \ell (p+1) (t+1)\binom{p+t}{t}$.
 %Every $(g,k)$-planar graph has a layered $H$-partition of layered width at most
