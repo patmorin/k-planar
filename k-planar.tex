@@ -257,12 +257,12 @@ We now define two concepts used in the theorems in \cref{Introduction}: strong p
 \item  $x=y$ and $vw\in E(A)$, or
 \item  $vw\in E(A)$ and $xy\in E(B)$.
 \end{compactitem}
-A \emph{tree-decomposition} $\mathcal{T}$ of a graph $G$ consists of a tree $T$ and a collection $\mathcal{T}=(B_x:x\in V(T))$ of subsets of $V(G)$ indexed by the nodes of $T$ such that:
+A \emph{tree decomposition} $\mathcal{T}$ of a graph $G$ consists of a tree $T$ and a collection $\mathcal{T}=(B_x:x\in V(T))$ of subsets of $V(G)$ indexed by the nodes of $T$ such that:
 \begin{compactenum}[(i)]
 \item for every $vw\in E(G)$, there exists some node $x\in V(T)$ with $v,w\in B_x$; and
 \item for every $v\in V(G)$, the induced subgraph $T[v] := T[\{x: v\in B_x\}]$ is connected.
 \end{compactenum}
-The \emph{width} of the tree-decomposition $\mathcal{T}$ is $\max\{|B_x|:x\in V(T)\}-1$.  The \emph{treewidth} $\tw(G)$ of a graph $G$ is the minimum width of a tree-decomposition of $G$.  Treewidth is the standard measure of how similar a graph is to a tree. Indeed, a connected graph has treewidth 1 if and only if it is a tree. Treewidth is of fundamental importance in structural and algorithmic graph theory; see \citep{Reed03,HW17,Bodlaender-TCS98} for surveys.
+The \emph{width} of the tree decomposition $\mathcal{T}$ is $\max\{|B_x|:x\in V(T)\}-1$.  The \emph{treewidth} $\tw(G)$ of a graph $G$ is the minimum width of a tree decomposition of $G$.  Treewidth is the standard measure of how similar a graph is to a tree. Indeed, a connected graph has treewidth 1 if and only if it is a tree. Treewidth is of fundamental importance in structural and algorithmic graph theory; see \citep{Reed03,HW17,Bodlaender-TCS98} for surveys.
 
 While strong products enable concise statements of the theorems in \cref{Introduction}, to prove such results it is helpful to work with layerings and partitions, which we now introduce.
 
@@ -354,7 +354,7 @@ Indeed, \cref{PlanarPartition}.\ref{subthm:eight-one} is a slight strengthening 
 \section{New Results}
 
 Apex-minor-free graphs, addressed by \cref{ApexMinorFree}, are the largest minor-closed class that admit bounded layered partitions~\citep{dujmovic.joret.ea:planar}. However, the family of $k$-planar graphs is not minor-closed.  A graph $G'$ obtained from a $k$-planar graph $G$ by edge deletions and edge contractions may or may not be $k$-planar. \snote{DCG Reviewer \#1 writes: \emph{Isn't this trivial? A grid with all
-diagonals will do.}  The other reviewer write: \emph{Well,
+diagonals will do.}  The other reviewer writes: \emph{Well,
 such a construction is trivial: just take grids with both diagonals in
 every cell.}  In response, I changed the following sentence from ``construct'' to ``observe''. Ok?} Indeed, \citet{dujmovic.eppstein.ea:structure} observe that even 1-planar graphs may contain arbitrarily large complete graph minors. Our results for $k$-planar graphs are the first of this type for a non-minor-closed class.
 
@@ -425,10 +425,10 @@ For every apex graph $X$ and for all integers $k,d\geq 1$, there is an integer $
 
 %\notex{DW}{should this subsection be moved to the end of \cref{Tools}?}\notex{PM}{No, I don't think so. The information given in Section 2 isn't detailed enough to compare with layered treewidth versus layered partitions.}
 
-Prior to this work, the strongest structural description of $k$-planar or $(g,k)$-planar graphs was in terms of layered treewidth, which we now define.  A \emph{layered tree-decomposition} $(\mathcal{L},\mathcal{T})$ consists of a layering $\mathcal{L}$ and a tree-decomposition $\mathcal{T}$ of $G$. The layered width of $(\mathcal{L},\mathcal{T})$ is $\max\{|L\cap B|: L\in \mathcal{L},\, B\in \mathcal{T}\}$.  The \emph{layered treewidth} of $G$ is the minimum layered width of any layered tree-decomposition of $G$. \citet{dujmovic.morin.ea:layered} proved that planar graphs have layered treewidth at most 3, that graphs of Euler genus $g$ have layered treewidth at most $2g+3$, and more generally that a minor-closed class has bounded layered treewidth if and only if it excludes some apex graph. \citet{dujmovic.eppstein.ea:structure} show that every $k$-planar graph has layered treewidth at most $6(k+1)$, and more generally that every $(g,k)$-planar graph has layered treewidth at most $(4g+6)(k+1)$. It follows from this result that $(g,k)$-planar graphs have treewidth $O(\sqrt{(g+1)(k+1)n})$ and thus have balanced separators of the same order, which can also be concluded from the work of
+Prior to this work, the strongest structural description of $k$-planar or $(g,k)$-planar graphs was in terms of layered treewidth, which we now define.  A \emph{layered tree decomposition} $(\mathcal{L},\mathcal{T})$ consists of a layering $\mathcal{L}$ and a tree decomposition $\mathcal{T}$ of $G$. The layered width of $(\mathcal{L},\mathcal{T})$ is $\max\{|L\cap B|: L\in \mathcal{L},\, B\in \mathcal{T}\}$.  The \emph{layered treewidth} of $G$ is the minimum layered width of any layered tree decomposition of $G$. \citet{dujmovic.morin.ea:layered} proved that planar graphs have layered treewidth at most 3, that graphs of Euler genus $g$ have layered treewidth at most $2g+3$, and more generally that a minor-closed class has bounded layered treewidth if and only if it excludes some apex graph. \citet{dujmovic.eppstein.ea:structure} show that every $k$-planar graph has layered treewidth at most $6(k+1)$, and more generally that every $(g,k)$-planar graph has layered treewidth at most $(4g+6)(k+1)$. It follows from this result that $(g,k)$-planar graphs have treewidth $O(\sqrt{(g+1)(k+1)n})$ and thus have balanced separators of the same order, which can also be concluded from the work of
 \citet{FP08}. In related work, \citet{grigoriev.bodlaender:algorithms} used structural results to obtain approximation algorithms for $(g,k)$-planar graphs, and \citet{PachToth97} determined the maximum number of edges in a $k$-planar graph (up to a constant factor).
 
-If a graph class admits bounded layered partitions, then it also has bounded layered treewidth. In particular, if $\mathcal{P}=(P_x:x\in V(H))$ is an $H$-partition of $G$ of layered width $\ell$ with respect to some layering $\mathcal{L}$ of $G$ and $(B_x:x\in V(T))$ is a width-$t$ tree-decomposition of $H$, then setting $C_x = \bigcup_{y\in B_x} P_y$ for each $x\in V(T)$ gives a tree-decomposition $(C_x:x\in V(T))$ of $G$ that has layered treewidth $(t+1)\ell$ \cite{dujmovic.joret.ea:planar}.
+If a graph class admits bounded layered partitions, then it also has bounded layered treewidth. In particular, if $\mathcal{P}=(P_x:x\in V(H))$ is an $H$-partition of $G$ of layered width $\ell$ with respect to some layering $\mathcal{L}$ of $G$ and $(B_x:x\in V(T))$ is a width-$t$ tree decomposition of $H$, then setting $C_x = \bigcup_{y\in B_x} P_y$ for each $x\in V(T)$ gives a tree decomposition $(C_x:x\in V(T))$ of $G$ that has layered treewidth $(t+1)\ell$ \cite{dujmovic.joret.ea:planar}.
 
 Therefore, any property that holds for graphs of bounded layered treewidth also holds for $G$. What sets layered partitions apart from layered treewidth is that they lead to constant upper bounds on the queue-number  and non-repetitive chromatic number, whereas for both these parameters, the best known upper bound obtainable via layered treewidth is $O(\log n)$; see \cref{Applications}.
 
@@ -471,11 +471,13 @@ We begin with a standard technique that allows us to work with a normalised tree
 \end{lem}
 
 \begin{proof}
-  Begin with any width-$t$ tree decomposition $(B_x:x\in V(T_0))$ of $H$ that uses some tree $T_0$.  Select any node $x\in V(T_0)$, add a leaf $x_0$, with $B_{x_0}=\emptyset$, adjacent to $x$ and root $T_0$ at $x_0$. (The purpose of $x_0$ is to ensure that every node $x$ for which $B_x$ is non-empty has a parent.)  Let $f:V(H)\to V(T)$ be the function that maps each $x\in V(H)$ onto the root of the subtree $T_0[x]:=T_0[\{y\in V(T_0): x\in B_y\}]$.  If $f$ is not one-to-one, then select some distinct pair $x,y\in V(H)$ with $a:=f(x)=f(y)$.  Subdivide the edge between $a$ and its parent in $T$ by introducing a new node $a'$ with $B_{a'}=B_{a}\setminus\{x\}$.  This modification reduces the number of distinct pairs $x,y\in V(H)$ with $f(x)=f(y)$, so repeatedly performing this modification will eventually produce a tree-decomposition $(B_x:x\in V(T_0))$ of $H$ in which $f$ is one-to-one.
+  That \tref{subtree-root} implies \tref{ancestor-edge} is a standard observation: If two subtrees intersect, then one contains the root of the other.  Thus, it suffices to construct width-$t$ tree decomposition that satisfies \tref{ancestor-edge}.
 
-  Next, consider any node $a\in V(T_0)$ such that there is no vertex $x\in V(H)$ with $f(x)=a$.  In this case, $B_{a}\subseteq B_{a'}$ where $a'$ is the parent of $a$ since any $x\in B_a\setminus B_{a'}$ would have $f(x)=a$.  In this case, contract the edge $aa'$ in $T_0$, eliminating the node $a$.  Repeating this operation will eventually produce a width-$t$ tree-decomposition of $(B_x:x\in V(T_0))$ where $f$ is a bijection between $V(H)$ and $V(T_0)$.  Renaming each node $a\in V(T_0)$ as $f^{-1}(a)$ gives a tree-decomposition $(B_x:x\in V(T))$ with $V(T)=V(H)$.
+  Begin with any width-$t$ tree decomposition $(B_x:x\in V(T_0))$ of $H$ that uses some tree $T_0$.  Select any node $x\in V(T_0)$, add a leaf $x_0$, with $B_{x_0}=\emptyset$, adjacent to $x$ and root $T_0$ at $x_0$. (The purpose of $x_0$ is to ensure that every node $x$ for which $B_x$ is non-empty has a parent.)  Let $f:V(H)\to V(T)$ be the function that maps each $x\in V(H)$ onto the root of the subtree $T_0[x]:=T_0[\{y\in V(T_0): x\in B_y\}]$.  If $f$ is not one-to-one, then select some distinct pair $x,y\in V(H)$ with $a:=f(x)=f(y)$.  Subdivide the edge between $a$ and its parent in $T$ by introducing a new node $a'$ with $B_{a'}=B_{a}\setminus\{x\}$.  This modification reduces the number of distinct pairs $x,y\in V(H)$ with $f(x)=f(y)$, so repeatedly performing this modification will eventually produce a tree decomposition $(B_x:x\in V(T_0))$ of $H$ in which $f$ is one-to-one.
 
-  By the definition of $f$, the tree-decomposition $(B_x:x\in V(T))$ satisfies \tref{subtree-root}.  To see that $(B_x:x\in V(T))$ satisifies \tref{ancestor-edge}, observe that, if $xy\in E(H)$, then at least one of $x$ or $y$ is contained in $B_z$ for every node $z$ on the path from $x$ to $y$ in $T$.  If neither $x$ nor $y$ is an ancestor of the other, then some node $z$ on this path has $T$-depth less than that of $x$ and $y$.  If $x\in B_z$ this contradicts the fact that $x$ is the root of $T[x]$.  If $y\in B_z$ this contradicts the fact that $y$ is the root of $T[y]$.
+  Next, consider any node $a\in V(T_0)$ such that there is no vertex $x\in V(H)$ with $f(x)=a$.  In this case, $B_{a}\subseteq B_{a'}$ where $a'$ is the parent of $a$ since any $x\in B_a\setminus B_{a'}$ would have $f(x)=a$.  In this case, contract the edge $aa'$ in $T_0$, eliminating the node $a$.  Repeating this operation will eventually produce a width-$t$ tree decomposition of $(B_x:x\in V(T_0))$ where $f$ is a bijection between $V(H)$ and $V(T_0)$.  Renaming each node $a\in V(T_0)$ as $f^{-1}(a)$ gives a tree decomposition $(B_x:x\in V(T))$ with $V(T)=V(H)$.  By the definition of $f$, the tree decomposition $(B_x:x\in V(T))$ satisfies \tref{subtree-root}.
+  % To see that $(B_x:x\in V(T))$ satisifies \tref{ancestor-edge}, observe that,
+  % if $xy\in E(H)$, then at least one of $x$ or $y$ is contained in $B_z$ for every node $z$ on the path from $x$ to $y$ in $T$.  If neither $x$ nor $y$ is an ancestor of the other, then some node $z$ on this path has $T$-depth less than that of $x$ and $y$.  If $x\in B_z$ this contradicts the fact that $x$ is the root of $T[x]$.  If $y\in B_z$ this contradicts the fact that $y$ is the root of $T[y]$.
 \end{proof}
 
 %\subsection{Generalized Tripod Partitions}
@@ -495,10 +497,10 @@ We begin with a standard technique that allows us to work with a normalised tree
 % \notex{DW}{Is some sort of converse to \cref{generalized-tripod}  also true? \cref{generalized-tripod}  shows that if a graph $G$ has a layered partition with all the nice properties, then $G$ has this generalised tripod partition. Isn't also true that if $G$ has a generalised tripod partition, then $G$ has a layered partition with all the nice properties. The proof is basically in \citep{dujmovic.joret.ea:planar}, right?}
 % \notex{PM}{Yes, if by generalized tripod partition you mean $T$ and $\mathcal{Y}=(Y_x:x\in V(T))$ that satisify \yref{thickness}, \yref{separator}, and \yref{ancestor-edge}.  From \yref{separator} and \yref{ancestor-edge} you can construct a width-$t$ $T$-decomposition of $H=G/\mathcal{Y}$.  By \yref{thickness}, $\mathcal{Y}$, has layered width at most $\ell$.}
 
-The following lemma shows how to interpret an $H$-partition of $G$ and a tree-decomposition of $H$ as a hierarchical decomposition of $G$; refer to \cref{fig:generalized-tripod}.
+The following lemma shows how to interpret an $H$-partition of $G$ and a tree decomposition of $H$ as a hierarchical decomposition of $G$; refer to \cref{fig:generalized-tripod}.
 
 \begin{lem}\label{generalized-tripod}
-  Let $G$ be a graph; let $\mathcal{L}:=\langle L_1,\ldots,L_h\rangle$ be a layering of $G$; let $\mathcal{Y}:=(Y_x: x\in V(H))$ be an $H$-partition of $G$ of layered width at most $\ell$ with respect to $\mathcal{L}$ where $H$ has treewidth at most $t$; and let $\mathcal{T}:=(B_x:x\in V(T))$ be a tree-decomposition of $H$ satisfying the conditions of \lemref{nice-decomposition}.  For each $x\in V(T)$, let $V_x := \bigcup_{y\in V(T_x)} Y_y$, $F_x:=\{w\in V(G): vw\in E(G), v\in V_x,\, w\not\in V_x\}$, and $N_x:=V_x\cup F_x$.  Then,
+  Let $G$ be a graph; let $\mathcal{L}:=\langle L_1,\ldots,L_h\rangle$ be a layering of $G$; let $\mathcal{Y}:=(Y_x: x\in V(H))$ be an $H$-partition of $G$ of layered width at most $\ell$ with respect to $\mathcal{L}$ where $H$ has treewidth at most $t$; and let $\mathcal{T}:=(B_x:x\in V(T))$ be a tree decomposition of $H$ satisfying the conditions of \lemref{nice-decomposition}.  For each $x\in V(T)$, let $V_x := \bigcup_{y\in V(T_x)} Y_y$, $F_x:=\{w\in V(G): vw\in E(G), v\in V_x,\, w\not\in V_x\}$, and $N_x:=V_x\cup F_x$.  Then,
   \begin{compactenum}[(Y1)]
     % \item\ylabel{thickness} $\mathcal{Y}=(Y_x: x\in V(T))$ is a partition of $V(G)$ of layered width at most $\ell$ with respect to $\mathcal{L}$.
     \item\ylabel{separator} For each $x\in V(T)$, there is no edge $vw\in E(G)$ with $v\in V_x$ and $w\in V(G)\setminus N_x$.
@@ -532,7 +534,7 @@ Property~\yref{y-subsets} follows from the fact that $V_x$ is the union of sever
 
 % In the rest of this section,
 % %$(\mathcal{L},\mathcal{Y})$ denotes a layered $H$-partition of $G$;
-% $\mathcal{T}=(B_x:x\in V(T))$ is a tree-decomposition of $H:=G/\mathcal{Y}$ satisfying the conditions of \lemref{nice-decomposition} and, for each $x\in V(T)$, $Y_x$, $V_x$, $F_x$, and $N_x$ are defined as in \clmref{generalized-tripod}.
+% $\mathcal{T}=(B_x:x\in V(T))$ is a tree decomposition of $H:=G/\mathcal{Y}$ satisfying the conditions of \lemref{nice-decomposition} and, for each $x\in V(T)$, $Y_x$, $V_x$, $F_x$, and $N_x$ are defined as in \clmref{generalized-tripod}.
 
 We are now ready to prove our main result, which we restate here for convenience:
 
@@ -611,12 +613,12 @@ Next we show that $\mathcal{S}$ has small layered width with respect to the laye
 \end{proof}
 
 \begin{clm}\clmlabel{general-bag-size}
-  The graph $J$ has a tree-decomposition in which every bag has size at most $\binom{k+t}{t}$.
+  The graph $J$ has a tree decomposition in which every bag has size at most $\binom{k+t}{t}$.
 \end{clm}
 
 \begin{proof}
-  For the tree-decomposition $(C_x:x\in V(T))$ of $J$ we use the same tree $T$ used in the tree-decomposition $(B_x:x\in V(T))$ of $H$. For each node $x$ of $T$, we define $C_x$ as follows: $C_x$ contains $x$ as well as every $T$-ancestor $a$ of $x$ such that $J$ contains an edge $ax'$ where $x$ is a $T$-ancestor of $x'$ (including the possibility that $x=x'$).
-  \clmref{i-ancestor} ensures that, for every edge $ax'\in E(J)$, $a,x'\in C_{x'}$.  The connectivity of $T[a]:=T[\{x\in V(T):a\in C_x\}]$ follows from the fact that, for every node $x'\in T[a]$, every node $x$ on the path in $T$ from $x'$ to  $a$ is also a node of $T[a]$.  Therefore $(C_x:x\in V(T))$ is indeed a tree-decomposition of $J$.  It remains to bound the size of each bag $C_x$.
+  For the tree decomposition $(C_x:x\in V(T))$ of $J$ we use the same tree $T$ used in the tree decomposition $(B_x:x\in V(T))$ of $H$. For each node $x$ of $T$, we define $C_x$ as follows: $C_x$ contains $x$ as well as every $T$-ancestor $a$ of $x$ such that $J$ contains an edge $ax'$ where $x$ is a $T$-ancestor of $x'$ (including the possibility that $x=x'$).
+  \clmref{i-ancestor} ensures that, for every edge $ax'\in E(J)$, $a,x'\in C_{x'}$.  The connectivity of $T[a]:=T[\{x\in V(T):a\in C_x\}]$ follows from the fact that, for every node $x'\in T[a]$, every node $x$ on the path in $T$ from $x'$ to  $a$ is also a node of $T[a]$.  Therefore $(C_x:x\in V(T))$ is indeed a tree decomposition of $J$.  It remains to bound the size of each bag $C_x$.
 
   Consider an arbitrary node $x\in V(T)$ where $x_0,\ldots,x_r$ is the path from the root $x_0$ of $T$ to $x_r:=x$.  To avoid triple-subscripts in what follows, we abuse notation slightly by using $V_i$, $F_i$, and $N_i$,  as shorthands for $V_{x_i}$, $F_{x_i}$ and $N_{x_i}$, respectively.
 
@@ -1639,7 +1641,7 @@ Every $k$-nearest-neighbour graph has:
 %
 % \bibitem[Wiechert(2017)]{wiechert:on}
 % Veit Wiechert.
-% \newblock On the queue-number of graphs with bounded tree-width.
+% \newblock On the queue-number of graphs with bounded treewidth.
 % \newblock \emph{Electr. J. Comb.}, 24\penalty0 (1):\penalty0 P1.65, 2017.
 % \newblock  \url{http://www.combinatorics.org/v24i1p65}.
 %
@@ -1763,7 +1765,7 @@ Hence $|V^{i,\alpha_i}| \leq \frac{n}{m}$ for some $\alpha_i\in[0,m-1]$.
 Let $X:= \bigcup_{i=1}^d V^{i,\alpha_i}$. Thus $|X| \leq \frac{dn}{m}$.
 Note that each component of $G-X$ is a subgraph of $Q^{(d)} \boxtimes H$, where $Q$ is the path on $m-1$ vertices. Since $\tw(G)$ equals the maximum treewidth of the connected components of $G$, we have
 $\tw(G) \leq \tw( Q^{(d)} \boxtimes H ) + |X| $.
-To obtain a tree-decomposition of $Q^{(d)} \boxtimes H$ with width $(t+1) (m-1)^d - 1$, start with an optimal tree-decomposition of $H$, and replace each instance of a vertex of $H$ by the corresponding copy of $Q^{(d)}$. Thus
+To obtain a tree decomposition of $Q^{(d)} \boxtimes H$ with width $(t+1) (m-1)^d - 1$, start with an optimal tree decomposition of $H$, and replace each instance of a vertex of $H$ by the corresponding copy of $Q^{(d)}$. Thus
 \begin{align*}
 \tw(G) \leq  (t+1) (m-1)^d - 1 + \frac{dn}{m}
  \leq 2  (t+1)^{ 1/(d+1) } (dn)^{1- 1/(d+1)}   -  1.
