@@ -561,7 +561,7 @@ For a node $x\in V(T)$, we say that a shortcut $P\in\mathcal{P}$ \emph{crosses} 
 
   Let $X_H:=\{x\in V(H): Z\cap Y_x\neq\emptyset\}$.  The connectivity of $G[Z]$ implies that $H[X_H]$ is connected.
   %Property~\tref{ancestor-edge} implies that, for every $xy\in E(H)$, one of $x$ or $y$ is a $T$-ancestor of the other.
-  Choose $a(v)\in X_H$ to be any member of $X_H$ that does not have a strict $T$-ancestor in $X_H$.  Transitivity of the $T$-ancestor relationship, \tref{ancestor-edge}, and connectivity of $H[X_H]$ implies that $a(v)$ is a $T$-ancestor of every node $x\in X_H$, as required.
+  Choose $a(v)\in X_H$ to be the member of $X_H$ that does not have a strict $T$-ancestor in $X_H$.  Transitivity of the $T$-ancestor relationship, \tref{ancestor-edge}, and connectivity of $H[X_H]$ implies that such an $a(v)$ exists and is a $T$-ancestor of every node $x\in X_H$, as required.
 \end{proof}
 
 For each $x\in V(T)$, define
@@ -569,6 +569,14 @@ For each $x\in V(T)$, define
      S_x := \{v\in V(G): a(v)= x\} \enspace .
 \]
 Observe that $\mathcal{S}:=(S_x : x\in V(T))$ is a partition of $V(G)$.  We let $J:=G^\mathcal{P}/\mathcal{S}$ denote the resulting quotient graph and we let $V(J)\subseteq V(T)$ in the obvious way, so that each $x\in V(J)$ is the vertex obtained by contracting $S_x$ in $G^{\mathcal{P}}$. (Nodes $x\in V(T)$ with $S_x=\emptyset$ do not contribute a vertex to $J$.)
+
+From this point onward, the plan is to show that
+\begin{enumerate}[(i)]
+  \item $\mathcal{S}$ has small layered width with respect to the layering $\mathcal{L}$ and that
+  \item $J$ has small treewidth.
+\end{enumerate}
+
+First we need to understand the relationship between sets $S_x\in\mathcal{S}$ and the related sets objects $Y_x$, $V_x$, $F_x$, and $N_x$.
 
 \begin{clm}\clmlabel{s-subset}
   For every $x\in V(T)$, $S_x\subseteq V_x$.
@@ -578,7 +586,7 @@ Observe that $\mathcal{S}:=(S_x : x\in V(T))$ is a partition of $V(G)$.  We let 
   For the sake of contradiction, assume otherwise, so there exists some $v\in S_x\setminus V_x$. By \yref{y-subsets}, $Y_x\subseteq V_x$, so $v\not\in Y_x$.  Therefore, $\mathcal{P}$ contains a path $P$, with $v\in V(P)$, that crosses $x$.  The path $P$ contains a proper subpath $v_0,v_1,\ldots,v_{r}$ such that $v=v_0$ and $v_r\in Y_x$. Since $v\not\in V_x$ and $v_r\in Y_x\subseteq V_x$, \yref{separator}, implies that $v_i\in F_x$ for some $i\in\{0,\ldots,r-1\}$. Now \yref{ancestor-edge} implies $v_i\in Y_a$ for some strict $T$-ancestor $a$ of $x$.  Therefore, either $v\in Y_a$ or $P$ crosses $a$. But this implies that $a(v)$ is a $T$-ancestor of $a$, which is a strict $T$-ancestor of $x$, contradicting the assumption that $v\in S_x$.
 \end{proof}
 
-Next we show that $\mathcal{S}$ has small layered width with respect to the layering $\mathcal{L}=\langle L_1,\ldots,L_h\rangle$:
+Next we complete Step~(i) and show that $\mathcal{S}$ has small layered width with respect to the layering $\mathcal{L}=\langle L_1,\ldots,L_h\rangle$:
 
 \begin{clm}\clmlabel{general-width}
   For each $i\in\{1,\ldots,h\}$ and each $x\in V(J)$, $|S_x\cap L_i|\le d\ell(k^2+3)$.
@@ -603,6 +611,16 @@ Next we show that $\mathcal{S}$ has small layered width with respect to the laye
       = d\ell(k^2 +3) \enspace . \qedhere
   \]
 \end{proof}
+
+
+% From this point onward, the plan is to show that (i)~$\mathcal{S}$ has small layered width with respect to a $\mathcal{L}$ and that (ii)~$J$ has small treewidth.
+
+
+\snote{Reviewer \#2 writes: \emph{Lemma 3: the property (T2) is sth peculiar; EVERY tree-decomposition of H has the property that if x and y are adjacent then the root of x and the root of y are comparable in the tree; I suggest to get rid of this one. The same story applies to Claim 4 where the authors give an elaborate proof of that fact again.} The reviewer is right about Lemma~3 (the other reviewer noticed it also) but not Claim~4.  In Claim~4, $T$ is the tree in a tree decomposition of $H$.  At this point we're setting up to show that $T$ can also be used to get a tree decomposition of $J$ without blowing up the width too much.
+
+To address this, I've added the map breaking things down into Step~(i) and Step~(ii), and the following text.}
+
+We now proceed with Step~(ii), showing that $J$ has small treewidth. To accomplish this, we construct a small width tree-decomposition $\mathcal{C}:=(C_x:x\in V(T))$ of $J$ using the same tree $T$ used in the tree decomposition $\mathcal{T}:=(B_x:x\in V(T))$ of $H$.  The following claim will be useful in showing that the resulting decomposition has small width.
 
 \begin{clm}\clmlabel{i-ancestor}
   For each edge $xy\in E(J)$, one of $x$ or $y$ is a $T$-ancestor of the other.
