@@ -45,8 +45,8 @@
 \setlength{\headheight}{0.200in}
 \setlength{\headsep}{0.4in}
 \setlength{\footskip}{0.500in}
-%\setlength{\parskip}{1ex}
-\setlength{\parindent}{.75cm}
+\setlength{\parskip}{0.82ex}
+\setlength{\parindent}{6mm}
 %\flushbottom
 
 
@@ -119,15 +119,15 @@
 
 
 %--------------------------- Headers and Footers ------------------------
-\pagestyle{fancy}
-\fancyhead{}
-\fancyfoot{}
-\fancyfoot[c]{\thepage}
-%\fancyhead[L]{\sf Journal of Computational Geometry}
-%\fancyhead[R]{\texttt{\href{http://jocg.org/}{jocg.org}}}
-\renewcommand{\headrulewidth}{1pt}
-\renewcommand{\footrulewidth}{1pt}
-\pagestyle{fancy}
+%\pagestyle{fancy}
+%\fancyhead{}
+%\fancyfoot{}
+%\fancyfoot[c]{\thepage}
+%%\fancyhead[L]{\sf Journal of Computational Geometry}
+%%\fancyhead[R]{\texttt{\href{http://jocg.org/}{jocg.org}}}
+%\renewcommand{\headrulewidth}{1pt}
+%\renewcommand{\footrulewidth}{1pt}
+%\pagestyle{fancy}
 
 \usepackage{marvosym}
 \makeatletter
