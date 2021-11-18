@@ -86,37 +86,42 @@
 \end{frame}
 
 \begin{frame}
-    \frametitle{Main Theorem}
-    \framesubtitle{If $G$ has product structure then so does $G^{\mathcal{P}}$}
-    \textbf{Main Theorem:} If
+  \frametitle{Main Theorem}
+  \framesubtitle{If $G$ has product structure then so does $G^{\mathcal{P}}$}
+  \textbf{Main Theorem:} \newline
+  If $G\subseteq H\boxtimes P\boxtimes K_\ell$
+  \begin{itemize}
+    \item  $\tw(H)\le t$
+    \item $\mathcal{P}$ is a $(k,d)$-shortcut system for $G$
+  \end{itemize}
+  then $G^\mathcal{P}\subseteq H'\boxtimes P\boxtimes K_{\ell'}$
+  \begin{itemize}
+    \item $\tw(H') \le t'=\binom{k+t}{t}-1$ and
+    \item $\ell'=d\ell(k^3+3k)$
+    % \item $K'$ is a clique of order $d\ell(k^3+3k)$
+  \end{itemize}
+  \vspace{1cm}
+  \uncover<2->{\textbf{Example:} $G'$ is ${\color{red} k}$-planar
     \begin{itemize}
-        \item $G\subseteq H\boxtimes P\boxtimes K$
-        \begin{itemize}
-            \item $\tw(H)=t$
-            \item $K$ is a clique of order $\ell$
-        \end{itemize}
-        \item $\mathcal{P}$ is a $(k,d)$-shortcut system
+      \item $t=3$, $\ell=3$, $d=2$, $k={\color{red}k}+1$
+      \item $t'=O(k^3)$, $\ell'=O(k^3)$ 
     \end{itemize}
-    then $G^\mathcal{P}\subseteq H'\boxtimes P\boxtimes K'$
-    \begin{itemize}
-        \item $\tw(H') \le \binom{k+t}{t}-1$ and
-        \item $K'$ is a clique of order $d\ell(k^3+3k)$
-    \end{itemize}
+  }
 \end{frame}
+
+
 
 \begin{frame}
     \frametitle{Applications}
+    \framesubtitle{(Besides $k$-planar graphs)}
 
-    \textbf{($\mathcal{G}$) Graphs:}
+    \textbf{($\mathcal{G}$) Graphs:} any subgraph of $G^\mathcal{P}$ where $G$ has \emph{product structure}
     \begin{itemize}
-        \item Any subgraph of $G^\mathcal{P}$ where $G$ has \emph{product structure}
-        \begin{itemize}
-            \item $(g,k)$-planar graphs
-            \item $(g,\delta)$-string graphs
-            \item $k$-nearest neighbour graphs of points in $2d$
-            \item bounded-degree graphs from proper minor-closed families
-            \item any $G^k$ where $G$ has bounded-degree and product structure
-        \end{itemize}
+        \item $(g,k)$-planar graphs
+        \item $(g,\delta)$-string graphs
+        \item $k$-nearest neighbour graphs of $2d$ point sets
+        \item bounded-degree graphs from proper minor-closed families
+        \item any $G^k$ where $G$ has bounded-degree and product structure
     \end{itemize}
 
     \textbf{($\mathcal{A}$) Applications:}
@@ -130,468 +135,141 @@
     Anything in $\mathcal{G}\times \mathcal{A}$
 \end{frame}
 
-
-
-\end{document}
+\section{Proof of Main Theorem}
 
 \begin{frame}
-  \frametitle{Proper Good Curves}
-
+  \frametitle{Proof: The Picture}
   \begin{itemize}
-     \item A Jordan curve $C$ is
-     \begin{itemize}
-        \item \emph{good} if it contains a point \emph{in} the outer face of $G$
-        \item \emph{proper} if the intersection of $C$ with each edge of $G$ is
-         \begin{itemize}
-            \item empty; or
-            \item a single point (maybe a vertex); or
-            \item the entire edge.
-         \end{itemize}
-     \end{itemize}
+    \item $G= H\boxtimes P\boxtimes K_{\ell}$
   \end{itemize}
-  \begin{center}
-    \includegraphics[width=.22\textwidth]{figs/pgc-2}
-    \includegraphics[width=.22\textwidth]{figs/pgc-3}
-    \includegraphics[width=.22\textwidth]{figs/pgc-4}
-    \includegraphics[width=.22\textwidth]{figs/pgc-5} \\
-    \includegraphics[width=.22\textwidth]{figs/pgc-6}
-    \includegraphics[width=.22\textwidth]{figs/pgc-7}
-    \includegraphics[width=.22\textwidth]{figs/pgc-8}
-  \end{center}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Free Sets}
-
-   \begin{itemize}[<+->]
-     \item A set $F\subseteq V(G)$ is \emph{free} if for every
-     $X\subset\R^2$ with $|X|=|F|$, $G$ has a \emph{non-crossing
-     straight-line} drawing in which the vertices of $F$ are drawn on
-     the points of $X$.
-
-     \item Free sets have applications to
-     \begin{itemize}
-        \item untangling,
-        \item column planarity,
-        \item universal point subsets,
-        \item partial simultaneous geometric drawings.
-        \item \ldots
-     \end{itemize}
-   \end{itemize}
-\end{frame}
-
-\begin{frame}
-   \frametitle{The Free-Set Theorem}
-
-   \begin{itemize}
-       \item[]\textbf{Theorem (Dujmovi\'c--Frati--Gon\c{c}alves--M.--Rote 2019):} A set $F\subseteq V(G)$ is a \emph{free set} if and only if there is a proper good curve that contains $F$.
-   \end{itemize}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Proper Good Curves and Dual Cycles}
-
+  \frametitle{Shortcuts over multiple layers}
+  
   \begin{itemize}
-     \item Every proper-good curve containing $k$ vertices gives a dual
-       cycle of length at least $k$.
-       \begin{center}
-         \only<1>{\includegraphics{figs/curve-cycle-1}}%
-         \only<2>{\includegraphics{figs/curve-cycle-2}}%
-         \only<3>{\includegraphics{figs/curve-cycle-3}}%
-         \only<4->{\includegraphics{figs/curve-cycle-4}}
-       \end{center}
-     \item<5-> What about the other direction?
-     \item<6-> Can we get a proper good curve containing many vertices from long dual cycle?
-  \end{itemize}
-\end{frame}
-
-\begin{frame}
-   \frametitle{Pause}
-
-   \begin{itemize}
-      \item From this point on $G$ is (wlog) a triangulation.
-      \item $G$ has maximum degree $\Delta$.
-      \item $\dual{G}$ is the dual of $G$, a 3-connected cubic planar
-      graph whose largest face has size at most $\Delta$
-   \end{itemize}
-\end{frame}
-
-
-
-\begin{frame}
-   \frametitle{Dual Cycles---Circumference}
-
-   \begin{itemize}[<+->]
-      \item The longest cycle in $\dual{G}$ is called its \emph{circumference}
-      \item Circumference of $n$-vertex 3-connected cubic (planar) $\dual{G}$
-      \begin{itemize}
-        \item Tait's Conjecture (1884): $\forall \dual{G}: c(\dual{G}) = n$
-        \item Disproved by Tutte (1946): $\exists \dual{G}: c(\dual{G})< n$
-        \item Gr\"unbaum Walther (1973): $\exists \dual{G}: c(\dual{G}) = O(n^{0.9859})$.
-        \item Barnette (XXXX): $\forall \dual{G}: c(\dual{G})=\Omega(\log n)$.
-        \item Bondy and Simonovits (XXXX): $\forall \dual{G}: c(\dual{G})=e^{\Omega(\sqrt{\log n})}$
-        \item Jackson (XXXX): $\forall \dual{G}: c(\dual{G}) = \Omega(n^{0.6942})$
-        \item Billinski et al. (2011): $\forall \dual{G}: c(\dual{G}) = \Omega(n^{0.7532})$
-        \item Liu, Yu, Zhang (2019): $\forall \dual{G}: c(\dual{G}) = \Omega(n^{0.8})$
-      \end{itemize}
-   \end{itemize}
-\end{frame}
-
-\begin{frame}
-   \frametitle{Dual Cycles and Proper Good Curves}
-
-   \begin{itemize}[<+->]
-      \item Every dual cycle defines a proper good curve
-      \item But the curve contains no vertices!
-      \item Can we ``bend'' the curve to pick up some vertices?
-      \item Sometimes yes, sometimes no
-      \begin{center}
-        \only<1-4>{\includegraphics{figs/cycle-to-curve-1}}%
-        \only<5>{\includegraphics{figs/cycle-to-curve-2}}%
-        \only<6>{\includegraphics{figs/cycle-to-curve-3}}%
-        \only<7>{\includegraphics{figs/cycle-to-curve-4}}%
-        \only<8->{\includegraphics{figs/cycle-to-curve-5}}
-      \end{center}
-   \end{itemize}
-
-\end{frame}
-
-\begin{frame}
-   \frametitle{Dual Cycles and Proper Good Curves}
-
-   \begin{itemize}[<+->]
-      \item A cycle $C$ in $\dual{G}$
-      \begin{itemize}
-         \item \emph{touches} $f$ if $f\cap C\neq\emptyset$
-         \item \emph{caresses} $f$ if $f\cap C$ is a path
-         \item \emph{pinches} $f$ if $f\cap C$ is a cycle or has more
-               than one connected component.
-      \end{itemize}
-      \item $\tau$ouched, $\rho$inched, $\kappa$aressed
-      \item $\tau = \rho + \kappa$
-   \end{itemize}
-
-   \begin{center}
-      \includegraphics[height=.5\textheight]{figs/t0t1-2}
-   \end{center}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Dual Cycles and Proper Good Curves}
-
-  \begin{itemize}[<+->]
-    \item[]\textbf{Theorem:} If $C$ \caresses\ $\kappa$ faces of $\dual{G}$ then there is a proper good curve $\tilde{C}$ that contains at least $\kappa/4$ vertices of $G$.
-    \item[]\textit{Proof:} Take an independent set $\dual{S}$ of \caressed\ faces of $\dual{G}$ and ``bend'' $C$ so that it passes through each vertex of $S$.
-  \end{itemize}
-\end{frame}
-
-
-\begin{frame}
-  \frametitle{Summary So Far}
-
-
-  \begin{center}
-    \uncover<4->{{\color{blue}cycle in $G$ of length $\ell=c\kappa\Delta^4$ \\ $\Downarrow$} \\}
-    \uncover<1->{cycle in $\dual{G}$ that \caresses\ $\kappa$ faces}\\
-    \uncover<2->{$\Downarrow$ \\
-    proper good curve that contains $\kappa/4$ vertices of $G$}\\
-    \uncover<3->{$\Downarrow$ \\
-    free set of size $\kappa/4$}
-  \end{center}
-\end{frame}
-
-\begin{frame}
-  \frametitle{The Main Theorem}
-
-  \begin{itemize}
-     \item[]\textbf{Theorem:} If $G$ has maximum degree $\Delta$ and $\dual{G}$ has a cycle of length $\ell$, then $\dual{G}$ has a cycle $C'$ that \caresses\ $\kappa=\Omega(\ell/\Delta^4)$ faces.
-  \end{itemize}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Proof Ideas}
-
-  \begin{itemize}[<+->]
-     \item Want to show that $C$ $\kappa$aresses many faces
-     \item $C$ has length $\ell$
-     \item each face of $\dual{G}$ has most $\Delta$ edges
-     \begin{itemize}[<+->]
-       \item[$\therefore$] $C$ $\tau$ouches at least $\ell/\Delta$ faces
-          ($\tau = \Omega(\ell/\Delta)$)
-     \end{itemize}
-     \item Recall: $\tau = \kappa + \rho$
-     \item If $\kappa =\Omega(\ell/\Delta)$ we are done
-     \item Otherwise $C$ $\rho$inches at least $\rho = \Omega(\ell/\Delta)$ faces
-  \end{itemize}
-\end{frame}
-
-
-\begin{frame}
-  \frametitle{A Bad Example}
-
-  \begin{center}
-     \includegraphics[width=.9\textwidth]{figs/two-caressed}
-  \end{center}
-  \begin{itemize}
-    \item $\tau = \kappa + \rho$
-    \item $\tau = 2k+3$, $\kappa = 4$, $\rho = 2k-1$
-  \end{itemize}
-\end{frame}
-
-
-\begin{frame}
-  \frametitle{Proof Idea}
-
-  \begin{center}
-     \only<1,2>{\includegraphics[height=.2\textheight]{figs/two-caressed-1}}%
-     \only<3-8>{\includegraphics[height=.2\textheight]{figs/two-caressed-2}}%
-     \only<9->{\includegraphics[height=.2\textheight]{figs/two-caressed-3}}
-  \end{center}
-  \begin{itemize}
-    \item<2-> \alert<11>{Define two trees $T_0$ (inside $C$) and $T_1$ (outside $C$)}
-    \item<4-> Show that:
+    \item Shortcuts in $\mathcal{P}$ may jump $k$ layers
+    \item Easy solution: Compress $k$ layers into one
     \begin{itemize}
-      \item<5-> Each leaf of $T_i$ contains a \caressed\ face
-      \item<6-> Each $T_i$ has $\Omega(\ell/\Delta)$ nodes
+      \item Length $k-1$ path $P'$ in $P$ compresses down to vertex
+      \item $P'\boxtimes K_{\ell}\subseteq K_{\ell k}$
     \end{itemize}
-    \item<7-> We are done if either $T_i$ has many leaves, so each $T_i$ must have few leaves
-    \begin{itemize}
-      \item<8->[$\therefore$] each $T_i$ has many \emph{bad nodes} \\ (degree-2 and containing no caressed faces)
-    \end{itemize}
-    \item<10-> With enough bad nodes, we can perform a \emph{surgery} that increases the number of leaves in $T_0$.
+    \item Increases $\ell$ by a factor of $k$
+    \item $\mathcal{P}$ is a $(k,d)$-shortcut system over $H\boxtimes P\boxtimes K_{\ell k}$ with all shortcuts crossing $\le\!\! 1$ layers
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Projecting shortcuts onto $H\boxtimes P$}
+    
+  \begin{itemize}
+    \item Contract each copy of $K_{k\ell}$, so we are left with $H\boxtimes P$
+    \item Each shortcut in $\mathcal{P}$ projects onto a walk in $H\boxtimes P$
+    \item Each vertex of $H\boxtimes P$ is used in at most $dk\ell$ shortcuts
+    \item Studying a $(k,dk\ell)$-shortcut system $\mathcal{P'}$ over $G'=H\boxtimes P$
   \end{itemize}
 \end{frame}
 
 
 \begin{frame}
-  \frametitle{The Trees $T_0$ and $T_1$}
+  \frametitle{Nice Tree Decompositions}
+  
+  
+  \begin{itemize}
+    \item A \emph{nice} rooted tree decomposition $\mathcal{T}=(B_x:x\in V(T))$ of $H$ has 
+    \begin{itemize}
+      \item $V(T) = V(H)$
+      \item $x$ is lowest common ancestor of $\{x'\in V(T):x\in B_{x'}\}$
+    \end{itemize}
+    \begin{center}
+      \includegraphics{figs/nice-td}
+    \end{center}
+    \item If $xy\in E(H)$ then $x\prec_T y$ or $y\prec_T x$
+  \end{itemize}
+\end{frame}
 
+
+\begin{frame}
+  \frametitle{Alternative View}
+  
+  \begin{itemize}
+    \item<2-> Start with $B_x\gets\{x\}$ for each $x\in V(T)$
+    \item<3-> If $xy\in E(H)$ and $x\prec_T y$ then drag $x$ down into $B_y$
+  \end{itemize}
   \begin{center}
-   \begin{tabular}{cc}
-      \only<1>{\includegraphics[width=.45\textwidth]{figs/t0t1-1}}%
-      \only<2->{\includegraphics[width=.45\textwidth]{figs/t0t1-2}}%
-        &
-      \uncover<3->{\includegraphics[width=.45\textwidth]{figs/t0t1-3}} \\
-      \uncover<4->{\includegraphics[width=.45\textwidth]{figs/t0t1-4}} &
-      \uncover<5->{\includegraphics[width=.45\textwidth]{figs/t0t1-5}} \\
-   \end{tabular}
+    \multiinclude[<+>][format=pdf,start=1]{figs/alternative-view}%
   \end{center}
 \end{frame}
 
 
-%      \item For a node $u$ of $T_i$,
-%        \[ \rho_u \le 2(\kappa_u + \delta_u) \Leftrightarrow
-%           \tau_u \le 3\kappa_u + 2\delta_u \]
-%    \end{itemize}
-%    \item So if $\tau_u$ is big then either
-%    \begin{itemize}
-%       \item $\kappa_u$ is big; or
-%       \item $\delta_u$ is big
-%    \end{itemize}
-%  \end{itemize}
-%\end{frame}
-%
-
 \begin{frame}
-  \frametitle{Proof Idea}
-
-  \begin{itemize}
-    \only<1>{\item Define two trees $T_0$ (inside $C$) and $T_1$ (outside $C$)}
-    \only<2->{\item[$\checkmark$] Define two trees $T_0$ (inside $C$) and $T_1$ (outside $C$)}
-    \item Show that:
-    \begin{itemize}
-      \item \alert<3->{Each leaf of $T_i$ contains a \caressed\ face}
-      \item Each $T_i$ has $\Omega(\ell/\Delta)$ nodes
-    \end{itemize}
-    \item We are done if either $T_i$ has many leaves, so each $T_i$ must have few leaves
-    \begin{itemize}
-      \item[$\therefore$] each $T_i$ has many \emph{bad nodes} \\ (degree-2 and containing no caressed faces)
-    \end{itemize}
-    \item With enough bad nodes, we can perform a \emph{surgery} that increases the number of leaves in $T_0$.
-  \end{itemize}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Every Leaf $\kappa$aresses a Face}
-
-   \noindent\textbf{Lemma:}
-   Let $P$ be a \emph{chord path} for $C$ and let $L$ and $R$ be the two faces
-   of $P\cup C$ that each contain $P$ in their boundary. Then $R$
-   contains at least one face of $\dual{T}$ that is caressed by $C$.
-
-  \uncover<2->{\emph{Proof:} by induction on number of faces in $R$}
+  \frametitle{A Useful Lemma}
+  
+  \textbf{Lemma (Pilipczuk--Siebertz):}\footnote{Yes, the same paper!} For any $z\in V(H)$ the number of $x\in V(H)$ such that $x\prec_T z\prec_T z'$ and $\mathop{dist}_H(x,z')\le k$ is at most $\binom{k+t}{t}$.
   \begin{center}
-      \only<1,2>{\includegraphics[width=.45\textwidth]{figs/one-caressed-1}}%
-      \only<3,4>{\includegraphics[width=.45\textwidth]{figs/one-caressed-2}}
-      \only<5>{\includegraphics[width=.45\textwidth]{figs/one-caressed-3}}
+    \includegraphics{figs/pz}%
   \end{center}
-
-  \uncover<4->{
-   \noindent\textbf{Corollary:} Every leaf of $T_i$ contains at least one
-   caressed face.
-  }
-
 \end{frame}
 
 
-\begin{frame}
-  \frametitle{Proof Idea}
 
+
+\begin{frame}
+  \frametitle{Projecting shortcuts onto $T$}
+  
   \begin{itemize}
-    \item[$\checkmark$] Define two trees $T_0$ (inside $C$) and $T_1$ (outside $C$)
-    \item Show that:
+    \item A shortcut in $I\in\mathcal{P'}$
     \begin{itemize}
-      \only<1>{\item Each leaf of $T_i$ contains a \caressed\ face}
-      \only<2->{\item[$\checkmark$] Each leaf of $T_i$ contains a \caressed\ face}
-      \item Each $T_i$ has $\Omega(\ell/\Delta)$ nodes
+      \item<2-> is a path $I$ in $G'=H\boxtimes P$
+      \item<3-> $I$ projects onto a walk $W$ in $H$
+      \item<4-> $W$ is a sequence $S_I$ of nodes in $T$
     \end{itemize}
-    \item We are done if either $T_i$ has many leaves, so each $T_i$ must have few leaves
-    \begin{itemize}
-      \item[$\therefore$] each $T_i$ has many \emph{bad nodes} \\ (degree-2 and containing no caressed faces)
-    \end{itemize}
-    \item \alert<3->{With enough bad nodes, we can perform a \emph{surgery} that increases the number of leaves in $T_0$.}
   \end{itemize}
-\end{frame}
-
-
-\begin{frame}
-  \frametitle{Bad Nodes}
-
-  \begin{itemize}[<+->]
-    \item Recall: A node of $T_i$ is \emph{bad} if its has degree 2 and contains no caressed face.
-    \item[]\textbf{Lemma:} Every bad node contains exactly one face of $\dual{G}$
-    \item Recall: We have lots of bad nodes and very few leaves
-  \end{itemize}
-\end{frame}
-
-
-\begin{frame}
-  \frametitle{Surgery}
-
   \begin{center}
-    \begin{tabular}{m{.3\textwidth}m{2em}m{.3\textwidth}}
-    \only<1>{\includegraphics[height=.7\textheight]{figs/cases-1}}%
-    \only<2->{\includegraphics[height=.7\textheight]{figs/cases-3}} &
-    \uncover<3->{$\Rightarrow$} &
-    \uncover<3->{\includegraphics[height=.7\textheight]{figs/cases-4}}
-    \end{tabular}
-  \end{center}
-  \begin{itemize}
-     \item<4-> increases number of leaves in $T_1$
-        (see $a_0$)
-     \item<5-> decreases length of $C$ by at most $\Delta^2$
-  \end{itemize}
-\end{frame}
-
-\begin{frame}
-  \frametitle{Surgery II}
-
-  \begin{center}
-    \begin{tabular}{m{.3\textwidth}m{2em}m{.3\textwidth}}
-    \only<1->{\includegraphics[height=.7\textheight]{figs/surgery-1}} &
-    \uncover<2->{$\Rightarrow$} &
-    \uncover<2->{\includegraphics[height=.7\textheight]{figs/surgery-2}}
-    \end{tabular}
+    \multiinclude[<+>][format=pdf,start=2,end=5]{figs/nice-td}%
   \end{center}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Proof Idea}
-
+  \frametitle{Lifting in $T$}
   \begin{itemize}
-    \item[$\checkmark$] Define two trees $T_0$ (inside $C$) and $T_1$ (outside $C$)
-    \item Show that:
-    \begin{itemize}
-      \item[$\checkmark$] Each leaf of $T_i$ contains a \caressed\ face
-      \item \alert<3>{Each $T_i$ has $\Omega(\ell/\Delta)$ nodes}
-    \end{itemize}
-    \item We are done if either $T_i$ has many leaves, so each $T_i$ must have few leaves
-    \begin{itemize}
-      \item[$\therefore$] each $T_i$ has many \emph{bad nodes} \\ (degree-2 and containing no caressed faces)
-    \end{itemize}
-    \only<1>{\item With enough bad nodes, we can perform a \emph{surgery} that increases the number of leaves in $T_0$.}
-    \only<2->{\item[$\checkmark$] With enough bad nodes, we can perform a \emph{surgery} that increases the number of leaves in $T_0$.}
-  \end{itemize}
-\end{frame}
-
-\begin{frame}
-  \frametitle{$T_i$ Has Many Nodes}
-
-  Situation so far:
-  \begin{itemize}[<+->]
-    \item Need to show: $T_i$ has many nodes
-    \item Danger: $T_i$ contains few nodes, each containing many $\tau$ouched faces
-    \item Will show that for any node $u$,
-      \[   \rho_u \le 2(\kappa_u + \delta_u)  \]
-     ($\rho_u$inched faces (inside $u$), $\kappa_u$aressed faces (inside $u$),
-        $\delta$egree of $u$)
-    \item Recall: $\tau_u=\kappa_u+\rho_u$
-    \item If $\tau_u$ is large then either:
-       \begin{enumerate}[<+->]
-          \item $\kappa_u$ is large (good, more $\kappa$aressed faces!); and/or
-          \item $\delta_u$ is large (good, more leaves!).
-       \end{enumerate}
-  \end{itemize}
-\end{frame}
-
-
-\begin{frame}
-
-\textbf{Lemma:}
-Let $u$ be a node of $T_i$ {\color{gray}and let $\rho_u$, $\kappa_u$, and $\delta_u$ denote the number of pinched faces of $\dual{T}$ in $u$, the number of caressed faces of $\dual{T}$ in $u$, and the degree of $u$ in $T_i$, respectively}.  Then $\rho_u \le 2(\kappa_u+\delta_u)$.
-
-\uncover<2->{\textit{Proof (by discharging):}}
-\begin{itemize}
-  \item<3-> Assign a charge of 2 to each $\rho$inched face
-  \item<4-> Move charge around so that
-  \begin{itemize}
-    \item<5->No charge is left on any pinched face
-    \item<6->Each caressed faces has a charge of at most 2
-    \item<7->Each outgoing edge has a charge of at most 2
-  \end{itemize}
+    \item For $v$ in $G$, $a(v)$ is the LCA of $\cup\{S_I:I\in\mathcal{P'},\, v\in V(I)\}$
+    \item For $x\in V(T)$, $S_x:=\{v\in V(G): a(v)=x\}$
+    \begin{center}
+      \includegraphics{figs/nice-td-6}%
+    \end{center}
+    \item Note: $\mathcal{S}:=(S_x:x\in V(T))$ is a partition of $V(G)$
 \end{itemize}
-\uncover<2->{
-\begin{center}
-                \begin{tabular}{cccc}
-                        \includegraphics[height=.22\textheight]{figs/discharge-2} &
-                        \includegraphics[height=.22\textheight]{figs/discharge-3} &
-                        \includegraphics[height=.22\textheight]{figs/discharge-4} &
-                        \includegraphics[height=.22\textheight]{figs/discharge-5}
-                \end{tabular}
-                \end{center}
-}
 \end{frame}
 
-\begin{frame}
-  \frametitle{Proof Idea}
 
+\begin{frame}
+  \frametitle{Now the Crazy Part}
+  
+    Let $H':=G/\mathcal{S}$
+    
+    \textbf{Claim:} $\tw(H')\le\binom{k+t}{t}-1$
+    
+    \textit{Proof:}
+    \begin{itemize}
+      \item Each $x\in V(H')$ is obtained by contracting $S_x$
+      \item Use tree nice tree decomposition with the same tree $T$
+      \item If $xz\in E(H')$ and $x\prec_T z$ then drag $x$ down into $B_z$
+      \item Point: If $x\in B_{z'}$ then $x\prec_T z'\prec_T z$ and $\mathop{dist}_{H}(x,z)\le k$.  
+      \item By Pilipczuk-Siebertz Lemma, $|B_{z'}|\le \binom{k+t}{t}$.
+    \end{itemize}
+\end{frame}
+
+
+
+
+\begin{frame}
   \begin{itemize}
-    \item[$\checkmark$] Define two trees $T_0$ (inside $C$) and $T_1$ (outside $C$)
-    \item Show that:
-    \begin{itemize}
-      \item[$\checkmark$] Each leaf of $T_i$ contains a \caressed\ face
-      \only<1>{\item Each $T_i$ has $\Omega(\ell/\Delta)$ nodes}
-      \only<2->{\item[$\checkmark$] Each $T_i$ has $\Omega(\ell/\Delta)$ nodes}
-    \end{itemize}
-    \item We are done if either $T_i$ has many leaves, so each $T_i$ must have few leaves
-    \begin{itemize}
-      \item[$\therefore$] each $T_i$ has many \emph{bad nodes} \\ (degree-2 and containing no caressed faces)
-    \end{itemize}
-    \item[$\checkmark$] With enough bad nodes, we can perform a \emph{surgery} that increases the number of leaves in $T_0$.
+    \item each $S_x$ contains $O(1)$ vertices from each row of $H\boxtimes P$. (Easy, each vertex in $S_x$ from row $i$ comes from a shortcut through a vertex of $Y_x$ in row $i-1$, $i$, or $i+1$, so $3dk\ell(k+1)=3d\ell(k^2+k)$) 
   \end{itemize}
 \end{frame}
-
-\begin{frame}
-  \frametitle{Conclusion}
-
-  \textbf{Theorem:} If $\dual{G}$ has a cycle of lenth $\ell$, then $\dual{G}$ has a cycle $C'$ that caresses $\Omega(\ell/\Delta^4)$ faces.
-
-  \textbf{Consequence:} Every $n$-vertex planar graph of maximum degree $\Delta$ has a free set of size $\Omega(n^{0.8}/\Delta^4)$.
-
-  \textbf{Open Problem:} Eliminate the dependence on $\Delta$.
-\end{frame}
+  
 
 
-%\closing
 
 \end{document}
