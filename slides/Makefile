@@ -2,7 +2,7 @@
 name=slides
 texsource=$(name).tex
 
-slides-socg.pdf : $(texsource) figs/ 
+$(name).pdf : $(texsource) figs/ 
 	make -C figs
 	latexmk -pdf $(texsource)
 

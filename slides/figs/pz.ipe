@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
 <ipe version="70218" creator="Ipe 7.2.24">
-<info created="D:20211118165136" modified="D:20211118165136"/>
+<info created="D:20211118165136" modified="D:20211119101305"/>
 <preamble>\usepackage{sfmath}</preamble>
 <ipestyle name="basic">
 <symbol name="arrow/arc(spx)">
@@ -312,8 +312,13 @@ h
 </ipestyle>
 <page>
 <layer name="alpha"/>
-<view layers="alpha" active="alpha"/>
-<path layer="alpha" matrix="0.5 0 0 0.5 169.558 304" stroke="black">
+<layer name="good-case"/>
+<layer name="bad-case"/>
+<layer name="H'"/>
+<view layers="alpha good-case" active="alpha"/>
+<view layers="alpha bad-case" active="bad-case"/>
+<view layers="alpha bad-case H'" active="H'"/>
+<path layer="good-case" matrix="0.4 0 0 0.4 193.099 364.8" stroke="black" pen="heavier">
 320 752 m
 336 720
 320 688
@@ -324,42 +329,84 @@ h
 336 512
 352 464 c
 </path>
-<use matrix="0.5 0 0 0.5 169.558 304" name="mark/disk(sx)" pos="327.391 577.8" size="normal" stroke="black"/>
-<use matrix="0.5 0 0 0.5 169.558 304" name="mark/disk(sx)" pos="330.079 708.771" size="normal" stroke="black"/>
-<text matrix="0.5 0 0 0.5 167.058 303" transformations="translations" pos="339.207 708.391" stroke="black" type="label" width="5.507" height="4.428" depth="0" valign="baseline" style="math">x</text>
-<use matrix="0.5 0 0 0.5 169.558 304" name="mark/disk(sx)" pos="336.583 641.838" size="normal" stroke="black"/>
-<text matrix="0.5 0 0 0.5 166.058 304" transformations="translations" pos="349.071 640.543" stroke="black" type="label" width="5.203" height="4.428" depth="0" valign="baseline" style="math">z</text>
-<text matrix="0.5 0 0 0.5 165.558 303.5" transformations="translations" pos="339.207 580.765" stroke="black" type="label" width="7.998" height="7.49" depth="0" valign="baseline" style="math">z&apos;</text>
-<text matrix="0.5 0 0 0.5 163.058 305" transformations="translations" pos="363.119 713.472" stroke="black" type="label" width="8.112" height="6.918" depth="0" valign="baseline" style="math">T</text>
-<text matrix="1 0 0 1 27 -36" transformations="translations" pos="194.545 663.558" stroke="black" type="label" width="7.863" height="6.918" depth="0" valign="baseline" style="math">H</text>
-<path stroke="black">
-171.53 585.846 m
-205.305 604.079
-226.825 590.928
-247.448 612.747
-271.061 597.802
-282.717 625.001 c
-</path>
-<use name="mark/disk(sx)" pos="191.047 594.738" size="normal" stroke="black"/>
-<use name="mark/disk(sx)" pos="270.661 607.471" size="normal" stroke="black"/>
-<use name="mark/fdisk(sfx)" pos="212.044 598.726" size="normal" stroke="black" fill="white"/>
-<use name="mark/fdisk(sfx)" pos="226.744 598.027" size="normal" stroke="black" fill="white"/>
-<use name="mark/fdisk(sfx)" pos="242.392 603.981" size="normal" stroke="black" fill="white"/>
-<use name="mark/fdisk(sfx)" pos="256.132 604.721" size="normal" stroke="black" fill="white"/>
-<text transformations="translations" pos="188.866 586.743" stroke="black" type="label" width="5.507" height="4.428" depth="0" valign="baseline" style="math">x</text>
-<text matrix="1 0 0 1 -5 2" transformations="translations" pos="274.049 594.514" stroke="black" type="label" width="7.998" height="7.49" depth="0" valign="baseline" style="math">z&apos;</text>
-<path matrix="1 0 0 0.25 0 420" stroke="black">
+<use matrix="0.4 0 0 0.4 193.099 364.8" name="mark/disk(sx)" pos="327.391 577.8" size="normal" stroke="black"/>
+<use matrix="0.4 0 0 0.4 193.099 364.8" name="mark/disk(sx)" pos="330.079 708.771" size="normal" stroke="black"/>
+<text matrix="0.4 0 0 0.4 191.099 364" transformations="translations" pos="339.207 708.391" stroke="black" type="label" width="5.507" height="4.428" depth="0" valign="baseline" style="math">x</text>
+<use matrix="0.4 0 0 0.4 193.099 364.8" name="mark/disk(sx)" pos="336.583 641.838" size="normal" stroke="black"/>
+<text matrix="0.4 0 0 0.4 190.299 364.8" transformations="translations" pos="349.071 640.543" stroke="black" type="label" width="5.203" height="4.428" depth="0" valign="baseline" style="math">z</text>
+<text matrix="0.4 0 0 0.4 189.899 364.4" transformations="translations" pos="339.207 580.765" stroke="black" type="label" width="7.998" height="7.49" depth="0" valign="baseline" style="math">z&apos;</text>
+<text layer="alpha" matrix="0.4 0 0 0.4 187.899 365.6" transformations="translations" pos="363.119 713.472" stroke="black" type="label" width="8.112" height="6.918" depth="0" valign="baseline" style="math">T</text>
+<text matrix="0.8 0 0 0.8 79.0527 92.8" transformations="translations" pos="194.545 663.558" stroke="black" type="label" width="7.863" height="6.918" depth="0" valign="baseline" style="math">H</text>
+<use matrix="0.8 0 0 0.8 57.4527 121.6" name="mark/disk(sx)" pos="191.047 594.738" size="normal" stroke="black"/>
+<use matrix="0.8 0 0 0.8 57.4527 121.6" name="mark/disk(sx)" pos="270.661 607.471" size="normal" stroke="black"/>
+<text matrix="0.8 0 0 0.8 57.4527 121.6" transformations="translations" pos="188.866 586.743" stroke="black" type="label" width="5.507" height="4.428" depth="0" valign="baseline" style="math">x</text>
+<text matrix="0.8 0 0 0.8 53.4527 123.2" transformations="translations" pos="274.049 594.514" stroke="black" type="label" width="7.998" height="7.49" depth="0" valign="baseline" style="math">z&apos;</text>
+<path matrix="0.8 0 0 0.2 57.4527 457.6" stroke="black" pen="heavier">
 192 560 m
 272 560 l
 </path>
-<path matrix="1 0 0 0.25 0 420" stroke="black">
+<path matrix="0.8 0 0 0.2 57.4527 457.6" stroke="black" pen="heavier">
 192 576 m
 192 544 l
 </path>
-<path matrix="1 0 0 0.25 0 420" stroke="black">
+<path matrix="0.8 0 0 0.2 57.4527 457.6" stroke="black" pen="heavier">
 272 576 m
 272 544 l
 </path>
-<text matrix="1 0 0 1 7 4" transformations="translations" pos="224 560" stroke="black" type="label" width="12.896" height="6.923" depth="1.35" halign="center" valign="baseline" style="math">\le\!\!k</text>
+<text matrix="0.8 0 0 0.8 63.0527 124.8" transformations="translations" pos="224 560" stroke="black" type="label" width="12.896" height="6.923" depth="1.35" halign="center" valign="baseline" style="math">\le\!\!k</text>
+<path layer="bad-case" matrix="0.8 0 0 0.8 -26.8805 117.942" stroke="black" pen="heavier">
+460.753 667.569 m
+444.146 650.481
+458.827 636.762
+447.515 629.542 c
+</path>
+<use matrix="0.8 0 0 0.8 -26.8805 117.942" name="mark/disk(sx)" pos="447.515 629.542" size="normal" stroke="black"/>
+<path matrix="0.8 0 0 0.8 -26.8805 117.942" stroke="black" pen="heavier">
+447.515 629.542 m
+418.153 611.732
+432.112 591.515
+407.082 584.054
+411.895 572.261 c
+</path>
+<path matrix="0.8 0 0 0.8 -26.8805 117.942" stroke="black" pen="heavier">
+447.515 629.542 m
+491.078 614.138
+469.176 603.308
+483.376 589.83
+470.62 577.796 c
+</path>
+<use matrix="0.8 0 0 0.8 -26.8805 117.942" name="mark/disk(sx)" pos="411.895 572.261" size="normal" stroke="black"/>
+<use matrix="0.8 0 0 0.8 -26.8805 117.942" name="mark/disk(sx)" pos="470.62 577.796" size="normal" stroke="black"/>
+<text matrix="0.8 0 0 0.8 -20.4805 115.542" transformations="translations" pos="437.648 635.799" stroke="black" type="label" width="5.203" height="4.428" depth="0" halign="right" valign="baseline" style="math">z</text>
+<text matrix="0.8 0 0 0.8 -20.4805 117.142" transformations="translations" pos="400.824 573.464" stroke="black" type="label" width="5.507" height="4.428" depth="0" halign="right" valign="top" style="math">x</text>
+<text matrix="0.8 0 0 0.8 -32.4805 116.342" transformations="translations" pos="480.488 578.999" stroke="black" type="label" width="7.998" height="7.49" depth="0" valign="top" style="math">z&apos;</text>
+<path layer="alpha" matrix="0.8 0 0 0.8 57.4527 121.6" stroke="black" pen="heavier">
+191.047 594.738 m
+205.635 604.271
+221.038 593.921
+231.628 610.769
+248.716 597.772
+259.306 617.026
+270.661 607.471 c
+</path>
+<use matrix="0.8 0 0 0.8 57.4527 121.6" name="mark/fdisk(sfx)" pos="214.011 599.895" size="normal" stroke="black"/>
+<use matrix="0.8 0 0 0.8 57.4527 121.6" name="mark/fdisk(sfx)" pos="231.278 605.436" size="normal" stroke="black" fill="white"/>
+<use matrix="0.8 0 0 0.8 57.4527 121.6" name="mark/fdisk(sfx)" pos="245.094 603.899" size="normal" stroke="black" fill="white"/>
+<use matrix="0.8 0 0 0.8 57.4527 121.6" name="mark/fdisk(sfx)" pos="259.152 611.312" size="normal" stroke="black" fill="white"/>
+<path layer="bad-case" matrix="0.8 0 0 0.8 57.4527 121.6" stroke="orange" pen="ultrafat" cap="1">
+191.047 594.738 m
+205.635 604.271
+221.038 593.921
+231.628 610.769
+248.716 597.772
+259.306 617.026
+270.661 607.471 c
+</path>
+<path layer="H'" matrix="0.8 0 0 0.8 57.4527 121.6" stroke="black" pen="heavier" cap="1">
+191.047 594.738 m
+236.682 583.091
+270.661 607.471 c
+</path>
+<text matrix="0.8 0 0 0.8 79.053 92.8001" transformations="translations" pos="194.545 663.558" stroke="black" type="label" width="10.658" height="7.49" depth="0" valign="baseline" style="math">H&apos;</text>
 </page>
 </ipe>

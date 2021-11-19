@@ -15,6 +15,7 @@
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\dual}[1]{#1^\star}
 \newcommand{\Fary}{F\'ary}
+\newcommand{\N}{\mathbb{N}}
 
 \DeclareMathOperator{\tw}{tw}
 
@@ -154,7 +155,8 @@
   \frametitle{Shortcuts over multiple rows}
 
   \begin{itemize}
-    \item Shortcuts in $\mathcal{P}$ may jump $k$ rows
+    \item Shortcuts in $\mathcal{P}$ may jump up to $k$ rows
+    \item $G^\mathcal{P}$ will have edges between non-consecutive rows
     \item<2-> Easy solution: Compress $k$ rows into one
   \end{itemize}
     \begin{center}
@@ -174,13 +176,13 @@
     \item<2-> Contract each copy of $K_{k\ell}$, so we are left with $H\boxtimes P$
   \end{itemize}
     \begin{center}
-    \only<1>{\includegraphics{figs/layer-compression-2}}%
-    \only<2->{\includegraphics{figs/layer-compression-3}}%
+    \only<1-2>{\includegraphics{figs/layer-compression-2}}%
+    \only<3->{\includegraphics{figs/layer-compression-3}}%
     \end{center}
   \begin{itemize}
     \item<3-> Each vertex of $H\boxtimes P$ is used in at most $dk\ell$ shortcuts
-    \item<4-> $(k,dk\ell)$-shortcut system $\mathcal{P'}$ over $G'=H\boxtimes P$
-    \item<4-> shortcuts span $\le\!\!1$ rows
+    \item<4-> $(k,dk\ell)$-shortcut system $\mathcal{P'}$ over $H\boxtimes P$
+    \item<4-> shortcuts still span $\le\!\!1$ rows
   \end{itemize}
 \end{frame}
 
@@ -189,26 +191,26 @@
   \frametitle{Nice Tree Decompositions}
   \framesubtitle{Nodes of $T$ are same as vertices of $H$}
 
-
   \begin{itemize}
     \item A \emph{nice} rooted tree decomposition $\mathcal{T}=(B_x:x\in V(T))$ of $H$ has
     \begin{itemize}
       \item $V(T) = V(H)$
-      \item $x$ is lowest common ancestor of $\{x'\in V(T):x\in B_{x'}\}$
+      \item $x$ is root of $T_x:=T[\{x'\in V(T):x\in B_{x'}\}]$
     \end{itemize}
     \begin{center}
       \includegraphics[scale=.8]{figs/nice-td}
     \end{center}
-    \item If $xy\in E(H)$ then $x\prec_T y$ or $y\prec_T x$
+    \item<2-> Tree decomp implies: If $xy\in E(H)$ then $x\prec_T y$ or $y\prec_T x$
   \end{itemize}
 \end{frame}
 
 
 \begin{frame}
   \frametitle{Alternative View}
-
+  \framesubtitle{Constructing the bags from the tree}
+  
   \begin{itemize}
-    \item<1-> Start with $T$ such that $x\mathbin{\diamond}_T y$ for each $xy\in E(H)$
+    \item<1-> Start with $T$ such that $x\prec_T y$ or $y\prec_T x$ for each $xy\in E(H)$
     \item<2-> $B_x\gets\{x\}$ for each $x\in V(T)$
     \item<3-> If $xy\in E(H)$ and $x\prec_T y$ then drag $x$ down into $B_y$
   \end{itemize}
@@ -223,7 +225,7 @@
 
   \textbf{Lemma (Pilipczuk--Siebertz):}\footnote{Yes, the same paper!} For any $z\in V(H)$ the number of $x\in V(H)$ such that $x\prec_T z\prec_T z'$ and $\mathop{dist}_H(x,z')\le k$ is at most $\binom{k+t}{t}$.
   \begin{center}
-    \includegraphics[scale=.8]{figs/pz}%
+    \multiinclude[<+>][format=pdf,start=1]{figs/pz}%
   \end{center}
   \begin{itemize}
       \item<2->Problem: $vw$-shortcut in $H\boxtimes P$ projects onto $xz'$ shortcut in $H$, but $x\not\preceq_T z'$ and $z'\not\preceq_T x$
@@ -280,12 +282,12 @@
     \begin{itemize}
       \item<2-> Each $x\in V(H')$ is obtained by contracting $S_x$
       \item<3-> Start with $T$ from nice tree decomposition of $H$ (not $H'$)
-      \item<4-> For each $xz\in E(H')$ where $x\prec_T z$, drag $x$ down into $B_z$
-      \item<5-> Correctness follows from $(\star)$
-      \item<6-> Point: If $x\in B_{z'}$ then
+      \item<4-> For each $xz'\in E(H')$ where $x\prec_T z$, drag $x$ down into $B_z'$
+      \item<5-> Correctness follows from $(\star)$\footnote{Technicality: Assume $\mathcal{P}$ contains a length-$1$ shortcut for each edge of $H\boxtimes P$}
+      \item<6-> Point: If $x\in B_{z}$ then
       \begin{itemize}
-          \item $x\prec_T z'\prec_T z$ and
-          \item $\mathop{dist}_{H}(x,z)\le k$ (because shortcuts have length $\le\!\!k$).
+          \item $x\prec_T z\prec_T z'$ for some $z'$ and
+          \item $\mathop{dist}_{H}(x,z')\le k$ (because shortcuts have length $\le\!\!k$).
       \end{itemize}
       \item<7-> By Pilipczuk-Siebertz Lemma, $|B_{z'}|\le \binom{k+t}{t}$.
       \hfill{\qed}
@@ -294,19 +296,45 @@
 
 
 \begin{frame}
-  \frametitle{Thickness}
-  \framesubtitle{Detail checking}
+  \frametitle{Finishing Up}
+  \framesubtitle{Verifying the layered width}
 
   \begin{itemize}
-    \item Recall that $\mathcal{P'}$ is a $(k,dk\ell)$-shortcut system over $H\boxtimes P$.
-    \item We can show that the subset of $H\boxtimes P\boxtimes K_{\ell}$ corresponding to $S_x$ contains at most $d\ell(k^2+3)$ vertices from each layer of $H\boxtimes P\boxtimes K_{\ell}$.
+    \item $\mathcal{P'}$: a $(k,dk\ell)$-shortcut system over $H\boxtimes P$.
+    \item Obtained from $\mathcal{P}$: a $(k,d)$-shortcut system over $H\boxtimes P\boxtimes K_{k\ell}$
+    \item We can show that the subset of $H\boxtimes P\boxtimes K_{\ell}$ corresponding to $S_x$ contains at most $d\ell(k^3+3k)$ vertices from each row of $H\boxtimes P\boxtimes K_{\ell}$.
     \item Implies $G^{\mathcal{P}}\subseteq H'\boxtimes P\boxtimes K_{d\ell(k^3+3k)}$
   \end{itemize}
+  \vspace{1cm}
+  \uncover<2->{
+  \textbf{Main Theorem:} \newline
+  If $G\subseteq H\boxtimes P\boxtimes K_\ell$
+    \begin{itemize}
+      \item  $\tw(H)\le t$
+      \item $\mathcal{P}$ is a $(k,d)$-shortcut system for $G$
+    \end{itemize}
+    then $G^\mathcal{P}\subseteq H'\boxtimes P\boxtimes K_{\ell'}$
+    \begin{itemize}
+      \item $\tw(H') \le t'=\binom{k+t}{t}-1$ and
+      \item $\ell'=d\ell(k^3+3k)$
+      % \item $K'$ is a clique of order $d\ell(k^3+3k)$
+    \end{itemize}
+  }
 \end{frame}
 
 \begin{frame}
-
-
+  \frametitle{Discussion}
+  
+  \begin{itemize}
+    \item<1-> Optimizing for $k$-planar $G$ shows $G\subseteq H\boxtimes P\boxtimes K_\ell$ for $\tw(H)\le \binom{k+4}{3}-1$ and $\ell\le 18k^{\color{red}2}+48k+30$.
+    
+    \item<2-> Optimizing for $1$-planar $G$ shows $G\subseteq H\boxtimes P\boxtimes K_{30}$ with $\tw(H)\le 3$
+    
+    \item<3-> \textbf{Open Problem:} Does there exist $C\in\N$ and $f:\N\to\N$ such that for $k$-planar $G$,  $G\subseteq H\boxtimes P\boxtimes K_{f(k)}$ where $\tw(H)\le C$? \uncover<4->{(Maybe $C=3$)}\vspace{1.5cm}
+    
+    \item<5->[] \centerline{\Large\bfseries Thank You!}
+  \end{itemize}
+  
 \end{frame}
 
 
