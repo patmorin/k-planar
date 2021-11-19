@@ -249,7 +249,7 @@
     Let $H':=G/\mathcal{S}$
     
     \textbf{Claim:} $\tw(H')\le\binom{k+t}{t}-1$
-    
+    \vspace{1cm}
     \textit{Proof:}
     \begin{itemize}
       \item Each $x\in V(H')$ is obtained by contracting $S_x$
@@ -261,14 +261,18 @@
 \end{frame}
 
 
-
-
 \begin{frame}
+  \frametitle{Thickness}
+  
   \begin{itemize}
-    \item each $S_x$ contains $O(1)$ vertices from each row of $H\boxtimes P$. (Easy, each vertex in $S_x$ from row $i$ comes from a shortcut through a vertex of $Y_x$ in row $i-1$, $i$, or $i+1$, so $3dk\ell(k+1)=3d\ell(k^2+k)$) 
+    \item Recall that $\mathcal{P'}$ is a $(k,dk\ell)$-shortcut system over $H\boxtimes P$.
+    \item We can show that the subset of $H\boxtimes P\boxtimes K_{\ell}$ corresponding to $S_x$ contains at most $d\ell(k^2+3)$ vertices from each layer of $H\boxtimes P\boxtimes K_{\ell}$.
+    \item Implies $G^{\mathcal{P}}\subseteq H'\boxtimes P\boxtimes K_{d\ell(k^2+3)}$
   \end{itemize}
 \end{frame}
-  
+
+
+
 
 
 
