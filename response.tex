@@ -1,0 +1,162 @@
+\documentclass[12pt]{article}
+\listfiles
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,color}
+\usepackage[margin=20mm]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{amsfonts}
+\usepackage{amsthm,mathtools}
+\usepackage{paralist}
+\usepackage{stmaryrd}
+
+\setlength{\parindent}{0ex}
+\setlength{\parskip}{1ex}
+
+
+\renewcommand{\ge}{\geqslant}
+\renewcommand{\le}{\leqslant}
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+
+\begin{document}
+
+\subsection*{Graph Product Structure for Non-Minor-Closed Classes\\
+Vida Dujmovi\'c, Pat Morin, David R. Wood\\
+Journal of Combinatorial Theory Series B (JCTB9758)\\
+Response to Referees}
+
+\subsection*{Reviewer \#2}
+
+ The Graph Product Structure Theorem of Dujmović, Joret,
+Micek, Morin, Ueckerdt, and Wood (FOCS '19) asserts that every planar
+graph is a subgraph of the strong product of a graph of treewidth at
+most 8 and a path.  This has been the key tool in resolving several
+longstanding open problems on planar graphs (and graphs in
+minor-closed classes), including problems on queue layouts,
+non-repetitive colouring, p-centered colouring, and universal graphs.
+This paper extends the Graph Product Structure Theorem beyond
+minor-closed classes.  The authors prove product structure theorems
+for k-planar graphs, map graphs, string graphs, graph powers, and
+nearest neighbour graphs.   The authors also present several
+applications of their results.  These are essentially the same
+applications as for the original Graph Product Structure Theorem; the
+point being that the applications typically follow quite easily once a
+product structure theorem is established.
+
+This paper is a significant step in answering the (ambitious) question
+of which graph classes admit product structure theorems. It is
+extremely well-written (with very few typos) and was a pleasure to
+read.  It is certainly well within the scope of JCTB and I strongly
+recommend it for acceptance.
+
+Below are some typos and suggestions for the authors.
+
+Page 3.  The sentence 'For each $vw \in E(G')$ there is a path $P$ in $G$
+between v and we of length at most k+1'' is correct but should be made
+more precise.  For example, there could be a short path between v and
+w which does not involve any new dummy vertices.  You mean to say that
+the 'subdivided path' between v and w has length at most k+1.
+
+Page 3.  You should add the assumption that no three edges cross at
+the same point (which you can assume by perturbing the embedding).
+Otherwise, you will not get a (k+1, 2)-shortcut system.
+
+Page 3. P is used twice in the statement of Theorem 3.  It is probably
+safer (and necessary?) to use a different variable for the second
+occurrence.
+
+Page 6. Regarding (T1), technically a subtree of a rooted tree can be
+rooted at any vertex, so it is a bit imprecise to say that T[x] is
+rooted at x.  I suggest adding that a subtree of a tree rooted at r,
+is always considered to be rooted at the vertex closest to r.
+
+Page 6. Replace 'that satisfies (T2)' by 'that satisfies (T1)'.
+
+Page 6. Replace 'parent in $T'$ by 'parent in $T_0$'.
+
+Page 6. The term 'hierarchical decomposition' is not defined.
+
+Page 7. Although it is clear for me, 'separation' has not been
+defined.  Perhaps a blanket note saying all undefined terms are in
+Diestel's textbook should be added.
+
+Page 7.  In the very last sentence, I think $B_{x_i}$ should be $B_{z_i}$
+(twice).  Moreover, the way the proof is written, it seems to suggest
+that we only get that $a \in B_{z_i}$ for each $i \in \{1, \dots, r\}$.
+	The conclusion that $a \in B_{z_i}$ for each $i \in \{0, \dots, r\}$ is
+		true though.  In a normalized tree decomposition, if $xy$ is an edge and
+		$x$ is a $T$-ancestor of $y$, then $x$ must be in $B_y$ (since the subtrees $T_x$
+		and $T_y$ intersect).
+		
+		Page 8.  Can you add a brief explanation why $\mathcal{S}$ is a
+		partition of V(G)?  It is clear that the sets in $\mathcal{S}$ are
+		disjoint, but why do they cover $V(G)$?
+		
+		Page 11. Replace 'belong to $F_\delta$' by 'belongs to $F_\delta$'.
+		
+		Page 11. In footnote 11, what the authors call a 'closed curve' I
+		would call just a 'curve'.  To me, a closed curve satisfies the
+		additional condition that f(0)=f(1).
+		
+		Page 13. Could it be that the subgraph induced by the vertices of a
+		kite is a $K_4$ with some parallel edges?  This seems relevant later in
+		the proof.
+		
+		Page 13. Perhaps I am misunderstanding something, but I do not see why
+		'none of the edges vx, xw, wy, or yv are crossed by any other edges of
+		G.'  For example, see the attached PDF for a picture where vw, xw, wy,
+		and yv are all crossed by other edges of G.
+		
+		Page 13. The attached PDF also shows that the definition of 'kite
+		face' may not be well-defined.  For example, I do not see why there
+		cannot be some edges of G 'inside' a kite face.  Even if this is not
+		the case, I think it is more precise to say that a kite face has 'two
+		and a half edges' and two vertices of G on its boundary' rather than
+		'three edges and two vertices of G on its boundary'.
+		
+		Page 13.  Regarding the proof of Lemma 4, I think it is better to
+		include all the details from reference [14].  As far as I know, JCTB
+		does not have a page limit, so I do not see an issue with just
+		reproducing the entire proof and telling the reader that they can skip
+		all the details if they wish.  This is just my personal opinion
+		though, so the authors can ignore this request if they choose.
+		
+		Page 15. Regarding the proof of Theorem 11, if it really is the same
+		proof as the proof of Theorem 2, why not just prove Theorem 11 (from
+		which Theorem 2 follows as a special case)?
+		
+		Page 16.  At the end of Page 16, I do not see why 'every pair of edges
+		cross at most once.'  Without further assumptions, it seems as if two
+		paths in the path system could intersect several times.  Therefore, by
+		drawing 'each edge vw of G alongside $P_vw$ in $G_0$', there may be two
+		edges which cross several times.  It seems this can be fixed by
+		choosing the path system carefully by 'uncrossing' paths which
+		intersect at more than two internal vertices.
+		
+		Page 18. In point 1 in the proof of Lemma 9, I think '$\phi(w)$' should
+		be '$\alpha(w)$'.
+		
+		Page 18.  Say $H'$ is connected since $X$ is connected.
+		
+		Page 18.  Replace '$|i'-i''| < p$' by  '$0< |i'-i''| < p$'.
+		
+		Page 20.  Where does the bound $d(d-3)/2$ come from?  The naive bound I
+		compute is $d(d-1)/2$.
+		
+		Page 21.  Replace the comma at the end of the statement of Theorem 14
+		with a period.
+		
+		Page 23. Replace 'oberve' by 'observe'.
+		
+		\textcolor{blue}{Done}
+		
+		Page 24. Petr Hliněný (together with his student) has announced that
+		the answer to the open question is yes, with $C=3$ and $\ell=O(k^2)$.
+		
+
+
+\end{document}
