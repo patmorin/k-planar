@@ -16,12 +16,6 @@
 \setlength{\parindent}{0ex}
 \setlength{\parskip}{1ex}
 
-
-\renewcommand{\ge}{\geqslant}
-\renewcommand{\le}{\leqslant}
-\renewcommand{\geq}{\geqslant}
-\renewcommand{\leq}{\leqslant}
-
 \begin{document}
 
 \subsection*{Graph Product Structure for Non-Minor-Closed Classes\\
@@ -157,6 +151,99 @@ that we only get that $a \in B_{z_i}$ for each $i \in \{1, \dots, r\}$.
 		Page 24. Petr Hliněný (together with his student) has announced that
 		the answer to the open question is yes, with $C=3$ and $\ell=O(k^2)$.
 		
+\subsection*{Referee \#1}
+
+This paper proves that if a class of graphs F admits a product structure
+theorem, then the class of all graphs which have a 1-subdivision in F admits
+a product structure theorem as well. The main theorem, Theorem 3, while
+equivalent to the above statement using standard techniques, is stated in
+a different way which is considerably more useful for applications and for
+obtaining good bounds. As applications of Theorem 3, the paper shows that
+the following classes admit a product structure theorem:
+
+\begin{itemize}
+\item graphs drawn on a fixed surface with each edge in $\leq k$ crossings,
+\item map graphs of degree $\leq k$ graphs embedded in a fixed surface,
+\item string graphs with each curve in $\leq k$ intersections,
+\item $k$-nearest neighbour graphs in the plane, and
+\item powers of classes of graphs of degree $\leq k$ which admit a product structure theorem.
+\end{itemize}
+
+All but the last bullet point are shown to follow from the first.
+The main results in the paper are correct, strong, and of high interest,
+and the paper should definitely be accepted to JCTB after some
+(fairly significant) revisions. In particular, the proof of Theorem 3 is
+difficult to read due to the notation, and the paper could be substantially
+streamlined without losing the above results. Detailed suggestions follow.
+
+Major comments:
+
+1. Lemma 3: This lemma is really about “normalised” tree decompositions, and says that for each $x \in V(T)$, the set $V(T_x)$ has at most $t$ neighbours in $H$. Call this property (T3) and remove (Y1)  through (Y5), which should now be obvious.
+
+2. Proof of Theorem 9: There is too much notation throughout. As
+one example, it is hard to remember which of $T_x$, $Y_x$, $V_x$, $F_x$, $N_x$,
+$S_x$, $X_v$, $B_x$, $C_x$ is which. If $\phi(S)$ is written for the subset of $V(G)$
+corresponding to a set $S \subseteq V(H)$ and appropriate shorthand and
+standard notation for neighbourhoods are used, then $Y_x$, $V_x$, $F_x$, and
+$N_x$ can be replaced by $\phi(x)$, $\phi(T_x)$, $N(\phi(T_x))$, and $V(G) \setminus N[\phi(T_x)]$.
+The set $X_v$ is only used in the statement of Claim~1, so it does not
+need a name; say what these vertices are explicitly. It may be more
+indicative to write $\phi'(x)$ for $S_x$ and $B'_x$ for $C_x$.
+
+3. Theorem 10: Unfortunately I have to suggest removing it. I don’t see
+the motivation for making H planar or for improving the constants.
+Are the improved constants at all close to tight? Is there another
+reason for including it?
+
+4. Sections 4 and 5: I think as they are currently organized they distract from the purpose of the paper, as stated in the introduction, to
+“prove product structure theorems for several non-minor-closed classes
+of interest.” Which of Corollaries 1–4 and Theorems 12–17 are most
+important? I would remove any mention of the applications from the
+examples section, put that section first, and state in that section a single main theorem with all of the best bounds on the product structure.
+The applications section is mostly a survey and I think should be
+focused on the most exciting new corollaries. Theorems 18 and 19
+should be in the applications section.
+
+Other comments:
+
+1. abstract: “This leads to analogous results for map graphs, string graphs, graph powers, and nearest neighbour graphs.” $\longrightarrow$ Add “certain types of” or be more specific. Same comment for immediately after Theorem 4.
+
+2. page 1: “A tree-decomposition T consists of a tree T and a collection
+T ” $\longrightarrow$ Delete the first T and define a T-decomposition.
+
+3. pages 2 – 4: The paragraph following Theorem 2 and Section 1.3
+(except for the fact that the apex assumption is necessary) is repetition
+of things discussed earlier on in the introduction.
+
+4. page 6, line 14: “Thus, it suffices to construct width-t tree decomposition that satisfies (T2).” $\longrightarrow$ should be (T1)
+
+5. page 6, line 16: “Select any node $x \in V (T_0)$” $\longrightarrow$ “Select any nonempty node $x \in V (T_0)$”
+
+6. page 6, last paragraph of Lemma 2: This isn’t quite right since you
+have to be careful with x0.
+
+7. page 8, item (i): “S has small layered width with respect to the layering
+L” $\longrightarrow$ “S has small layered width with respect to the layering L of
+G”. Perhaps mention something about how it is easy to find the new
+layering.
+
+8. general comment: Claims 1, 2, and 4 are especially belaboured by
+notation as they are quite straightforward.
+
+9. page 8, line 10: “We say that a vertex $w \in Y_x$ contributes a vertex
+$v \in S_x$ if $v$ participates in $x$.” This needs to be fixed.
+
+10. page 10, Claim 5: Indices could mostly be removed by continuing
+to talk about T-ancestors instead. Move the definition of H+ and its
+directed version up, along with the explanation of what will be proven,
+so that it isn’t necessary to define the si
+.
+11. page 10, Claim 5: The name Pww0 is strange since in case 2. there is
+no w
+0 defined.
+
+12. page 11, first paragraph of Section 3: “This section applies our main
+results for shortcut systems to prove graph product structure theorem...” $\longrightarrow$ “to prove a graph product structure theorem...”
 
 
 \end{document}
