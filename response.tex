@@ -1,17 +1,8 @@
 \documentclass[12pt]{article}
-\listfiles
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage{amsmath,color}
 \usepackage[margin=20mm]{geometry}
-\usepackage{amsfonts}
-\usepackage{amsthm}
-\usepackage{graphicx}
-\usepackage{enumerate}
-\usepackage{amsfonts}
-\usepackage{amsthm,mathtools}
-\usepackage{paralist}
-\usepackage{stmaryrd}
+\usepackage{amsmath,color,amsthm,enumerate,amsfonts,mathtools}
 
 \setlength{\parindent}{0ex}
 \setlength{\parskip}{1ex}
@@ -50,7 +41,7 @@ streamlined without losing the above results. Detailed suggestions follow.
 
 Major comments:
 
-1. Lemma 3: This lemma is really about “normalised” tree decompositions, and says that for each $x \in V(T)$, the set $V(T_x)$ has at most $t$ neighbours in $H$. Call this property (T3) and remove (Y1)  through (Y5), which should now be obvious.
+1. Lemma 3: This lemma is really about ``normalised'' tree decompositions, and says that for each $x \in V(T)$, the set $V(T_x)$ has at most $t$ neighbours in $H$. Call this property (T3) and remove (Y1)  through (Y5), which should now be obvious.
 
 2. Proof of Theorem 9: There is too much notation throughout. As
 one example, it is hard to remember which of $T_x$, $Y_x$, $V_x$, $F_x$, $N_x$,
@@ -63,57 +54,52 @@ need a name; say what these vertices are explicitly. It may be more
 indicative to write $\phi'(x)$ for $S_x$ and $B'_x$ for $C_x$.
 
 3. Theorem 10: Unfortunately I have to suggest removing it. I don’t see
-the motivation for making H planar or for improving the constants.
+the motivation for making $H$ planar or for improving the constants.
 Are the improved constants at all close to tight? Is there another
 reason for including it?
 
-4. Sections 4 and 5: I think as they are currently organized they distract from the purpose of the paper, as stated in the introduction, to
-“prove product structure theorems for several non-minor-closed classes
-of interest.” Which of Corollaries 1–4 and Theorems 12–17 are most
-important? I would remove any mention of the applications from the
-examples section, put that section first, and state in that section a single main theorem with all of the best bounds on the product structure.
-The applications section is mostly a survey and I think should be
-focused on the most exciting new corollaries. Theorems 18 and 19
-should be in the applications section.
+4. Sections 4 and 5: I think as they are currently organized they distract from the purpose of the paper, as stated in the introduction, to ``prove product structure theorems for several non-minor-closed classes of interest.'' Which of Corollaries 1--4 and Theorems 12--17 are most important? I would remove any mention of the applications from the examples section, put that section first, and state in that section a single main theorem with all of the best bounds on the product structure. The applications section is mostly a survey and I think should be focused on the most exciting new corollaries. Theorems 18 and 19 should be in the applications section.
 
 Other comments:
 
-1. abstract: “This leads to analogous results for map graphs, string graphs, graph powers, and nearest neighbour graphs.” $\longrightarrow$ Add “certain types of” or be more specific. Same comment for immediately after Theorem 4.
+1. abstract: ``This leads to analogous results for map graphs, string graphs, graph powers, and nearest neighbour graphs.'' $\longrightarrow$ 
+Add ``certain types of'' or be more specific. Same comment for immediately after Theorem 4.
 
-2. page 1: “A tree-decomposition T consists of a tree T and a collection
-T ” $\longrightarrow$ Delete the first T and define a T-decomposition.
+\textcolor{blue}{done}
+
+2. page 1: ``A tree-decomposition $T$ consists of a tree $T$ and a collection
+$T$ '' $\longrightarrow$ Delete the first $T$ and define a $T$-decomposition.
 
 3. pages 2 – 4: The paragraph following Theorem 2 and Section 1.3
 (except for the fact that the apex assumption is necessary) is repetition
 of things discussed earlier on in the introduction.
 
-4. page 6, line 14: “Thus, it suffices to construct width-t tree decomposition that satisfies (T2).” $\longrightarrow$ should be (T1)
+4. page 6, line 14: ``Thus, it suffices to construct width-$t$ tree decomposition that satisfies (T2).'' $\longrightarrow$ should be (T1)
 
-5. page 6, line 16: “Select any node $x \in V (T_0)$” $\longrightarrow$ “Select any nonempty node $x \in V (T_0)$”
+5. page 6, line 16: ``Select any node $x \in V (T_0)$'' $\longrightarrow$ ``Select any nonempty node $x \in V (T_0)$''
 
 6. page 6, last paragraph of Lemma 2: This isn’t quite right since you
-have to be careful with x0.
+have to be careful with $x_0$.
 
-7. page 8, item (i): “S has small layered width with respect to the layering
-L” $\longrightarrow$ “S has small layered width with respect to the layering L of
-G”. Perhaps mention something about how it is easy to find the new
-layering.
+7. page 8, item (i): ``$S$ has small layered width with respect to the layering
+L'' $\longrightarrow$ ``$S$ has small layered width with respect to the layering $L$ of
+$G$''. Perhaps mention something about how it is easy to find the new layering.
 
 8. general comment: Claims 1, 2, and 4 are especially belaboured by
 notation as they are quite straightforward.
 
-9. page 8, line 10: “We say that a vertex $w \in Y_x$ contributes a vertex
-$v \in S_x$ if $v$ participates in $x$.” This needs to be fixed.
+9. page 8, line 10: ``We say that a vertex $w \in Y_x$ contributes a vertex
+$v \in S_x$ if $v$ participates in $x$.'' This needs to be fixed.
 
 10. page 10, Claim 5: Indices could mostly be removed by continuing
-to talk about T-ancestors instead. Move the definition of H+ and its
+to talk about $T$-ancestors instead. Move the definition of $H+$ and its
 directed version up, along with the explanation of what will be proven,
-so that it isn’t necessary to define the si
-.
-11. page 10, Claim 5: The name Pww0 is strange since in case 2. there is
-no w 0 defined.
+so that it isn’t necessary to define the $s_i$.
 
-12. page 11, first paragraph of Section 3: “This section applies our main results for shortcut systems to prove graph product structure theorem...” $\longrightarrow$ “to prove a graph product structure theorem...”
+11. page 10, Claim 5: The name $Pww'$ is strange since in case 2. there is
+no $w'$ defined.
+
+12. page 11, first paragraph of Section 3: ``This section applies our main results for shortcut systems to prove graph product structure theorem...'' $\longrightarrow$ ``to prove a graph product structure theorem...''
 
 \textcolor{blue}{done}
 
@@ -125,7 +111,7 @@ graph is a subgraph of the strong product of a graph of treewidth at
 most 8 and a path.  This has been the key tool in resolving several
 longstanding open problems on planar graphs (and graphs in
 minor-closed classes), including problems on queue layouts,
-non-repetitive colouring, p-centered colouring, and universal graphs.
+non-repetitive colouring, $p$-centered colouring, and universal graphs.
 This paper extends the Graph Product Structure Theorem beyond
 minor-closed classes.  The authors prove product structure theorems
 for k-planar graphs, map graphs, string graphs, graph powers, and
@@ -144,7 +130,7 @@ recommend it for acceptance.
 Below are some typos and suggestions for the authors.
 
 Page 3.  The sentence 'For each $vw \in E(G')$ there is a path $P$ in $G$
-between v and we of length at most $k+1$'' is correct but should be made
+between $v$ and we of length at most $k+1$'' is correct but should be made
 more precise.  For example, there could be a short path between $v$ and
 $w$ which does not involve any new dummy vertices.  You mean to say that
 the 'subdivided path' between $v$ and $w$ has length at most $k+1$.
@@ -181,10 +167,12 @@ $x$ is a $T$-ancestor of $y$, then $x$ must be in $B_y$ (since the subtrees $T_x
 and $T_y$ intersect).
 
 Page 8.  Can you add a brief explanation why $\mathcal{S}$ is a
-partition of V(G)?  It is clear that the sets in $\mathcal{S}$ are
+partition of $V(G)$?  It is clear that the sets in $\mathcal{S}$ are
 disjoint, but why do they cover $V(G)$?
 
 Page 11. Replace 'belong to $F_\delta'$ by 'belongs to $F_\delta$'.
+
+\textcolor{blue}{done}
 
 Page 11. In footnote 11, what the authors call a 'closed curve' I
 would call just a 'curve'.  To me, a closed curve satisfies the
@@ -195,16 +183,18 @@ kite is a $K_4$ with some parallel edges?  This seems relevant later in
 the proof.
 
 Page 13. Perhaps I am misunderstanding something, but I do not see why
-'none of the edges vx, xw, wy, or yv are crossed by any other edges of
-G.'  For example, see the attached PDF for a picture where vw, xw, wy,
-and yv are all crossed by other edges of G.
+'none of the edges $vx$, $xw$, $wy$, or $yv$ are crossed by any other edges of
+$G$.'  For example, see the attached PDF for a picture where $vw$, $xw$, $wy$,
+and $yv$ are all crossed by other edges of $G$.
+
+\includegraphics[width=60mm]{kite}
 
 Page 13. The attached PDF also shows that the definition of 'kite
 face' may not be well-defined.  For example, I do not see why there
-cannot be some edges of G 'inside' a kite face.  Even if this is not
+cannot be some edges of $G$ 'inside' a kite face.  Even if this is not
 the case, I think it is more precise to say that a kite face has 'two
-and a half edges' and two vertices of G on its boundary' rather than
-'three edges and two vertices of G on its boundary'.
+and a half edges' and two vertices of $G$ on its boundary' rather than
+'three edges and two vertices of $G$ on its boundary'.
 
 Page 13.  Regarding the proof of Lemma 4, I think it is better to
 include all the details from reference [14].  As far as I know, JCTB
@@ -247,6 +237,6 @@ Page 23. Replace 'oberve' by 'observe'.
 Page 24. Petr Hliněný (together with his student) has announced that
 the answer to the open question is yes, with $C=3$ and $\ell=O(k^2)$.
 
-\textcolor{blue}{We look forward to reading the paper.}
+\textcolor{blue}{We have been told there is an error in their proof.}
 
 \end{document}
