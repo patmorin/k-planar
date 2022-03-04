@@ -1,10 +1,27 @@
 \documentclass[12pt]{article}
+<<<<<<< HEAD
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage[margin=20mm]{geometry}
 \usepackage{amsmath,color,amsthm,enumerate,amsfonts,mathtools}
 \newcommand{\done}{\textcolor{blue}{done}}
 \newcommand{\tba}{\textcolor{red}{to be addresssed}}
+=======
+\listfiles
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,color}
+\usepackage[margin=20mm]{geometry}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{amsfonts}
+\usepackage{amsthm,mathtools}
+\usepackage{paralist}
+\usepackage{stmaryrd}
+
+>>>>>>> f2dea7a16f3c0af4014722c98524e5a9481eb01b
 \setlength{\parindent}{0ex}
 \setlength{\parskip}{1ex}
 
@@ -42,9 +59,13 @@ streamlined without losing the above results. Detailed suggestions follow.
 
 Major comments:
 
+<<<<<<< HEAD
 1. Lemma 3: This lemma is really about ``normalised'' tree decompositions, and says that for each $x \in V(T)$, the set $V(T_x)$ has at most $t$ neighbours in $H$. Call this property (T3) and remove (Y1)  through (Y5), which should now be obvious.
 
 \tba
+=======
+1. Lemma 3: This lemma is really about “normalised” tree decompositions, and says that for each $x \in V(T)$, the set $V(T_x)$ has at most $t$ neighbours in $H$. Call this property (T3) and remove (Y1)  through (Y5), which should now be obvious.
+>>>>>>> f2dea7a16f3c0af4014722c98524e5a9481eb01b
 
 2. Proof of Theorem 9: There is too much notation throughout. As
 one example, it is hard to remember which of $T_x$, $Y_x$, $V_x$, $F_x$, $N_x$,
@@ -56,6 +77,7 @@ The set $X_v$ is only used in the statement of Claim~1, so it does not
 need a name; say what these vertices are explicitly. It may be more
 indicative to write $\phi'(x)$ for $S_x$ and $B'_x$ for $C_x$.
 
+<<<<<<< HEAD
 \tba
 
 3. Theorem 10: Unfortunately I have to suggest removing it. I don’t see
@@ -78,11 +100,34 @@ Add ``certain types of'' or be more specific. Same comment for immediately after
 $T$ '' $\longrightarrow$ Delete the first $T$ and define a $T$-decomposition.
 
 \done
+=======
+3. Theorem 10: Unfortunately I have to suggest removing it. I don’t see
+the motivation for making H planar or for improving the constants.
+Are the improved constants at all close to tight? Is there another
+reason for including it?
+
+4. Sections 4 and 5: I think as they are currently organized they distract from the purpose of the paper, as stated in the introduction, to
+“prove product structure theorems for several non-minor-closed classes
+of interest.” Which of Corollaries 1–4 and Theorems 12–17 are most
+important? I would remove any mention of the applications from the
+examples section, put that section first, and state in that section a single main theorem with all of the best bounds on the product structure.
+The applications section is mostly a survey and I think should be
+focused on the most exciting new corollaries. Theorems 18 and 19
+should be in the applications section.
+
+Other comments:
+
+1. abstract: “This leads to analogous results for map graphs, string graphs, graph powers, and nearest neighbour graphs.” $\longrightarrow$ Add “certain types of” or be more specific. Same comment for immediately after Theorem 4.
+
+2. page 1: “A tree-decomposition T consists of a tree T and a collection
+T ” $\longrightarrow$ Delete the first T and define a T-decomposition.
+>>>>>>> f2dea7a16f3c0af4014722c98524e5a9481eb01b
 
 3. pages 2 – 4: The paragraph following Theorem 2 and Section 1.3
 (except for the fact that the apex assumption is necessary) is repetition
 of things discussed earlier on in the introduction.
 
+<<<<<<< HEAD
 \tba
 
 4. page 6, line 14: ``Thus, it suffices to construct width-$t$ tree decomposition that satisfies (T2).'' $\longrightarrow$ should be (T1)
@@ -103,10 +148,24 @@ L'' $\longrightarrow$ ``$S$ has small layered width with respect to the layering
 $G$''. Perhaps mention something about how it is easy to find the new layering.
 
 \tba
+=======
+4. page 6, line 14: “Thus, it suffices to construct width-t tree decomposition that satisfies (T2).” $\longrightarrow$ should be (T1)
+
+5. page 6, line 16: “Select any node $x \in V (T_0)$” $\longrightarrow$ “Select any nonempty node $x \in V (T_0)$”
+
+6. page 6, last paragraph of Lemma 2: This isn’t quite right since you
+have to be careful with x0.
+
+7. page 8, item (i): “S has small layered width with respect to the layering
+L” $\longrightarrow$ “S has small layered width with respect to the layering L of
+G”. Perhaps mention something about how it is easy to find the new
+layering.
+>>>>>>> f2dea7a16f3c0af4014722c98524e5a9481eb01b
 
 8. general comment: Claims 1, 2, and 4 are especially belaboured by
 notation as they are quite straightforward.
 
+<<<<<<< HEAD
 \tba
 
 9. page 8, line 10: ``We say that a vertex $w \in Y_x$ contributes a vertex
@@ -129,6 +188,22 @@ no $w'$ defined.
 12. page 11, first paragraph of Section 3: ``This section applies our main results for shortcut systems to prove graph product structure theorem...'' $\longrightarrow$ ``to prove a graph product structure theorem...''
 
 \done
+=======
+9. page 8, line 10: “We say that a vertex $w \in Y_x$ contributes a vertex
+$v \in S_x$ if $v$ participates in $x$.” This needs to be fixed.
+
+10. page 10, Claim 5: Indices could mostly be removed by continuing
+to talk about T-ancestors instead. Move the definition of H+ and its
+directed version up, along with the explanation of what will be proven,
+so that it isn’t necessary to define the si
+.
+11. page 10, Claim 5: The name Pww0 is strange since in case 2. there is
+no w 0 defined.
+
+12. page 11, first paragraph of Section 3: “This section applies our main results for shortcut systems to prove graph product structure theorem...” $\longrightarrow$ “to prove a graph product structure theorem...”
+
+\textcolor{blue}{done}
+>>>>>>> f2dea7a16f3c0af4014722c98524e5a9481eb01b
 
 \subsection*{Referee \#2}
 
@@ -138,7 +213,11 @@ graph is a subgraph of the strong product of a graph of treewidth at
 most 8 and a path.  This has been the key tool in resolving several
 longstanding open problems on planar graphs (and graphs in
 minor-closed classes), including problems on queue layouts,
+<<<<<<< HEAD
 non-repetitive colouring, $p$-centered colouring, and universal graphs.
+=======
+non-repetitive colouring, p-centered colouring, and universal graphs.
+>>>>>>> f2dea7a16f3c0af4014722c98524e5a9481eb01b
 This paper extends the Graph Product Structure Theorem beyond
 minor-closed classes.  The authors prove product structure theorems
 for k-planar graphs, map graphs, string graphs, graph powers, and
@@ -157,30 +236,44 @@ recommend it for acceptance.
 Below are some typos and suggestions for the authors.
 
 Page 3.  The sentence 'For each $vw \in E(G')$ there is a path $P$ in $G$
+<<<<<<< HEAD
 between $v$ and we of length at most $k+1$'' is correct but should be made
+=======
+between v and we of length at most $k+1$'' is correct but should be made
+>>>>>>> f2dea7a16f3c0af4014722c98524e5a9481eb01b
 more precise.  For example, there could be a short path between $v$ and
 $w$ which does not involve any new dummy vertices.  You mean to say that
 the 'subdivided path' between $v$ and $w$ has length at most $k+1$.
 
+<<<<<<< HEAD
 \done
 
+=======
+>>>>>>> f2dea7a16f3c0af4014722c98524e5a9481eb01b
 Page 3.  You should add the assumption that no three edges cross at
 the same point (which you can assume by perturbing the embedding).
 Otherwise, you will not get a $(k+1, 2)$-shortcut system.
 
+<<<<<<< HEAD
 \done
 
+=======
+>>>>>>> f2dea7a16f3c0af4014722c98524e5a9481eb01b
 Page 3. $P$ is used twice in the statement of Theorem 3.  It is probably
 safer (and necessary?) to use a different variable for the second
 occurrence.
 
+<<<<<<< HEAD
 \tba
 
+=======
+>>>>>>> f2dea7a16f3c0af4014722c98524e5a9481eb01b
 Page 6. Regarding (T1), technically a subtree of a rooted tree can be
 rooted at any vertex, so it is a bit imprecise to say that $T[x]$ is
 rooted at $x$.  I suggest adding that a subtree of a tree rooted at $r$,
 is always considered to be rooted at the vertex closest to $r$.
 
+<<<<<<< HEAD
 \done
 
 Page 6. Replace 'that satisfies (T2)' by 'that satisfies (T1)'.
@@ -195,12 +288,23 @@ Page 6. The term 'hierarchical decomposition' is not defined.
 
 \textcolor{blue}{We have put `hierarchical' in quotes to indicate it is not a defined word.}
 
+=======
+Page 6. Replace 'that satisfies (T2)' by 'that satisfies (T1)'.
+
+Page 6. Replace 'parent in $T'$ by 'parent in $T_0$'.
+
+Page 6. The term 'hierarchical decomposition' is not defined.
+
+>>>>>>> f2dea7a16f3c0af4014722c98524e5a9481eb01b
 Page 7. Although it is clear for me, 'separation' has not been
 defined.  Perhaps a blanket note saying all undefined terms are in
 Diestel's textbook should be added.
 
+<<<<<<< HEAD
 \done
 
+=======
+>>>>>>> f2dea7a16f3c0af4014722c98524e5a9481eb01b
 Page 7.  In the very last sentence, I think $B_{x_i}$ should be $B_{z_i}$
 (twice).  Moreover, the way the proof is written, it seems to suggest
 that we only get that $a \in B_{z_i}$ for each $i \in \{1, \dots, r\}$.
@@ -209,6 +313,7 @@ true though.  In a normalized tree decomposition, if $xy$ is an edge and
 $x$ is a $T$-ancestor of $y$, then $x$ must be in $B_y$ (since the subtrees $T_x$
 and $T_y$ intersect).
 
+<<<<<<< HEAD
 \tba
 
 Page 8.  Can you add a brief explanation why $\mathcal{S}$ is a
@@ -221,16 +326,28 @@ Page 11. Replace 'belong to $F_\delta'$ by 'belongs to $F_\delta$'.
 
 \done
 
+=======
+Page 8.  Can you add a brief explanation why $\mathcal{S}$ is a
+partition of V(G)?  It is clear that the sets in $\mathcal{S}$ are
+disjoint, but why do they cover $V(G)$?
+
+Page 11. Replace 'belong to $F_\delta'$ by 'belongs to $F_\delta$'.
+
+>>>>>>> f2dea7a16f3c0af4014722c98524e5a9481eb01b
 Page 11. In footnote 11, what the authors call a 'closed curve' I
 would call just a 'curve'.  To me, a closed curve satisfies the
 additional condition that $f(0)=f(1)$.
 
+<<<<<<< HEAD
 \done
 
+=======
+>>>>>>> f2dea7a16f3c0af4014722c98524e5a9481eb01b
 Page 13. Could it be that the subgraph induced by the vertices of a
 kite is a $K_4$ with some parallel edges?  This seems relevant later in
 the proof.
 
+<<<<<<< HEAD
 \tba
 
 Page 13. Perhaps I am misunderstanding something, but I do not see why
@@ -248,6 +365,19 @@ and a half edges' and two vertices of $G$ on its boundary' rather than
 'three edges and two vertices of $G$ on its boundary'.
 
 \tba
+=======
+Page 13. Perhaps I am misunderstanding something, but I do not see why
+'none of the edges vx, xw, wy, or yv are crossed by any other edges of
+G.'  For example, see the attached PDF for a picture where vw, xw, wy,
+and yv are all crossed by other edges of G.
+
+Page 13. The attached PDF also shows that the definition of 'kite
+face' may not be well-defined.  For example, I do not see why there
+cannot be some edges of G 'inside' a kite face.  Even if this is not
+the case, I think it is more precise to say that a kite face has 'two
+and a half edges' and two vertices of G on its boundary' rather than
+'three edges and two vertices of G on its boundary'.
+>>>>>>> f2dea7a16f3c0af4014722c98524e5a9481eb01b
 
 Page 13.  Regarding the proof of Lemma 4, I think it is better to
 include all the details from reference [14].  As far as I know, JCTB
@@ -256,14 +386,20 @@ reproducing the entire proof and telling the reader that they can skip
 all the details if they wish.  This is just my personal opinion
 though, so the authors can ignore this request if they choose.
 
+<<<<<<< HEAD
 \tba
 
+=======
+>>>>>>> f2dea7a16f3c0af4014722c98524e5a9481eb01b
 Page 15. Regarding the proof of Theorem 11, if it really is the same
 proof as the proof of Theorem 2, why not just prove Theorem 11 (from
 which Theorem 2 follows as a special case)?
 
+<<<<<<< HEAD
 \tba
 
+=======
+>>>>>>> f2dea7a16f3c0af4014722c98524e5a9481eb01b
 Page 16.  At the end of Page 16, I do not see why 'every pair of edges
 cross at most once.'  Without further assumptions, it seems as if two
 paths in the path system could intersect several times.  Therefore, by
@@ -272,6 +408,7 @@ edges which cross several times.  It seems this can be fixed by
 choosing the path system carefully by 'uncrossing' paths which
 intersect at more than two internal vertices.
 
+<<<<<<< HEAD
 \tba
 
 Page 18. In point 1 in the proof of Lemma 9, I think '$\phi(w)$' should
@@ -300,10 +437,34 @@ with a period.
 Page 23. Replace 'oberve' by 'observe'.
 
 \done
+=======
+Page 18. In point 1 in the proof of Lemma 9, I think '$\phi(w)$' should
+be '$\alpha(w)$'.
+
+Page 18.  Say $H'$ is connected since $X$ is connected.
+
+Page 18.  Replace '$|i'-i''| < p$' by  '$0< |i'-i''| < p$'.
+
+Page 20.  Where does the bound $d(d-3)/2$ come from?  The naive bound I
+compute is $d(d-1)/2$.
+
+Page 21.  Replace the comma at the end of the statement of Theorem 14
+with a period.
+
+\textcolor{blue}{done}
+
+Page 23. Replace 'oberve' by 'observe'.
+
+\textcolor{blue}{done}
+>>>>>>> f2dea7a16f3c0af4014722c98524e5a9481eb01b
 
 Page 24. Petr Hliněný (together with his student) has announced that
 the answer to the open question is yes, with $C=3$ and $\ell=O(k^2)$.
 
+<<<<<<< HEAD
 \textcolor{blue}{We have been told there is an error in their proof.}
+=======
+\textcolor{blue}{We look forward to reading the paper.}
+>>>>>>> f2dea7a16f3c0af4014722c98524e5a9481eb01b
 
 \end{document}

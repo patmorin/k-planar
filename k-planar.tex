@@ -69,8 +69,7 @@
 \crefformat{equation}{(#2#1#3)}
 \Crefformat{equation}{Equation #2(#1)#3}
 
- \newcommand{\note}[2]{\noindent{\color{red}[#1:~#2]}}
-% \newcommand{\notex}[2]{{\color{blue}[#1:~#2]}}
+\newcommand{\note}[2]{\noindent{\color{red}[#1:~#2]}}
 \newcommand{\notex}[2]{}
 \newcommand{\referee}[2]{\noindent\textcolor{blue}{\framebox{\begin{minipage}{\textwidth} Ref \#{#1}: #2\end{minipage}}}}
 
@@ -143,20 +142,14 @@ The starting point for this work is the following `product structure theorem' fo
 
 \note{DW}{In 	\cref{PlanarProduct} and elsewhere, we really should write, ``Every planar graph is isomorphic to a subgraph of''. One alternative is to define that $H$ is \defin{contained} in $G$ if $H$ is isomorphic to a subgraph of $G$. I suggest the latter.}
 
-Here $\boxtimes$ is the strong product\footnote{The \defin{strong product} of graphs $A$ and $B$, denoted by $A\boxtimes B$, is the graph with vertex set $V(A)\times V(B)$, where distinct vertices $(v,x),(w,y)\in V(A)\times V(B)$ are adjacent if
-	%:\begin{compactitem}
-	%	\item  
+Here $\boxtimes$ is the strong product\footnote{The \emph{strong product} of graphs $A$ and $B$, denoted by $A\boxtimes B$, is the graph with vertex set $V(A)\times V(B)$, where distinct vertices $(v,x),(w,y)\in V(A)\times V(B)$ are adjacent if
 	$v=w$ and $xy\in E(B)$, or
-	%	\item  
 	$x=y$ and $vw\in E(A)$, or
-	%	\item  
-	$vw\in E(A)$ and $xy\in E(B)$.
-	%\end{compactitem}
-}, and treewidth\footnote{For a tree $T$, a \defin{$T$-decomposition} of a graph $G$ is a collection $\mathcal{T}=(B_x:x\in V(T))$ of subsets of $V(G)$ indexed by the nodes of $T$ such that
+	$vw\in E(A)$ and $xy\in E(B)$.}, 
+and treewidth\footnote{For a tree $T$, a \defin{$T$-decomposition} of a graph $G$ is a collection $\mathcal{T}=(B_x:x\in V(T))$ of subsets of $V(G)$ indexed by the nodes of $T$ such that
 (i) for every $vw\in E(G)$, there exists some node $x\in V(T)$ with $v,w\in B_x$; and
 (ii) for every $v\in V(G)$, the induced subgraph $T[v] := T[\{x: v\in B_x\}]$ is connected. The \defin{width} of $\mathcal{T}$ is $\max\{|B_x|:x\in V(T)\}-1$.  A \defin{tree-decomposition} is a $T$-decomposition for any tree $T$. The \defin{treewidth} $\tw(G)$ of a graph $G$ is the minimum width of a tree-decomposition of $G$.  Treewidth is the standard measure of how similar a graph is to a tree. Indeed, a connected graph has treewidth 1 if and only if it is a tree. Treewidth is of fundamental importance in structural and algorithmic graph theory; see \citep{Reed03,HW17,Bodlaender-TCS98} for surveys.} is an invariant that measures how `tree-like' a given graph is; see \cref{ProductExample} for an example. Loosely speaking, \cref{PlanarProduct} says that every planar graph is contained in the product of a tree-like graph and a path. This enables combinatorial results for graphs of bounded treewidth to be generalised for planar graphs (with different constants). 
 
-% \begin{wrapfigure}{r}{0.5\textwidth}
 \begin{figure}[!h]
 \centering%	\begin{center}
 	\includegraphics{ProductExample}
@@ -172,8 +165,7 @@ Here $\boxtimes$ is the strong product\footnote{The \defin{strong product} of gr
 \item \citet{DFMS21} use it to make dramatic improvements to the best known bounds for $p$-centered colourings of planar graphs. 
 \item \citet{bonamy.gavoille.ea:shorter} use it to find shorter adjacency labellings of planar graphs (improving on a sequence of results going back to 1988~\citep{kannan.naor.ea:implicit-stoc,kannan.naor.ea:implicit}), and \citet{DEJGMM21} have since used it to find asymptotically optimal adjacency labellings of planar graphs.
 \item The result of \citet{DEJGMM21} implies that, for every integer
-$n>0$, there is a `universal' graph $U_n$ with $n^{1+o(1)}$ 
-vertices such that every $n$-vertex planar graph is an induced
+$n>0$, there is a `universal' graph $U_n$ with $n^{1+o(1)}$ vertices such that every $n$-vertex planar graph is an induced
 subgraph of $U_n$.
 \end{compactitem} 
 
@@ -200,6 +192,7 @@ of things discussed earlier on in the introduction.}
 \subsection{Shortcut Systems}
 
 Although $k$-planar graphs are the most high-profile target for a generalization of \cref{PlanarProduct}, we actually prove a substantially stronger result than \cref{kPlanarProduct} using the following definition. A non-empty set $\mathcal{P}$ of non-trivial paths in a graph $G$ is a \defin{$(k,d)$-shortcut system} (for $G$) if:
+
 \begin{compactitem}
 \item every path in $\mathcal{P}$ has length at most $k$,\footnote{A path of length $k$ consists of $k$ edges and $k+1$ vertices.  A path is \defin{trivial} if it has length 0 and \defin{non-trivial} otherwise.} and
 \item for every $v\in V(G)$, the number of paths in $\mathcal{P}$ that use $v$ as an internal vertex is at most $d$.
@@ -229,7 +222,6 @@ safer (and necessary?) to use a different variable for the second
 occurrence.}
 
 \note{DW}{Use $\SS$ for shortcut system, okay?}
-
 
 Theorems~\ref{PlanarProduct}(b) and \ref{ShortcutProduct} and \cref{AddDummy} imply \cref{kPlanarProduct} with $K_{6(k^3+3k)}$ instead of $K_{18k^2+48k+30}$. Some further observations presented in \cref{sec-k-planar} lead to the improved result.
 
@@ -383,7 +375,6 @@ have to be careful with $x_0$.}
 
 The following lemma shows how to interpret an $H$-partition of $G$ and a tree-decomposition of $H$ as a `hierarchical' decomposition of $G$; refer to \cref{fig:generalized-tripod}.
 
-
 \begin{lem}\label{generalized-tripod}
   Let $G$ be a graph; let $\mathcal{L}:=\langle L_1,\ldots,L_h\rangle$ be a layering of $G$; let $\mathcal{Y}:=(Y_x: x\in V(H))$ be an $H$-partition of $G$ of layered width at most $\ell$ with respect to $\mathcal{L}$ where $H$ has treewidth at most $t$; and let $\mathcal{T}:=(B_x:x\in V(T))$ be a tree-decomposition of $H$ satisfying the conditions of \lemref{nice-decomposition}.  For each $x\in V(T)$, let $V_x := \bigcup_{y\in V(T_x)} Y_y$, $F_x:=\{w\in V(G): vw\in E(G), v\in V_x,\, w\not\in V_x\}$, and $N_x:=V_x\cup F_x$.  Then,
   \begin{compactenum}[(Y1)]
@@ -463,15 +454,14 @@ disjoint, but why do they cover $V(G)$?}
 
 For each $x\in V(T)$, define $S_x := \{v\in V(G): a(v)= x\}$. Observe that $\mathcal{S}:=(S_x : x\in V(T))$ is a partition of $V(G)$.  We let $J:=G^\mathcal{P}/\mathcal{S}$ denote the resulting quotient graph and we let $V(J)\subseteq V(T)$ in the obvious way, so that each $x\in V(J)$ is the vertex obtained by contracting $S_x$ in $G^{\mathcal{P}}$. (Nodes $x\in V(T)$ with $S_x=\emptyset$ do not contribute a vertex to $J$.)
 
+
 From this point onward, the plan is to show that:
 \begin{compactenum}[(i)]
   \item $\mathcal{S}$ has small layered width with respect to the layering $\mathcal{L}$ and that
   \item $J$ has small treewidth.
 \end{compactenum}
 
-\referee{1}{7. page 8, item (i): ``$S$ has small layered width with respect to the layering
-L'' $\longrightarrow$ ``$S$ has small layered width with respect to the layering $L$ of
-$G$''. Perhaps mention something about how it is easy to find the new layering.}
+\referee{1}{7. page 8, item (i): ``$S$ has small layered width with respect to the layering $L$'' $\longrightarrow$ ``$S$ has small layered width with respect to the layering $L$ of $G$''. Perhaps mention something about how it is easy to find the new layering.}
 
 
 First we need to understand the relationship between sets $S_x\in\mathcal{S}$ and the related sets $Y_x$, $V_x$, $F_x$, and $N_x$.
@@ -531,8 +521,8 @@ We now proceed with Step~(ii), showing that $J$ has small treewidth. To accompli
 \end{proof}
 
 \begin{clm}
-	\label{general-bag-size}
-  The graph $J$ has a tree-decomposition in which every bag has size at most $\binom{k+t}{t}$.
+\label{general-bag-size}
+The graph $J$ has a tree-decomposition in which every bag has size at most $\binom{k+t}{t}$.
 \end{clm}
 
 \referee{1}{10. page 10, Claim 5: Indices could mostly be removed by continuing
@@ -588,7 +578,6 @@ This section applies our main results for shortcut systems to prove a product st
 \subsection{$k$-Planar Graphs}
 
 We first formally define $k$-planar graphs.  An \defin{embedded graph} $G$ is a graph with $V(G)\subset\R^2$ in which each edge $vw\in E(G)$ is a curve\footnote{A \defin{curve} in a surface $\Sigma$ is a continuous function $f:[0,1]\to \Sigma$. The points $f(0)$ and $f(1)$ are called the \defin{endpoints} of the curve.  When there is no danger of misunderstanding we treat a curve $f$ as the point set $\{f(t):0\le t\le 1\}$.} in $\R^2$ with endpoints $v$ and $w$ and not containing any vertex of $G$ in its interior.  A \defin{crossing} in an embedded graph $G$ is a triple $(p,vw,xy)$ with $p\in\R^2$, $vw,xy\in E(G)$ and such that $p\in (vw\cap xy)\setminus\{v,w,x,y\}$. An embedded graph $G$ is \defin{$k$-plane} if each edge of $G$ takes part in at most $k$ crossings.  A (not necessarily embedded) graph $G'$ is \defin{$k$-planar} if there exists a $k$-plane graph $G$ isomorphic to $G'$. Under these definitions, $0$-planar graphs are exactly planar graphs and $0$-plane graphs are exactly plane graphs.
-
 
 As mentioned in \cref{Introduction}, \cref{PlanarProduct,ShortcutProduct} imply a product structure theorem for $k$-planar graphs. We get improved bounds as follows.  
 
@@ -723,10 +712,10 @@ though, so the authors can ignore this request if they choose.}
 	
 	Observe that each of the faces $F_1,\ldots,F_m$ is contained in a single internal face of $M$.   Let $Y^+ := \overline{Y}^+-F$. Therefore, $V(F_i)$ can be partitioned into at most three sets $P_1'$, $P_2'$, and $P_3'$ where $P_1'\subset V(Y^+)$, $P_2'\subseteq P_a$, $P_3'\subseteq P_b$ for some $a,b\in\{1,2,3\}$, and $F_i[P_j']$ is a path, for each $j\in\{1,2,3\}$.
 	
-	Finally, the subgraph $N_i$ of $G$ consisting of the edges and vertices of $G$ contained in $F_i$ or its interior does not contain one of the three vertices of $\tau$. Therefore, we can apply induction using the cycle $F_i$ and the partition $P_1',P_2',P_3'$ of $V(C_i)$ to obtain the desired $H$-partition and tree-decomposition of $N_i$.
+	Finally, the subgraph $N_i$ of $G$ consisting of the edges and vertices of $G$ contained in $F_i$ or its interior does not contain one of the three vertices of $\tau$. Therefore, we can apply induction using the cycle $F_i$ and the partition $P_1',P_2',P_3'$ of $V(C_i)$ to obtain the desired $H$-partition and tree decomposition of $N_i$.
 	
-	The proof finishes in the same way as the proof in \cite{DJMMUW20}.  The paths $P_1,\ldots,P_k$, and $S=V(Y^+)$ become elements of the $H$-partition.
-	Elements in each of the $H$-partitions of $N_1,\ldots,N_3$ that intersect $P_1,\ldots,P_k$, or $V(\overline{Y}^+-F)$ are discarded and all the resulting sets are combined to obtain an $H$-partition of $G$.  The desired tree-decomposition of $G$ is obtained in exactly the same way as in the proof of Lemma~14 in \cite{DJMMUW20}, except that now each node $x$ has a child for each face $F_i$ of $M^+_x$ that contains a vertex of $G$ in its interior.
+	The proof finishes in the same way as the proof in \cite{dujmovic.joret.ea:planar}.  The paths $P_1,\ldots,P_k$, and $S=V(Y^+)$ become elements of the $H$-partition.
+	Elements in each of the $H$-partitions of $N_1,\ldots,N_3$ that intersect $P_1,\ldots,P_k$, or $V(\overline{Y}^+-F)$ are discarded and all the resulting sets are combined to obtain an $H$-partition of $G$.  The desired tree decomposition of $G$ is obtained in exactly the same way as in the proof of Lemma~14 in \cite{dujmovic.joret.ea:planar}, except that now each node $x$ has a child for each face $F_i$ of $M^+_x$ that contains a vertex of $G$ in its interior.
 	
 	The planarity of $H$ comes from two properties:
 	\begin{compactenum}
@@ -771,8 +760,7 @@ Every $(g,k)$-planar graph is a subgraph of $H\boxtimes P \boxtimes K_\ell$ for 
 	
 Prior to this work, the strongest structural description of $k$-planar or $(g,k)$-planar graphs (or any of the other classes presented in \cref{Examples}) was in terms of layered treewidth, which we now define.  A \defin{layered tree-decomposition} $(\mathcal{L},\mathcal{T})$ consists of a layering $\mathcal{L}$ and a tree-decomposition $\mathcal{T}$ of $G$. The layered width of $(\mathcal{L},\mathcal{T})$ is $\max\{|L\cap B|: L\in \mathcal{L},\, B\in \mathcal{T}\}$.  The \defin{layered treewidth} of $G$ is the minimum layered width of any layered tree-decomposition of $G$. \citet{dujmovic.morin.ea:layered} proved that planar graphs have layered treewidth at most 3, that graphs of Euler genus $g$ have layered treewidth at most $2g+3$, and more generally that a minor-closed class has bounded layered treewidth if and only if it excludes some apex graph. \citet{dujmovic.eppstein.ea:structure} show that every $k$-planar graph has layered treewidth at most $6(k+1)$, and more generally that every $(g,k)$-planar graph has layered treewidth at most $(4g+6)(k+1)$. It follows from this result that $(g,k)$-planar graphs have treewidth $O(\sqrt{(g+1)(k+1)n})$ and thus have balanced separators of the same order, which can also be concluded from the work of \citet{FP08}. In related work, \citet{grigoriev.bodlaender:algorithms} used structural results to obtain approximation algorithms for $(g,k)$-planar graphs, and \citet{PachToth97} determined the maximum number of edges in a $k$-planar graph (up to a constant factor).
 
-If a graph class admits bounded layered partitions, then it also has bounded layered treewidth. In particular, if $\mathcal{P}=(P_x:x\in V(H))$ is an $H$-partition of $G$ of layered width $\ell$ with respect to some layering $\mathcal{L}$ of $G$ and $(B_x:x\in V(T))$ is a width-$t$ tree-decomposition of $H$, then setting $C_x = \bigcup_{y\in B_x} P_y$ for each $x\in V(T)$ gives a tree-decomposition $(C_x:x\in V(T))$ of $G$ that has layered treewidth $(t+1)\ell$ \cite{DJMMUW20}.
-Therefore, any property that holds for graphs of bounded layered treewidth also holds for $G$. What sets layered partitions apart from layered treewidth is that they lead to constant upper bounds on the queue-number  and non-repetitive chromatic number, whereas for both these parameters, the best known upper bound obtainable via layered treewidth is $O(\log n)$; see \cref{Applications}.
+If a graph class admits bounded layered partitions, then it also has bounded layered treewidth. In particular, if $\mathcal{P}=(P_x:x\in V(H))$ is an $H$-partition of $G$ of layered width $\ell$ with respect to some layering $\mathcal{L}$ of $G$ and $(B_x:x\in V(T))$ is a width-$t$ tree-decomposition of $H$, then setting $C_x = \bigcup_{y\in B_x} P_y$ for each $x\in V(T)$ gives a tree-decomposition $(C_x:x\in V(T))$ of $G$ that has layered treewidth $(t+1)\ell$ \cite{DJMMUW20}. Therefore, any property that holds for graphs of bounded layered treewidth also holds for $G$. What sets layered partitions apart from layered treewidth is that they lead to constant upper bounds on the queue-number  and non-repetitive chromatic number, whereas for both these parameters, the best known upper bound obtainable via layered treewidth is $O(\log n)$; see \cref{Applications}.
 
 
 \subsection{Rough Characterisation}
@@ -792,8 +780,7 @@ Therefore, any property that holds for graphs of bounded layered treewidth also 
 
 \begin{proof}
 	For a vertex $x$ of $G_0$ with degree at most $\Delta$, and for $i\in\{1,\dots,k-1\}$, say a vertex $v$ is \defin{$i$-close} to $x$ if there is a $vx$-path $P$ in $G_0$ of length at most $i$ such that every internal vertex in $P$  has degree at most $\Delta$ in $G_0$.
-	For each edge $vw$ of $G$, say that $vw$ \defin{passes through} each internal vertex on $P_{vw}$.
-	Say $vw$ passes through $x$. Then $v$ is $i$-close to $x$ and $w$ is $j$-close to $x$ for some $i,j\in\{1,\dots,k-1\}$ with $i+j\leq k$. At most $\Delta^{i}$ vertices are $i$-close to $x$.
+	For each edge $vw$ of $G$, say that $vw$ \defin{passes through} each internal vertex on $P_{vw}$.	Say $vw$ passes through $x$. Then $v$ is $i$-close to $x$ and $w$ is $j$-close to $x$ for some $i,j\in\{1,\dots,k-1\}$ with $i+j\leq k$. At most $\Delta^{i}$ vertices are $i$-close to $x$.
 	Thus, the number of edges of $G$ that pass through $x$ is at most
 	\[
 	\sum_{i=1}^{k-1} \sum_{j=1}^{k-i} \Delta^i \Delta^j
@@ -813,6 +800,8 @@ drawing 'each edge vw of G alongside $P_vw$ in $G_0$', there may be two
 edges which cross several times.  It seems this can be fixed by
 choosing the path system carefully by 'uncrossing' paths which
 intersect at more than two internal vertices.}
+
+\note{DW}{We do not want to uncross.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 \section{Applications}
@@ -835,11 +824,12 @@ $\qn(G) \leq  3 \ell \, \qn(H) + \floor{\tfrac{3}{2}\ell}
 \end{lem}
 
 \cref{qn,gkPlanarProduct} imply that $(g,k)$-planar graphs have queue-number at most $g 2^{O(k^4)}$.
+
 Note that \citet{DJMMUW20} previously proved the bound of
 $O(g^{k+2})$ using \cref{GenusProduct} and an ad-hoc method. Our result provides a better bound when $g>2^{k^3}$. In the case of 1-planar graphs we can improve further. \citet{ABGKP18} proved that every planar graph with treewidth at most $3$ has queue-number at most $5$. Thus the graph $H$ in \cref{1-planar} has queue-number at most $5$. \cref{qn,1-planar} then imply:
 
 \begin{cor}
-	\label{1PlanarQueue}
+\label{1PlanarQueue}
 Every 1-planar graph has queue-number at most $3 \times 30 \times 5 + \floor{\tfrac{3}{2} \times 30} = 495$. 
 \end{cor}
 
@@ -857,8 +847,6 @@ If $G\subseteq H\boxtimes P \boxtimes K_\ell$ then $\pi(G)\le \ell\, 4^{\tw(H)+1
 
 \cref{non-repetitive,kPlanarProduct,1-planar,gkPlanarProduct} imply the following result:
 
-\pagebreak
-
 \begin{cor}\quad
 \begin{compactitem}
 \item	For every $1$-planar graph $G$, $\pi(G)\le 30\times 4^4=7680$.
@@ -868,7 +856,6 @@ If $G\subseteq H\boxtimes P \boxtimes K_\ell$ then $\pi(G)\le \ell\, 4^{\tw(H)+1
 	$  \pi(G)\le \max\{2g,3\}\cdot(6k^2+16k+10) 4^{\binom{k+5}{4}}.$
 \end{compactitem}
 \end{cor}
-%\end{samepage}
 
 Prior to the current work, the strongest upper bound on the non-repetitive chromatic number of $n$-vertex  $k$-planar graphs was $O(k\log n)$ \cite{dujmovic.morin.ea:layered}.
 
@@ -882,11 +869,12 @@ A $c$-colouring $\phi$ of $G$ is \defin{$p$-centered} if, for every connected su
 
 \note{DW}{Is \cref{p-centered-treewidth} in the journal version \citep{PS21}?}
 
+\citet{pilipczuk.siebertz:polynomial-soda} and \citet{debski.felsner.ea:improved} use \cref{ps} and \cref{PlanarProduct}(b), respectively, to show that $\chi_p(G)$ is polynomial in $p$ when $G$ is planar or of bounded Euler genus.  We use the following lemma due to \citet[Lemma~15]{pilipczuk.siebertz:polynomial-arxiv}.
+
 \begin{lem}[\citep{pilipczuk.siebertz:polynomial-arxiv}]
 \label{p-centered-treewidth}
   Every graph $H$ of treewidth at most $t$ has $\chi_p(H)\leq \binom{p+t}{t}$.
 \end{lem}
-
 
 \note{DW}{In the journal version \citet{DFMS21} (under the insistence of the referee :-) ) proved that $\chi_p(H_1\boxtimes H_2) \leq \chi_p(H_1) \cdot \chi(H_2^p)$ where $H_2^p$ is the $p$-th power of $H_2$. Apply this with $H_2:= P \boxtimes K_\ell$. Then $H_2^p= P^p\boxtimes K_\ell$ and $\chi(H_2^p)=(p+1)\ell$. So 
 	$\chi_p(H\boxtimes P \boxtimes K_\ell) \leq \chi_p(H_1) \cdot (p+1)\ell$ }
@@ -895,7 +883,6 @@ A $c$-colouring $\phi$ of $G$ is \defin{$p$-centered} if, for every connected su
 $\chi_p(H \boxtimes J) \leq \chi_p(H) \cdot \chi(J^p)$ for all graphs $H$ and $J$, which implies the following lemma'' and delete the proof. Okay?}
 
 The following lemma is implicitly in the work of \citet[Proof of Theorem~2.1]{DFMS21}. We include the proof for completeness.
-
 
 \begin{lem}[\citep{DFMS21}]
 \label{p-centered}
@@ -1138,6 +1125,7 @@ For every integer $k\geq 1$ there exists integers $t\leq O(k^6)$ and $\ell\leq O
 
 \section{Wrapping Up}
 
+
 As mentioned in \cref{Introduction}, \citet{DEJGMM21} prove results about adjacency labelling schemes for planar graphs. Stated in terms of universal graphs, their main theorem is interpreted as follows:
 
 \begin{thm}[\citep{DEJGMM21}]
@@ -1176,7 +1164,7 @@ We finish with an open problem. \cref{kPlanarProduct} shows that every $k$-plana
        \setlength{\itemsep}{0ex}%
    }{\end{oldthebibliography}}
 
-%\bibliographystyle{plainnat}
 \bibliographystyle{DavidNatbibStyle}
 \bibliography{k-planar}
+
 \end{document}

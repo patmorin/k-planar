@@ -1,0 +1,349 @@
+\documentclass[xcolor=dvipsnames]{beamer}
+\usepackage{ods}
+%\usepackage{ods-figs}
+\usepackage[cm]{sfmath}
+\usepackage[utf8]{inputenc}
+\usepackage{array}
+%\usepackage{enumitem}
+%\usepackage{enumitem}
+%\setitemize{itemsep=1.5ex}
+%\setlength{\leftmargini}{0pt}
+\usepackage{array}
+
+\newcommand{\caressed}{$\kappa$aressed}
+\newcommand{\caresses}{$\kappa$aresses}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\dual}[1]{#1^\star}
+\newcommand{\Fary}{F\'ary}
+\newcommand{\N}{\mathbb{N}}
+
+\DeclareMathOperator{\tw}{tw}
+
+\title{Graph Product Structure for Non-Minor-Closed Classes}
+\author{Vida Dujmović \and Pat Morin \and David R. Wood}
+\titlegraphic{\includegraphics[height=1em]{by}}
+
+\begin{document}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}
+    \frametitle{Outline}
+
+    \begin{itemize}
+        \item $k$-planar graphs
+        \item $(k,d)$-shortcut systems
+        \item statement of main theorem
+        \item applications
+        \item proof of main theorem
+        \item open problem
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Motivation: $k$-Planar Graphs}
+    \framesubtitle{$k$-planar: locally non-planar}
+
+    \begin{itemize}
+        \item $G$ is \emph{$k$-planar} if it has a drawing with $\le\!\! k$ crossings per edge
+        \begin{center}
+            \multiinclude[<+>][format=pdf,start=1]{figs/k-planar}%
+        \end{center}
+        \item<4-> Is $G\subseteq H\boxtimes P$ where $\tw(H)\le f(k)$?
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{$(k,d)$-Shortcut Systems}
+    \framesubtitle{An abstraction of $k$-planarity}
+
+    \begin{itemize}
+        \item \emph{$(k,d)$-shortcut system} for $G$:
+        \begin{itemize}
+            \item<2-> a set $\mathcal{P}$ of length-$\le\!\! k$ paths in $G$
+            \item<2-> each $v\in V(G)$ appears interior to at most $d$ paths in $\mathcal{P}$
+        \end{itemize}
+    \end{itemize}
+    \begin{center}
+        \multiinclude[<+>][format=pdf,start=1]{figs/shortcut-system}%
+        \uncover<2->{\\ $(3,2)$-shortcut system}
+    \end{center}
+    \begin{itemize}
+        \item<3-> $G^{\mathcal{P}}:= G\cup\{vw:\mbox{$v$ and $w$ are endpoints of a path in $\mathcal{P}$}\}$
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Observation}
+    \framesubtitle{Crossed edges are just shortcuts in a planar graph}
+
+    If $G$ is $k$-planar then $G\subseteq G_0^{\mathcal{P}}$ where
+    \begin{itemize}
+        \item<2-> $G_0$ is planar
+        \item<3-> $\mathcal{P}$ is a $(k+1,2)$-shortcut system
+    \end{itemize}
+    \begin{center}
+        \multiinclude[<+>][format=pdf,start=1]{figs/kgp}%
+    \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Main Theorem}
+  \framesubtitle{If $G$ has product structure then so does $G^{\mathcal{P}}$}
+  \textbf{Main Theorem:} \newline
+  If $G\subseteq H\boxtimes P\boxtimes K_\ell$
+  \begin{itemize}
+    \item  $\tw(H)\le t$
+    \item $\mathcal{P}$ is a $(k,d)$-shortcut system for $G$
+  \end{itemize}
+  then $G^\mathcal{P}\subseteq H'\boxtimes P\boxtimes K_{\ell'}$
+  \begin{itemize}
+    \item $\tw(H') \le t'=\binom{k+t}{t}-1$ and
+    \item $\ell'=d\ell(k^3+3k)$
+    % \item $K'$ is a clique of order $d\ell(k^3+3k)$
+  \end{itemize}
+  \vspace{1cm}
+  \uncover<2->{\textbf{Example:} $G'$ is ${\color{red} k}$-planar
+    \begin{itemize}
+      \item $t=3$, $\ell=3$, $d=2$, $k={\color{red}k}+1$
+      \item $t'=O(k^3)$, $\ell'=O(k^3)$
+    \end{itemize}
+  }
+\end{frame}
+
+
+
+\begin{frame}
+    \frametitle{Applications}
+    \framesubtitle{(Besides $k$-planar graphs)}
+
+    \textbf{($\mathcal{G}$) Graphs:} any subgraph of $G^\mathcal{P}$ where $G$ has \emph{product structure}
+    \begin{itemize}
+        \item $(g,k)$-planar graphs
+        \item $(g,\delta)$-string graphs
+        \item $k$-nearest neighbour graphs of $2d$ point sets
+        \item bounded-degree graphs from proper minor-closed families
+        \item any $G^k$ where $G$ has bounded-degree and product structure
+    \end{itemize}
+
+    \textbf{($\mathcal{A}$) Applications:}
+    \begin{itemize}
+        \item queue layouts
+        \item non-repetitive colouring
+        \item $p$-centered colouring and $\ell$-vertex ranking
+        \item universal graphs
+    \end{itemize}
+
+    Anything in $\mathcal{G}\times \mathcal{A}$
+\end{frame}
+
+\section{Proof of Main Theorem}
+
+\begin{frame}
+  \frametitle{Mental Map of $H\boxtimes P\boxtimes K_{\ell}$}
+  \begin{itemize}
+    \item $H\uncover<2->{\boxtimes P\uncover<3->{\boxtimes K_{\ell}}}$
+  \end{itemize}
+  \begin{center}
+    \multiinclude[<+>][format=pdf,start=1]{figs/product-x}%
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Shortcuts over multiple rows}
+
+  \begin{itemize}
+    \item Shortcuts in $\mathcal{P}$ may jump up to $k$ rows
+    \item $G^\mathcal{P}$ will have edges between non-consecutive rows
+    \item<2-> Easy solution: Compress $k$ rows into one
+  \end{itemize}
+    \begin{center}
+    \only<1>{\includegraphics{figs/layer-compression-1}}%
+    \only<2->{\includegraphics{figs/layer-compression-2}}%
+    \end{center}
+  \begin{itemize}
+    \item<3-> Increases $\ell$ by a factor of $k$
+    \item<4-> $\mathcal{P}$ is a $(k,d)$-shortcut system over $H\boxtimes P\boxtimes K_{\ell k}$ with all shortcuts crossing $\le\!\! 1$ layers
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Projecting shortcuts onto $H\boxtimes P$}
+
+  \begin{itemize}
+    \item<2-> Contract each copy of $K_{k\ell}$, so we are left with $H\boxtimes P$
+  \end{itemize}
+    \begin{center}
+    \only<1-2>{\includegraphics{figs/layer-compression-2}}%
+    \only<3->{\includegraphics{figs/layer-compression-3}}%
+    \end{center}
+  \begin{itemize}
+    \item<3-> Each vertex of $H\boxtimes P$ is used in at most $dk\ell$ shortcuts
+    \item<4-> $(k,dk\ell)$-shortcut system $\mathcal{P'}$ over $H\boxtimes P$
+    \item<4-> shortcuts still span $\le\!\!1$ rows
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Nice Tree Decompositions}
+  \framesubtitle{Nodes of $T$ are same as vertices of $H$}
+
+  \begin{itemize}
+    \item A \emph{nice} rooted tree decomposition $\mathcal{T}=(B_x:x\in V(T))$ of $H$ has
+    \begin{itemize}
+      \item $V(T) = V(H)$
+      \item $x$ is root of $T_x:=T[\{x'\in V(T):x\in B_{x'}\}]$
+    \end{itemize}
+    \begin{center}
+      \includegraphics[scale=.8]{figs/nice-td}
+    \end{center}
+    \item<2-> Tree decomp implies: If $xy\in E(H)$ then $x\prec_T y$ or $y\prec_T x$
+  \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Alternative View}
+  \framesubtitle{Constructing the bags from the tree}
+  
+  \begin{itemize}
+    \item<1-> Start with $T$ such that $x\prec_T y$ or $y\prec_T x$ for each $xy\in E(H)$
+    \item<2-> $B_x\gets\{x\}$ for each $x\in V(T)$
+    \item<3-> If $xy\in E(H)$ and $x\prec_T y$ then drag $x$ down into $B_y$
+  \end{itemize}
+  \begin{center}
+    \multiinclude[<+>][format=pdf,start=1]{figs/alternative-view}%
+  \end{center}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{A Useful Lemma}
+
+  \textbf{Lemma (Pilipczuk--Siebertz):}\footnote{Yes, the same paper!} For any $z\in V(H)$ the number of $x\in V(H)$ such that $x\prec_T z\prec_T z'$ and $\mathop{dist}_H(x,z')\le k$ is at most $\binom{k+t}{t}$.
+  \begin{center}
+    \multiinclude[<+>][format=pdf,start=1]{figs/pz}%
+  \end{center}
+  \begin{itemize}
+      \item<2->Problem: $vw$-shortcut in $H\boxtimes P$ projects onto $xz'$ shortcut in $H$, but $x\not\preceq_T z'$ and $z'\not\preceq_T x$
+  \end{itemize}
+\end{frame}
+
+
+
+
+\begin{frame}
+  \frametitle{Projecting shortcuts onto $T$}
+
+  \begin{itemize}
+    \item A shortcut in $I\in\mathcal{P'}$
+    \begin{itemize}
+      \item<2-> is a path $I$ in $G'=H\boxtimes P$
+      \item<3-> $I$ projects onto a walk $W$ in $H$
+      \item<4-> $W$ is a sequence $S_I$ of nodes in $T$
+    \end{itemize}
+  \end{itemize}
+  \begin{center}
+    \multiinclude[<+>][format=pdf,start=2,end=5]{figs/nice-td}%
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Lifting in $T$}
+  \begin{itemize}
+    \item For $v$ in $H\boxtimes P$, $a(v)$ is the LCA of $\cup\{S_I:I\in\mathcal{P'},\, v\in V(I)\}$
+    \item For $x\in V(T)$, $S_x:=\{v\in V(G): a(v)=x\}$
+    \begin{center}
+      \includegraphics[scale=.8]{figs/nice-td-6}%
+    \end{center}
+    \item<2-> $\mathcal{S}:=(S_x:x\in V(T))$ is a partition of $V(G)$
+    \item<3->[$(\star)$] For any $vw$-shortcut in $H\boxtimes P$, $a(v)\preceq_T a(w)$ or $a(w)\preceq_T a(v)$
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Now the Crazy Part}
+
+  \begin{itemize}
+      \item[$(\star)$] For any $vw$-shortcut in $H\boxtimes P$, $a(v)\preceq_T a(w)$ or $a(w)\preceq_T a(v)$
+  \end{itemize}
+
+    \vspace{.5cm}
+    Let $H':=G/\mathcal{S}$
+    \vspace{.5cm}
+
+    \textbf{Claim:} $\tw(H')\le\binom{k+t}{t}-1$\\
+    \vspace{.5cm}
+    \uncover<2->{\textit{Proof:}}
+    \begin{itemize}
+      \item<2-> Each $x\in V(H')$ is obtained by contracting $S_x$
+      \item<3-> Start with $T$ from nice tree decomposition of $H$ (not $H'$)
+      \item<4-> For each $xz'\in E(H')$ where $x\prec_T z$, drag $x$ down into $B_z'$
+      \item<5-> Correctness follows from $(\star)$\footnote{Technicality: Assume $\mathcal{P}$ contains a length-$1$ shortcut for each edge of $H\boxtimes P$}
+      \item<6-> Point: If $x\in B_{z}$ then
+      \begin{itemize}
+          \item $x\prec_T z\prec_T z'$ for some $z'$ and
+          \item $\mathop{dist}_{H}(x,z')\le k$ (because shortcuts have length $\le\!\!k$).
+      \end{itemize}
+      \item<7-> By Pilipczuk-Siebertz Lemma, $|B_{z'}|\le \binom{k+t}{t}$.
+      \hfill{\qed}
+    \end{itemize}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Finishing Up}
+  \framesubtitle{Verifying the layered width}
+
+  \begin{itemize}
+    \item $\mathcal{P'}$: a $(k,dk\ell)$-shortcut system over $H\boxtimes P$.
+    \item Obtained from $\mathcal{P}$: a $(k,d)$-shortcut system over $H\boxtimes P\boxtimes K_{k\ell}$
+    \item We can show that the subset of $H\boxtimes P\boxtimes K_{\ell}$ corresponding to $S_x$ contains at most $d\ell(k^3+3k)$ vertices from each row of $H\boxtimes P\boxtimes K_{\ell}$.
+    \item Implies $G^{\mathcal{P}}\subseteq H'\boxtimes P\boxtimes K_{d\ell(k^3+3k)}$
+  \end{itemize}
+  \vspace{1cm}
+  \uncover<2->{
+  \textbf{Main Theorem:} \newline
+  If $G\subseteq H\boxtimes P\boxtimes K_\ell$
+    \begin{itemize}
+      \item  $\tw(H)\le t$
+      \item $\mathcal{P}$ is a $(k,d)$-shortcut system for $G$
+    \end{itemize}
+    then $G^\mathcal{P}\subseteq H'\boxtimes P\boxtimes K_{\ell'}$
+    \begin{itemize}
+      \item $\tw(H') \le t'=\binom{k+t}{t}-1$ and
+      \item $\ell'=d\ell(k^3+3k)$
+      % \item $K'$ is a clique of order $d\ell(k^3+3k)$
+    \end{itemize}
+  }
+\end{frame}
+
+\begin{frame}
+  \frametitle{Discussion}
+  
+  \begin{itemize}
+    \item<1-> Optimizing for $k$-planar $G$ shows $G\subseteq H\boxtimes P\boxtimes K_\ell$ for $\tw(H)\le \binom{k+4}{3}-1$ and $\ell\le 18k^{\color{red}2}+48k+30$.
+    
+    \item<2-> Optimizing for $1$-planar $G$ shows $G\subseteq H\boxtimes P\boxtimes K_{30}$ with $\tw(H)\le 3$
+    
+    \item<3-> \textbf{Open Problem:} Does there exist $C\in\N$ and $f:\N\to\N$ such that for $k$-planar $G$,  $G\subseteq H\boxtimes P\boxtimes K_{f(k)}$ where $\tw(H)\le C$? \uncover<4->{(Maybe $C=3$)}\vspace{1.5cm}
+    
+    \item<5->[] \centerline{\Large\bfseries Thank You!}
+  \end{itemize}
+  
+\end{frame}
+
+
+% \begin{frame}
+%
+%
+% \end{frame}
+%
+
+
+
+\end{document}
