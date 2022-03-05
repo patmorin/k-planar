@@ -631,7 +631,7 @@ Every 1-planar graph is a subgraph of $H\boxtimes P\boxtimes K_{30}$ for some pl
 
 Let $G$ be an edge-maximal 1-plane multigraph with no two parallel edges on the boundary of a single face.  Here, edge-maximal should be taken to mean that, if any two vertices $v$ and $w$ appear on a common face\footnote{The \defin{faces} of an embedded graph $G$ are the connected components of $\R^2\setminus \bigcup_{vw\in E(G)} vw$.  We say that a vertex $v\in V(G)$ appears on a face $F$ if $v$ is contained in the closure of $F$.} $F$, then there is an edge $vw\in E(G)$ that is contained in the boundary of $F$.  We assume that no two edges incident to a common vertex cross each other since, in a 1-plane graph, such a crossing can always be removed by a local modification to obtain an isomorphic 1-plane graph in which the two edges do not cross.\footnote{While this is true for 1-plane graphs it is not true for $k$-plane graphs with $k\ge 3$; the uncrossing operation can increase the number of crossings on a particular edge from $k$ to $2(k-1)$.}
 
-A \defin{kite} in $G$ is the subgraph $K=G[\{v,w,x,y\}]$ induced by the endpoints of a pair of crossing edges $vw,xy\in E(G)$.  It follows from edge-maximality that every kite is isomorphic to the complete graph $K_4$.
+A \defin{kite} in $G$ is the subgraph $K=G[\{v,w,x,y\}]$ induced by the endpoints of a pair of crossing edges $vw,xy\in E(G)$.  It follows from edge-maximality that every kite is isomorphic to the complete graph $K_4$. \note{DW}{We need to define a kite to be the subgraph with vertex-set $\{v,w,x,y\}$ and edge-set $\{vx,xy,vx,vy,wy,wx\}$ where $vx,vy,wy,wx$ are the edges on the `outside' of the kite-faces. Then it really is a simple $K_4$. I think this is what we intended. We should add a figure showing a kite and kite-faces. }
 The edges $vw$ and $xy$ are called \defin{spars} of $K$.  The cycle $vxwy$ is called the \defin{sail} of $K$.  It follows from edge-maximality that none of the edges $vx$, $xw$, $wy$, or $yv$ are crossed by any other edges of $G$. 
 
 \referee{2}{Page 13. Perhaps I am misunderstanding something, but I do not see why
@@ -639,10 +639,9 @@ The edges $vw$ and $xy$ are called \defin{spars} of $K$.  The cycle $vxwy$ is ca
 $G$.'  For example, see the attached PDF for a picture where $vw$, $xw$, $wy$,
 and $yv$ are all crossed by other edges of $G$.\\
 \includegraphics[width=60mm]{kite}}
-\note{DW}{I agree with the referee.}
+\note{DW}{We need to explain more about how edge-maximality fixes this problem. In this case we can draw other $xv$, $vy$, $yw$ $wx$ edges close to the central crossing edges.}
+\note{DW}{The graph drawing literature defines a 1-planar graph to be \defin{optimal} if it is obtained from a plane quadrangulation by adding the two crossing edges across each face. Optimal 1-planar graphs have the maximum number of edges out of all $n$-vertex 1-planar graphs.	But I am pretty sure there are edge-maximal 1-planar graphs that are not optimal. We should check that our proof is okay on these examples. }
 Thus any edge that is a spar of a kite $K$ is not part of a sail of any kite $K'$.
-\note{DW}{This is wrong I think} 
-Observe that any spar of $K$ is incident on exactly four \defin{kite faces} of $G$, each of which has three edges and two vertices of $G$ on its boundary.
 
 \referee{2}{Page 13. The attached PDF also shows that the definition of 'kite
 face' may not be well-defined.  For example, I do not see why there
@@ -650,17 +649,17 @@ cannot be some edges of $G$ 'inside' a kite face.  Even if this is not
 the case, I think it is more precise to say that a kite face has 'two
 and a half edges' and two vertices of $G$ on its boundary' rather than
 'three edges and two vertices of $G$ on its boundary'.}
-\note{DW}{I agree with the referee.}
+\note{DW}{This should be fixed if we define kite more precisely. A kite-face is bounded by one edge and two half-edges right?}
 
 \referee{2}{Page 13. Could it be that the subgraph induced by the vertices of a
 	kite is a $K_4$ with some parallel edges?  This seems relevant later in
 	the proof.}
 
-\note{DW}{I agree with the referee.}
+\note{DW}{If we define kite as above, this is not a problem}
 
 The 1-plane graph $G$ has a plane triangulation $G'$ as a subgraph that can be obtained by removing one spar from each kite in $G$.  Observe that, for any spar $xy\in E(G)\setminus E(G')$ that crosses $vw\in E(G')$, $G'$ contains the path $vxw$ (and $vyw$).  It follows that $\dist_{G'}(v,w)\le 2$.
 
-Our proof of \cref{1-planar} follows quickly from the following technical lemma, which is an extension of the analagous result for plane graphs \cite{DJMMUW20}.
+Our proof of \cref{1-planar} follows quickly from the following technical lemma, which is an extension of the analogous result for plane graphs \cite{DJMMUW20}.
 \begin{lem}
 	\label{induction} The setup:
 	\begin{compactenum}
@@ -714,8 +713,10 @@ though, so the authors can ignore this request if they choose.}
 	
 	Finally, the subgraph $N_i$ of $G$ consisting of the edges and vertices of $G$ contained in $F_i$ or its interior does not contain one of the three vertices of $\tau$. Therefore, we can apply induction using the cycle $F_i$ and the partition $P_1',P_2',P_3'$ of $V(C_i)$ to obtain the desired $H$-partition and tree decomposition of $N_i$.
 	
-	The proof finishes in the same way as the proof in \cite{dujmovic.joret.ea:planar}.  The paths $P_1,\ldots,P_k$, and $S=V(Y^+)$ become elements of the $H$-partition.
-	Elements in each of the $H$-partitions of $N_1,\ldots,N_3$ that intersect $P_1,\ldots,P_k$, or $V(\overline{Y}^+-F)$ are discarded and all the resulting sets are combined to obtain an $H$-partition of $G$.  The desired tree decomposition of $G$ is obtained in exactly the same way as in the proof of Lemma~14 in \cite{dujmovic.joret.ea:planar}, except that now each node $x$ has a child for each face $F_i$ of $M^+_x$ that contains a vertex of $G$ in its interior.
+	The proof finishes in the same way as the proof in \cite{DJMMUW20}.  The paths $P_1,\ldots,P_k$, and $S=V(Y^+)$ become elements of the $H$-partition.
+	Elements in each of the $H$-partitions of $N_1,\ldots,N_3$ that intersect $P_1,\ldots,P_k$, or $V(\overline{Y}^+-F)$ are discarded and all the resulting sets are combined to obtain an $H$-partition of $G$.  The desired tree decomposition of $G$ is obtained in exactly the same way as in the proof of Lemma~14 in \cite{DJMMUW20}, except that now each node $x$ has a child for each face $F_i$ of $M^+_x$ that contains a vertex of $G$ in its interior.
+	
+	\note{DW}{Check whether Lemma~14 is the right lemma}
 	
 	The planarity of $H$ comes from two properties:
 	\begin{compactenum}
