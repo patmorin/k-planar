@@ -169,9 +169,13 @@ $n>0$, there is a `universal' graph $U_n$ with $n^{1+o(1)}$ vertices such that e
 subgraph of $U_n$.
 \end{compactitem} 
 
+\note{DW}{Delete `from 1992' and  `from 2007'? replace ``going back to 1988~\citep{kannan.naor.ea:implicit-stoc,kannan.naor.ea:implicit}'' by 
+	``starting with the work of \citet{kannan.naor.ea:implicit}''}
+	
+	
 All of these results hold for any graph class that has a product structure theorem analogous to \cref{PlanarProduct}; that is, for any graph class  $\mathcal{G}$ where every graph in $\mathcal{G}$ is a subgraph of $H\boxtimes P\boxtimes K_\ell$ where $H$ has bounded treewidth, $P$ is a path, and $\ell$ is bounded\footnote{It is easily seen that $\tw(H\boxtimes K_\ell) \leq (\tw(H)+1)\ell-1$, so we may assume that $\ell=1$ in this definition.}. These applications motivate finding product structure theorems for other graph classes. \citet{DJMMUW20} prove product structure theorems for graphs of bounded Euler genus\footnote{The \textit{Euler genus} of the orientable surface with $h$ handles is $2h$. The \textit{Euler genus} of the non-orientable surface with $c$ cross-caps is $c$. The \textit{Euler genus} of a graph $G$ is the minimum integer $g$ such that $G$ embeds in a surface of Euler genus $g$. Of course, a graph is planar if and only if it has Euler genus 0; see \citep{mohar.thomassen:graphs} for more about graph embeddings in surfaces.} and for apex-minor-free graphs\footnote{A graph $M$ is a \textit{minor} of a graph $G$ if a graph isomorphic to $M$ can be obtained from a subgraph of $G$ by contracting edges. A class $\mathcal{G}$ of graphs is \defin{minor-closed} if for every graph $G\in\mathcal{G}$, every minor of $G$ is in $\mathcal{G}$. A minor-closed class is \defin{proper} if it is not the class of all graphs. For example, for fixed $g\geq 0$, the class of graphs with Euler genus at most $g$ is a proper minor-closed class. A graph $G$ is $t$-apex if it contains a set $A$ of at most $t$ vertices such that $G-A$ is planar. A 1-apex graph is \defin{apex}.  A minor-closed class $\mathcal{G}$ is apex-minor-free if some apex graph is not in $\mathcal{G}$.}, and \citet{DEMWW22} do so for graphs in any minor-closed class and with bounded maximum degree. See \cref{Generalisations} for more precise statements and see \citep{DHJLW21} for a survey on this topic. 
 
-The purpose of this paper is to prove product structure theorems for several non-minor-closed classes of interest. Our results are the first of this type for non-minor-closed classes.
+The main purpose of this paper is to prove product structure theorems for several non-minor-closed classes of interest. Our results are the first of this type for non-minor-closed classes.
 
 \subsection{$k$-Planar Graphs}
 
@@ -447,7 +451,7 @@ For a node $x\in V(T)$, we say that a shortcut $P\in\mathcal{P}$ \defin{crosses}
   Choose $a(v)\in X_H$ to be the member of $X_H$ that does not have a strict $T$-ancestor in $X_H$.  Transitivity of the $T$-ancestor relationship, \tref{ancestor-edge}, and connectivity of $H[X_H]$ implies that such an $a(v)$ exists and is a $T$-ancestor of every node $x\in X_H$, as required.
 \end{proof}
 
-\note{DW}{Use $\mathcal{S}$ for the given shortcut system and $\mathcal{P}$ for the partition?}
+\note{DW}{Use $\SS$ for the given shortcut system and $\PP$ for the partition?}
 
 For each $x\in V(T)$, define $S_x := \{v\in V(G): a(v)= x\}$. Observe that $\mathcal{S}:=(S_x : x\in V(T))$ is a partition of $V(G)$.  Let $J:=G^\mathcal{P}/\mathcal{S}$ denote the resulting quotient graph. We consider $V(J)\subseteq V(T)$, where each $x\in V(J)$ is the vertex obtained by contracting $S_x$ in $G^{\mathcal{P}}$. (Nodes $x\in V(T)$ with $S_x=\emptyset$ do not contribute a vertex to $J$.)
 
@@ -526,6 +530,8 @@ We now proceed with Step~(ii), showing that $J$ has small treewidth. To accompli
 The graph $J$ has a tree-decomposition in which every bag has size at most $\binom{k+t}{t}$.
 \end{clm}
 
+\note{DW}{I think $\binom{k+t}{t}$ in \cref{general-bag-size} and $\binom{p+t}{t}$ in \cref{p-centered-treewidth} are no coincidence. The proofs are very similar. Worth exploring further?}
+
 \referee{1}{10. page 10, Claim 5: Indices could mostly be removed by continuing
 to talk about $T$-ancestors instead. Move the definition of $H+$ and its
 directed version up, along with the explanation of what will be proven,
@@ -578,7 +584,7 @@ This section applies our main results for shortcut systems to prove a product st
 
 \subsection{$k$-Planar Graphs}
 
-We first formally define $k$-planar graphs.  An \defin{embedded graph} $G$ is a graph with $V(G)\subset\R^2$ in which each edge $vw\in E(G)$ is a curve\footnote{A \defin{curve} in a surface $\Sigma$ is a continuous function $f:[0,1]\to \Sigma$. The points $f(0)$ and $f(1)$ are called the \defin{endpoints} of the curve.  When there is no danger of misunderstanding we treat a curve $f$ as the point set $\{f(t):0\le t\le 1\}$.} in $\R^2$ with endpoints $v$ and $w$ and not containing any vertex of $G$ in its interior.  A \defin{crossing} in an embedded graph $G$ is a triple $(p,vw,xy)$ with $p\in\R^2$, $vw,xy\in E(G)$ and such that $p\in (vw\cap xy)\setminus\{v,w,x,y\}$. An embedded graph $G$ is \defin{$k$-plane} if each edge of $G$ takes part in at most $k$ crossings. \note{DW}{We need at most two edges cross at a single point, so we can add a dummy vertex of degree 4, right?}  A (not necessarily embedded) graph $G'$ is \defin{$k$-planar} if there exists a $k$-plane graph $G$ isomorphic to $G'$. Under these definitions, $0$-planar graphs are exactly planar graphs and $0$-plane graphs are exactly plane graphs.
+We first formally define $k$-planar graphs.  An \defin{embedded graph} $G$ is a graph with $V(G)\subset\R^2$ in which each edge $vw\in E(G)$ is a curve\footnote{A \defin{curve} in a surface $\Sigma$ is a continuous function $f:[0,1]\to \Sigma$. The points $f(0)$ and $f(1)$ are called the \defin{endpoints} of the curve.  When there is no danger of misunderstanding we treat a curve $f$ as the point set $\{f(t):0\le t\le 1\}$.} in $\R^2$ with endpoints $v$ and $w$ and not containing any vertex of $G$ in its interior.  A \defin{crossing} in an embedded graph $G$ is a triple $(p,vw,xy)$ with $p\in\R^2$, $vw,xy\in E(G)$ and such that $p\in (vw\cap xy)\setminus\{v,w,x,y\}$. An embedded graph $G$ is \defin{$k$-plane} if each edge of $G$ takes part in at most $k$ crossings. \note{DW}{We need to assume that at most two edges cross at a single point, so we can add a dummy vertex of degree 4, right?}  A (not necessarily embedded) graph $G'$ is \defin{$k$-planar} if there exists a $k$-plane graph $G$ isomorphic to $G'$. Under these definitions, $0$-planar graphs are exactly planar graphs and $0$-plane graphs are exactly plane graphs.
 
 As mentioned in \cref{Introduction}, \cref{PlanarProduct,ShortcutProduct} imply a product structure theorem for $k$-planar graphs. We get improved bounds as follows.  
 
@@ -628,7 +634,7 @@ Every 1-planar graph is a subgraph of $H\boxtimes P\boxtimes K_{30}$ for some pl
 
 \referee{1}{3. Theorem 10: Unfortunately I have to suggest removing it. I don’t see the motivation for making $H$ planar or for improving the constants. Are the improved constants at all close to tight? Is there another reason for including it?}
 
-\note{DW}{We can motivate \cref{1-planar} since treewidth 3 is best possible, and the planarity of $H$ is essential in the proof of \cref{1PlanarQueue}. Futher motivation comes from the open problem at the end of the paper. We need to argue this in the response and in the paper. The alternative is to remove \cref{sec-1-planar}? We could keep the statement of \cref{1-planar} in the paper and refer to the arXiv paper for the proof. What do you think? All this depends on whether we can fix the errors below. I vote to fix the errors, add more motivation for \cref{1-planar}, keep the theorem and the proof. }
+\note{DW}{We can motivate \cref{1-planar} since the graph drawing community particularly cares about 1-planar graphs, since treewidth 3 is best possible, and since the planarity of $H$ is essential in the proof of \cref{1PlanarQueue}. Futher motivation comes from the open problem at the end of the paper. We need to argue this in the response and in the paper. The alternative is to remove \cref{sec-1-planar}? We could keep the statement of \cref{1-planar} in the paper and refer to the arXiv paper for the proof. What do you think? All this depends on whether we can fix the errors below. I vote to fix the errors, add more motivation for \cref{1-planar}, keep the theorem and the proof. }
 
 Let $G$ be an edge-maximal 1-plane multigraph with no two parallel edges on the boundary of a single face.  Here, edge-maximal should be taken to mean that, if any two vertices $v$ and $w$ appear on a common face\footnote{The \defin{faces} of an embedded graph $G$ are the connected components of $\R^2\setminus \bigcup_{vw\in E(G)} vw$.  We say that a vertex $v\in V(G)$ appears on a face $F$ if $v$ is contained in the closure of $F$.} $F$, then there is an edge $vw\in E(G)$ that is contained in the boundary of $F$.  \note{DW}{Each face of $G$ is one of two types, either bounded by three edges (none of which are crossed), or bounded by one edge that is not crossed plus portions of two crossing edges. Right? If this is true, we should say it here, which would help to clear up the confusion below. Add a figure.} 
 We assume that no two edges incident to a common vertex cross each other since, in a 1-plane graph, such a crossing can always be removed by a local modification to obtain an isomorphic 1-plane graph in which the two edges do not cross.\footnote{While this is true for 1-plane graphs it is not true for $k$-plane graphs with $k\ge 3$; the uncrossing operation can increase the number of crossings on a particular edge from $k$ to $2(k-1)$.}
@@ -701,6 +707,8 @@ reproducing the entire proof and telling the reader that they can skip
 all the details if they wish.  This is just my personal opinion
 though, so the authors can ignore this request if they choose.}
 
+\note{DW}{I agree we need more details. I am having trouble verifying this proof. }
+
 \begin{proof}
 	This proof is very similar to the proof of Lemma~14 by \citet{DJMMUW20}. Rather than duplicate every detail of that proof here, we focus on the differences and refer the reader to the original proof for the remaining details.
 	
@@ -762,12 +770,7 @@ Theorems~\ref{ShortcutProduct}  and \ref{GenusProduct}(b) imply a product struct
 \label{gkPlanarProduct}
 Every $(g,k)$-planar graph is a subgraph of $H\boxtimes P \boxtimes K_\ell$ for some graph $H$ with $\tw(H) \leq \binom{k+5}{4}-1$, where $\ell:=\max\{2g,3\}\cdot(6k^2+16k+10)$.
 \end{thm}
-
-	
-\referee{2}{Page 15. Regarding the proof of Theorem 11, if it really is the same
-	proof as the proof of Theorem 2, why not just prove Theorem 11 (from
-	which Theorem 2 follows as a special case)?}
-	
+		
 Prior to this work, the strongest structural description of $k$-planar or $(g,k)$-planar graphs (or any of the other classes presented in \cref{Examples}) was in terms of layered treewidth, which we now define.  A \defin{layered tree-decomposition} $(\mathcal{L},\mathcal{T})$ consists of a layering $\mathcal{L}$ and a tree-decomposition $\mathcal{T}$ of $G$. The layered width of $(\mathcal{L},\mathcal{T})$ is $\max\{|L\cap B|: L\in \mathcal{L},\, B\in \mathcal{T}\}$.  The \defin{layered treewidth} of $G$ is the minimum layered width of any layered tree-decomposition of $G$. \citet{dujmovic.morin.ea:layered} proved that planar graphs have layered treewidth at most 3, that graphs of Euler genus $g$ have layered treewidth at most $2g+3$, and more generally that a minor-closed class has bounded layered treewidth if and only if it excludes some apex graph. \citet{dujmovic.eppstein.ea:structure} show that every $k$-planar graph has layered treewidth at most $6(k+1)$, and more generally that every $(g,k)$-planar graph has layered treewidth at most $(4g+6)(k+1)$. It follows from this result that $(g,k)$-planar graphs have treewidth $O(\sqrt{(g+1)(k+1)n})$ and thus have balanced separators of the same order, which can also be concluded from the work of \citet{FP08}. In related work, \citet{grigoriev.bodlaender:algorithms} used structural results to obtain approximation algorithms for $(g,k)$-planar graphs, and \citet{PachToth97} determined the maximum number of edges in a $k$-planar graph (up to a constant factor).
 
 If a graph class admits bounded layered partitions, then it also has bounded layered treewidth. In particular, if $\mathcal{P}=(P_x:x\in V(H))$ is an $H$-partition of $G$ of layered width $\ell$ with respect to some layering $\mathcal{L}$ of $G$ and $(B_x:x\in V(T))$ is a width-$t$ tree-decomposition of $H$, then setting $C_x = \bigcup_{y\in B_x} P_y$ for each $x\in V(T)$ gives a tree-decomposition $(C_x:x\in V(T))$ of $G$ that has layered treewidth $(t+1)\ell$ \cite{DJMMUW20}. Therefore, any property that holds for graphs of bounded layered treewidth also holds for $G$. What sets layered partitions apart from layered treewidth is that they lead to constant upper bounds on the queue-number  and non-repetitive chromatic number, whereas for both these parameters, the best known upper bound obtainable via layered treewidth is $O(\log n)$; see \cref{Applications}.
@@ -820,6 +823,9 @@ intersect at more than two internal vertices.}
 Here we discuss some of the consequences of the above theorems for $k$-planar and $(g,k)$-planar graphs.
 
 \referee{1}{4. Sections 4 and 5: I think as they are currently organized they distract from the purpose of the paper, as stated in the introduction, to ``prove product structure theorems for several non-minor-closed classes of interest.'' Which of Corollaries 1--4 and Theorems 12--17 are most important? I would remove any mention of the applications from the examples section, put that section first, and state in that section a single main theorem with all of the best bounds on the product structure. The applications section is mostly a survey and I think should be focused on the most exciting new corollaries. Theorems 18 and 19 should be in the applications section.}
+
+\note{DW}{I don't want to do a complete restructuring. In our response, let's just say why we structure it the way we do.}
+
 
 %%%%%%%%%%%%%%%%%%%
 \subsection{Queue Layouts}
