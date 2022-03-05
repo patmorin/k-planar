@@ -577,7 +577,7 @@ This section applies our main results for shortcut systems to prove a product st
 
 \subsection{$k$-Planar Graphs}
 
-We first formally define $k$-planar graphs.  An \defin{embedded graph} $G$ is a graph with $V(G)\subset\R^2$ in which each edge $vw\in E(G)$ is a curve\footnote{A \defin{curve} in a surface $\Sigma$ is a continuous function $f:[0,1]\to \Sigma$. The points $f(0)$ and $f(1)$ are called the \defin{endpoints} of the curve.  When there is no danger of misunderstanding we treat a curve $f$ as the point set $\{f(t):0\le t\le 1\}$.} in $\R^2$ with endpoints $v$ and $w$ and not containing any vertex of $G$ in its interior.  A \defin{crossing} in an embedded graph $G$ is a triple $(p,vw,xy)$ with $p\in\R^2$, $vw,xy\in E(G)$ and such that $p\in (vw\cap xy)\setminus\{v,w,x,y\}$. An embedded graph $G$ is \defin{$k$-plane} if each edge of $G$ takes part in at most $k$ crossings.  A (not necessarily embedded) graph $G'$ is \defin{$k$-planar} if there exists a $k$-plane graph $G$ isomorphic to $G'$. Under these definitions, $0$-planar graphs are exactly planar graphs and $0$-plane graphs are exactly plane graphs.
+We first formally define $k$-planar graphs.  An \defin{embedded graph} $G$ is a graph with $V(G)\subset\R^2$ in which each edge $vw\in E(G)$ is a curve\footnote{A \defin{curve} in a surface $\Sigma$ is a continuous function $f:[0,1]\to \Sigma$. The points $f(0)$ and $f(1)$ are called the \defin{endpoints} of the curve.  When there is no danger of misunderstanding we treat a curve $f$ as the point set $\{f(t):0\le t\le 1\}$.} in $\R^2$ with endpoints $v$ and $w$ and not containing any vertex of $G$ in its interior.  A \defin{crossing} in an embedded graph $G$ is a triple $(p,vw,xy)$ with $p\in\R^2$, $vw,xy\in E(G)$ and such that $p\in (vw\cap xy)\setminus\{v,w,x,y\}$. An embedded graph $G$ is \defin{$k$-plane} if each edge of $G$ takes part in at most $k$ crossings. \note{DW}{We need at most two edges cross at a single point, so we can add a dummy vertex of degree 4, right?}  A (not necessarily embedded) graph $G'$ is \defin{$k$-planar} if there exists a $k$-plane graph $G$ isomorphic to $G'$. Under these definitions, $0$-planar graphs are exactly planar graphs and $0$-plane graphs are exactly plane graphs.
 
 As mentioned in \cref{Introduction}, \cref{PlanarProduct,ShortcutProduct} imply a product structure theorem for $k$-planar graphs. We get improved bounds as follows.  
 
@@ -627,12 +627,12 @@ Every 1-planar graph is a subgraph of $H\boxtimes P\boxtimes K_{30}$ for some pl
 
 \referee{1}{3. Theorem 10: Unfortunately I have to suggest removing it. I don’t see the motivation for making $H$ planar or for improving the constants. Are the improved constants at all close to tight? Is there another reason for including it?}
 
-\note{DW}{We can motivate \cref{1-planar} since treewidth 3 is best possible, and the planarity of $H$ is essential in the proof of \cref{1PlanarQueue}. Futher motivation comes from the open problem at the end of the paper. Shall we argue this in the response? Or do we remove \cref{sec-1-planar}? We could keep the statement of \cref{1-planar} in the paper and refer to the arXiv paper for the proof. What do you think? All this depends on whether we can fix the errors below. I vote to fix the errors, add more motivation for \cref{1-planar}, keep the theorem and the proof. }
+\note{DW}{We can motivate \cref{1-planar} since treewidth 3 is best possible, and the planarity of $H$ is essential in the proof of \cref{1PlanarQueue}. Futher motivation comes from the open problem at the end of the paper. We need to argue this in the response and in the paper. The alternative is to remove \cref{sec-1-planar}? We could keep the statement of \cref{1-planar} in the paper and refer to the arXiv paper for the proof. What do you think? All this depends on whether we can fix the errors below. I vote to fix the errors, add more motivation for \cref{1-planar}, keep the theorem and the proof. }
 
 Let $G$ be an edge-maximal 1-plane multigraph with no two parallel edges on the boundary of a single face.  Here, edge-maximal should be taken to mean that, if any two vertices $v$ and $w$ appear on a common face\footnote{The \defin{faces} of an embedded graph $G$ are the connected components of $\R^2\setminus \bigcup_{vw\in E(G)} vw$.  We say that a vertex $v\in V(G)$ appears on a face $F$ if $v$ is contained in the closure of $F$.} $F$, then there is an edge $vw\in E(G)$ that is contained in the boundary of $F$.  \note{DW}{Each face of $G$ is one of two types, either bounded by three edges (none of which are crossed), or bounded by one edge that is not crossed plus portions of two crossing edges. Right? If this is true, we should say it here, which would help to clear up the confusion below. Add a figure.} 
 We assume that no two edges incident to a common vertex cross each other since, in a 1-plane graph, such a crossing can always be removed by a local modification to obtain an isomorphic 1-plane graph in which the two edges do not cross.\footnote{While this is true for 1-plane graphs it is not true for $k$-plane graphs with $k\ge 3$; the uncrossing operation can increase the number of crossings on a particular edge from $k$ to $2(k-1)$.}
 
-\note{DW}{I suggest we say that it follows from Euler's formula that $G$ is finite. (To see this, say $G$ has $n$ vertices, $m$ non-crossed edges, and $k$ crossings. Let $G'$ be the plane graph obtained from $G$ by adding a dummy vertex at each crossing. So $G'$ is a plane multigraph in which every face is bounded by a 3-cycle. It follows from Euler's formula that $m+4k = |E(G')| = 3( |V(G')|-2) = 3 ( n+k-2)$, implying	$m+k = 3 (n-2)$ and $|E(G)| = m+2k \leq 6(n-2)$.) }
+\note{DW}{I suggest we say that it follows from Euler's formula that $G$ is finite. (To see this, say $G$ has $n$ vertices, $m$ non-crossed edges, and $k$ crossings. Let $G'$ be the plane graph obtained from $G$ by adding a dummy vertex at each crossing. So $G'$ is a plane multigraph in which every face is bounded by a 3-cycle. It follows from Euler's formula that $m+4k = |E(G')| = 3( |V(G')|-2) = 3 ( n+k-2)$, implying	$m+k = 3 (n-2)$ and $|E(G)| = m+2k \leq 6(n-2)$, which can also be shown by deleting one edge from each crossing point. ) }
 
 \note{DW}{It seems to be that $G$ can be obtained from a plane multigraph with faces of size 3 or 4 such that no edge is in two 3-faces, by adding a pair of crossing edges across each 4-face. I think this characterises edge-maximal 1-planar multigraphs with no 2-faces. Right? Does this viewpoint help? Is it known?}
 
@@ -670,23 +670,25 @@ Our proof of \cref{1-planar} follows quickly from the following technical lemma,
 	\begin{compactenum}
 		\item Let $G$ and $G'$ be defined as above.
 		\item Let $T$ be a BFS spanning tree of $G'$ rooted at some vertex $r$.
-		\item For each integer $j\ge 0$, let $L_j=\{v\in V(G):\dist_T(r,v)=j\}$.
+		\item For every integer $j\ge 0$, let $L_j=\{v\in V(G):\dist_T(r,v)=j\}$.
 		\item Let $F$ be a cycle in $G'$ with $r$ in the exterior of $F$ and such that
 		\begin{compactenum}
 			\item No edge of $F$ is crossed by any edge of $G$; and
 			\item $V(F)$ can be partitioned into $P_1,\ldots,P_k$, for some $k\in\{1,2,3\}$ such that for each $i\in\{1,\ldots,k\}$,
 			\begin{compactenum}
 				\item $F[P_i]$ is a path; and
-				\item $|V(P_i)\cap L_j| \le 15$ for all integers $j\ge 0$.
+				\item $|V(P_i)\cap L_j| \le 15$ for every integer $j\ge 0$.
 			\end{compactenum}
 		\end{compactenum}
+	\note{DW}{Should the vertices already grabbed by $P_i$ be mentioned in the setup? The new paths $Q_1,Q_2,Q_3$ need to avoid the vertices already grabbed by $P_1,P_2,P_3$. Basically, I am concerned about what happens when distinct vertical paths in $T$ want to grab the same vertex.}
 		\item Let $N$ and $N'$ be the subgraphs of $G$ and $G'$ consisting only of those edges and vertices contained in $F$ or the interior of $F$.
 	\end{compactenum}
 	Then $N$ has an $H$-partition $\mathcal{P}=\{S_x : x\in V(H)\}$ such that:
 	\begin{compactenum}
 		\item $H$ is planar;
-		\item for all integers $j\ge 0$, and all $x\in V(H)$, $|S_x\cap L_j|\le 15$;
-		\item for each $i\in\{1,\ldots,k\}$, there exists some $x_i\in V(H)$ such that $P_i=S_{x_i}$; and
+		\item for every integer $j\ge 0$ and every $x\in V(H)$, $|S_x\cap L_j|\le 15$;
+		\item for each $i\in\{1,\ldots,k\}$, there exists some $x_i\in V(H)$ such that $P_i=S_{x_i}$
+		\note{DW}{Should this be $P_i\subseteq S_{x_i}$? (since the path grabs other vertices into its part)}; and
 		\item $H$ has a tree-decomposition in which every bag has size at most 4 and such that some bag contains $x_1,\ldots,x_k$.
 	\end{compactenum}
 \end{lem}
@@ -709,7 +711,7 @@ though, so the authors can ignore this request if they choose.}
 	Let $\overline{Y}$ denote the subgraph of $N'$ consisting of vertices and edges of $Q_1$, $Q_2$, $Q_3$, and $\tau$.  Let $\overline{Y}^+$ denote the subgraph of $N$ consisting of the vertices and edges of $\overline{Y}$ plus the vertices and edges of every kite formed by a crossing between an edge of $G$ and an edge of $\overline{Y}$.
 	
 	We claim that, for each integer $i\ge 0$, $|V(\overline{Y}^+)\cap L_i|\le 15$.  First observe that, since $Q_1,Q_2,Q_3$ are each vertical paths in $T$,  $\overline{Y}$ contains at most three vertices of $L_i$, each incident on at most two edges of $\overline{Y}$.  Since $\dist_{G'}(v,w)\le 2$ for each $vw\in E(G)$, any vertex $x\in V(\overline{Y}^+)\setminus V(\overline{Y})\cap L_i$, is incident to an edge $xy\in E(G)$ that crosses one of the at most six edges in $\overline{Y}$ having an endpoint in $L_i$.  These at most six edges have at most 12 endpoints.  Therefore $|V(\overline{Y}^+)\setminus V(\overline{Y})\cap L_i|\le 6\times 2=12$, so $|V(\overline{Y}^+)\cap L_i|\le 12+3=15$.
-	
+		
 	Let $M$ and $M^+$ denote the subgraph of $G$ containing the edges and vertices of $\overline{Y}$, respectively $\overline{Y}^+$, and the edges and vertices of $F$.  The graph $M^+$ has some number of bounded faces, all contained in the interior of $F$. Some of the bounded faces of $M^+$ are kite faces. Let $F_1,\ldots,F_m$ be the non-kite bounded faces of $M^+$.
 	
 	We claim that, for each $i\in\{1,\ldots,m\}$, the boundary of $F_i$ is a cycle in $G'$ that contains no spars. Otherwise, some edge $vw$ contributes to the boundary of $F_i$ but is crossed by an edge $xy\in E(G)$. Then, $vw\not\in E(F)$ since no edge of $F$ is crossed by any edge of $G$. Therefore $vw\in E(\overline{Y}^+)$ so $xy\in E(Y^+)$. But then the only faces of $M^+$ incident to $vw$ are kite faces.  In particular $vw$ cannot be incident to the non-kite face $F_i$.
@@ -807,7 +809,7 @@ edges which cross several times.  It seems this can be fixed by
 choosing the path system carefully by 'uncrossing' paths which
 intersect at more than two internal vertices.}
 
-\note{DW}{We do not want to uncross.}
+\note{DW}{But we do not want to uncross. Our claim that ``every pair of edges cross at most once'' is not true. I am convinced the result is still correct. Just need to think  of a better way to write it. Each crossing is in the vicinity of a vertex that has degree $\leq\Delta$. }
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 \section{Applications}
