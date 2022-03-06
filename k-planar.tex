@@ -21,7 +21,7 @@
 \usepackage[longnamesfirst,numbers,sort&compress]{natbib}
 \usepackage[noabbrev,capitalise]{cleveref}
 
-\usepackage{doi} % To make plainnat handle doi's properly
+%\usepackage{doi} % To make plainnat handle doi's properly
 
 % \usepackage[mathlines]{lineno}
 % \setlength{\linenumbersep}{2em}
@@ -142,6 +142,8 @@ The starting point for this work is the following `product structure theorem' fo
 
 \note{DW}{In 	\cref{PlanarProduct} and elsewhere, we really should write, ``Every planar graph is isomorphic to a subgraph of''. One alternative is to define that $H$ is \defin{contained} in $G$ if $H$ is isomorphic to a subgraph of $G$. I suggest the latter.}
 
+\note{DW}{I suggest we replace $8$ by $6$ here, and replace ``The starting point for this work is the following `product structure theorem' for planar graphs by \citet{DJMMUW20} (improved by \citet{UWY})''. Okay?}
+	
 Here $\boxtimes$ is the strong product\footnote{The \emph{strong product} of graphs $A$ and $B$, denoted by $A\boxtimes B$, is the graph with vertex set $V(A)\times V(B)$, where distinct vertices $(v,x),(w,y)\in V(A)\times V(B)$ are adjacent if
 	$v=w$ and $xy\in E(B)$, or
 	$x=y$ and $vw\in E(A)$, or
@@ -151,11 +153,10 @@ and treewidth\footnote{For a tree $T$, a \defin{$T$-decomposition} of a graph $G
 (ii) for every $v\in V(G)$, the induced subgraph $T[v] := T[\{x: v\in B_x\}]$ is connected. The \defin{width} of $\mathcal{T}$ is $\max\{|B_x|:x\in V(T)\}-1$.  A \defin{tree-decomposition} is a $T$-decomposition for any tree $T$. The \defin{treewidth} $\tw(G)$ of a graph $G$ is the minimum width of a tree-decomposition of $G$.  Treewidth is the standard measure of how similar a graph is to a tree. Indeed, a connected graph has treewidth 1 if and only if it is a tree. Treewidth is of fundamental importance in structural and algorithmic graph theory; see \citep{Reed03,HW17,Bodlaender-TCS98} for surveys.} is an invariant that measures how `tree-like' a given graph is; see \cref{ProductExample} for an example. Loosely speaking, \cref{PlanarProduct} says that every planar graph is contained in the product of a tree-like graph and a path. This enables combinatorial results for graphs of bounded treewidth to be generalised for planar graphs (with different constants). 
 
 \begin{figure}[!h]
-\centering%	\begin{center}
-	\includegraphics{ProductExample}
-	%\end{center}
-	\caption{Example of a strong product.
-	\label{ProductExample}}
+\centering
+\includegraphics{ProductExample}
+\caption{Example of a strong product.
+\label{ProductExample}}
 \end{figure}
 
 \noindent\cref{PlanarProduct} has been the key tool in solving the following well-known open problems:
@@ -171,7 +172,8 @@ subgraph of $U_n$.
 
 \note{DW}{Delete `from 1992' and  `from 2007'? replace ``going back to 1988~\citep{kannan.naor.ea:implicit-stoc,kannan.naor.ea:implicit}'' by 
 	``starting with the work of \citet{kannan.naor.ea:implicit}''}
-	
+
+\note{DW}{Add \citep{EJM} to the story.}	
 	
 All of these results hold for any graph class that has a product structure theorem analogous to \cref{PlanarProduct}; that is, for any graph class  $\mathcal{G}$ where every graph in $\mathcal{G}$ is a subgraph of $H\boxtimes P\boxtimes K_\ell$ where $H$ has bounded treewidth, $P$ is a path, and $\ell$ is bounded\footnote{It is easily seen that $\tw(H\boxtimes K_\ell) \leq (\tw(H)+1)\ell-1$, so we may assume that $\ell=1$ in this definition.}. These applications motivate finding product structure theorems for other graph classes. \citet{DJMMUW20} prove product structure theorems for graphs of bounded Euler genus\footnote{The \textit{Euler genus} of the orientable surface with $h$ handles is $2h$. The \textit{Euler genus} of the non-orientable surface with $c$ cross-caps is $c$. The \textit{Euler genus} of a graph $G$ is the minimum integer $g$ such that $G$ embeds in a surface of Euler genus $g$. Of course, a graph is planar if and only if it has Euler genus 0; see \citep{mohar.thomassen:graphs} for more about graph embeddings in surfaces.} and for apex-minor-free graphs\footnote{A graph $M$ is a \textit{minor} of a graph $G$ if a graph isomorphic to $M$ can be obtained from a subgraph of $G$ by contracting edges. A class $\mathcal{G}$ of graphs is \defin{minor-closed} if for every graph $G\in\mathcal{G}$, every minor of $G$ is in $\mathcal{G}$. A minor-closed class is \defin{proper} if it is not the class of all graphs. For example, for fixed $g\geq 0$, the class of graphs with Euler genus at most $g$ is a proper minor-closed class. A graph $G$ is $t$-apex if it contains a set $A$ of at most $t$ vertices such that $G-A$ is planar. A 1-apex graph is \defin{apex}.  A minor-closed class $\mathcal{G}$ is apex-minor-free if some apex graph is not in $\mathcal{G}$.}, and \citet{DEMWW22} do so for graphs in any minor-closed class and with bounded maximum degree. See \cref{Generalisations} for more precise statements and see \citep{DHJLW21} for a survey on this topic. 
 
@@ -248,9 +250,11 @@ As mentioned above, product structure theorems have been established for several
 	Every graph of Euler genus $g$ is a subgraph of:
 	\begin{compactenum}[(a)]
 		\item $H  \boxtimes P$ for some graph $H$ of treewidth at most $2g+8$  and some path $P$.
-		\item $H \boxtimes P \boxtimes K_{\max\{2g,3\}}$ for some graph $H$ of treewidth at most $4$ and for some path $P$.\label{temp}
+		\item $H \boxtimes P \boxtimes K_{\max\{2g,3\}}$ for some graph $H$ of treewidth at most $4$ and for some path $P$.
 	\end{compactenum}
 \end{thm}
+
+\note{DW}{I suggest we replace $2g+8$ by $2g+6$ here and replace 4 by 3, and cite \citep{DHHW,UWY}. This will improve the bounds and (more importantly) simplify the presentation of various results (such as \cref{StringPartition,PowerGenus}) which currently distinguish the $g=0$ case. }
 
 \citet{DJMMUW20} generalised \cref{GenusProduct} for apex-minor-free graphs as follows.
 
@@ -529,8 +533,6 @@ We now proceed with Step~(ii), showing that $J$ has small treewidth. To accompli
 \label{general-bag-size}
 The graph $J$ has a tree-decomposition in which every bag has size at most $\binom{k+t}{t}$.
 \end{clm}
-
-\note{DW}{I think $\binom{k+t}{t}$ in \cref{general-bag-size} and $\binom{p+t}{t}$ in \cref{p-centered-treewidth} are no coincidence. The proofs are very similar. Worth exploring further?}
 
 \referee{1}{10. page 10, Claim 5: Indices could mostly be removed by continuing
 to talk about $T$-ancestors instead. Move the definition of $H+$ and its
@@ -954,16 +956,11 @@ There is a natural drawing of a map graph obtained by positioning each vertex of
 Every $(g,d)$-map graph $G$ is a subgraph of $G_1^\PP$ for some graph $G_1$ with Euler genus at most $g$ and some $(2,\tfrac12 d(d-3) )$-shortcut system $\PP$ for $G_1$.
 \end{lem}
 
-\referee{2}{Page 20.  Where does the bound $d(d-3)/2$ come from?  The naive bound I
-compute is $d(d-1)/2$.}
-\note{DW}{consecutive neighbours don't have to be counted. I will revise}
-
 \begin{proof}
 Let $G$ be a $(g,d)$-map graph. So there is a graph $G_0$ embedded in a surface of Euler genus $g$, with each face labelled a `nation' or a `lake', where each vertex of $G_0$ is incident with at most $d$ nations. Let $N$ be the set of nations. Then $V(G)=N$ where two vertices are adjacent in $G$ if the corresponding nation faces of $G_0$ share a vertex. Let $G_1$ be the graph with $V(G_1):=V(G_0) \cup N$, where distinct vertices $v,w\in N$ are adjacent in $G_1$ if the boundaries of the corresponding nations have an edge of $G_0$ in common, and $v\in V(G_0)$ and $w\in N$ are adjacent in $G_1$ if $v$ is on the boundary of the nation corresponding to $w$. Observe that $G_1$ embeds in the same surface as $G_0$ with no crossings, and that each vertex in $V(G_0)$ has degree at most $d$ in $G_1$. Consider an edge $vw\in E(G)$. If the nations corresponding to $v$ and $w$ share an edge of $G_0$, then $vw$ is an edge of $G_1$. Otherwise,  $v$ and $w$ have a common neighbour $x$ in $V(G_0)$. In the latter case, let $P_{vw}$ be the path $(v,x,w)$. Let $\PP$ be the set of all such paths $P_{vw}$. Each vertex $x\in V(G_0)$ is the middle vertex on at most $\tfrac12 d(d-3)$  paths in $\PP$. Thus $\PP$ is a $(2,\tfrac12 d(d-3))$-shortcut system for $G_1$, and by construction, $G \subseteq G_1^\PP$.
 \end{proof}
 
-Theorems~\ref{PlanarProduct}(b),  \ref{ShortcutProduct} 
-and  \ref{GenusProduct}(b) and \cref{MapShortcut,qn,p-centered,p-centered-treewidth,non-repetitive} imply the following results. 
+Theorems~\ref{PlanarProduct}(b),  \ref{ShortcutProduct} and  \ref{GenusProduct}(b) and \cref{MapShortcut,qn,p-centered,p-centered-treewidth,non-repetitive} imply the following results. 
 
 \begin{thm}
 \label{PlaneMapPartition}
@@ -1163,7 +1160,7 @@ Combining this with \cref{gkPlanarProduct,k-nn,PowerMinor,StringPartition,MapPar
 
 We finish with an open problem. \cref{kPlanarProduct} shows that every $k$-planar graph is a subgraph of $H\boxtimes P \boxtimes K_\ell$ for some graph $H$ with treewidth $O(k^3)$ where $\ell\leq O(k^2)$. Does there exist a function $\ell:\N\to\N$ and a universal constant $C$ such that every $k$-planar graph is a subgraph of $H\boxtimes P \boxtimes K_{\ell(k)}$ for some graph $H$ with treewidth at most $C$?  Perhaps $C=3$. Note that $C\geq 3$ even for planar graphs \citep{DJMMUW20}.
 
-\subsection*{Note Added in Proof} Subsequent to the initial release of this paper, the treewidth 8 bound in \cref{PlanarProduct} was improved to 6 by \citet{UWY}, which implies that the treewidth $2g+8$ bound in \cref{GenusProduct}(a) can be improved to $2g+6$. Simmilarly, the treewidth 4 bound in \cref{GenusProduct}(b) was improved to 3 by \citet{DHHW}. \note{DW}{Say more about the consequence for the bounds in the rest of the paper}
+%\subsection*{Note Added in Proof} Subsequent to the initial release of this paper, the treewidth 8 bound in \cref{PlanarProduct} was improved to 6 by \citet{UWY}, which implies that the treewidth $2g+8$ bound in \cref{GenusProduct}(a) can be improved to $2g+6$. Simmilarly, the treewidth 4 bound in \cref{GenusProduct}(b) was improved to 3 by \citet{DHHW}. \note{DW}{Say more about the consequence for the bounds in the rest of the paper}
 
 % %%%  Squashing the bibliography
    \let\oldthebibliography=\thebibliography
@@ -1177,4 +1174,4 @@ We finish with an open problem. \cref{kPlanarProduct} shows that every $k$-plana
 \bibliographystyle{DavidNatbibStyle}
 \bibliography{k-planar}
 
-\end{document}
+\end{document}s
