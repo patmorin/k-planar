@@ -130,11 +130,12 @@ Dujmovi\'c~et~al.~[\emph{J.~ACM}~'20] recently proved that every planar graph is
 \section{Introduction}
 \label{Introduction}
 
-The starting point for this work is the following `product structure theorem' for planar graphs\footnote{In this paper, all graphs are finite and undirected. Unless specifically mentioned otherwise, all graphs are also simple. For any graph $G$ and any set $S$ (typically $S\subseteq V(G)$), let $G[S]$  denote the graph with vertex set $V(G)\cap S$ and edge set $\{uv\in E(G) : u,v\in S\}$.  We use $G-S$ as a shorthand for $G[V(G)\setminus S]$. We use $G'\subseteq G$ to denote subgraph containment; that is, $V(G')\subseteq V(G)$ and $E(G')\subseteq E(G)$.  We say that a graph $G$ is \emph{contained in} a graph $X$ if $G$ is isomorphic to a subgraph of $X$. Undefined terms are in \citep{Diestel5}.} by \citet{DJMMUW20} (improved by \citet{UWY}).
+The starting point for this work is the following `product structure theorem' for planar graphs\footnote{In this paper, all graphs are finite and undirected. Unless specifically mentioned otherwise, all graphs are also simple. For any graph $G$ and any set $S$ (typically $S\subseteq V(G)$), let $G[S]$  denote the graph with vertex set $V(G)\cap S$ and edge set $\{uv\in E(G) : u,v\in S\}$.  We use $G-S$ as a shorthand for $G[V(G)\setminus S]$. We use $G'\subseteq G$ to denote subgraph containment; that is, $V(G')\subseteq V(G)$ and $E(G')\subseteq E(G)$.  We say that a graph $G$ is \defin{contained in} a graph $X$ if $G$ is isomorphic to a subgraph of $X$. Undefined terms are in \citep{Diestel5}.} by \citet{DJMMUW20} (improved by \citet{UWY}).
 
 \begin{thm}[\citep{DJMMUW20,UWY}]
 	\label{PlanarProduct}
-	Every planar graph is a subgraph of:
+	Every planar graph is contained in: 
+	%a subgraph of:
 	\begin{compactenum}[(a)]
 		\item $H\boxtimes P$ for some graph $H$ of treewidth at most $8$ and for some path $P$,
 		\item $H\boxtimes P \boxtimes K_3$ for some graph $H$ of treewidth at most $3$ and for some path $P$.
@@ -143,7 +144,7 @@ The starting point for this work is the following `product structure theorem' fo
 
 % \note{DW}{In 	\cref{PlanarProduct} and elsewhere, we really should write, ``Every planar graph is isomorphic to a subgraph of''. One alternative is to define that $H$ is \defin{contained} in $G$ if $H$ is isomorphic to a subgraph of $G$. I suggest the latter.}
 
-% \note{DW}{I suggest we replace $8$ by $6$ here, and replace ``The starting point for this work is the following `product structure theorem' for planar graphs by \citet{DJMMUW20} (improved by \citet{UWY})''. Okay?}
+ \note{DW}{replace $8$ by $6$ and update elsewhere}
 
 Here $\boxtimes$ is the strong product,\!\footnote{The \emph{strong product} of graphs $A$ and $B$, denoted by $A\boxtimes B$, is the graph with vertex set $V(A)\times V(B)$, where distinct vertices $(v,x),(w,y)\in V(A)\times V(B)$ are adjacent if
 	$v=w$ and $xy\in E(B)$, or
@@ -260,6 +261,7 @@ As mentioned above, product structure theorems have been established for several
 \end{thm}
 
 \note{DW}{I suggest we replace $2g+8$ by $2g+6$ here and replace 4 by 3, and cite \citep{DHHW,UWY}. This will improve the bounds and (more importantly) simplify the presentation of various results (such as \cref{StringPartition,PowerGenus}) which currently distinguish the $g=0$ case. }
+
 \note{PM}{I agree with this suggestion.  I've only added the other two references here, and haven't changed anything elsewhere yet.}
 
 \citet{DJMMUW20} generalised \cref{GenusProduct} for apex-minor-free graphs as follows.
@@ -647,6 +649,34 @@ Every 1-planar graph is a subgraph of $H\boxtimes P\boxtimes K_{30}$ for some pl
 
 \note{DW}{We can motivate \cref{1-planar} since the graph drawing community particularly cares about 1-planar graphs, since treewidth 3 is best possible, and since the planarity of $H$ is essential in the proof of \cref{1PlanarQueue}. Futher motivation comes from the open problem at the end of the paper. We need to argue this in the response and in the paper. The alternative is to remove \cref{sec-1-planar}? We could keep the statement of \cref{1-planar} in the paper and refer to the arXiv paper for the proof. What do you think? All this depends on whether we can fix the errors below. I vote to fix the errors, add more motivation for \cref{1-planar}, keep the theorem and the proof. }
 
+%Let $G$ be an edge-maximal 1-plane multigraph with no two parallel edges on the boundary of a single face.  Here, edge-maximal should be taken to mean that, if any two vertices $v$ and $w$ appear on a common face\footnote{The \defin{faces} of an embedded graph $G$ are the connected components of $\R^2\setminus \bigcup_{vw\in E(G)} vw$.  We say that a vertex $v\in V(G)$ appears on a face $F$ if $v$ is contained in the closure of $F$.} $F$, then there is an edge $vw\in E(G)$ that is contained in the boundary of $F$.  \note{DW}{Each face of $G$ is one of two types, either bounded by three edges (none of which are crossed), or bounded by one edge that is not crossed plus portions of two crossing edges. Right? If this is true, we should say it here, which would help to clear up the confusion below. Add a figure.} 
+%We assume that no two edges incident to a common vertex cross each other since, in a 1-plane graph, such a crossing can always be removed by a local modification to obtain an isomorphic 1-plane graph in which the two edges do not cross.\footnote{While this is true for 1-plane graphs it is not true for $k$-plane graphs with $k\ge 3$; the uncrossing operation can increase the number of crossings on a particular edge from $k$ to $2(k-1)$.}
+%
+%\note{DW}{I suggest we say that it follows from Euler's formula that $G$ is finite. (To see this, say $G$ has $n$ vertices, $m$ non-crossed edges, and $k$ crossings. Let $G'$ be the plane graph obtained from $G$ by adding a dummy vertex at each crossing. So $G'$ is a plane multigraph in which every face is bounded by a 3-cycle. It follows from Euler's formula that $m+4k = |E(G')| = 3( |V(G')|-2) = 3 ( n+k-2)$, implying	$m+k = 3 (n-2)$ and $|E(G)| = m+2k \leq 6(n-2)$, which can also be shown by deleting one edge from each crossing point. ) }
+%
+%\note{DW}{It seems to be that $G$ can be obtained from a plane multigraph with faces of size 3 or 4 such that no edge is in two 3-faces, by adding a pair of crossing edges across each 4-face. I think this characterises edge-maximal 1-planar multigraphs with no 2-faces. Right? This should be stated as a lemma. Does this viewpoint help? Is it known?}
+%
+%\note{DW}{Say $G$ is obtained from a plane multigraph by making each face a clique. Is $G\subseteq H \boxtimes P \boxtimes K_{f(\omega(G)}$? for some treewidth 3 graph $H$.}
+%
+%A \defin{kite} in $G$ is the subgraph $K=G[\{v,w,x,y\}]$ induced by the endpoints of a pair of crossing edges $vw,xy\in E(G)$.  It follows from edge-maximality that every kite is isomorphic to the complete graph $K_4$. \note{DW}{We need to define a kite to be the subgraph with vertex-set $\{v,w,x,y\}$ and edge-set $\{vx,xy,vx,vy,wy,wx\}$ where $vx,vy,wy,wx$ are the edges on the `outside' of the kite-faces. Then it really is a simple $K_4$. I think this is what we intended. We should add a figure showing a kite and kite-faces. }
+%The edges $vw$ and $xy$ are called \defin{spars} of $K$.  The cycle $vxwy$ is called the \defin{sail} of $K$.  It follows from edge-maximality that none of the edges $vx$, $xw$, $wy$, or $yv$ are crossed by any other edges of $G$. 
+%
+%\referee{2}{Page 13. Perhaps I am misunderstanding something, but I do not see why
+%'none of the edges $vx$, $xw$, $wy$, or $yv$ are crossed by any other edges of
+%$G$.'  For example, see the attached PDF for a picture where $vw$, $xw$, $wy$,
+%and $yv$ are all crossed by other edges of $G$.\\
+%\includegraphics[width=60mm]{kite}}
+%\note{DW}{We need to explain more about how edge-maximality fixes this problem. In this case we can draw other $xv$, $vy$, $yw$ $wx$ edges close to the central crossing edges.} Thus any edge that is a spar of a kite $K$ is not part of a sail of any kite $K'$.
+%
+%\referee{2}{Page 13. The attached PDF also shows that the definition of 'kite
+%face' may not be well-defined.  For example, I do not see why there
+%cannot be some edges of $G$ 'inside' a kite face.  Even if this is not
+%the case, I think it is more precise to say that a kite face has 'two
+%and a half edges' and two vertices of $G$ on its boundary' rather than
+%'three edges and two vertices of $G$ on its boundary'.}
+
+\note{DW}{This should be fixed if we define kite more precisely. A kite-face is bounded by one edge and two half-edges right?}
+
 \note{PM}{I agree that we should fix it and keep it.  Another reason: For vertex ranking, the bound is $O(\log n/\log^{(t)} n)$ where $t:=\tw(H)$, so this is an example where $\tw(H)$ affects more than just the constant.}
 
 Let $G$ be an edge-maximal $1$-plane multigraph with no two parallel edges on the boundary of a single face.  Here, edge-maximal should be taken to mean that, if any two vertices $v$ and $w$ appear on a common face\footnote{The \defin{faces} of an embedded graph $G$ are the connected components of $\R^2\setminus \bigcup_{vw\in E(G)} vw$.  We say that a vertex $v\in V(G)$ appears on a face $F$ if $v$ is contained in the closure of $F$.} $F$, then there is an edge $vw\in E(G)$ that is contained in the boundary of $F$.  (Refer to \cref{one_planar_example}(a,b).) We assume that no two edges incident to a common vertex of $G$ cross each other since, in a 1-plane graph, such a crossing can always be removed by a local modification to obtain an isomorphic 1-plane graph in which the two edges do not cross.\footnote{While this is true for 1-plane graphs it is not true for $k$-plane graphs with $k\ge 3$; the uncrossing operation can increase the number of crossings on a particular edge from $k$ to $2(k-1)$.}
@@ -654,11 +684,11 @@ Let $G$ be an edge-maximal $1$-plane multigraph with no two parallel edges on th
 \begin{figure}
   \begin{center}
     \begin{tabular}{c@{\hspace{1cm}}c}
-      \includegraphics{figs/one_planar_example-1} &
-      \includegraphics{figs/one_planar_example-2} \\
+%      \includegraphics{figs/one_planar_example-1} &
+%      \includegraphics{figs/one_planar_example-2} \\
       (a) & (b) \\[1em]
-      \includegraphics{figs/one_planar_example-3} &
-      \includegraphics{figs/one_planar_example-4} \\
+%      \includegraphics{figs/one_planar_example-3} &
+%      \includegraphics{figs/one_planar_example-4} \\
       (c) & (d) \\[1em]
     \end{tabular}
   \end{center}
