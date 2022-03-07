@@ -649,32 +649,37 @@ Every 1-planar graph is a subgraph of $H\boxtimes P\boxtimes K_{30}$ for some pl
 
 \note{PM}{I agree that we should fix it and keep it.  Another reason: For vertex ranking, the bound is $O(\log n/\log^{(t)} n)$ where $t:=\tw(H)$, so this is an example where $\tw(H)$ affects more than just the constant.}
 
-Let $G$ be an edge-maximal $1$-plane multigraph with no two parallel edges on the boundary of a single face.  Here, edge-maximal should be taken to mean that, if any two vertices $v$ and $w$ appear on a common face\footnote{The \defin{faces} of an embedded graph $G$ are the connected components of $\R^2\setminus \bigcup_{vw\in E(G)} vw$.  We say that a vertex $v\in V(G)$ appears on a face $F$ if $v$ is contained in the closure of $F$.} $F$, then there is an edge $vw\in E(G)$ that is contained in the boundary of $F$.  Refer to \cref{edge_maximal}. We assume that no two edges incident to a common vertex of $G$ cross each other since, in a 1-plane graph, such a crossing can always be removed by a local modification to obtain an isomorphic 1-plane graph in which the two edges do not cross.\footnote{While this is true for 1-plane graphs it is not true for $k$-plane graphs with $k\ge 3$; the uncrossing operation can increase the number of crossings on a particular edge from $k$ to $2(k-1)$.}
+Let $G$ be an edge-maximal $1$-plane multigraph with no two parallel edges on the boundary of a single face.  Here, edge-maximal should be taken to mean that, if any two vertices $v$ and $w$ appear on a common face\footnote{The \defin{faces} of an embedded graph $G$ are the connected components of $\R^2\setminus \bigcup_{vw\in E(G)} vw$.  We say that a vertex $v\in V(G)$ appears on a face $F$ if $v$ is contained in the closure of $F$.} $F$, then there is an edge $vw\in E(G)$ that is contained in the boundary of $F$.  (Refer to \cref{one_planar_example}(a,b).) We assume that no two edges incident to a common vertex of $G$ cross each other since, in a 1-plane graph, such a crossing can always be removed by a local modification to obtain an isomorphic 1-plane graph in which the two edges do not cross.\footnote{While this is true for 1-plane graphs it is not true for $k$-plane graphs with $k\ge 3$; the uncrossing operation can increase the number of crossings on a particular edge from $k$ to $2(k-1)$.}
 
 \begin{figure}
   \begin{center}
     \begin{tabular}{c@{\hspace{1cm}}c}
       \includegraphics{figs/one_planar_example-1} &
       \includegraphics{figs/one_planar_example-2} \\
-      (a) & (b)
+      (a) & (b) \\[1em]
+      \includegraphics{figs/one_planar_example-3} &
+      \includegraphics{figs/one_planar_example-4} \\
+      (c) & (d) \\[1em]
     \end{tabular}
   \end{center}
-  \caption{Examples of (a)~a $1$-plane graph that is not edge maximal; and (b)~an edge-maximal $1$-plane graph.}
+  \caption{Examples of (a)~a $1$-plane graph that is not edge maximal; (b)~an edge-maximal $1$-plane graph $G$; (c)~the kites in $G$; (d)~a plane multigraph $G'$ obtained by removing one spar from each kite of $G$.} 
+  \label{one_planar_example} 
+  \note{PM}{I suggest we only keep parts (c) and (d) of this figure.}
 \end{figure}
 
-To understand the structure of an edge maximal $1$-plane multigraph $G$, it is helpful to consider the plane graph $G_0$ obtained by replacing each pair of crossing edges $vw$ and $xy$ with four edges $vp$, $wp$, $xp$, and $yp$ meeting at a newly added \emph{dummy vertex} $p$. Let $F$ be a face of $G_0$ and let $W:=w_0,\ldots,w_r$ be the facial walk around $F$. By edge maximality, if $W$ contains only non-dummy vertices, then it contains exactly three vertices and $F$ is bounded by three edges of $G$. 
+To understand the structure of $G$, it is helpful to consider the plane graph $G_0$ obtained by replacing each pair of edges $vw$ and $xy$ involved in a crossing $(p,vw,xy)$ with four edges $vp$, $wp$, $xp$, and $yp$ meeting at a newly added \emph{dummy vertex} $p$. Let $F$ be a face of $G_0$ and let $W:=w_0,\ldots,w_r$ be the facial walk around $F$. By edge maximality, if $W$ contains only non-dummy vertices, then it contains exactly three vertices and $F$ is bounded by three edges of $G$. 
 
-Furthermore, for any edge $w_iw_{i+1}$ of $W$, at least one of $w_i$ or $w_{i+1}$ is not a dummy vertex since, otherwise this would imply that the edge of $G$ that contains $w_iw_{i+1}$ is involved in at least two crossings.  Therefore each dummy vertex $w_i$ of $W$ is surrounded by two vertices $w_{i-1},w_{i+1}\in V(G)$.  Since $w_i$ has degree $4$ in $G_0$, $w_{i-1}\neq w_i$.  Since $G$ is edge-maximal the edge $w_{i-1}w_i$ is an edge of $G$ on the boundary of $F$.  Therefore, if $F$ has a dummy vertex in its facial walk $W$, then $W=w_{i-1},w_i,w_{i+1}$ and $F$ is bounded by three edges of $G_0$, each of which is contained in a different edge of $G$.  
+If $W$ contains a dummy vertex $w_i$ then neither $w_{i-1}$ nor $w_{i+1}$ is a dummy vertex since if $w_{i-1}$ (respectively $w_{i+1}$) were a dummy vertex then the edge of $G$ that contains $w_{i-1}w_i$ (respectively $w_iw_{i+1}$) is involved in at least two crossings.  Therefore each dummy vertex $w_i$ of $W$ is surrounded by two vertices $w_{i-1},w_{i+1}\in V(G)$.  Since $w_i$ has degree $4$ in $G_0$, $w_{i-1}\neq w_i$.  Since $G$ is edge-maximal the edge $w_{i-1}w_i$ is an edge of $G$ on the boundary of $F$.  Therefore, if $F$ has a dummy vertex $w_i$ in its facial walk $W$, then $W=w_{i-1},w_i,w_{i+1}$ and $F$ is bounded by three edges of $G_0$, each of which is contained in a different edge of $G$.  
 
-Therefore, in such a graph each face of $G$ is one of two types:
+Therefore, each face of $G$ is one of two types:
 \begin{inparaenum}[(i)] 
-  \item bounded by three edges (none of which are crossed) or 
-  \item bounded by one edge that is not crossed plus portions of two edges that cross each other.
+  \item bounded by three edges of $G$ (none of which are crossed) or 
+  \item bounded by one edge of $G$ that is not crossed plus portions of two edges of $G$ that cross each other.
 \end{inparaenum}
-Consider some crossing $(p,vw,xy)$ in $G$.  The point $p$ at which this crossing occurs is a vertex of $G_0$ that has degree $4$.  There are four faces $F_1,\ldots,F_4$ of $G_0$ that contain $p$.  Each of these four faces of is of Type~(ii), so the boundary of $F_1\cup\cdots\cup F_4$ includes a $4$-cycle $C:=vxwy$ in $G$ whose edges are not involved in any crossings.  We call the subgraph $K:=C\cup\{vw,xy\}$ a \defin{kite} of $G$.  The edges $vw$ and $xy$ are called \defin{spars} of $K$.  The cycle $vxwy$ is called the \defin{sail} of $K$.  Thus any edge that is a spar of a kite $K$ is not part of a sail of any kite $K'$.
+Consider some crossing $(p,vw,xy)$ in $G$.  The point $p$ at which this crossing occurs is a vertex of $G_0$ that has degree $4$.  There are four faces $F_1,\ldots,F_4$ of $G_0$ that contain $p$.  Each of these four faces of is of Type~(ii), so the boundary of $F_1\cup\cdots\cup F_4$ includes a $4$-cycle $C:=vxwy$ in $G$ whose edges are not involved in any crossings.  We call the subgraph $K:=C\cup\{vw,xy\}$ a \defin{kite} of $G$. (See \cref{one_planar_example}(c).)  The edges $vw$ and $xy$ are called \defin{spars} of $K$.  The cycle $vxwy$ is called the \defin{sail} of $K$.  Thus any edge that is a spar of a kite $K$ is not part of a sail of any kite $K'$.
 
 
-\note{PM}{I've commented out a lot of red and blue here to make this readable.}
+\note{PM}{I've commented out a lot of red and blue here to make this readable. Those notes are still in the \LaTeX\ source.}
 % 
 % It follows from edge-maximality that none of the edges $vx$, $xw$, $wy$, or $yv$ are crossed by any other edges of $G$. 
 
@@ -710,7 +715,7 @@ Consider some crossing $(p,vw,xy)$ in $G$.  The point $p$ at which this crossing
 % 
 % \note{DW}{If we define kite as above, this is not a problem}
 
-By removing one spar from each kite of $G$ we obtain a plane multigraph $G'$ each of whose faces is bounded by three edges.  Observe that, for any spar $xy\in E(G)\setminus E(G')$ that crosses $vw\in E(G')$, $G'$ contains the path $vxw$ (and $vyw$).  It follows that $\dist_{G'}(v,w)\le 2$.
+Refer to \cref{one_planar_example}(d).  By removing one spar from each kite of $G$ we obtain a plane multigraph $G'$ each of whose faces is bounded by three edges.  Observe that, for any spar $xy\in E(G)\setminus E(G')$ that crosses $vw\in E(G')$, $G'$ contains the path $vxw$ (and $vyw$).  It follows that $\dist_{G'}(v,w)\le 2$.
 
 Our proof of \cref{1-planar} follows quickly from the following technical lemma, which is an extension of the analogous result for plane graphs \cite{DJMMUW20}.
 \begin{lem}
