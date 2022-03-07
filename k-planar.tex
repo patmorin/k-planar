@@ -649,8 +649,6 @@ Every 1-planar graph is a subgraph of $H\boxtimes P\boxtimes K_{30}$ for some pl
 
 \note{DW}{We can motivate \cref{1-planar} since the graph drawing community particularly cares about 1-planar graphs, since treewidth 3 is best possible, and since the planarity of $H$ is essential in the proof of \cref{1PlanarQueue}. Futher motivation comes from the open problem at the end of the paper. We need to argue this in the response and in the paper. The alternative is to remove \cref{sec-1-planar}? We could keep the statement of \cref{1-planar} in the paper and refer to the arXiv paper for the proof. What do you think? All this depends on whether we can fix the errors below. I vote to fix the errors, add more motivation for \cref{1-planar}, keep the theorem and the proof. }
 
-\note{PM}{I agree that we should fix it and keep it.  Another reason: For vertex ranking, the bound is $O(\log n/\log^{(t)} n)$ where $t:=\tw(H)$, so this is an example where $\tw(H)$ affects more than just the constant.}
-
 %Let $G$ be an edge-maximal 1-plane multigraph with no two parallel edges on the boundary of a single face.  Here, edge-maximal should be taken to mean that, if any two vertices $v$ and $w$ appear on a common face\footnote{The \defin{faces} of an embedded graph $G$ are the connected components of $\R^2\setminus \bigcup_{vw\in E(G)} vw$.  We say that a vertex $v\in V(G)$ appears on a face $F$ if $v$ is contained in the closure of $F$.} $F$, then there is an edge $vw\in E(G)$ that is contained in the boundary of $F$.  \note{DW}{Each face of $G$ is one of two types, either bounded by three edges (none of which are crossed), or bounded by one edge that is not crossed plus portions of two crossing edges. Right? If this is true, we should say it here, which would help to clear up the confusion below. Add a figure.} 
 %We assume that no two edges incident to a common vertex cross each other since, in a 1-plane graph, such a crossing can always be removed by a local modification to obtain an isomorphic 1-plane graph in which the two edges do not cross.\footnote{While this is true for 1-plane graphs it is not true for $k$-plane graphs with $k\ge 3$; the uncrossing operation can increase the number of crossings on a particular edge from $k$ to $2(k-1)$.}
 %
@@ -676,20 +674,21 @@ Every 1-planar graph is a subgraph of $H\boxtimes P\boxtimes K_{30}$ for some pl
 %the case, I think it is more precise to say that a kite face has 'two
 %and a half edges' and two vertices of $G$ on its boundary' rather than
 %'three edges and two vertices of $G$ on its boundary'.}
-%
-%\note{DW}{This should be fixed if we define kite more precisely. A kite-face is bounded by one edge and two half-edges right?}
 
+\note{DW}{This should be fixed if we define kite more precisely. A kite-face is bounded by one edge and two half-edges right?}
+
+\note{PM}{I agree that we should fix it and keep it.  Another reason: For vertex ranking, the bound is $O(\log n/\log^{(t)} n)$ where $t:=\tw(H)$, so this is an example where $\tw(H)$ affects more than just the constant.}
 
 Let $G$ be an edge-maximal $1$-plane multigraph with no two parallel edges on the boundary of a single face.  Here, edge-maximal should be taken to mean that, if any two vertices $v$ and $w$ appear on a common face\footnote{The \defin{faces} of an embedded graph $G$ are the connected components of $\R^2\setminus \bigcup_{vw\in E(G)} vw$.  We say that a vertex $v\in V(G)$ appears on a face $F$ if $v$ is contained in the closure of $F$.} $F$, then there is an edge $vw\in E(G)$ that is contained in the boundary of $F$.  (Refer to \cref{one_planar_example}(a,b).) We assume that no two edges incident to a common vertex of $G$ cross each other since, in a 1-plane graph, such a crossing can always be removed by a local modification to obtain an isomorphic 1-plane graph in which the two edges do not cross.\footnote{While this is true for 1-plane graphs it is not true for $k$-plane graphs with $k\ge 3$; the uncrossing operation can increase the number of crossings on a particular edge from $k$ to $2(k-1)$.}
 
 \begin{figure}
   \begin{center}
     \begin{tabular}{c@{\hspace{1cm}}c}
-      \includegraphics{figs/one_planar_example-1} &
-      \includegraphics{figs/one_planar_example-2} \\
+%      \includegraphics{figs/one_planar_example-1} &
+%      \includegraphics{figs/one_planar_example-2} \\
       (a) & (b) \\[1em]
-      \includegraphics{figs/one_planar_example-3} &
-      \includegraphics{figs/one_planar_example-4} \\
+%      \includegraphics{figs/one_planar_example-3} &
+%      \includegraphics{figs/one_planar_example-4} \\
       (c) & (d) \\[1em]
     \end{tabular}
   \end{center}
@@ -813,6 +812,17 @@ though, so the authors can ignore this request if they choose.}
 	We claim that, for each integer $i\ge 0$, $|V(\overline{Y}^+)\cap L_i|\le 15$.  First observe that, since $Q_1,Q_2,Q_3$ are each vertical paths in $T$,  $\overline{Y}$ contains at most three vertices of $L_i$, each incident on at most two edges of $\overline{Y}$.  Since $\dist_{G'}(v,w)\le 2$ for each $vw\in E(G)$, any vertex $x\in V(\overline{Y}^+)\setminus V(\overline{Y})\cap L_i$, is incident to an edge $xy\in E(G)$ that crosses one of the at most six edges in $\overline{Y}$ having an endpoint in $L_i$.  These at most six edges have at most 12 endpoints.  Therefore $|V(\overline{Y}^+)\setminus V(\overline{Y})\cap L_i|\le 6\times 2=12$, so $|V(\overline{Y}^+)\cap L_i|\le 12+3=15$.
 
 	Let $M$ and $M^+$ denote the subgraph of $G$ containing the edges and vertices of $\overline{Y}$, respectively $\overline{Y}^+$, and the edges and vertices of $F$. (See \cref{boring_figure}.)  By the choice of $\tau$, the vertices on the boundary of each inner face of $M$ are contained in $Y\cup P_a\cup P_b$ for some $a,b\in\{1,\ldots,k\}$.  In particular if $k=3$ then, for each inner face $F_i$ of $M$ there exists some $c\in\{1,2,3\}$ such that no vertex of $P_c$ is on the boundary of $F_i$.
+  
+  \begin{figure}
+    \begin{center}
+      \begin{tabular}{c@{\hspace{1cm}}c}
+        \includegraphics{figs/mmplus-1} & \includegraphics{figs/mmplus-2} \\
+        $M$ & $M^+$
+      \end{tabular}
+    \end{center}
+    \caption{The graphs $M$ and $M^+$.}
+    \label{boring_figure}
+  \end{figure}
   
   The graph $M^+$ has some number of inner faces, all contained in the interior of $F$. Some of the inner faces of $M^+$ are Type~(ii) faces. Let $F_1,\ldots,F_m$ be the Type~(i) inner faces of $M^+$.
 
