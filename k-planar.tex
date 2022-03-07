@@ -795,28 +795,29 @@ though, so the authors can ignore this request if they choose.}
    % Rather than duplicate every detail of that proof here, we focus on the differences and refer the reader to the original proof for the remaining details.
   In particular, the reader should keep in mind that $G$ and $G'$ are multigraphs and that the cycle $F$ may consist of two vertices and two (parallel) edges. 	
   
-  The proof is by induction on the number of inner vertices of $N$, i.e., on $|V(N)\setminus V(F)|$.  If $N$ has no inner vertices, then we can simply take $\mathcal{P}:=\{P_1,\ldots,P_k\}$ and verify the preconditions of the lemma (the setup) ensure that $\mathcal{P}$ satisfies the requirements of the lemma.  Therefore, we may assume that $N$ has at least one inner vertex.
+  The proof is by induction on the number of inner vertices of $N$, i.e., on $|V(N)\setminus V(F)|$.  If $N$ has no inner vertices, then we can simply take $\mathcal{P}:=\{P_1,\ldots,P_k\}$ and verify the preconditions of the lemma (the `setup') ensure that $\mathcal{P}$ satisfies the requirements of the lemma.  Therefore, we may assume that $N$ has at least one inner vertex.
   
-	First note that every inner face of $N'$ is bounded by three edges of $G'$. 
   Assign each vertex $v$ of $N'$ a colour $\alpha(v)\in\{1,2,3\}$ as follows: 
   Let $w$ be the first vertex of $F$ encountered on the path in $T$ from $v$ to the root of $T$.  (This implies that $w=v$ for $v\in V(F)$.)  Since $w\in V(F)$, $w\in P_i$ for some $i\in\{1,2,3\}$ and we define $\alpha(v):=i$.
   
-  If $k<3$ then let $\tau:=v_1v_2v_3$ be any inner face of $N'$.  Otherwise, $k=3$, in which case we apply Sperner's Lemma implies to obtain an inner face $\tau:=v_1v_2v_3$ such that $\alpha(v_i)=i$ for each $i\in\{1,2,3\}$.  
+  If $k<3$ then let $\tau:=v_1v_2v_3$ be any inner face of $N'$.  Otherwise, $k=3$, in which case we apply Sperner's Lemma to obtain an inner face $\tau:=v_1v_2v_3$ such that $\alpha(v_i)=i$ for each $i\in\{1,2,3\}$.  
   For each $i\in\{1,2,3\}$, let $Q_i$ be the shortest path, in $T$, from $v_i$ to $V(F)$.
    % 
    % 
    % If $k=3$, set $R_i := P_i$ for each $i\in\{1,2,3\}$.  Otherwise, as in \citep{DJMMUW20}, split $P_1,\ldots,P_k$ to partition $V(F)$ into three sets $R_1$, $R_2$, and $R_3$ such that each $F[R_i]$ is a non-empty path and each $R_i$ contains vertices from exactly one of $P_1,\ldots,P_k$.
   % 
 	% Next, as in \citep{DJMMUW20}, use Sperner's Lemma to find an inner face $\tau=v_1v_2v_3$ of $N'$ such that, $T$ contains disjoint vertical paths $Q_1,Q_2,Q_3$ such that each $Q_i$ begins at $v_i$, ends at some vertex in $R_i$, and whose internal vertices (if any) are contained in $N'-V(F)$.
-	Let $\overline{Y}$ denote the subgraph of $N'$ consisting of vertices and edges of $Q_1$, $Q_2$, $Q_3$, and $\tau$.  Let $\overline{Y}^+$ denote the subgraph of $N$ consisting of the vertices and edges of $\overline{Y}$ plus the vertices and edges of every kite formed by a crossing between an edge of $G$ and an edge of $\overline{Y}$.
+	Let $\overline{Y}$ denote the subgraph of $N'$ consisting of vertices and edges of $Q_1$, $Q_2$, $Q_3$, and $\tau$.  Let $\overline{Y}^+$ denote the subgraph of $N$ consisting of the vertices and edges of $\overline{Y}$ plus the vertices and edges of every kite formed by a crossing between an edge of $G$ and an edge of $\overline{Y}$.  Let $Y:= V(\overline{Y}-F)$ and let $Y^+:=V(\overline{Y}^+-F)$.
 
 	We claim that, for each integer $i\ge 0$, $|V(\overline{Y}^+)\cap L_i|\le 15$.  First observe that, since $Q_1,Q_2,Q_3$ are each vertical paths in $T$,  $\overline{Y}$ contains at most three vertices of $L_i$, each incident on at most two edges of $\overline{Y}$.  Since $\dist_{G'}(v,w)\le 2$ for each $vw\in E(G)$, any vertex $x\in V(\overline{Y}^+)\setminus V(\overline{Y})\cap L_i$, is incident to an edge $xy\in E(G)$ that crosses one of the at most six edges in $\overline{Y}$ having an endpoint in $L_i$.  These at most six edges have at most 12 endpoints.  Therefore $|V(\overline{Y}^+)\setminus V(\overline{Y})\cap L_i|\le 6\times 2=12$, so $|V(\overline{Y}^+)\cap L_i|\le 12+3=15$.
 
-	Let $M$ and $M^+$ denote the subgraph of $G$ containing the edges and vertices of $\overline{Y}$, respectively $\overline{Y}^+$, and the edges and vertices of $F$.  The graph $M^+$ has some number of bounded faces, all contained in the interior of $F$. Some of the bounded faces of $M^+$ are kite faces. Let $F_1,\ldots,F_m$ be the non-kite bounded faces of $M^+$.
+	Let $M$ and $M^+$ denote the subgraph of $G$ containing the edges and vertices of $\overline{Y}$, respectively $\overline{Y}^+$, and the edges and vertices of $F$.  By the choice of $\tau$, the vertices on the boundary of each inner face of $M$ are contained in $Y\cup P_a\cup P_b$ for some $a,b\in\{1,\ldots,k\}$.  In particular if $k=3$ then, for each inner face $f$ of $M$ there exists some $c\in\{1,2,3\}$ such that no vertex of $P_c$ is on the boundary of $f$.
+  
+  The graph $M^+$ has some number of inner faces, all contained in the interior of $F$. Some of the inner faces of $M^+$ are Type~(ii) faces. Let $F_1,\ldots,F_m$ be the Type~(i) inner faces of $M^+$.
 
-	We claim that, for each $i\in\{1,\ldots,m\}$, the boundary of $F_i$ is a cycle in $G'$ that contains no spars. Otherwise, some edge $vw$ contributes to the boundary of $F_i$ but is crossed by an edge $xy\in E(G)$. Then, $vw\not\in E(F)$ since no edge of $F$ is crossed by any edge of $G$. Therefore $vw\in E(\overline{Y}^+)$ so $xy\in E(Y^+)$. But then the only faces of $M^+$ incident to $vw$ are kite faces.  In particular $vw$ cannot be incident to the non-kite face $F_i$.
+	We claim that, for each $i\in\{1,\ldots,m\}$, the boundary of $F_i$ is a cycle in $G'$ that contains no spars. Otherwise, some edge $vw$ contributes to the boundary of $F_i$ but is crossed by an edge $xy\in E(G)$. Then, $vw\not\in E(F)$ since no edge of $F$ is crossed by any edge of $G$. Therefore $vw\in E(\overline{Y}^+)$ so $xy\in E(Y^+)$. But then the only faces of $M^+$ incident to $vw$ are Type~(ii) faces.  In particular $vw$ cannot be incident to the Type~(i) face $F_i$.
 
-	Observe that each of the faces $F_1,\ldots,F_m$ is contained in a single internal face of $M$.   Let $Y^+ := \overline{Y}^+-F$. Therefore, $V(F_i)$ can be partitioned into at most three sets $P_1'$, $P_2'$, and $P_3'$ where $P_1'\subset V(Y^+)$, $P_2'\subseteq P_a$, $P_3'\subseteq P_b$ for some $a,b\in\{1,2,3\}$, and $F_i[P_j']$ is a path, for each $j\in\{1,2,3\}$.
+	Observe that each of the faces $F_1,\ldots,F_m$ is contained in a single inner face of $M$.   Let $Y^+ := \overline{Y}^+-F$. Therefore, $V(F_i)$ can be partitioned into at most three sets $P_1'$, $P_2'$, and $P_3'$ where $P_1'\subset V(Y^+)$, $P_2'\subseteq P_a$, $P_3'\subseteq P_b$ for some $a,b\in\{1,2,3\}$, and $F_i[P_j']$ is a path, for each $j\in\{1,2,3\}$.
 
 	Finally, the subgraph $N_i$ of $G$ consisting of the edges and vertices of $G$ contained in $F_i$ or its interior does not contain one of the three vertices of $\tau$. Therefore, we can apply induction using the cycle $F_i$ and the partition $P_1',P_2',P_3'$ of $V(C_i)$ to obtain the desired $H$-partition and tree decomposition of $N_i$.
 
