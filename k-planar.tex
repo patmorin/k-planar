@@ -21,6 +21,7 @@
 \usepackage[longnamesfirst,numbers,sort&compress]{natbib}
 \usepackage[noabbrev,capitalise]{cleveref}
 
+
 %\usepackage{doi} % To make plainnat handle doi's properly
 
 % \usepackage[mathlines]{lineno}
@@ -93,7 +94,7 @@
 \newcommand{\ylabel}[1]{\label{y:#1}}
 \newcommand{\yref}[1]{(Y\ref{y:#1})}
 
-\newcommand{\PP}{\mathcal{P}}
+% \newcommand{\PP}{\mathcal{P}}
 \renewcommand{\SS}{\mathcal{S}}
 
 \renewcommand{\ge}{\geqslant}
@@ -161,23 +162,23 @@ and treewidth\footnote{For a tree $T$, a \defin{$T$-decomposition} of a graph $G
 
 \noindent\cref{PlanarProduct} has been the key tool in solving the following well-known open problems:
 \begin{compactitem}
-\item \citet{DJMMUW20} use it to prove that planar graphs have bounded queue-number (resolving a conjecture of \citet{HLR92} from 1992).
-\item  \citet{dujmovic.esperet.ea:planar} use it to prove that planar graphs have bounded non-repetitive chromatic number (resolving a conjecture of \citet{AGHR-RSA02} from 2002).
+\item \citet{DJMMUW20} use it to prove that planar graphs have bounded queue-number (resolving a conjecture of \citet{HLR92}).
+\item  \citet{dujmovic.esperet.ea:planar} use it to prove that planar graphs have bounded non-repetitive chromatic number (resolving a conjecture of \citet{AGHR-RSA02}).
 \item \citet{DFMS21} use it to make dramatic improvements to the best known bounds for $p$-centered colourings of planar graphs.
-\item \citet{bonamy.gavoille.ea:shorter} use it to find shorter adjacency labellings of planar graphs (improving on a sequence of results going back to 1988~\citep{kannan.naor.ea:implicit-stoc,kannan.naor.ea:implicit}), and \citet{DEJGMM21} have since used it to find asymptotically optimal adjacency labellings of planar graphs.
+\item \citet{bonamy.gavoille.ea:shorter} use it to find shorter adjacency labellings of planar graphs (improving on a sequence of results starting with the work of \citet{kannan.naor.ea:implicit-stoc,kannan.naor.ea:implicit}). \citet{DEJGMM21} have since used it to find asymptotically optimal adjacency labellings of planar graphs.
 \item The result of \citet{DEJGMM21} implies that, for every integer
 $n>0$, there is a `induced-universal' graph $U_n$ with $n^{1+o(1)}$ vertices such that every $n$-vertex planar graph is an induced
 subgraph of $U_n$. This has recently been extended by \citet{EJM}, who show the existence of a `subgraph-universal' graph with $(1+\epsilon)n$ vertices that contains every $n$-vertex planar graph as a subgraph as well as the existence of an `induced universal' graph with $n^{1+o(1)}$ vertices \emph{and} edges.  The former result is the first progress on subgraph-universal graphs for planar graphs since the $O(n^{3/2})$-vertex construction of \citet{babai.chung.ea:on}.
 % aking the first progress on this problem since the work of \citet{babai.xx} in 1984.
 \end{compactitem}
 
-\note{DW}{Delete `from 1992' and  `from 2007'? replace ``going back to 1988~\citep{kannan.naor.ea:implicit-stoc,kannan.naor.ea:implicit}'' by
-	``starting with the work of \citet{kannan.naor.ea:implicit}''}
-\note{PM}{Was this a referee request, or just because we don't need to sell it anymore?  I'm fine with the change either way, but didn't implement it.}
+% \note{DW}{Delete `from 1992' and  `from 2007'? replace ``going back to 1988~\citep{kannan.naor.ea:implicit-stoc,kannan.naor.ea:implicit}'' by
+	% ``starting with the work of \citet{kannan.naor.ea:implicit}''}
+% \note{PM}{Was this a referee request, or just because we don't need to sell it anymore?  I'm fine with the change either way, but didn't implement it.}
 
 % \note{DW}{Add \citep{EJM} to the story.}
 
-All of these results hold for any graph class that has a product structure theorem analogous to \cref{PlanarProduct}; that is, for any graph class  $\mathcal{G}$ where every graph in $\mathcal{G}$ is a subgraph of $H\boxtimes P\boxtimes K_\ell$ where $H$ has bounded treewidth, $P$ is a path, and $\ell$ is bounded\footnote{It is easily seen that $\tw(H\boxtimes K_\ell) \leq (\tw(H)+1)\ell-1$, so we may assume that $\ell=1$ in this definition.}. These applications motivate finding product structure theorems for other graph classes. \citet{DJMMUW20} prove product structure theorems for graphs of bounded Euler genus\footnote{The \textit{Euler genus} of the orientable surface with $h$ handles is $2h$. The \textit{Euler genus} of the non-orientable surface with $c$ cross-caps is $c$. The \textit{Euler genus} of a graph $G$ is the minimum integer $g$ such that $G$ embeds in a surface of Euler genus $g$. Of course, a graph is planar if and only if it has Euler genus 0; see \citep{mohar.thomassen:graphs} for more about graph embeddings in surfaces.} and for apex-minor-free graphs\footnote{A graph $M$ is a \textit{minor} of a graph $G$ if a graph isomorphic to $M$ can be obtained from a subgraph of $G$ by contracting edges. A class $\mathcal{G}$ of graphs is \defin{minor-closed} if for every graph $G\in\mathcal{G}$, every minor of $G$ is in $\mathcal{G}$. A minor-closed class is \defin{proper} if it is not the class of all graphs. For example, for fixed $g\geq 0$, the class of graphs with Euler genus at most $g$ is a proper minor-closed class. A graph $G$ is $t$-apex if it contains a set $A$ of at most $t$ vertices such that $G-A$ is planar. A 1-apex graph is \defin{apex}.  A minor-closed class $\mathcal{G}$ is apex-minor-free if some apex graph is not in $\mathcal{G}$.}, and \citet{DEMWW22} do so for graphs in any minor-closed class and with bounded maximum degree. See \cref{Generalisations} for more precise statements and see \citep{DHJLW21} for a survey on this topic.
+All of these results hold for any graph class that has a product structure theorem analogous to \cref{PlanarProduct}; that is, for any graph class  $\mathcal{G}$ where every graph in $\mathcal{G}$ is contained in $H\boxtimes P\boxtimes K_\ell$ where $H$ has bounded treewidth, $P$ is a path, and $\ell$ is bounded.\footnote{It is easily seen that $\tw(H\boxtimes K_\ell) \leq (\tw(H)+1)\ell-1$, so we may assume that $\ell=1$ in this definition.} These applications motivate finding product structure theorems for other graph classes. \citet{DJMMUW20} prove product structure theorems for graphs of bounded Euler genus\footnote{The \textit{Euler genus} of the orientable surface with $h$ handles is $2h$. The \textit{Euler genus} of the non-orientable surface with $c$ cross-caps is $c$. The \textit{Euler genus} of a graph $G$ is the minimum integer $g$ such that $G$ embeds in a surface of Euler genus $g$. Of course, a graph is planar if and only if it has Euler genus 0; see \citep{mohar.thomassen:graphs} for more about graph embeddings in surfaces.} and for apex-minor-free graphs\footnote{A graph $M$ is a \textit{minor} of a graph $G$ if a graph isomorphic to $M$ can be obtained from a subgraph of $G$ by contracting edges. A class $\mathcal{G}$ of graphs is \defin{minor-closed} if for every graph $G\in\mathcal{G}$, every minor of $G$ is in $\mathcal{G}$. A minor-closed class is \defin{proper} if it is not the class of all graphs. For example, for fixed $g\geq 0$, the class of graphs with Euler genus at most $g$ is a proper minor-closed class. A graph $G$ is $t$-apex if it contains a set $A$ of at most $t$ vertices such that $G-A$ is planar. A 1-apex graph is \defin{apex}.  A minor-closed class $\mathcal{G}$ is apex-minor-free if some apex graph is not in $\mathcal{G}$.}, and \citet{DEMWW22} do so for graphs in any minor-closed class and with bounded maximum degree. See \cref{Generalisations} for more precise statements and see \citep{DHJLW21} for a survey on this topic.
 
 The main purpose of this paper is to prove product structure theorems for several non-minor-closed classes of interest. Our results are the first of this type for non-minor-closed classes.
 
@@ -196,26 +197,26 @@ This theorem has applications in diverse areas, including queue layouts  \citep{
 (except for the fact that the apex assumption is necessary) is repetition
 of things discussed earlier on in the introduction.}
 
-\note{PM}{Kind of, but I suggest we keep that paragraph and section anyway. Justification: They're both short and they describe the exact bounds for bounded genus graphs, which you don't get from the one-paragraph description in Section~1.0.  A}
+\note{PM}{Kind of, but I suggest we keep that paragraph and section anyway. Justification: They're both short and they describe the exact bounds for bounded genus graphs, which you don't get from the one-paragraph description in Section~1.0.}
 
 \subsection{Shortcut Systems}
 
-Although $k$-planar graphs are the most high-profile target for a generalization of \cref{PlanarProduct}, we actually prove a substantially stronger result than \cref{kPlanarProduct} using the following definition. A non-empty set $\mathcal{P}$ of non-trivial paths in a graph $G$ is a \defin{$(k,d)$-shortcut system} (for $G$) if:
+Although $k$-planar graphs are the most high-profile target for a generalization of \cref{PlanarProduct}, we actually prove a substantially stronger result than \cref{kPlanarProduct} using the following definition. A non-empty set $\SS$ of non-trivial paths in a graph $G$ is a \defin{$(k,d)$-shortcut system} (for $G$) if:
 
 \begin{compactitem}
-\item every path in $\mathcal{P}$ has length at most $k$,\footnote{A path of length $k$ consists of $k$ edges and $k+1$ vertices.  A path is \defin{trivial} if it has length 0 and \defin{non-trivial} otherwise.} and
-\item for every $v\in V(G)$, the number of paths in $\mathcal{P}$ that use $v$ as an internal vertex is at most $d$.
+\item every path in $\SS$ has length at most $k$,\footnote{A path of length $k$ consists of $k$ edges and $k+1$ vertices.  A path is \defin{trivial} if it has length 0 and \defin{non-trivial} otherwise.} and
+\item for every $v\in V(G)$, the number of paths in $\SS$ that use $v$ as an internal vertex is at most $d$.
 \end{compactitem}
-Each path $P\in\mathcal{P}$ is called a \defin{shortcut}; if $P$ has endpoints $v$ and $w$ then it is a \defin{$vw$-shortcut}. Given a graph $G$ and a $(k,d)$-shortcut system $\mathcal{P}$ for $G$, let $G^{\mathcal{P}}$ denote the supergraph of $G$ obtained by adding the edge $vw$ for each $vw$-shortcut in $\mathcal{P}$.
+Each path $P\in\SS$ is called a \defin{shortcut}; if $P$ has endpoints $v$ and $w$ then it is a \defin{$vw$-shortcut}. Given a graph $G$ and a $(k,d)$-shortcut system $\SS$ for $G$, let $G^{\SS}$ denote the supergraph of $G$ obtained by adding the edge $vw$ for each $vw$-shortcut in $\SS$.
 
 This definition is related to $k$-planarity because of the following observation:
 
 \begin{obs}
 \label{AddDummy}
-Every $k$-planar graph is a subgraph of $G^\PP$ for some planar graph $G$ and some $(k+1,2)$-shortcut system $\PP$ for $G$.
+Every $k$-planar graph is a subgraph of $G^\SS$ for some planar graph $G$ and some $(k+1,2)$-shortcut system $\SS$ for $G$.
 \end{obs}
 
-The proof of \cref{AddDummy} is trivial: Given a $k$-plane embedding of a graph $G'$, create a planar graph $G$ by adding a dummy vertex at each crossing point. For each edge $vw\in E(G')$ there is a path $P$ in $G$ between $v$ and $w$ of length at most $k+1$ in which every internal vertex is a dummy vertex. Let $\PP$ be the set of such paths $P$. For each vertex $v$ of $G$, at most two paths in $\PP$ use $v$ as an internal vertex (since no original vertex of $G'$ is an internal vertex of a path in $\PP$). Thus $\PP$ is a $(k+1,2)$-shortcut system for $G$, such that $G'\subseteq G^\PP$. This idea can be pushed further to obtain a rough characterisation of $k$-planar graphs, which is interesting in its own right, and is useful for showing that various classes of graphs are $k$-planar (see \cref{Characterisation}).
+The proof of \cref{AddDummy} is trivial: Given a $k$-plane embedding of a graph $G'$, create a planar graph $G$ by adding a dummy vertex at each crossing point. For each edge $vw\in E(G')$ there is a path $P$ in $G$ between $v$ and $w$ of length at most $k+1$ in which every internal vertex is a dummy vertex. Let $\SS$ be the set of such paths $P$. For each vertex $v$ of $G$, at most two paths in $\SS$ use $v$ as an internal vertex (since no original vertex of $G'$ is an internal vertex of a path in $\SS$). Thus $\SS$ is a $(k+1,2)$-shortcut system for $G$, such that $G'\subseteq G^\SS$. This idea can be pushed further to obtain a rough characterisation of $k$-planar graphs, which is interesting in its own right, and is useful for showing that various classes of graphs are $k$-planar (see \cref{Characterisation}).
 
 
 The following theorem is the main contribution of the paper. It says that if a graph class $\mathcal{G}$ has a product structure theorem, then the class of graphs obtained by applying a shortcut system to graphs in $\mathcal{G}$ also has a product structure theorem.
@@ -223,7 +224,7 @@ The following theorem is the main contribution of the paper. It says that if a g
 \begin{thm}
 \label{ShortcutProduct}
 Let $G$ be a subgraph of $H\boxtimes P \boxtimes K_\ell$, for some graph $H$ of treewidth at most $t$ and for some path $P$.
-Let $\PP$ be a $(k,d)$-shortcut system for $G$. Then $G^\PP$ is a subgraph of $J\boxtimes P\boxtimes K_{d\ell(k^3+3k)}$ for some graph $J$ of treewidth at most $\binom{k+t}{t}-1$ and some path $P$.
+Let $\SS$ be a $(k,d)$-shortcut system for $G$. Then $G^\SS$ is a subgraph of $J\boxtimes P\boxtimes K_{d\ell(k^3+3k)}$ for some graph $J$ of treewidth at most $\binom{k+t}{t}-1$ and some path $P$.
 \end{thm}
 
 \referee{2}{Page 3. $P$ is used twice in the statement of Theorem 3.  It is probably
@@ -231,11 +232,11 @@ safer (and necessary?) to use a different variable for the second
 occurrence.}
 
 \note{DW}{Use $\SS$ for shortcut system, okay?}
-\note{PM}{Ok.}
+\note{PM}{Ok.  I've implemented this change.  I was careful, but will still reread.}
 
 Theorems~\ref{PlanarProduct}(b) and \ref{ShortcutProduct} and \cref{AddDummy} imply \cref{kPlanarProduct} with $K_{6(k^3+3k)}$ instead of $K_{18k^2+48k+30}$. Some further observations presented in \cref{sec-k-planar} lead to the improved result.
 
-\cref{ShortcutProduct} is applicable for many graph classes in addition to $k$-planar graphs. Here is one example. The \defin{$k$-th power} of a graph $G$ is the graph $G^k$ with vertex set $V(G^k):=V(G)$, where $vw\in E(G^k)$ if and only if $\dist_G(v,w)\leq k$.\footnote{For a graph $G$ and two vertices $v,w\in V(G)$, $\dist_G(v,w)$  denotes the length of a shortest path, in $G$, with endpoints $v$ and $w$.  We define $\dist_G(v,w):=\infty$ if $v$ and $w$ are in different connected components of $G$.} If $G$ has maximum degree $\Delta$, then $G^k = G^\PP$ for some $(k,2k\Delta^{k})$-shortcut system $\PP$; see \cref{PowerShortcut}. Theorems~\ref{PlanarProduct}(b) and \ref{ShortcutProduct} then imply:
+\cref{ShortcutProduct} is applicable for many graph classes in addition to $k$-planar graphs. Here is one example. The \defin{$k$-th power} of a graph $G$ is the graph $G^k$ with vertex set $V(G^k):=V(G)$, where $vw\in E(G^k)$ if and only if $\dist_G(v,w)\leq k$.\footnote{For a graph $G$ and two vertices $v,w\in V(G)$, $\dist_G(v,w)$  denotes the length of a shortest path, in $G$, with endpoints $v$ and $w$.  We define $\dist_G(v,w):=\infty$ if $v$ and $w$ are in different connected components of $G$.} If $G$ has maximum degree $\Delta$, then $G^k = G^\SS$ for some $(k,2k\Delta^{k})$-shortcut system $\SS$; see \cref{PowerShortcut}. Theorems~\ref{PlanarProduct}(b) and \ref{ShortcutProduct} then imply:
 
 \begin{thm}
 \label{kPowerBasic}
@@ -278,15 +279,15 @@ The assumption that $X$ is apex is needed in \cref{ApexMinorFree}, since if the 
 %The next three results are immediate corollaries of \cref{GenusProduct,ApexMinorFree,ShortcutProduct,MinorFreeDegree}.
 %
 %\begin{thm}
-%Let $\PP$ be a $(k,d)$-shortcut system for a graph $G$ of Euler genus $g$. Then $G^\PP$ is a subgraph of $H\boxtimes P$ for some graph $H$ of treewidth at most $d(k^3+3k)\binom{k+2g+8}{2g+8}-1$ and for some path $P$.
+%Let $\SS$ be a $(k,d)$-shortcut system for a graph $G$ of Euler genus $g$. Then $G^\SS$ is a subgraph of $H\boxtimes P$ for some graph $H$ of treewidth at most $d(k^3+3k)\binom{k+2g+8}{2g+8}-1$ and for some path $P$.
 %\end{thm}
 %
 %\begin{thm}
-%For every apex graph $X$ and for all integers $k,d\geq 1$, there is an integer $c$ such that for every $X$-minor-free graph $G$ and for every $(k,d)$-shortcut system $\PP$ for $G$, $G^\PP\subseteq H\boxtimes P$ for some graph $H$ with $\tw(H)\leq c$ and for some path $P$.
+%For every apex graph $X$ and for all integers $k,d\geq 1$, there is an integer $c$ such that for every $X$-minor-free graph $G$ and for every $(k,d)$-shortcut system $\SS$ for $G$, $G^\SS\subseteq H\boxtimes P$ for some graph $H$ with $\tw(H)\leq c$ and for some path $P$.
 %\end{thm}
 %
 %\begin{thm}
-%For every graph $X$ and for all integers $k,\Delta\geq 1$, there is an integer $c$ such that for every $X$-minor-free graph $G$ with maximum degree $\Delta$ and for every $(k,\Delta)$-shortcut system $\PP$ for $G$, $G^\PP \subseteq H \boxtimes P$ for some graph $H$ with $\tw(H)\leq c$ and for some path $P$.
+%For every graph $X$ and for all integers $k,\Delta\geq 1$, there is an integer $c$ such that for every $X$-minor-free graph $G$ with maximum degree $\Delta$ and for every $(k,\Delta)$-shortcut system $\SS$ for $G$, $G^\SS \subseteq H \boxtimes P$ for some graph $H$ with $\tw(H)\leq c$ and for some path $P$.
 %\end{thm}
 %
 %\note{DW}{delete the above three theorems, they are never used}
@@ -323,11 +324,11 @@ such that $\tw(H)\leq 8$ and $G[P]$ is a shortest path in $G$ for each $P\in\mat
 
 Indeed, the above-mentioned result of \citet{DJMMUW20} is a slight strengthening of \cref{ps}, where for each $P\in\mathcal{P}$ no two vertices of $P$ have the same distance to some fixed root vertex $r$.
 
-The following result is the main technical contribution of the paper. Loosely speaking, it shows that if a graph $G$ admits bounded layered partitions, then so too does $G^\PP$ for every shortcut system $\PP$ of $G$.
+The following result is the main technical contribution of the paper. Loosely speaking, it shows that if a graph $G$ admits bounded layered partitions, then so too does $G^\SS$ for every shortcut system $\SS$ of $G$.
 
 \begin{restatable}{thm}{mmg}
 	\label{ShortcutPartition}
-	Let $G$ be a graph having an $H$-partition of layered width $\ell$ in which $H$ has treewidth at most $t$ and let $\PP$ be a $(k,d)$-shortcut system for $G$.  Then $G^\PP$ has a $J$-partition of layered width at most $d\ell(k^3+3k)$ for some graph $J$ of treewidth at most $\binom{k+t}{t}-1$.
+	Let $G$ be a graph having an $H$-partition of layered width $\ell$ in which $H$ has treewidth at most $t$ and let $\SS$ be a $(k,d)$-shortcut system for $G$.  Then $G^\SS$ has a $J$-partition of layered width at most $d\ell(k^3+3k)$ for some graph $J$ of treewidth at most $\binom{k+t}{t}-1$.
 \end{restatable}
 
 Note that \cref{ShortcutPartition} is equivalent to \cref{ShortcutProduct} by \cref{PartitionProduct}.
@@ -338,9 +339,9 @@ Note that \cref{ShortcutPartition} is equivalent to \cref{ShortcutProduct} by \c
 \section{Shortcut Systems}
 \label{Structure}
 
-The purpose of this section is to prove our main technical result, \cref{ShortcutPartition}. This theorem shows how, given a $(k,d)$-shortcut system $\mathcal{P}$ of a graph $G$, a $H$-partition of $G$ can be used to obtain a $J$-partition of $G^{\mathcal{P}}$ where the layered width  does not increase dramatically and the treewidth of $J$ is not much more than the treewidth of $H$.
+The purpose of this section is to prove our main technical result, \cref{ShortcutPartition}. This theorem shows how, given a $(k,d)$-shortcut system $\SS$ of a graph $G$, a $H$-partition of $G$ can be used to obtain a $J$-partition of $G^{\SS}$ where the layered width  does not increase dramatically and the treewidth of $J$ is not much more than the treewidth of $H$.
 
-For convenience, it will be helpful to assume that $\mathcal{P}$ contains a length-1 $vw$-shortcut for every edge $vw\in E(G)$.  Since $G^\PP$ is defined to be a supergraph of $G$, this assumption has no effect on $G^{\mathcal{P}}$ but eliminates special cases in some of our proofs.
+For convenience, it will be helpful to assume that $\SS$ contains a length-1 $vw$-shortcut for every edge $vw\in E(G)$.  Since $G^\SS$ is defined to be a supergraph of $G$, this assumption has no effect on $G^{\SS}$ but eliminates special cases in some of our proofs.
 
 Consider a tree $T$ rooted at some node $x_0\in V(T)$. Each subtree $T'$ of $T$ is considered to be rooted at the node in $T'$ closest to $x_0$. A node $a\in V(T)$ is a \defin{$T$-ancestor} of $x\in V(T)$ (and $x$ is a \defin{$T$-descendant} of $a$) if $a$ is a vertex of the path, in $T$, from $x_0$ to $x$.  Note that each node $x\in V(T)$ is a $T$-ancestor and $T$-descendant of itself.  We say that a $T$-ancestor $a\in V(T)$ of $x\in V(T)$ is a \defin{strict} $T$-ancestor of $x$ if $a\neq x$.
 The \defin{$T$-depth} of a node $x\in V(T)$ is the length of the path, in $T$, from $x_0$ to $x$.  For each node $x\in V(T)$, define
@@ -442,7 +443,7 @@ We are now ready to prove our main result, which we restate here for convenience
 \begin{proof}
 Apply \cref{generalized-tripod} to $G$ and let $\mathcal{L}$, $\mathcal{Y}$, $\mathcal{T}$, $T$, $Y_x$, $V_x$, $F_x$, and $N_x$ be defined as in \cref{generalized-tripod}, where the partition $\mathcal{Y}$ has width $\ell$ with respect to the layering $\mathcal{L}$.
 
-For a node $x\in V(T)$, we say that a shortcut $P\in\mathcal{P}$ \defin{crosses} $x$ if $Y_x$ contains an internal vertex of $P$, that is, $P=(v_0,\ldots,v_r)$ and $\{v_1,\ldots,v_{r-1}\}\cap Y_x\neq\emptyset$.  We say that a vertex $v\in V(G)$ \defin{participates} in $x$ if $v\in Y_x$, or $\mathcal{P}$ contains a shortcut $P$ with $v\in V(P)$ and $P$ crosses $x$. We let $X_v$ denote the set of nodes $x\in V(T)$ such that $v$ participates in $x$.
+For a node $x\in V(T)$, we say that a shortcut $P\in\SS$ \defin{crosses} $x$ if $Y_x$ contains an internal vertex of $P$, that is, $P=(v_0,\ldots,v_r)$ and $\{v_1,\ldots,v_{r-1}\}\cap Y_x\neq\emptyset$.  We say that a vertex $v\in V(G)$ \defin{participates} in $x$ if $v\in Y_x$, or $\SS$ contains a shortcut $P$ with $v\in V(P)$ and $P$ crosses $x$. We let $X_v$ denote the set of nodes $x\in V(T)$ such that $v$ participates in $x$.
 
 \begin{clm}\label{x-v-ancestor}
   For any $v\in V(G)$ there exists a (unique) node $a(v)\in X_v$ such that
@@ -450,34 +451,34 @@ For a node $x\in V(T)$, we say that a shortcut $P\in\mathcal{P}$ \defin{crosses}
 \end{clm}
 
 \begin{proof}
-  Let $Z := \{v\} \cup \{\{v_1,\ldots,v_{r-1}\}:(v_0,\ldots,v_r)\in\mathcal{P}, v\in \{v_0,\ldots,v_r\}\}$. Then $G[Z]$ is connected because $Z$ is the union of (vertex sets of) paths in $G$, each of which contains $v$.
+  Let $Z := \{v\} \cup \{\{v_1,\ldots,v_{r-1}\}:(v_0,\ldots,v_r)\in\SS, v\in \{v_0,\ldots,v_r\}\}$. Then $G[Z]$ is connected because $Z$ is the union of (vertex sets of) paths in $G$, each of which contains $v$.
 
-  We claim that $v$ participates in a node $x\in V(T)$ if and only if $Z\cap Y_x\neq\emptyset$.  If $v$ participates in $x$ then either $v\in Y_x$, so $Z\cap Y_x\supseteq\{v\}$; or $v\in \{v_0,\ldots,v_r\}$ for some shortcut $(v_0,\ldots,v_r)\in\mathcal{P}$ that crosses $x$, so $Z\cap Y_x\supseteq \{v_i\}$ for some $i\in\{1,\ldots,r-1\}$.  In the other direction, if $Z\cap Y_x\neq\emptyset$, then either $Z\cap Y_x\supseteq \{v\}$, so $v\in Y_x$; or $Z\cap Y_x\supseteq \{v_i\}$ where $i\in\{1,\ldots,r\}$, $(v_0,\ldots,v_r)\in\PP$ and $v\in\{v_0,\ldots,v_r\}$, so $v\in V(P)$ for a path $P=(v_0,\ldots,v_r)\in\mathcal{P}$ that crosses $x$.
+  We claim that $v$ participates in a node $x\in V(T)$ if and only if $Z\cap Y_x\neq\emptyset$.  If $v$ participates in $x$ then either $v\in Y_x$, so $Z\cap Y_x\supseteq\{v\}$; or $v\in \{v_0,\ldots,v_r\}$ for some shortcut $(v_0,\ldots,v_r)\in\SS$ that crosses $x$, so $Z\cap Y_x\supseteq \{v_i\}$ for some $i\in\{1,\ldots,r-1\}$.  In the other direction, if $Z\cap Y_x\neq\emptyset$, then either $Z\cap Y_x\supseteq \{v\}$, so $v\in Y_x$; or $Z\cap Y_x\supseteq \{v_i\}$ where $i\in\{1,\ldots,r\}$, $(v_0,\ldots,v_r)\in\SS$ and $v\in\{v_0,\ldots,v_r\}$, so $v\in V(P)$ for a path $P=(v_0,\ldots,v_r)\in\SS$ that crosses $x$.
 
   Let $X_H:=\{x\in V(H): Z\cap Y_x\neq\emptyset\}$.  The connectivity of $G[Z]$ implies that $H[X_H]$ is connected.
   %Property~\tref{ancestor-edge} implies that, for every $xy\in E(H)$, one of $x$ or $y$ is a $T$-ancestor of the other.
   Choose $a(v)\in X_H$ to be the member of $X_H$ that does not have a strict $T$-ancestor in $X_H$.  Transitivity of the $T$-ancestor relationship, \tref{ancestor-edge}, and connectivity of $H[X_H]$ implies that such an $a(v)$ exists and is a $T$-ancestor of every node $x\in X_H$, as required.
 \end{proof}
 
-\note{DW}{Use $\SS$ for the given shortcut system and $\PP$ for the partition?}
+\note{DW}{Use $\SS$ for the given shortcut system and $\SS$ for the partition?}
 
-For each $x\in V(T)$, define $S_x := \{v\in V(G): a(v)= x\}$. Observe that $\mathcal{S}:=(S_x : x\in V(T))$ is a partition of $V(G)$.\footnote{The sets in $\mathcal{S}$ are disjoint because $a:V(G)\to V(T)$ is a function.  The sets in $\mathcal{S}$ cover $V(G)$ since, for each $v\in V(G)$, $v\in S_{a(v)}$.} Let $J:=G^\mathcal{P}/\mathcal{S}$ denote the resulting quotient graph. We consider $V(J)\subseteq V(T)$, where each $x\in V(J)$ is the vertex obtained by contracting $S_x$ in $G^{\mathcal{P}}$. (Nodes $x\in V(T)$ with $S_x=\emptyset$ do not contribute a vertex to $J$.)
+For each $x\in V(T)$, define $S_x := \{v\in V(G): a(v)= x\}$. Observe that $\mathcal{P}:=(S_x : x\in V(T))$ is a partition of $V(G)$.\footnote{The sets in $\mathcal{P}$ are disjoint because $a:V(G)\to V(T)$ is a function.  The sets in $\mathcal{P}$ cover $V(G)$ since, for each $v\in V(G)$, $v\in S_{a(v)}$.} Let $J:=G^\SS/\mathcal{P}$ denote the resulting quotient graph. We consider $V(J)\subseteq V(T)$, where each $x\in V(J)$ is the vertex obtained by contracting $S_x$ in $G^{\SS}$. (Any node $x\in V(T)$ with $S_x=\emptyset$ does not contribute a vertex to $J$.)
 
-\referee{2}{Page 8.  Can you add a brief explanation why $\mathcal{S}$ is a
-	partition of $V(G)$?  It is clear that the sets in $\mathcal{S}$ are
+\referee{2}{Page 8.  Can you add a brief explanation why $\mathcal{P}$ is a
+	partition of $V(G)$?  It is clear that the sets in $\mathcal{P}$ are
 	disjoint, but why do they cover $V(G)$?}
-\note{PM}{I added an explanation in a footnote since this is obvious.}
+\note{PM}{I added an explanation in a footnote since this is obvious.  In particular, for any function $f$, $\{f^{-1}(x):x\in\mathop{codomain}(f)\}$ is a partition of the $\mathop{domain}(f)$.}
 
 From this point onward, the plan is to show that:
 \begin{compactenum}[(i)]
-  \item $\mathcal{S}$ has small layered width with respect to the layering $\mathcal{L}$ and that
+  \item $\mathcal{P}$ has small layered width with respect to the layering $\mathcal{L}$ and that
   \item $J$ has small treewidth.
 \end{compactenum}
 
 \referee{1}{7. page 8, item (i): ``$S$ has small layered width with respect to the layering $L$'' $\longrightarrow$ ``$S$ has small layered width with respect to the layering $L$ of $G$''. Perhaps mention something about how it is easy to find the new layering.}
 
 
-First we need to understand the relationship between sets $S_x\in\mathcal{S}$ and the related sets $Y_x$, $V_x$, $F_x$, and $N_x$.
+First we need to understand the relationship between sets $S_x\in\mathcal{P}$ and the related sets $Y_x$, $V_x$, $F_x$, and $N_x$.
 
 \referee{1}{8. general comment: Claims 1, 2, and 4 are especially belaboured by
 notation as they are quite straightforward.}
@@ -488,10 +489,10 @@ notation as they are quite straightforward.}
 \end{clm}
 
 \begin{proof}
-  For the sake of contradiction, assume otherwise, so there exists some $v\in S_x\setminus V_x$. By \yref{y-subsets}, $Y_x\subseteq V_x$, so $v\not\in Y_x$.  Therefore, $\mathcal{P}$ contains a path $P$, with $v\in V(P)$, that crosses $x$.  The path $P$ contains a proper subpath $v_0,v_1,\ldots,v_{r}$ such that $v=v_0$ and $v_r\in Y_x$. Since $v\not\in V_x$ and $v_r\in Y_x\subseteq V_x$, \yref{separator}, implies that $v_i\in F_x$ for some $i\in\{0,\ldots,r-1\}$. Now \yref{ancestor-edge} implies $v_i\in Y_a$ for some strict $T$-ancestor $a$ of $x$.  Therefore, either $v\in Y_a$ or $P$ crosses $a$. But this implies that $a(v)$ is a $T$-ancestor of $a$, which is a strict $T$-ancestor of $x$, contradicting the assumption that $v\in S_x$.
+  For the sake of contradiction, assume otherwise, so there exists some $v\in S_x\setminus V_x$. By \yref{y-subsets}, $Y_x\subseteq V_x$, so $v\not\in Y_x$.  Therefore, $\SS$ contains a path $P$, with $v\in V(P)$, that crosses $x$.  The path $P$ contains a proper subpath $v_0,v_1,\ldots,v_{r}$ such that $v=v_0$ and $v_r\in Y_x$. Since $v\not\in V_x$ and $v_r\in Y_x\subseteq V_x$, \yref{separator}, implies that $v_i\in F_x$ for some $i\in\{0,\ldots,r-1\}$. Now \yref{ancestor-edge} implies $v_i\in Y_a$ for some strict $T$-ancestor $a$ of $x$.  Therefore, either $v\in Y_a$ or $P$ crosses $a$. But this implies that $a(v)$ is a $T$-ancestor of $a$, which is a strict $T$-ancestor of $x$, contradicting the assumption that $v\in S_x$.
 \end{proof}
 
-Next we complete Step~(i) and show that $\mathcal{S}$ has small layered width with respect to the layering $\mathcal{L}=\langle L_1,\ldots,L_h\rangle$:
+Next we complete Step~(i) and show that $\mathcal{P}$ has small layered width with respect to the layering $\mathcal{L}=\langle L_1,\ldots,L_h\rangle$:
 
 \begin{clm}
 	\label{general-width}
@@ -500,7 +501,7 @@ Next we complete Step~(i) and show that $\mathcal{S}$ has small layered width wi
 
 \begin{proof}
   Recall that $S_x$ is defined by vertices that participate in $x$, and these are vertices that are either in $Y_x$ or in shortcuts that cross $Y_x$.  We say that a vertex $w\in Y_x$ \defin{contributes} a vertex $v\in S_x$ if $v$ participates in $x$.
-  We upper bound the number of vertices in $S_x\cap L_i$ by upper-bounding the number of vertices contributed to $S_x\cap L_i$ by each $w\in Y_x$. Refer to \cref{contribute}.  If $w\in Y_x\cap L_i$ and no path in $\mathcal{P}$ includes $w$ as an internal vertex then $w$ contributes at most one vertex, itself, to $S_x\cap L_i$.
+  We upper bound the number of vertices in $S_x\cap L_i$ by upper-bounding the number of vertices contributed to $S_x\cap L_i$ by each $w\in Y_x$. Refer to \cref{contribute}.  If $w\in Y_x\cap L_i$ and no path in $\SS$ includes $w$ as an internal vertex then $w$ contributes at most one vertex, itself, to $S_x\cap L_i$.
 
 \referee{1}{9. page 8, line 10: ``We say that a vertex $w \in Y_x$ contributes a vertex
   $v \in S_x$ if $v$ participates in $x$.'' This needs to be fixed.}
@@ -515,9 +516,9 @@ Next we complete Step~(i) and show that $\mathcal{S}$ has small layered width wi
     \label{contribute}
   \end{figure}
 
-  Otherwise, consider some path $P\in\mathcal{P}$ that contains $w$ as an internal vertex.  If $w\in L_{i}$, then $P$ contributes at most $k+1$ vertices to $S_x\cap L_i$.  If $w\in L_{i-1}\cup L_{i+1}$, then $P$ contributes at most $k$ vertices to $S_x\cap L_i$. If $w\in L_{i-j}\cup L_{i+j}$ for $j\ge 2$, then $P$ contributes at most $k-j$ vertices to $S_x\cap L_i$.
+  Otherwise, consider some path $P\in\SS$ that contains $w$ as an internal vertex.  If $w\in L_{i}$, then $P$ contributes at most $k+1$ vertices to $S_x\cap L_i$.  If $w\in L_{i-1}\cup L_{i+1}$, then $P$ contributes at most $k$ vertices to $S_x\cap L_i$. If $w\in L_{i-j}\cup L_{i+j}$ for $j\ge 2$, then $P$ contributes at most $k-j$ vertices to $S_x\cap L_i$.
 
-  For any $j$, the number of vertices $w\in L_{i+j}\cap Y_x$ is at most $\ell$. Each such vertex $w$ is an internal vertex of at most $d$ paths in $\mathcal{P}$. Therefore,
+  For any $j$, the number of vertices $w\in L_{i+j}\cap Y_x$ is at most $\ell$. Each such vertex $w$ is an internal vertex of at most $d$ paths in $\SS$. Therefore,
   \[  |S_x\cap L_i|\le d\ell  \, \Big(k+1 + 2k + \sum_{j=2}^k 2(k-j)\Big) %= d(2k+1) + \sum_{i=1}^{k-2} i
       = d\ell(k^2 +3) \enspace . \qedhere
   \]
@@ -530,7 +531,7 @@ We now proceed with Step~(ii), showing that $J$ has small treewidth. To accompli
 \end{clm}
 
 \begin{proof}
-  Suppose, for the sake of contradiction, that neither $x$ nor $y$ is a $T$-ancestor of the other.  Since $xy\in E(J)$, $G^\mathcal{P}$ contains an edge $vw$ with $v\in S_x$ and $w\in S_y$.  Since $vw\in E(G^{\mathcal{P}})$,  $\mathcal{P}$ contains a $vw$-shortcut $P$.\footnote{Recall that we have made the assumption that $\mathcal{P}$ contains a length-$1$ $vw$-shortcut for each edge $vw\in E(G)$.}  By \cref{s-subset}, $v\in V_x$ and $w\in V_y$.  By \yref{containment-i}, if neither $x$ nor $y$ is a $T$-ancestor of the other, then $V_x$ and $V_y$ are disjoint.  By \yref{ancestor-edge}, $N_x$ and $V_y$ are also disjoint.  By \yref{separator} $P$ contains an internal vertex $v'\in F_x$.  By \yref{ancestor-edge}, $v'\in Y_a$ for some strict $T$-ancestor $a$ of $x$.  But this implies that $a(v)=a'$ so $v\in S_{a'}$ for some $T$-ancestor $a'$ of $a$, contradicting the assumption that $v\in S_x$.
+  Suppose, for the sake of contradiction, that neither $x$ nor $y$ is a $T$-ancestor of the other.  Since $xy\in E(J)$, $G^\SS$ contains an edge $vw$ with $v\in S_x$ and $w\in S_y$.  Since $vw\in E(G^{\SS})$,  $\SS$ contains a $vw$-shortcut $P$.\footnote{Recall that we have made the assumption that $\SS$ contains a length-$1$ $vw$-shortcut for each edge $vw\in E(G)$.}  By \cref{s-subset}, $v\in V_x$ and $w\in V_y$.  By \yref{containment-i}, if neither $x$ nor $y$ is a $T$-ancestor of the other, then $V_x$ and $V_y$ are disjoint.  By \yref{ancestor-edge}, $N_x$ and $V_y$ are also disjoint.  By \yref{separator} $P$ contains an internal vertex $v'\in F_x$.  By \yref{ancestor-edge}, $v'\in Y_a$ for some strict $T$-ancestor $a$ of $x$.  But this implies that $a(v)=a'$ so $v\in S_{a'}$ for some $T$-ancestor $a'$ of $a$, contradicting the assumption that $v\in S_x$.
 \end{proof}
 
 \begin{clm}
@@ -549,11 +550,11 @@ so that it isn’t necessary to define the $s_i$.}
 
   Consider an arbitrary node $x\in V(T)$ where $x_0,\ldots,x_r$ is the path from the root $x_0$ of $T$ to $x_r:=x$.  To avoid triple-subscripts in what follows, we abuse notation slightly by using $V_i$, $F_i$, and $N_i$,  as shorthands for $V_{x_i}$, $F_{x_i}$ and $N_{x_i}$, respectively.
 
-  If $x_\delta\in C_x$, it is because $x_\delta x'\in E(J)$ for some $T$-descendant $x'$ of $x$.  This implies $G^{\mathcal{P}}$ contains an edge $vw$ with $v\in S_{x'}$ and $w\in S_{x_\delta}=S_\delta$.  This implies that $\mathcal{P}$ contains a $vw$-shortcut $P_{vw}$.  Let $v'$ be the second-last vertex of $P_{vw}$ (so $v'w\in E(G)$).
+  If $x_\delta\in C_x$, it is because $x_\delta x'\in E(J)$ for some $T$-descendant $x'$ of $x$.  This implies $G^{\SS}$ contains an edge $vw$ with $v\in S_{x'}$ and $w\in S_{x_\delta}=S_\delta$.  This implies that $\SS$ contains a $vw$-shortcut $P_{vw}$.  Let $v'$ be the second-last vertex of $P_{vw}$ (so $v'w\in E(G)$).
 
   Since $w\in S_{\delta}$, $a(w)=x_\delta$, so $w$ participates in $x_\delta$, so at least one of the following is true:
   \begin{compactenum}
-    \item There exists $w'\in V(G)$ such that $\mathcal{P}$ contains a $ww'$-shortcut $P_{ww'}$ that has an internal vertex in $Y_{\delta}$; or
+    \item There exists $w'\in V(G)$ such that $\SS$ contains a $ww'$-shortcut $P_{ww'}$ that has an internal vertex in $Y_{\delta}$; or
     \item $w\in Y_\delta$; in this case, define $w':=w$ and let $P_{ww'}$ be the 1-vertex path $w$.
   \end{compactenum}
   Let $w''$ denote the first vertex of $P_{ww'}$ contained in $Y_{\delta}$.
@@ -579,7 +580,7 @@ so that it isn’t necessary to define the $s_i$.}
   At this point, the proof is complete, but let us summarize. For each node $x\in V(T)$, $C_x$ contains only $T$-ancestors of $x$ (including $x$ itself).  For each ancestor $x_\delta$ of $x$ contained in $C_x$, there is path from $x$ to $x_\delta$ in $\overrightarrow{H}^+$ of length at most $k$.  The number of ancestors of $x$ that can be reached by paths of length at most $k$ in $\overrightarrow{H}^+$ is at most $\binom{k+t}{t}$.  Therefore $|C_x|\le \binom{k+t}{t}$, as required.
 \end{proof}
 
-At this point, the proof of \cref{ShortcutPartition} is almost immediate from \cref{general-width,general-bag-size}, except that the layering $\mathcal{L}$ of $G$ may not be a valid layering of $G^{\mathcal{P}}$.  In particular, $G^{\mathcal{P}}$ may contain edges $vw$ with $v\in L_i$ and $w\in L_{i+j}$ for any $j\in\{0,\ldots,k\}$.  To resolve this, we use a new layering $\mathcal{L}':=\langle L_0',\ldots,L_h'\rangle$ in which $L_i'=\bigcup_{j=ki}^{ki+k-1} L_i$.  This increases the layered width given by \cref{general-width} from $d\ell(k^2+3)$ to $d\ell(k^3+3k)$.  Therefore $G$ has an $H$-partition of layered width at most $d\ell(k^3+3k)$ in which $H$ has treewidth at most $\binom{k+t}{t}$, completing the proof of \cref{ShortcutPartition}.
+At this point, the proof of \cref{ShortcutPartition} is almost immediate from \cref{general-width,general-bag-size}, except that the layering $\mathcal{L}$ of $G$ may not be a valid layering of $G^{\SS}$.  In particular, $G^{\SS}$ may contain edges $vw$ with $v\in L_i$ and $w\in L_{i+j}$ for any $j\in\{0,\ldots,k\}$.  To resolve this, we use a new layering $\mathcal{L}':=\langle L_0',\ldots,L_h'\rangle$ in which $L_i'=\bigcup_{j=ki}^{ki+k-1} L_i$.  This increases the layered width given by \cref{general-width} from $d\ell(k^2+3)$ to $d\ell(k^3+3k)$.  Therefore $G$ has an $H$-partition of layered width at most $d\ell(k^3+3k)$ in which $H$ has treewidth at most $\binom{k+t}{t}$, completing the proof of \cref{ShortcutPartition}.
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%
@@ -590,7 +591,7 @@ This section applies our main results for shortcut systems to prove a product st
 
 \subsection{$k$-Planar Graphs}
 
-We first formally define $k$-planar graphs.  An \defin{embedded graph} $G$ is a graph with $V(G)\subset\R^2$ in which each edge $vw\in E(G)$ is a curve\footnote{A \defin{curve} in a surface $\Sigma$ is a continuous function $f:[0,1]\to \Sigma$. The points $f(0)$ and $f(1)$ are called the \defin{endpoints} of the curve.  When there is no danger of misunderstanding we treat a curve $f$ as the point set $\{f(t):0\le t\le 1\}$.} in $\R^2$ with endpoints $v$ and $w$ and not containing any vertex of $G$ in its interior.  A \defin{crossing} in an embedded graph $G$ is a triple $(p,vw,xy)$ with $p\in\R^2$, $vw,xy\in E(G)$ and such that $p\in (vw\cap xy)\setminus\{v,w,x,y\}$. An embedded graph $G$ is \defin{$k$-plane} if each edge of $G$ takes part in at most $k$ crossings. \note{DW}{We need to assume that at most two edges cross at a single point, so we can add a dummy vertex of degree 4, right?}  A (not necessarily embedded) graph $G'$ is \defin{$k$-planar} if there exists a $k$-plane graph $G$ isomorphic to $G'$. Under these definitions, $0$-planar graphs are exactly planar graphs and $0$-plane graphs are exactly plane graphs.
+We first formally define $k$-planar graphs.  An \defin{embedded graph} $G$ is a graph with $V(G)\subset\R^2$ in which each edge $vw\in E(G)$ is a curve\footnote{A \defin{curve} in a surface $\Sigma$ is a continuous function $f:[0,1]\to \Sigma$. The points $f(0)$ and $f(1)$ are called the \defin{endpoints} of the curve.  When there is no danger of misunderstanding we treat a curve $f$ as the point set $\{f(t):0\le t\le 1\}$.} in $\R^2$ with endpoints $v$ and $w$ and not containing any vertex of $G$ in its interior.  A \defin{crossing} in an embedded graph $G$ is a triple $(p,vw,xy)$ with $p\in\R^2$, $vw,xy\in E(G)$ and such that $p\in (vw\cap xy)\setminus\{v,w,x,y\}$. An embedded graph $G$ is \defin{$k$-plane} if each edge of $G$ takes part in at most $k$ crossings. \note{DW}{We need to assume that at most two edges cross at a single point, so we can add a dummy vertex of degree 4, right?}\note{PM}{No, under the current definition, $r$ edges crossing at a single point $p$ generate $\binom{r}{2}$ crossings, with each edge taking part in $r-1$ crossings, just like they would if we perturbed the edges so that they all crossed at individual points.  I guess we could mention this.  (See the first paragraph in the proof of Theorem~2 below.)}  A (not necessarily embedded) graph $G'$ is \defin{$k$-planar} if there exists a $k$-plane graph $G$ isomorphic to $G'$. Under these definitions, $0$-planar graphs are exactly planar graphs and $0$-plane graphs are exactly plane graphs.
 
 As mentioned in \cref{Introduction}, \cref{PlanarProduct,ShortcutProduct} imply a product structure theorem for $k$-planar graphs. We get improved bounds as follows.
 
@@ -602,11 +603,11 @@ As mentioned in \cref{Introduction}, \cref{PlanarProduct,ShortcutProduct} imply 
 \begin{proof}[Proof of \cref{kPlanarProduct}]
 	Let $G$ be a $k$-plane graph.  We will assume, for ease of exposition, that any point $p\in\R^2$ is involved in at most one crossing $(p,vw,xy)$ of $G$. This assumption is justified since it can be enforced by a slight deformation of the edges of $G$ and the resulting (deformed) graph is also $k$-plane.
 
-	As in the proof of \cref{AddDummy}, let $G_0$ be the plane graph obtained by adding a dummy vertex at each crossing in $G$. In this way, each edge $vw\in E(G)$ corresponds naturally to a path $P_{vw}$ of length at most $k+1$ in $G_0$.  Let $\PP := \{P_{vw}: vw\in E(G)\}$. Observe that $\PP$ is a $(k+1,2)$-shortcut system for $G_0$ and that $G_0^{\PP}\supseteq G$.  Specifically, $G_0^{\PP}$ contains every edge and vertex of $G$ as well as the dummy vertices in $V(G_0)\setminus V(G)$ and their incident edges.
+	As in the proof of \cref{AddDummy}, let $G_0$ be the plane graph obtained by adding a dummy vertex at each crossing in $G$. In this way, each edge $vw\in E(G)$ corresponds naturally to a path $P_{vw}$ of length at most $k+1$ in $G_0$.  Let $\SS := \{P_{vw}: vw\in E(G)\}$. Observe that $\SS$ is a $(k+1,2)$-shortcut system for $G_0$ and that $G_0^{\SS}\supseteq G$.  Specifically, $G_0^{\SS}$ contains every edge and vertex of $G$ as well as the dummy vertices in $V(G_0)\setminus V(G)$ and their incident edges.
 
-	Since $G_0$ is planar,  \cref{PlanarProduct}(b) and \cref{PartitionProduct} implies that $G_0$ has an $H$-partition of layered width 3 for some planar graph $H$ of treewidth at most 3.  Applying \cref{ShortcutPartition} to $G_0$ and $\mathcal{P}$ immediately implies that $G$ (an arbitrary $k$-planar graph) has an $H$-partition of layered width $6((k+1)^3+3(k+1))$ for some graph $H$ of treewidth at most $\binom{k+4}{3}-1$.
+	Since $G_0$ is planar,  \cref{PlanarProduct}(b) and \cref{PartitionProduct} implies that $G_0$ has an $H$-partition of layered width 3 for some planar graph $H$ of treewidth at most 3.  Applying \cref{ShortcutPartition} to $G_0$ and $\SS$ immediately implies that $G$ (an arbitrary $k$-planar graph) has an $H$-partition of layered width $6((k+1)^3+3(k+1))$ for some graph $H$ of treewidth at most $\binom{k+4}{3}-1$.
 
-	We can reduce the layered width of the $H$-partition of $G$ from $O(k^3)$ to $O(k^2)$ by observing that the dummy vertices in $V(G_0)\setminus V(G)$ do not contribute to the layered width of this partition.  In this setting, the proof of \cref{general-width} is simpler since each vertex $w\in Y_x$ contributes at most two vertices to $L_i\cap Y_x$.  More precisely, each path $P\in\mathcal{P}$ containing an internal (dummy) vertex $w\in Y_x\cap (L_{i-j}\cup L_{i+j})$ contributes: (i)~at most two vertices to $S_x\cap L_i$ for $j\in\{0,\ldots,\floor{(k+1)/2}\}$; (ii)~at most one vertex to $S_x\cap L_j$ for $j\in\{\floor{(k+1)/2}+1,\ldots,k+1\}$; or (iii)~no vertices to $S_x\cap L_j$ for $j > k+1$.
+	We can reduce the layered width of the $H$-partition of $G$ from $O(k^3)$ to $O(k^2)$ by observing that the dummy vertices in $V(G_0)\setminus V(G)$ do not contribute to the layered width of this partition.  In this setting, the proof of \cref{general-width} is simpler since each vertex $w\in Y_x$ contributes at most two vertices to $L_i\cap Y_x$.  More precisely, each path $P\in\SS$ containing an internal (dummy) vertex $w\in Y_x\cap (L_{i-j}\cup L_{i+j})$ contributes: (i)~at most two vertices to $S_x\cap L_i$ for $j\in\{0,\ldots,\floor{(k+1)/2}\}$; (ii)~at most one vertex to $S_x\cap L_j$ for $j\in\{\floor{(k+1)/2}+1,\ldots,k+1\}$; or (iii)~no vertices to $S_x\cap L_j$ for $j > k+1$.
 	Redoing the calculation at the end of the proof of \cref{general-width} then yields
 	\begin{align*}
 	|S_x\cap Y_i| \le d\ell\left(
@@ -767,7 +768,7 @@ The definition of $k$-planar graphs naturally generalises for other surfaces. A 
 
 \begin{obs}
 \label{gAddDummy}
-Every $(g,k)$-planar graph $G$ is a subgraph of $G_0^\PP$ for some graph $G_0$ of Euler genus at most $g$ and some $(k+1,2)$-shortcut system $\PP$ for $G_0$. Moreover, $V(G) \subseteq V(G_0)$ and for every edge $vw \in E(G)$ there is a $vw$-path $P$ in $G_0$ of length at most $k+1$, such that every internal vertex in $P$ has degree at most $4$ in $G_0$.
+Every $(g,k)$-planar graph $G$ is a subgraph of $G_0^\SS$ for some graph $G_0$ of Euler genus at most $g$ and some $(k+1,2)$-shortcut system $\SS$ for $G_0$. Moreover, $V(G) \subseteq V(G_0)$ and for every edge $vw \in E(G)$ there is a $vw$-path $P$ in $G_0$ of length at most $k+1$, such that every internal vertex in $P$ has degree at most $4$ in $G_0$.
 \end{obs}
 
 Theorems~\ref{ShortcutProduct}  and \ref{GenusProduct}(b) imply a product structure theorem for $(g,k)$-planar graphs. The obtained bounds are improved by the following result, which is proved using exactly the same approach used in the proof of \cref{kPlanarProduct} (applying \cref{GenusProduct}(b) instead of \cref{PlanarProduct}(b)). We omit repeating the details.
@@ -957,11 +958,11 @@ There is a natural drawing of a map graph obtained by positioning each vertex of
 
 \begin{lem}
 \label{MapShortcut}
-Every $(g,d)$-map graph $G$ is a subgraph of $G_1^\PP$ for some graph $G_1$ with Euler genus at most $g$ and some $(2,\tfrac12 d(d-3) )$-shortcut system $\PP$ for $G_1$.
+Every $(g,d)$-map graph $G$ is a subgraph of $G_1^\SS$ for some graph $G_1$ with Euler genus at most $g$ and some $(2,\tfrac12 d(d-3) )$-shortcut system $\SS$ for $G_1$.
 \end{lem}
 
 \begin{proof}
-Let $G$ be a $(g,d)$-map graph. So there is a graph $G_0$ embedded in a surface of Euler genus $g$, with each face labelled a `nation' or a `lake', where each vertex of $G_0$ is incident with at most $d$ nations. Let $N$ be the set of nations. Then $V(G)=N$ where two vertices are adjacent in $G$ if the corresponding nation faces of $G_0$ share a vertex. Let $G_1$ be the graph with $V(G_1):=V(G_0) \cup N$, where distinct vertices $v,w\in N$ are adjacent in $G_1$ if the boundaries of the corresponding nations have an edge of $G_0$ in common, and $v\in V(G_0)$ and $w\in N$ are adjacent in $G_1$ if $v$ is on the boundary of the nation corresponding to $w$. Observe that $G_1$ embeds in the same surface as $G_0$ with no crossings, and that each vertex in $V(G_0)$ has degree at most $d$ in $G_1$. Consider an edge $vw\in E(G)$. If the nations corresponding to $v$ and $w$ share an edge of $G_0$, then $vw$ is an edge of $G_1$. Otherwise,  $v$ and $w$ have a common neighbour $x$ in $V(G_0)$. In the latter case, let $P_{vw}$ be the path $(v,x,w)$. Let $\PP$ be the set of all such paths $P_{vw}$. Each vertex $x\in V(G_0)$ is the middle vertex on at most $\tfrac12 d(d-3)$  paths in $\PP$. Thus $\PP$ is a $(2,\tfrac12 d(d-3))$-shortcut system for $G_1$, and by construction, $G \subseteq G_1^\PP$.
+Let $G$ be a $(g,d)$-map graph. So there is a graph $G_0$ embedded in a surface of Euler genus $g$, with each face labelled a `nation' or a `lake', where each vertex of $G_0$ is incident with at most $d$ nations. Let $N$ be the set of nations. Then $V(G)=N$ where two vertices are adjacent in $G$ if the corresponding nation faces of $G_0$ share a vertex. Let $G_1$ be the graph with $V(G_1):=V(G_0) \cup N$, where distinct vertices $v,w\in N$ are adjacent in $G_1$ if the boundaries of the corresponding nations have an edge of $G_0$ in common, and $v\in V(G_0)$ and $w\in N$ are adjacent in $G_1$ if $v$ is on the boundary of the nation corresponding to $w$. Observe that $G_1$ embeds in the same surface as $G_0$ with no crossings, and that each vertex in $V(G_0)$ has degree at most $d$ in $G_1$. Consider an edge $vw\in E(G)$. If the nations corresponding to $v$ and $w$ share an edge of $G_0$, then $vw$ is an edge of $G_1$. Otherwise,  $v$ and $w$ have a common neighbour $x$ in $V(G_0)$. In the latter case, let $P_{vw}$ be the path $(v,x,w)$. Let $\SS$ be the set of all such paths $P_{vw}$. Each vertex $x\in V(G_0)$ is the middle vertex on at most $\tfrac12 d(d-3)$  paths in $\SS$. Thus $\SS$ is a $(2,\tfrac12 d(d-3))$-shortcut system for $G_1$, and by construction, $G \subseteq G_1^\SS$.
 \end{proof}
 
 Theorems~\ref{PlanarProduct}(b),  \ref{ShortcutProduct} and  \ref{GenusProduct}(b) and \cref{MapShortcut,qn,p-centered,p-centered-treewidth,non-repetitive} imply the following results.
@@ -1000,13 +1001,13 @@ A \defin{string graph} is the intersection graph of a set of curves in the plane
 
 \begin{lem}
 \label{StringShortcut}
-Every $(g,\delta)$-string graph $G$ is a subgraph of $G_0^\PP$ for some graph $G_0$ with Euler genus at most $g$ and some $(\delta+1,\delta+1 )$-shortcut system $\PP$ for $G_0$.
-%Moreover, every internal vertex on the paths in $\PP$ has degree 4 in $G_0$.
+Every $(g,\delta)$-string graph $G$ is a subgraph of $G_0^\SS$ for some graph $G_0$ with Euler genus at most $g$ and some $(\delta+1,\delta+1 )$-shortcut system $\SS$ for $G_0$.
+%Moreover, every internal vertex on the paths in $\SS$ has degree 4 in $G_0$.
 \end{lem}
 
 \begin{proof}
 Let $\mathcal{C}=\{C_v:v\in V(G)\}$ be a set of curves in a surface of Euler genus at most $g$ whose intersection graph is $G$.  Let $G_0$ be the graph obtained by adding a vertex at the intersection point of every pair of curves in $\mathcal{C}$ that intersect,  where two such consecutive vertices on a curve $C_v$ are adjacent in $G_0$. For each vertex $v\in V(G)$, if $C_v$ intersects $k\leq\delta$ other curves, then introduce a new vertex called $v$ on $C_v$ between the
-$\floor{\frac{k}{2}}$-th vertex already on $C_v$ and the $\floor{\frac{k}{2}+1}$-th such vertex. For each edge $vw$ of $G$, there is a path $P_{vw}$ of length at most $2\ceil{\frac{\delta}{2}}\leq \delta+1$ in $G_0$ between $v$ and $w$. Let $\PP$ be the set of all such paths $P_{vw}$. Consider a vertex $x$ in $G_0$ that is an internal vertex on some path in $\PP$. Then $x$ is at the intersection of $C_v$ and $C_w$ for some edge $vw\in E(G)$. If some path $P\in \PP$ passes through $x$, then $P=P_{vu}$ for some edge $vu$ incident to $v$, or $P=P_{wu}$ for some edge $wu$ incident to $w$. At most $\ceil{\frac{\delta}{2}}$ paths in $\PP$ corresponding to edges incident to $v$ pass through $x$, and similarly for edges incident to $w$. Thus at most $2\ceil{\frac{\delta}{2}}\leq\delta+1$ paths in $\PP$ use $x$ as an internal vertex. Thus $\PP$ is a $(\delta+1,\delta+1)$-shortcut system for $G_0$, and by construction, $G \subseteq G_0^\PP$.
+$\floor{\frac{k}{2}}$-th vertex already on $C_v$ and the $\floor{\frac{k}{2}+1}$-th such vertex. For each edge $vw$ of $G$, there is a path $P_{vw}$ of length at most $2\ceil{\frac{\delta}{2}}\leq \delta+1$ in $G_0$ between $v$ and $w$. Let $\SS$ be the set of all such paths $P_{vw}$. Consider a vertex $x$ in $G_0$ that is an internal vertex on some path in $\SS$. Then $x$ is at the intersection of $C_v$ and $C_w$ for some edge $vw\in E(G)$. If some path $P\in \SS$ passes through $x$, then $P=P_{vu}$ for some edge $vu$ incident to $v$, or $P=P_{wu}$ for some edge $wu$ incident to $w$. At most $\ceil{\frac{\delta}{2}}$ paths in $\SS$ corresponding to edges incident to $v$ pass through $x$, and similarly for edges incident to $w$. Thus at most $2\ceil{\frac{\delta}{2}}\leq\delta+1$ paths in $\SS$ use $x$ as an internal vertex. Thus $\SS$ is a $(\delta+1,\delta+1)$-shortcut system for $G_0$, and by construction, $G \subseteq G_0^\SS$.
 \end{proof}
 
 A similar proof to that of \cref{StringShortcut} shows that every $(g,\delta)$-string graph is $(g,2\delta^2)$-planar. Theorems~\ref{PlanarProduct}(b), \ref{ShortcutProduct}  and \ref{GenusProduct}(b) and \cref{StringShortcut,qn} imply:
@@ -1032,17 +1033,17 @@ Recall that the \defin{$k$-th power} of a graph $G$ is the graph $G^k$ with vert
 
 \begin{lem}
 \label{PowerShortcut}
-If a graph $G$ has maximum degree $\Delta$, then $G^k = G^\PP$ for some $(k,2k \Delta^{k})$-shortcut system $\PP$.
+If a graph $G$ has maximum degree $\Delta$, then $G^k = G^\SS$ for some $(k,2k \Delta^{k})$-shortcut system $\SS$.
 \end{lem}
 
 \begin{proof}
 For each pair of vertices $x$ and $y$ in $G$ with $\dist_G(x,y)\in\{1,\dots,k\}$, fix an $xy$-path $P_{xy}$ of length
-$\dist_G(x,y)$  in $G$. Let $\PP:=\{P_{xy}: \dist_G(x,y)\in\{1,\dots,k\} \}$. Say $P_{xy}$ uses some vertex $v$ as an internal vertex. If $\dist_G(v,x)=i$ and $\dist_G(v,y)=j$, then $i,j\in\{1,\dots,k-1\}$ and $i+j\leq k$. The number of vertices at distance $i$ from $v$ is at most $\Delta^i$. Thus the number of paths in $\PP$ that use $v$ as an internal vertex is at most
+$\dist_G(x,y)$  in $G$. Let $\SS:=\{P_{xy}: \dist_G(x,y)\in\{1,\dots,k\} \}$. Say $P_{xy}$ uses some vertex $v$ as an internal vertex. If $\dist_G(v,x)=i$ and $\dist_G(v,y)=j$, then $i,j\in\{1,\dots,k-1\}$ and $i+j\leq k$. The number of vertices at distance $i$ from $v$ is at most $\Delta^i$. Thus the number of paths in $\SS$ that use $v$ as an internal vertex is at most
 \[\sum_{i=1}^{k-1} \sum_{j=1}^{k-i} \Delta^i\Delta^j
 = \sum_{i=1}^{k-1} \Delta^i \sum_{j=1}^{k-i} \Delta^j
 < \sum_{i=1}^{k-1} \Delta^i ( 2 \Delta^{k-i} )
 < 2k \Delta^k\enspace.\]
-Hence $\PP$ is a $(k, 2k \Delta^k)$-shortcut system.
+Hence $\SS$ is a $(k, 2k \Delta^k)$-shortcut system.
 \end{proof}
 
 \cref{ShortcutProduct,PowerShortcut} imply:
