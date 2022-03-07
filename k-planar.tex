@@ -765,7 +765,7 @@ though, so the authors can ignore this request if they choose.}
    % Rather than duplicate every detail of that proof here, we focus on the differences and refer the reader to the original proof for the remaining details.
   In particular, the reader should keep in mind that $G$ and $G'$ are multigraphs and that the cycle $F$ may consist of two vertices and two (parallel) edges. 	
   
-  The proof is by induction on the number of inner faces of $N$.  If $N$ has one inner face, then we can simply take $\mathcal{P}:=\{P_1,\ldots,P_k\}$ and verify the preconditions of the lemma (the setup) ensure that $\mathcal{P}$ satisfies the requirements of the lemma.  Therefore, we may assume that $N$ has at least two inner faces.
+  The proof is by induction on the number of inner vertices of $N$, i.e., on $|V(N)\setminus V(F)|$.  If $N$ has no inner vertices, then we can simply take $\mathcal{P}:=\{P_1,\ldots,P_k\}$ and verify the preconditions of the lemma (the setup) ensure that $\mathcal{P}$ satisfies the requirements of the lemma.  Therefore, we may assume that $N$ has at least one inner vertex.
   
 	First note that every inner face of $N'$ is bounded by three edges of $G'$. 
   Assign each vertex $v$ of $N'$ a colour $\alpha(v)\in\{1,2,3\}$ as follows: 
