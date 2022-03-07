@@ -364,7 +364,7 @@ We begin with a standard technique that allows us to work with a normalised tree
 \begin{proof}
   That \tref{subtree-root} implies \tref{ancestor-edge} is a standard observation: If two subtrees intersect, then one contains the root of the other.  Thus, it suffices to construct a width-$t$ tree-decomposition that satisfies \tref{subtree-root}.
 
-  Begin with any width-$t$ tree-decomposition $(B_x:x\in V(T_0))$ of $H$ that uses some tree $T_0$.  Select any node $x\in V(T_0)$, add a leaf $x_0$, with $B_{x_0}=\emptyset$, adjacent to $x$ and root $T_0$ at $x_0$. (The purpose of $x_0$ is to ensure that every node $x$ for which $B_x$ is non-empty has a parent.)  Let $f:V(H)\to V(T)$ be the function that maps each $x\in V(H)$ onto the root of the subtree $T_0[x]:=T_0[\{y\in V(T_0): x\in B_y\}]$.  If $f$ is not one-to-one, then select some distinct pair $x,y\in V(H)$ with $a:=f(x)=f(y)$.  Subdivide the edge between $a$ and its parent in $T_0$ by introducing a new node $a'$ with $B_{a'}=B_{a}\setminus\{x\}$.  This modification reduces the number of distinct pairs $x,y\in V(H)$ with $f(x)=f(y)$, so repeatedly performing this modification will eventually produce a tree-decomposition $(B_x:x\in V(T_0))$ of $H$ in which $f$ is one-to-one.
+  Begin with any width-$t$ tree-decomposition $(B_x:x\in V(T_0))$ of $H$ that uses some tree $T_0$.  Select any node $x\in V(T_0)$, add a leaf $x_0$, with $B_{x_0}=\emptyset$, adjacent to $x$ and root $T_0$ at $x_0$. (The purpose of $x_0$ is to ensure that every node $x$ for which $B_x$ is non-empty has a parent.)  Let $f:V(H)\to V(T)$ be the function that maps each $x\in V(H)$ onto the root of the subtree $T_0[x]:=T_0[\{y\in V(T_0): x\in B_y\}]$.  If $f$ is not one-to-one, then select some distinct pair $x,y\in V(H)$ with $a:=f(x)=f(y)$.  Subdivide the edge between $a$ and its parent in $T_0$ by introducing a new node $a'$ with $B_{a'}=B_{a}\setminus\{x\}$. Now $f(y)=a'$ and $f(x)=a$, so this modification reduces the number of distinct pairs $x,y\in V(H)$ with $f(x)=f(y)$, so repeatedly performing this modification will eventually produce a tree-decomposition $(B_x:x\in V(T_0))$ of $H$ in which $f$ is one-to-one.
 
   Next, remove the node $x_0$ from $T_0$, and consider any node $a\in V(T_0)$ such that there is no vertex $x\in V(H)$ with $f(x)=a$.  In this case, $B_{a}\subseteq B_{a'}$ where $a'$ is the parent of $a$ since any $x\in B_a\setminus B_{a'}$ would have $f(x)=a$.  In this case, contract the edge $aa'$ in $T_0$, eliminating the node $a$.  Repeating this operation will eventually produce a width-$t$ tree-decomposition of $(B_x:x\in V(T_0))$ where $f$ is a bijection between $V(H)$ and $V(T_0)$.  Renaming each node $a\in V(T_0)$ as $f^{-1}(a)$ gives a tree-decomposition $(B_x:x\in V(T))$ with $V(T)=V(H)$.  By the definition of $f$, the tree-decomposition $(B_x:x\in V(T))$ satisfies \tref{subtree-root}.
   % To see that $(B_x:x\in V(T))$ satisifies \tref{ancestor-edge}, observe that,
@@ -461,21 +461,23 @@ For a node $x\in V(T)$, we say that a shortcut $P\in\SS$ \defin{crosses} $x$ if 
 \end{proof}
 
 \note{DW}{Use $\SS$ for the given shortcut system and $\SS$ for the partition?}
+\note{PM}{Yes, I've done this.  Again, I was carefuly, but need to reread.}
 
 For each $x\in V(T)$, define $S_x := \{v\in V(G): a(v)= x\}$. Observe that $\mathcal{P}:=(S_x : x\in V(T))$ is a partition of $V(G)$.\footnote{The sets in $\mathcal{P}$ are disjoint because $a:V(G)\to V(T)$ is a function.  The sets in $\mathcal{P}$ cover $V(G)$ since, for each $v\in V(G)$, $v\in S_{a(v)}$.} Let $J:=G^\SS/\mathcal{P}$ denote the resulting quotient graph. We consider $V(J)\subseteq V(T)$, where each $x\in V(J)$ is the vertex obtained by contracting $S_x$ in $G^{\SS}$. (Any node $x\in V(T)$ with $S_x=\emptyset$ does not contribute a vertex to $J$.)
 
-\referee{2}{Page 8.  Can you add a brief explanation why $\mathcal{P}$ is a
-	partition of $V(G)$?  It is clear that the sets in $\mathcal{P}$ are
-	disjoint, but why do they cover $V(G)$?}
-\note{PM}{I added an explanation in a footnote since this is obvious.  In particular, for any function $f$, $\{f^{-1}(x):x\in\mathop{codomain}(f)\}$ is a partition of the $\mathop{domain}(f)$.}
+% \referee{2}{Page 8.  Can you add a brief explanation why $\mathcal{P}$ is a
+% 	partition of $V(G)$?  It is clear that the sets in $\mathcal{P}$ are
+% 	disjoint, but why do they cover $V(G)$?}
+% \note{PM}{I added an explanation in a footnote since this is obvious.  In particular, for any function $f$, $\{f^{-1}(x):x\in\operatorname{range}(f)\}$ is a partition of $\operatorname{domain}(f)$.}
 
 From this point onward, the plan is to show that:
 \begin{compactenum}[(i)]
-  \item $\mathcal{P}$ has small layered width with respect to the layering $\mathcal{L}$ and that
+  \item $\mathcal{P}$ has small layered width with respect to the layering $\mathcal{L}$ of $G$ and that
   \item $J$ has small treewidth.
 \end{compactenum}
-
-\referee{1}{7. page 8, item (i): ``$S$ has small layered width with respect to the layering $L$'' $\longrightarrow$ ``$S$ has small layered width with respect to the layering $L$ of $G$''. Perhaps mention something about how it is easy to find the new layering.}
+Once we have established (i) and (ii), the result follows easily since a layering of $G^\SS$ is easily obtained from $\mathcal{L}$ by `compressing' groups of $k$ consecutive layers.
+% \referee{1}{7. page 8, item (i): ``$P$ has small layered width with respect to the layering $L$'' $\longrightarrow$ ``$P$ has small layered width with respect to the layering $L$ of $G$''.}
+% \referee{1}{Perhaps mention something about how it is easy to find the new layering.}
 
 
 First we need to understand the relationship between sets $S_x\in\mathcal{P}$ and the related sets $Y_x$, $V_x$, $F_x$, and $N_x$.
@@ -500,13 +502,16 @@ Next we complete Step~(i) and show that $\mathcal{P}$ has small layered width wi
 \end{clm}
 
 \begin{proof}
-  Recall that $S_x$ is defined by vertices that participate in $x$, and these are vertices that are either in $Y_x$ or in shortcuts that cross $Y_x$.  We say that a vertex $w\in Y_x$ \defin{contributes} a vertex $v\in S_x$ if $v$ participates in $x$.
-  We upper bound the number of vertices in $S_x\cap L_i$ by upper-bounding the number of vertices contributed to $S_x\cap L_i$ by each $w\in Y_x$. Refer to \cref{contribute}.  If $w\in Y_x\cap L_i$ and no path in $\SS$ includes $w$ as an internal vertex then $w$ contributes at most one vertex, itself, to $S_x\cap L_i$.
-
-\referee{1}{9. page 8, line 10: ``We say that a vertex $w \in Y_x$ contributes a vertex
-  $v \in S_x$ if $v$ participates in $x$.'' This needs to be fixed.}
-
-\note{DW}{What is wrong here?}
+  Recall that $S_x$ is defined by vertices that participate in $x$, and these are vertices that are either in $Y_x$ or in shortcuts that cross $Y_x$.  We say that a vertex $w\in Y_x$ \defin{contributes} a vertex $v\in S_x$ if $v=w$ or if some path in $\SS$ that contains $v$ has $w$ as an internal vertex.
+  We upper bound the number of vertices in $S_x\cap L_i$ by upper-bounding the number of vertices contributed to $S_x\cap L_i$ by each $w\in Y_x$. 
+  
+  Refer to \cref{contribute}.  If $w\in Y_x\cap L_i$ and no path in $\SS$ includes $w$ as an internal vertex then $w$ contributes at most one vertex, itself, to $S_x\cap L_i$.
+  Otherwise, consider some path $P\in\SS$ that contains $w$ as an internal vertex.  If $w\in L_{i}$, then $P$ contributes at most $k+1$ vertices to $S_x\cap L_i$.  If $w\in L_{i-1}\cup L_{i+1}$, then $P$ contributes at most $k$ vertices to $S_x\cap L_i$. If $w\in L_{i-j}\cup L_{i+j}$ for $j\ge 2$, then $P$ contributes at most $k-j$ vertices to $S_x\cap L_i$.
+% 
+% \referee{1}{9. page 8, line 10: ``We say that a vertex $w \in Y_x$ contributes a vertex
+%   $v \in S_x$ if $v$ participates in $x$.'' This needs to be fixed.}
+% 
+% \note{DW}{What is wrong here?}
 
   \begin{figure}[htbp]
     \begin{center}
@@ -516,7 +521,6 @@ Next we complete Step~(i) and show that $\mathcal{P}$ has small layered width wi
     \label{contribute}
   \end{figure}
 
-  Otherwise, consider some path $P\in\SS$ that contains $w$ as an internal vertex.  If $w\in L_{i}$, then $P$ contributes at most $k+1$ vertices to $S_x\cap L_i$.  If $w\in L_{i-1}\cup L_{i+1}$, then $P$ contributes at most $k$ vertices to $S_x\cap L_i$. If $w\in L_{i-j}\cup L_{i+j}$ for $j\ge 2$, then $P$ contributes at most $k-j$ vertices to $S_x\cap L_i$.
 
   For any $j$, the number of vertices $w\in L_{i+j}\cap Y_x$ is at most $\ell$. Each such vertex $w$ is an internal vertex of at most $d$ paths in $\SS$. Therefore,
   \[  |S_x\cap L_i|\le d\ell  \, \Big(k+1 + 2k + \sum_{j=2}^k 2(k-j)\Big) %= d(2k+1) + \sum_{i=1}^{k-2} i
