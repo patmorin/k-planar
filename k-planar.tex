@@ -643,7 +643,7 @@ We assume that no two edges incident to a common vertex cross each other since, 
 
 \note{DW}{I suggest we say that it follows from Euler's formula that $G$ is finite. (To see this, say $G$ has $n$ vertices, $m$ non-crossed edges, and $k$ crossings. Let $G'$ be the plane graph obtained from $G$ by adding a dummy vertex at each crossing. So $G'$ is a plane multigraph in which every face is bounded by a 3-cycle. It follows from Euler's formula that $m+4k = |E(G')| = 3( |V(G')|-2) = 3 ( n+k-2)$, implying	$m+k = 3 (n-2)$ and $|E(G)| = m+2k \leq 6(n-2)$, which can also be shown by deleting one edge from each crossing point. ) }
 
-\note{DW}{It seems to be that $G$ can be obtained from a plane multigraph with faces of size 3 or 4 such that no edge is in two 3-faces, by adding a pair of crossing edges across each 4-face. I think this characterises edge-maximal 1-planar multigraphs with no 2-faces. Right? Does this viewpoint help? Is it known?}
+\note{DW}{It seems to be that $G$ can be obtained from a plane multigraph with faces of size 3 or 4 such that no edge is in two 3-faces, by adding a pair of crossing edges across each 4-face. I think this characterises edge-maximal 1-planar multigraphs with no 2-faces. Right? This should be stated as a lemma. Does this viewpoint help? Is it known?}
 
 \note{DW}{Say $G$ is obtained from a plane multigraph by making each face a clique. Is $G\subseteq H \boxtimes P \boxtimes K_{f(\omega(G)}$? for some treewidth 3 graph $H$.}
 
@@ -689,7 +689,7 @@ Our proof of \cref{1-planar} follows quickly from the following technical lemma,
 				\item $|V(P_i)\cap L_j| \le 15$ for every integer $j\ge 0$.
 			\end{compactenum}
 		\end{compactenum}
-	\note{DW}{Should the vertices already grabbed by $P_1,P_2,P_3$ be mentioned in the setup? The new paths $Q_1,Q_2,Q_3$ need to avoid the vertices already grabbed by $P_1,P_2,P_3$. Basically, I am concerned about what happens when distinct vertical paths in $T$ want to grab the same vertex.}
+	\note{DW}{Should the vertices already grabbed by $P_1,P_2,P_3$ be mentioned in the setup (since the new paths $Q_1,Q_2,Q_3$ need to avoid the vertices already grabbed by $P_1,P_2,P_3$)?. Basically, I am concerned about what happens when distinct vertical paths in $T$ want to grab the same vertex.}
 		\item Let $N$ and $N'$ be the subgraphs of $G$ and $G'$ consisting only of those edges and vertices contained in $F$ or the interior of $F$.
 	\end{compactenum}
 	Then $N$ has an $H$-partition $\mathcal{P}=\{S_x : x\in V(H)\}$ such that:
