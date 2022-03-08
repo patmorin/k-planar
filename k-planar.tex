@@ -792,9 +792,10 @@ though, so the authors can ignore this request if they choose.}
   The proof is by induction on the number of inner vertices of $N$, i.e., on $|V(N)\setminus V(F)|$.  If $N$ has no inner vertices, then we can simply take $\PP:=\{P_1,\ldots,P_k\}$ and verify the preconditions of the lemma (the `setup') ensure that $\PP$ satisfies the requirements of the lemma.  Therefore, we may assume that $N$ has at least one inner vertex.
 
   Assign each vertex $v$ of $N'$ a colour $\alpha(v)\in\{1,2,3\}$ as follows:
-  Let $w$ be the first vertex of $F$ encountered on the path in $T$ from $v$ to the root of $T$.  (This implies that $w=v$ for $v\in V(F)$.)  Since $w\in V(F)$, $w\in P_i$ for some $i\in\{1,2,3\}$ and we define $\alpha(v):=i$.
+  Let $w$ be the first vertex of $F$ encountered on the path in $T$ from $v$ to the root of $T$.  (This implies that $w=v$ when $v$ is a vertex of $F$.)  Since $w\in V(F)$, $w\in P_i$ for some $i\in\{1,2,3\}$ and we define $\alpha(v):=i$.
 
-  If $k<3$ then let $\tau:=v_1v_2v_3$ be any inner face of $N'$.  Otherwise, $k=3$, in which case we apply Sperner's Lemma to obtain an inner face $\tau:=v_1v_2v_3$ such that $\alpha(v_i)=i$ for each $i\in\{1,2,3\}$.
+  If $k<3$ then let $\tau:=v_1v_2v_3$ be any inner face of $N'$.  \note{PM}{Not quite that easy. We want $M$ to be $2$-connected so have to make sure $\overline{Y}$ attaches to at least two different vertices of $F$.}
+  Otherwise, $k=3$, in which case we apply Sperner's Lemma to obtain an inner face $\tau:=v_1v_2v_3$ such that $\alpha(v_i)=i$ for each $i\in\{1,2,3\}$.
   For each $i\in\{1,2,3\}$, let $Q_i$ be the shortest path, in $T$, from $v_i$ to $V(F)$.
    %
    %
