@@ -1,16 +1,21 @@
 
-name=k-planar
+name=$(shell basename $(CURDIR))
 
-texsources=$(name).tex 
+texsources=$(name).tex
 
-$(name).pdf : $(texsources) $(name).bib figs/
+all: $(name).pdf
+
+$(name).pdf : FORCE
 	make -C figs
 	latexmk -pdf $(name)
 
-reset : clean $(name).pdf
-
-clean :
-	rm -f $(name).pdf
-
 install: $(name).pdf
-	scp $< cglab.ca:public_html/publications/drafts/warmup/$(name)-`date --iso`.pdf
+	scp $< cglab.ca:public_html/publications/drafts/$(name)/$(name)-`date --iso`.pdf
+
+clean:
+	make -C figs clean
+	rm -f $(name).pdf $(name).bbl $(name).log
+
+reset: clean all
+
+FORCE :
