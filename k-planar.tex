@@ -757,16 +757,16 @@ Our proof of \cref{1-planar} follows quickly from the following technical lemma,
 				\item $|V(P_i)\cap L_j| \le 15$ for every integer $j\ge 0$.
 			\end{compactenum}
 		\end{compactenum}
-	\note{DW}{Should the vertices already grabbed by $P_1,P_2,P_3$ be mentioned in the setup? The new paths $Q_1,Q_2,Q_3$ need to avoid the vertices already grabbed by $P_1,P_2,P_3$. Basically, I am concerned about what happens when distinct vertical paths in $T$ want to grab the same vertex.}
-  \note{PM}{No, at this point we're only promising an $H$-partition of $N$, the part of $G$ contained in the uncrossed cycle $F$.}
+% \note{DW}{Should the vertices already grabbed by $P_1,P_2,P_3$ be mentioned in the setup? The new paths $Q_1,Q_2,Q_3$ need to avoid the vertices already grabbed by $P_1,P_2,P_3$. Basically, I am concerned about what happens when distinct vertical paths in $T$ want to grab the same vertex.} \note{PM}{No, at this point we're only promising an $H$-partition of $N$, the part of $G$ contained in the uncrossed cycle $F$.}
 		\item Let $N$ and $N'$ be the subgraphs of $G$ and $G'$ consisting only of those edges and vertices contained in $F$ or the interior of $F$.
 	\end{compactenum}
 	Then $N$ has an $H$-partition $\PP=\{S_x : x\in V(H)\}$ such that:
 	\begin{compactenum}
 		\item $H$ is planar;
 		\item for every integer $j\ge 0$ and every $x\in V(H)$, $|S_x\cap L_j|\le 15$;
-		\item for each $i\in\{1,\ldots,k\}$, there exists some $x_i\in V(H)$ such that $P_i=S_{x_i}$
-		\note{DW}{Should this be $P_i\subseteq S_{x_i}$? (since the path grabs other vertices into its part)}\note{PM}{No, for the same reason as above.}; and
+		\item for each $i\in\{1,\ldots,k\}$, there exists some $x_i\in V(H)$ such that $P_i=S_{x_i}$; 
+%		\note{DW}{Should this be $P_i\subseteq S_{x_i}$? (since the path grabs other vertices into its part)}\note{PM}{No, for the same reason as above.}
+ and
 		\item $H$ has a tree-decomposition in which every bag has size at most 4 and such that some bag contains $x_1,\ldots,x_k$.
 	\end{compactenum}
 \end{lem}
@@ -900,7 +900,7 @@ If a graph class admits bounded layered partitions, then it also has bounded lay
 	< 2k \Delta^k \enspace.
 	\]
 	Fix a $(\Sigma,k)$-plane drawing of $G_0$ in a surface $\Sigma$ of Euler genus at most $g$. Choose $\epsilon>\epsilon'>0$.
-	For each vertex $v$ of $G_0$, let $B_v$ be the \defin{ball} $\{x\in \mathbb{R}^2:\dist_(x,v)\leq\epsilon\}$
+	For each vertex $v$ of $G_0$, let $B_v$ be the \defin{ball} $\{x\in \mathbb{R}^2:\dist(x,v)\leq\epsilon\}$
 	For each edge $vw$ of $G_0$, let $C_{vw}$ be the \defin{channel} $\{x\in \mathbb{R}^2:\dist(x,vw)\leq\epsilon'\}\setminus(B_v\cup B_w)$.
 	We may choose $\epsilon>\epsilon'>0$ sufficiently small so that
 	(i) $B_v\cap B_w=\emptyset$ for distinct $v,w\in V(G_0)$,
@@ -976,16 +976,6 @@ If $G\subseteq H\boxtimes P \boxtimes K_\ell$ then $\pi(G)\le \ell\, 4^{\tw(H)+1
 \end{cor}
 
 Prior to the current work, the strongest upper bound on the non-repetitive chromatic number of $n$-vertex  $k$-planar graphs was $O(k\log n)$ \cite{dujmovic.morin.ea:layered}.
-=======
-%      \includegraphics{figs/one_planar_example-1} &
-%      \includegraphics{figs/one_planar_example-2} \\
-%      (a) & (b) \\[1em]
-%  \caption{Examples of (a)~a $1$-plane graph that is not edge maximal; (b)~an edge-maximal $1$-plane graph $G$; (c)~the kites in $G$; (d)~a plane multigraph $G'$ obtained by removing one spar from each kite of $G$.}
-
-To understand the structure of $G$, it is helpful to consider the plane graph $G_0$ obtained by replacing each pair of edges $vw$ and $xy$ involved in a crossing $(p,vw,xy)$ with four edges $vp$, $wp$, $xp$, and $yp$ meeting at a newly added \defin{dummy vertex} $p$. Let $F$ be a face of $G_0$ and let $W:=w_0,\ldots,w_r$ be the facial walk around $F$. By edge maximality, if $W$ contains only non-dummy vertices, then it contains exactly three vertices and $F$ is bounded by three edges of $G$.
->>>>>>> 432123323ba65fbac04503f0de5e50ec4ebd89ce
-
-If $W$ contains a dummy vertex $w_i$ then neither $w_{i-1}$ nor $w_{i+1}$ is a dummy vertex since if $w_{i-1}$ (respectively $w_{i+1}$) were a dummy vertex then the edge of $G$ that contains $w_{i-1}w_i$ (respectively $w_iw_{i+1}$) woul
 
 %%%%%%%%%%%%%%%%%%%
 \subsection{Centered Colourings}
@@ -1120,8 +1110,7 @@ A similar proof to that of \cref{StringShortcut} shows that every $(g,\delta)$-s
 
 \begin{thm}
 \label{StringPartition}
-For integers $g\geq 0$ and $\delta\geq 2$, let $\ell:= \max\{2g,3\} \,(\delta^4 + 4 \delta^3 + 9 \delta^2 + 10 \delta + 4)$,
-and $t:= \binom{ \delta+4}{3}-1$.
+For integers $g\geq 0$ and $\delta\geq 2$, let $\ell:= \max\{2g,3\} \,(\delta^4 + 4 \delta^3 + 9 \delta^2 + 10 \delta + 4)$ and $t:= \binom{ \delta+4}{3}-1$.
 Then  every $(g,\delta)$-string graph:
 \begin{compactitem}
 	\item is contained in $H\boxtimes P \boxtimes K_{\ell}$ for some path $P$ and for some graph $H$ with treewidth $t$,
@@ -1194,17 +1183,7 @@ For every graph $X$ there exists an integer $c$ such that for all integers $k,\D
 
 \subsection{$k$-Nearest-Neighbour Graphs}
 
-In this section, we show that $k$-nearest neighbour graphs of point sets in the plane are $O(k^2)$-planar.  For two points $x,y\in\R^2$, let $d_2(x,y)$ denote the Euclidean distance between $x$ and $y$. The $k$-nearest-neighbour graph of a point set $P\subset\R^2$ is the geometric graph $G$ with vertex set $V(G)=P$, where the edge set is defined as follows. For each point $v\in P$, let $N_k(v)$ be the set of $k$ points i
-=======
-%      \includegraphics{figs/one_planar_example-1} &
-%      \includegraphics{figs/one_planar_example-2} \\
-%      (a) & (b) \\[1em]
-%  \caption{Examples of (a)~a $1$-plane graph that is not edge maximal; (b)~an edge-maximal $1$-plane graph $G$; (c)~the kites in $G$; (d)~a plane multigraph $G'$ obtained by removing one spar from each kite of $G$.}
-
-To understand the structure of $G$, it is helpful to consider the plane graph $G_0$ obtained by replacing each pair of edges $vw$ and $xy$ involved in a crossing $(p,vw,xy)$ with four edges $vp$, $wp$, $xp$, and $yp$ meeting at a newly added \defin{dummy vertex} $p$. Let $F$ be a face of $G_0$ and let $W:=w_0,\ldots,w_r$ be the facial walk around $F$. By edge maximality, if $W$ contains only non-dummy vertices, then it contains exactly three vertices and $F$ is bounded by three edges of $G$.
->>>>>>> 432123323ba65fbac04503f0de5e50ec4ebd89ce
-
-If $W$ contains a dummy vertex $w_i$ then neither $w_{i-1}$ nor $w_{i+1}$ is a dummy vertex since if $w_{i-1}$ (respectively $w_{i+1}$) were a dummy vertex then the edge of $G$ that contains $w_{i-1}w_i$ (respectively $w_iw_{i+1}$) wouln $P$ closest to $v$. Then $vw\in E(G)$ if and only if $w\in N_k(v)$ or $v\in N_k(w)$. (The edges of $G$ are straight-line segments joining their endpoints.) See \citep{ProximityGraphs} for a survey of results on $k$-nearest neighbour graphs and other related proximity graphs.
+In this section, we show that $k$-nearest neighbour graphs of point sets in the plane are $O(k^2)$-planar.  For two points $x,y\in\R^2$, let $d_2(x,y)$ denote the Euclidean distance between $x$ and $y$. The $k$-nearest-neighbour graph of a point set $P\subset\R^2$ is the geometric graph $G$ with vertex set $V(G)=P$, where the edge set is defined as follows. For each point $v\in P$, let $N_k(v)$ be the set of $k$ points in $P$ closest to $v$. Then $vw\in E(G)$ if and only if $w\in N_k(v)$ or $v\in N_k(w)$. (The edges of $G$ are straight-line segments joining their endpoints.) See \citep{ProximityGraphs} for a survey of results on $k$-nearest neighbour graphs and other related proximity graphs.
 
 The following result, which is immediate from \citet[Corollary~4.2.6]{abrego.munroy.ea:on} states that $k$-nearest-neighbour graphs have bounded maximum degree:
 \begin{lem}
