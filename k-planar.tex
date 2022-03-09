@@ -739,7 +739,7 @@ Consider some crossing $(p,vw,xy)$ in $G$.  The point $p$ at which this crossing
 %
 % \note{DW}{If we define kite as above, this is not a problem}
 
-By removing one spar from each kite of $G$ we obtain a plane multigraph $G'$ each of whose faces is bounded by three edges; see \cref{one_planar_example}(b).  Observe that, for any spar $xy\in E(G)\setminus E(G')$ that crosses $vw\in E(G')$, $G'$ contains the path $vxw$ (and $vyw$).  Therefore $\dist_{G'}(v,w)\le 2$.
+By removing both spars from each kite of $G$ we obtain a plane multigraph $G'$ each of whose faces is bounded by three edges or $4$ edges; see \cref{one_planar_example}(b).  Observe that, for any spar $xy\in E(G)\setminus E(G')$ that crosses $vw\in E(G')$, $G'$ contains the path $vxw$ (and $vyw$).  Therefore $\dist_{G'}(v,w)\le 2$.
 
 Our proof of \cref{1-planar} follows quickly from the following technical lemma, which is an extension of the analogous result for plane graphs \cite{DJMMUW20}.
 \begin{lem}
@@ -754,16 +754,16 @@ Our proof of \cref{1-planar} follows quickly from the following technical lemma,
 			\item $V(F)$ can be partitioned into $P_1,\ldots,P_k$, for some $k\in\{1,2,3\}$ such that for each $i\in\{1,\ldots,k\}$,
 			\begin{compactenum}
 				\item $F[P_i]$ is a path; and
-				\item $|V(P_i)\cap L_j| \le 15$ for every integer $j\ge 0$.
+				\item $|V(P_i)\cap L_j| \le 3$ for every integer $j\ge 0$.
 			\end{compactenum}
 		\end{compactenum}
 % \note{DW}{Should the vertices already grabbed by $P_1,P_2,P_3$ be mentioned in the setup? The new paths $Q_1,Q_2,Q_3$ need to avoid the vertices already grabbed by $P_1,P_2,P_3$. Basically, I am concerned about what happens when distinct vertical paths in $T$ want to grab the same vertex.} \note{PM}{No, at this point we're only promising an $H$-partition of $N$, the part of $G$ contained in the uncrossed cycle $F$.}
 		\item Let $N$ and $N'$ be the subgraphs of $G$ and $G'$ consisting only of those edges and vertices contained in $F$ or the interior of $F$.
 	\end{compactenum}
-	Then $N$ has an $H$-partition $\PP=\{S_x : x\in V(H)\}$ such that:
+	Then $N$ has an $H$-partition $\PP=\{S_x\cup\{v_x\} : x\in V(H)\}$ such that:
 	\begin{compactenum}
 		\item $H$ is planar;
-		\item for every integer $j\ge 0$ and every $x\in V(H)$, $|S_x\cap L_j|\le 15$;
+		\item for every integer $j\ge 0$ and every $x\in V(H)$, $|S_x\cap L_j|\le 3$;
 		\item for each $i\in\{1,\ldots,k\}$, there exists some $x_i\in V(H)$ such that $P_i=S_{x_i}$; 
 %		\note{DW}{Should this be $P_i\subseteq S_{x_i}$? (since the path grabs other vertices into its part)}\note{PM}{No, for the same reason as above.}
  and
@@ -791,13 +791,13 @@ though, so the authors can ignore this request if they choose.}
 
   The proof is by induction on the number of inner vertices of $N$, i.e., on $|V(N)\setminus V(F)|$.  If $N$ has no inner vertices, then we can simply take $\PP:=\{P_1,\ldots,P_k\}$ and verify the preconditions of the lemma (the `setup') ensure that $\PP$ satisfies the requirements of the lemma.  Therefore, we may assume that $N$ has at least one inner vertex.
 
-  If $k\in\{1,2\}$ then we let $\tau:=v_1v_2v_3$ be an inner face of $N$ that contains at least one edge of $F$ on its boundary.  If $k=3$ then assign each vertex $v$ of $N'$ a colour $\alpha(v)\in\{1,\ldots,3\}$ as follows:  Let $w$ be the first vertex of $F$ encountered on the path in $T$ from $v$ to the root of $T$.  (This implies that $w=v$ when $v$ is a vertex of $F$.)  Since $w\in V(F)$, $w\in P_i$ for some $i\in\{1,\ldots,k\}$ and we define $\alpha(v):=i$.   By Sperner's Lemma there exists an inner face $\tau:=v_1v_2v_3$ of $N$ such that $\alpha(v_i)=i$ for each $i\in\{1,2,3\}$.
+  If $k\in\{1,2\}$ then we let $\tau:=v_1,\ldots,v_p$ be an inner face of $N'$ that contains at least one edge of $F$ on its boundary.  If $k=3$ then assign each vertex $v$ of $N'$ a colour $\alpha(v)\in\{1,\ldots,3\}$ as follows:  Let $w$ be the first vertex of $F$ encountered on the path in $T$ from $v$ to the root of $T$.  (This implies that $w=v$ when $v$ is a vertex of $F$.)  Since $w\in V(F)$, $w\in P_i$ for some $i\in\{1,\ldots,k\}$ and we define $\alpha(v):=i$.  Now add edges to the inner faces of $N'$ to obtain a supergraph $N''$ in which each inner face has three $3$ edges on its boundary.
+  By Sperner's Lemma there exists an inner face $\tau'':=v_1,v_2,v_3$ of $N''$ such that $\alpha(v_i)=i$ for each $i\in\{1,2,3\}$.  Let $\tau:=v_1,\ldots,v_p$ be the face of $N'$ that contains $\tau''$.  (Note that $p\in\{3,4\}$.)
 
   % If $k=2$, then let $\tau:=v_1v_2$ be any edge of $N'$ whose interior is in the interior of $F$ and whose endpoints have different colours.  The existence of such an edge is straightforward to establish by considering the auxilliary graph $A$ whose vertices are the faces of $N'$ and in which two faces are adjacent if and only if they share an edge whose endpoints have different colours.  Every vertex in $A$ has degree $0$ or $2$ and the outer face $F_0$ of $N'$ has degree $2$ in $A$.  Therefore $A$ contains a cycle $C$ that contains $F_0$.  Two edges of $C$ correspond to bichromatic edges of $F$ and the the remaining edges correspond to bichromatic edges in the interior of $F$, so it only remains to verify that $C$ has length at least $3$.  The only other possibility is that $C$ has length $2$, which
 
 
   % See, for example, \cite[Lemma~6]{bose.morin.ea:optimal}.
-
 
   For each $i\in\{1,2,3\}$, let $Q_i$ be the shortest path, in $T$, from $v_i$ to $V(F)$.
    %
@@ -805,11 +805,11 @@ though, so the authors can ignore this request if they choose.}
    % If $k=3$, set $R_i := P_i$ for each $i\in\{1,2,3\}$.  Otherwise, as in \citep{DJMMUW20}, split $P_1,\ldots,P_k$ to partition $V(F)$ into three sets $R_1$, $R_2$, and $R_3$ such that each $F[R_i]$ is a non-empty path and each $R_i$ contains vertices from exactly one of $P_1,\ldots,P_k$.
   %
 	% Next, as in \citep{DJMMUW20}, use Sperner's Lemma to find an inner face $\tau=v_1v_2v_3$ of $N'$ such that, $T$ contains disjoint vertical paths $Q_1,Q_2,Q_3$ such that each $Q_i$ begins at $v_i$, ends at some vertex in $R_i$, and whose internal vertices (if any) are contained in $N'-V(F)$.
-	Let $\overline{Y}$ denote the subgraph of $N'$ consisting of vertices and edges of $Q_1$, $Q_2$, $Q_3$, and $\tau$.  Let $\overline{Y}^+$ denote the subgraph of $N$ consisting of the vertices and edges of $\overline{Y}$ plus the vertices and edges of every kite formed by a crossing between an edge of $G$ and an edge of $\overline{Y}$.  Let $Y:= V(\overline{Y}-F)$ and let $Y^+:=V(\overline{Y}^+-F)$.
+  Let $\overline{Y}$ denote the subgraph of $N'$ consisting of vertices and edges of $Q_1$, $Q_2$, $Q_3$, and $\tau$.  Let $S:=V(Q_1)\cup V(Q_2)\cup V(Q_3)$ and let $v:=v_p$.  Observe that, for each $i\in\{1,2,3\}$ and each $j\ge 0$, $|V(Q_i)\cap L_j|\le 1$.  Therefore $|S\cap L_j|\le 3$ for each integer $j\ge 0$.  Therefore, taking $Y:=S\cup\{v\}$ as a part in the partition $\PP$ will satisfy Requirement~2 of the lemma.
 
-	We claim that, for each integer $i\ge 0$, $|V(\overline{Y}^+)\cap L_i|\le 15$.  First observe that, since $Q_1,Q_2,Q_3$ are each vertical paths in $T$,  $\overline{Y}$ contains at most three vertices of $L_i$, each incident on at most two edges of $\overline{Y}$.  Since $\dist_{G'}(v,w)\le 2$ for each $vw\in E(G)$, any vertex $x\in V(\overline{Y}^+)\setminus V(\overline{Y})\cap L_i$, is incident to an edge $xy\in E(G)$ that crosses one of the at most six edges in $\overline{Y}$ having an endpoint in $L_i$.  These at most six edges have at most 12 endpoints.  Therefore $|V(\overline{Y}^+)\setminus V(\overline{Y})\cap L_i|\le 6\times 2=12$, so $|V(\overline{Y}^+)\cap L_i|\le 12+3=15$.
+	% We claim that, for each integer $i\ge 0$, $|V(\overline{Y}^+)\cap L_i|\le 15$.  First observe that, since $Q_1,Q_2,Q_3$ are each vertical paths in $T$,  $\overline{Y}$ contains at most three vertices of $L_i$, each incident on at most two edges of $\overline{Y}$.  Since $\dist_{G'}(v,w)\le 2$ for each $vw\in E(G)$, any vertex $x\in V(\overline{Y}^+)\setminus V(\overline{Y})\cap L_i$, is incident to an edge $xy\in E(G)$ that crosses one of the at most six edges in $\overline{Y}$ having an endpoint in $L_i$.  These at most six edges have at most 12 endpoints.  Therefore $|V(\overline{Y}^+)\setminus V(\overline{Y})\cap L_i|\le 6\times 2=12$, so $|V(\overline{Y}^+)\cap L_i|\le 12+3=15$.
 
-	Let $M$ and $M^+$ denote the subgraph of $G$ containing the edges and vertices of $\overline{Y}$, respectively $\overline{Y}^+$, and the edges and vertices of $F$. (See \cref{boring_figure}.)  By our choice of $\tau$, the graph $M$ is $2$-connected.  Furthermore, the vertices on the boundary of each inner face of $M$ are contained in $Y\cup P_a\cup P_b$ for some $a,b\in\{1,\ldots,k\}$.  In particular if $k=3$ then, for each inner face $F_i$ of $M$ there exists some $c\in\{1,2,3\}$ such that no vertex of $P_c$ is on the boundary of $F_i$.
+	Let $M$ denote the subgraph of $G'$ containing the edges and vertices of $\overline{Y}$ and the edges and vertices of $F$. (See \cref{boring_figure}.)  By our choice of $\tau$, the graph $M$ is $2$-connected.  Furthermore, the vertices on the boundary of each inner face of $M$ are contained in $Y\cup P_a\cup P_b$ for some $a,b\in\{1,\ldots,k\}$.  In particular if $k=3$ then, for each inner face $F_i$ of $M$ there exists some $c\in\{1,2,3\}$ such that no vertex of $P_c$ is on the boundary of $F_i$.
 
   \begin{figure}
     \begin{center}
@@ -818,13 +818,13 @@ though, so the authors can ignore this request if they choose.}
         $M$ & $M^+$
       \end{tabular}
     \end{center}
-    \caption{The graphs $M$ and $M^+$.}
+    \caption{The graphs $M$ and $M^+$. \note{PM}{This figure needs updating now.}}
     \label{boring_figure}
   \end{figure}
 
-  The graph $M^+$ has some number of inner faces, all contained in the interior of $F$. Some of the inner faces of $M^+$ are Type~(ii) faces of $G$. Let $F_1,\ldots,F_m$ be the inner faces of $M^+$ that are not Type~(ii) faces of $G$.  We claim that, for each $i\in\{1,\ldots,m\}$, the boundary of $F_i$ is a cycle in $G'$ that contains no spars. Otherwise, some edge $vw$ contributes to the boundary of $F_i$ but is crossed by an edge $xy\in E(G)$. Then, $vw\not\in E(F)$ since no edge of $F$ is crossed by any edge of $G$. Therefore $vw\in E(\overline{Y}^+)$ so $xy\in E(\overline{Y}^+)$. But then the only faces of $M^+$ with $vw$ on their boundary are Type~(ii) faces.  In particular $vw$ cannot be on the boundary of $F_i$.
-
-  Observe that each of the faces $F_1,\ldots,F_m$ is contained in a single inner face of $M$.  Therefore, $V(F_i)$ can be partitioned into at most three sets $P_1'$, $P_2'$, and $P_3'$ where $P_1'\subset V(Y^+)$, $P_2'\subseteq P_a$, $P_3'\subseteq P_b$ for some $a,b\in\{1,2,3\}$, and $F_i[P_j']$ is a path, for each $j\in\{1,2,3\}$.  Therefore, we can apply induction using the cycle $F_i$ and the partition $P_1',P_2',P_3'$ of $V(F_i)$ to obtain the desired $H$-partition $\PP_i$ and tree decomposition of subgraph $N_i$ of $G$ contained in $F_i$.
+  The graph $M$ has some number of inner faces $F_1,\ldots,F_m$, each of which is contained in the interior of $F$. 
+  % Some of the inner faces of $M^+$ are Type~(ii) faces of $G$. Let $F_1,\ldots,F_m$ be the inner faces of $M^+$ that are not Type~(ii) faces of $G$.  We claim that, for each $i\in\{1,\ldots,m\}$, the boundary of $F_i$ is a cycle in $G'$ that contains no spars. Otherwise, some edge $vw$ contributes to the boundary of $F_i$ but is crossed by an edge $xy\in E(G)$. Then, $vw\not\in E(F)$ since no edge of $F$ is crossed by any edge of $G$. Therefore $vw\in E(\overline{Y}^+)$ so $xy\in E(\overline{Y}^+)$. But then the only faces of $M^+$ with $vw$ on their boundary are Type~(ii) faces.  In particular $vw$ cannot be on the boundary of $F_i$.
+  Each of the faces $F_1,\ldots,F_m$ is contained in a single inner face of $M$.  Therefore, $V(F_i)$ can be partitioned into at most three sets $P_1'$, $P_2'$, and $P_3'$ where $P_1'\subset V(Y^+)$, $P_2'\subseteq P_a$, $P_3'\subseteq P_b$ for some $a,b\in\{1,2,3\}$, and $F_i[P_j']$ is a path, for each $j\in\{1,2,3\}$.  Therefore, we can apply induction using the cycle $F_i$ and the partition $P_1',P_2',P_3'$ of $V(F_i)$ to obtain the desired $H$-partition $\PP_i$ and tree decomposition of subgraph $N_i$ of $G$ contained in $F_i$.
 
   \note{PM}{Pick up here tomorrow afternoon. For now I have to teach and prepare a talk.}
   The proof finishes in the same way as the proof in \cite{DJMMUW20}.  The paths $P_1,\ldots,P_k$, and $S=V(Y^+)$ become elements of the $H$-partition.
