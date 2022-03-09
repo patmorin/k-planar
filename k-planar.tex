@@ -1320,14 +1320,22 @@ where the lower endpoint of each of $P,Q,R$ is in $F$. A \defin{bipod} (with res
 %In the original proof for planar triangulation, B_i is an edge.
 
 \begin{lem}
-Fix an integer $d \geq 3$. Say $G_0$ is a 2-connected plane multigraph, in which each facial cycle has length in $\{3,\dots,d\}$. \note{DW}{I expect $d$ will be irrlevant to this lemma.} Let $T$ be a spanning tree of $G_0$ rooted at some vertex $r$ on the boundary of the outerface of $G_0$. Let $k\in\{1,2,3\}$ and let $C = [A_1,\dots,A_k]$ be a cycle in $G_0$ with $r$ is in the exterior of $C$, where 
-$A_1, \dots, A_k$ are bipods in $G_0$. Let $G$ be the plane graph consisting of all the edges and vertices of $G_0$ in $C$ and the interior of $C$.
-Then $G$ has a partition $\PP$ into tripods with resect to $T$ such that $P_1,\dots,P_k\in\PP$ and the graph $H : = G / \PP$ is planar and has a tree-decomposition in which every bag has size at most 4 and some bag contains all the vertices of $H$ corresponding to $P_1,\dots,P_k$. \note{DW}{Do we need to add that ``each face of $G_0$ is the centre of some tripod in $\PP$'' or something like that? Then each facial clique will be in some part.}
+Say $G_0$ is a 2-connected plane multigraph. Let $T$ be a spanning tree of $G_0$ rooted at some vertex $r$ on the boundary of the outerface of $G_0$. Let $k\in\{1,2,3\}$ and let $C = [A_1,\dots,A_k]$ be a cycle in $G_0$ with $r$ in the exterior of $C$, where $A_1, \dots, A_k$ are bipods in $G_0$. Let $G$ be the plane graph consisting of all the edges and vertices of $G_0$ in $C$ and the interior of $C$. Then $G$ has a partition $\PP$ into tripods with respect to $T$ such that:
+\begin{compactitem}
+\item $P_1,\dots,P_k\in\PP$,
+\item the quotient $G / \PP$ is planar and has a tree-decomposition $\mathcal{T}$ of width at most 3 such that:
+\begin{compactitem}
+	\item some bag of $\mathcal{T}$ contains $P_1,\dots,P_k$, and 
+	\item for every face $F$ of $G$ there is a bag $B$ of $\mathcal{T}$ such that $V(F)\subseteq \bigcup_{X\in B} X$.
+\end{compactitem}
+\end{compactitem}
 \end{lem}
 
 \begin{proof}
+	\note{DW}{Can we always assume $k=3$ by allowing $A_i=\emptyset$? That would clean it up.}
+	
 	\note{DW}{Is $C$ allowed to be a 2-cycle?}
-The proof is by induction on $|V(G)\setminus V(C)|$. If $V(G)\setminus V(C)=\emptyset$, then the desired partition is $\PP=\{P_1,\ldots,P_k\}$.  The tree-decomposition of $H$ consists of a single bag that contains the $k\le 3$ vertices corresponding to $P_1,\ldots,P_k$.
+The proof is by induction on $|V(G)\setminus V(C)|$. If $V(G)\setminus V(C)=\emptyset$, then $G$ has just one face bounded by $C$ and the desired partition is $\PP=\{P_1,\ldots,P_k\}$.  The tree-decomposition of $G/\PP$ consists of a single bag that contains the $k\le 3$ vertices corresponding to $P_1,\ldots,P_k$.
 
 Now assume that $V(G)\setminus V(C)\neq\emptyset$. Partition the vertices of $C$ into paths $R_1$, $R_2$, and $R_3$ as follows:
 \begin{compactenum}
@@ -1338,25 +1346,46 @@ Now assume that $V(G)\setminus V(C)\neq\emptyset$. Partition the vertices of $C$
 	\item If $k=3$ then let $R_i:=P_i$ for each $i\in\{1,2,3\}$.
 \end{compactenum}
 
-Let $G'$ be an arbitrary triangulation of $G_0$. For $i\in\{1,2,3\}$, colour each vertex in $R_i$ by $i$. Now, for each remaining vertex $v$ in $G$, consider the path $P_v$ from $v$ to the root of $T$. Since $r$ is on the outer-face of $G_0$, $P_v$ contains at least one vertex of $C$. If the first vertex of $P_v$ that belongs to $F$ is in $R_i$ then assign the colour $i$ to $v$. We obtain a 3-colouring of the vertices of $G'$ that satisfies the conditions of Sperner's Lemma. By Sperner's Lemma there exists a triangular face $\tau=v_1v_2v_3$ of $G'$ whose vertices are coloured $1,2,3$ respectively. Let $F$ be the face of $G_0$ containing $\tau$. 
+Let $G'$ be a near-triangulation obtained from $G$ by triangulating every internal face. For $i\in\{1,2,3\}$, colour each vertex in $R_i$ by $i$. Now, for each remaining vertex $v$ in $G$, consider the path $P_v$ from $v$ to the root of $T$. Since $r$ is on the outer-face of $G_0$, $P_v$ contains at least one vertex of $C$. If the first vertex of $P_v$ that belongs to $F$ is in $R_i$ then assign the colour $i$ to $v$. We obtain a 3-colouring of the vertices of $G'$ that satisfies the conditions of Sperner's Lemma. By Sperner's Lemma there exists a triangular face $\tau=v_1v_2v_3$ of $G'$ whose vertices are coloured $1,2,3$ respectively. Let $F$ be the face of $G_0$ containing $\tau$. 
 
-For each $i\in\{1,2,3\}$, let $Q_i$ be the path in $T$ from $v_i$ to the first ancestor $v_i'$ of $v_i$ in $T$ that is contained in $C$. Observe that $Q_1$, $Q_2$, and $Q_3$ are disjoint since $Q_i$ consists only of vertices coloured $i$. Note that $Q_i$ may consist of the single vertex $v_i=v_i'$.  Let $Q_i'$ be $Q_i$ minus its final vertex $v_i'$.  Imagine for a moment that the cycle $C$ is oriented clockwise, which defines an orientation of $R_1$, $R_2$ and $R_3$. Let $R_i^-$ be the subpath of $R_i$ that contains $v'_i$ and all vertices that precede it, and let $R_i^+$ be the subpath of $R_i$ that contains $v'_i$ and all vertices that succeed it.  
+For each $i\in\{1,2,3\}$, let $Q_i$ be the path in $T$ from $v_i$ to the first ancestor $v_i'$ of $v_i$ in $T$ that is contained in $C$. Observe that $Q_1$, $Q_2$, and $Q_3$ are disjoint since $Q_i$ consists only of vertices coloured $i$. Let $Q_i'$ be $Q_i$ minus its final vertex $v_i'$. Note that $Q_i$ may consist of the single vertex $v_i=v_i'$, in which case $Q_i'$ is empty. Imagine for a moment that the cycle $C$ is oriented clockwise, which defines an orientation of $R_1$, $R_2$ and $R_3$. Let $R_i^-$ be the subpath of $R_i$ that contains $v'_i$ and all vertices that precede it, and let $R_i^+$ be the subpath of $R_i$ that contains $v'_i$ and all vertices that succeed it.  
+
+Let $Y$ be the tripod consisting of $Q_1'\cup Q_2' \cup Q_3'$ plus the vertices and edges of $F$.
 
 Say $F=v_1 S_1 v_2 S_2 v_3 S_3$, where $S_i$ is a facial path in $F$ clockwise from $v_i$ to $v_{i+1}$.
 
+Let $L_i$ be the path $Q_i'S_iQ_{i+1}'$ for $i\in\{1,\dots,k\}$. So $L_i$ is a bipod. 
 
-, where we use the convention that $Q_4=Q_1$ and $R_4=R_1$. Note that $C_i$ may be \emph{degenerate} in the sense that $[Q_i',R_i^+,R_{i+1}^-,Q_{i+1}']$ may consist only of a single edge $v_iv_{i+1}$.
+, where we use the convention that $Q_4=Q_1$ and $R_4=R_1$. 
 
-Let $Y$ be the tripod consisting of $Q_1'\cup Q_2' \cup Q_3'$ plus the vertices and edges of $F$ between non-empty $Q_1',Q_2',Q_3'$. 
+%Note that $C_i$ may be \defin{degenerate} in the sense that $[Q_i',R_i^+,R_{i+1}^-,Q_{i+1}']$ may consist only of a single edge $v_iv_{i+1}$.
 
+% Consider any non-degenerate $C_i=[Q_i',R_i^+,R_{i+1}^-,Q_{i+1}']$. Note that these four paths  are pairwise disjoint, and thus $C_i$ is a cycle. If  $Q_i'$ and $Q_{i+1}'$ are non-empty, then each is a vertical path in $T$.  Furthermore, each of $R_i^-$ and $R_{i+1}^+$ consists of at most two vertical paths in $T$.  Thus, $C_i$ is the concatenation of at most six vertical paths in $T$ \note{DW}{re-do}.  Let $G_i$ be the subgraph of $G_0$ consisting of all the edges and vertices of $G_0$ contained in $C_i$ and the interior of $C_i$.  Observe that $G_i$ contains $v_i$ and $v_{i+1}$ but not the third vertex of $\tau$. 
 
+Consider the plane graph $Z$ consisting of the edges and vertices of $F$, the edges and vertices of $C$, and the edges and vertices of $Q_1,Q_2,Q_3$. Then $Z$ is 2-connected, each face of $Z$ is bounded by a cycle, and the outerface of $Z$ is $C$. Let $Z_1,\dots,Z_m$ be the internal faces of $Z$. 
 
-\note{DW}{Much of the following paragraph can be deleted} Consider any non-degenerate $C_i=[Q_i',R_i^+,R_{i+1}^-,Q_{i+1}']$. Note that these four paths  are pairwise disjoint, and thus $C_i$ is a cycle. If  $Q_i'$ and $Q_{i+1}'$ are non-empty, then each is a vertical path in $T$.  Furthermore, each of $R_i^-$ and $R_{i+1}^+$ consists of at most two vertical paths in $T$.  Thus, $C_i$ is the concatenation of at most six vertical paths in $T$ \note{DW}{re-do}.  Let $G_i$ be the subgraph of $G_0$ consisting of all the edges and vertices of $G_0$ contained in $C_i$ and the interior of $C_i$.  Observe that $G_i$ contains $v_i$ and $v_{i+1}$ but not the third vertex of $\tau$. 
+Consider $j\in\{1,\dots,m\}$. Let $G_j$ be the subgraph of $G$ consisting of all the edges and vertices of $G$ in $Z_j$ and the interior of $Z_j$. The outerface of $G_j$ is $Z_j$. Observe that for some $i\in\{1,\dots,k\}$, we have
+$Z_j=[R_{i,j}^+,R_{i+1,j}^-,S_{i,j}]$, where 
+$R_{i,j}^+$ is some subpath of $R_i^+$,
+$R_{i+1,j}^-$ is some subpath of $R_{i+1}^-$, and
+$S_{i,j}$ is some subpath of $S_i$.
+Since $R_i^+$, $R_{i+1}^-$ and $S_i$ are bipods, 
+$R_{i,j}^+$, $R_{i+1,j}^-$ and $S_{i,j}$ are bipods. 
+By construction, $v_{i-1}$ is not in $G_j$. 
+Thus $V(G_j)\setminus V(Z_j) \subsetneq V(G)\setminus V(C)$, and we may apply induction to $G_j$.  Thus $G_j$ has a partition $\PP_j$ into tripods with respect to $T$ such that:
+\begin{compactitem}
+	\item $R_{i,j}^+, R_{i+1,j}^-, S_{i,j}\in\PP_j$,
+	\item the quotient $G_j / \PP_j$ is planar and has a tree-decomposition $\mathcal{T}_j$ of width at most 3 such that: 
+	\begin{compactitem}
+		\item some bag $B_j$ of $\mathcal{T}_j$ contains $R_{i,j}^+, R_{i+1,j}^-, S_{i,j}$, and 
+		\item for every face $F$ of $G_j$ there is a bag $B$ of $\mathcal{T}_j$ such that $V(F)\subseteq \bigcup_{X\in B} X$.
+	\end{compactitem}
+\end{compactitem}
+\end{lem}
 
-Consider the graph consisting of the edges and vertices of $F$, the edges and vertices of $C$, and the edges and vertices of $Q_1,Q_2,Q_3$. This graph has up to three \note{DW}{can be more} internal faces $C_1,C_2,C_3$ where each $C_i=[Q_i',R_i^+,R_{i+1}^-,Q_{i+1}']$ and $R_{i}^+$ and $R_{i}^-$ are the same portions of $R_i$ as defined in \cref{NearTriang} \note{DW}{move in here}    Observe that  $C_i=[ R_i^+ , R_{i+1}^-, I_i ]$, where $R_i^+$ and $R_{i+1}^-$ are bipods, and $I_i$ is the bipod $Q_i' S_i Q_{i+1}'$. Let $G_i$ be the subgraph of $G$ whose vertices and edges are in $C_i$ or its interior. 
+%This graph has up to three \note{DW}{can be more} internal faces $C_1,C_2,C_3$ where each $C_i=[Q_i',R_i^+,R_{i+1}^-,Q_{i+1}']$ and $R_{i}^+$ and $R_{i}^-$ are the same portions of $R_i$ as defined in \cref{NearTriang} \note{DW}{move in here}    Observe that  $C_i=[ R_i^+ , R_{i+1}^-, I_i ]$, where $R_i^+$ and $R_{i+1}^-$ are bipods, and $I_i$ is the bipod $Q_i' S_i Q_{i+1}'$. Let $G_i$ be the subgraph of $G$ whose vertices and edges are in $C_i$ or its interior. 
 
-For $i\in\{1,2,3\}$, if $C_i$ is non-empty, then $G_i$ and $C_i=[ R_i^+ , R_{i+1}^-, I_i ]$ satisfy the conditions of the lemma, and we may apply induction to $G_i$.  (Note that one or two of $R_i^+$, $R_{i+1}^-$ and $I_i$ may be empty, in which case we apply the inductive hypothesis with $k=2$ or $k=1$, respectively.)\  This gives a partition $\PP_i$ of $G_i$ such that $H_i:= G_i / \PP_i$ satisfies the conclusions of the lemma. Let $(B^i_x:x\in V(J_i))$ be a tree-decomposition of $H_i$, in which every bag has size at most 4, and some bag $B^i_{u_i}$ contains the vertices of $H_i$ corresponding to  $R_i^+$, $R_{i+1}^-$ and $I_i$ (if they are non-empty).  We do this for each non-degenerate $C_i$. 
-
+%For $i\in\{1,2,3\}$, if $C_i$ is non-empty, then $G_i$ and $C_i=[ R_i^+ , R_{i+1}^-, I_i ]$ satisfy the conditions of the lemma, and we may apply induction to $G_i$.  (Note that one or two of $R_i^+$, $R_{i+1}^-$ and $I_i$ may be empty, in which case we apply the inductive hypothesis with $k=2$ or $k=1$, respectively.)\  This gives a partition $\PP_i$ of $G_i$ such that $H_i:= G_i / \PP_i$ satisfies the conclusions of the lemma. Let $(B^i_x:x\in V(J_i))$ be a tree-decomposition of $H_i$, in which every bag has size at most 4, and some bag $B^i_{u_i}$ contains the vertices of $H_i$ corresponding to  $R_i^+$, $R_{i+1}^-$ and $I_i$ (if they are non-empty).  We do this for each non-degenerate $C_i$. 
 
 We now construct the desired partition $\PP$ of $G$. 
 Initialise $\PP:= \{P_1,\ldots,P_k\}$. Then add each non-empty $Q_i'$ to $\PP$. 
