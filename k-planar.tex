@@ -826,7 +826,7 @@ though, so the authors can ignore this request if they choose.}
   % Some of the inner faces of $M^+$ are Type~(ii) faces of $G$. Let $F_1,\ldots,F_m$ be the inner faces of $M^+$ that are not Type~(ii) faces of $G$.  We claim that, for each $i\in\{1,\ldots,m\}$, the boundary of $F_i$ is a cycle in $G'$ that contains no spars. Otherwise, some edge $vw$ contributes to the boundary of $F_i$ but is crossed by an edge $xy\in E(G)$. Then, $vw\not\in E(F)$ since no edge of $F$ is crossed by any edge of $G$. Therefore $vw\in E(\overline{Y}^+)$ so $xy\in E(\overline{Y}^+)$. But then the only faces of $M^+$ with $vw$ on their boundary are Type~(ii) faces.  In particular $vw$ cannot be on the boundary of $F_i$.
   Each of the faces $F_1,\ldots,F_m$ is contained in a single inner face of $M$.  Therefore, $V(F_i)$ can be partitioned into at most three sets $P_1'$, $P_2'$, and $P_3'$ where $P_1'\subset V(Y)$, $P_2'\subseteq P_a$, $P_3'\subseteq P_b$ for some $a,b\in\{1,2,3\}$, and $F_i[P_j']$ is a path, for each $j\in\{1,2,3\}$.  Therefore, we can apply induction using the cycle $F_i$ and the partition $P_1',P_2',P_3'$ of $V(F_i)$ to obtain the desired $H$-partition $\PP_i$ and tree decomposition of subgraph $N_i$ of $G$ contained in $F_i$.
 
-  \note{PM}{Pick up here tomorrow afternoon. For now I have to teach and prepare a talk.}
+  \note{PM}{Pick up here tomorrow, after teaching.}
   The proof finishes in the same way as the proof in \cite{DJMMUW20}.  The paths $P_1,\ldots,P_k$, and $S=V(Y^+)$ become elements of the $H$-partition.
   Elements in each of the $H$-partitions of $N_1,\ldots,N_m$ that intersect $P_1,\ldots,P_k$, or $V(\overline{Y}^+-F)$ are discarded and all the resulting sets are combined to obtain an $H$-partition of $G$.
 
@@ -847,9 +847,9 @@ Using \cref{induction}, the proof of \cref{1-planar} is now straightforward.
 \begin{proof}[Proof of \cref{1-planar}]
 	Given a 1-plane graph $G$, add edges to make it edge-maximal so that it has an outer face $F=v_1v_2v_3$. Next, add a vertex $r$ adjacent to $v_1$, $v_2$, and $v_3$ to obtain an edge-maximal 1-plane graph $\overline{G}$ with one vertex $r$ of degree 3 on its outer face.
 
-	Let $G'$ be the plane graph obtained by removing one spar from each kite of $\overline{G}$ and let $T$ be a BFS tree of $G'$ rooted at $r$.  Now apply \cref{induction} with $G=\overline{G}$, $G'$, $F$, and $P_i=\{v_i\}$ for each $i\in\{1,2,3\}$.  This gives an $H$-partition $\{S_x:x\in V(H)\}$ of $\overline{G}-\{r\}\supseteq G$ in which $H$ is planar and has treewidth at most 3.
+	Let $G'$ be the plane graph obtained by removing both spars from each kite of $\overline{G}$ and let $T$ be a BFS tree of $G'$ rooted at $r$.  Now apply \cref{induction} with $G=\overline{G}$, $G'$, $F$, and $P_i=\{v_i\}$ for each $i\in\{1,2,3\}$.  This gives an $H$-partition $\{S_x\cup\{v_x\}:x\in V(H)\}$ of $\overline{G}-\{r\}\supseteq G$ in which $H$ is planar and has treewidth at most 3.
 
-	Use the layering $\mathcal{L}=\langle L_0',L_1'\ldots\rangle$ where $L_i'=L_{2i}\cup L_{2i+1}$ for each integer $i\ge 0$. That this is a layering of $G$ follows from the fact that $\dist_{G'}(v,w)\le 2$ for every edge $vw\in E(G)$.  Since $|L_j\cap S_x|\le 15$ for every integer $j\ge 0$, $|L_i'\cap S_x|\le 30$ for every integer $i\ge 0$ and every $x\in V(H)$. The result follows from \cref{PartitionProduct}.
+	Use the layering $\mathcal{L}=\langle L_0',L_1'\ldots\rangle$ where $L_i'=L_{2i}\cup L_{2i+1}$ for each integer $i\ge 0$. That this is a layering of $G$ follows from the fact that $\dist_{G'}(v,w)\le 2$ for every edge $vw\in E(G)$.  Since $|L_j\cap S_x|\le 3$ for every integer $j\ge 0$, $|L_i'\cap (S_x\cup\{v_x\})|\le 7$ for every integer $i\ge 0$ and every $x\in V(H)$. The result follows from \cref{PartitionProduct}.
 \end{proof}
 
 \subsection{\boldmath $(g,k)$-Planar Graphs}
