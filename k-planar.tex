@@ -637,9 +637,18 @@ As mentioned in \cref{Introduction}, \cref{PlanarProduct,ShortcutProduct} imply 
 
 In the important special case of 1-planar graphs we obtain better constants and an additional property (planarity) of $H$.
 
+\note{PM}{Include in note to referee:  We choose to keep this section because
+  $1$-planar graphs are of special interest to the graph drawing community.  For example, the annotated bibliography on $1$-planarity (\htmladdnormallink{https://arxiv.org/abs/1703.02261}{arXiv:1703.02261}) has 143 entries, and even this is now four years out of date.
+  
+  An important aspect of our result for $1$-planar graphs is that graph $H$ in the product is planar and has treewidth $3$, i.e., it has simple treewidth $3$.  In a more recent application of product structure \citet{BDJM} show that such graphs have $\ell$-vertex rankings using $O(\log n/\log\log\log n)$ colours, and this is tight. This result requires that $H$ have simple treewidth $3$, even treewidth $3$ is not sufficient.
+  
+  Finally, while cleaning up this proof we have also improved the constant from $30$ to $7$. The proof is quite similar to the previous proof except that graph $G'$ is obtained by removing both crossing edges involved in a crossing (the spars of a kite), rather than just one.  We thank the referee for forcing us to write this proof more carefully so that we could discover this improvement. 
+}
+
+
 \begin{thm}
 \label{1-planar}
-Every 1-planar graph is contained in $H\boxtimes P\boxtimes K_{30}$ for some planar graph $H$ with treewidth at most 3 and for some path $P$.
+Every 1-planar graph is contained in $H\boxtimes P\boxtimes K_{7}$ for some planar graph $H$ with treewidth at most 3 and for some path $P$.
 \end{thm}
 
 \referee{1}{3. Theorem 10: Unfortunately I have to suggest removing it. I don’t see the motivation for making $H$ planar or for improving the constants. Are the improved constants at all close to tight? Is there another reason for including it?}
@@ -698,7 +707,7 @@ To understand the structure of $G$, it is helpful to consider the plane graph $G
 
 If $W$ contains a dummy vertex $w_i$ then neither $w_{i-1}$ nor $w_{i+1}$ is a dummy vertex since if $w_{i-1}$ (respectively $w_{i+1}$) were a dummy vertex then the edge of $G$ that contains $w_{i-1}w_i$ (respectively $w_iw_{i+1}$) would be involved in at least two crossings.  Therefore each dummy vertex $w_i$ of $W$ is surrounded by two vertices $w_{i-1},w_{i+1}\in V(G)$.  Since $w_i$ has degree $4$ in $G_0$, $w_{i-1}\neq w_{i+1}$.  Since $G$ is edge-maximal the edge $w_{i-1}w_i$ is an edge of $G$ on the boundary of $F$.  Therefore, if $F$ has a dummy vertex $w_i$ in its facial walk $W$, then $W=w_{i-1},w_i,w_{i+1}$ and $F$ is bounded by three edges of $G_0$, each of which is contained in a different edge of $G$.
 
-Therefore each face of $G'$ is a $3$-cycle that contains at most one dummy vertex.  This implies that each face of $G$ is one of two types:
+Therefore each face of $G_0$ is a $3$-cycle that contains at most one dummy vertex.  This implies that each face of $G$ is one of two types:
 \begin{inparaenum}[(i)]
   \item bounded by three edges of $G$, none of which are crossed; or
   \item bounded by one edge of $G$ that is not crossed plus portions of two edges of $G$ that cross each other.
@@ -742,7 +751,7 @@ Consider some crossing $(p,vw,xy)$ in $G$.  The point $p$ at which this crossing
 %
 % \note{DW}{If we define kite as above, this is not a problem}
 
-By removing both spars from each kite of $G$ we obtain a plane multigraph $G'$ each of whose faces is bounded by three edges or $4$ edges; see \cref{one_planar_example}(b).  Observe that, for any spar $xy\in E(G)\setminus E(G')$ that crosses $vw\in E(G')$, $G'$ contains the path $vxw$ (and $vyw$).  Therefore $\dist_{G'}(v,w)\le 2$.
+By removing both spars from each kite of $G$ we obtain a plane multigraph $G'$ each of whose faces is bounded by three or four edges; see \cref{one_planar_example}(b).  Observe that, for any spar $xy\in E(G)\setminus E(G')$ that crosses $vw\in E(G')$, $G'$ contains the path $vxw$ (and $vyw$).  Therefore $\dist_{G'}(v,w)\le 2$.
 
 Our proof of \cref{1-planar} follows quickly from the following technical lemma, which is an extension of the analogous result for plane graphs \cite{DJMMUW20}.
 \begin{lem}
@@ -774,14 +783,14 @@ Our proof of \cref{1-planar} follows quickly from the following technical lemma,
 	\end{compactenum}
 \end{lem}
 
-\referee{2}{Page 13.  Regarding the proof of Lemma 4, I think it is better to
-include all the details from reference [14].  As far as I know, JCTB
-does not have a page limit, so I do not see an issue with just
-reproducing the entire proof and telling the reader that they can skip
-all the details if they wish.  This is just my personal opinion
-though, so the authors can ignore this request if they choose.}
-
-\note{DW}{I agree we need more details. I am having trouble verifying this proof. }
+% \referee{2}{Page 13.  Regarding the proof of Lemma 4, I think it is better to
+% include all the details from reference [14].  As far as I know, JCTB
+% does not have a page limit, so I do not see an issue with just
+% reproducing the entire proof and telling the reader that they can skip
+% all the details if they wish.  This is just my personal opinion
+% though, so the authors can ignore this request if they choose.}
+% 
+% \note{DW}{I agree we need more details. I am having trouble verifying this proof. }
 
 \begin{proof}
 	This proof is very similar to the proof of Lemma~13 by \citet{DJMMUW20}, but is sufficiently complicated by the $1$-planar setting to warrant a full proof.

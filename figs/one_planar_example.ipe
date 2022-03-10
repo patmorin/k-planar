@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
 <ipe version="70218" creator="Ipe 7.2.24">
-<info created="D:20220307114630" modified="D:20220307140047"/>
+<info created="D:20220307114630" modified="D:20220310104839"/>
 <ipestyle name="basic">
 <symbol name="arrow/arc(spx)">
 <path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
@@ -321,14 +321,14 @@ h
 <color name="brew8" value="0.988 0.803 0.898"/>
 </ipestyle>
 <page>
-<layer name="alpha"/>
-<layer name="beta"/>
-<layer name="gamma"/>
+<layer name="non_edge_maximal"/>
+<layer name="maximalizers"/>
+<layer name="spars"/>
 <layer name="kites"/>
-<view layers="alpha gamma" active="alpha"/>
-<view layers="alpha beta gamma" active="gamma"/>
-<view layers="alpha beta gamma kites" active="kites"/>
-<view layers="alpha beta kites" active="kites"/>
+<view layers="non_edge_maximal spars" active="non_edge_maximal"/>
+<view layers="non_edge_maximal maximalizers spars" active="spars"/>
+<view layers="non_edge_maximal maximalizers spars kites" active="non_edge_maximal"/>
+<view layers="non_edge_maximal maximalizers kites" active="kites"/>
 <path layer="kites" stroke="black" fill="brew8">
 256 704 m
 192 640 l
@@ -336,22 +336,22 @@ h
 320 640 l
 h
 </path>
-<path layer="beta" stroke="brew4" fill="1" pen="heavier">
+<path layer="maximalizers" stroke="black" fill="1" pen="heavier">
 256 576 m
 248 632
 192 640 c
 </path>
-<path stroke="brew4" fill="1" pen="heavier">
+<path stroke="black" fill="1" pen="heavier">
 256 576 m
 264 632
 320 640 c
 </path>
-<path stroke="brew4" fill="1" pen="heavier">
+<path stroke="black" fill="1" pen="heavier">
 256 704 m
 264 648
 320 640 c
 </path>
-<path stroke="brew4" fill="1" pen="heavier">
+<path stroke="black" fill="1" pen="heavier">
 192 640 m
 248 648
 256 704 c
@@ -384,7 +384,7 @@ h
 216 680 l
 h
 </path>
-<use layer="alpha" name="mark/disk(sx)" pos="192 640" size="normal" stroke="black"/>
+<use layer="non_edge_maximal" name="mark/disk(sx)" pos="192 640" size="normal" stroke="black"/>
 <use name="mark/disk(sx)" pos="320 640" size="normal" stroke="black"/>
 <use name="mark/disk(sx)" pos="256 704" size="normal" stroke="black"/>
 <use name="mark/disk(sx)" pos="256 576" size="normal" stroke="black"/>
@@ -412,19 +412,11 @@ h
 232 664 m
 192 640 l
 </path>
-<path stroke="black" pen="heavier">
-192 640 m
-256 704 l
-</path>
-<path layer="gamma" stroke="black" pen="heavier">
+<path layer="spars" stroke="black" pen="heavier">
 216 680 m
 232 664 l
 </path>
-<path layer="alpha" stroke="black" pen="heavier">
-280 664 m
-296 680 l
-</path>
-<path stroke="black" pen="heavier">
+<path layer="non_edge_maximal" stroke="black" pen="heavier">
 256 704 m
 296 680 l
 </path>
@@ -440,11 +432,11 @@ h
 320 640 m
 296 680 l
 </path>
-<path layer="gamma" stroke="black" pen="heavier">
+<path layer="spars" stroke="black" pen="heavier">
 320 640 m
 256 704 l
 </path>
-<path layer="alpha" stroke="black" pen="heavier">
+<path layer="non_edge_maximal" stroke="black" pen="heavier">
 216 600 m
 192 640 l
 </path>
@@ -460,15 +452,11 @@ h
 256 576 m
 216 600 l
 </path>
-<path layer="gamma" stroke="black" pen="heavier">
+<path layer="spars" stroke="black" pen="heavier">
 216 600 m
 232 616 l
 </path>
-<path layer="alpha" stroke="black" pen="heavier">
-256 576 m
-192 640 l
-</path>
-<path stroke="black" pen="heavier">
+<path layer="non_edge_maximal" stroke="black" pen="heavier">
 256 576 m
 280 616 l
 </path>
@@ -484,23 +472,19 @@ h
 296 600 m
 256 576 l
 </path>
-<path stroke="black" pen="heavier">
-280 616 m
-296 600 l
-</path>
-<path layer="gamma" stroke="black" pen="heavier">
+<path layer="spars" stroke="black" pen="heavier">
 320 640 m
 256 576 l
 </path>
-<path layer="alpha" stroke="black" pen="heavier">
+<path stroke="black" pen="heavier">
 192 640 m
 320 640 l
 </path>
-<path layer="gamma" stroke="black" pen="heavier">
+<path stroke="black" pen="heavier">
 256 576 m
 256 704 l
 </path>
-<path layer="alpha" stroke="black" pen="heavier">
+<path layer="non_edge_maximal" stroke="black" pen="heavier">
 296 600 m
 256 528
 216 600 c
@@ -529,6 +513,22 @@ h
 240 736
 320 720
 320 640 c
+</path>
+<path layer="spars" stroke="black" pen="heavier">
+192 640 m
+256 704 l
+</path>
+<path stroke="black" pen="heavier">
+280 664 m
+296 680 l
+</path>
+<path stroke="black" pen="heavier">
+280 616 m
+296 600 l
+</path>
+<path stroke="black" pen="heavier">
+256 576 m
+192 640 l
 </path>
 </page>
 </ipe>
