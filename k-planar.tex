@@ -1314,8 +1314,7 @@ where the lower endpoint of each of $P,Q,R$ is in $F$. A \defin{bipod} (with res
  %is a path $PXQ$ where $P$ and $Q$ are vertical paths in $T$ and $X$ is a facial path of $G$, where the lower endpoints of $P$ and $Q$ are the endpoints of $X$. 
 \note{DW}{Need to think about degenerate cases. We want every bipod to be a tripod}
 %, and every connected subgraph of a bipod to be a bipod.}.
- These definitions  generalise definitions in \citep{DJMMUW20} where $G$ is assumed to be a plane triangulation, in which case $F$ is a 3-cycle and $X$ is an edge. \note{DW}{We actually managed to omit the definition of `bipod' in \citep{DJMMUW20}!}
-
+These definitions generalise definitions in \citep{DJMMUW20} where $G$ is assumed to be a plane triangulation, in which case $F$ is a 3-cycle and $X$ is an edge. \note{DW}{We actually managed to omit the definition of `bipod' in \citep{DJMMUW20}!}
 
 %In the original proof for planar triangulation, B_i is an edge.
 
@@ -1323,7 +1322,7 @@ where the lower endpoint of each of $P,Q,R$ is in $F$. A \defin{bipod} (with res
 Say $G_0$ is a 2-connected plane multigraph. Let $T$ be a spanning tree of $G_0$ rooted at some vertex $r$ on the boundary of the outerface of $G_0$. Let $k\in\{1,2,3\}$ and let $C = [A_1,\dots,A_k]$ be a cycle in $G_0$ with $r$ in the exterior of $C$, where $A_1, \dots, A_k$ are bipods in $G_0$. Let $G$ be the plane graph consisting of all the edges and vertices of $G_0$ in $C$ and the interior of $C$. Then $G$ has a partition $\PP$ into tripods with respect to $T$ such that:
 \begin{compactitem}
 \item $P_1,\dots,P_k\in\PP$,
-\item the quotient $G / \PP$ is planar and has a tree-decomposition $\mathcal{T}$ of width at most 3 such that:
+\item $G / \PP$ has a tree-decomposition $\mathcal{T}$ of width at most 3 such that:
 \begin{compactitem}
 	\item some bag of $\mathcal{T}$ contains $P_1,\dots,P_k$, and 
 	\item for every face $F$ of $G$ there is a bag $B$ of $\mathcal{T}$ such that $V(F)\subseteq \bigcup_{X\in B} X$.
@@ -1332,7 +1331,7 @@ Say $G_0$ is a 2-connected plane multigraph. Let $T$ be a spanning tree of $G_0$
 \end{lem}
 
 \begin{proof}
-	\note{DW}{Can we always assume $k=3$ by allowing $A_i=\emptyset$? That would clean it up.}
+	\note{DW}{Can we always assume $k=3$ by allowing $A_i=\emptyset$? That would clean up the proof.}
 	
 	\note{DW}{Is $C$ allowed to be a 2-cycle?}
 The proof is by induction on $|V(G)\setminus V(C)|$. If $V(G)\setminus V(C)=\emptyset$, then $G$ has just one face bounded by $C$ and the desired partition is $\PP=\{P_1,\ldots,P_k\}$.  The tree-decomposition of $G/\PP$ consists of a single bag that contains the $k\le 3$ vertices corresponding to $P_1,\ldots,P_k$.
@@ -1375,73 +1374,59 @@ By construction, $v_{i-1}$ is not in $G_j$.
 Thus $V(G_j)\setminus V(Z_j) \subsetneq V(G)\setminus V(C)$, and we may apply induction to $G_j$.  Thus $G_j$ has a partition $\PP_j$ into tripods with respect to $T$ such that:
 \begin{compactitem}
 	\item $R_{i,j}^+, R_{i+1,j}^-, S_{i,j}\in\PP_j$,
-	\item the quotient $G_j / \PP_j$ is planar and has a tree-decomposition $\mathcal{T}_j$ of width at most 3 such that: 
+	\item the quotient $G_j / \PP_j$ has a tree-decomposition $\mathcal{T}_j=\{B_x:x\in V(D_j)\}$ of width at most 3 such that: 
 	\begin{compactitem}
-		\item some bag $B_j$ of $\mathcal{T}_j$ contains $R_{i,j}^+, R_{i+1,j}^-, S_{i,j}$, and 
+		\item some bag of $\mathcal{T}_j$ contains $R_{i,j}^+, R_{i+1,j}^-, S_{i,j}$, and 
 		\item for every face $F$ of $G_j$ there is a bag $B$ of $\mathcal{T}_j$ such that $V(F)\subseteq \bigcup_{X\in B} X$.
 	\end{compactitem}
 \end{compactitem}
-\end{lem}
 
 %This graph has up to three \note{DW}{can be more} internal faces $C_1,C_2,C_3$ where each $C_i=[Q_i',R_i^+,R_{i+1}^-,Q_{i+1}']$ and $R_{i}^+$ and $R_{i}^-$ are the same portions of $R_i$ as defined in \cref{NearTriang} \note{DW}{move in here}    Observe that  $C_i=[ R_i^+ , R_{i+1}^-, I_i ]$, where $R_i^+$ and $R_{i+1}^-$ are bipods, and $I_i$ is the bipod $Q_i' S_i Q_{i+1}'$. Let $G_i$ be the subgraph of $G$ whose vertices and edges are in $C_i$ or its interior. 
 
 %For $i\in\{1,2,3\}$, if $C_i$ is non-empty, then $G_i$ and $C_i=[ R_i^+ , R_{i+1}^-, I_i ]$ satisfy the conditions of the lemma, and we may apply induction to $G_i$.  (Note that one or two of $R_i^+$, $R_{i+1}^-$ and $I_i$ may be empty, in which case we apply the inductive hypothesis with $k=2$ or $k=1$, respectively.)\  This gives a partition $\PP_i$ of $G_i$ such that $H_i:= G_i / \PP_i$ satisfies the conclusions of the lemma. Let $(B^i_x:x\in V(J_i))$ be a tree-decomposition of $H_i$, in which every bag has size at most 4, and some bag $B^i_{u_i}$ contains the vertices of $H_i$ corresponding to  $R_i^+$, $R_{i+1}^-$ and $I_i$ (if they are non-empty).  We do this for each non-degenerate $C_i$. 
 
 We now construct the desired partition $\PP$ of $G$. 
-Initialise $\PP:= \{P_1,\ldots,P_k\}$. Then add each non-empty $Q_i'$ to $\PP$. 
-Now for each non-degenerate $F_i$, each path in  $\PP_i$ is either an \emph{external} path (that is, fully contained in $F_i$) or is an \emph{internal path} with none of its vertices in $F_i$. 
-Add all the internal paths of  $\PP_i$ to $\PP$. 
-By construction, $\PP$ partitions $V(G)$ into vertical paths in $T$ and $\PP$ contains $P_1,\ldots,P_k$.
+Let $\PP$ be obtained from $\bigcup_{j\in\{1,\dots,m\}} \PP_j$ by replacing 
+$R_{i,j}^+\in\PP_j$ by $P_i$, 
+$R_{i+1,j}^-\in\PP_j$ by $P_i$, and
+$S_{i,j}\in\PP_j$ by $Y$.
+By construction, $\PP$ partitions $V(G)$ into tripods with respect to $T$ and $P_1,\ldots,P_k\in \PP$. 
 
-Let $H:=G/\PP$. Next we exhibit the desired tree-decomposition $(B_x:x\in V(J))$ of $H$. 
-Let $J$ be the tree obtained from the disjoint union of $J_i$, taken over the $i\in\{1,2,3\}$ such that $F_i$ is non-degenerate, by adding one new node $u$ adjacent to each $u_i$.
-(Recall that $u_i$ is the node of $J_i$ for which the bag $B^i_{u_i}$ contains the vertices of $H_i$ corresponding to the paths that form $F_i$.)\ 
-Let the bag $B_u$ contain all the vertices of $H$ corresponding to $P_1,\ldots,P_k,Q'_1,Q'_2,Q'_3$. 
-For each non-degenerate $F_i$, and for each node $x\in V(J_i)$, initialise $B_x:= B^i_x$. 
-Recall that vertices of $H_i$ correspond to contracted paths in  $\PP_i$.
-Each internal path in $\PP_i$ also lies  in $\PP$.
-Each external path $P$ in $\PP_i$ is a subpath of $P_j$ for some $j\in\{1,\dots,k \}$ or is one of the paths among $Q'_1, Q'_2, Q'_3$. 
-For each such path $P$, for every $x\in V(J)$, in bag $B_x$, 
-replace each instance of the vertex of $H_i$ corresponding to $P$ by the vertex of $H$ corresponding to the path among $P_1,\ldots, P_k, Q'_1,\ldots,Q'_3$ 
-that contains $P$.
-This completes the description of $(B_x : x\in V(J))$. 
-By construction, $|B_x|\leq 9$ for every $x\in V(J)$. 
+We now construct the desired tree-decomposition of $G/\PP$. For each $j\in\{1,\dots,m\}$, apply the above replacements within the bags of $\mathcal{T}_j$, and let $u_j$ be the node of $D_j$ such that $R_{i,j}^+, R_{i+1,j}^-, S_{i,j} \in B_{u_j}$. Let $D$ be the tree obtained from the disjoint union of $D_1,\dots,D_m$ by adding one new node $u$ adjacent to $u_1,\dots,u_m$. Define $B_u:=\{P_1,P_2,P_3,Y\}$. We claim that $\{B_x:x\in V(D)\}$ is the desired tree-decomposition of $G/\PP$. By construction, every bag $B_x$ has size at most 4. 
 
-First we show that for each vertex $a$ in $H$, the set $X:=\{x\in V(J) : a\in B_x\}$ forms a subtree of $J$.
-If $a$ corresponds to a path distinct from $P_1,\ldots,P_k,Q'_1,Q'_2,Q'_3$ then $X$ is fully contained in $J_i$ for some $i\in\{1,2,3\}$.
-Thus, by induction $X$ is non-empty and connected in $J_i$, so it is in $J$.
-If $a$ corresponds to $P$ which is one of the paths among $P_1,\ldots,P_k,Q'_1,Q'_2,Q'_3$ then 
-$u\in X$ and whenever $X$ contains a vertex of $J_i$ it is because some external path of $\PP_i$ was replaced by $P$.
-In particular, we would have $u_i \in X$ in that case. 
-Again by induction each $X\cap J_i$ is connected and since $uu_i\in E(T)$, we conclude that $X$ induces a (connected) subtree of $J$.
+First we show that for each part $X\in\PP$, the set $\{x\in V(D) : X\in B_x\}$ induces a subtree of $D$. If $X\not\in \{P_1,P_2,P_3,Y\}$ then $X$ is only in bags in some $D_j$, implying $\{x\in V(D) : X\in B_x\}$ induces a subtree of $D$. If $X\in \{P_1,P_2,P_3,Y\}$ then $X$ is in $B_u$, and if some part $X'$ of some $\PP_j$ was replaced by $X$ in the above construction, then $X'$ is in $B_{u_j}$ and $\{x\in V(D_j):X\in B_x\}$ induces a subtree of $D_j$, implying that  $\{x\in V(D) : X\in B_x\}$ induces a subtree of $D$ (since $uu_j\in E(D)$). 
 
-Finally we show that, for every edge $ab$ of $H$, there is a bag $B_x$ that contains $a$ and $b$. 
-If $a$ and $b$ are both obtained by contracting any of $P_1,\ldots,P_k,Q'_1,Q'_2,Q'_3$, 
-then $a$ and $b$ both appear in $B_u$.  
-If $a$ and $b$ are both in $H_i$ for some $i\in\{1,2,3\}$, 
-then some bag $B^i_x$ contains both $a$ and $b$. 
-Finally, when $a$ is obtained by contracting a path $P_a$ in $G_i-V(F_i)$ and $b$ is obtained by contracting a path $P_b$ not in $G_i$, 
-then  the cycle $F_i$ separates $P_a$ from $P_b$ so the edge $ab$ is not present in $H$. 
-This concludes the proof that $(B_x:x\in V(J))$ is the desired tree-decomposition  of $H$. 
+We now show that, for every edge $XW$ of $G/\PP$, there is a node $x\in V(D)$ such that $X,W\in B_x$. If $X,W\in \{P_1,P_2,P_3,Y\}$ then $X,W\in B_u$ as desired. Otherwise, without loss of generality, $X\in \PP_j\setminus \{P_1,P_2,P_3,Y\}$ for some $j\in\{1,\dots,m\}$. 
+Say $X'\in\PP'_j$ replaced by $X\in\PP_j$. Thus $X\subseteq V(G_j)\setminus V(Z_j)$. Since $Z_j$ separates $V(G_j)\setminus V(Z_j)$ and $V(G)\setminus V(G_j)$ and $XW\in E(G/\PP)$, it must be that $W\in \PP_j$ also, implying that $XW\in B_x$ for some node $x\in V(D_j)$. 
+This concludes the proof that $(B_x:x\in V(D))$ is the desired tree-decomposition  of $G/\PP$. 
 
-We construct $\PP$ as before. Initialise $\PP:=\{P_1,\ldots,P_k,Y\}$. Then, for $i\in \{1,2,3\}$, each tripod in  $\PP_i$ is either fully contained in $F_i$ or it is \emph{internal} with none of its vertices in $F_i$. Add all these internal tripods in  $\PP_i$ to $\PP$. By construction, $\PP$ partitions $V(G)$ into tripods. The graph $H:= G/ \PP$ is planar since $G$ is planar and each tripod in $\PP$ induces a connected subgraph of $G$.
+Every face $F$ of $G$ is a face of some $G_j$ or is $F$ \note{DW}{Avoid using $F$ for two different things}. In the latter case, if $B$ is the bag at $u$ then $V(F)\subseteq \bigcup_{X\in B} X$ since $V(F) \subseteq Y\in B$. In the first case, there is a bag $B$ of $\mathcal{T}_j$ such that $V(F)\subseteq \bigcup_{X\in B} X$. This property is maintained by the above replacements since 
+$R_{i,j}^+ \subseteq P_i$, 
+$R_{i+1,j}^- \subseteq P_i$, and
+$S_{i,j}\subseteq Y$.
 
-Next we produce the tree-decomposition $(B_x:x\in V(J))$ of $H$ that satisfies the requirements of the lemma.  Let $J$ be the tree obtained from the disjoint union of $J_1$, $J_2$ and $J_3$ by adding one new node $u$ adjacent to $u_1$, $u_2$ and $u_3$. Let $B_u$ be the set of at most four vertices of $H$ corresponding to $Y,P_1,\dots,P_k$. For $i\in\{1,2,3\}$ and for each node $x\in V(J_i)$, initialise $B_x:= B^i_x$. 
+%For each non-degenerate $F_i$, and for each node $x\in V(J_i)$, initialise $B_x:= B^i_x$. 
+%Recall that vertices of $H_i$ correspond to contracted paths in  $\PP_i$.
+%Each internal path in $\PP_i$ also lies  in $\PP$.
+%Each external path $P$ in $\PP_i$ is a subpath of $P_j$ for some $j\in\{1,\dots,k \}$ or is one of the paths among $Q'_1, Q'_2, Q'_3$. 
+%For each such path $P$, for every $x\in V(J)$, in bag $B_x$, 
+%replace each instance of the vertex of $H_i$ corresponding to $P$ by the vertex of $H$ corresponding to the path among $P_1,\ldots, P_k, Q'_1,\ldots,Q'_3$ 
+%that contains $P$.
+%This completes the description of $(B_x : x\in V(J))$. 
+%By construction, $|B_x|\leq 9$ for every $x\in V(J)$. 
 
-As in  the proof of \cref{NearTriang},  the resulting structure,  $(B_x:x\in V(J))$, is not yet a tree-decomposition of $H$ since some bags may  contain vertices of $H_i$ that are not necessarily vertices of $H$. Note that unlike in  \cref{NearTriang} this does not only include elements of $\PP_i$  that are contained in $F$. 
-In particular, $I_i$ is also not an element of $\PP$ and thus does not correspond to a vertex of $H$.   
-We remedy this  as follows. For $x\in V(J)$, in bag $B_x$, replace each instance of the vertex of $H_i$ corresponding to $I_i$ by the vertex of $H$ corresponding to $Y$. 
-Similarly, by construction, $R_i^+$ is a subgraph of $P_{\alpha_i}$ for some $\alpha_i\in \{1,\dots,k\}$. 
-For $x\in V(J)$, in bag $B_x$, replace each instance of the vertex of $H_i$ corresponding to $R_i^+$ 
-by the vertex of $H$ corresponding to $P_{\alpha_i}$. 
-Finally, $R_{i+1}^-$ is a subgraph of $P_{\beta_i}$ for some $\beta_i\in \{1,\dots,k\}$. 
-For $x\in V(J)$, in bag $B_x$, replace each instance of the vertex of $H_i$ corresponding to $R_{i+1}^-$  by the vertex of $H$ corresponding to $P_{\beta_i}$. 
+
+%We construct $\PP$ as before. Initialise $\PP:=\{P_1,\ldots,P_k,Y\}$. Then, for $i\in \{1,2,3\}$, each tripod in  $\PP_i$ is either fully contained in $F_i$ or it is \emph{internal} with none of its vertices in $F_i$. Add all these internal tripods in  $\PP_i$ to $\PP$. By construction, $\PP$ partitions $V(G)$ into tripods. The graph $H:= G/ \PP$ is planar since $G$ is planar and each tripod in $\PP$ induces a connected subgraph of $G$.
+
+%Next we produce the tree-decomposition $(B_x:x\in V(J))$ of $H$ that satisfies the requirements of the lemma.  Let $J$ be the tree obtained from the disjoint union of $J_1$, $J_2$ and $J_3$ by adding one new node $u$ adjacent to $u_1$, $u_2$ and $u_3$. Let $B_u$ be the set of at most four vertices of $H$ corresponding to $Y,P_1,\dots,P_k$. For $i\in\{1,2,3\}$ and for each node $x\in V(J_i)$, initialise $B_x:= B^i_x$. 
+
+%As in  the proof of \cref{NearTriang},  the resulting structure,  $(B_x:x\in V(J))$, is not yet a tree-decomposition of $H$ since some bags may  contain vertices of $H_i$ that are not necessarily vertices of $H$. Note that unlike in  \cref{NearTriang} this does not only include elements of $\PP_i$  that are contained in $F$. In particular, $I_i$ is also not an element of $\PP$ and thus does not correspond to a vertex of $H$.   We remedy this  as follows. For $x\in V(J)$, in bag $B_x$, replace each instance of the vertex of $H_i$ corresponding to $I_i$ by the vertex of $H$ corresponding to $Y$. Similarly, by construction, $R_i^+$ is a subgraph of $P_{\alpha_i}$ for some $\alpha_i\in \{1,\dots,k\}$.  For $x\in V(J)$, in bag $B_x$, replace each instance of the vertex of $H_i$ corresponding to $R_i^+$  by the vertex of $H$ corresponding to $P_{\alpha_i}$. Finally, $R_{i+1}^-$ is a subgraph of $P_{\beta_i}$ for some $\beta_i\in \{1,\dots,k\}$. For $x\in V(J)$, in bag $B_x$, replace each instance of the vertex of $H_i$ corresponding to $R_{i+1}^-$  by the vertex of $H$ corresponding to $P_{\beta_i}$. 
 
 This completes the description of $(B_x:x\in V(J))$. Clearly, every bag $B_x$ has size at most 4. We now prove that $(B_x:x\in V(J))$  is a tree-decomposition of $H$ 
 \end{proof}
 
 \begin{lem}
-	An embedded multigraph $G$ is edge-maximal 1-plane with no faces of length 2 if and only if there is a 2-connected plane graph $G_0$ such that: 
+	An embedded multigraph $G$ is edge-maximal 1-plane with no faces of length 2 if and only if there is a 2-connected plane multigraph $G_0$ such that: 
 	\begin{compactitem}
 		\item each face of $G_0$ is bounded by a 3-cycle or a 4-cycle,
 		\item no edge of $G_0$ is in the boundary of two facial 3-cycles,
