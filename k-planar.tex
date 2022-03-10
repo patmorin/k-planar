@@ -80,8 +80,10 @@
 \DeclareMathOperator{\tw}{tw}
 \DeclareMathOperator{\pw}{pw}
 \DeclareMathOperator{\qn}{qn}
+
 \DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
 \DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+\DeclarePairedDelimiter{\blah}{\langle}{\rangle}
 
 \newcommand{\PRlabel}[1]{\label{PR:#1}}
 \newcommand{\PRref}[1]{(PR\ref{PR:#1})}
@@ -94,6 +96,7 @@
 \newcommand{\ylabel}[1]{\label{y:#1}}
 \newcommand{\yref}[1]{(Y\ref{y:#1})}
 
+\newcommand{\TT}{\mathcal{T}}
 \newcommand{\PP}{\mathcal{P}}
 \renewcommand{\SS}{\mathcal{S}}
 
@@ -293,7 +296,7 @@ The assumption that $X$ is apex is needed in \cref{ApexMinorFree}, since if the 
 
 While strong products enable concise statements of the theorems in \cref{Introduction}, to prove such results it is helpful to work with layerings and partitions, which we now introduce.
 
-A \defin{layering} of a graph $G$ is a sequence $\mathcal{L}=\langle L_0,L_1,\ldots\rangle$ such that $\{L_0,L_1,\ldots\}$ is a partition of $V(G)$ and for every edge $vw\in E(G)$, if $v\in L_i$ and $w\in L_j$ then $|j-i|\leq 1$.  For any partition $\PP=\{S_1,\ldots,S_p\}$ of $V(G)$, a \defin{quotient graph} $H=G/\PP$ has a $p$-element vertex set $V(H)=\{x_1,\ldots,x_p\}$ and $x_ix_j\in E(H)$ if and only if there exists an edge $vw\in E(G)$ such that $v\in S_i$ and $w\in S_j$. To highlight the importance of the quotient graph $H$, we call $\PP$ an \defin{$H$-partition} and write this concisely as $\PP=\{S_x : x\in V(H)\}$ so that each element of $\PP$ is indexed by the vertex it creates in $H$.
+A \defin{layering} of a graph $G$ is a sequence $\mathcal{L}=(L_0,L_1,\ldots)$ such that $\{L_0,L_1,\ldots\}$ is a partition of $V(G)$ and for every edge $vw\in E(G)$, if $v\in L_i$ and $w\in L_j$ then $|j-i|\leq 1$.  For any partition $\PP=\{S_1,\ldots,S_p\}$ of $V(G)$, a \defin{quotient graph} $H=G/\PP$ has a $p$-element vertex set $V(H)=\{x_1,\ldots,x_p\}$ and $x_ix_j\in E(H)$ if and only if there exists an edge $vw\in E(G)$ such that $v\in S_i$ and $w\in S_j$. To highlight the importance of the quotient graph $H$, we call $\PP$ an \defin{$H$-partition} and write this concisely as $\PP=\{S_x : x\in V(H)\}$ so that each element of $\PP$ is indexed by the vertex it creates in $H$.
 
 For any partition $\PP$ of $V(G)$ and any layering $\mathcal{L}$ of $G$ we define the \defin{layered width} of $\PP$ with respect to $\mathcal{L}$ as $\max\{|L\cap P|: L\in\mathcal{L},\, P\in\PP\}$.  For any partition $\PP$ of $V(G)$, we define the \defin{layered width} of $\PP$ as the minimum, over all layerings $\mathcal{L}$ of $G$, of the layered width of $\PP$ with respect to $\mathcal{L}$.
 
@@ -1282,8 +1285,6 @@ We finish with an open problem. \cref{kPlanarProduct} shows that every $k$-plana
 \appendix
 \section{New Stuff}
 
-\note{DW}{Work in progress}
-
 For a plane multigraph $G$, let $\widehat{G}$ be the embedded graph obtained from $G$ as follows: for each face $f$ of $G$ and for each pair of non-consecutive vertices $v$ and $w$ on the boundary of $f$, add the edge $vw$ to $\widehat{G}$ drawn across $f$. 
 
 \begin{thm}
@@ -1294,12 +1295,11 @@ Let $G$ be a 2-connected plane multigraph, in which every facial cycle has lengt
 Note that \cref{CliqueFaceProductStructure} with $d=3$ implies \cref{PlanarProduct}(b)  by \citet{DJMMUW20} (since every planar graph is a subgraph of a triangulation). Moreover, the proof of \cref{CliqueFaceProductStructure} is a direct generalisation of the proof of 
 \cref{PlanarProduct}(b).
 
-For a cycle $C$, we write $C = [ P_1 , \dots , P_k ]$ if $P_1 , \dots, P_k$ are pairwise disjoint non-empty paths in $C$, and the endpoints of each path $P_i$ can be labelled $x_i$ and $y_i$ so that $y_ix_{i+1} \in E(C)$ for $i\in\{1,\dots,k\}$, where $x_{k+1}$ means
-$x_1$. This implies that $\{P_1,\dots,P_k\}$ is a vertex-partition of $C$. \note{DW}{Allow $P_i$ to be empty?}
+For a cycle $C$, we write $C = [ P_1 , \dots , P_k ]$ if $P_1 , \dots, P_k$ are pairwise disjoint (possibly empty) path subgraphs in $C$ such that $V(C)=\bigcup_i V(P_i)$ and $P_1,\dots,P_k$ are ordered around $C$.
 
-If $Q$ is a path in a graph, and $P_1, \dots,P_k$ are edge-disjoint non-empty subpaths of $Q$ ordered by $Q$ and partitioning $E(Q)$, then we write $Q=P_1,\dots,P_k$. 
+%and the endpoints of each path $P_i$ can be labelled $x_i$ and $y_i$ so that $y_ix_{i+1} \in E(C)$ for $i\in\{1,\dots,k\}$, where $x_{k+1}$ means $x_1$. This implies that $\{P_1,\dots,P_k\}$ is a vertex-partition of $C$. \note{DW}{In the proof below, when we apply induction, we need to allow $P_i=\emptyset$, right?}
 
-\note{DW}{It would help to say that we consider a path to be an (unordered) subgraph. Would that be a problem anywhere else?}
+If $Q$ is a path in a graph, and $P_1, \dots,P_k$ are edge-disjoint non-empty subpaths of $Q$ ordered by $Q$ and partitioning $E(Q)$, then we write $Q=P_1,\dots,P_k$. \note{DW}{Do we need this?}
 
 We employ the following well-known variation of Sperner's Lemma (see~\citep{Proofs4}).
 
@@ -1311,43 +1311,65 @@ Let $G$ be a near-triangulation whose vertices are coloured $1,2,3$, with the ou
 
 %If $C$ is a cycle in a graph, and $P_1, \dots,P_k$ are edge-disjoint non-empty subpaths of $C$ ordered around $C$ and partitioning $E(C)$, then we write $C=(P_1,\dots,P_k)$. 
 
-Say $G$ is a 2-connected plane multigraph. Let $T$ be a spanning tree of $G$ rooted at a vertex $r$ on the outerface of $G$. A \defin{bipod} in $G$ (with respect to $T$) is any path $P_1SP_2$, where $S$ is a facial path in $G$, and each $P_i$ is a vertical path in $T$ whose lower endpoint is in $S$. Here it is possible that $S$ or $P_i$ is empty. So every subpath of a bipod is a bipod. A \defin{tripod} in $G$ (with respect to $T$) is either a bipod in $G$ or a subgraph of $G$ consisting of a facial cycle $F$ of $G$, plus three distinct vertical paths $P_1,P_2,P_3$ in $T$ where the lower endpoint of each $P_i$ is in $F$. \note{DW}{Need to think about degenerate cases.}. These definitions generalise definitions in \citep{DJMMUW20} where $G$ is assumed to be a plane triangulation, in which case $F$ is a 3-cycle. \note{DW}{We actually managed to omit the definition of `bipod' in \citep{DJMMUW20}!}
+Say $G$ is a 2-connected plane multigraph. Let $T$ be a spanning tree of $G$ rooted at a vertex $r$ on the outerface of $G$. A \defin{bipod} in $G$ (with respect to $T$) is any path $P_1SP_2$ (considered to be a subgraph), where $S$ is a facial path in $G$, and each $P_i$ is a vertical path in $T$ whose lower endpoint is in $S$. Here it is possible that $S$ or $P_i$ is empty. So every subpath of a bipod is a bipod. A \defin{tripod} in $G$ (with respect to $T$) is either a bipod in $G$ or a subgraph of $G$ consisting of a facial cycle $F$ of $G$, plus three distinct vertical paths $P_1,P_2,P_3$ in $T$ where the lower endpoint of each $P_i$ is in $F$. These definitions generalise definitions in \citep{DJMMUW20} where $G$ is assumed to be a plane triangulation, in which case $F$ is a 3-cycle. \note{DW}{We actually managed to omit the definition of `bipod' in \citep{DJMMUW20}!}
 
 %In the original proof for planar triangulation, B_i is an edge.
 
+
+For a cycle $C$ in a plane multigraph $G$, define \defin{$G\blah{C}$} to be the subgraph of $G$ consisting of $C$ and all the edges and vertices of $G$ in the interior of $C$.
+
+
 \begin{lem}
-Let $G_0$ be a 2-connected plane multigraph. Let $T$ be a spanning tree of $G_0$ rooted at some vertex $r$ on the boundary of the outerface of $G_0$. Let $k\in\{1,2,3\}$ and let $C = [P_1,\dots,P_k]$ be a cycle in $G_0$ with $r$ in the exterior of $C$, where $P_1, \dots, P_k$ are bipods in $G_0$. 
-	\note{DW}{We need to assume that $|V(C)|\geq 3$ and ensure that when we apply induction $|V(Z_j)|\geq 3$. I think it is okay, but it needs an argument.}
-	Let $G$ be the plane graph consisting of all the edges and vertices of $G_0$ in $C$ and the interior of $C$. Then $G$ has a partition $\PP$ into tripods with respect to $T$ such that:
+	\label{NewLemma}
+Let $G_0$ be a 2-connected plane multigraph. Let $T$ be a spanning tree of $G_0$ rooted at some vertex $r$ on the boundary of the outerface of $G_0$. Let $C = [P_1,\dots,P_k]$ be a cycle in $G_0$ with $r$ in the exterior of $C$, where $k\in\{1,2,3\}$ and $P_1, \dots, P_k$ are bipods in $G_0$. Let $G:=G_0\blah{C}$. Then $G$ has a partition $\PP$ into tripods with respect to $T$ such that:
 \begin{compactitem}
 \item $P_1,\dots,P_k\in\PP$,
 \item $G / \PP$ has a tree-decomposition $\mathcal{T}$ of width at most 3 such that:
-\begin{compactitem}
+\begin{compactenum}[(i)]
 	\item some bag of $\mathcal{T}$ contains $P_1,\dots,P_k$, and 
 	\item for every facial cycle $F$ of $G$ there is a bag $B$ of $\mathcal{T}$ such that $V(F)\subseteq \bigcup_{X\in B} X$.
-\end{compactitem}
+\end{compactenum}
+\note{DW}{We need to replace (ii) by ``for every facial cycle $F$ of $G$ there is a bag $B$ of $\mathcal{T}$ such that every part of $\PP$ that intersects $F$ is in $B$''. Curiously, this implies (i) (since $C$ is a facial cycle of $G$).}
 \end{compactitem}
 \end{lem}
 
 \begin{proof}
-\note{DW}{Can we assume $k=3$ by allowing $P_i=\emptyset$? That would clean up the proof. We could scrap $R_1,R_2,R_3$ and just use $P_1,P_2,P_3$.}
-	
-The proof is by induction on $|V(G)\setminus V(C)|$. If $V(G)\setminus V(C)=\emptyset$, then $G$ has just one face bounded by $C$ and the desired partition is $\PP=\{P_1,\ldots,P_k\}$.  The desired tree-decomposition of $G/\PP$ consists of a single bag $\{P_1,\ldots,P_k\}$ indexed by a 1-node tree. 
+We may assume that each of $P_1,\dots,P_k$ is non-empty (since if some $P_i$ is empty, then we just consider $C=[P_1,\dots,P_{i-1},P_{i+1},\dots,P_k]$). 
 
-Now assume that $V(G)\setminus V(C)\neq\emptyset$. Partition the vertices of $C$ into paths $R_1$, $R_2$, and $R_3$ as follows:
+The proof is by induction on the number of faces of $G$. If $G$ has just one internal face (which is bounded by $C$), then the desired partition is $\PP=\{P_1,\ldots,P_k\}$ and the desired tree-decomposition of $G/\PP$ consists of a single bag $\{P_1,\ldots,P_k\}$ indexed by a 1-node tree. Now assume that $G$ has at least two internal faces. 
+
+First suppose that $C$ is a 2-cycle. Thus $k\leq 2$. Let $e$ be one of the edges in $C$. Let $F$ be the internal facial cycle of $G$ that includes $e$. Since each facial cycle of $G_0$ has length at least 3, $F$ consists of a non-empty path $P$ plus the edge $e$. Let $C'$ be obtained by replacing $e$ in $C$ by $P$. Let $G':=G\langle{C'}\rangle$. Thus $G'$ has one fewer face than $G$. Note that $C'=[P_1,\dots,P_k,P]$ (\note{DW}{or it can be written that way?}).  By induction, $G'$ has a partition $\PP$ into tripods with respect to $T$ such that:
+\begin{compactitem}
+	\item $P_1,\dots,P_k,P\in\PP$,
+	\item $G / \PP$ has a tree-decomposition $\mathcal{T}$ of width at most 3 such that:
+	\begin{compactenum}[(i)]
+	\item some bag of $\mathcal{T}$ contains $P_1,\dots,P_k,P$, and 
+	\item for every facial cycle $F'$ of $G\blah{C'}$ there is a bag $B$ of $\mathcal{T}$ such that $V(F)\subseteq \bigcup_{X\in B} X$.
+	\end{compactenum}
+\end{compactitem}
+The bag of $\mathcal{T}$ that contains $P_1,\dots,P_k,P$ satisfies property (ii) for $F$. 
+Thus, $\PP$ and $\TT$ satisfy the desired properties for $G$. Now assume that $|V(C)|\geq 3$. 
+
+%\note{DW}{One option is to do induction on $|V(G)\setminus V(C)|-k$ and reduce to the $k=3$ case (similar to the $|V(C)|\leq 2$ case). When $k<3$ we can grab another face $F$ on the inside of $C$ and make the boundary of $F$ a new path. Then the main proof will only deal with the $k=3$ case. Is this any easier?} 
+
+%Now suppose that $k=1$. Let $v$ and $w$ be the first and last vertex in $P_1$. So $C$ consists of $P_1$ plus the edge $vw$. Let $F$ be the internal facial cycle of $G$ containing $vw$.......... Now suppose that $k=2$ .....
+
+Partition the vertices of $C$ into paths $R_1$, $R_2$, and $R_3$ as follows:
 \begin{compactenum}
-	\item If $k=1$ then, since $C$ is a cycle, $P_1$ has at least three vertices, so $P_1=[v, P_1', w]$ for two distinct vertices $v$ and $w$. We set $R_1:=v$, $R_2:=P_1'$ and $R_3:=w$.
+	\item If $k=1$ then, $P_1$ has at least three vertices (since $|V(C)|\geq 3$), so $P_1=[v, P_1', w]$ for two distinct vertices $v$ and $w$. We set $R_1:=v$, $R_2:=P_1'$ and $R_3:=w$.
 	
 	\item If $k=2$ then we may assume without loss of generality that $P_1$ has at least two vertices so $P_1=[v,P_1']$. We set $R_1:=v$, $R_2:=P_1'$ and $R_3:=P_2$.
 	
 	\item If $k=3$ then let $R_i:=P_i$ for each $i\in\{1,2,3\}$.
 \end{compactenum}
 
+Note that $R_i \subseteq P_{\alpha(i)}$ for some $\alpha(i)\in \{1,\dots,k\}$.  
+
 Let $G'$ be a near-triangulation obtained from $G$ by triangulating every internal face. For $i\in\{1,2,3\}$, colour each vertex in $R_i$ by $i$. Now, for each remaining vertex $v$ in $G$, consider the path $P_v$ from $v$ to the root of $T$. Since $r$ is on the outer-face of $G_0$, $P_v$ contains at least one vertex of $C$. If the first vertex of $P_v$ that belongs to $F$ is in $R_i$, then assign the colour $i$ to $v$. We obtain a 3-colouring of the vertices of $G'$ that satisfies the conditions of Sperner's Lemma. By Sperner's Lemma there exists a triangular face $\tau=v_1v_2v_3$ of $G'$ whose vertices are coloured $1,2,3$ respectively. Let $F$ be the cycle bounding the face of $G$ containing $\tau$. 
 
 For each $i\in\{1,2,3\}$, let $Q_i$ be the path in $T$ from $v_i$ to the first ancestor $v_i'$ of $v_i$ in $T$ that is contained in $C$. Observe that $Q_1$, $Q_2$, and $Q_3$ are disjoint since $Q_i$ consists only of vertices coloured $i$. Let $Q_i'$ be $Q_i$ minus its final vertex $v_i'$. Note that $Q_i$ may consist of the single vertex $v_i=v_i'$, in which case $Q_i'$ is empty. Imagine for a moment that the cycle $C$ is oriented clockwise, which defines an orientation of $R_1$, $R_2$ and $R_3$. Let $R_i^-$ be the subpath of $R_i$ that contains $v'_i$ and all vertices that precede it, and let $R_i^+$ be the subpath of $R_i$ that contains $v'_i$ and all vertices that succeed it.  
 
-Let $Y$ be the tripod $F\cup Q_1'\cup Q_2' \cup Q_3'$. Say $F=v_1 S_1 v_2 S_2 v_3 S_3$, where $S_i$ is a facial path in $F$ clockwise from $v_i$ to $v_{i+1}$ (where $v_4=v_1$). Let $L_i$ be the path $Q_i'S_iQ_{i+1}'$ for $i\in\{1,2,3\}$ (where $Q_4=Q_1$ and $R_4=R_1$). So $L_i$ is a bipod. \note{DW}{Note that $S_i\neq\emptyset$ since $v_i\neq v_{i+1}$.}
+Let $Y$ be the tripod $F\cup Q_1'\cup Q_2' \cup Q_3'$. Say $F=v_1 S_1 v_2 S_2 v_3 S_3$, where $S_i$ is a facial path in $F$ clockwise from $v_i$ to $v_{i+1}$ (where $v_4=v_1$). Let $L_i$ be the path $Q_i'S_iQ_{i+1}'$ for $i\in\{1,2,3\}$ (where $Q_4=Q_1$ and $R_4=R_1$). So $L_i$ is a bipod. \note{DW}{Note that $S_i\neq\emptyset$ since $v_i\neq v_{i+1}$. Is this useful.}
 
 %Note that $C_i$ may be \defin{degenerate} in the sense that $[Q_i',R_i^+,R_{i+1}^-,Q_{i+1}']$ may consist only of a single edge $v_iv_{i+1}$.
 
@@ -1355,13 +1377,12 @@ Let $Y$ be the tripod $F\cup Q_1'\cup Q_2' \cup Q_3'$. Say $F=v_1 S_1 v_2 S_2 v_
 
 Let $Z$ be the plane graph $F\cup C\cup Q_1\cup Q_2\cup Q_3$. Then $Z$ is 2-connected, each face of $Z$ is bounded by a cycle, and the outerface of $Z$ is $C$. Let $Z_1,\dots,Z_m$ be the internal facial cycles of $Z$ except $F$. 
 
-\note{DW}{For a cycle $C$ in a plane graph $G$, define $G\langle C\rangle$ to be the subgraph of $G$ consisting of $C$ and all the edges and vertices of $G$ in the interior of $C$?}
 
 Consider $j\in\{1,\dots,m\}$. Let $G_j$ be the subgraph of $G$ consisting of $Z_j$ and all the edges and vertices of $G$ in the interior of $Z_j$. The outerface of $G_j$ is $Z_j$. Observe that for some $i\in\{1,2,3\}$, we have
 $Z_j=[R_{i,j}^+,R_{i+1,j}^-,S_{i,j}]$, where 
 $R_{i,j}^+$ is some subpath of $R_i^+$,
 $R_{i+1,j}^-$ is some subpath of $R_{i+1}^-$, and
-$L_{i,j}$ is the path $Z_j-V(C)$ (which is contained in $Y$). 
+$L_{i,j}$ is the path $Z_j-V(C)$ (which is contained in $Y$). \note{DW}{Add a figure of a good case and a weird case.}
 Since $R_i^+$, $R_{i+1}^-$ and $L_i$ are bipods, 
 $R_{i,j}^+$, $R_{i+1,j}^-$ and $L_{i,j}$ are bipods. 
 By construction, $v_{i-1}$ is not in $G_j$ (where $v_0=v_3$). 
@@ -1381,9 +1402,9 @@ Thus $V(G_j)\setminus V(Z_j) \subsetneq V(G)\setminus V(C)$, and we may apply in
 
 We now construct the desired partition $\PP$ of $G$. 
 Let $\PP$ be obtained from $\bigcup_{j\in\{1,\dots,m\}} \PP_j$ by 
-replacing $R_{i,j}^+\in\PP_j$ by $P_i$, 
-replacing $R_{i+1,j}^-\in\PP_j$ by $P_{i+1}$, and
-replacing $L_{i,j}\in\PP_j$ by $Y$. \note{DW}{What if $k\neq 3$? Then $P_2$ or $P_3$ might not be defined.}
+replacing $R_{i,j}^+\in\PP_j$ by $P_{\alpha(i)}$, 
+replacing $R_{i+1,j}^-\in\PP_j$ by $P_{\alpha(i+1)}$, and
+replacing $L_{i,j}\in\PP_j$ by $Y$. 
 By construction, $\PP$ partitions $V(G)$ into tripods with respect to $T$ and $P_1,\ldots,P_k\in \PP$. 
 
 We now construct the desired tree-decomposition of $G/\PP$. Let $D$ be the tree obtained from the disjoint union of $D_1,\dots,D_m$ by adding one new node $u$ adjacent to $u_1,\dots,u_m$. Define $B_u:=\{P_1,\dots,P_k,Y\}$. Apply the above replacements within the bags of $\mathcal{T}_1,\dots,\mathcal{T}_m$. We claim that $\mathcal{T}:=\{B_x:x\in V(D)\}$ is the desired tree-decomposition of $G/\PP$. By construction, every bag of $\mathcal{T}$ has size at most 4. 
@@ -1394,9 +1415,9 @@ We now show that, for every edge $XW$ of $G/\PP$, there is a node $x\in V(D)$ su
 Thus $X\subseteq V(G_j)\setminus V(Z_j)$. Since $Z_j$ separates $V(G_j)\setminus V(Z_j)$ and $V(G)\setminus V(G_j)$ and $XW\in E(G/\PP)$, it must be that $W$ is also in $\PP_j$. Say $W$ replaced $W'$ in $\PP_j$ (where possibly $W=W'$). Since $\mathcal{T}_j$ is a tree-decomposition of $G_j$, $XW'\in B_x$ for some node $x\in V(D_j)$, implying $XW\in B_x$. This concludes the proof that $(B_x:x\in V(D))$ is the desired tree-decomposition of $G/\PP$. 
 
 Every facial cycle $F_0$ of $G$ is a face of some $G_j$ or is $F$. In the latter case, $V(F)\subseteq Y \subseteq \bigcup_{X\in B_u} X$. In the first case, there is a bag $B_x$ of $\mathcal{T}_j$ such that $V(F)\subseteq \bigcup_{X\in B_x} X$. This property is maintained by the above replacements since 
-$R_{i,j}^+ \subseteq P_i$, 
-$R_{i+1,j}^- \subseteq P_{i+1}$, and
-$L_{i,j}\subseteq Y$. \note{DW}{What if $k\neq 3$?}
+$R_{i,j}^+ \subseteq P_{\alpha(i)}$ and 
+$R_{i+1,j}^- \subseteq P_{\alpha(i+1)}$ and
+$L_{i,j}\subseteq Y$. 
 
 %For each non-degenerate $F_i$, and for each node $x\in V(J_i)$, initialise $B_x:= B^i_x$. 
 %Recall that vertices of $H_i$ correspond to contracted paths in  $\PP_i$.
@@ -1418,6 +1439,12 @@ $L_{i,j}\subseteq Y$. \note{DW}{What if $k\neq 3$?}
 This shows that $(B_x:x\in V(J))$ is the desired tree-decomposition of $G/\PP$. 
 \end{proof}
 
+\begin{proof}[Proof of \cref{CliqueFaceProductStructure}] 
+Let $G$ be a 2-connected plane multigraph, in which every facial cycle has length in $\{3,\dots,d\}$. Let $C$ be the outer-cycle of $G$. Let $G^+$ be obtained from $G$ by adding a new vertex $r$ adjacent to every vertex on the outerface of $G$. So $G^+$ is a 2-connected plane multigraph and $G=G^+\blah{C}$. Let $T$ be a BFS spanning tree of $G^+$ rooted at $r$. Let $\mathcal{L}$ be the corresponding BFS layering. By \cref{NewLemma} \note{DW}{with improved (ii)}, $G$ has a partition $\PP$ into tripods with respect to $T$ such that $G / \PP$ has a tree-decomposition $\mathcal{T}$ of width at most 3 such that for every facial cycle $F$ of $G$ there is a bag $B$ of $\mathcal{T}$ such that every part of $\PP$ that intersects $F$ is in $B$. Since $G$ is a spanning subgraph of $\widehat{G}$, we may consider $\PP$ to be a partition of $\widehat{G}$, and $G/\PP \subseteq \widehat{G}/\PP$. Consider an edge $XY$ of $\widehat{G}/\PP$. By the definition of $\widehat{G}$, there is a facial cycle $F$ of $G$ such that both $X$ and $Y$ intersect $F$. By assumption, there is a bag $B$ of $\mathcal{T}$ such that every part of $\PP$ that intersects $F$ is in $B$. In particular, $X,Y\in B$. Hence $\TT$ is also a tree-decomposition of $\widehat{G}$. Each tripod in $\PP$ has at most $d$ vertices in each layer in $\mathcal{L}$. For each edge $vw$ of $\widehat{G}$, if $v\in L_i$ and $w\in L_j$ then $|i-j|\leq\floor{\frac{d}{2}}$. Grouping blocks of $\floor{\frac{d}{2}}$ consecutive layers gives a layering of $\widehat{H}$ with layered width $\floor{\frac{d}{2}}d$ with respect to $\PP$. By \cref{PartitionProduct}, $\widehat{G}$ is contained in $H \boxtimes P \boxtimes K_{ d  \floor{d/2} }$ where $H:=\widehat{G}/\PP$, which has treewidth 3.
+\end{proof}
+
+We now give two graph classes for which \cref{CliqueFaceProductStructure} is applicable. 
+
 \begin{lem}
 	An embedded multigraph $G$ is edge-maximal 1-plane with no faces of length 2 if and only if there is a 2-connected plane multigraph $G_0$ such that: 
 	\begin{compactitem}
@@ -1431,27 +1458,17 @@ This shows that $(B_x:x\in V(J))$ is the desired tree-decomposition of $G/\PP$.
 \end{proof}
 
 
+\begin{lem}
+Every $d$-map graph is a subgraph of $\widehat{G}$ for some 2-connected plane graph $G$ in which every facial cycle has length in $\{3,\dots,d\}$.
+\end{lem}
+
+\begin{proof}
+\end{proof}
+
 \end{document}
 
 
 %%%%%%%%%%%%%%%%%%%%
-
-I claim that G_2 is contained in H * P * K_{ d * floor(d/2) } where tw(H) <= 3.
-
-
-
-With d=4, G_2 includes all edge-maximal 1-planar  multigraphs,
-and G_2 is contained in H * P * K_8 where tw(H) <= 3.
-
-Let T be a bfs spanning tree of G_0 rooted on the outerface.
-
-
-
-
-Run the original proof, finding three paths Q_1,Q_2,Q_3
-leading to a Sperner triangle t in G_1, which is a subset of a face F of G_0.
-The corresponding tripod in our partition is Q_1 \cup Q_2 \cup Q_3 \cup F.
-We can apply induction inside the regions bounded by C, Q_1, Q_2, Q_3 and F.
 
 The layering is in G_0. Each edge of G_2 has span at most floor(d/2)
 with respect to this layering.
@@ -1459,32 +1476,4 @@ with respect to this layering.
 So G_2 is contained in H * P^{floor(d/2)} * K_d, which is contained in
 H * P * K_{d floor(d/2) }.
 
-This setup (if it works) also works for map graphs in which every face
-is a nation.
-
-I just thought we need to be careful with the vertex 3-colouring.
-If v is on the inside of C and the path in T from v to the root
-first hits C at some B_i, then what is the colour of v?
-This is not a problem there is a noose in G_0 including A_1..A_k, so
-the path in T from v to the root must intersect A_1...A_k.
-
-
 \end{document}
-
-	\begin{figure}[!b]
-	\begin{center}
-		\begin{tabular}{cc}
-			\includegraphics[scale=1.4]{induction-i-3} &
-			\includegraphics[scale=1.4]{induction-i-1} \\
-			(a) & (b) \\[1em]
-			\includegraphics[scale=1.4]{induction-i-2} &
-			\includegraphics[scale=1.4]{induction-iii} \\
-			(c) & (d) 
-		\end{tabular}
-	\end{center}
-	\caption{The inductive proof of \cref{NearTriang}: (a)~the spanning tree $T$ and the paths $P_1,\ldots,P_4$; 
-		(b) the paths $R_1$, $R_2$, $R_3$, and the Sperner triangle $\tau$; 
-		(c)~the paths $Q_1'$, $Q_2'$ and $Q_3'$; 
-		(d)~the near-triangulations $G_1$, $G_2$, and $G_3$, with the vertical paths of $T$ on $F_1$, $F_2$, and $F_3$.}
-	\label{NearTriangProof}
-\end{figure}
