@@ -136,9 +136,11 @@ Dujmovi\'c~et~al.~[\emph{J.~ACM}~'20] recently proved that every planar graph is
 \section{Introduction}
 \label{Introduction}
 
-\note{DW}{I suggest we use consecutive numbering of theorems, lemmas, etc. Theorem 1, Lemma 2, Observation 3, etc.}
+% \note{DW}{I suggest we use consecutive numbering of theorems, lemmas, etc. Theorem 1, Lemma 2, Observation 3, etc.}
 
-\note{DW}{I suggest we delete ``We use $G'\subseteq G$ to denote subgraph containment; that is, $V(G')\subseteq V(G)$ and $E(G')\subseteq E(G)$. '' This is absolutely standard.}
+\note{PM}{Agreed. Done.}
+
+% \note{DW}{I suggest we delete ``We use $G'\subseteq G$ to denote subgraph containment; that is, $V(G')\subseteq V(G)$ and $E(G')\subseteq E(G)$. '' This is absolutely standard.}
 
 The starting point for this work is the following `product structure theorem' for planar graphs\footnote{In this paper, all graphs are finite and undirected. Unless mentioned otherwise, all graphs are also simple. For any graph $G$ and any set $S$ (typically $S\subseteq V(G)$), let $G[S]$  denote the graph with vertex set $V(G)\cap S$ and edge set $\{uv\in E(G) : u,v\in S\}$.  We use $G-S$ as a shorthand for $G[V(G)\setminus S]$. Undefined terms are in \citep{Diestel5}.} by \citet{DJMMUW20} (improved by \citet{UWY}). A graph $G$ is \defin{contained in} a graph $X$ if $G$ is isomorphic to a subgraph of $X$.
 
@@ -193,15 +195,17 @@ We start with the example of $k$-planar graphs. A graph is \defin{$k$-planar} if
 Every $k$-planar graph is contained in $H\boxtimes P\boxtimes K_{18k^2+48k+30}$, for some graph $H$ of treewidth $\binom{k+4}{3}-1$ and for some path $P$.
 \end{thm}
 
-This theorem has applications in diverse areas, including queue layouts  \citep{DJMMUW20}, non-repetitive colouring  \citep{dujmovic.esperet.ea:planar}, $p$-centered colouring  \citep{DFMS21}, and adjacency labelling \citep{DEJGMM21}, which we explore in \cref{Applications}. For example, we prove that $k$-planar graphs have bounded non-repetitive chromatic number (for fixed $k$). Prior to the recent work of \citet{dujmovic.esperet.ea:planar}, it was even open whether planar graphs have bounded non-repetitive chromatic number.
+This theorem has applications in diverse areas, which we explore in \cref{Applications}.
 
-\referee{1}{3. pages 2 – 4: The paragraph following Theorem 2 and Section 1.3
-(except for the fact that the apex assumption is necessary) is repetition
-of things discussed earlier on in the introduction.}
-
-\note{PM}{Kind of, but I suggest we keep that paragraph and section anyway. Justification: They're both short and they describe the exact bounds for bounded genus graphs, which you don't get from the one-paragraph description in Section~1.0.}
-
-\note{DW}{I suggest we write, ``This theorem has applications in diverse areas, which we explore in \cref{Applications}....''}
+% This theorem has applications in diverse areas, including queue layouts  \citep{DJMMUW20}, non-repetitive colouring  \citep{dujmovic.esperet.ea:planar}, $p$-centered colouring  \citep{DFMS21}, and adjacency labelling \citep{DEJGMM21}, which we explore in \cref{Applications}. For example, we prove that $k$-planar graphs have bounded non-repetitive chromatic number (for fixed $k$). Prior to the recent work of \citet{dujmovic.esperet.ea:planar}, it was even open whether planar graphs have bounded non-repetitive chromatic number.
+%
+% \referee{1}{3. pages 2 – 4: The paragraph following Theorem 2 and Section 1.3
+% (except for the fact that the apex assumption is necessary) is repetition
+% of things discussed earlier on in the introduction.}
+%
+% \note{PM}{Kind of, but I suggest we keep that paragraph and section anyway. Justification: They're both short and they describe the exact bounds for bounded genus graphs, which you don't get from the one-paragraph description in Section~1.0.}
+%
+% \note{DW}{I suggest we write, ``This theorem has applications in diverse areas, which we explore in \cref{Applications}....''}
 
 \subsection{Shortcut Systems}
 
@@ -578,9 +582,10 @@ so that it isn’t necessary to define the $s_i$.}
 \referee{2}{Page 18.  Say $H'$ is connected since $X$ is connected.}
 
   Thus, $a_0,\ldots,a_p$ is a lazy walk in $H^+$ of length $p\le k$ where the distance $s_i$ between $a_i$ and the root $x_0$ of $T$ is non-decreasing.  By removing repeated vertices this gives a path in the directed graph $\overrightarrow{H}^+$ obtained by directing each edge $xy\in E(H^+)$ from its $T$-descendant $x$ towards its $T$-ancestor $y$.
-  Finally, we are in a position to appeal to \cite[Lemma~24]{PS21} which states that the number of nodes in $\overrightarrow{H}^+$ that can be reached from any node $x$ by a directed path of length at most $k$ is at most $\binom{k+t}{t}$.
+  Finally, we are in a position to appeal to \cite[Lemma~13]{PS21} which states that the number of nodes in $\overrightarrow{H}^+$ that can be reached from any node $x$ by a directed path of length at most $k$ is at most $\binom{k+t}{t}$.
 
-  \note{DW}{replace Lemma~24 by Lemma~13, right?}
+  % \note{DW}{replace Lemma~24 by Lemma~13, right?}
+  % \note{PM}{Right. Changed.}
 
 
   At this point, the proof is complete, but let us summarize. For each node $x\in V(T)$, $C_x$ contains only $T$-ancestors of $x$ (including $x$ itself).  For each ancestor $x_\delta$ of $x$ contained in $C_x$, there is path from $x$ to $x_\delta$ in $\overrightarrow{H}^+$ of length at most $k$.  The number of ancestors of $x$ that can be reached by paths of length at most $k$ in $\overrightarrow{H}^+$ is at most $\binom{k+t}{t}$.  Therefore $|C_x|\le \binom{k+t}{t}$, as required.
