@@ -611,7 +611,7 @@ This section applies our main results for shortcut systems to prove a product st
 
 \subsection{$k$-Planar Graphs}
 
-We first formally define $k$-planar graphs.  An \defin{embedded graph} $G$ is a graph with $V(G)\subset\R^2$ in which each edge $vw\in E(G)$ is a curve\footnote{A \defin{curve} in a surface $\Sigma$ is a continuous function $f:[0,1]\to \Sigma$. The points $f(0)$ and $f(1)$ are called the \defin{endpoints} of the curve.  When there is no danger of misunderstanding we treat a curve $f$ as the point set $\{f(t):0\le t\le 1\}$.} in $\R^2$ with endpoints $v$ and $w$ and not containing any vertex of $G$ in its interior.  A \defin{crossing} in an embedded (multi)graph $G$ is a pair of distinct edges $vw,xy\in E(G)$ whose interior have a point in common. Without any loss of generality we may assume that the interiors of any two edges of $G$ have at most one point in common and that no point in $\R^2$ is contained in the interior of three or more edges of $G$.  This assumption can be enforced by a local change that does not change the number of crossings each edge is involved in.  If $p$ is a common point in the interior of two crossing edges $vw$ and $xy$ then we say that $vw$ and $xy$ \defin{cross at} $p$.
+We first formally define $k$-planar graphs.  An \defin{embedded graph} $G$ is a graph with $V(G)\subset\R^2$ in which each edge $vw\in E(G)$ is a curve\footnote{A \defin{curve} in a surface $\Sigma$ is a continuous function $f:[0,1]\to \Sigma$. The points $f(0)$ and $f(1)$ are called the \defin{endpoints} of the curve.  When there is no danger of misunderstanding we treat a curve $f$ as the point set $\{f(t):0\le t\le 1\}$.  The \emph{interior} of $f$ is the point set $\{f(t):0<t<1\}$.} in $\R^2$ with endpoints $v$ and $w$ and not containing any vertex of $G$ in its interior.  A \defin{crossing} in an embedded (multi)graph $G$ is an unordered pair of distinct edges $\{vw,xy\}\subseteq E(G)$ whose interiors have a point in common. Without any loss of generality we may assume that the interiors of any two edges of $G$ have at most one point in common and that no point in $\R^2$ is contained in the interior of three or more edges of $G$.  This assumption can be enforced by local changes that do not change the number of crossings each edge is involved in.  If $p$ is a common point in the interior of two crossing edges $vw$ and $xy$ then we say that $vw$ and $xy$ \defin{cross at} $p$.
 
 
 % (This assumption is already present in the informal definition of $k$-planar graphs used in \cref{k_planar_section}.)
@@ -693,17 +693,15 @@ Let $G$ be a $1$-plane graph.  We make $G$ into an \defin{edge-maximal} $1$-plan
 
 To understand the structure of $G$, it is helpful to consider the plane graph $G_0$ obtained by replacing each pair of edges $vw$ and $xy$ that cross at $p$ with four edges $vp$, $wp$, $xp$, and $yp$ meeting at a newly added \defin{dummy vertex} $p$. Let $F$ be a face of $G_0$ and let $W:=w_0,\ldots,w_{r-1}$ be the facial walk around $F$. In the following paragraphs, subscripts on the vertices in $W$ are implicitly taken modulo $r$. By edge maximality, if $W$ contains only non-dummy vertices, then it contains exactly three vertices and $F$ is bounded by three edges of $G$.
 
-If $W$ contains a dummy vertex $w_i$, then neither $w_{i-1}$ nor $w_{i+1}$ is a dummy vertex since if $w_{i-1}$ (respectively $w_{i+1}$) were a dummy vertex then the edge of $G$ that contains $w_{i-1}w_i$ (respectively $w_iw_{i+1}$) would be involved in at least two crossings.  Therefore each dummy vertex $w_i$ of $W$ is surrounded by two non-dummy vertices $w_{i-1},w_{i+1}\in V(G)$.  Since $w_i$ has degree $4$ in $G_0$, $w_{i-1}\neq w_{i+1}$.  Since $G$ is edge-maximal the edge $w_{i-1}w_i$ is an edge of $G$ on the boundary of $F$.  Therefore, if $F$ has a dummy vertex $w_i$ in its facial walk $W$, then $W=w_{i-1},w_i,w_{i+1}$ and $F$ is bounded by three edges of $G_0$, each of which is contained in a different edge of $G$.
+If $W$ contains a dummy vertex $w_i$, then neither $w_{i-1}$ nor $w_{i+1}$ is a dummy vertex since if $w_{i-1}$ (respectively $w_{i+1}$) were a dummy vertex then the edge of $G$ that contains $w_{i-1}w_i$ (respectively $w_iw_{i+1}$) would be involved in at least two crossings.  Therefore each dummy vertex $w_i$ of $W$ is surrounded by two non-dummy vertices $w_{i-1},w_{i+1}\in V(G)$.  Since $w_i$ has degree $4$ in $G_0$ and $F$ does not have two parallel edges on its boundary, $w_{i-1}\neq w_{i+1}$.  Since $G$ is edge-maximal the edge $w_{i-1}w_i$ is an edge of $G$ on the boundary of $F$.  Therefore, if $F$ has a dummy vertex $w_i$ in its facial walk $W$, then $W=w_{i-1},w_i,w_{i+1}$ and $F$ is bounded by three edges of $G_0$, each of which is contained in a different edge of $G$.
 
-Therefore each face of $G_0$ is a $3$-cycle that contains at most one dummy vertex.  This implies that each face of $G$ is one of two types:
-\begin{inparaenum}[(i)]
-  \item bounded by three edges of $G$, none of which are crossed; or
-  \item bounded by one edge of $G$ that is not crossed plus portions of two edges of $G$ that cross each other.
-\end{inparaenum}
+% Therefore each face of $G_0$ is a $3$-cycle that contains at most one dummy vertex.  This implies that each face of $G$ is one of two types:
+% \begin{inparaenum}[(i)]
+%   \item bounded by three edges of $G$, none of which are crossed; or
+%   \item bounded by one edge of $G$ that is not crossed plus portions of two edges of $G$ that cross each other.
+% \end{inparaenum}
 
-Consider some pair of edges $vw$ and $xy$ that cross at $p$.  The point $p$ is a vertex of $G_0$ that has degree $4$.  There are four faces $F_1,\ldots,F_4$ of $G$ each with $p$ on their boundary.  Each of these four faces of $G$ is of Type~(ii), so the boundary of $F_1\cup\cdots\cup F_4$ includes a $4$-cycle $C:=vxwy$ in $G$ whose edges are not involved in any crossings.
-
-By removing each pair of crossing edges from $G$ we obtain a plane multigraph $G'$ each of whose faces is bounded by three or four edges; see \cref{one_planar_example}(b).  Since, for any pair of crossing edges $(vw,xy)$ that we remove this way, $vxwy$ is a cycle in $G'$, $\dist_{G'}(v,w)\le 2$ and $\dist_{G'}(x,y)\le 2$.
+Consider some pair of edges $vw$ and $xy$ that cross at $p$.  The point $p$ is a vertex of $G_0$ that has degree $4$.  There are four faces $F_1,\ldots,F_4$ of $G_0$ that contain $p$ and, from the preceding discussion each of $vx$, $xw$, $wy$, and $yv$ is an uncrossed edge of $G$.  Therefore, by removing each pair of crossing edges from $G$ we obtain a plane multigraph $G'$ each of whose faces is bounded by three or four edges; see \cref{one_planar_example}(b).  Since, for any pair of crossing edges $\{vw,xy\}$ that we remove this way, $vxwy$ is a cycle in $G'$, $\dist_{G'}(v,w)\le 2$ and $\dist_{G'}(x,y)\le 2$.
 % It follows immediately that, for any pair of vertices $a,b\in V(G)$, $\dist_{G'}(a,b)\le 2\dist_G(a,b)$.
 
 Our proof of \cref{1-planar} follows quickly from the following technical lemma, which is an extension of the analogous result for plane graphs \cite{DJMMUW20}.
@@ -713,18 +711,18 @@ Our proof of \cref{1-planar} follows quickly from the following technical lemma,
 		\item Let $G$ and $G'$ be defined as above.
 		\item Let $T$ be a BFS spanning tree of $G'$ rooted at some vertex $r$.
 		\item For every integer $j\ge 0$, let $L_j=\{v\in V(G):\dist_T(r,v)=j\}$.
-		\item Let $F$ be a cycle in $G'$ with $r$ in the exterior of $F$ and such that $V(F)$ can be partitioned into (possibly empty) sets $P_1,\ldots,P_3$ such that for each $i\in\{1,2,3\}$,
+		\item Let $F$ be a cycle in $G'$ with $r$ in the exterior of $F$ and such that $V(F)$ can be partitioned into $k\le 3$ sets $P_1,\ldots,P_k$ such that for each $i\in\{1,\ldots,k\}$,
 		\begin{compactenum}
 			\item $F[P_i]$ is a path; and
 			\item $|V(P_i)\cap L_j| \le 3$ for every integer $j\ge 0$.
 		\end{compactenum}
-		\item Let $N$ and $N'$ be the subgraphs of $G$ and $G'$ consisting only of those edges and vertices contained in $F$ or the interior of $F$.
+		\item Let $N$ and $N'$ be the subgraphs of $G$ and $G'$ consisting only of those edges and vertices contained in the closure of $F$.
 	\end{compactenum}
 	Then $N$ has an $H$-partition $\PP=\{S_x\cup\{v_x\} : x\in V(H)\}$ such that:
 	\begin{compactenum}[(i)]
 		\item $H$ is planar;
 		\item for every integer $j\ge 0$ and every $x\in V(H)$, $|S_x\cap L_j|\le 3$;
-		\item for each $i\in\{1,2,3\}$, there exists some $x_i\in V(H)$ such that $P_i=S_{x_i}$;
+		\item for each $i\in\{1,\ldots,k\}$, there exists $x_i\in V(H)$ such that $P_i=S_{x_i}$;
 		\item $H$ has a tree-decomposition in which every bag has size at most 4 and such that some bag contains $x_1,\ldots,x_k$.
 	\end{compactenum}
 \end{lem}
@@ -745,7 +743,7 @@ Our proof of \cref{1-planar} follows quickly from the following technical lemma,
   \begin{compactenum}
     \item If $k\in\{1,2\}$ then we let $\tau:=v_1,\ldots,v_p$ be an inner face of $N'$ that contains at least one edge of $F$ on its boundary.
 
-    \item If $k=3$ then assign each vertex $v$ of $N'$ a colour $\alpha(v)\in\{1,\ldots,3\}$ as follows:  Let $w$ be the first vertex of $F$ encountered on the path in $T$ from $v$ to the root of $T$.  (This implies that $w=v$ when $v$ is a vertex of $F$.)  Since $w\in V(F)$, $w\in P_i$ for some $i\in\{1,\ldots,k\}$ and we define $\alpha(v):=i$.  Now add one edge to each $4$-sided inner face of $N'$ to obtain a plane supergraph $N''$ of $N'$ in which each inner face has exactly three $3$ edges on its boundary. By Sperner's Lemma there exists an inner face $\tau'':=v_1,v_2,v_3$ of $N''$ such that $\alpha(v_i)=i$ for each $i\in\{1,2,3\}$.  Let $\tau:=v_1,\ldots,v_p$ be the face of $N'$ that contains $\tau''$.  (Note that $p\in\{3,4\}$.)
+    \item If $k=3$ then assign each vertex $v$ of $N'$ a colour $\alpha(v)\in\{1,\ldots,3\}$ as follows:  Let $w$ be the first vertex of $F$ encountered on the path in $T$ from $v$ to the root of $T$.  (This implies that $w=v$ when $v$ is a vertex of $F$.)  Since $w\in V(F)$, $w\in P_i$ for some $i\in\{1,\ldots,k\}$ and we define $\alpha(v):=i$.  Now add one edge to each $4$-sided inner face of $N'$ to obtain a plane supergraph $N''$ of $N'$ in which each inner face has exactly three edges on its boundary. By Sperner's Lemma there exists an inner face $\tau'':=v_1,v_2,v_3$ of $N''$ such that $\alpha(v_i)=i$ for each $i\in\{1,2,3\}$.  Let $\tau:=v_1,\ldots,v_p$ be the face of $N'$ that contains $\tau''$.  (Note that $p\in\{3,4\}$.)
   \end{compactenum}
 
   \todo[inline]{%
@@ -753,26 +751,30 @@ Our proof of \cref{1-planar} follows quickly from the following technical lemma,
     PM: Yes, it only requires that the inner faces have three sides and that the outer face is bounded by a simple cycle.  The proof goes through without change.  Look at the subgraph $X$ of the dual that contains only the edges dual to red/blue edges.  In our setting, the outer face has degree $1$ in $X$, which is odd.  Any bichromatic inner face has degree $0$ or degree $2$ in $X$.  There has to be another vertex of odd degree somewhere, which can only come from a trichromatic inner face.
   }
 
-  We can now define the vertices in the tripod $Y$.  For each $i\in\{1,2,3\}$, let $Q_i$ be the shortest path, in $T$, from $v_i$ to a vertex in $V(F)$.  Let $\overline{Y}$ denote the subgraph of $N'$ consisting of vertices and edges of $Q_1$, $Q_2$, $Q_3$, and $\tau$.  Let $S:=V(Q_1)\cup V(Q_2)\cup V(Q_3)$ and let $v:=v_p$.  Observe that, for each $i\in\{1,2,3\}$ and each $j\ge 0$, $|V(Q_i)\cap L_j|\le 1$.  Therefore $|S\cap L_j|\le 3$ for each integer $j\ge 0$.  Therefore, taking $Y:=S\cup\{v\}\setminus V(F)$ as a part in the partition $\PP$ will not violate Condition~(ii).
+  We can now define the vertices in the tripod $Y$.  For each $i\in\{1,2,3\}$, let $Q_i$ be the shortest path, in $T$, from $v_i$ to a vertex in $V(F)$.  Let $\overline{Y}$ denote the subgraph of $N'$ consisting of vertices and edges of $Q_1$, $Q_2$, $Q_3$, and $\tau$.  Let $S:=V(Q_1)\cup V(Q_2)\cup V(Q_3)$ and let $v:=v_p$.  Observe that, for each $i\in\{1,2,3\}$ and each $j\ge 0$, $|V(Q_i)\cap L_j|\le 1$.  Therefore $|S\cap L_j|\le 3$ for each integer $j\ge 0$.  Therefore, taking $Y:=S\cup\{v\}\setminus V(F)$ as a part in the partition $\PP$ will not violate condition~(ii).
 
 	% We claim that, for each integer $i\ge 0$, $|V(\overline{Y}^+)\cap L_i|\le 15$.  First observe that, since $Q_1,Q_2,Q_3$ are each vertical paths in $T$,  $\overline{Y}$ contains at most three vertices of $L_i$, each incident on at most two edges of $\overline{Y}$.  Since $\dist_{G'}(v,w)\le 2$ for each $vw\in E(G)$, any vertex $x\in V(\overline{Y}^+)\setminus V(\overline{Y})\cap L_i$, is incident to an edge $xy\in E(G)$ that crosses one of the at most six edges in $\overline{Y}$ having an endpoint in $L_i$.  These at most six edges have at most 12 endpoints.  Therefore $|V(\overline{Y}^+)\setminus V(\overline{Y})\cap L_i|\le 6\times 2=12$, so $|V(\overline{Y}^+)\cap L_i|\le 12+3=15$.
 
-  Refer to \cref{boring_figure}.  Let $M$ denote the subgraph of $N'$ containing the edges and vertices of $\overline{Y}$ and the edges and vertices of $F$.  Since $N'\subseteq G'$ contains only edges of $G$ that are not crossed, each component of $G-F-Y$ is contained in a single face of $M$.
-
-  Let $F_1,\ldots,F_m,\tau$ be the inner faces of $M$. By our choice of $\tau$, the graph $M$ is $2$-connected.  Furthermore, $V(F_i)$ can be partitioned into at most three sets $P_{i,1}$, $P_{i,2}$, and $P_{i,3}$ where $P_{i,1}\subset V(Y)$, $P_{i,2}\subseteq P_b$, $P_{i,3}\subseteq P_c$ for some $b,c\in\{1,\ldots,k\}$.  In the following, in order to avoid introducing even more notation or constantly adding the modifier ``when it exists'', we will assume that $V(F_i)\cap Y\neq\emptyset$ and that there are exactly two distinct $b,c\in\{1,\ldots,k\}$ such that $V(F_i)\cap P_b\neq\emptyset$ and $V(F_i)\cap P_c\neq\emptyset$.  When this assumption does not hold, exactly the same reasoning can be used, while omitting one or more of $P_{i,1}$, $P_{i,2}$ or $P_{i,3}$.
+  Refer to \cref{boring_figure}.  Let $M$ denote the subgraph of $N'$ containing the edges and vertices of $\overline{Y}$ and the edges and vertices of $F$.  Since $N'\subseteq G'$ contains only edges of $G$ that are not crossed, each component of $G-V(M)$ is contained in a single face of $M$.
 
   \begin{figure}
     \begin{center}
-      % \begin{tabular}{c@{\hspace{1cm}}c}
-        % \includegraphics{figs/mmplus-1} &
-        \includegraphics{figs/mmplus-2}
-      % \end{tabular}
+      \begin{tabular}{c@{\hspace{1cm}}c}
+        \includegraphics{figs/mmplus-1} &
+        \includegraphics{figs/mmplus-2} \\
+        $k\le 2$ & $k=3$
+      \end{tabular}
     \end{center}
-    \caption{The `Sperner' triangle $v_1v_2v_3$ in $N''$ and the Sperner face $\tau$ in $N'$.}
+    \caption{Two cases when choosing the face $\tau$ of $N'$.}
     \label{boring_figure}
   \end{figure}
 
-  Since $M$ is $2$-connected and $\overline{Y}$ is connected, $F_i[P_{i,j}]$ is a path, for each $j\in\{1,2,3\}$.  Therefore, we can apply induction using the cycle $F_i$ and the partition $P_{i,1},P_{i,2},P_{i,3}$ of $V(F_i)$.  The result of the induction is a $H_i$-partition $\mathcal{P}_i$ of the subgraph $N_i$ of $N$ contained in $F_i$.  The partition $\mathcal{P}_i$ contains each of $P_{i,1}$, $P_{i,2}$ and $P_{i,3}$. For $\mathcal{P}$ we use the partition
+  Let $F_1,\ldots,F_m,\tau$ be the inner faces of $M$. By our choice of $\tau$, the graph $M$ is $2$-connected.  Furthermore, $V(F_i)$ can be partitioned into at most three sets $P_{i,1}$, $P_{i,2}$, and $P_{i,3}$ where $P_{i,1}\subset Y$, $P_{i,2}\subseteq P_b$, and $P_{i,3}\subseteq P_c$ for some $b,c\in\{1,\ldots,k\}$.  In the following, in order to avoid introducing even more notation or constantly adding the modifier ``when it exists'', we will assume that $V(F_i)\cap Y\neq\emptyset$ and that there are exactly two distinct $b,c\in\{1,\ldots,k\}$ such that $V(F_i)\cap P_b\neq\emptyset$ and $V(F_i)\cap P_c\neq\emptyset$.  When this assumption does not hold, exactly the same reasoning can be used, while omitting one or more of $P_{i,1}$, $P_{i,2}$ or $P_{i,3}$.
+
+
+  Since $M$ is $2$-connected and $\overline{Y}$ is connected, $F_i[P_{i,j}]$ is a path, for each $j\in\{1,2,3\}$.  Let $N_i$ and $N_i'$ be the subgraphs of $N$ and $N'$ contained in the closure of $F_i$.  Every inner face of $N_i'$ is an inner face of $N'$ and $\tau$ is not an inner face of $N_i'$.  Therefore $N_i'$ has fewer inner faces than $N'$.  Therefore, we can apply induction using the cycle $F_i$ and the partition $P_{i,1},P_{i,2},P_{i,3}$ of $V(F_i)$.  The result of the induction is a $H_i$-partition $\mathcal{P}_i$ of the subgraph $N_i$ of $N$ contained in the closure of $F_i$.
+  % The partition $\mathcal{P}_i$ contains each of $P_{i,1}$, $P_{i,2}$ and $P_{i,3}$.
+  We can now define our desired partition
   \[
       \mathcal{P}:=\{Y, P_1,\ldots,P_k\} \cup \bigcup_{i=1}^m \{P\in\mathcal{P}_i: P\cap V(M)=\emptyset\} \enspace .
   \]
@@ -788,11 +790,11 @@ Our proof of \cref{1-planar} follows quickly from the following technical lemma,
     % We show that $\tw(H)\le 3$ by giving a tree-decomposition of $H$ of width at most $3$.
     Let $x_0$ be the vertex of $H$ obtained from contracting $Y$ and, for each $j\in\{1,\ldots,k\}$, let $x_j$ denote the vertex of $H$ obtained from contracting $P_j$.
 
-    The tree $T_0$ has root node $y_0$ with $B_{y_0}:=\{x_0,\ldots,x_k\}$.
+    The tree $T_0$ has a node $y_0$ with $B_{y_0}:=\{x_0,\ldots,x_k\}$.
     % For each $i\in\{1,\ldots,m\}$, let $N_i$ denote the subgraph of $N$ contained in $F_i$.
-    The inductive hypothesis ensures that $H_i:=N_i/\mathcal{P}_i$ has a tree decomposition $(B_z:z\in V(T_i))$ whose largest bag has size at most $4$ whose root bag $B_{z_i}$ contains the vertices $a_i,b_i,c_i\in V(H_i)$ obtained by contracting $P_{i,1}$, $P_{i,2}$, and $P_{i,3}$, respectively.   Recall that $P_{i,1}:=V(N_i)\cap Y$, $P_{i,2}:=V(N_i)\cap P_b$ and $P_{i,3}:=V(N_i)\cap P_c$ for some $b,c\in\{1,\ldots,k\}$.  For each bag $B_z$, $z\in V(T_i)$, replace each occurrence of $a_i$ by $x_0$, replace each occurrence of $b_i$ by $x_b$ and replace each occurrence of $c_i$ by $x_c$.  Note that these replacements do not increase the size of any bag and they result in a tree decomposition of the graph obtained from $H_i$ by renaming the vertices $a_i$, $b_i$, and $c_i$ with the names $x_0$, $x_a$, and $x_b$. Now add an edge that joins $y_0$ to $x_i$.
+    The inductive hypothesis ensures that $H_i:=N_i/\mathcal{P}_i$ has a tree decomposition $(B_z:z\in V(T_i))$ whose largest bag has size at most $4$ and that has some bag $B_{z_i}$ that contains the vertices $a_i,b_i,c_i\in V(H_i)$ obtained by contracting $P_{i,1}$, $P_{i,2}$, and $P_{i,3}$, respectively.   Recall that $P_{i,1}:=V(N_i)\cap Y$, $P_{i,2}:=V(N_i)\cap P_b$ and $P_{i,3}:=V(N_i)\cap P_c$ for some $b,c\in\{1,\ldots,k\}$.  For each bag $B_z$, $z\in V(T_i)$, replace each occurrence of $a_i$ by $x_0$, replace each occurrence of $b_i$ by $x_b$ and replace each occurrence of $c_i$ by $x_c$.  These replacements do not increase the size of any bag and they result in a tree decomposition of the graph obtained from $H_i$ by renaming the vertices $a_i$, $b_i$, and $c_i$ with the names $x_0$, $x_a$, and $x_b$. Now add an edge that joins $y_0$ to $z_i$.
 
-    It is now straightforward to verify that doing this for each $i\in\{1,\ldots,m\}$ yields a tree decomposition of $N$ that satisfies condition~(iv).  (The key observation is that there is no edge of $N$  with one endpoint in $N_i-F_i$ and one endpoint in $N_j-F_j$ for any $i\neq j$.)
+    Using the fact that each component of $G-V(M)$ is contained in a single face of $M$, it is now straightforward to verify that, by doing this for each $i\in\{1,\ldots,m\}$ we obtain a tree decomposition of $N$ that satisfies condition~(iv).  \qedhere
   \end{compactenum}
 
   %
