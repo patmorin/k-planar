@@ -653,39 +653,6 @@ In the important special case of 1-planar graphs we obtain better constants and 
 Every 1-planar graph is contained in $H\boxtimes P\boxtimes K_{7}$ for some planar graph $H$ with treewidth at most 3 and for some path $P$.
 \end{thm}
 
-% \referee{1}{3. Theorem 10: Unfortunately I have to suggest removing it. I don’t see the motivation for making $H$ planar or for improving the constants. Are the improved constants at all close to tight? Is there another reason for including it?}
-%
-% \note{DW}{We can motivate \cref{1-planar} since the graph drawing community particularly cares about 1-planar graphs, since treewidth 3 is best possible, and since the planarity of $H$ is essential in the proof of \cref{1PlanarQueue}. Futher motivation comes from the open problem at the end of the paper. We need to argue this in the response and in the paper. The alternative is to remove \cref{sec-1-planar}? We could keep the statement of \cref{1-planar} in the paper and refer to the arXiv paper for the proof. What do you think? All this depends on whether we can fix the errors below. I vote to fix the errors, add more motivation for \cref{1-planar}, keep the theorem and the proof. }
-
-%Let $G$ be an edge-maximal 1-plane multigraph with no two parallel edges on the boundary of a single face.  Here, edge-maximal should be taken to mean that, if any two vertices $v$ and $w$ appear on a common face\footnote{The \defin{faces} of an embedded graph $G$ are the connected components of $\R^2\setminus \bigcup_{vw\in E(G)} vw$.  We say that a vertex $v\in V(G)$ appears on a face $F$ if $v$ is contained in the closure of $F$.} $F$, then there is an edge $vw\in E(G)$ that is contained in the boundary of $F$.  \note{DW}{Each face of $G$ is one of two types, either bounded by three edges (none of which are crossed), or bounded by one edge that is not crossed plus portions of two crossing edges. Right? If this is true, we should say it here, which would help to clear up the confusion below. Add a figure.}
-%We assume that no two edges incident to a common vertex cross each other since, in a 1-plane graph, such a crossing can always be removed by a local modification to obtain an isomorphic 1-plane graph in which the two edges do not cross.\footnote{While this is true for 1-plane graphs it is not true for $k$-plane graphs with $k\ge 3$; the uncrossing operation can increase the number of crossings on a particular edge from $k$ to $2(k-1)$.}
-%
-%\note{DW}{I suggest we say that it follows from Euler's formula that $G$ is finite. (To see this, say $G$ has $n$ vertices, $m$ non-crossed edges, and $k$ crossings. Let $G'$ be the plane graph obtained from $G$ by adding a dummy vertex at each crossing. So $G'$ is a plane multigraph in which every face is bounded by a 3-cycle. It follows from Euler's formula that $m+4k = |E(G')| = 3( |V(G')|-2) = 3 ( n+k-2)$, implying	$m+k = 3 (n-2)$ and $|E(G)| = m+2k \leq 6(n-2)$, which can also be shown by deleting one edge from each crossing point. ) }
-%
-%\note{DW}{It seems to be that $G$ can be obtained from a plane multigraph with faces of size 3 or 4 such that no edge is in two 3-faces, by adding a pair of crossing edges across each 4-face. I think this characterises edge-maximal 1-planar multigraphs with no 2-faces. Right? This should be stated as a lemma. Does this viewpoint help? Is it known?}
-%
-%\note{DW}{Say $G$ is obtained from a plane multigraph by making each face a clique. Is $G\subseteq H \boxtimes P \boxtimes K_{f(\omega(G)}$? for some treewidth 3 graph $H$.}
-%
-%A \defin{kite} in $G$ is the subgraph $K=G[\{v,w,x,y\}]$ induced by the endpoints of a pair of crossing edges $vw,xy\in E(G)$.  It follows from edge-maximality that every kite is isomorphic to the complete graph $K_4$. \note{DW}{We need to define a kite to be the subgraph with vertex-set $\{v,w,x,y\}$ and edge-set $\{vx,xy,vx,vy,wy,wx\}$ where $vx,vy,wy,wx$ are the edges on the `outside' of the kite-faces. Then it really is a simple $K_4$. I think this is what we intended. We should add a figure showing a kite and kite-faces. }
-%The edges $vw$ and $xy$ are called \defin{spars} of $K$.  The cycle $vxwy$ is called the \defin{sail} of $K$.  It follows from edge-maximality that none of the edges $vx$, $xw$, $wy$, or $yv$ are crossed by any other edges of $G$.
-%
-%\referee{2}{Page 13. Perhaps I am misunderstanding something, but I do not see why
-%'none of the edges $vx$, $xw$, $wy$, or $yv$ are crossed by any other edges of
-%$G$.'  For example, see the attached PDF for a picture where $vw$, $xw$, $wy$,
-%and $yv$ are all crossed by other edges of $G$.\\
-%\includegraphics[width=60mm]{kite}}
-%\note{DW}{We need to explain more about how edge-maximality fixes this problem. In this case we can draw other $xv$, $vy$, $yw$ $wx$ edges close to the central crossing edges.} Thus any edge that is a spar of a kite $K$ is not part of a sail of any kite $K'$.
-%
-%\referee{2}{Page 13. The attached PDF also shows that the definition of 'kite
-%face' may not be well-defined.  For example, I do not see why there
-%cannot be some edges of $G$ 'inside' a kite face.  Even if this is not
-%the case, I think it is more precise to say that a kite face has 'two
-%and a half edges' and two vertices of $G$ on its boundary' rather than
-%'three edges and two vertices of $G$ on its boundary'.}
-%
-%\note{DW}{This should be fixed if we define kite more precisely. A kite-face is bounded by one edge and two half-edges right?}
-
-% \note{PM}{I agree that we should fix it and keep it.  Another reason: For vertex ranking, the bound is $O(\log n/\log^{(t)} n)$ where $t:=\tw(H)$, so this is an example where $\tw(H)$ affects more than just the constant.}
 
 In the following, we assume that no two edges incident to a common vertex of the $1$-plane graph $G$ cross each other since, in a 1-plane graph, such a crossing can always be removed by a local modification to obtain an isomorphic 1-plane graph in which the two edges do not cross.\footnote{While this is true for 1-plane graphs it is not true for $k$-plane graphs with $k\ge 3$; the uncrossing operation can increase the number of crossings on a particular edge from $k$ to $2(k-1)$.}  The \defin{faces} of $G$ are the connected components of $\R^2\setminus \bigcup_{vw\in E(G)} vw$, where we treat each edge $vw$ of $G$ as the image of a simple curve $f_{vw}:[0,1]\to\R^2$.  We say that a vertex $v\in V(G)$ appears on a face $F$ if $v$ is contained in the closure of $F$.
 
@@ -696,10 +663,10 @@ Let $G$ be a $1$-plane graph.  We make $G$ into an \defin{edge-maximal} $1$-plan
     \begin{tabular}{c@{\hspace{1cm}}c}
         \includegraphics{figs/one_planar_example-3} &
         \includegraphics{figs/one_planar_example-4} \\
-        (a) & (b)
+        $G$ & $G'$
      \end{tabular}
     \end{center}
-    \caption{(a)~Kites in an edge-maximal $1$-plane multigraph $G$; (b)~Plane multigraph $G'$ obtained by removing one spar from each kite of $G$.}
+    \caption{The graph $G'$ obtained by removing pairs of crossing edges from $G$ is a plane multigraph whose faces all have three or four sides.}
     \label{one_planar_example}
 \end{figure}
 
@@ -713,45 +680,10 @@ Therefore each face of $G_0$ is a $3$-cycle that contains at most one dummy vert
   \item bounded by one edge of $G$ that is not crossed plus portions of two edges of $G$ that cross each other.
 \end{inparaenum}
 
-Consider some crossing $(p,vw,xy)$ in $G$.  The point $p$ at which this crossing occurs is a vertex of $G_0$ that has degree $4$.  There are four faces $F_1,\ldots,F_4$ of $G_0$ each with $p$ on their boundary.  Each of these four faces of is of Type~(ii), so the boundary of $F_1\cup\cdots\cup F_4$ includes a $4$-cycle $C:=vxwy$ in $G$ whose edges are not involved in any crossings.  We call the subgraph $K:=C\cup\{vw,xy\}$ a \defin{kite} of $G$; see \cref{one_planar_example}(a).  The edges $vw$ and $xy$ are called \defin{spars} of $K$.  The cycle $vxwy$ is called the \defin{sail} of $K$.  Thus any edge that is a spar of a kite $K$ is not part of a sail of any kite $K'$.\todo{Drop the definitions of kite and spar, we hardly use them.}
+Consider some crossing $(p,vw,xy)$ in $G$.  The point $p$ at which this crossing occurs is a vertex of $G_0$ that has degree $4$.  There are four faces $F_1,\ldots,F_4$ of $G_0$ each with $p$ on their boundary.  Each of these four faces of is of Type~(ii), so the boundary of $F_1\cup\cdots\cup F_4$ includes a $4$-cycle $C:=vxwy$ in $G$ whose edges are not involved in any crossings.
 
-
-%
-% It follows from edge-maximality that none of the edges $vx$, $xw$, $wy$, or $yv$ are crossed by any other edges of $G$.
-
-%
-% \note{DW}{Each face of $G$ is one of two types, either bounded by three edges (none of which are crossed), or bounded by one edge that is not crossed plus portions of two crossing edges. Right? If this is true, we should say it here, which would help to clear up the confusion below. Add a figure.}
-%
-% \note{DW}{I suggest we say that it follows from Euler's formula that $G$ is finite. (To see this, say $G$ has $n$ vertices, $m$ non-crossed edges, and $k$ crossings. Let $G'$ be the plane graph obtained from $G$ by adding a dummy vertex at each crossing. So $G'$ is a plane multigraph in which every face is bounded by a 3-cycle. It follows from Euler's formula that $m+4k = |E(G')| = 3( |V(G')|-2) = 3 ( n+k-2)$, implying	$m+k = 3 (n-2)$ and $|E(G)| = m+2k \leq 6(n-2)$, which can also be shown by deleting one edge from each crossing point. ) }
-%
-% \note{DW}{It seems to be that $G$ can be obtained from a plane multigraph with faces of size 3 or 4 such that no edge is in two 3-faces, by adding a pair of crossing edges across each 4-face. I think this characterises edge-maximal 1-planar multigraphs with no 2-faces. Right? Does this viewpoint help? Is it known?}
-%
-% \note{DW}{Say $G$ is obtained from a plane multigraph by making each face a clique. Is $G\subseteq H \boxtimes P \boxtimes K_{f(\omega(G)}$? for some treewidth 3 graph $H$.}
-%
-% % A \defin{kite} in $G$ is the subgraph $K=G[\{v,w,x,y\}]$ induced by the endpoints of a pair of crossing edges $vw,xy\in E(G)$.  It follows from edge-maximality that every kite is isomorphic to the complete graph $K_4$. \note{DW}{We need to define a kite to be the subgraph with vertex-set $\{v,w,x,y\}$ and edge-set $\{vx,xy,vx,vy,wy,wx\}$ where $vx,vy,wy,wx$ are the edges on the `outside' of the kite-faces. Then it really is a simple $K_4$. I think this is what we intended. We should add a figure showing a kite and kite-faces. }
-%
-% \referee{2}{Page 13. Perhaps I am misunderstanding something, but I do not see why
-% 'none of the edges $vx$, $xw$, $wy$, or $yv$ are crossed by any other edges of
-% $G$.'  For example, see the attached PDF for a picture where $vw$, $xw$, $wy$,
-% and $yv$ are all crossed by other edges of $G$.\\
-% \includegraphics[width=60mm]{kite}}
-% \note{DW}{We need to explain more about how edge-maximality fixes this problem. In this case we can draw other $xv$, $vy$, $yw$ $wx$ edges close to the central crossing edges.} \note{PM}{In the example above, $v$ and $y$ appear on a common (inner) face $F$, so by definition of edge-maximality there is an edge $xy$  on the boundary of $F$. }
-%
-% \referee{2}{Page 13. The attached PDF also shows that the definition of 'kite
-% face' may not be well-defined.  For example, I do not see why there
-% cannot be some edges of $G$ 'inside' a kite face.  Even if this is not
-% the case, I think it is more precise to say that a kite face has 'two
-% and a half edges' and two vertices of $G$ on its boundary' rather than
-% 'three edges and two vertices of $G$ on its boundary'.}
-% \note{DW}{This should be fixed if we define kite more precisely. A kite-face is bounded by one edge and two half-edges right?}
-%
-% \referee{2}{Page 13. Could it be that the subgraph induced by the vertices of a
-% 	kite is a $K_4$ with some parallel edges?  This seems relevant later in
-% 	the proof.}
-%
-% \note{DW}{If we define kite as above, this is not a problem}
-
-By removing both spars from each kite of $G$ we obtain a plane multigraph $G'$ each of whose faces is bounded by three or four edges; see \cref{one_planar_example}(b).  Observe that, for any spar $xy\in E(G)\setminus E(G')$ that crosses $vw\in E(G')$, $G'$ contains the path $vxw$ (and $vyw$).  Therefore $\dist_{G'}(v,w)\le 2$.
+By removing each pair of crossing edges from $G$ we obtain a plane multigraph $G'$ each of whose faces is bounded by three or four edges; see \cref{one_planar_example}(b).  Since, for any pair of crossing edges $(vw,xy)$ that we remove this way, $vxwy$ is a cycle in $G'$, $\dist_{G'}(v,w)\le 2$ and $\dist_{G'}(x,y)\le 2$.
+% It follows immediately that, for any pair of vertices $a,b\in V(G)$, $\dist_{G'}(a,b)\le 2\dist_G(a,b)$.
 
 Our proof of \cref{1-planar} follows quickly from the following technical lemma, which is an extension of the analogous result for plane graphs \cite{DJMMUW20}.
 \begin{lem}
@@ -765,7 +697,6 @@ Our proof of \cref{1-planar} follows quickly from the following technical lemma,
 			\item $F[P_i]$ is a path; and
 			\item $|V(P_i)\cap L_j| \le 3$ for every integer $j\ge 0$.
 		\end{compactenum}
-% \note{DW}{Should the vertices already grabbed by $P_1,P_2,P_3$ be mentioned in the setup? The new paths $Q_1,Q_2,Q_3$ need to avoid the vertices already grabbed by $P_1,P_2,P_3$. Basically, I am concerned about what happens when distinct vertical paths in $T$ want to grab the same vertex.} \note{PM}{No, at this point we're only promising an $H$-partition of $N$, the part of $G$ contained in the uncrossed cycle $F$.}
 		\item Let $N$ and $N'$ be the subgraphs of $G$ and $G'$ consisting only of those edges and vertices contained in $F$ or the interior of $F$.
 	\end{compactenum}
 	Then $N$ has an $H$-partition $\PP=\{S_x\cup\{v_x\} : x\in V(H)\}$ such that:
@@ -773,20 +704,9 @@ Our proof of \cref{1-planar} follows quickly from the following technical lemma,
 		\item $H$ is planar;
 		\item for every integer $j\ge 0$ and every $x\in V(H)$, $|S_x\cap L_j|\le 3$;
 		\item for each $i\in\{1,2,3\}$, there exists some $x_i\in V(H)$ such that $P_i=S_{x_i}$;
-%		\note{DW}{Should this be $P_i\subseteq S_{x_i}$? (since the path grabs other vertices into its part)}\note{PM}{No, for the same reason as above.}
- and
 		\item $H$ has a tree-decomposition in which every bag has size at most 4 and such that some bag contains $x_1,\ldots,x_k$.
 	\end{compactenum}
 \end{lem}
-
-% \referee{2}{Page 13.  Regarding the proof of Lemma 4, I think it is better to
-% include all the details from reference [14].  As far as I know, JCTB
-% does not have a page limit, so I do not see an issue with just
-% reproducing the entire proof and telling the reader that they can skip
-% all the details if they wish.  This is just my personal opinion
-% though, so the authors can ignore this request if they choose.}
-%
-% \note{DW}{I agree we need more details. I am having trouble verifying this proof. }
 
 \begin{proof}
   This proof is very similar to the proof of Lemma~13 by \citet{DJMMUW20}, but is sufficiently complicated by the $1$-planar setting to warrant a full proof.  In particular, the reader should keep in mind that $G$ and $G'$ are multigraphs and that the cycle $F$ may consist of two vertices and two (parallel) edges.
@@ -800,26 +720,25 @@ Our proof of \cref{1-planar} follows quickly from the following technical lemma,
   \end{inparaenum}
   Therefore, we may assume that $N$ has more than one inner face.
 
-  The $H$-partition $\mathcal{P}$ will include $P_1$, $P_2$ , $P_3$ and a part $Y$, called a \emph{tripod}, that we now define.  The tripod $Y$ is determined by three vertices $v_1v_2v_3$ that belong to a common inner face $\tau$ of $N'$.  Depending on the value $k$, there are two cases to consider:
+  The $H$-partition $\mathcal{P}$ will include $P_1$, $P_2$ , $P_3$ and a part $Y$, called a \emph{tripod}, that we now define.  The tripod $Y$ is determined by three vertices $v_1v_2v_3$ that belong to a common inner face $\tau$ of $N'$.  Depending on the value of $k$, there are two cases to consider:
   \begin{compactenum}
     \item If $k\in\{1,2\}$ then we let $\tau:=v_1,\ldots,v_p$ be an inner face of $N'$ that contains at least one edge of $F$ on its boundary.
 
-    \item If $k=3$ then assign each vertex $v$ of $N'$ a colour $\alpha(v)\in\{1,\ldots,3\}$ as follows:  Let $w$ be the first vertex of $F$ encountered on the path in $T$ from $v$ to the root of $T$.  (This implies that $w=v$ when $v$ is a vertex of $F$.)  Since $w\in V(F)$, $w\in P_i$ for some $i\in\{1,\ldots,k\}$ and we define $\alpha(v):=i$.  Now add edges to the inner faces of $N'$ to obtain a supergraph $N''$ in which each inner face has three $3$ edges on its boundary. By Sperner's Lemma \todo{DW:Does this work for multigraph near-triangulations?} there exists an inner face $\tau'':=v_1,v_2,v_3$ of $N''$ such that $\alpha(v_i)=i$ for each $i\in\{1,2,3\}$.  Let $\tau:=v_1,\ldots,v_p$ be the face of $N'$ that contains $\tau''$.  (Note that $p\in\{3,4\}$.)
+    \item If $k=3$ then assign each vertex $v$ of $N'$ a colour $\alpha(v)\in\{1,\ldots,3\}$ as follows:  Let $w$ be the first vertex of $F$ encountered on the path in $T$ from $v$ to the root of $T$.  (This implies that $w=v$ when $v$ is a vertex of $F$.)  Since $w\in V(F)$, $w\in P_i$ for some $i\in\{1,\ldots,k\}$ and we define $\alpha(v):=i$.  Now add one edge to each $4$-sided inner face of $N'$ to obtain a plane supergraph $N''$ of $N'$ in which each inner face has exactly three $3$ edges on its boundary. By Sperner's Lemma there exists an inner face $\tau'':=v_1,v_2,v_3$ of $N''$ such that $\alpha(v_i)=i$ for each $i\in\{1,2,3\}$.  Let $\tau:=v_1,\ldots,v_p$ be the face of $N'$ that contains $\tau''$.  (Note that $p\in\{3,4\}$.)
   \end{compactenum}
 
-  \todo[inline]{
-    Answering David's question: Yes, it only requires that the inner faces have three sides and that the outer face is bounded by a simple cycle.  The proof goes through without change.  Look at the subgraph $X$ of the dual that contains only the edges dual to red/blue edges.  In our setting, the outer face has degree $1$ in $X$, which is odd.  Any bichromatic inner face has degree $0$ or degree $2$ in $X$.  There has to be another vertex of odd degree somewhere, which can only come from a trichromatic inner face.
+  \todo[inline]{%
+    DW:Does this work for multigraph near-triangulations? \newline
+    PM: Yes, it only requires that the inner faces have three sides and that the outer face is bounded by a simple cycle.  The proof goes through without change.  Look at the subgraph $X$ of the dual that contains only the edges dual to red/blue edges.  In our setting, the outer face has degree $1$ in $X$, which is odd.  Any bichromatic inner face has degree $0$ or degree $2$ in $X$.  There has to be another vertex of odd degree somewhere, which can only come from a trichromatic inner face.
   }
 
-  We can now define the vertices in the tripod $Y$.  For each $i\in\{1,2,3\}$, let $Q_i$ be the shortest path, in $T$, from $v_i$ to $V(F)$.  Let $\overline{Y}$ denote the subgraph of $N'$ consisting of vertices and edges of $Q_1$, $Q_2$, $Q_3$, and $\tau$.  Let $S:=V(Q_1)\cup V(Q_2)\cup V(Q_3)$ and let $v:=v_p$.  Observe that, for each $i\in\{1,2,3\}$ and each $j\ge 0$, $|V(Q_i)\cap L_j|\le 1$.  Therefore $|S\cap L_j|\le 3$ for each integer $j\ge 0$.  Therefore, taking $Y:=S\cup\{v\}\setminus V(F)$ as a part in the partition $\PP$ will not violate Condition~(ii).
+  We can now define the vertices in the tripod $Y$.  For each $i\in\{1,2,3\}$, let $Q_i$ be the shortest path, in $T$, from $v_i$ to a vertex in $V(F)$.  Let $\overline{Y}$ denote the subgraph of $N'$ consisting of vertices and edges of $Q_1$, $Q_2$, $Q_3$, and $\tau$.  Let $S:=V(Q_1)\cup V(Q_2)\cup V(Q_3)$ and let $v:=v_p$.  Observe that, for each $i\in\{1,2,3\}$ and each $j\ge 0$, $|V(Q_i)\cap L_j|\le 1$.  Therefore $|S\cap L_j|\le 3$ for each integer $j\ge 0$.  Therefore, taking $Y:=S\cup\{v\}\setminus V(F)$ as a part in the partition $\PP$ will not violate Condition~(ii).
 
 	% We claim that, for each integer $i\ge 0$, $|V(\overline{Y}^+)\cap L_i|\le 15$.  First observe that, since $Q_1,Q_2,Q_3$ are each vertical paths in $T$,  $\overline{Y}$ contains at most three vertices of $L_i$, each incident on at most two edges of $\overline{Y}$.  Since $\dist_{G'}(v,w)\le 2$ for each $vw\in E(G)$, any vertex $x\in V(\overline{Y}^+)\setminus V(\overline{Y})\cap L_i$, is incident to an edge $xy\in E(G)$ that crosses one of the at most six edges in $\overline{Y}$ having an endpoint in $L_i$.  These at most six edges have at most 12 endpoints.  Therefore $|V(\overline{Y}^+)\setminus V(\overline{Y})\cap L_i|\le 6\times 2=12$, so $|V(\overline{Y}^+)\cap L_i|\le 12+3=15$.
 
-  Refer to \cref{boring_figure}.
-	Let $M$ denote the subgraph of $G'$ containing the edges and vertices of $\overline{Y}$ and the edges and vertices of $F$ and let $F_1,\ldots,F_m,\tau$ be the inner faces of $M$.  By our choice of $\tau$, the graph $M$ is $2$-connected.
-  Furthermore, $V(F_i)$ can be partitioned into at most three sets $P_{i,1}$, $P_{i,2}$, and $P_{i,3}$ where $P_{i,1}\subset V(Y)$, $P_{i,2}\subseteq P_a$, $P_{i,3}\subseteq P_b$ for some $a,b\in\{1,2,3\}$, and $F_i[P_{i,j}]$ is a path, for each $j\in\{1,2,3\}$.  Therefore, we can apply induction using the cycle $F_i$ and the partition $P_{i,1},P_{i,2},P_{i,3}$ of $V(F_i)$.  The remainder of the proof is now identical to that in \citet{DJMMUW20}.
+  Refer to \cref{boring_figure}.  Let $M$ denote the subgraph of $N'$ containing the edges and vertices of $\overline{Y}$ and the edges and vertices of $F$.  Since $N'\subseteq G'$ contains only edges of $G$ that are not crossed, each component of $G-F-Y$ is contained in a single face of $M$.
 
-  % Furthermore, for each $i\in\{1,\ldots,m\}$, the vertices on the boundary $F_i$ are contained in $Y\cup P_a\cup P_b$ for some $a,b\in\{1,\ldots,k\}$. In particular if $k=3$ then there exists some $c\in\{1,2,3\}$ such that no vertex of $P_c$ is on the boundary of $F_i$.
+  Let $F_1,\ldots,F_m,\tau$ be the inner faces of $M$. By our choice of $\tau$, the graph $M$ is $2$-connected.  Furthermore, $V(F_i)$ can be partitioned into at most three sets $P_{i,1}$, $P_{i,2}$, and $P_{i,3}$ where $P_{i,1}\subset V(Y)$, $P_{i,2}\subseteq P_b$, $P_{i,3}\subseteq P_c$ for some $b,c\in\{1,\ldots,k\}$.  In the following, in order to avoid introducing even more notation or constantly adding the modifier ``when it exists'', we will assume that $V(F_i)\cap Y\neq\emptyset$ and that there are exactly two distinct $b,c\in\{1,\ldots,k\}$ such that $V(F_i)\cap P_b\neq\emptyset$ and $V(F_i)\cap P_c\neq\emptyset$.  When this assumption does not hold, exactly the same reasoning can be used, while omitting one or more of $P_{i,1}$, $P_{i,2}$ or $P_{i,3}$.
 
   \begin{figure}
     \begin{center}
@@ -832,28 +751,27 @@ Our proof of \cref{1-planar} follows quickly from the following technical lemma,
     \label{boring_figure}
   \end{figure}
 
-
-  % The graph $M$ has some number of inner faces $F_1,\ldots,F_m$, each of which is contained in the interior of $F$.
-  % Some of the inner faces of $M^+$ are Type~(ii) faces of $G$. Let $F_1,\ldots,F_m$ be the inner faces of $M^+$ that are not Type~(ii) faces of $G$.  We claim that, for each $i\in\{1,\ldots,m\}$, the boundary of $F_i$ is a cycle in $G'$ that contains no spars. Otherwise, some edge $vw$ contributes to the boundary of $F_i$ but is crossed by an edge $xy\in E(G)$. Then, $vw\not\in E(F)$ since no edge of $F$ is crossed by any edge of $G$. Therefore $vw\in E(\overline{Y}^+)$ so $xy\in E(\overline{Y}^+)$. But then the only faces of $M^+$ with $vw$ on their boundary are Type~(ii) faces.  In particular $vw$ cannot be on the boundary of $F_i$.
-
-  The result of the induction on $N_i$ is a partition $\mathcal{P}_i$ with each of $P_{i,1}$, $P_{i,2}$ and $P_{i,3}$ in its own part. For $\mathcal{P}$ we use the partition
+  Since $M$ is $2$-connected and $\overline{Y}$ is connected, $F_i[P_{i,j}]$ is a path, for each $j\in\{1,2,3\}$.  Therefore, we can apply induction using the cycle $F_i$ and the partition $P_{i,1},P_{i,2},P_{i,3}$ of $V(F_i)$.  The result of the induction is a $H_i$-partition $\mathcal{P}_i$ of the subgraph $N_i$ of $N$ contained in $F_i$.  The partition $\mathcal{P}_i$ contains each of $P_{i,1}$, $P_{i,2}$ and $P_{i,3}$. For $\mathcal{P}$ we use the partition
   \[
       \mathcal{P}:=\{Y, P_1,\ldots,P_k\} \cup \bigcup_{i=1}^m \{P\in\mathcal{P}_i: P\cap V(M)=\emptyset\} \enspace .
   \]
-  All that remains is to verify that $\mathcal{P}$ satisfies Requirements~1--3.
-  \begin{compactenum}
-    \item To see that $H:=G/\mathcal{P}$ is planar, observe that $G/\mathcal{P}=G'/\mathcal{P}$\todo{Explain why $G/\mathcal{P}=G'/\mathcal{P}$} and that each part $P\in\mathcal{P}$ induces a connected subgraph $G'[P]$ of $G'$.  Since $G'$ is planar and planarity is preserved under edge contractions, this implies that $G'/\mathcal{P}$ is planar.
+  It is straightforward to verify that $\mathcal{P}$ is indeed a partition of $V(N)$ and, by definition this is an $H$-partition of $N$ for the graph $H:=N/\mathcal{P}$.  All that remains is to verify that $\mathcal{P}$ satisfies conditions~(i)--(iv).
+  \begin{compactenum}[(i)]
+    \item To see that $H$ is planar, observe that $G/\mathcal{P}=G'/\mathcal{P}$\todo{Explain why $G/\mathcal{P}=G'/\mathcal{P}$} and that each part $P\in\mathcal{P}$ induces a connected subgraph $G'[P]$ of $G'$.  Since $G'$ is planar and planarity is preserved under edge contractions, this implies that $G'/\mathcal{P}$ is planar.
 
-    \item  The parts $P_1,P_2,P_3$ satisfy Requirement~2 by Assumption~4(b)ii,  we have already argued that the part $Y$ satisfies Requirement~2, and the inductive hypothesis ensures that each of the remaining parts satisfy Requirement~2.
+    \item  By Assumption~4(b) none of the parts $P_1,P_2,P_3$ violate condition~(ii).  We have already argued that the part $Y$ does not violate condition~(ii).  The inductive hypothesis ensures that each of the remaining parts satisfies condition~(ii).
 
-    \item Requirement~3 is satisfied since $\mathcal{P}$ contains parts $P_1,\ldots,P_k$.
+    \item Condition~(iii) is satisfied since $\mathcal{P}$ contains parts $P_1,\ldots,P_k$.
 
-    \item Next we build a tree decomposition $(B_y:y\in V(T_0))$ of $H$ that satisifies Requirement~4.
+    \item We now construct a tree decomposition $(B_y:y\in V(T_0))$ of $H$ that satisifies condition~(iv).
     % We show that $\tw(H)\le 3$ by giving a tree-decomposition of $H$ of width at most $3$.
     Let $x_0$ be the vertex of $H$ obtained from contracting $Y$ and, for each $j\in\{1,\ldots,k\}$, let $x_j$ denote the vertex of $H$ obtained from contracting $P_j$.
 
     The tree $T_0$ has root node $y_0$ with $B_{y_0}:=\{x_0,\ldots,x_k\}$.
-    For each $i\in\{1,\ldots,m\}$, let $N_i$ denote the subgraph of $N$ contained in $F_i$.  The inductive hypothesis ensures that $H_i:=N_i/\mathcal{P}_i$ has a tree decomposition $(B_z:z\in V(T_i))$ whose largest bag has size at most $4$ whose root bag $B_{z_i}$ contains the vertices $a_i,b_i,c_i\in V(H_i)$ obtained by contracting $P_{i,1}$, $P_{i,2}$, and $P_{i,3}$, respectively.   Recall that $P_{i,1}:=V(N_i)\cap Y$ and $P_{i,2}:=V(N_i)\cap P_b$ and $P_{i,3}:=V(N_i)\cap P_c$ for some $b,c\in\{1,\ldots,k\}$.  For each bag $B_z$, $z\in V(T_i)$, replace each occurrence of $a_i$ by $x_0$, replace each occurrence of $b_i$ by $x_b$ and replace each occurrence of $c_i$ by $x_c$.  Note that these replacements do not increase the size of any bag. Now add an edge that joins $y_0$ to $x_i$.
+    % For each $i\in\{1,\ldots,m\}$, let $N_i$ denote the subgraph of $N$ contained in $F_i$.
+    The inductive hypothesis ensures that $H_i:=N_i/\mathcal{P}_i$ has a tree decomposition $(B_z:z\in V(T_i))$ whose largest bag has size at most $4$ whose root bag $B_{z_i}$ contains the vertices $a_i,b_i,c_i\in V(H_i)$ obtained by contracting $P_{i,1}$, $P_{i,2}$, and $P_{i,3}$, respectively.   Recall that $P_{i,1}:=V(N_i)\cap Y$, $P_{i,2}:=V(N_i)\cap P_b$ and $P_{i,3}:=V(N_i)\cap P_c$ for some $b,c\in\{1,\ldots,k\}$.  For each bag $B_z$, $z\in V(T_i)$, replace each occurrence of $a_i$ by $x_0$, replace each occurrence of $b_i$ by $x_b$ and replace each occurrence of $c_i$ by $x_c$.  Note that these replacements do not increase the size of any bag and they result in a tree decomposition of the graph obtained from $H_i$ by renaming the vertices $a_i$, $b_i$, and $c_i$ with the names $x_0$, $x_a$, and $x_b$. Now add an edge that joins $y_0$ to $x_i$.
+
+    It is now straightforward to verify that doing this for each $i\in\{1,\ldots,m\}$ yields a tree decomposition of $N$ that satisfies condition~(iv).  (The key observation is that there is no edge of $N$  with one endpoint in $N_i-F_i$ and one endpoint in $N_j-F_j$ for any $i\neq j$.)
   \end{compactenum}
 
   %
@@ -877,12 +795,26 @@ Our proof of \cref{1-planar} follows quickly from the following technical lemma,
 Using \cref{induction}, the proof of \cref{1-planar} is now straightforward.
 
 \begin{proof}[Proof of \cref{1-planar}]
-	Given a 1-plane graph $G$, add edges to make it edge-maximal so that it has an outer face $F=v_1v_2v_3$. Next, add a vertex $r$ adjacent to $v_1$, $v_2$, and $v_3$ to obtain an edge-maximal 1-plane graph $\overline{G}$ with one vertex $r$ of degree 3 on its outer face.
+	Given a 1-plane graph $G$, add edges to make it edge-maximal so that it has an outer face $F=v_1v_2v_3$. Next, add a vertex $r$ adjacent to $v_1$, $v_2$, and $v_3$ to obtain an edge-maximal 1-plane multigraph $\overline{G}$ with one vertex $r$ of degree 3 on its outer face.
 
-	Let $G'$ be the plane graph obtained by removing both spars from each kite of $\overline{G}$ and let $T$ be a BFS tree of $G'$ rooted at $r$.  Now apply \cref{induction} with $G=\overline{G}$, $G'$, $F$, and $P_i=\{v_i\}$ for each $i\in\{1,2,3\}$.  This gives an $H$-partition $\{S_x\cup\{v_x\}:x\in V(H)\}$ of $\overline{G}-\{r\}\supseteq G$ in which $H$ is planar and has treewidth at most 3.
+	Let $G'$ be the plane graph obtained by removing each pair of crossing edges from $\overline{G}$ and let $T$ be a BFS tree of $G'$ rooted at $r$.  Now apply \cref{induction} with $G=\overline{G}$, $G'$, $F$, and $P_i=\{v_i\}$ for each $i\in\{1,2,3\}$.  This gives an $H$-partition $\mathcal{P}:=\{S_x\cup\{v_x\}:x\in V(H)\}$ of $\overline{G}-\{r\}\supseteq G$ in which $H$ is planar and has treewidth at most 3.
 
-	Use the layering $\mathcal{L}=\langle L_0',L_1'\ldots\rangle$ where $L_i'=L_{2i}\cup L_{2i+1}$ for each integer $i\ge 0$. That this is a layering of $G$ follows from the fact that $\dist_{G'}(v,w)\le 2$ for every edge $vw\in E(G)$.  Since $|L_j\cap S_x|\le 3$ for every integer $j\ge 0$, $|L_i'\cap (S_x\cup\{v_x\})|\le 7$ for every integer $i\ge 0$ and every $x\in V(H)$. The result follows from \cref{PartitionProduct}.
+	Use the layering $\mathcal{L}=\langle L_0',L_1'\ldots\rangle$ where $L_i'=L_{2i}\cup L_{2i+1}$ for each integer $i\ge 0$. That this is a layering of $G$ follows from the fact that $\dist_{G'}(v,w)\le 2$ for each edge $vw\in E(G)$.  Since $|L_j\cap S_x|\le 3$ for each integer $j\ge 0$, $|L_i'\cap (S_x\cup\{v_x\})|\le 7$ for each integer $i\ge 0$ and each $x\in V(H)$. The result follows from \cref{PartitionProduct}.
 \end{proof}
+
+We remark that our proof of \cref{1-planar} generalizes to the class of $d$-framed graphs \cite{BDGGMR}.  An embedded multigraph $G$ is a \defin{$d$-framed graph} if it contains a plane subgraph $G'$ (the \defin{frame}) whose edges are not involved in any crossings and such that each pair of crossing edges in $G$ are contained in a face of $G'$ that has at most $d$ vertices on its boundary.  It is known that the class of $4$-framed multigraphs is exactly the class of $1$-plane multigraphs \cite{BDGGMR}.  Indeed, the graph $G'$ in \cref{induction} is the frame of $G$.  The proof of \cref{induction} can be repeated for any edge-maximal $d$-framed graph $G$ having frame $G'$. The proof in this case has only two differences:
+\begin{compactitem}
+   \item For any edge $vw$ of $G$ that is not in $G'$, $\dist_{G'}(v,w)\le \lfloor d/2\rfloor$.
+   \item The face $\tau$ that contains the Sperner triangle $v_1,v_2,v_3$ may have up to $d$ vertices on its boundary, so up to $d-3$ of these vertices do not belong to $Q_i$ for any $i\in\{1,2,3\}$.
+\end{compactitem}
+The only effect this has on the final result is that the layered width becomes $3\lfloor d/2\rfloor + d-3$.  This yields the following result:
+
+\begin{thm}
+\label{1-planar}
+    Every $d$-framed graph is contained in $H\boxtimes P\boxtimes K_{3\lfloor d/2\rfloor + d -3}$ for some planar graph $H$ with treewidth at most 3 and for some path $P$.
+\end{thm}
+
+
 
 \subsection{\boldmath $(g,k)$-Planar Graphs}
 
@@ -980,7 +912,7 @@ $O(g^{k+2})$ using \cref{GenusProduct} and an ad-hoc method. Our result provides
 
 \begin{cor}
 \label{1PlanarQueue}
-Every 1-planar graph has queue-number at most $3 \times 30 \times 5 + \floor{\tfrac{3}{2} \times 30} = 495$.
+Every 1-planar graph has queue-number at most $3 \times 7 \times 5 + \floor{\tfrac{3}{2} \times 7} = 115$.
 \end{cor}
 
 
@@ -999,7 +931,7 @@ If $G\subseteq H\boxtimes P \boxtimes K_\ell$ then $\pi(G)\le \ell\, 4^{\tw(H)+1
 
 \begin{cor}\quad
 \begin{compactitem}
-\item	For every $1$-planar graph $G$, $\pi(G)\le 30\times 4^4=7680$.
+\item	For every $1$-planar graph $G$, $\pi(G)\le 7\times 4^4=1792$.
 %\item For every $k$-planar graph $G$,
 %	$\pi(G)\le (18k^2+48k+30) 4^{\binom{k+4}{3}}$.
 \item	For every $(g,k)$-planar graph $G$,
