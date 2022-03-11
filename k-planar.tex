@@ -195,6 +195,7 @@ All of these results hold for any graph class that has a product structure theor
 The main purpose of this paper is to prove product structure theorems for several non-minor-closed classes of interest. Our results are the first of this type for non-minor-closed classes.
 
 \subsection{$k$-Planar Graphs}
+\label{k_planar_section}
 
 We start with the example of $k$-planar graphs. A graph is \defin{$k$-planar} if it has a drawing in the plane in which each edge is involved in at most $k$ crossings, where no three edges cross at a single point (see \cref{sec-k-planar} for a formal definition). Such graphs provide a natural generalisation of planar graphs, and are important in graph drawing research; see the recent bibliography on 1-planar graphs and the 140 references therein \citep{kobourov.liotta.ea:annotated}. It is well-known that the family of $k$-planar graphs is not minor-closed.  Indeed, 1-planar graphs may contain arbitrarily large complete graph minors~\citep{dujmovic.eppstein.ea:structure}. Hence the above results are not applicable for  $k$-planar graphs. We extend \cref{PlanarProduct} as follows.
 
@@ -471,8 +472,8 @@ For a node $x\in V(T)$, we say that a shortcut $P\in\SS$ \defin{crosses} $x$ if 
   Choose $a(v)\in X_H$ to be the member of $X_H$ that does not have a strict $T$-ancestor in $X_H$.  Transitivity of the $T$-ancestor relationship, \tref{ancestor-edge}, and connectivity of $H[X_H]$ implies that such an $a(v)$ exists and is a $T$-ancestor of every node $x\in X_H$, as required.
 \end{proof}
 
-\note{DW}{Use $\SS$ for the given shortcut system and $\PP$ for the partition?}
-\note{PM}{Yes, I've done this.  Again, I was carefuly, but need to reread.}
+% \note{DW}{Use $\SS$ for the given shortcut system and $\PP$ for the partition?}
+% \note{PM}{Yes, I've done this.  Again, I was carefuly, but need to reread.}
 
 For each $x\in V(T)$, define $S_x := \{v\in V(G): a(v)= x\}$. Observe that $\PP:=(S_x : x\in V(T))$ is a partition of $V(G)$.\footnote{The sets in $\PP$ are disjoint because $a:V(G)\to V(T)$ is a function.  The sets in $\PP$ cover $V(G)$ since, for each $v\in V(G)$, $v\in S_{a(v)}$.} Let $J:=G^\SS/\PP$ denote the resulting quotient graph. We consider $V(J)\subseteq V(T)$, where each $x\in V(J)$ is the vertex obtained by contracting $S_x$ in $G^{\SS}$. (Any node $x\in V(T)$ with $S_x=\emptyset$ does not contribute a vertex to $J$.)
 
@@ -610,7 +611,14 @@ This section applies our main results for shortcut systems to prove a product st
 
 \subsection{$k$-Planar Graphs}
 
-We first formally define $k$-planar graphs.  An \defin{embedded graph} $G$ is a graph with $V(G)\subset\R^2$ in which each edge $vw\in E(G)$ is a curve\footnote{A \defin{curve} in a surface $\Sigma$ is a continuous function $f:[0,1]\to \Sigma$. The points $f(0)$ and $f(1)$ are called the \defin{endpoints} of the curve.  When there is no danger of misunderstanding we treat a curve $f$ as the point set $\{f(t):0\le t\le 1\}$.} in $\R^2$ with endpoints $v$ and $w$ and not containing any vertex of $G$ in its interior.  A \defin{crossing} in an embedded graph $G$ is a triple $(p,vw,xy)$ with $p\in\R^2$, $vw,xy\in E(G)$ and such that $p\in (vw\cap xy)\setminus\{v,w,x,y\}$. An embedded graph $G$ is \defin{$k$-plane} if each edge of $G$ takes part in at most $k$ crossings. \note{DW}{We need to assume that at most two edges cross at a single point, so we can add a dummy vertex of degree 4, right?}\note{PM}{No, under the current definition, $r$ edges crossing at a single point $p$ generate $\binom{r}{2}$ crossings, with each edge taking part in $r-1$ crossings, just like they would if we perturbed the edges so that each pair crosses at a distinct point.  I guess we could mention this.  (See the first paragraph in the proof of Theorem~2 below.)} \note{DW}{The downside of this approach is that in the opening section we give an informal definition of $k$-planar, which needs the assumption of having no three edges cross at a point, since we use this assumption in the construction of a $(k+1,2)$-shortcut system for $k$-planar graphs give in the Introduction. I think we should not have different definitions in two parts of the paper.} A (not necessarily embedded) graph $G'$ is \defin{$k$-planar} if there exists a $k$-plane graph $G$ isomorphic to $G'$. Under these definitions, $0$-planar graphs are exactly planar graphs and $0$-plane graphs are exactly plane graphs.
+We first formally define $k$-planar graphs.  An \defin{embedded graph} $G$ is a graph with $V(G)\subset\R^2$ in which each edge $vw\in E(G)$ is a curve\footnote{A \defin{curve} in a surface $\Sigma$ is a continuous function $f:[0,1]\to \Sigma$. The points $f(0)$ and $f(1)$ are called the \defin{endpoints} of the curve.  When there is no danger of misunderstanding we treat a curve $f$ as the point set $\{f(t):0\le t\le 1\}$.} in $\R^2$ with endpoints $v$ and $w$ and not containing any vertex of $G$ in its interior.  A \defin{crossing} in an embedded (multi)graph $G$ is a pair of distinct edges $vw,xy\in E(G)$ whose interior have a point in common. Without any loss of generality we may assume that the interiors of any two edges of $G$ have at most one point in common and that no point in $\R^2$ is contained in the interior of three or more edges of $G$.  This assumption can be enforced by a local change that does not change the number of crossings each edge is involved in.  If $p$ is a common point in the interior of two crossing edges $vw$ and $xy$ then we say that $vw$ and $xy$ \defin{cross at} $p$.
+
+
+% (This assumption is already present in the informal definition of $k$-planar graphs used in \cref{k_planar_section}.)
+
+
+%
+% \note{DW}{We need to assume that at most two edges cross at a single point, so we can add a dummy vertex of degree 4, right?}\note{PM}{No, under the current definition, $r$ edges crossing at a single point $p$ generate $\binom{r}{2}$ crossings, with each edge taking part in $r-1$ crossings, just like they would if we perturbed the edges so that each pair crosses at a distinct point.  I guess we could mention this.  (See the first paragraph in the proof of Theorem~2 below.)} \note{DW}{The downside of this approach is that in the opening section we give an informal definition of $k$-planar, which needs the assumption of having no three edges cross at a point, since we use this assumption in the construction of a $(k+1,2)$-shortcut system for $k$-planar graphs give in the Introduction. I think we should not have different definitions in two parts of the paper.} A (not necessarily embedded) graph $G'$ is \defin{$k$-planar} if there exists a $k$-plane graph $G$ isomorphic to $G'$. Under these definitions, $0$-planar graphs are exactly planar graphs and $0$-plane graphs are exactly plane graphs.
 
 As mentioned in \cref{Introduction}, \cref{PlanarProduct,ShortcutProduct} imply a product structure theorem for $k$-planar graphs. We get improved bounds as follows.
 
@@ -620,8 +628,8 @@ As mentioned in \cref{Introduction}, \cref{PlanarProduct,ShortcutProduct} imply 
 %\end{thm}
 
 \begin{proof}[Proof of \cref{kPlanarProduct}]
-	Let $G$ be a $k$-plane graph.  We assume, for ease of exposition, that any point $p\in\R^2$ is involved in at most one crossing $(p,vw,xy)$ of $G$. This assumption is justified since it can be enforced by a slight deformation of the edges of $G$ and the resulting (deformed) graph is also $k$-plane.
-
+	Let $G$ be a $k$-plane graph.
+    % We assume, for ease of exposition, that any point $p\in\R^2$ is involved in at most one crossing $(p,vw,xy)$ of $G$. This assumption is justified since it can be enforced by a slight deformation of the edges of $G$ and the resulting (deformed) graph is also $k$-plane.
 	As in the proof of \cref{AddDummy}, let $G_0$ be the plane graph obtained by adding a dummy vertex at each crossing in $G$. In this way, each edge $vw\in E(G)$ corresponds naturally to a path $P_{vw}$ of length at most $k+1$ in $G_0$.  Let $\SS := \{P_{vw}: vw\in E(G)\}$. Observe that $\SS$ is a $(k+1,2)$-shortcut system for $G_0$ and that $G_0^{\SS}\supseteq G$.  Specifically, $G_0^{\SS}$ contains every edge and vertex of $G$ as well as the dummy vertices in $V(G_0)\setminus V(G)$ and their incident edges.
 
 	Since $G_0$ is planar,  \cref{PlanarProduct}(b) and \cref{PartitionProduct} implies that $G_0$ has an $H$-partition of layered width 3 for some planar graph $H$ of treewidth at most 3.  Applying \cref{ShortcutPartition} to $G_0$ and $\SS$ immediately implies that $G$ (an arbitrary $k$-planar graph) has an $H$-partition of layered width $6((k+1)^3+3(k+1))$ for some graph $H$ of treewidth at most $\binom{k+4}{3}-1$.
@@ -653,13 +661,13 @@ As mentioned in \cref{Introduction}, \cref{PlanarProduct,ShortcutProduct} imply 
 
 In the important special case of 1-planar graphs we obtain better constants and an additional property (planarity) of $H$.
 
-\note{PM}{Include in note to referee:  We choose to keep this section because
-  $1$-planar graphs are of special interest to the graph drawing community.  For example, the annotated bibliography on $1$-planarity (\htmladdnormallink{https://arxiv.org/abs/1703.02261}{arXiv:1703.02261}) has 143 entries, and even this is now four years out of date.
-
-  An important aspect of our result for $1$-planar graphs is that graph $H$ in the product is planar and has treewidth $3$, i.e., it has simple treewidth $3$.  In a more recent application of product structure \citet{BDJM} show that such graphs have $\ell$-vertex rankings using $O(\log n/\log\log\log n)$ colours, and this is tight. This result requires that $H$ have simple treewidth $3$, even treewidth $3$ is not sufficient.
-}
-
-\note{DW}{I will rewrite the intro to this subsection once we decide what our results are.}
+% \note{PM}{Include in note to referee:  We choose to keep this section because
+%   $1$-planar graphs are of special interest to the graph drawing community.  For example, the annotated bibliography on $1$-planarity (\htmladdnormallink{https://arxiv.org/abs/1703.02261}{arXiv:1703.02261}) has 143 entries, and even this is now four years out of date.
+%
+%   An important aspect of our result for $1$-planar graphs is that graph $H$ in the product is planar and has treewidth $3$, i.e., it has simple treewidth $3$.  In a more recent application of product structure \citet{BDJM} show that such graphs have $\ell$-vertex rankings using $O(\log n/\log\log\log n)$ colours, and this is tight. This result requires that $H$ have simple treewidth $3$, even treewidth $3$ is not sufficient.
+% }
+%
+% \note{DW}{I will rewrite the intro to this subsection once we decide what our results are.}
 
 \begin{thm}
 \label{1-planar}
@@ -669,7 +677,7 @@ Every 1-planar graph is contained in $H\boxtimes P\boxtimes K_{7}$ for some plan
 
 In the following, we assume that no two edges incident to a common vertex of the $1$-plane graph $G$ cross each other since, in a 1-plane graph, such a crossing can always be removed by a local modification to obtain an isomorphic 1-plane graph in which the two edges do not cross.\footnote{While this is true for 1-plane graphs it is not true for $k$-plane graphs with $k\ge 3$; the uncrossing operation can increase the number of crossings on a particular edge from $k$ to $2(k-1)$.}  The \defin{faces} of $G$ are the connected components of $\R^2\setminus \bigcup_{vw\in E(G)} vw$, where we treat each edge $vw$ of $G$ as the image of a simple curve $f_{vw}:[0,1]\to\R^2$.  We say that a vertex $v\in V(G)$ appears on a face $F$ if $v$ is contained in the closure of $F$.
 
-Let $G$ be a $1$-plane graph.  We make $G$ into an \defin{edge-maximal} $1$-plane multigraph, by repeating the following operation:  If two vertices $v$ and $w$ of $G$ appear on a common face $F$ and there is no edge $vw\in E(G)$ contained in the boundary of $F$, then add $vw$, embedded in the face $F$.  This may introduce parallel edges into $G$, but no two such edges will appear on the boundary of a common face.
+Let $G$ be a $1$-plane graph.  We make $G$ into an \defin{edge-maximal} $1$-plane multigraph, by repeating the following operation:  If two vertices $v$ and $w$ of $G$ appear on a common face $F$ and there is no edge $vw\in E(G)$ contained in the boundary of $F$, then add the edge $vw$, embedded in the face $F$.  This may introduce parallel edges into $G$, but no two such edges will appear on the boundary of a common face.
 
 \begin{figure}
   \begin{center}
@@ -683,7 +691,7 @@ Let $G$ be a $1$-plane graph.  We make $G$ into an \defin{edge-maximal} $1$-plan
     \label{one_planar_example}
 \end{figure}
 
-To understand the structure of $G$, it is helpful to consider the plane graph $G_0$ obtained by replacing each pair of edges $vw$ and $xy$ involved in a crossing $(p,vw,xy)$ with four edges $vp$, $wp$, $xp$, and $yp$ meeting at a newly added \defin{dummy vertex} $p$. Let $F$ be a face of $G_0$ and let $W:=w_0,\ldots,w_{r-1}$ be the facial walk around $F$. In the following paragraphs, subscripts on the vertices in $W$ are implicitly taken modulo $r$. By edge maximality, if $W$ contains only non-dummy vertices, then it contains exactly three vertices and $F$ is bounded by three edges of $G$.
+To understand the structure of $G$, it is helpful to consider the plane graph $G_0$ obtained by replacing each pair of edges $vw$ and $xy$ that cross at $p$ with four edges $vp$, $wp$, $xp$, and $yp$ meeting at a newly added \defin{dummy vertex} $p$. Let $F$ be a face of $G_0$ and let $W:=w_0,\ldots,w_{r-1}$ be the facial walk around $F$. In the following paragraphs, subscripts on the vertices in $W$ are implicitly taken modulo $r$. By edge maximality, if $W$ contains only non-dummy vertices, then it contains exactly three vertices and $F$ is bounded by three edges of $G$.
 
 If $W$ contains a dummy vertex $w_i$, then neither $w_{i-1}$ nor $w_{i+1}$ is a dummy vertex since if $w_{i-1}$ (respectively $w_{i+1}$) were a dummy vertex then the edge of $G$ that contains $w_{i-1}w_i$ (respectively $w_iw_{i+1}$) would be involved in at least two crossings.  Therefore each dummy vertex $w_i$ of $W$ is surrounded by two non-dummy vertices $w_{i-1},w_{i+1}\in V(G)$.  Since $w_i$ has degree $4$ in $G_0$, $w_{i-1}\neq w_{i+1}$.  Since $G$ is edge-maximal the edge $w_{i-1}w_i$ is an edge of $G$ on the boundary of $F$.  Therefore, if $F$ has a dummy vertex $w_i$ in its facial walk $W$, then $W=w_{i-1},w_i,w_{i+1}$ and $F$ is bounded by three edges of $G_0$, each of which is contained in a different edge of $G$.
 
@@ -693,7 +701,7 @@ Therefore each face of $G_0$ is a $3$-cycle that contains at most one dummy vert
   \item bounded by one edge of $G$ that is not crossed plus portions of two edges of $G$ that cross each other.
 \end{inparaenum}
 
-Consider some crossing $(p,vw,xy)$ in $G$.  The point $p$ at which this crossing occurs is a vertex of $G_0$ that has degree $4$.  There are four faces $F_1,\ldots,F_4$ of $G_0$ each with $p$ on their boundary.  Each of these four faces of is of Type~(ii), so the boundary of $F_1\cup\cdots\cup F_4$ includes a $4$-cycle $C:=vxwy$ in $G$ whose edges are not involved in any crossings.
+Consider some pair of edges $vw$ and $xy$ that cross at $p$.  The point $p$ is a vertex of $G_0$ that has degree $4$.  There are four faces $F_1,\ldots,F_4$ of $G$ each with $p$ on their boundary.  Each of these four faces of $G$ is of Type~(ii), so the boundary of $F_1\cup\cdots\cup F_4$ includes a $4$-cycle $C:=vxwy$ in $G$ whose edges are not involved in any crossings.
 
 By removing each pair of crossing edges from $G$ we obtain a plane multigraph $G'$ each of whose faces is bounded by three or four edges; see \cref{one_planar_example}(b).  Since, for any pair of crossing edges $(vw,xy)$ that we remove this way, $vxwy$ is a cycle in $G'$, $\dist_{G'}(v,w)\le 2$ and $\dist_{G'}(x,y)\le 2$.
 % It follows immediately that, for any pair of vertices $a,b\in V(G)$, $\dist_{G'}(a,b)\le 2\dist_G(a,b)$.
