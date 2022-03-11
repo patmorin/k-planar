@@ -831,11 +831,12 @@ We remark that our proof of \cref{1-planar} generalizes to the class of $d$-fram
 The only effect this has on the final result is that the layered width becomes $3\lfloor d/2\rfloor + d-3$.  This yields the following result:
 
 \begin{thm}
-\label{1-planar}
+\label{framed}
     Every $d$-framed graph is contained in $H\boxtimes P\boxtimes K_{3\lfloor d/2\rfloor + d -3}$ for some planar graph $H$ with treewidth at most 3 and for some path $P$.
 \end{thm}
 
-
+\note{DW}{I think \cref{framed} should be proved explicitly and \cref{1-planar} should be a corollary, especially because \cref{NewMapGraph} is another corollary. This section should be about framed graphs, outside of \cref{sec-k-planar}. I suggest we make it a subsection of 
+\cref{Structure} where we introduce framed graphs, say they can be described by $(2,\binom{d}{2})$-shortcut systems, so the main theorem is applicable, which gives a treewidth bound of $\binom{5}{3}-1=9$, but using  \cref{framed} we get a treewidth bound of 3, which is optional. Then in latter sections we give two applications, for 1-planar graphs and for $d$-map graphs. }
 
 \subsection{\boldmath $(g,k)$-Planar Graphs}
 
@@ -1258,13 +1259,15 @@ We finish with an open problem. \cref{kPlanarProduct} shows that every $k$-plana
 \bibliography{k-planar}
 
 \appendix
-\section{New Stuff}
+\section{Framed Graphs}
+
+\note{DW}{Use the language of framed graphs}
 
 For a plane multigraph $G$, let $\widehat{G}$ be the embedded graph obtained from $G$ as follows: for each face $f$ of $G$ and for each pair of non-consecutive vertices $v$ and $w$ on the boundary of $f$, add the edge $vw$ to $\widehat{G}$ drawn across $f$.
 
 \begin{thm}
 \label{CliqueFaceProductStructure}
-Let $G$ be a 2-connected plane multigraph, in which every facial cycle has length in $\{3,\dots,d\}$ for some fixed integer $d\geq 3$. Then $\widehat{G}$ is contained in $H \boxtimes P \boxtimes K_{ d  \floor{d/2} }$ for some graph $H$ with $\tw(H) \leq 3$ and for some path $P$.
+Let $G$ be a 2-connected plane multigraph, in which every facial cycle has length in $\{3,\dots,d\}$ for some fixed integer $d\geq 3$. Then $\widehat{G}$ is contained in $H \boxtimes P \boxtimes K_{ d +3( \floor{d/2}-1) }$ for some graph $H$ with $\tw(H) \leq 3$ and for some path $P$.
 \end{thm}
 
 Note that \cref{CliqueFaceProductStructure} with $d=3$ implies \cref{PlanarProduct}(b)  by \citet{DJMMUW20} (since every planar graph is a subgraph of a triangulation). Moreover, the proof of \cref{CliqueFaceProductStructure} is a direct generalisation of the proof of
@@ -1391,7 +1394,7 @@ This shows that $(B_x:x\in V(J))$ is the desired tree-decomposition of $G/\PP$.
 \end{proof}
 
 \begin{proof}[Proof of \cref{CliqueFaceProductStructure}]
-Let $G$ be a 2-connected plane multigraph, in which every facial cycle has length in $\{3,\dots,d\}$. Let $C$ be the outer-cycle of $G$. Let $G^+$ be obtained from $G$ by adding a new vertex $r$ adjacent to every vertex on the outerface of $G$. So $G^+$ is a 2-connected plane multigraph and $G=G^+\blah{C}$. Let $T$ be a BFS spanning tree of $G^+$ rooted at $r$. Let $\mathcal{L}$ be the corresponding BFS layering. By \cref{NewLemma} \note{DW}{with improved (ii)}, $G$ has a partition $\PP$ into tripods with respect to $T$ such that $G / \PP$ has a tree-decomposition $\mathcal{T}$ of width at most 3 such that for every facial cycle $F$ of $G$ there is a bag $B$ of $\mathcal{T}$ such that every part of $\PP$ that intersects $F$ is in $B$. Since $G$ is a spanning subgraph of $\widehat{G}$, we may consider $\PP$ to be a partition of $\widehat{G}$, and $G/\PP \subseteq \widehat{G}/\PP$. Consider an edge $XY$ of $\widehat{G}/\PP$. By the definition of $\widehat{G}$, there is a facial cycle $F$ of $G$ such that both $X$ and $Y$ intersect $F$. By assumption, there is a bag $B$ of $\mathcal{T}$ such that every part of $\PP$ that intersects $F$ is in $B$. In particular, $X,Y\in B$. Hence $\TT$ is also a tree-decomposition of $\widehat{G}$. Each tripod in $\PP$ has at most $d$ vertices in each layer in $\mathcal{L}$. For each edge $vw$ of $\widehat{G}$, if $v\in L_i$ and $w\in L_j$ then $|i-j|\leq\floor{\frac{d}{2}}$. Grouping blocks of $\floor{\frac{d}{2}}$ consecutive layers gives a layering of $\widehat{H}$ with layered width $\floor{\frac{d}{2}}d$ with respect to $\PP$. By \cref{PartitionProduct}, $\widehat{G}$ is contained in $H \boxtimes P \boxtimes K_{ d  \floor{d/2} }$ where $H:=\widehat{G}/\PP$, which has treewidth 3.
+Let $G$ be a 2-connected plane multigraph, in which every facial cycle has length in $\{3,\dots,d\}$. Let $C$ be the outer-cycle of $G$. Let $G^+$ be obtained from $G$ by adding a new vertex $r$ adjacent to every vertex on the outerface of $G$. So $G^+$ is a 2-connected plane multigraph and $G=G^+\blah{C}$. Let $T$ be a BFS spanning tree of $G^+$ rooted at $r$. Let $\mathcal{L}=(L_0,L_1,\dots)$ be the corresponding BFS layering. By \cref{NewLemma}, $G$ has a partition $\PP$ into tripods with respect to $T$ such that $G / \PP$ has a tree-decomposition $\mathcal{T}$ of width at most 3 such that for every facial cycle $F$ of $G$ there is a bag $B$ of $\mathcal{T}$ for which every part of $\PP$ that intersects $F$ is in $B$. Since $G$ is a spanning subgraph of $\widehat{G}$, we may consider $\PP$ to be a partition of $\widehat{G}$, and $G/\PP \subseteq \widehat{G}/\PP$. Consider an edge $XY$ of $\widehat{G}/\PP$. By the definition of $\widehat{G}$, there is a facial cycle $F$ of $G$ such that both $X$ and $Y$ intersect $F$. By assumption, there is a bag $B$ of $\mathcal{T}$ such that every part of $\PP$ that intersects $F$ is in $B$. In particular, $X,Y\in B$. Hence $\TT$ is also a tree-decomposition of $\widehat{G}/\PP$. For each edge $vw$ of $\widehat{G}$, if $v\in L_i$ and $w\in L_j$ then $|i-j|\leq\floor{\frac{d}{2}}$. Grouping blocks of $\floor{\frac{d}{2}}$ consecutive layers in $\mathcal{L}$ gives a layering $\mathcal{L}'$ of $\widehat{G}$. Observe that each tripod in $\PP$ has at most $d+3( \floor{\frac{d}{2}}-1)$ vertices in each set of $\floor{\frac{d}{2}}$ layers of $\mathcal{L}$. Hence $\mathcal{L}'$ has layered width $d+3( \floor{\frac{d}{2}}-1)$ with respect to $\PP$. By \cref{PartitionProduct}, $\widehat{G}$ is contained in $H \boxtimes P \boxtimes K_{ d + 3( \floor{d/2} -1 )}$ where $H:=\widehat{G}/\PP$, which has treewidth 3.
 \end{proof}
 
 We now give two graph classes for which \cref{CliqueFaceProductStructure} is applicable.
@@ -1421,8 +1424,8 @@ Every $d$-map graph is a subgraph of $\widehat{G}$ for some 2-connected plane gr
 \end{proof}
 
 \begin{cor}
-	\label{NewMapGraph}
-	Every $d$-map graph is contained in $H \boxtimes P \boxtimes K_{ d  \floor{d/2} }$ for some graph $H$ with $\tw(H) \leq 3$ and for some path $P$.
+\label{NewMapGraph}
+Every $d$-map graph is contained in $H \boxtimes P \boxtimes K_{ d  \floor{d/2} }$ for some graph $H$ with $\tw(H) \leq 3$ and for some path $P$.
 \end{cor}
 
 \end{document}
