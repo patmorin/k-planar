@@ -15,15 +15,27 @@
 \usepackage{thm-restate}
 \usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
 
-
 \usepackage{todonotes}
 
 \newcommand{\arXiv}[1]{arXiv:\,\href{https://arxiv.org/abs/#1}{#1}}
 %\newcommand{\doi}[1]{\href{https://doi.org/#1}{\tt https://doi.org/#1}}
 
 \usepackage[longnamesfirst,numbers,sort&compress]{natbib}
-\usepackage[noabbrev,capitalise]{cleveref}
 
+\usepackage[noabbrev,capitalise]{cleveref}
+\crefname{lem}{Lemma}{Lemmas}
+\crefname{thm}{Theorem}{Theorems}
+\crefname{cor}{Corollary}{Corollaries}
+\crefname{prop}{Proposition}{Propositions}
+\crefname{conj}{Conjecture}{Conjectures}
+\crefname{open}{Open Problem}{Open Problems}
+\crefname{claim}{Claim}{Claims}
+\crefname{enumi}{Item}{Items}
+\crefname{obs}{Observation}{Observations}
+\crefname{clm}{Claim}{Claims}
+\crefname{openproblem}{Open Problem}{Open Problems}
+\crefformat{equation}{(#2#1#3)}
+\Crefformat{equation}{Equation #2(#1)#3}
 
 %\usepackage{doi} % To make plainnat handle doi's properly
 
@@ -62,16 +74,6 @@
 
 \newcommand{\defin}[1]{\textcolor{Maroon}{\emph{#1}}}
 
-\crefname{lem}{Lemma}{Lemmas}
-\crefname{thm}{Theorem}{Theorems}
-\crefname{cor}{Corollary}{Corollaries}
-\crefname{conj}{Conjecture}{Conjectures}
-\crefname{obs}{Observation}{Observations}
-\crefname{prop}{Proposition}{Propositions}
-\crefname{clm}{Claim}{Claims}
-\crefname{openproblem}{Open Problem}{Open Problems}
-\crefformat{equation}{(#2#1#3)}
-\Crefformat{equation}{Equation #2(#1)#3}
 
 \newcommand{\note}[2]{\noindent{\color{red}[#1:~#2]}}
 \newcommand{\notex}[2]{}
@@ -834,11 +836,10 @@ The only effect this has on the final result is that the layered width becomes $
 
 \begin{thm}
 \label{framed}
-    Every $d$-framed graph is contained in $H\boxtimes P\boxtimes K_{3\lfloor d/2\rfloor + d -3}$ for some planar graph $H$ with treewidth at most 3 and for some path $P$.
+   Every $d$-framed graph is contained in $H\boxtimes P\boxtimes K_{3\lfloor d/2\rfloor + d -3}$ for some planar graph $H$ with treewidth at most 3 and for some path $P$.
 \end{thm}
 
-\note{DW}{I think \cref{framed} should be proved explicitly and \cref{1-planar} should be a corollary, especially because \cref{NewMapGraph} is another corollary. This section should be about framed graphs, outside of \cref{sec-k-planar}. I suggest we make it a subsection of 
-\cref{Structure} where we introduce framed graphs, say they can be described by $(2,\binom{d}{2})$-shortcut systems, so the main theorem is applicable, which gives a treewidth bound of $\binom{5}{3}-1=9$, but using  \cref{framed} we get a treewidth bound of 3, which is optional. Then in latter sections we give two applications, for 1-planar graphs and for $d$-map graphs. }
+\note{DW}{I think \cref{framed} should be proved explicitly and \cref{1-planar} should be a corollary, especially because \cref{NewMapGraph} is another corollary. The proof of \cref{framed} needs an extra clause; see the last sentence of \cref{NewLemma}. This section should be about framed graphs, outside of \cref{sec-k-planar}. I suggest we make it a subsection of \cref{Structure} where we introduce framed graphs, say they can be described by $(2,\binom{d}{2})$-shortcut systems, so the main theorem is applicable, which gives a treewidth bound of $\binom{5}{3}-1=9$, but using  \cref{framed} we get a treewidth bound of 3, which is optional. Then in latter sections we give two applications, for 1-planar graphs and for $d$-map graphs. }
 
 \subsection{\boldmath $(g,k)$-Planar Graphs}
 
@@ -1304,7 +1305,7 @@ For a cycle $C$ in a plane multigraph $G$, define \defin{$G\blah{C}$} to be the 
 
 
 \begin{lem}
-	\label{NewLemma}
+\label{NewLemma}
 Let $G_0$ be a 2-connected plane multigraph. Let $T$ be a spanning tree of $G_0$ rooted at some vertex $r$ on the boundary of the outerface of $G_0$. Let $C = [P_1,\dots,P_k]$ be a cycle in $G_0$ with $r$ in the exterior of $C$, where $k\in\{1,2,3\}$ and $P_1, \dots, P_k$ are bipods in $G_0$. Let $G:=G_0\blah{C}$. Then $G$ has a partition $\PP$ into tripods with respect to $T$ such that $P_1,\dots,P_k\in\PP$, and $G / \PP$ has a tree-decomposition $\mathcal{T}$ of width at most 3 such that for every facial cycle $F$ of $G$ there is a bag $B$ of $\mathcal{T}$ such that every part of $\PP$ that intersects $F$ is in $B$.
 \end{lem}
 
