@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
 <ipe version="70218" creator="Ipe 7.2.24">
-<info created="D:20220307160746" modified="D:20220310134319"/>
+<info created="D:20220307160746" modified="D:20220310134916"/>
 <ipestyle name="basic">
 <symbol name="arrow/arc(spx)">
 <path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
@@ -397,5 +397,8 @@ h
 <text matrix="1 0 0 1 51.0647 10.585" transformations="translations" pos="261.158 623.386" stroke="brew1" type="label" width="10.866" height="6.812" depth="1.49" valign="baseline" style="math">P_3</text>
 <text matrix="1 0 0 1 31.3246 -14.7627" transformations="translations" pos="299.119 556.296" stroke="brew7" type="label" width="10.866" height="6.812" depth="1.49" valign="baseline" style="math">P_2</text>
 <text matrix="1 0 0 1 -30.4018 -27.9665" transformations="translations" pos="224 560" stroke="brew4" type="label" width="10.866" height="6.812" depth="1.49" halign="right" valign="top" style="math">P_1</text>
+<text layer="beta" matrix="1 0 0 1 4 -1" transformations="translations" pos="208 608" stroke="black" type="label" width="10.876" height="6.812" depth="1.49" halign="center" valign="baseline" style="math">F_1</text>
+<text matrix="1 0 0 1 36 -81" transformations="translations" pos="208 608" stroke="black" type="label" width="10.876" height="6.812" depth="1.49" halign="center" valign="baseline" style="math">F_2</text>
+<text matrix="1 0 0 1 88.3983 -19.8678" transformations="translations" pos="208 608" stroke="black" type="label" width="10.876" height="6.812" depth="1.49" halign="center" valign="baseline" style="math">F_3</text>
 </page>
 </ipe>

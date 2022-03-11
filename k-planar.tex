@@ -765,14 +765,10 @@ Our proof of \cref{1-planar} follows quickly from the following technical lemma,
 		\item Let $G$ and $G'$ be defined as above.
 		\item Let $T$ be a BFS spanning tree of $G'$ rooted at some vertex $r$.
 		\item For every integer $j\ge 0$, let $L_j=\{v\in V(G):\dist_T(r,v)=j\}$.
-		\item Let $F$ be a cycle in $G'$ with $r$ in the exterior of $F$ and such that
+		\item Let $F$ be a cycle in $G'$ with $r$ in the exterior of $F$ and such that $V(F)$ can be partitioned into (possibly empty) sets $P_1,\ldots,P_3$ such that for each $i\in\{1,2,3\}$,
 		\begin{compactenum}
-			\item No edge of $F$ is crossed by any edge of $G$; and
-			\item $V(F)$ can be partitioned into $P_1,\ldots,P_k$, for some $k\in\{1,2,3\}$ such that for each $i\in\{1,\ldots,k\}$,
-			\begin{compactenum}
-				\item $F[P_i]$ is a path; and
-				\item $|V(P_i)\cap L_j| \le 3$ for every integer $j\ge 0$.
-			\end{compactenum}
+			\item $F[P_i]$ is a path; and
+			\item $|V(P_i)\cap L_j| \le 3$ for every integer $j\ge 0$.
 		\end{compactenum}
 % \note{DW}{Should the vertices already grabbed by $P_1,P_2,P_3$ be mentioned in the setup? The new paths $Q_1,Q_2,Q_3$ need to avoid the vertices already grabbed by $P_1,P_2,P_3$. Basically, I am concerned about what happens when distinct vertical paths in $T$ want to grab the same vertex.} \note{PM}{No, at this point we're only promising an $H$-partition of $N$, the part of $G$ contained in the uncrossed cycle $F$.}
 		\item Let $N$ and $N'$ be the subgraphs of $G$ and $G'$ consisting only of those edges and vertices contained in $F$ or the interior of $F$.
@@ -781,7 +777,7 @@ Our proof of \cref{1-planar} follows quickly from the following technical lemma,
 	\begin{compactenum}
 		\item $H$ is planar;
 		\item for every integer $j\ge 0$ and every $x\in V(H)$, $|S_x\cap L_j|\le 3$;
-		\item for each $i\in\{1,\ldots,k\}$, there exists some $x_i\in V(H)$ such that $P_i=S_{x_i}$; 
+		\item for each $i\in\{1,2,3\}$, there exists some $x_i\in V(H)$ such that $P_i=S_{x_i}$; 
 %		\note{DW}{Should this be $P_i\subseteq S_{x_i}$? (since the path grabs other vertices into its part)}\note{PM}{No, for the same reason as above.}
  and
 		\item $H$ has a tree-decomposition in which every bag has size at most 4 and such that some bag contains $x_1,\ldots,x_k$.
@@ -826,7 +822,11 @@ Our proof of \cref{1-planar} follows quickly from the following technical lemma,
 
 	% We claim that, for each integer $i\ge 0$, $|V(\overline{Y}^+)\cap L_i|\le 15$.  First observe that, since $Q_1,Q_2,Q_3$ are each vertical paths in $T$,  $\overline{Y}$ contains at most three vertices of $L_i$, each incident on at most two edges of $\overline{Y}$.  Since $\dist_{G'}(v,w)\le 2$ for each $vw\in E(G)$, any vertex $x\in V(\overline{Y}^+)\setminus V(\overline{Y})\cap L_i$, is incident to an edge $xy\in E(G)$ that crosses one of the at most six edges in $\overline{Y}$ having an endpoint in $L_i$.  These at most six edges have at most 12 endpoints.  Therefore $|V(\overline{Y}^+)\setminus V(\overline{Y})\cap L_i|\le 6\times 2=12$, so $|V(\overline{Y}^+)\cap L_i|\le 12+3=15$.
 
-	Let $M$ denote the subgraph of $G'$ containing the edges and vertices of $\overline{Y}$ and the edges and vertices of $F$. (See \cref{boring_figure}.)  By our choice of $\tau$, the graph $M$ is $2$-connected.  Furthermore, the vertices on the boundary of each inner face of $M$ are contained in $Y\cup P_a\cup P_b$ for some $a,b\in\{1,\ldots,k\}$.  In particular if $k=3$ then, for each inner face $F_i$ of $M$ there exists some $c\in\{1,2,3\}$ such that no vertex of $P_c$ is on the boundary of $F_i$.
+  Refer to \cref{boring_figure}.
+	Let $M$ denote the subgraph of $G'$ containing the edges and vertices of $\overline{Y}$ and the edges and vertices of $F$ and let $F_1,\ldots,F_m,\tau$ be the inner faces of $M$.  By our choice of $\tau$, the graph $M$ is $2$-connected.  
+  Furthermore, $V(F_i)$ can be partitioned into at most three sets $P_{i,1}$, $P_{i,2}$, and $P_{i,3}$ where $P_{i,1}\subset V(Y)$, $P_{i,2}\subseteq P_a$, $P_{i,3}\subseteq P_b$ for some $a,b\in\{1,2,3\}$, and $F_i[P_{i,j}]$ is a path, for each $j\in\{1,2,3\}$.  Therefore, we can apply induction using the cycle $F_i$ and the partition $P_{i,1},P_{i,2},P_{i,3}$ of $V(F_i)$.  The remainder of the proof is now identical to that in \citet{DJMMUW20}.
+  
+  % Furthermore, for each $i\in\{1,\ldots,m\}$, the vertices on the boundary $F_i$ are contained in $Y\cup P_a\cup P_b$ for some $a,b\in\{1,\ldots,k\}$. In particular if $k=3$ then there exists some $c\in\{1,2,3\}$ such that no vertex of $P_c$ is on the boundary of $F_i$.
 
   \begin{figure}
     \begin{center}
@@ -839,24 +839,46 @@ Our proof of \cref{1-planar} follows quickly from the following technical lemma,
     \label{boring_figure}
   \end{figure}
 
-  The graph $M$ has some number of inner faces $F_1,\ldots,F_m$, each of which is contained in the interior of $F$. 
+  
+  % The graph $M$ has some number of inner faces $F_1,\ldots,F_m$, each of which is contained in the interior of $F$. 
   % Some of the inner faces of $M^+$ are Type~(ii) faces of $G$. Let $F_1,\ldots,F_m$ be the inner faces of $M^+$ that are not Type~(ii) faces of $G$.  We claim that, for each $i\in\{1,\ldots,m\}$, the boundary of $F_i$ is a cycle in $G'$ that contains no spars. Otherwise, some edge $vw$ contributes to the boundary of $F_i$ but is crossed by an edge $xy\in E(G)$. Then, $vw\not\in E(F)$ since no edge of $F$ is crossed by any edge of $G$. Therefore $vw\in E(\overline{Y}^+)$ so $xy\in E(\overline{Y}^+)$. But then the only faces of $M^+$ with $vw$ on their boundary are Type~(ii) faces.  In particular $vw$ cannot be on the boundary of $F_i$.
-  Each of the faces $F_1,\ldots,F_m$ is contained in a single inner face of $M$.  Therefore, $V(F_i)$ can be partitioned into at most three sets $P_1'$, $P_2'$, and $P_3'$ where $P_1'\subset V(Y)$, $P_2'\subseteq P_a$, $P_3'\subseteq P_b$ for some $a,b\in\{1,2,3\}$, and $F_i[P_j']$ is a path, for each $j\in\{1,2,3\}$.  Therefore, we can apply induction using the cycle $F_i$ and the partition $P_1',P_2',P_3'$ of $V(F_i)$ to obtain the desired $H$-partition $\PP_i$ and tree decomposition of subgraph $N_i$ of $G$ contained in $F_i$.
 
-  \note{PM}{Pick up here tomorrow, after teaching.}
-  The proof finishes in the same way as the proof in \cite{DJMMUW20}.  The paths $P_1,\ldots,P_k$, and $S=V(Y^+)$ become elements of the $H$-partition.
-  Elements in each of the $H$-partitions of $N_1,\ldots,N_m$ that intersect $P_1,\ldots,P_k$, or $V(\overline{Y}^+-F)$ are discarded and all the resulting sets are combined to obtain an $H$-partition of $G$.
+  The result of the induction on $N_i$ is a partition $\mathcal{P}_i$ with each of $P_{i,1}$, $P_{i,2}$ and $P_{i,3}$ in its own part. For $\mathcal{P}$ we use the partition
+  \[
+      \mathcal{P}:=\{Y, P_1,\ldots,P_k\} \cup \bigcup_{i=1}^m \{P\in\mathcal{P}_i: P\cap V(M)=\emptyset\} \enspace .
+  \]
+  All that remains is to verify that $\mathcal{P}$ satisfies Requirements~1--3.   
+  \begin{compactenum}
+    \item To see that $H:=G/\mathcal{P}$ is planar, observe that $G/\mathcal{P}=G'/\mathcal{P}$\todo{Explain why $G/\mathcal{P}=G'/\mathcal{P}$} and that each part $P\in\mathcal{P}$ induces a connected subgraph $G'[P]$ of $G'$.  Since $G'$ is planar and planarity is preserved under edge contractions, this implies that $G'/\mathcal{P}$ is planar.
 
-  The desired tree decomposition of $G$ is obtained in exactly the same way as in the proof of Lemma~13 in \cite{DJMMUW20}.  The root node contains the nodes of $H$ corresponding to $P_1,\ldots,P_k$.  The root has one child that contains the at most $4$ nodes of $H$ corresponding to $P_1,\ldots,P_k$ and $Y^+$.  This root has up to three children, each of which contains $Y^+$ and at most two of $P_1,\ldots,P_k$.  For each $i\in\{1,\ldots,m\}$, the tree decomposition of $N_i/\PP_i$ is then attached to one of these three children.
-
-	The planarity of $H$ comes from two properties:
-	\begin{compactenum}
-		\item $G/\PP$ and $G^+/\mathcal{P^+}$ are isomorphic, where $G^+$ is the triangulation obtained by adding dummy vertices at each crossing in $G$ and $\PP^+$ is the partition we obtain by adding a dummy vertex $z$ to $\overline{Y}^+$ if $\overline{Y}^+$ contains an edge $vw$ that contains $z$ in its interior.
-
-		\item $G^+[\overline{Y}^+-F]$ is connected. To see this, first observe that $\overline{Y}-F$ is connected, and then observe that every vertex of $\overline{Y}^+$ is either a vertex of $\overline{Y}$ or adjacent to a vertex of $\overline{Y}$.
-	\end{compactenum}
-	Since $G^+$ is planar, the second point implies that $H=G^+/\PP$ is planar.
-	% \footnote{It is well-known and easy to see that any graph $\Delta'$ obtained by contracting an edge in a planar graph $\Delta$ is also planar.  Repeatedly applying this fact implies that $\Delta/\PP$ is planar provided that $\Delta[P]$ is connected for every $P\in\PP$.} The first point then ensures that $G/\PP$ is also planar.
+    \item  The parts $P_1,P_2,P_3$ satisfy Requirement~2 by Assumption~4(b)ii,  we have already argued that the part $Y$ satisfies Requirement~2, and the inductive hypothesis ensures that each of the remaining parts satisfy Requirement~2.
+    
+    \item Requirement~3 is satisfied since $\mathcal{P}$ contains parts $P_1,\ldots,P_k$.
+    
+    \item Next we build a tree decomposition $(B_y:y\in V(T_0))$ of $H$ that satisifies Requirement~4.  
+    % We show that $\tw(H)\le 3$ by giving a tree-decomposition of $H$ of width at most $3$. 
+    Let $x_0$ be the vertex of $H$ obtained from contracting $Y$ and, for each $j\in\{1,\ldots,k\}$, let $x_j$ denote the vertex of $H$ obtained from contracting $P_j$.
+    
+    The tree $T_0$ has root node $y_0$ with $B_{y_0}:=\{x_0,\ldots,x_k\}$.    
+    For each $i\in\{1,\ldots,m\}$, let $N_i$ denote the subgraph of $N$ contained in $F_i$.  The inductive hypothesis ensures that $H_i:=N_i/\mathcal{P}_i$ has a tree decomposition $(B_z:z\in V(T_i))$ whose largest bag has size at most $4$ whose root bag $B_{z_i}$ contains the vertices $a_i,b_i,c_i\in V(H_i)$ obtained by contracting $P_{i,1}$, $P_{i,2}$, and $P_{i,3}$, respectively.   Recall that $P_{i,1}:=V(N_i)\cap Y$ and $P_{i,2}:=V(N_i)\cap P_b$ and $P_{i,3}:=V(N_i)\cap P_c$ for some $b,c\in\{1,\ldots,k\}$.  For each bag $B_z$, $z\in V(T_i)$, replace each occurrence of $a_i$ by $x_0$, replace each occurrence of $b_i$ by $x_b$ and replace each occurrence of $c_i$ by $x_c$.  Note that these replacements do not increase the size of any bag. Now add an edge that joins $y_0$ to $x_i$.
+  \end{compactenum}
+  
+  % 
+  % 
+  % \note{PM}{Pick up here tomorrow, after teaching.}
+  % The proof finishes in the same way as the proof in \cite{DJMMUW20}.  The paths $P_1,\ldots,P_k$, and $S=V(Y^+)$ become elements of the $H$-partition.
+  % Elements in each of the $H$-partitions of $N_1,\ldots,N_m$ that intersect $P_1,\ldots,P_k$, or $V(\overline{Y}^+-F)$ are discarded and all the resulting sets are combined to obtain an $H$-partition of $G$.
+  % 
+  % The desired tree decomposition of $G$ is obtained in exactly the same way as in the proof of Lemma~13 in \cite{DJMMUW20}.  The root node contains the nodes of $H$ corresponding to $P_1,\ldots,P_k$.  The root has one child that contains the at most $4$ nodes of $H$ corresponding to $P_1,\ldots,P_k$ and $Y^+$.  This root has up to three children, each of which contains $Y^+$ and at most two of $P_1,\ldots,P_k$.  For each $i\in\{1,\ldots,m\}$, the tree decomposition of $N_i/\PP_i$ is then attached to one of these three children.
+  % 
+	% The planarity of $H$ comes from two properties:
+	% \begin{compactenum}
+	% 	\item $G/\PP$ and $G^+/\mathcal{P^+}$ are isomorphic, where $G^+$ is the triangulation obtained by adding dummy vertices at each crossing in $G$ and $\PP^+$ is the partition we obtain by adding a dummy vertex $z$ to $\overline{Y}^+$ if $\overline{Y}^+$ contains an edge $vw$ that contains $z$ in its interior.
+  % 
+	% 	\item $G^+[\overline{Y}^+-F]$ is connected. To see this, first observe that $\overline{Y}-F$ is connected, and then observe that every vertex of $\overline{Y}^+$ is either a vertex of $\overline{Y}$ or adjacent to a vertex of $\overline{Y}$.
+	% \end{compactenum}
+	% Since $G^+$ is planar, the second point implies that $H=G^+/\PP$ is planar.
+	% % \footnote{It is well-known and easy to see that any graph $\Delta'$ obtained by contracting an edge in a planar graph $\Delta$ is also planar.  Repeatedly applying this fact implies that $\Delta/\PP$ is planar provided that $\Delta[P]$ is connected for every $P\in\PP$.} The first point then ensures that $G/\PP$ is also planar.
 \end{proof}
 
 Using \cref{induction}, the proof of \cref{1-planar} is now straightforward.
