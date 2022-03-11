@@ -644,10 +644,9 @@ In the important special case of 1-planar graphs we obtain better constants and 
   $1$-planar graphs are of special interest to the graph drawing community.  For example, the annotated bibliography on $1$-planarity (\htmladdnormallink{https://arxiv.org/abs/1703.02261}{arXiv:1703.02261}) has 143 entries, and even this is now four years out of date.
   
   An important aspect of our result for $1$-planar graphs is that graph $H$ in the product is planar and has treewidth $3$, i.e., it has simple treewidth $3$.  In a more recent application of product structure \citet{BDJM} show that such graphs have $\ell$-vertex rankings using $O(\log n/\log\log\log n)$ colours, and this is tight. This result requires that $H$ have simple treewidth $3$, even treewidth $3$ is not sufficient.
-  
-  Finally, while cleaning up this proof we have also improved the constant from $30$ to $7$. The proof is quite similar to the previous proof except that graph $G'$ is obtained by removing both crossing edges involved in a crossing (the spars of a kite), rather than just one.  We thank the referee for forcing us to write this proof more carefully so that we could discover this improvement. 
 }
 
+\note{DW}{I will rewrite the intro to this subsection once we decide what our results are.}
 
 \begin{thm}
 \label{1-planar}
@@ -1439,6 +1438,10 @@ We now give two graph classes for which \cref{CliqueFaceProductStructure} is app
 \begin{proof}
 \end{proof}
 
+\begin{cor}
+	\label{New1Planar}
+	Every 1-planar graph is contained in $H \boxtimes P \boxtimes K_8$ for some graph $H$ with $\tw(H) \leq 3$ and for some path $P$.
+\end{cor}
 
 \begin{lem}
 Every $d$-map graph is a subgraph of $\widehat{G}$ for some 2-connected plane graph $G$ in which every facial cycle has length in $\{3,\dots,d\}$.
@@ -1446,6 +1449,11 @@ Every $d$-map graph is a subgraph of $\widehat{G}$ for some 2-connected plane gr
 
 \begin{proof}
 \end{proof}
+
+\begin{cor}
+	\label{NewMapGraph}
+	Every $d$-map graph is contained in $H \boxtimes P \boxtimes K_{ d  \floor{d/2} }$ for some graph $H$ with $\tw(H) \leq 3$ and for some path $P$.
+\end{cor}
 
 \end{document}
 
