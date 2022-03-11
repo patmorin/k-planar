@@ -138,11 +138,11 @@ Dujmovi\'c~et~al.~[\emph{J.~ACM}~'20] recently proved that every planar graph is
 
 % \note{DW}{I suggest we use consecutive numbering of theorems, lemmas, etc. Theorem 1, Lemma 2, Observation 3, etc.}
 
-\note{PM}{Agreed. Done.}
+% \note{PM}{Agreed. Done.}
 
 % \note{DW}{I suggest we delete ``We use $G'\subseteq G$ to denote subgraph containment; that is, $V(G')\subseteq V(G)$ and $E(G')\subseteq E(G)$. '' This is absolutely standard.}
 
-The starting point for this work is the following `product structure theorem' for planar graphs\footnote{In this paper, all graphs are finite and undirected. Unless mentioned otherwise, all graphs are also simple. For any graph $G$ and any set $S$ (typically $S\subseteq V(G)$), let $G[S]$  denote the graph with vertex set $V(G)\cap S$ and edge set $\{uv\in E(G) : u,v\in S\}$.  We use $G-S$ as a shorthand for $G[V(G)\setminus S]$. Undefined terms are in \citep{Diestel5}.} by \citet{DJMMUW20} (improved by \citet{UWY}). A graph $G$ is \defin{contained in} a graph $X$ if $G$ is isomorphic to a subgraph of $X$.
+The starting point for this work is the following `product structure theorem' for planar graphs\footnote{In this paper, all graphs are finite and undirected. Unless mentioned otherwise, all graphs are also simple. For any graph $G$ and any set $S$ (typically $S\subseteq V(G)$), let $G[S]$  denote the graph with vertex set $V(G)\cap S$ and edge set $\{uv\in E(G) : u,v\in S\}$.  We use $G-S$ as a shorthand for $G[V(G)\setminus S]$. Undefined terms are in \citep{Diestel5}.} by \citet{DJMMUW20} (with an improvement by \citet{UWY}). A graph $G$ is \defin{contained in} a graph $X$ if $G$ is isomorphic to a subgraph of $X$.
 
 \begin{thm}[\citep{DJMMUW20,UWY}]
 \label{PlanarProduct}
@@ -172,15 +172,21 @@ and treewidth\footnote{For a tree $T$, a \defin{$T$-decomposition} of a graph $G
 \begin{compactitem}
 \item \citet{DJMMUW20} use it to prove that planar graphs have bounded queue-number (resolving a conjecture of \citet{HLR92}).
 \item  \citet{dujmovic.esperet.ea:planar} use it to prove that planar graphs have bounded non-repetitive chromatic number (resolving a conjecture of \citet{AGHR-RSA02}).
-\item \citet{DFMS21} use it to make dramatic improvements to the best known bounds for $p$-centered colourings of planar graphs.
-\item \citet{bonamy.gavoille.ea:shorter} use it to find shorter adjacency labellings of planar graphs (improving on a sequence of results starting with the work of \citet{kannan.naor.ea:implicit}). \citet{DEJGMM21} have since used it to find asymptotically optimal adjacency labellings of planar graphs.
-\item The result of \citet{DEJGMM21} implies that, for every integer
-$n>0$, there is a `induced-universal' graph $U_n$ with $n^{1+o(1)}$ vertices such that every $n$-vertex planar graph is an induced
-subgraph of $U_n$. This has recently been extended by \citet{EJM}, who show the existence of a `subgraph-universal' graph with $(1+\epsilon)n$ vertices that contains every $n$-vertex planar graph as a subgraph as well as the existence of an `induced universal' graph with $n^{1+o(1)}$ vertices \emph{and} edges.  The former result is the first progress on subgraph-universal graphs for planar graphs since the $O(n^{3/2})$-vertex construction of \citet{babai.chung.ea:on}.
-% aking the first progress on this problem since the work of \citet{babai.xx} in 1984.
+\item \citet{DEJGMM21} have since used it to find asymptotically optimal adjacency labellings of planar graphs (resolving a problem of \cite{kannan.naor.ea:implicit}).
+\item \citet{EJM} use it to show the existence of a 'universal graph' with $n^{1+o(1)}$ vertices and edges that contains every $n$-vertex planar graph as an induced subgraph (resolving a problem of \citet{babai.chung.ea:on}).
 \end{compactitem}
+In addition to these rather well-known problems, \cref{PlanarProduct} has been used to resolve or make substantial progress on a number of other problems on planar graphs, including $p$-centered colouring \cite{DFMS21}, $\ell$-vertex ranking~\citep{BDJM}, twin-width~\citep{BKW}, and odd colourings~\citep{DMO}.
 
-\note{DW}{Mention other application such as vertex ranking~\citep{BDJM}, twin-width~\citep{BKW}, odd colourings~\citep{DMO}? We write a lot about adjacency labellings and universal induced subgraphs. Do we need so much detail here? We also mention this work in \cref{WrappingUp}.}
+% \item \citet{DFMS21} use it to make dramatic improvements to the best known bounds for $p$-centered colourings of planar graphs.
+% \item \citet{bonamy.gavoille.ea:shorter} use it to find shorter adjacency labellings of planar graphs (improving on a sequence of results starting with the work of \citet{kannan.naor.ea:implicit}).
+% \item \citet{BDJM} use it to show that every $n$-vertex planar graph has local vertex ranking using $O(\log n/\log\log\log n)$ colours.
+% % \item The result of \citet{DEJGMM21} implies that, for every integer
+% $n>0$, there is a `induced-universal' graph $U_n$ with $n^{1+o(1)}$ vertices such that every $n$-vertex planar graph is an induced
+% subgraph of $U_n$. This has recently been extended by \citet{EJM}, who show the existence of a `subgraph-universal' graph with $(1+\epsilon)n$ vertices that contains every $n$-vertex planar graph as a subgraph as well as the existence of an `induced universal' graph with $n^{1+o(1)}$ vertices \emph{and} edges.  The former result is the first progress on subgraph-universal graphs for planar graphs since the $O(n^{3/2})$-vertex construction of \citet{babai.chung.ea:on}.
+% aking the first progress on this problem since the work of \citet{babai.xx} in 1984.
+% \end{compactitem}
+
+% \note{DW}{Mention other application such as vertex ranking~\citep{BDJM}, twin-width~\citep{BKW}, odd colourings~\citep{DMO}? We write a lot about adjacency labellings and universal induced subgraphs. Do we need so much detail here? We also mention this work in \cref{WrappingUp}.}
 
 All of these results hold for any graph class that has a product structure theorem analogous to \cref{PlanarProduct}; that is, for any graph class  $\mathcal{G}$ where every graph in $\mathcal{G}$ is contained in $H\boxtimes P\boxtimes K_\ell$ where $H$ has bounded treewidth, $P$ is a path, and $\ell$ is bounded.\footnote{It is easily seen that $\tw(H\boxtimes K_\ell) \leq (\tw(H)+1)\ell-1$, so we may assume that $\ell=1$ in this definition.} These applications motivate finding product structure theorems for other graph classes. \citet{DJMMUW20} prove product structure theorems for graphs of bounded Euler genus\footnote{The \textit{Euler genus} of the orientable surface with $h$ handles is $2h$. The \textit{Euler genus} of the non-orientable surface with $c$ cross-caps is $c$. The \textit{Euler genus} of a graph $G$ is the minimum integer $g$ such that $G$ embeds in a surface of Euler genus $g$. Of course, a graph is planar if and only if it has Euler genus 0; see \citep{mohar.thomassen:graphs} for more about graph embeddings in surfaces.} and for apex-minor-free graphs\footnote{A graph $M$ is a \textit{minor} of a graph $G$ if a graph isomorphic to $M$ can be obtained from a subgraph of $G$ by contracting edges. A class $\mathcal{G}$ of graphs is \defin{minor-closed} if for every graph $G\in\mathcal{G}$, every minor of $G$ is in $\mathcal{G}$. A minor-closed class is \defin{proper} if it is not the class of all graphs. For example, for fixed $g\geq 0$, the class of graphs with Euler genus at most $g$ is a proper minor-closed class. A graph $G$ is $t$-apex if it contains a set $A$ of at most $t$ vertices such that $G-A$ is planar. A 1-apex graph is \defin{apex}.  A minor-closed class $\mathcal{G}$ is apex-minor-free if some apex graph is not in $\mathcal{G}$.}, and \citet{DEMWW22} do so for graphs in any minor-closed class and with bounded maximum degree. See \cref{Generalisations} for more precise statements and see \citep{DHJLW21} for a survey on this topic.
 
