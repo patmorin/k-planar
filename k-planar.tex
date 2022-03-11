@@ -858,7 +858,7 @@ Every $(g,k)$-planar graph is contained in $H\boxtimes P \boxtimes K_\ell$ for s
 \note{DW}{I have changed $\tw(H) \leq \binom{k+5}{4}-1$ to $\tw(H) \leq \binom{k+4}{3}-1$, okay?}
 \end{thm}
 
-\note{DW}{We should be able to get treewidth 3 for $(g,1)$-planar graphs, combining the method in \cref{1-planar} with \citep{DHHW}}
+\note{DW}{I wonder if one can get treewidth 3 for $(g,1)$-planar graphs, combining the method in \cref{1-planar} with \citep{DHHW}. Perhaps this should be in another paper?}
 
 Prior to this work, the strongest structural description of $k$-planar or $(g,k)$-planar graphs (or any of the other classes presented in \cref{Examples}) was in terms of layered treewidth, which we now define.  A \defin{layered tree-decomposition} $(\mathcal{L},\mathcal{T})$ consists of a layering $\mathcal{L}$ and a tree-decomposition $\mathcal{T}$ of $G$. The layered width of $(\mathcal{L},\mathcal{T})$ is $\max\{|L\cap B|: L\in \mathcal{L},\, B\in \mathcal{T}\}$.  The \defin{layered treewidth} of $G$ is the minimum layered width of any layered tree-decomposition of $G$. \citet{dujmovic.morin.ea:layered} proved that planar graphs have layered treewidth at most 3, that graphs of Euler genus $g$ have layered treewidth at most $2g+3$, and more generally that a minor-closed class has bounded layered treewidth if and only if it excludes some apex graph. \citet{dujmovic.eppstein.ea:structure} show that every $k$-planar graph has layered treewidth at most $6(k+1)$, and more generally that every $(g,k)$-planar graph has layered treewidth at most $(4g+6)(k+1)$. It follows from this result that $(g,k)$-planar graphs have treewidth $O(\sqrt{(g+1)(k+1)n})$ and thus have balanced separators of the same order, which can also be concluded from the work of \citet{FP08}. In related work, \citet{grigoriev.bodlaender:algorithms} used structural results to obtain approximation algorithms for $(g,k)$-planar graphs, and \citet{PachToth97} determined the maximum number of edges in a $k$-planar graph (up to a constant factor).
 
@@ -1073,7 +1073,8 @@ For integers $g\geq 0$ and $d\geq 4$, if $\ell:=  7d(d-3)\, \max\{2g,3\}$ then e
 
 \note{DW}{\cref{MapPartition} has been updated.}
 
-\note{DW}{We should be able to get treewidth 3 here using \cref{framed} and \citep{DHHW}.}
+\note{DW}{I wonder if one can get treewidth 3 here using \cref{framed} and \citep{DHHW}. 
+Perhaps this should be in another paper?}
 
 These results give the first constant upper bound on the non-repetitive chromatic number of map graphs, the first polynomial bounds on the $p$-centered chromatic number of map graphs, and the best known bounds on the queue-number of map graphs.
 
@@ -1432,18 +1433,7 @@ Every $d$-map graph is a subgraph of $\widehat{G}$ for some 2-connected plane gr
 
 \begin{cor}
 \label{NewMapGraph}
-Every $d$-map graph is contained in $H \boxtimes P \boxtimes K_{ d  \floor{d/2} }$ for some graph $H$ with $\tw(H) \leq 3$ and for some path $P$.
+Every $d$-map graph is contained in $H \boxtimes P \boxtimes K_{ d + 3\floor{d/2} -3 }$ for some graph $H$ with $\tw(H) \leq 3$ and for some path $P$.
 \end{cor}
-
-\end{document}
-
-
-%%%%%%%%%%%%%%%%%%%%
-
-The layering is in G_0. Each edge of G_2 has span at most floor(d/2)
-with respect to this layering.
-
-So G_2 is contained in H * P^{floor(d/2)} * K_d, which is contained in
-H * P * K_{d floor(d/2) }.
 
 \end{document}
