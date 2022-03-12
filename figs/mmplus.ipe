@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
 <ipe version="70218" creator="Ipe 7.2.21">
-<info created="D:20220307160746" modified="D:20220311153511"/>
+<info created="D:20220307160746" modified="D:20220312145456"/>
 <ipestyle name="basic">
 <symbol name="arrow/arc(spx)">
 <path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
@@ -325,8 +325,75 @@ h
 <layer name="beta"/>
 <layer name="gamma"/>
 <layer name="delta"/>
-<view layers="delta" active="beta"/>
-<view layers="alpha beta gamma" active="delta"/>
+<view layers="delta" active="delta"/>
+<view layers="alpha beta gamma" active="alpha"/>
+<path layer="delta" fill="brew8">
+205.467 609.275
+200.296 595.567
+194.284 580.777
+212.081 572.239
+222.662 575.606
+231.44 564.784
+235.649 552.398
+238.535 530.634
+240.82 512.356
+245.269 507.065
+266.432 506.945
+259.097 527.748
+251.401 539.773
+256.812 559.012
+252.363 574.644
+244.066 577.049
+240.699 588.232
+223.865 592.441
+226.149 612.883 u
+</path>
+<path fill="brew2">
+202.341 596.048
+220.137 591.839
+227.111 602.301
+209.555 613.123 u
+</path>
+<path layer="alpha" fill="brew8">
+250.199 643.185
+250.319 628.755
+249.718 614.807
+246.712 594.365
+236.611 601.459
+225.789 604.105
+221.58 596.529
+227.111 581.378
+233.725 576.568
+222.061 572.359
+203.663 563.341
+190.436 556.607
+196.448 534.241
+208.714 550.354
+226.991 540.374
+236.13 560.696
+251.281 559.974
+257.173 564.183
+269.799 553.601
+284.83 549.633
+298.057 529.191
+309.601 523.9
+319.822 539.171
+324.03 545.665
+312.607 547.829
+297.095 570.796
+280.982 576.568
+270.04 577.53
+259.097 596.168
+266.793 609.756
+271.002 633.445
+261.262 648.115 u
+</path>
+<path fill="brew2">
+224.827 601.099
+225.428 585.827
+234.687 579.815
+250.319 595.687 u
+</path>
 <path layer="beta" stroke="lightgray" pen="heavier">
 255.994 585.474 m
 245.29 573.698 l
@@ -429,5 +496,6 @@ h
 </path>
 <text matrix="1 0 0 1 -7 0" transformations="translations" pos="249.548 563.321" stroke="black" type="label" width="12.345" height="6.815" depth="1.93" valign="baseline" style="math">Q_3</text>
 <text matrix="1 0 0 1 22 1" transformations="translations" pos="288 624" stroke="black" type="label" width="7.79" height="6.808" depth="0" halign="right" valign="top" style="math">F</text>
+<text matrix="1 0 0 1 5 2" transformations="translations" pos="192 592" stroke="black" type="label" width="5.483" height="4.289" depth="0" halign="center" valign="baseline" style="math">\tau</text>
 </page>
 </ipe>
