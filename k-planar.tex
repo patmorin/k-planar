@@ -781,7 +781,7 @@ Our proof of \cref{1-planar} follows quickly from the following technical lemma,
   \]
   It is straightforward to verify that $\mathcal{P}$ is indeed a partition of $V(N)$ and, by definition this is an $H$-partition of $N$ for the graph $H:=N/\mathcal{P}$.  All that remains is to verify that $\mathcal{P}$ satisfies conditions~(i)--(iv).
   \begin{compactenum}[(i)]
-    \item To see that $H$ is planar, observe that $G/\mathcal{P}=G'/\mathcal{P}$\todo{Explain why $G/\mathcal{P}=G'/\mathcal{P}$} and that each part $P\in\mathcal{P}$ induces a connected subgraph $G'[P]$ of $G'$.  Since $G'$ is planar and planarity is preserved under edge contractions, this implies that $G'/\mathcal{P}$ is planar.
+    \item To see that $H$ is planar, observe that $N/\mathcal{P}=N'/\mathcal{P}$\todo{Explain why $N/\mathcal{P}=N'/\mathcal{P}$} and that each part $P\in\mathcal{P}$ induces a connected subgraph $G'[P]$ of $G'$.  Since $G'$ is planar and planarity is preserved under edge contractions, this implies that $G'/\mathcal{P}$ is planar.
 
     \item  By Assumption~4(b) none of the parts $P_1,P_2,P_3$ violate condition~(ii).  We have already argued that the part $Y$ does not violate condition~(ii).  The inductive hypothesis ensures that each of the remaining parts satisfies condition~(ii).
 
@@ -826,7 +826,8 @@ Using \cref{induction}, the proof of \cref{1-planar} is now straightforward.
 	Use the layering $\mathcal{L}=\langle L_0',L_1'\ldots\rangle$ where $L_i'=L_{2i}\cup L_{2i+1}$ for each integer $i\ge 0$. That this is a layering of $G$ follows from the fact that $\dist_{G'}(v,w)\le 2$ for each edge $vw\in E(G)$.  Since $|L_j\cap S_x|\le 3$ for each integer $j\ge 0$, $|L_i'\cap (S_x\cup\{v_x\})|\le 7$ for each integer $i\ge 0$ and each $x\in V(H)$. The result follows from \cref{PartitionProduct}.
 \end{proof}
 
-We remark that our proof of \cref{1-planar} generalizes to the class of $d$-framed graphs \cite{BDGGMR}.  An embedded multigraph $G$ is a \defin{$d$-framed graph} if it contains a plane subgraph $G'$ (the \defin{frame}) whose edges are not involved in any crossings and such that each pair of crossing edges in $G$ are contained in a face of $G'$ that has at most $d$ vertices on its boundary.  It is known that the class of $4$-framed multigraphs is exactly the class of $1$-plane multigraphs \cite{BDGGMR}.  Indeed, the graph $G'$ in \cref{induction} is the frame of $G$.  The proof of \cref{induction} can be repeated for any edge-maximal $d$-framed graph $G$ having frame $G'$. The proof in this case has only two differences:
+We remark that our proof of \cref{1-planar} generalizes to the class of $d$-framed graphs \cite{BDGGMR} and even $d$-framed multigraphs.  An embedded multigraph $G$ is a \defin{$d$-framed multigraph} if it contains a plane subgraph $G'$ (the \defin{frame}) whose edges are not involved in any crossings and such that each pair of crossing edges in $G$ are contained in a face of $G'$ that has at most $d$ vertices on its boundary.  It is known that every $3$-connected $1$-planar graph is contained in some $4$-framed graph.  The discussion on the structure of $G$ and $G'$ that precedes \cref{induction} shows that every $1$-planar graph is contained in a $4$-framed multigraph.
+The proof of \cref{induction} can be repeated for any edge-maximal $d$-framed multigraphs $G$ having frame $G'$. The proof in this case has only two differences:
 \begin{compactitem}
    \item For any edge $vw$ of $G$ that is not in $G'$, $\dist_{G'}(v,w)\le \lfloor d/2\rfloor$.
    \item The face $\tau$ that contains the Sperner triangle $v_1,v_2,v_3$ may have up to $d$ vertices on its boundary, so up to $d-3$ of these vertices do not belong to $Q_i$ for any $i\in\{1,2,3\}$.
@@ -835,10 +836,14 @@ The only effect this has on the final result is that the layered width becomes $
 
 \begin{thm}
 \label{framed}
-   Every $d$-framed graph is contained in $H\boxtimes P\boxtimes K_{3\lfloor d/2\rfloor + d -3}$ for some planar graph $H$ with treewidth at most 3 and for some path $P$.
+   Every $d$-framed multigraph is contained in $H\boxtimes P\boxtimes K_{3\lfloor d/2\rfloor + d -3}$ for some planar graph $H$ with treewidth at most 3 and for some path $P$.
 \end{thm}
 
 \note{DW}{I think \cref{framed} should be proved explicitly and \cref{1-planar} should be a corollary, especially because \cref{NewMapGraph} is another corollary. The proof of \cref{framed} needs an extra clause; see the last sentence of \cref{NewLemma}. This section should be about framed graphs, outside of \cref{sec-k-planar}. I suggest we make it a subsection of \cref{Structure} where we introduce framed graphs, say they can be described by $(2,\binom{d}{2})$-shortcut systems, so the main theorem is applicable, which gives a treewidth bound of $\binom{5}{3}-1=9$, but using  \cref{framed} we get a treewidth bound of 3, which is optional. Then in latter sections we give two applications, for 1-planar graphs and for $d$-map graphs. }
+
+\note{PM}{I no longer agree about the restructuring. See my email essay for an explanation.}
+
+\note{PM}{Apropos the extra clause.  It's related to the orange todo note (argue that $N'/\mathcal{P}=N/\mathcal{P}$).  This doesn't need to be in the statement of the lemma since, unlike \cref{NewLemma} this one gives an $H$-partition of $N$, not $N'$, but something like it needs to be in the proof.}
 
 \subsection{\boldmath $(g,k)$-Planar Graphs}
 
