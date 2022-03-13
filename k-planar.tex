@@ -716,7 +716,7 @@ A tree-decomposition $\mathcal{T}$ of a graph $G$ is \defin{$t$-simple} if each 
   \begin{compactenum}[(i)]
     \item By definition, each of $P_1,\ldots,P_k$ is a part of $\mathcal{P}$.
     \item Assumption 4(a) ensures, for each $x\in V(H)$, the existence of $X_x$ and $Y_x$ such that $|X_x|\le d-3$ and $|Y_x\cap L_j|\le 3$ for each integer $j\ge 0$.
-    \item The trivial tree decomposition of $H$ that places $x_1,\ldots,x_k$ is $3$-simple and, if $k=3$, has exactly one bag that contains $\{x_1,\ldots,x_3\}$.
+    \item The trivial tree decomposition of $H$ that has a single bag containing $\{x_1,\ldots,x_k\}$ is $3$-simple and, if $k=3$, has exactly one bag that contains $\{x_1,\ldots,x_3\}$.
   \end{compactenum}
 
   In the general case, our $H$-partition $\mathcal{P}$ will include $P_1$, $P_2$ , $P_3$ and a (possibly empty) part $S$ that is defined by three vertices $v_1v_2v_3$ that belong to a common inner face $\tau$ of $N'$.  There is one case to consider for each possible value of $k$:
@@ -742,16 +742,16 @@ A tree-decomposition $\mathcal{T}$ of a graph $G$ is \defin{$t$-simple} if each 
   \begin{figure}
     \begin{center}
       \begin{tabular}{ccc}
-        \includegraphics{figs/mmplus-1} &
-        \includegraphics{figs/mmplus-2} &
-        \includegraphics{figs/mmplus-3} \\
+        \includegraphics{figs/zoomba-1} &
+        \includegraphics{figs/zoomba-2} &
+        \includegraphics{figs/zoomba-3} \\
         $k=1$ & $k=2$ & $k=3$
       \end{tabular}
     \end{center}
     \caption{Three cases when choosing the face $\tau$ of $N'$.}
+    \todo[inline]{Update these figures with $d$-sided $\tau$.}
     \label{boring_figure}
   \end{figure}
-  \todo[inline]{Update these figures with $d$-sided $\tau$.}
 
   Refer to \cref{boring_figure}.  Let $M$ denote the subgraph of $N'$ containing the edges and vertices of $\overline{Y}$ and the edges and vertices of $F$. By our choice of $\tau$, the graph $M$ is $2$-connected.  Since $N'\subseteq G'$ contains only edges of $G$ that are not crossed, each component of $G-V(M)$ is contained in a single face of $M$.
   Let $F_1,\ldots,F_m,\tau$ be the inner faces of $M$. By our choice of $v_1v_2v_3$, the vertices of each $F_i$ can be partitioned into at most three sets $P_{i,1}$, $P_{i,2}$, and $P_{i,3}$ where $P_{i,1}\subset Y$, $P_{i,2}\subseteq P_b$, and $P_{i,3}\subseteq P_c$ for some $b,c\in\{1,\ldots,k\}$.
@@ -768,33 +768,27 @@ A tree-decomposition $\mathcal{T}$ of a graph $G$ is \defin{$t$-simple} if each 
 
   By construction $\mathcal{P}$ contains parts $P_1,\ldots,P_k$, so $\mathcal{P}$ satisifes (i).  By Assumption~4(b) none of the parts $P_1,P_2,P_3$ violate condition~(ii).  We have already argued that the part $S$ does not violate condition~(ii).  The inductive hypothesis ensures that each of the remaining parts satisfies condition~(ii).   Therefore $\mathcal{P}$ satisfies (ii).
 
-    % \item We only consider the (most difficult) case where $k=3$, the cases $\in\{1,2\}$ are handled easily. Let $x_0$ be the vertex of $H$ obtained from contracting $Y$ and, for each $j\in\{1,\ldots,3\}$, let $x_j$ denote the vertex of $H$ obtained from contracting $P_j$.  In this case the vertices $x_0,\ldots,x_3$ form a clique in $H$, which we embed with $x_1,\ldots,x_3$ on the outer face, as required.
-    %
-    % We claim that, for each distinct $a,b\in \{1,2,3\}$ there is at most one face $F_i$ such that $V(F_i)\cap S_{x_j}\neq\emptyset$ for each $j\in\{0,a,b\}$.  Suppose to the contrary that there are two such faces $F_{i_1}$ and $F_{i_2}$.  Create a graph $M^+$ from $M$ by placing a vertex $v_{i_b}$ inside $F_{i_b}$ and adjacent to each vertex in $V(F_{i_b})$ for each $b\in\{1,2\}$.  Since $M$ is planar and $F_{i_1}$ and $F_{i_2}$ are distinct faces of $M$, $M^+$ is planar.  However, contracting each of $S_{x_0},\ldots,S_{x_3}$ produces a graph isomorphic to the complete bipartite graph $K_{3,3}$, a contradiction.
-    %
-    % Therefore, by the inductive hypothesis, we can embed each such graph $H_i :=N_i/\mathcal{P}_i$ so that the three vertices on its outer face correspond to the appropriate inner face of the clique on $x_0,\ldots,x_3$.  Any remaining graphs $H_i$ have outer faces with at most two vertices on their outer faces corresponding to at most two vertices of $x_0,\ldots,x_3$.  These can easily be embedded, one a time, in some inner face that has the edge $x_ix_j$ on its boundary.
+  All that remains is to construct a tree decomposition $\mathcal{T}:=(B_y:y\in V(T_0))$ of $H$ that satisfies (iii). Let $x_0$ be the vertex of $H$ obtained from contracting $S$ and, for each $j\in\{1,\ldots,k\}$, let $x_j$ denote the vertex of $H$ obtained from contracting $P_j$.  The tree $T_0$ has a node $y_0$ with bag $B_{y_0}:=\{x_0,\ldots,x_k\}$. The inductive hypothesis ensures that, for each $i\in\{1,\ldots,m\}$,  $H_i:=N_i/\mathcal{P}_i$ has a tree decomposition $\mathcal{T}_i:=(B_z:z\in V(T_i))$ that satisfies (iii).  Let $a_i,b_i,c_i\in V(H_i)$ be the vertices obtained by contracting $P_{i,1}$, $P_{i,2}$, and $P_{i,3}$, respectively. Since $a_i$, $b_i$, $c_i$ form a clique in $H$, there exists a bag $B_{z_i}$ contains $\{a_i,b_i,c_i\}$.
 
-  All that remains is to construct a tree decomposition $\mathcal{T}:=(B_y:y\in V(T_0))$ of $H$ that satisfies (iii). Let $x_0$ be the vertex of $H$ obtained from contracting $S$ and, for each $j\in\{1,\ldots,k\}$, let $x_j$ denote the vertex of $H$ obtained from contracting $P_j$.  The tree $T_0$ has a node $y_0$ with bag $B_{y_0}:=\{x_0,\ldots,x_k\}$. The inductive hypothesis ensures that, for each $i\in\{1,\ldots,m\}$,  $H_i:=N_i/\mathcal{P}_i$ has a tree decomposition $(B_z:z\in V(T_i))$ that satisfies (iii).  Let $a_i,b_i,c_i\in V(H_i)$ be the vertices obtained by contracting $P_{i,1}$, $P_{i,2}$, and $P_{i,3}$, respectively. Since $a_i$, $b_i$, $c_i$ form a clique in $H$, there exists a bag $B_{z_i}$ contains $\{a_i,b_i,c_i\}$.
-
-  Recall that $P_{i,1}:=V(N_i)\cap Y$, $P_{i,2}:=V(N_i)\cap P_b$ and $P_{i,3}:=V(N_i)\cap P_c$ for some $b,c\in\{1,\ldots,k\}$.  For each bag $B_z$, $z\in V(T_i)$, replace each occurrence of $a_i$ by $x_0$, replace each occurrence of $b_i$ by $x_b$ and replace each occurrence of $c_i$ by $x_c$.  These replacements do not increase the size of any bag and they result in a tree decomposition of the graph obtained from $H_i$ by renaming the vertices $a_i$, $b_i$, and $c_i$ with the names $x_0$, $x_a$, and $x_b$. Now add an edge that joins $y_0$ to $z_i$ so that $T_i$ becomes a subgree of $T_0$ that is ajacent to $y_0$.  We perform this operation for each $i\in\{1,\ldots,m\}$ to obtain our final tree decomposition $mathcal{T}:=(B_y:y\in V(T_0))$.
+  Recall that $P_{i,1}:=V(N_i)\cap Y$, $P_{i,2}:=V(N_i)\cap P_b$ and $P_{i,3}:=V(N_i)\cap P_c$ for some $b,c\in\{1,\ldots,k\}$.  For each bag $B_z$, $z\in V(T_i)$, replace each occurrence of $a_i$ by $x_0$, replace each occurrence of $b_i$ by $x_b$ and replace each occurrence of $c_i$ by $x_c$.  These replacements do not increase the size of any bag and they result in a tree decomposition of the graph obtained from $H_i$ by renaming the vertices $a_i$, $b_i$, and $c_i$ with the names $x_0$, $x_a$, and $x_b$. Now add an edge that joins $y_0$ to $z_i$ so that $T_i$ becomes a subtree of $T_0$ that is adjacent to $y_0$.  We perform this operation for each $i\in\{1,\ldots,m\}$ to obtain our final tree decomposition $mathcal{T}:=(B_y:y\in V(T_0))$.
 
   Using the fact that each component of $G-V(M)$ is contained in a single face of $M$, it is now straightforward to verify that $\mathcal{T}$ is a tree decomposition of $N$ in which each bag has size at most $4$.  The bag $B_{y_0}$ contains $x_1,\ldots,x_k$. When $k=3$, each neighbour of $z_i$ of $y_0$ has a bag that contains at most two of $\{x_1,x_2,x_3\}$.  Therefore, when $k=3$, exactly one bag of $\mathcal{T}$ contains $\{x_1,x_2,x_3\}$.
 
-  All that remains is to show that any triple of vertices of $H$ is contained in at most two bags of $\mathcal{T}$. By the inductive hypothesis, the only triples we need to be concerned about are the $3$-element subsets of  $\{x_0,x_1,\ldots,x_k\}$. The case $k=1$ is trivial since no triples can be formed by $\{x_0,x_1\}$.  When $k=2$, $B_{y_0}=\{x_0,x_1,x_2\}$.  In this case, there is at most one face $F_i$ of $M$ that has vertices of $S$, $P_0$, and $P_1$ on its boundary.  (Refer to \cref{boring_figure} to convince yourself of this.)  By the inductive hypothesis (applied to $H_i$) the bag $B_{z_i}$ is the only other bag in $\mathcal{T}$ that contains $\{x_0,x_1,x_2\}$.  This establishes (iii) for $k\in\{1,2\}$ so, from this point on we assume that $k=3$.
+  All that remains is to show that any triple of vertices of $H$ is contained in at most two bags of $\mathcal{T}$. By the inductive hypothesis, the only triples we need to be concerned about are the $3$-element subsets of  $\{x_0,x_1,\ldots,x_k\}$. The case $k=1$ is trivial since no triples can be formed by $\{x_0,x_1\}$.  When $k=2$, $B_{y_0}=\{x_0,x_1,x_2\}$.  In this case, there is at most one face $F_i$ of $M$ that has vertices of $S$, $P_0$, and $P_1$ on its boundary.  (Refer to \cref{boring_figure} to convince yourself of this.)  By the inductive hypothesis (applied to $H_i$) the bag $B_{z_i}$ is the only bag of $\mathcal{T}_i$ that contains $\{x_0,x_1,x_2\}$.  Therefore there are at most two bags of $\mathcal{T}$ that contains $\{x_0,x_1,x_2\}$.  This establishes (iii) for $k\in\{1,2\}$ so, from this point on we assume that $k=3$.
 
-  We begin with the claim that, for each distinct $a,b\in \{1,2,3\}$ there is at most one face $F_i$ such that $V(F_i)\cap S_{x_j}\neq\emptyset$ for each $j\in\{0,a,b\}$.  Suppose to the contrary that there are two such faces $F_{i_1}$ and $F_{i_2}$.  Create a graph $M^+$ from $M$ by placing a vertex $v_{i_b}$ inside $F_{i_b}$ and adjacent to each vertex in $V(F_{i_b})$ for each $b\in\{1,2\}$.  Since $M$ is planar and $F_{i_1}$ and $F_{i_2}$ are distinct faces of $M$, $M^+$ is planar.  However, contracting each of $S_{x_0},\ldots,S_{x_3}$ produces a graph isomorphic to the complete bipartite graph $K_{3,3}$, a contradiction.  (In this graph, the $x_0,x_a,x_b$ are on one side of the bipartition.)
+  We claim that, for each distinct $a,b\in \{1,2,3\}$ there is at most one face $F_i$ such that $V(F_i)\cap S_{x_j}\neq\emptyset$ for each $j\in\{0,a,b\}$.  Suppose to the contrary that there are two such faces $F_{i_1}$ and $F_{i_2}$.  Create a graph $M^+$ from $M$ by placing a vertex $v_{i_b}$ inside $F_{i_b}$ and adjacent to each vertex in $V(F_{i_b})$ for each $b\in\{1,2\}$.  Since $M$ is planar and $F_{i_1}$ and $F_{i_2}$ are distinct faces of $M$, $M^+$ is planar.  However, contracting each of $S_{x_0},\ldots,S_{x_3}$ produces a graph isomorphic to the complete bipartite graph $K_{3,3}$, a contradiction.  (In this graph, the $x_0,x_a,x_b$ are on one side of the bipartition.)
 
   We have already established that the only bag that contains $\{x_1,x_2,x_3\}$ is $B_{y_0}$, so we need only consider triples $\{x_0,x_a,x_b\}$ with $1\le a<b\le 3$. By the preceding claim, there is at most one face $F_i$ with vertices of $S$, $P_a$, and $P_b$ on its boundary.  By the inductive hypothesis, the only other bag in $\mathcal{T}$ that contains $\{x_0,x_a,x_b\}$ is the bag $B_{z_i}$.  This completes the proof.
 \end{proof}
 
-Using \cref{induction}, the proof of \cref{1-planar} is now straightforward.
+Using \cref{induction}, the proof of \cref{d_framed_product_stucture} is now straightforward.
 
-\begin{proof}[Proof of \cref{1-planar}]
-	Given a 1-plane graph $G$, add edges to make it edge-maximal so that it has an outer face $F=v_1v_2v_3$. Next, add a vertex $r$ adjacent to $v_1$, $v_2$, and $v_3$ to obtain an edge-maximal 1-plane multigraph $\overline{G}$ with one vertex $r$ of degree 3 on its outer face.
+\begin{proof}[Proof of \cref{d_framed_product_stucture}]
+    Let $G$ be a $d$-framed multigraph with frame $G'$\todo{Deal with the case where $G'$ has no triangular face.} and assume that the outer face of $G'$ has exactly three vertices $v_1,v_2,v_3$ and that no edges of $G$ are in the outer face of $G'$.  Add a vertex $r$ adjacent to $v_1$, $v_2$, and $v_3$ to obtain a $d$-framed multigraph $\overline{G}$ with frame $\overline{G}'$.
 
-	Let $G'$ be the plane graph obtained by removing each pair of crossing edges from $\overline{G}$ and let $T$ be a BFS tree of $G'$ rooted at $r$ and let $\langle L_0,L_1,\ldots,\rangle$ be the resulting BFS layering.  Now apply \cref{induction} with $G=\overline{G}$, $G'$, $F$, and $P_i=\{v_i\}$ for each $i\in\{1,2,3\}$.  This gives an $H$-partition $\mathcal{P}:=\{S_x\cup\{v_x\}:x\in V(H)\}$ of $\overline{G}-\{r\}\supseteq G$ in which $H$ is planar and has treewidth at most 3.
+	Let $T$ be a BFS tree of $\overline{G}'$ rooted at $r$ and let $\langle L_0,L_1,\ldots,\rangle$ be the resulting BFS layering.  Now apply \cref{induction} with $G=\overline{G}$, $\overline{G}'$, $F$, and $P_i=\{v_i\}$ for each $i\in\{1,2,3\}$.  This gives an $H$-partition $\mathcal{P}:=\{S_x\cup\{v_x\}:x\in V(H)\}$ of $\overline{G}-\{r\}\supseteq G$ in which $H$ has a $3$-simple tree decomposition.
 
-	Use the layering $\mathcal{L}=\langle L_0',L_1'\ldots\rangle$ where $L_i'=L_{2i}\cup L_{2i+1}$ for each integer $i\ge 0$. That this is a layering of $G$ follows from the fact that $\dist_{G'}(v,w)\le 2$ for each edge $vw\in E(G)$.  Since $|L_j\cap Y_x|\le 3$ for each integer $j\ge 0$, $|L_i'\cap Y_x|\le 6$ and therefore $|L_i'\cap S_x|\le 7$ for each integer $i\ge 0$ and each $x\in V(H)$. The result follows from \cref{PartitionProduct}.
+	Use the layering $\mathcal{L}=\langle L_0',L_1'\ldots\rangle$ where $L_i'=L_{\lfloor d/2\rfloor i}\cup \cdot \cup L_{\lfloor d/2\rfloor(i+1)-1}$ for each integer $i\ge 0$. That this is a layering of $G$ follows from the fact that $\dist_{G'}(v,w)\le \lfloor d/2\rfloor$ for each edge $vw\in E(G)$.  Since $|L_j\cap Y_x|\le 3$ for each integer $j\ge 0$, $|L_i'\cap Y_x|\le 3\lfloor d/2\rfloor$ and therefore $|L_i'\cap S_x|= |L_i'\cap Y_x| |L_i'\cap X_x|\le \lfloor d/2\rfloor + d -3$ for each integer $i\ge 0$ and each $x\in V(H)$. The result follows from \cref{PartitionProduct}.
 \end{proof}
 
 
@@ -834,7 +828,8 @@ If $W$ contains a dummy vertex $w_i$, then neither $w_{i-1}$ nor $w_{i+1}$ is a 
 %   \item bounded by one edge of $G$ that is not crossed plus portions of two edges of $G$ that cross each other.
 % \end{inparaenum}
 
-Consider some pair of edges $vw$ and $xy$ that cross at $p$.  The point $p$ is a vertex of $G_0$ that has degree $4$.  There are four faces $F_1,\ldots,F_4$ of $G_0$ that contain $p$ and, from the preceding discussion each of $vx$, $xw$, $wy$, and $yv$ is an uncrossed edge of $G$.  Therefore, by removing each pair of crossing edges from $G$ we obtain a plane multigraph $G'$ each of whose faces is bounded by three or four edges; see \cref{one_planar_example}(b).  Since, for any pair of crossing edges $\{vw,xy\}$ that we remove this way, $vxwy$ is a cycle in $G'$, $\dist_{G'}(v,w)\le 2$ and $\dist_{G'}(x,y)\le 2$.
+Consider some pair of edges $vw$ and $xy$ that cross at $p$.  The point $p$ is a vertex of $G_0$ that has degree $4$.  There are four faces $F_1,\ldots,F_4$ of $G_0$ that contain $p$ and, from the preceding discussion each of $vx$, $xw$, $wy$, and $yv$ is an uncrossed edge of $G$.  Therefore, by removing each pair of crossing edges from $G$ we obtain a plane multigraph $G'$ each of whose faces is bounded by three or four edges; see \cref{one_planar_example}(b).  There $G$ is a $4$-framed graph with frame $G'$.
+% Since, for any pair of crossing edges $\{vw,xy\}$ that we remove this way, $vxwy$ is a cycle in $G'$, $\dist_{G'}(v,w)\le 2$ and $\dist_{G'}(x,y)\le 2$.
 % It follows immediately that, for any pair of vertices $a,b\in V(G)$, $\dist_{G'}(a,b)\le 2\dist_G(a,b)$.
 \end{proof}
 
