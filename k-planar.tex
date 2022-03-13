@@ -686,7 +686,7 @@ We will actually prove this result in the more general setting of $d$-framed gra
 
 \subsection{\boldmath $d$-Framed Graphs}
 
-The following definition is a convenient way to estalish the planarity of $H$ in \cref{d_framed_product_stucture}:  A tree-decomposition $\mathcal{T}$ of a graph $G$ is \defin{$t$-simple} if each of its bags has size at most $t+1$ and, for each $3$-element subset $\{u,v,w\}\subseteq V(G)$, at most two bags of $\mathcal{T}$ contain $\{u,v,w\}$.  Our proof of \cref{1-planar} follows quickly from the following technical lemma, which is an extension of the analogous result for plane graphs \cite{DJMMUW20}.
+The following definition is a convenient way to estalish the planarity of $H$ in \cref{d_framed_product_stucture}:  A tree-decomposition $\mathcal{T}$ of a graph $G$ is \defin{$t$-simple} if each of its bags has size at most $t+1$ and, for each $t$-element subset $\{v_1,\ldots,v_t\}\subseteq V(G)$, at most two bags of $\mathcal{T}$ contain $\{v_1,\ldots,v_t\}$.  Our proof of \cref{1-planar} follows quickly from the following technical lemma, which is an extension of the analogous result for plane graphs \cite{DJMMUW20}.
 \begin{lem}
 	\label{induction} The setup:
 	\begin{compactenum}
@@ -784,7 +784,7 @@ Using \cref{induction}, the proof of \cref{d_framed_product_stucture} is now str
 \begin{proof}[Proof of \cref{d_framed_product_stucture}]
     Let $G$ be a $d$-framed multigraph with frame $G'$\todo{Deal with the case where $G'$ has no triangular face.} and assume that the outer face of $G'$ has exactly three vertices $v_1,v_2,v_3$ and that no edges of $G$ are in the outer face of $G'$.  Add a vertex $r$ adjacent to $v_1$, $v_2$, and $v_3$ to obtain a $d$-framed multigraph $\overline{G}$ with frame $\overline{G}'$.
 
-	Let $T$ be a BFS tree of $\overline{G}'$ rooted at $r$ and let $\langle L_0,L_1,\ldots,\rangle$ be the resulting BFS layering.  Now apply \cref{induction} with $G=\overline{G}$, $\overline{G}'$, $F$, and $P_i=\{v_i\}$ for each $i\in\{1,2,3\}$.  This gives an $H$-partition $\mathcal{P}:=\{S_x\cup\{v_x\}:x\in V(H)\}$ of $\overline{G}-\{r\}\supseteq G$ in which $H$ has a $3$-simple tree decomposition.
+	Let $T$ be a BFS tree of $\overline{G}'$ rooted at $r$ and let $\langle L_0,L_1,\ldots,\rangle$ be the resulting BFS layering.  Now apply \cref{induction} with $G=\overline{G}$, $\overline{G}'$, $F$, and $P_i=\{v_i\}$ for each $i\in\{1,2,3\}$.  This gives an $H$-partition $\mathcal{P}:=\{S_x\cup\{v_x\}:x\in V(H)\}$ of $\overline{G}-\{r\}\supseteq G$ in which $H$ has a $3$-simple tree decomposition.  Since any graph having a $3$-simple tree decomposition is planar \cite{X}, this implies that $H$ is planar.
 
 	Use the layering $\mathcal{L}=\langle L_0',L_1'\ldots\rangle$ where $L_i'=L_{\lfloor d/2\rfloor i}\cup \cdot \cup L_{\lfloor d/2\rfloor(i+1)-1}$ for each integer $i\ge 0$. That this is a layering of $G$ follows from the fact that $\dist_{G'}(v,w)\le \lfloor d/2\rfloor$ for each edge $vw\in E(G)$.  Since $|L_j\cap Y_x|\le 3$ for each integer $j\ge 0$, $|L_i'\cap Y_x|\le 3\lfloor d/2\rfloor$ and therefore $|L_i'\cap S_x|= |L_i'\cap Y_x| |L_i'\cap X_x|\le \lfloor d/2\rfloor + d -3$ for each integer $i\ge 0$ and each $x\in V(H)$. The result follows from \cref{PartitionProduct}.
 \end{proof}
