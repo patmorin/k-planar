@@ -676,7 +676,8 @@ Every 1-planar graph is contained in $H\boxtimes P\boxtimes K_{7}$ for some plan
 \end{thm}
 
 
-In the following, we assume that no two edges incident to a common vertex of the $1$-plane graph $G$ cross each other since, in a 1-plane graph, such a crossing can always be removed by a local modification to obtain an isomorphic 1-plane graph in which the two edges do not cross.\footnote{While this is true for 1-plane graphs it is not true for $k$-plane graphs with $k\ge 3$; the uncrossing operation can increase the number of crossings on a particular edge from $k$ to $2(k-1)$.}  The \defin{faces} of $G$ are the connected components of $\R^2\setminus \bigcup_{vw\in E(G)} vw$, where we treat each edge $vw$ of $G$ as the image of a simple curve $f_{vw}:[0,1]\to\R^2$.  We say that a vertex $v\in V(G)$ appears on a face $F$ if $v$ is contained in the closure of $F$.
+In the following, we assume that no two edges incident to a common vertex of the $1$-plane graph $G$ cross each other since, in a 1-plane graph, such a crossing can always be removed by a local modification to obtain an isomorphic 1-plane graph in which the two edges do not cross.\footnote{While this is true for 1-plane graphs it is not true for $k$-plane graphs with $k\ge 3$; the uncrossing operation can increase the number of crossings on a particular edge from $k$ to $2(k-1)$.}  The \defin{faces} of $G$ are the connected components of $\R^2\setminus \bigcup_{vw\in E(G)} vw$, where we treat each edge $vw$ of $G$ as the image of a simple curve $f_{vw}:[0,1]\to\R^2$.
+% We say that a vertex $v\in V(G)$ appears on a face $F$ if $v$ is contained in the closure of $F$.
 
 Let $G$ be a $1$-plane graph.  We make $G$ into an \defin{edge-maximal} $1$-plane multigraph, by repeating the following operation:  If two vertices $v$ and $w$ of $G$ appear on a common face $F$ and there is no edge $vw\in E(G)$ contained in the boundary of $F$, then add the edge $vw$, embedded in the face $F$.  This may introduce parallel edges into $G$, but no two such edges will appear on the boundary of a common face.
 
@@ -705,7 +706,7 @@ If $W$ contains a dummy vertex $w_i$, then neither $w_{i-1}$ nor $w_{i+1}$ is a 
 Consider some pair of edges $vw$ and $xy$ that cross at $p$.  The point $p$ is a vertex of $G_0$ that has degree $4$.  There are four faces $F_1,\ldots,F_4$ of $G_0$ that contain $p$ and, from the preceding discussion each of $vx$, $xw$, $wy$, and $yv$ is an uncrossed edge of $G$.  Therefore, by removing each pair of crossing edges from $G$ we obtain a plane multigraph $G'$ each of whose faces is bounded by three or four edges; see \cref{one_planar_example}(b).  Since, for any pair of crossing edges $\{vw,xy\}$ that we remove this way, $vxwy$ is a cycle in $G'$, $\dist_{G'}(v,w)\le 2$ and $\dist_{G'}(x,y)\le 2$.
 % It follows immediately that, for any pair of vertices $a,b\in V(G)$, $\dist_{G'}(a,b)\le 2\dist_G(a,b)$.
 
-Our proof of \cref{1-planar} follows quickly from the following technical lemma, which is an extension of the analogous result for plane graphs \cite{DJMMUW20}.
+A tree-decomposition $\mathcal{T}$ of a graph $G$ is \defin{$t$-simple} if each of its bags has size at most $t+1$ and, for each $3$-element subset $\{u,v,w\}\subseteq V(G)$, at most two bags of $\mathcal{T}$ contain $\{u,v,w\}$.  Our proof of \cref{1-planar} follows quickly from the following technical lemma, which is an extension of the analogous result for plane graphs \cite{DJMMUW20}.
 \begin{lem}
 	\label{induction} The setup:
 	\begin{compactenum}
@@ -723,8 +724,7 @@ Our proof of \cref{1-planar} follows quickly from the following technical lemma,
 	\begin{compactenum}[(i)]
 		\item for each $i\in\{1,\ldots,k\}$, there exists $x_i\in V(H)$ such that $P_i=S_{x_i}$;
         \item For each $x\in V(H)$, $S_x=Y_x\cup X_x$ where $|X_x|\le 1$ and $|Y_x\cap L_j|\le 3$ for each $j\ge 0$;
-        \item $H$ has a plane embedding in which $x_1,\ldots,x_k$ appear on the outer face;
-		\item $\tw(H)\le 3$.
+		\item $H$ has a $3$-simple tree decomposition $\mathcal{T}$ and, if $k=3$, then $\{x_1,x_2,x_3\}$ is contained in exactly one bag of $\mathcal{T}$..
 	\end{compactenum}
 \end{lem}
 
@@ -735,16 +735,16 @@ Our proof of \cref{1-planar} follows quickly from the following technical lemma,
   \begin{compactenum}[(i)]
     \item By definition, each of $P_1,\ldots,P_k$ is a part of $\mathcal{P}$.
     \item For each $x\in V(H)$, let $Y_x:=S_x$ and $X_x=\emptyset$.  Then 4(a) ensures that $|Y_x\cap L_j|\le 3$ for each integer $j\ge 0$.
-    \item $H$ has $k\le 3$ vertices and any graph on $k\le 3$ vertices has a plane embedding with all its vertices on the outer face.
     \item The trivial tree decomposition of $H$ that places $x_1,\ldots,x_k$ in one bag has width $k-1\le 2\le 3$.
   \end{compactenum}
-  From this point on, we assume that $N$ has at least one inner vertex.
 
-  The $H$-partition $\mathcal{P}$ will include $P_1$, $P_2$ , $P_3$ and a (possibly empty) part $S$ that is defined by three vertices $v_1v_2v_3$ that belong to a common inner face $\tau$ of $N'$.  Depending on the value of $k$, there are two cases to consider:
+  In the general case, our $H$-partition $\mathcal{P}$ will include $P_1$, $P_2$ , $P_3$ and a (possibly empty) part $S$ that is defined by three vertices $v_1v_2v_3$ that belong to a common inner face $\tau$ of $N'$.  There is one case to consider for each possible value of $k$:
   \begin{compactenum}
-    \item If $k\in\{1,2\}$ then we let $\tau:=v_1,\ldots,v_p$ be an inner face of $N'$ that contains at least one edge of $F$ on its boundary.
+    \item If $k=1$ then we let $\tau:=v_1,\ldots,v_p$ be an inner face of $N'$ that contains at least one edge $v_1v_2$ of $F$ on its boundary.
 
-    \item If $k=3$ then assign each vertex $v$ of $N'$ a colour $\alpha(v)\in\{1,\ldots,3\}$ as follows:  Let $w$ be the first vertex of $F$ encountered on the path in $T$ from $v$ to the root of $T$.  (This implies that $w=v$ when $v$ is a vertex of $F$.)  Since $w\in V(F)$, $w\in P_i$ for some $i\in\{1,\ldots,k\}$ and we define $\alpha(v):=i$.  Now add one edge to each $4$-sided inner face of $N'$ to obtain a plane supergraph $N''$ of $N'$ in which each inner face has exactly three edges on its boundary. By Sperner's Lemma there exists an inner face $\tau'':=v_1,v_2,v_3$ of $N''$ such that $\alpha(v_i)=i$ for each $i\in\{1,2,3\}$.  Let $\tau:=v_1,\ldots,v_p$ be the face of $N'$ that contains $\tau''$.  (Note that $p\in\{3,4\}$.)
+    \item If $k= 2$ then we let $\tau:=v_1,\ldots,v_p$ be an inner face of $N'$ that contains at least one edge $v_1v_2$ of $F$ on its boundary and such that $v_1\in P_1$ and $v_2\in P_2$.
+
+    \item If $k=3$ then assign each vertex $v$ of $N'$ a colour $\alpha(v)\in\{1,\ldots,3\}$ as follows:  Let $w$ be the first vertex of $F$ encountered on the path in $T$ from $v$ to the root of $T$.  (This implies that $w=v$ when $v$ is a vertex of $F$.)  Since $w\in V(F)$, $w\in P_i$ for some $i\in\{1,\ldots,k\}$ and we define $\alpha(v):=i$.  Now add one edge to each $4$-sided inner face of $N'$ to obtain a plane supergraph $N''$ of $N'$ in which each inner face has exactly three edges on its boundary. By Sperner's Lemma there exists an inner face $\tau'':=v_1,v_2,v_3$ of $N''$ such that $\alpha(v_i)=i$ for each $i\in\{1,2,3\}$.  Let $\tau:=v_1,\ldots,v_p$ be the face of $N'$ that contains $\tau''$.  % (Note that $p\in\{3,4\}$.)
   \end{compactenum}
 
   \todo[inline]{%
@@ -752,26 +752,27 @@ Our proof of \cref{1-planar} follows quickly from the following technical lemma,
     PM: Yes, it only requires that the inner faces have three sides and that the outer face is bounded by a simple cycle.  The proof goes through without change.  Look at the subgraph $X$ of the dual that contains only the edges dual to red/blue edges.  In our setting, the outer face has degree $1$ in $X$, which is odd.  Any bichromatic inner face has degree $0$ or degree $2$ in $X$.  There has to be another vertex of odd degree somewhere, which can only come from a trichromatic inner face.
   }
 
-  We can now define the vertices in $S$.  For each $i\in\{1,2,3\}$, let $Q_i$ be the shortest path, in $T$, from $v_i$ to a vertex in $V(F)$.  Let $\overline{S}$ denote the subgraph of $N'$ consisting of vertices and edges of $Q_1$, $Q_2$, $Q_3$, and $\tau$.  Let $S:=V(\overline{S})\setminus V(F)$, let $Y:=(V(Q_1)\cup V(Q_2)\cup V(Q_3))\cap S$, and let $X:=S\setminus Y$.
-  Observe that, for each $i\in\{1,2,3\}$ and each $j\ge 0$, $|V(Q_i)\cap L_j|\le 1$.  Therefore $|Y\cap L_j|\le 3$ for each integer $j\ge 0$. Furthermore, $|X|\le p-3\le 1$, since $v_1,v_2,v_3\in Y\cup V(N)$. Therefore, taking $Y:=S\cup\{v\}\setminus V(F)$ as a part in the partition $\PP$ will not violate condition~(ii).
+  We can now define the vertices in $S$.  For each $i\in\{1,2,3\}$, let $Q_i$ be the shortest path, in $T$, from $v_i$ to a vertex in $V(F)$.  Let $\overline{S}$ denote the subgraph of $N'$ consisting of vertices and edges of $Q_1$, $Q_2$, $Q_3$, and $\tau$.  Let $S:=V(\overline{S})\setminus V(F)$, let $Y:=(V(Q_1)\cup V(Q_2)\cup V(Q_3))\setminus V(F)$, and let $X:=S\setminus Y$.
+  Observe that, for each $i\in\{1,2,3\}$ and each $j\ge 0$, $|V(Q_i)\cap L_j|\le 1$.  Therefore $|Y\cap L_j|\le 3$ for each integer $j\ge 0$. Furthermore, $|X|\le p-3\le 1$, since $v_1,v_2,v_3\in Y\cup V(F)$. Therefore, using $S:=Y\cup X$ as a part in the partition $\PP$ will not violate condition~(ii).
 
 	% We claim that, for each integer $i\ge 0$, $|V(\overline{Y}^+)\cap L_i|\le 15$.  First observe that, since $Q_1,Q_2,Q_3$ are each vertical paths in $T$,  $\overline{Y}$ contains at most three vertices of $L_i$, each incident on at most two edges of $\overline{Y}$.  Since $\dist_{G'}(v,w)\le 2$ for each $vw\in E(G)$, any vertex $x\in V(\overline{Y}^+)\setminus V(\overline{Y})\cap L_i$, is incident to an edge $xy\in E(G)$ that crosses one of the at most six edges in $\overline{Y}$ having an endpoint in $L_i$.  These at most six edges have at most 12 endpoints.  Therefore $|V(\overline{Y}^+)\setminus V(\overline{Y})\cap L_i|\le 6\times 2=12$, so $|V(\overline{Y}^+)\cap L_i|\le 12+3=15$.
 
-  Refer to \cref{boring_figure}.  Let $M$ denote the subgraph of $N'$ containing the edges and vertices of $\overline{Y}$ and the edges and vertices of $F$.  Since $N'\subseteq G'$ contains only edges of $G$ that are not crossed, each component of $G-V(M)$ is contained in a single face of $M$.
 
   \begin{figure}
     \begin{center}
-      \begin{tabular}{c@{\hspace{1cm}}c}
+      \begin{tabular}{ccc}
         \includegraphics{figs/mmplus-1} &
-        \includegraphics{figs/mmplus-2} \\
-        $k\le 2$ & $k=3$
+        \includegraphics{figs/mmplus-2} &
+        \includegraphics{figs/mmplus-3} \\
+        $k=1$ & $k=2$ & $k=3$
       \end{tabular}
     \end{center}
-    \caption{Two cases when choosing the face $\tau$ of $N'$.}
+    \caption{Three cases when choosing the face $\tau$ of $N'$.}
     \label{boring_figure}
   \end{figure}
 
-  Let $F_1,\ldots,F_m,\tau$ be the inner faces of $M$.   By our choice of $\tau$, the graph $M$ is $2$-connected.  Furthermore, $V(F_i)$ can be partitioned into at most three sets $P_{i,1}$, $P_{i,2}$, and $P_{i,3}$ where $P_{i,1}\subset Y$, $P_{i,2}\subseteq P_b$, and $P_{i,3}\subseteq P_c$ for some $b,c\in\{1,\ldots,k\}$.
+  Refer to \cref{boring_figure}.  Let $M$ denote the subgraph of $N'$ containing the edges and vertices of $\overline{Y}$ and the edges and vertices of $F$. By our choice of $\tau$, the graph $M$ is $2$-connected.  Since $N'\subseteq G'$ contains only edges of $G$ that are not crossed, each component of $G-V(M)$ is contained in a single face of $M$.
+  Let $F_1,\ldots,F_m,\tau$ be the inner faces of $M$. By our choice of $v_1v_2v_3$, the vertices of each $F_i$ can be partitioned into at most three sets $P_{i,1}$, $P_{i,2}$, and $P_{i,3}$ where $P_{i,1}\subset Y$, $P_{i,2}\subseteq P_b$, and $P_{i,3}\subseteq P_c$ for some $b,c\in\{1,\ldots,k\}$.
 
   In the following, in order to avoid introducing even more notation or constantly adding the modifier ``when it exists'', we will assume that $V(F_i)\cap Y\neq\emptyset$ and that there are exactly two distinct $b,c\in\{1,\ldots,k\}$ such that $V(F_i)\cap P_b\neq\emptyset$ and $V(F_i)\cap P_c\neq\emptyset$.  When this assumption does not hold, exactly the same reasoning can be used, while omitting one or more of $P_{i,1}$, $P_{i,2}$ or $P_{i,3}$.
 
@@ -781,48 +782,27 @@ Our proof of \cref{1-planar} follows quickly from the following technical lemma,
   \[
       \mathcal{P}:=\{Y, P_1,\ldots,P_k\} \cup \bigcup_{i=1}^m \{P\in\mathcal{P}_i: P\cap V(M)=\emptyset\} \enspace .
   \]
-  It is straightforward to verify that $\mathcal{P}$ is indeed a partition of $V(N)$ and, by definition this is an $H$-partition of $N$ for the graph $H:=N/\mathcal{P}$.  All that remains is to verify that $\mathcal{P}$ satisfies conditions~(i)--(iv).
-  \begin{compactenum}[(i)]
-    \item By construction $\mathcal{P}$ contains parts $P_1,\ldots,P_k$.
+  It is straightforward to verify that $\mathcal{P}$ is indeed a partition of $V(N)$ and, by definition this is an $H$-partition of $N$ for the graph $H:=N/\mathcal{P}$.  All that remains is to verify that $\mathcal{P}$ satisfies (i)--(iii).
 
-    \item  By Assumption~4(b) none of the parts $P_1,P_2,P_3$ violate condition~(ii).  We have already argued that the part $S$ does not violate condition~(ii).  The inductive hypothesis ensures that each of the remaining parts satisfies condition~(ii).
+  By construction $\mathcal{P}$ contains parts $P_1,\ldots,P_k$, so $\mathcal{P}$ satisifes (i).  By Assumption~4(b) none of the parts $P_1,P_2,P_3$ violate condition~(ii).  We have already argued that the part $S$ does not violate condition~(ii).  The inductive hypothesis ensures that each of the remaining parts satisfies condition~(ii).   Therefore $\mathcal{P}$ satisfies (ii).
 
-    \item We only consider the (most difficult) case where $k=3$, the cases $\in\{1,2\}$ are handled easily. Let $x_0$ be the vertex of $H$ obtained from contracting $Y$ and, for each $j\in\{1,\ldots,3\}$, let $x_j$ denote the vertex of $H$ obtained from contracting $P_j$.  In this case the vertices $x_0,\ldots,x_3$ form a clique in $H$, which we embed with $x_1,\ldots,x_3$ on the outer face, as required.
+    % \item We only consider the (most difficult) case where $k=3$, the cases $\in\{1,2\}$ are handled easily. Let $x_0$ be the vertex of $H$ obtained from contracting $Y$ and, for each $j\in\{1,\ldots,3\}$, let $x_j$ denote the vertex of $H$ obtained from contracting $P_j$.  In this case the vertices $x_0,\ldots,x_3$ form a clique in $H$, which we embed with $x_1,\ldots,x_3$ on the outer face, as required.
+    %
+    % We claim that, for each distinct $a,b\in \{1,2,3\}$ there is at most one face $F_i$ such that $V(F_i)\cap S_{x_j}\neq\emptyset$ for each $j\in\{0,a,b\}$.  Suppose to the contrary that there are two such faces $F_{i_1}$ and $F_{i_2}$.  Create a graph $M^+$ from $M$ by placing a vertex $v_{i_b}$ inside $F_{i_b}$ and adjacent to each vertex in $V(F_{i_b})$ for each $b\in\{1,2\}$.  Since $M$ is planar and $F_{i_1}$ and $F_{i_2}$ are distinct faces of $M$, $M^+$ is planar.  However, contracting each of $S_{x_0},\ldots,S_{x_3}$ produces a graph isomorphic to the complete bipartite graph $K_{3,3}$, a contradiction.
+    %
+    % Therefore, by the inductive hypothesis, we can embed each such graph $H_i :=N_i/\mathcal{P}_i$ so that the three vertices on its outer face correspond to the appropriate inner face of the clique on $x_0,\ldots,x_3$.  Any remaining graphs $H_i$ have outer faces with at most two vertices on their outer faces corresponding to at most two vertices of $x_0,\ldots,x_3$.  These can easily be embedded, one a time, in some inner face that has the edge $x_ix_j$ on its boundary.
 
-    We claim that, for each distinct $a,b\in \{1,2,3\}$ there is at most one face $F_i$ such that $V(F_i)\cap S_{x_j}\neq\emptyset$ for each $j\in\{0,a,b\}$.  Suppose to the contrary that there are two such faces $F_{i_1}$ and $F_{i_2}$.  Create a graph $M^+$ from $M$ by placing a vertex $v_{i_b}$ inside $F_{i_b}$ and adjacent to each vertex in $V(F_{i_b})$ for each $b\in\{1,2\}$.  Since $M$ is planar and $F_{i_1}$ and $F_{i_2}$ are distinct faces of $M$, $M^+$ is planar.  However, contracting each of $S_{x_0},\ldots,S_{x_3}$ produces a graph isomorphic to the complete bipartite graph $K_{3,3}$, a contradiction.
+  All that remains is to construct a tree decomposition $\mathcal{T}:=(B_y:y\in V(T_0))$ of $H$ that satisfies (iii). Let $x_0$ be the vertex of $H$ obtained from contracting $S$ and, for each $j\in\{1,\ldots,k\}$, let $x_j$ denote the vertex of $H$ obtained from contracting $P_j$.  The tree $T_0$ has a node $y_0$ with bag $B_{y_0}:=\{x_0,\ldots,x_k\}$. The inductive hypothesis ensures that, for each $i\in\{1,\ldots,m\}$,  $H_i:=N_i/\mathcal{P}_i$ has a tree decomposition $(B_z:z\in V(T_i))$ that satisfies (iii).  Let $a_i,b_i,c_i\in V(H_i)$ be the vertices obtained by contracting $P_{i,1}$, $P_{i,2}$, and $P_{i,3}$, respectively. Since $a_i$, $b_i$, $c_i$ form a clique in $H$, there exists a bag $B_{z_i}$ contains $\{a_i,b_i,c_i\}$.
 
-    Therefore, by the inductive hypothesis, we can embed each such graph $H_i :=N_i/\mathcal{P}_i$ so that the three vertices on its outer face correspond to the appropriate inner face of the clique on $x_0,\ldots,x_3$.  Any remaining graphs $H_i$ have outer faces with at most two vertices on their outer faces corresponding to at most two vertices of $x_0,\ldots,x_3$.  These can easily be embedded, one a time, in some inner face that has the edge $x_ix_j$ on its boundary.
+  Recall that $P_{i,1}:=V(N_i)\cap Y$, $P_{i,2}:=V(N_i)\cap P_b$ and $P_{i,3}:=V(N_i)\cap P_c$ for some $b,c\in\{1,\ldots,k\}$.  For each bag $B_z$, $z\in V(T_i)$, replace each occurrence of $a_i$ by $x_0$, replace each occurrence of $b_i$ by $x_b$ and replace each occurrence of $c_i$ by $x_c$.  These replacements do not increase the size of any bag and they result in a tree decomposition of the graph obtained from $H_i$ by renaming the vertices $a_i$, $b_i$, and $c_i$ with the names $x_0$, $x_a$, and $x_b$. Now add an edge that joins $y_0$ to $z_i$ so that $T_i$ becomes a subgree of $T_0$ that is ajacent to $y_0$.  We perform this operation for each $i\in\{1,\ldots,m\}$ to obtain our final tree decomposition $mathcal{T}:=(B_y:y\in V(T_0))$.
 
+  Using the fact that each component of $G-V(M)$ is contained in a single face of $M$, it is now straightforward to verify that $\mathcal{T}$ is a tree decomposition of $N$ in which each bag has size at most $4$.  The bag $B_{y_0}$ contains $x_1,\ldots,x_k$. When $k=3$, each neighbour of $z_i$ of $y_0$ has a bag that contains at most two of $\{x_1,x_2,x_3\}$.  Therefore, when $k=3$, exactly one bag of $\mathcal{T}$ contains $\{x_1,x_2,x_3\}$.
 
-    \item We now construct a tree decomposition $(B_y:y\in V(T_0))$ of $H$ that satisifies condition~(iv).
-    % We show that $\tw(H)\le 3$ by giving a tree-decomposition of $H$ of width at most $3$.
-    Let $x_0$ be the vertex of $H$ obtained from contracting $Y$ and, for each $j\in\{1,\ldots,k\}$, let $x_j$ denote the vertex of $H$ obtained from contracting $P_j$.
+  All that remains is to show that any triple of vertices of $H$ is contained in at most two bags of $\mathcal{T}$. By the inductive hypothesis, the only triples we need to be concerned about are the $3$-element subsets of  $\{x_0,x_1,\ldots,x_k\}$. The case $k=1$ is trivial since no triples can be formed by $\{x_0,x_1\}$.  When $k=2$, $B_{y_0}=\{x_0,x_1,x_2\}$.  In this case, there is at most one face $F_i$ of $M$ that has vertices of $S$, $P_0$, and $P_1$ on its boundary.  (Refer to \cref{boring_figure} to convince yourself of this.)  By the inductive hypothesis (applied to $H_i$) the bag $B_{z_i}$ is the only other bag in $\mathcal{T}$ that contains $\{x_0,x_1,x_2\}$.  This establishes (iii) for $k\in\{1,2\}$ so, from this point on we assume that $k=3$.
 
-    The tree $T_0$ has a node $y_0$ with $B_{y_0}:=\{x_0,\ldots,x_k\}$.
-    % For each $i\in\{1,\ldots,m\}$, let $N_i$ denote the subgraph of $N$ contained in $F_i$.
-    The inductive hypothesis ensures that $H_i:=N_i/\mathcal{P}_i$ has a tree decomposition $(B_z:z\in V(T_i))$ of width at most $3$.  Let $a_i,b_i,c_i\in V(H_i)$ be the vertices obtained by contracting $P_{i,1}$, $P_{i,2}$, and $P_{i,3}$, respectively. Since $a_i,b_i,c_i$ form a clique in $H_i$, some bag $B_{z_i}$ contains $a_i$, $b_i$, and $c_i$.
+  We begin with the claim that, for each distinct $a,b\in \{1,2,3\}$ there is at most one face $F_i$ such that $V(F_i)\cap S_{x_j}\neq\emptyset$ for each $j\in\{0,a,b\}$.  Suppose to the contrary that there are two such faces $F_{i_1}$ and $F_{i_2}$.  Create a graph $M^+$ from $M$ by placing a vertex $v_{i_b}$ inside $F_{i_b}$ and adjacent to each vertex in $V(F_{i_b})$ for each $b\in\{1,2\}$.  Since $M$ is planar and $F_{i_1}$ and $F_{i_2}$ are distinct faces of $M$, $M^+$ is planar.  However, contracting each of $S_{x_0},\ldots,S_{x_3}$ produces a graph isomorphic to the complete bipartite graph $K_{3,3}$, a contradiction.  (In this graph, the $x_0,x_a,x_b$ are on one side of the bipartition.)
 
-    Recall that $P_{i,1}:=V(N_i)\cap Y$, $P_{i,2}:=V(N_i)\cap P_b$ and $P_{i,3}:=V(N_i)\cap P_c$ for some $b,c\in\{1,\ldots,k\}$.  For each bag $B_z$, $z\in V(T_i)$, replace each occurrence of $a_i$ by $x_0$, replace each occurrence of $b_i$ by $x_b$ and replace each occurrence of $c_i$ by $x_c$.  These replacements do not increase the size of any bag and they result in a tree decomposition of the graph obtained from $H_i$ by renaming the vertices $a_i$, $b_i$, and $c_i$ with the names $x_0$, $x_a$, and $x_b$. Now add an edge that joins $y_0$ to $z_i$.
-
-    Using the fact that each component of $G-V(M)$ is contained in a single face of $M$, it is now straightforward to verify that, by doing this for each $i\in\{1,\ldots,m\}$ we obtain a width-$3$ tree decomposition of $N$.  \qedhere
-  \end{compactenum}
-
-  %
-  %
-  % \note{PM}{Pick up here tomorrow, after teaching.}
-  % The proof finishes in the same way as the proof in \cite{DJMMUW20}.  The paths $P_1,\ldots,P_k$, and $S=V(Y^+)$ become elements of the $H$-partition.
-  % Elements in each of the $H$-partitions of $N_1,\ldots,N_m$ that intersect $P_1,\ldots,P_k$, or $V(\overline{Y}^+-F)$ are discarded and all the resulting sets are combined to obtain an $H$-partition of $G$.
-  %
-  % The desired tree decomposition of $G$ is obtained in exactly the same way as in the proof of Lemma~13 in \cite{DJMMUW20}.  The root node contains the nodes of $H$ corresponding to $P_1,\ldots,P_k$.  The root has one child that contains the at most $4$ nodes of $H$ corresponding to $P_1,\ldots,P_k$ and $Y^+$.  This root has up to three children, each of which contains $Y^+$ and at most two of $P_1,\ldots,P_k$.  For each $i\in\{1,\ldots,m\}$, the tree decomposition of $N_i/\PP_i$ is then attached to one of these three children.
-  %
-	% The planarity of $H$ comes from two properties:
-	% \begin{compactenum}
-	% 	\item $G/\PP$ and $G^+/\mathcal{P^+}$ are isomorphic, where $G^+$ is the triangulation obtained by adding dummy vertices at each crossing in $G$ and $\PP^+$ is the partition we obtain by adding a dummy vertex $z$ to $\overline{Y}^+$ if $\overline{Y}^+$ contains an edge $vw$ that contains $z$ in its interior.
-  %
-	% 	\item $G^+[\overline{Y}^+-F]$ is connected. To see this, first observe that $\overline{Y}-F$ is connected, and then observe that every vertex of $\overline{Y}^+$ is either a vertex of $\overline{Y}$ or adjacent to a vertex of $\overline{Y}$.
-	% \end{compactenum}
-	% Since $G^+$ is planar, the second point implies that $H=G^+/\PP$ is planar.
-	% % \footnote{It is well-known and easy to see that any graph $\Delta'$ obtained by contracting an edge in a planar graph $\Delta$ is also planar.  Repeatedly applying this fact implies that $\Delta/\PP$ is planar provided that $\Delta[P]$ is connected for every $P\in\PP$.} The first point then ensures that $G/\PP$ is also planar.
+  We have already established that the only bag that contains $\{x_1,x_2,x_3\}$ is $B_{y_0}$, so we need only consider triples $\{x_0,x_a,x_b\}$ with $1\le a<b\le 3$. By the preceding claim, there is at most one face $F_i$ with vertices of $S$, $P_a$, and $P_b$ on its boundary.  By the inductive hypothesis, the only other bag in $\mathcal{T}$ that contains $\{x_0,x_a,x_b\}$ is the bag $B_{z_i}$.  This completes the proof.
 \end{proof}
 
 Using \cref{induction}, the proof of \cref{1-planar} is now straightforward.
