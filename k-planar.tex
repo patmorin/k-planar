@@ -137,6 +137,7 @@ Dujmovi\'c~et~al.~[\emph{J.~ACM}~'20] recently proved that every planar graph is
 \section{Introduction}
 \label{Introduction}
 
+\note{PM}{The trick I used (using the thm counter everywhere) to get consecutive Theorem, Lemma, etc numbering has broken cleverref.  Everything is now references as a Theorem.  Find a solution that works.}
 % \note{DW}{I suggest we use consecutive numbering of theorems, lemmas, etc. Theorem 1, Lemma 2, Observation 3, etc.}
 
 % \note{PM}{Agreed. Done.}
@@ -657,7 +658,7 @@ As mentioned in \cref{Introduction}, \cref{PlanarProduct,ShortcutProduct} imply 
 	% Note to self-and-others. In our original SODA submission we had 18k^2+30k here because we forgot that the layer compression step has compress k+1 consecutive layers, not just k consecutive layers.
 \end{proof}
 
-\subsection{\boldmath  $1$-Planar Graphs}
+\subsection{\boldmath $d$-Framed and $1$-Planar Graphs}
 \label{sec-1-planar}
 
 In the important special case of 1-planar graphs we obtain better constants and an additional property (planarity) of $H$.
@@ -676,66 +677,46 @@ Every 1-planar graph is contained in $H\boxtimes P\boxtimes K_{7}$ for some plan
 \end{thm}
 
 
-In the following, we assume that no two edges incident to a common vertex of the $1$-plane graph $G$ cross each other since, in a 1-plane graph, such a crossing can always be removed by a local modification to obtain an isomorphic 1-plane graph in which the two edges do not cross.\footnote{While this is true for 1-plane graphs it is not true for $k$-plane graphs with $k\ge 3$; the uncrossing operation can increase the number of crossings on a particular edge from $k$ to $2(k-1)$.}  The \defin{faces} of $G$ are the connected components of $\R^2\setminus \bigcup_{vw\in E(G)} vw$, where we treat each edge $vw$ of $G$ as the image of a simple curve $f_{vw}:[0,1]\to\R^2$.
-% We say that a vertex $v\in V(G)$ appears on a face $F$ if $v$ is contained in the closure of $F$.
+We will actually prove this result in the more general setting of $d$-framed graphs \cite{BDGGMR}. For any integer $d\ge 3$, a (multi)graph $G$ is \defin{$d$-framed} if it admits a drawing having a biconnected plane skeleton (multi)graph $G_0$, whose faces have size at most $d$, and whose crossing edges are in the interior of these faces.  In \cref{1_planar_is_4_framed}, below, we show that every $1$-planar graph is a subgraph of a $4$-framed multigraph. This makes \cref{1-planar} an immediate consequence of the following theorem, whose proof is the subject of the rest of this section.
 
-Let $G$ be a $1$-plane graph.  We make $G$ into an \defin{edge-maximal} $1$-plane multigraph, by repeating the following operation:  If two vertices $v$ and $w$ of $G$ appear on a common face $F$ and there is no edge $vw\in E(G)$ contained in the boundary of $F$, then add the edge $vw$, embedded in the face $F$.  This may introduce parallel edges into $G$, but no two such edges will appear on the boundary of a common face.
+\begin{thm}\label{d_framed_product_stucture}
+  Every $d$-framed graph is contained in $H\boxtimes P\boxtimes K_{\lfloor d/2\rfloor + d - 3}$ for some planar graph $H$ with treewidth at most 3 and for some path $P$.
+\end{thm}
 
-\begin{figure}
-  \begin{center}
-    \begin{tabular}{c@{\hspace{1cm}}c}
-        \includegraphics{figs/one_planar_example-3} &
-        \includegraphics{figs/one_planar_example-4} \\
-        $G$ & $G'$
-     \end{tabular}
-    \end{center}
-    \caption{The graph $G'$ obtained by removing pairs of crossing edges from $G$ is a plane multigraph whose faces all have three or four sides.}
-    \label{one_planar_example}
-\end{figure}
 
-To understand the structure of $G$, it is helpful to consider the plane graph $G_0$ obtained by replacing each pair of edges $vw$ and $xy$ that cross at $p$ with four edges $vp$, $wp$, $xp$, and $yp$ meeting at a newly added \defin{dummy vertex} $p$. Let $F$ be a face of $G_0$ and let $W:=w_0,\ldots,w_{r-1}$ be the facial walk around $F$. In the following paragraphs, subscripts on the vertices in $W$ are implicitly taken modulo $r$. By edge maximality, if $W$ contains only non-dummy vertices, then it contains exactly three vertices and $F$ is bounded by three edges of $G$.
+\subsection{\boldmath $d$-Framed Graphs}
 
-If $W$ contains a dummy vertex $w_i$, then neither $w_{i-1}$ nor $w_{i+1}$ is a dummy vertex since if $w_{i-1}$ (respectively $w_{i+1}$) were a dummy vertex then the edge of $G$ that contains $w_{i-1}w_i$ (respectively $w_iw_{i+1}$) would be involved in at least two crossings.  Therefore each dummy vertex $w_i$ of $W$ is surrounded by two non-dummy vertices $w_{i-1},w_{i+1}\in V(G)$.  Since $w_i$ has degree $4$ in $G_0$ and $F$ does not have two parallel edges on its boundary, $w_{i-1}\neq w_{i+1}$.  Since $G$ is edge-maximal the edge $w_{i-1}w_i$ is an edge of $G$ on the boundary of $F$.  Therefore, if $F$ has a dummy vertex $w_i$ in its facial walk $W$, then $W=w_{i-1},w_i,w_{i+1}$ and $F$ is bounded by three edges of $G_0$, each of which is contained in a different edge of $G$.
-
-% Therefore each face of $G_0$ is a $3$-cycle that contains at most one dummy vertex.  This implies that each face of $G$ is one of two types:
-% \begin{inparaenum}[(i)]
-%   \item bounded by three edges of $G$, none of which are crossed; or
-%   \item bounded by one edge of $G$ that is not crossed plus portions of two edges of $G$ that cross each other.
-% \end{inparaenum}
-
-Consider some pair of edges $vw$ and $xy$ that cross at $p$.  The point $p$ is a vertex of $G_0$ that has degree $4$.  There are four faces $F_1,\ldots,F_4$ of $G_0$ that contain $p$ and, from the preceding discussion each of $vx$, $xw$, $wy$, and $yv$ is an uncrossed edge of $G$.  Therefore, by removing each pair of crossing edges from $G$ we obtain a plane multigraph $G'$ each of whose faces is bounded by three or four edges; see \cref{one_planar_example}(b).  Since, for any pair of crossing edges $\{vw,xy\}$ that we remove this way, $vxwy$ is a cycle in $G'$, $\dist_{G'}(v,w)\le 2$ and $\dist_{G'}(x,y)\le 2$.
-% It follows immediately that, for any pair of vertices $a,b\in V(G)$, $\dist_{G'}(a,b)\le 2\dist_G(a,b)$.
-
+To establish the planarity of $H$ in \cref{d_framed_product_stucture}, the following definition is helpful.
 A tree-decomposition $\mathcal{T}$ of a graph $G$ is \defin{$t$-simple} if each of its bags has size at most $t+1$ and, for each $3$-element subset $\{u,v,w\}\subseteq V(G)$, at most two bags of $\mathcal{T}$ contain $\{u,v,w\}$.  Our proof of \cref{1-planar} follows quickly from the following technical lemma, which is an extension of the analogous result for plane graphs \cite{DJMMUW20}.
 \begin{lem}
 	\label{induction} The setup:
 	\begin{compactenum}
-		\item Let $G$ and $G'$ be defined as above.
+		\item Let $G$ be a $d$-framed graph and let $G'$ be the frame of $G$.
 		\item Let $T$ be a BFS spanning tree of $G'$ rooted at some vertex $r$.
 		\item For every integer $j\ge 0$, let $L_j=\{v\in V(G):\dist_T(r,v)=j\}$.
 		\item Let $F$ be a cycle in $G'$ with $r$ in the exterior of $F$ and such that $V(F)$ can be partitioned into $k\le 3$ sets $P_1,\ldots,P_k$ such that for each $i\in\{1,\ldots,k\}$,
 		\begin{compactenum}
 			\item $F[P_i]$ is a path; and
-			\item $|V(P_i)\cap L_j| \le 3$ for every integer $j\ge 0$.
+			\item $P_i=Y_i\cup X_i$ where $|X_i|\le d-3$ and $|Y_i\cap L_j| \le 3$ for each $j\ge 0$.
 		\end{compactenum}
 		\item Let $N$ and $N'$ be the subgraphs of $G$ and $G'$ consisting only of those edges and vertices contained in the closure of $F$.
 	\end{compactenum}
 	Then $N$ has an $H$-partition $\PP=\{S_x: x\in V(H)\}$ such that:
 	\begin{compactenum}[(i)]
 		\item for each $i\in\{1,\ldots,k\}$, there exists $x_i\in V(H)$ such that $P_i=S_{x_i}$;
-        \item For each $x\in V(H)$, $S_x=Y_x\cup X_x$ where $|X_x|\le 1$ and $|Y_x\cap L_j|\le 3$ for each $j\ge 0$;
-		\item $H$ has a $3$-simple tree decomposition $\mathcal{T}$ and, if $k=3$, then $\{x_1,x_2,x_3\}$ is contained in exactly one bag of $\mathcal{T}$..
+        \item For each $x\in V(H)$, $S_x=Y_x\cup X_x$ where $|X_x|\le d-3$ and $|Y_x\cap L_j|\le 3$ for each $j\ge 0$;
+		\item $H$ has a $3$-simple tree decomposition $\mathcal{T}$ and, if $k=3$, then $\{x_1,x_2,x_3\}$ is contained in exactly one bag of $\mathcal{T}$.
 	\end{compactenum}
 \end{lem}
 
 \begin{proof}
-  This proof is very similar to the proof of Lemma~13 by \citet{DJMMUW20}, but is sufficiently complicated by the $1$-planar setting to warrant a full proof.  In particular, the reader should keep in mind that $G$ and $G'$ are multigraphs and that the cycle $F$ may consist of two vertices and two (parallel) edges.
+  This proof is very similar to the proof of Lemma~13 by \citet{DJMMUW20}, but is complicated by several factors.  In particular, the reader should keep in mind that $G$ and $G'$ are multigraphs and that the cycle $F$ may consist of two vertices and two (parallel) edges.
 
   The proof is by induction on the number of inner faces of $N'$.  A particular easy case occurs when $V(N')=V(F)$, for which we can simply take $\PP:=\{P_1,\ldots,P_k\}$ and verify that the preconditions of the lemma (the `setup') ensure that $\PP$ satisfies the requirements (i)--(iv):
   \begin{compactenum}[(i)]
     \item By definition, each of $P_1,\ldots,P_k$ is a part of $\mathcal{P}$.
-    \item For each $x\in V(H)$, let $Y_x:=S_x$ and $X_x=\emptyset$.  Then 4(a) ensures that $|Y_x\cap L_j|\le 3$ for each integer $j\ge 0$.
-    \item The trivial tree decomposition of $H$ that places $x_1,\ldots,x_k$ in one bag has width $k-1\le 2\le 3$.
+    \item Assumption 4(a) ensures, for each $x\in V(H)$, the existence of $X_x$ and $Y_x$ such that $|X_x|\le d-3$ and $|Y_x\cap L_j|\le 3$ for each integer $j\ge 0$.
+    \item The trivial tree decomposition of $H$ that places $x_1,\ldots,x_k$ is $3$-simple and, if $k=3$, has exactly one bag that contains $\{x_1,\ldots,x_3\}$.
   \end{compactenum}
 
   In the general case, our $H$-partition $\mathcal{P}$ will include $P_1$, $P_2$ , $P_3$ and a (possibly empty) part $S$ that is defined by three vertices $v_1v_2v_3$ that belong to a common inner face $\tau$ of $N'$.  There is one case to consider for each possible value of $k$:
@@ -744,7 +725,7 @@ A tree-decomposition $\mathcal{T}$ of a graph $G$ is \defin{$t$-simple} if each 
 
     \item If $k= 2$ then we let $\tau:=v_1,\ldots,v_p$ be an inner face of $N'$ that contains at least one edge $v_1v_2$ of $F$ on its boundary and such that $v_1\in P_1$ and $v_2\in P_2$.
 
-    \item If $k=3$ then assign each vertex $v$ of $N'$ a colour $\alpha(v)\in\{1,\ldots,3\}$ as follows:  Let $w$ be the first vertex of $F$ encountered on the path in $T$ from $v$ to the root of $T$.  (This implies that $w=v$ when $v$ is a vertex of $F$.)  Since $w\in V(F)$, $w\in P_i$ for some $i\in\{1,\ldots,k\}$ and we define $\alpha(v):=i$.  Now add one edge to each $4$-sided inner face of $N'$ to obtain a plane supergraph $N''$ of $N'$ in which each inner face has exactly three edges on its boundary. By Sperner's Lemma there exists an inner face $\tau'':=v_1,v_2,v_3$ of $N''$ such that $\alpha(v_i)=i$ for each $i\in\{1,2,3\}$.  Let $\tau:=v_1,\ldots,v_p$ be the face of $N'$ that contains $\tau''$.  % (Note that $p\in\{3,4\}$.)
+    \item If $k=3$ then assign each vertex $v$ of $N'$ a colour $\alpha(v)\in\{1,\ldots,3\}$ as follows:  Let $w$ be the first vertex of $F$ encountered on the path in $T$ from $v$ to the root of $T$.  (This implies that $w=v$ when $v$ is a vertex of $F$.)  Since $w\in V(F)$, $w\in P_i$ for some $i\in\{1,\ldots,k\}$ and we define $\alpha(v):=i$.  Now, for each $d'\in\{4,\ldots,d\}$ and each $d'$-sided inner face $F$ of $N'$, add edges $d'-2$ edges inside of $F$ to split it into $3$-sided faces.  This yields a plane supergraph $N''$ of $N'$ in which each inner face has exactly three edges on its boundary. By Sperner's Lemma there exists an inner face $\tau'':=v_1,v_2,v_3$ of $N''$ such that $\alpha(v_i)=i$ for each $i\in\{1,2,3\}$.  Let $\tau:=v_1,\ldots,v_p$ be the face of $N'$ that contains $\tau''$.  % (Note that $p\in\{3,4\}$.)
   \end{compactenum}
 
   \todo[inline]{%
@@ -753,7 +734,7 @@ A tree-decomposition $\mathcal{T}$ of a graph $G$ is \defin{$t$-simple} if each 
   }
 
   We can now define the vertices in $S$.  For each $i\in\{1,2,3\}$, let $Q_i$ be the shortest path, in $T$, from $v_i$ to a vertex in $V(F)$.  Let $\overline{S}$ denote the subgraph of $N'$ consisting of vertices and edges of $Q_1$, $Q_2$, $Q_3$, and $\tau$.  Let $S:=V(\overline{S})\setminus V(F)$, let $Y:=(V(Q_1)\cup V(Q_2)\cup V(Q_3))\setminus V(F)$, and let $X:=S\setminus Y$.
-  Observe that, for each $i\in\{1,2,3\}$ and each $j\ge 0$, $|V(Q_i)\cap L_j|\le 1$.  Therefore $|Y\cap L_j|\le 3$ for each integer $j\ge 0$. Furthermore, $|X|\le p-3\le 1$, since $v_1,v_2,v_3\in Y\cup V(F)$. Therefore, using $S:=Y\cup X$ as a part in the partition $\PP$ will not violate condition~(ii).
+  Observe that, for each $i\in\{1,2,3\}$ and each $j\ge 0$, $|V(Q_i)\cap L_j|\le 1$.  Therefore $|Y\cap L_j|\le 3$ for each integer $j\ge 0$. Furthermore, $|X|\le p-3\le d-3$, since $v_1,v_2,v_3\in Y\cup V(F)$. Therefore, using $S:=Y\cup X$ as a part in the partition $\PP$ will not violate condition~(ii).
 
 	% We claim that, for each integer $i\ge 0$, $|V(\overline{Y}^+)\cap L_i|\le 15$.  First observe that, since $Q_1,Q_2,Q_3$ are each vertical paths in $T$,  $\overline{Y}$ contains at most three vertices of $L_i$, each incident on at most two edges of $\overline{Y}$.  Since $\dist_{G'}(v,w)\le 2$ for each $vw\in E(G)$, any vertex $x\in V(\overline{Y}^+)\setminus V(\overline{Y})\cap L_i$, is incident to an edge $xy\in E(G)$ that crosses one of the at most six edges in $\overline{Y}$ having an endpoint in $L_i$.  These at most six edges have at most 12 endpoints.  Therefore $|V(\overline{Y}^+)\setminus V(\overline{Y})\cap L_i|\le 6\times 2=12$, so $|V(\overline{Y}^+)\cap L_i|\le 12+3=15$.
 
@@ -770,6 +751,7 @@ A tree-decomposition $\mathcal{T}$ of a graph $G$ is \defin{$t$-simple} if each 
     \caption{Three cases when choosing the face $\tau$ of $N'$.}
     \label{boring_figure}
   \end{figure}
+  \todo[inline]{Update these figures with $d$-sided $\tau$.}
 
   Refer to \cref{boring_figure}.  Let $M$ denote the subgraph of $N'$ containing the edges and vertices of $\overline{Y}$ and the edges and vertices of $F$. By our choice of $\tau$, the graph $M$ is $2$-connected.  Since $N'\subseteq G'$ contains only edges of $G$ that are not crossed, each component of $G-V(M)$ is contained in a single face of $M$.
   Let $F_1,\ldots,F_m,\tau$ be the inner faces of $M$. By our choice of $v_1v_2v_3$, the vertices of each $F_i$ can be partitioned into at most three sets $P_{i,1}$, $P_{i,2}$, and $P_{i,3}$ where $P_{i,1}\subset Y$, $P_{i,2}\subseteq P_b$, and $P_{i,3}\subseteq P_c$ for some $b,c\in\{1,\ldots,k\}$.
@@ -815,24 +797,46 @@ Using \cref{induction}, the proof of \cref{1-planar} is now straightforward.
 	Use the layering $\mathcal{L}=\langle L_0',L_1'\ldots\rangle$ where $L_i'=L_{2i}\cup L_{2i+1}$ for each integer $i\ge 0$. That this is a layering of $G$ follows from the fact that $\dist_{G'}(v,w)\le 2$ for each edge $vw\in E(G)$.  Since $|L_j\cap Y_x|\le 3$ for each integer $j\ge 0$, $|L_i'\cap Y_x|\le 6$ and therefore $|L_i'\cap S_x|\le 7$ for each integer $i\ge 0$ and each $x\in V(H)$. The result follows from \cref{PartitionProduct}.
 \end{proof}
 
-We remark that our proof of \cref{1-planar} generalizes to the class of $d$-framed graphs \cite{BDGGMR} and even $d$-framed multigraphs.  An embedded multigraph $G$ is a \defin{$d$-framed multigraph} if it contains a plane subgraph $G'$ (the \defin{frame}) whose edges are not involved in any crossings and such that each pair of crossing edges in $G$ are contained in a face of $G'$ that has at most $d$ vertices on its boundary.  It is known that every $3$-connected $1$-planar graph is contained in some $4$-framed graph.  The discussion on the structure of $G$ and $G'$ that precedes \cref{induction} shows that every $1$-planar graph is contained in a $4$-framed multigraph.
-The proof of \cref{induction} can be repeated for any edge-maximal $d$-framed multigraphs $G$ having frame $G'$. The proof in this case has only two differences:
-\begin{compactitem}
-   \item For any edge $vw$ of $G$ that is not in $G'$, $\dist_{G'}(v,w)\le \lfloor d/2\rfloor$.
-   \item The face $\tau$ that contains the Sperner triangle $v_1,v_2,v_3$ may have up to $d$ vertices on its boundary, so up to $d-3$ of these vertices do not belong to $Q_i$ for any $i\in\{1,2,3\}$.
-\end{compactitem}
-The only effect this has on the final result is that the layered width becomes $3\lfloor d/2\rfloor + d-3$.  This yields the following result:
 
-\begin{thm}
-\label{framed}
-   Every $d$-framed multigraph is contained in $H\boxtimes P\boxtimes K_{3\lfloor d/2\rfloor + d -3}$ for some planar graph $H$ with treewidth at most 3 and for some path $P$.
-\end{thm}
 
-\note{DW}{I think \cref{framed} should be proved explicitly and \cref{1-planar} should be a corollary, especially because \cref{NewMapGraph} is another corollary. The proof of \cref{framed} needs an extra clause; see the last sentence of \cref{NewLemma}. This section should be about framed graphs, outside of \cref{sec-k-planar}. I suggest we make it a subsection of \cref{Structure} where we introduce framed graphs, say they can be described by $(2,\binom{d}{2})$-shortcut systems, so the main theorem is applicable, which gives a treewidth bound of $\binom{5}{3}-1=9$, but using  \cref{framed} we get a treewidth bound of 3, which is optional. Then in latter sections we give two applications, for 1-planar graphs and for $d$-map graphs. }
+\subsection{\boldmath $1$-Planar Graphs}
 
-\note{PM}{I no longer agree about the restructuring. See my email essay for an explanation.}
 
-\note{PM}{Apropos the extra clause.  It's related to the orange todo note (argue that $N'/\mathcal{P}=N/\mathcal{P}$).  This doesn't need to be in the statement of the lemma since, unlike \cref{NewLemma} this one gives an $H$-partition of $N$, not $N'$, but something like it needs to be in the proof.}
+In the following, we assume that no two edges incident to a common vertex of the $1$-plane graph $G$ cross each other since, in a 1-plane graph, such a crossing can always be removed by a local modification to obtain an isomorphic 1-plane graph in which the two edges do not cross.\footnote{While this is true for 1-plane graphs it is not true for $k$-plane graphs with $k\ge 3$; the uncrossing operation can increase the number of crossings on a particular edge from $k$ to $2(k-1)$.}  The \defin{faces} of $G$ are the connected components of $\R^2\setminus \bigcup_{vw\in E(G)} vw$, where we treat each edge $vw$ of $G$ as the image of a simple curve $f_{vw}:[0,1]\to\R^2$.
+% We say that a vertex $v\in V(G)$ appears on a face $F$ if $v$ is contained in the closure of $F$.
+
+\begin{lem}\label{1_planar_is_4_framed}
+  A graph $G$ is $1$-planar if and only if it is contained in a $4$-framed multigraph.
+\end{lem}
+
+\begin{proof}
+Let $G$ be a $1$-plane graph.  We make $G$ into an \defin{edge-maximal} $1$-plane multigraph, by repeating the following operation:  If two vertices $v$ and $w$ of $G$ appear on a common face $F$ and there is no edge $vw\in E(G)$ contained in the boundary of $F$, then add the edge $vw$, embedded in the face $F$.  This may introduce parallel edges into $G$, but no two such edges will appear on the boundary of a common face.
+
+\begin{figure}
+  \begin{center}
+    \begin{tabular}{c@{\hspace{1cm}}c}
+        \includegraphics{figs/one_planar_example-3} &
+        \includegraphics{figs/one_planar_example-4} \\
+        $G$ & $G'$
+     \end{tabular}
+    \end{center}
+    \caption{The graph $G'$ obtained by removing pairs of crossing edges from $G$ is a plane multigraph whose faces all have three or four sides.}
+    \label{one_planar_example}
+\end{figure}
+
+To understand the structure of $G$, it is helpful to consider the plane graph $G_0$ obtained by replacing each pair of edges $vw$ and $xy$ that cross at $p$ with four edges $vp$, $wp$, $xp$, and $yp$ meeting at a newly added \defin{dummy vertex} $p$. Let $F$ be a face of $G_0$ and let $W:=w_0,\ldots,w_{r-1}$ be the facial walk around $F$. In the following paragraphs, subscripts on the vertices in $W$ are implicitly taken modulo $r$. By edge maximality, if $W$ contains only non-dummy vertices, then it contains exactly three vertices and $F$ is bounded by three edges of $G$.
+
+If $W$ contains a dummy vertex $w_i$, then neither $w_{i-1}$ nor $w_{i+1}$ is a dummy vertex since if $w_{i-1}$ (respectively $w_{i+1}$) were a dummy vertex then the edge of $G$ that contains $w_{i-1}w_i$ (respectively $w_iw_{i+1}$) would be involved in at least two crossings.  Therefore each dummy vertex $w_i$ of $W$ is surrounded by two non-dummy vertices $w_{i-1},w_{i+1}\in V(G)$.  Since $w_i$ has degree $4$ in $G_0$ and $F$ does not have two parallel edges on its boundary, $w_{i-1}\neq w_{i+1}$.  Since $G$ is edge-maximal the edge $w_{i-1}w_i$ is an edge of $G$ on the boundary of $F$.  Therefore, if $F$ has a dummy vertex $w_i$ in its facial walk $W$, then $W=w_{i-1},w_i,w_{i+1}$ and $F$ is bounded by three edges of $G_0$, each of which is contained in a different edge of $G$.
+
+% Therefore each face of $G_0$ is a $3$-cycle that contains at most one dummy vertex.  This implies that each face of $G$ is one of two types:
+% \begin{inparaenum}[(i)]
+%   \item bounded by three edges of $G$, none of which are crossed; or
+%   \item bounded by one edge of $G$ that is not crossed plus portions of two edges of $G$ that cross each other.
+% \end{inparaenum}
+
+Consider some pair of edges $vw$ and $xy$ that cross at $p$.  The point $p$ is a vertex of $G_0$ that has degree $4$.  There are four faces $F_1,\ldots,F_4$ of $G_0$ that contain $p$ and, from the preceding discussion each of $vx$, $xw$, $wy$, and $yv$ is an uncrossed edge of $G$.  Therefore, by removing each pair of crossing edges from $G$ we obtain a plane multigraph $G'$ each of whose faces is bounded by three or four edges; see \cref{one_planar_example}(b).  Since, for any pair of crossing edges $\{vw,xy\}$ that we remove this way, $vxwy$ is a cycle in $G'$, $\dist_{G'}(v,w)\le 2$ and $\dist_{G'}(x,y)\le 2$.
+% It follows immediately that, for any pair of vertices $a,b\in V(G)$, $\dist_{G'}(a,b)\le 2\dist_G(a,b)$.
+\end{proof}
 
 \subsection{\boldmath $(g,k)$-Planar Graphs}
 
