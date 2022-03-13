@@ -747,10 +747,11 @@ Our proof of \cref{1-planar} follows quickly from the following technical lemma,
     \item If $k=3$ then assign each vertex $v$ of $N'$ a colour $\alpha(v)\in\{1,\ldots,3\}$ as follows:  Let $w$ be the first vertex of $F$ encountered on the path in $T$ from $v$ to the root of $T$.  (This implies that $w=v$ when $v$ is a vertex of $F$.)  Since $w\in V(F)$, $w\in P_i$ for some $i\in\{1,\ldots,k\}$ and we define $\alpha(v):=i$.  Now add one edge to each $4$-sided inner face of $N'$ to obtain a plane supergraph $N''$ of $N'$ in which each inner face has exactly three edges on its boundary. By Sperner's Lemma there exists an inner face $\tau'':=v_1,v_2,v_3$ of $N''$ such that $\alpha(v_i)=i$ for each $i\in\{1,2,3\}$.  Let $\tau:=v_1,\ldots,v_p$ be the face of $N'$ that contains $\tau''$.  (Note that $p\in\{3,4\}$.)
   \end{compactenum}
 
-  \todo[inline]{%
-    DW:Does this work for multigraph near-triangulations? \newline
-    PM: Yes, it only requires that the inner faces have three sides and that the outer face is bounded by a simple cycle.  The proof goes through without change.  Look at the subgraph $X$ of the dual that contains only the edges dual to red/blue edges.  In our setting, the outer face has degree $1$ in $X$, which is odd.  Any bichromatic inner face has degree $0$ or degree $2$ in $X$.  There has to be another vertex of odd degree somewhere, which can only come from a trichromatic inner face.
-  }
+%  \todo[inline]{%
+%    DW:Does this work for multigraph near-triangulations? \newline
+%    PM: Yes, it only requires that the inner faces have three sides and that the outer face is bounded by a simple cycle.  The proof goes through without change.  Look at the subgraph $X$ of the dual that contains only the edges dual to red/blue edges.  In our setting, the outer face has degree $1$ in $X$, which is odd.  Any bichromatic inner face has degree $0$ or degree $2$ in $X$.  There has to be another vertex of odd degree somewhere, which can only come from a trichromatic inner face.\newline
+%    DW: great. This is basically the same as the proof of the Hex Lemma.
+%  }
 
   We can now define the vertices in $S$.  For each $i\in\{1,2,3\}$, let $Q_i$ be the shortest path, in $T$, from $v_i$ to a vertex in $V(F)$.  Let $\overline{S}$ denote the subgraph of $N'$ consisting of vertices and edges of $Q_1$, $Q_2$, $Q_3$, and $\tau$.  Let $S:=V(\overline{S})\setminus V(F)$, let $Y:=(V(Q_1)\cup V(Q_2)\cup V(Q_3))\cap S$, and let $X:=S\setminus Y$.
   Observe that, for each $i\in\{1,2,3\}$ and each $j\ge 0$, $|V(Q_i)\cap L_j|\le 1$.  Therefore $|Y\cap L_j|\le 3$ for each integer $j\ge 0$. Furthermore, $|X|\le p-3\le 1$, since $v_1,v_2,v_3\in Y\cup V(N)$. Therefore, taking $Y:=S\cup\{v\}\setminus V(F)$ as a part in the partition $\PP$ will not violate condition~(ii).
@@ -1287,7 +1288,7 @@ For a plane multigraph $G$, let $\widehat{G}$ be the embedded graph obtained fro
 
 \begin{thm}
 \label{CliqueFaceProductStructure}
-Let $G$ be a 2-connected plane multigraph, in which every facial cycle has length in $\{3,\dots,d\}$ for some fixed integer $d\geq 3$. Then $\widehat{G}$ is contained in $H \boxtimes P \boxtimes K_{ d +3( \floor{d/2}-1) }$ for some graph $H$ with $\tw(H) \leq 3$ and for some path $P$.
+Let $G$ be a 2-connected plane multigraph, in which every facial cycle has length in $\{3,\dots,d\}$ for some fixed integer $d\geq 3$. Then $\widehat{G}$ is contained in $H \boxtimes P \boxtimes K_{ d +3 \floor{d/2}-3 }$ for some planar graph $H$ with $\tw(H) \leq 3$ and for some path $P$.
 \end{thm}
 
 Note that \cref{CliqueFaceProductStructure} with $d=3$ implies \cref{PlanarProduct}(b)  by \citet{DJMMUW20} (since every planar graph is a subgraph of a triangulation). Moreover, the proof of \cref{CliqueFaceProductStructure} is a direct generalisation of the proof of
@@ -1414,7 +1415,7 @@ This shows that $(B_x:x\in V(J))$ is the desired tree-decomposition of $G/\PP$.
 \end{proof}
 
 \begin{proof}[Proof of \cref{CliqueFaceProductStructure}]
-Let $G$ be a 2-connected plane multigraph, in which every facial cycle has length in $\{3,\dots,d\}$. Let $C$ be the outer-cycle of $G$. Let $G^+$ be obtained from $G$ by adding a new vertex $r$ adjacent to every vertex on the outerface of $G$. So $G^+$ is a 2-connected plane multigraph and $G=G^+\blah{C}$. Let $T$ be a BFS spanning tree of $G^+$ rooted at $r$. Let $\mathcal{L}=(L_0,L_1,\dots)$ be the corresponding BFS layering. By \cref{NewLemma}, $G$ has a partition $\PP$ into tripods with respect to $T$ such that $G / \PP$ has a tree-decomposition $\mathcal{T}$ of width at most 3 such that for every facial cycle $F$ of $G$ there is a bag $B$ of $\mathcal{T}$ for which every part of $\PP$ that intersects $F$ is in $B$. Since $G$ is a spanning subgraph of $\widehat{G}$, we may consider $\PP$ to be a partition of $\widehat{G}$, and $G/\PP \subseteq \widehat{G}/\PP$. Consider an edge $XY$ of $\widehat{G}/\PP$. By the definition of $\widehat{G}$, there is a facial cycle $F$ of $G$ such that both $X$ and $Y$ intersect $F$. By assumption, there is a bag $B$ of $\mathcal{T}$ such that every part of $\PP$ that intersects $F$ is in $B$. In particular, $X,Y\in B$. Hence $\TT$ is also a tree-decomposition of $\widehat{G}/\PP$. For each edge $vw$ of $\widehat{G}$, if $v\in L_i$ and $w\in L_j$ then $|i-j|\leq\floor{\frac{d}{2}}$. Grouping blocks of $\floor{\frac{d}{2}}$ consecutive layers in $\mathcal{L}$ gives a layering $\mathcal{L}'$ of $\widehat{G}$. Observe that each tripod in $\PP$ has at most $d+3( \floor{\frac{d}{2}}-1)$ vertices in each set of $\floor{\frac{d}{2}}$ layers of $\mathcal{L}$. Hence $\mathcal{L}'$ has layered width $d+3( \floor{\frac{d}{2}}-1)$ with respect to $\PP$. By \cref{PartitionProduct}, $\widehat{G}$ is contained in $H \boxtimes P \boxtimes K_{ d + 3( \floor{d/2} -1 )}$ where $H:=\widehat{G}/\PP$, which has treewidth 3.
+Let $G$ be a 2-connected plane multigraph, in which every facial cycle has length in $\{3,\dots,d\}$. Let $C$ be the outer-cycle of $G$. Let $G^+$ be obtained from $G$ by adding a new vertex $r$ adjacent to every vertex on the outerface of $G$. So $G^+$ is a 2-connected plane multigraph and $G=G^+\blah{C}$. Let $T$ be a BFS spanning tree of $G^+$ rooted at $r$. Let $\mathcal{L}=(L_0,L_1,\dots)$ be the corresponding BFS layering. By \cref{NewLemma}, $G$ has a partition $\PP$ into tripods with respect to $T$ such that $G / \PP$ has a tree-decomposition $\mathcal{T}$ of width at most 3 such that for every facial cycle $F$ of $G$ there is a bag $B$ of $\mathcal{T}$ for which every part of $\PP$ that intersects $F$ is in $B$. Since $G$ is a spanning subgraph of $\widehat{G}$, we may consider $\PP$ to be a partition of $\widehat{G}$, and $G/\PP \subseteq \widehat{G}/\PP$. Consider an edge $XY$ of $\widehat{G}/\PP$. By the definition of $\widehat{G}$, there is a facial cycle $F$ of $G$ such that both $X$ and $Y$ intersect $F$. By assumption, there is a bag $B$ of $\mathcal{T}$ such that every part of $\PP$ that intersects $F$ is in $B$. In particular, $X,Y\in B$. Hence $\TT$ is also a tree-decomposition of $\widehat{G}/\PP$. For each edge $vw$ of $\widehat{G}$, if $v\in L_i$ and $w\in L_j$ then $|i-j|\leq\floor{\frac{d}{2}}$. Grouping blocks of $\floor{\frac{d}{2}}$ consecutive layers in $\mathcal{L}$ gives a layering $\mathcal{L}'$ of $\widehat{G}$. Observe that each tripod in $\PP$ has at most $d+3\floor{\frac{d}{2}}-3$ vertices in each set of $\floor{\frac{d}{2}}$ layers of $\mathcal{L}$. Hence $\mathcal{L}'$ has layered width $d+3( \floor{\frac{d}{2}}-1)$ with respect to $\PP$. By \cref{PartitionProduct}, $\widehat{G}$ is contained in $H \boxtimes P \boxtimes K_{d+3\floor{d/2}-3}$ where $H:=\widehat{G}/\PP$, which has treewidth 3. \note{DW}{This proof needs to be changed to show that $G/\PP = \widehat{G}/\PP$, so $H$ is a minor of $G$ and is thus planar.}
 \end{proof}
 
 We now give two graph classes for which \cref{CliqueFaceProductStructure} is applicable.
@@ -1433,7 +1434,7 @@ We now give two graph classes for which \cref{CliqueFaceProductStructure} is app
 
 \begin{cor}
 	\label{New1Planar}
-	Every 1-planar graph is contained in $H \boxtimes P \boxtimes K_8$ for some graph $H$ with $\tw(H) \leq 3$ and for some path $P$.
+	Every 1-planar graph is contained in $H \boxtimes P \boxtimes K_7$ for some graph $H$ with $\tw(H) \leq 3$ and for some path $P$.
 \end{cor}
 
 \begin{lem}
