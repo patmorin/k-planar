@@ -9,7 +9,7 @@
 \usepackage{enumerate}
 \usepackage{amsfonts}
 \usepackage{amsthm,mathtools}
-\usepackage{pat}
+%\usepackage{pat}
 \usepackage{paralist}
 \usepackage{stmaryrd}
 \usepackage{thm-restate}
@@ -23,8 +23,8 @@
 \usepackage[longnamesfirst,numbers,sort&compress]{natbib}
 
 \usepackage[noabbrev,capitalise]{cleveref}
-\crefname{lem}{Lemma}{Lemmas}
 \crefname{thm}{Theorem}{Theorems}
+\crefname{lem}{Lemma}{Lemmas}
 \crefname{cor}{Corollary}{Corollaries}
 \crefname{prop}{Proposition}{Propositions}
 \crefname{conj}{Conjecture}{Conjectures}
@@ -36,6 +36,18 @@
 \crefname{openproblem}{Open Problem}{Open Problems}
 \crefformat{equation}{(#2#1#3)}
 \Crefformat{equation}{Equation #2(#1)#3}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{obs}[thm]{Observation}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{clm}{Claim}
+\theoremstyle{definition}
+\newtheorem{open}[thm]{Open Problem}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{ques}[thm]{Question}
 
 %\usepackage{doi} % To make plainnat handle doi's properly
 
@@ -108,6 +120,10 @@
 \renewcommand{\le}{\leqslant}
 \renewcommand{\geq}{\geqslant}
 \renewcommand{\leq}{\leqslant}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
 
 \title{\MakeUppercase{Graph Product Structure for Non-Minor-Closed Classes}}
 
@@ -364,7 +380,7 @@ to be the maximal subtree of $T$ rooted at $x$.
 
 We begin with a standard technique that allows us to work with a normalised tree-decomposition:
 
-\begin{lem}\lemlabel{nice-decomposition}
+\begin{lem}\label{nice-decomposition}
   For every graph $H$ of treewidth $t$, there is a rooted tree $T$ with $V(T)=V(H)$ and a width-$t$ $T$-decomposition $(B_x:x\in V(T))$ of $H$ that has following additional properties:
   \begin{compactenum}[(T1)]
     % \item\tlabel{rooted}\tlabel{first} $T$ is rooted at some node $x_0\in V(T)$ with $B_{x_0}=\emptyset$.
@@ -403,7 +419,7 @@ We begin with a standard technique that allows us to work with a normalised tree
 The following lemma shows how to interpret an $H$-partition of $G$ and a tree-decomposition of $H$ as a `hierarchical' decomposition of $G$; refer to \cref{fig:generalized-tripod}.
 
 \begin{lem}\label{generalized-tripod}
-  Let $G$ be a graph; let $\mathcal{L}:=\langle L_1,\ldots,L_h\rangle$ be a layering of $G$; let $\mathcal{Y}:=(Y_x: x\in V(H))$ be an $H$-partition of $G$ of layered width at most $\ell$ with respect to $\mathcal{L}$ where $H$ has treewidth at most $t$; and let $\mathcal{T}:=(B_x:x\in V(T))$ be a tree-decomposition of $H$ satisfying the conditions of \lemref{nice-decomposition}.  For each $x\in V(T)$, let $V_x := \bigcup_{y\in V(T_x)} Y_y$, $F_x:=\{w\in V(G): vw\in E(G), v\in V_x,\, w\not\in V_x\}$, and $N_x:=V_x\cup F_x$.  Then,
+  Let $G$ be a graph; let $\mathcal{L}:=\langle L_1,\ldots,L_h\rangle$ be a layering of $G$; let $\mathcal{Y}:=(Y_x: x\in V(H))$ be an $H$-partition of $G$ of layered width at most $\ell$ with respect to $\mathcal{L}$ where $H$ has treewidth at most $t$; and let $\mathcal{T}:=(B_x:x\in V(T))$ be a tree-decomposition of $H$ satisfying the conditions of \cref{nice-decomposition}.  For each $x\in V(T)$, let $V_x := \bigcup_{y\in V(T_x)} Y_y$, $F_x:=\{w\in V(G): vw\in E(G), v\in V_x,\, w\not\in V_x\}$, and $N_x:=V_x\cup F_x$.  Then,
   \begin{compactenum}[(Y1)]
     % \item\ylabel{thickness} $\mathcal{Y}=(Y_x: x\in V(T))$ is a partition of $V(G)$ of layered width at most $\ell$ with respect to $\mathcal{L}$.
     \item\ylabel{separator} For each $x\in V(T)$, there is no edge $vw\in E(G)$ with $v\in V_x$ and $w\in V(G)\setminus N_x$.
@@ -962,7 +978,7 @@ Prior to the current work, the strongest upper bound on the non-repetitive chrom
 
 %%%%%%%%%%%%%%%%%%%
 \subsection{Centered Colourings}
-\seclabel{centered-colourings}
+\label{centered-colourings}
 
 A $c$-colouring $\phi$ of $G$ is \defin{$p$-centered} if, for every connected subgraph $X\subseteq G$, $|\{\phi(v):v\in V(X)\}| > p$ or there exists some $v\in V(X)$ such that $\phi(v)\neq \phi(w)$ for every $w\in V(X)\setminus\{v\}$.  In words, either $X$ receives more than $p$ colours or some vertex in $X$ receives a unique colour.  Let $\chi_p(G)$ be the minimum integer $c$ such that $G$ has a $p$-centered $c$-colouring. Centered colourings are important since they characterise classes of bounded expansion, which is a key concept in the sparsity theory of \citet{Sparsity}.
 
@@ -1284,7 +1300,6 @@ We employ the following well-known variation of Sperner's Lemma (see~\citep{Proo
 Let $G$ be a near-triangulation whose vertices are coloured $1,2,3$, with the outer-face $F=[P_1,P_2,P_3]$ where each vertex in $P_i$ is coloured $i$. Then $G$ contains an internal face whose vertices are coloured $1,2,3$. \note{DW}{Does this allow parallel edges: check the proof in \citep{Proofs4}.}
 \end{lem}
 
-
 %If $C$ is a cycle in a graph, and $P_1, \dots,P_k$ are edge-disjoint non-empty subpaths of $C$ ordered around $C$ and partitioning $E(C)$, then we write $C=(P_1,\dots,P_k)$.
 
 Say $G$ is a 2-connected plane multigraph. Let $T$ be a spanning tree of $G$ rooted at a vertex $r$ on the outerface of $G$. A \defin{bipod} in $G$ (with respect to $T$) is any path $P_1SP_2$ (considered to be a subgraph), where $S$ is a facial path in $G$, and each $P_i$ is a vertical path in $T$ whose lower endpoint is in $S$. Here it is possible that $S$ or $P_i$ is empty. So every subpath of a bipod is a bipod. A \defin{tripod} in $G$ (with respect to $T$) is either a bipod in $G$ or a subgraph of $G$ consisting of a facial cycle $F$ of $G$, plus three distinct vertical paths $P_1,P_2,P_3$ in $T$ where the lower endpoint of each $P_i$ is in $F$. These definitions generalise definitions in \citep{DJMMUW20} where $G$ is assumed to be a plane triangulation, in which case $F$ is a 3-cycle. \note{DW}{We actually managed to omit the definition of `bipod' in \citep{DJMMUW20}!}
@@ -1343,7 +1358,7 @@ $L_{i,j}$ is the path $Z_j-V(C)$ (which is contained in $Y$). \note{DW}{Add a fi
 Since $R_i^+$, $R_{i+1}^-$ and $L_i$ are bipods,
 $R_{i,j}^+$, $R_{i+1,j}^-$ and $L_{i,j}$ are bipods.
 By construction, $v_{i-1}$ is not in $G_j$ (where $v_0=v_3$).
-Thus $V(G_j)\setminus V(Z_j) \subsetneq V(G)\setminus V(C)$, and we may apply induction to $G_j$.  Thus $G_j$ has a partition $\PP_j$ into tripods with respect to $T$ such that $R_{i,j}^+, R_{i+1,j}^-, L_{i,j}\in\PP_j$, and 	$G_j / \PP_j$ has a tree-decomposition  $\mathcal{T}_j=\{B_x:x\in V(D_j)\}$ of width at most 3 such that for every facial cycle $F'$ of $G_j$ there is a bag $B$ of $\mathcal{T}_j$ such that every part of $\PP_j$ that intersects $F'$ is in $B$.
+Thus $V(G_j)\setminus V(Z_j) \subsetneq V(G)\setminus V(C)$, and we may apply induction to $G_j$.  Thus $G_j$ has a partition $\PP_j$ into tripods with respect to $T$ such that $R_{i,j}^+, R_{i+1,j}^-, L_{i,j}\in\PP_j$, and 	$G_j / \PP_j$ has a tree-decomposition  $\mathcal{T}_j=\{B_x:x\in V(D_j)\}$ of width at most 3 such that for every facial cycle $F'$ of $G_j$ there is a bag $B$ of $\mathcal{T}_j$ such that every part of $\PP_j$ that intersects $F'$ is in $B$. Since $C$ is a facial cycle of $G_j$, there is a bag $B_{u_j}$ of $G_j$ such that $P_1,\dots,P_k\in B_{u_j}$. 
 
 
 %This graph has up to three \note{DW}{can be more} internal faces $C_1,C_2,C_3$ where each $C_i=[Q_i',R_i^+,R_{i+1}^-,Q_{i+1}']$ and $R_{i}^+$ and $R_{i}^-$ are the same portions of $R_i$ as defined in \cref{NearTriang} \note{DW}{move in here}    Observe that  $C_i=[ R_i^+ , R_{i+1}^-, I_i ]$, where $R_i^+$ and $R_{i+1}^-$ are bipods, and $I_i$ is the bipod $Q_i' L_i Q_{i+1}'$. Let $G_i$ be the subgraph of $G$ whose vertices and edges are in $C_i$ or its interior.
