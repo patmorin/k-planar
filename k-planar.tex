@@ -749,7 +749,6 @@ A tree-decomposition $\mathcal{T}$ of a graph $G$ is \defin{$t$-simple} if each 
       \end{tabular}
     \end{center}
     \caption{Three cases when choosing the face $\tau$ of $N'$.}
-    \todo[inline]{Update these figures with $d$-sided $\tau$.}
     \label{boring_figure}
   \end{figure}
 
@@ -828,7 +827,7 @@ If $W$ contains a dummy vertex $w_i$, then neither $w_{i-1}$ nor $w_{i+1}$ is a 
 %   \item bounded by one edge of $G$ that is not crossed plus portions of two edges of $G$ that cross each other.
 % \end{inparaenum}
 
-Consider some pair of edges $vw$ and $xy$ that cross at $p$.  The point $p$ is a vertex of $G_0$ that has degree $4$.  There are four faces $F_1,\ldots,F_4$ of $G_0$ that contain $p$ and, from the preceding discussion each of $vx$, $xw$, $wy$, and $yv$ is an uncrossed edge of $G$.  Therefore, by removing each pair of crossing edges from $G$ we obtain a plane multigraph $G'$ each of whose faces is bounded by three or four edges; see \cref{one_planar_example}(b).  There $G$ is a $4$-framed graph with frame $G'$.
+Consider some pair of edges $vw$ and $xy$ that cross at $p$.  The point $p$ is a vertex of $G_0$ that has degree $4$.  There are four faces $F_1,\ldots,F_4$ of $G_0$ that contain $p$ and, from the preceding discussion each of $vx$, $xw$, $wy$, and $yv$ is an uncrossed edge of $G$.  Therefore, by removing each pair of crossing edges from $G$ we obtain a plane multigraph $G'$ each of whose faces is bounded by three or four edges; see \cref{one_planar_example}(b).  Therefore $G$ is a $4$-framed graph with frame $G'$.
 % Since, for any pair of crossing edges $\{vw,xy\}$ that we remove this way, $vxwy$ is a cycle in $G'$, $\dist_{G'}(v,w)\le 2$ and $\dist_{G'}(x,y)\le 2$.
 % It follows immediately that, for any pair of vertices $a,b\in V(G)$, $\dist_{G'}(a,b)\le 2\dist_G(a,b)$.
 \end{proof}
