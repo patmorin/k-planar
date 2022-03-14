@@ -708,10 +708,10 @@ This result is used below to obtain product structure theorems for 1-planar mult
 	We have already established that the only bag that contains $\{x_1,x_2,x_3\}$ is $B_{y_0}$, so we need only consider triples $\{x_0,x_a,x_b\}$ with $1\le a<b\le 3$. By the preceding claim, there is at most one face $F_i$ with vertices of $S$, $P_a$, and $P_b$ on its boundary.  By the inductive hypothesis, the only other bag in $\mathcal{T}$ that contains $\{x_0,x_a,x_b\}$ is the bag $B_{z_i}$.  This completes the proof.
 \end{proof}
 
-% \todo[inline]{Alternative to the final three paragraphs in the preceding proof:
-%
-% To see that $H$ is planar, consider the plane multigraph $G''$ obtained by adding a vertex in the interior of each face of $G'$.
-% }
+\todo[inline]{Alternative to the final three paragraphs in the preceding proof:
+
+To see that $H$ is planar, imagine adding a vertex consider a plane multigraph $G''$ obtained by adding a vertex $v_\tau$ in the interior of some of the faces of $G'$.  When creating a new part $S:=V(\tau\cup Q_1\cup Q_2\cup Q_3-F)$ of $\mathcal{P}$, add a vertex $v_\tau$ to the interior of $\tau$ that is adjacent to each vertex of $\tau$.  The graph $G''\supseteq G'$ obtained this way is clearly planar.  Furthermore, for each part $P\in\mathcal{P}$, $G''[P]$ is connected.  Since planarity is preserved under edge contraction, it follows that $G''/\mathcal{P}$ is planar.  Now argue that $G/\mathcal{P}=G''/\mathcal{P}$.
+}
 
 Using \cref{induction}, the proof of \cref{d_framed_product_stucture} is now straightforward.
 
