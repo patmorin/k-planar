@@ -613,17 +613,17 @@ Every $d$-framed multigraph is contained in $H\boxtimes P\boxtimes K_{d+3\floor{
 
 This result is used below to obtain product structure theorems for 1-planar multigraphs and for map graphs. For simple 1-planar graphs it is essential that we allow frames with parallel edges.
 
-\cref{d_framed_product_stucture} follows quickly from the following technical lemma, which is an extension of the analogous result for plane graphs \cite{DJMMUW20}. The following definition is a convenient way to establish the planarity of $H$ in \cref{d_framed_product_stucture}:  A tree-decomposition $\mathcal{T}$ of a graph $G$ is \defin{$t$-simple} if each of its bags has size at most $t+1$ and, for each $t$-element subset $\{v_1,\ldots,v_t\}\subseteq V(G)$, at most two bags of $\mathcal{T}$ contain $\{v_1,\ldots,v_t\}$.
+\cref{d_framed_product_stucture} follows quickly from the following technical lemma, which is an extension of the analogous result for plane graphs \cite{DJMMUW20}. The following definition is a convenient way to establish the planarity of $H$ in \cref{d_framed_product_stucture}:  A tree-decomposition $\mathcal{T}$ of a graph $G$ is \defin{$t$-simple} if each of its bags has size at most $t+1$ and, for each $t$-element subset $\{v_1,\ldots,v_t\}\subseteq V(G)$, at most two bags of $\mathcal{T}$ contain $\{v_1,\ldots,v_t\}$.  Finally, a \emph{BFS spanning forest} $T$ of $G$ rooted at a set $V_0\subseteq V(G)$ is a spanning forest of $G$ with the property that $\dist_G(v,V_0)=\dist_T(v,V_0)$ for each $v\in V(G)$.
 
 \begin{lem}
 	\label{induction} The setup:
 	\begin{compactenum}
 		\item Let $G$ be a $d$-framed multigraph and let $G'$ be a frame of $G$.
-		\item Let $T$ be a BFS spanning tree of $G'$ rooted at some vertex $r$.
-		\item For every integer $j\ge 0$, let $L_j=\{v\in V(G):\dist_T(r,v)=j\}$.
+		\item Let $F_0$ be the outer face of $G'$ and let $T$ be a BFS spanning forest of $G'$ rooted at $V(F_0)$.
+		\item For every integer $j\ge 0$, let $L_j=\{v\in V(G):\dist_T(v,V(F_0))=j\}$.
 		\item Let $F$ be a cycle in $G'$ with $r$ in the exterior of $F$ and such that $V(F)$ can be partitioned into $k\le 3$ sets $P_1,\ldots,P_k$ such that for each $i\in\{1,\ldots,k\}$,
 		\begin{compactenum}
-			\item $F[P_i]$ is a path; and
+			\item if $k\in\{2,3\}$ then $F[P_i]$ is a path; and
 			\item $P_i=Y_i\cup X_i$ where $|X_i|\le d-3$ and $|Y_i\cap L_j| \le 3$ for each $j\ge 0$.
 		\end{compactenum}
 		\item Let $N$ and $N'$ be the subgraphs of $G$ and $G'$ consisting only of those edges and vertices contained in the closure of $F$.
@@ -652,7 +652,7 @@ This result is used below to obtain product structure theorems for 1-planar mult
 
 		\item If $k= 2$ then we let $\tau:=v_1,\ldots,v_p$ be an inner face of $N'$ that contains at least one edge $v_1v_2$ of $F$ on its boundary and such that $v_1\in P_1$ and $v_2\in P_2$.
 
-		\item If $k=3$ then assign each vertex $v$ of $N'$ a colour $\alpha(v)\in\{1,\ldots,3\}$ as follows:  Let $w$ be the first vertex of $F$ encountered on the path in $T$ from $v$ to the root of $T$.  (This implies that $w=v$ when $v$ is a vertex of $F$.)  Since $w\in V(F)$, $w\in P_i$ for some $i\in\{1,\ldots,k\}$ and we define $\alpha(v):=i$.  Now, for each $d'\in\{4,\ldots,d\}$ and each $d'$-sided inner face $F$ of $N'$, add edges $d'-2$ edges inside of $F$ to split it into $3$-sided faces.  This yields a plane supergraph $N''$ of $N'$ in which each inner face has exactly three edges on its boundary. By Sperner's Lemma there exists an inner face $\tau'':=v_1,v_2,v_3$ of $N''$ such that $\alpha(v_i)=i$ for each $i\in\{1,2,3\}$.  Let $\tau:=v_1,\ldots,v_p$ be the face of $N'$ that contains $\tau''$.  % (Note that $p\in\{3,4\}$.)
+		\item If $k=3$ then assign each vertex $v$ of $N'$ a colour $\alpha(v)\in\{1,\ldots,3\}$ as follows:  Let $w$ be the first vertex of $F$ encountered on the path in $T$ from $v$ to the appropriate vertex of $F_0$.  (This implies that $w=v$ when $v$ is a vertex of $F$.)  Since $w\in V(F)$, $w\in P_i$ for some $i\in\{1,\ldots,k\}$ and we define $\alpha(v):=i$.  Now, for each $d'\in\{4,\ldots,d\}$ and each $d'$-sided inner face $F$ of $N'$, add edges $d'-2$ edges inside of $F$ to split it into $3$-sided faces.  This yields a plane supergraph $N''$ of $N'$ in which each inner face has exactly three edges on its boundary. By Sperner's Lemma there exists an inner face $\tau'':=v_1,v_2,v_3$ of $N''$ such that $\alpha(v_i)=i$ for each $i\in\{1,2,3\}$.  Let $\tau:=v_1,\ldots,v_p$ be the face of $N'$ that contains $\tau''$.  % (Note that $p\in\{3,4\}$.)
 	\end{compactenum}
 
 	%  \todo[inline]{%
@@ -715,20 +715,19 @@ To see that $H$ is planar, consider a plane multigraph $G''$ obtained by adding 
 
 Using \cref{induction}, the proof of \cref{d_framed_product_stucture} is now straightforward.
 
-\note{PM}{Annoying detail:  When we allow framed graphs to have crossings in the outer face, we can't guarantee that $G'$ has any face smaller than $d$. This makes it awkward to start the induction using \cref{induction}. Possible solutions:
-\begin{compactenum}
-  \item Disallow the addition of edges in the outer face of a frame.
-  \item Modify \cref{induction} so that $T$ is a BFS forest rooted at the set of vertices on the outer face of $G'$. Then we can start the induction with $k=1$.
-\end{compactenum}
-I prefer the second option.  Thoughts?
-}
+% \note{PM}{Annoying detail:  When we allow framed graphs to have crossings in the outer face, we can't guarantee that $G'$ has any face smaller than $d$. This makes it awkward to start the induction using \cref{induction}. Possible solutions:
+% \begin{compactenum}
+%   \item Disallow the addition of edges in the outer face of a frame.
+%   \item Modify \cref{induction} so that $T$ is a BFS forest rooted at the set of vertices on the outer face of $G'$. Then we can start the induction with $k=1$.
+% \end{compactenum}
+% I prefer the second option.  Thoughts?
+% }
 
 \begin{proof}[Proof of \cref{d_framed_product_stucture}]
-	Let $G$ be a $d$-framed multigraph with frame $G'$\todo{Deal with the case where $G'$ has no triangular face.} and assume that the outer face of $G'$ has exactly three vertices $v_1,v_2,v_3$ and that no edges of $G$ are in the outer face of $G'$.  Add a vertex $r$ adjacent to $v_1$, $v_2$, and $v_3$ to obtain a $d$-framed multigraph $\overline{G}$ with frame $\overline{G}'$.
+	Let $G$ be a $d$-framed multigraph with frame $G'$ having outer face $F_0$.	Let $T$ be a BFS forest of $G'$ rooted at $V(F_0)$ and let $\langle L_0,L_1,\ldots\rangle$ be the resulting BFS layering.  Let $P_1:= V(F_0)$, let $Y_1$ be any subset of $\min\{|P_1|,3\}$ vertices in $P_1$ and let $X_1:=P_1\setminus Y_1$.  Now apply \cref{induction} on $G$, $G'$, $T$, $F=F_0$, $k=1$, and $P_1=Y_1\cup X_1$.
+    This gives an $H$-partition $\mathcal{P}:=\{S_x:x\in V(H)\}$ of $G$ in which $H$ has a $3$-simple tree decomposition.  Since any graph having a $3$-simple tree decomposition is planar \cite{X}, this implies that $H$ is planar.
 
-	Let $T$ be a BFS tree of $\overline{G}'$ rooted at $r$ and let $\langle L_0,L_1,\ldots,\rangle$ be the resulting BFS layering.  Now apply \cref{induction} with $G=\overline{G}$, $\overline{G}'$, $F$, and $P_i=\{v_i\}$ for each $i\in\{1,2,3\}$.  This gives an $H$-partition $\mathcal{P}:=\{S_x\cup\{v_x\}:x\in V(H)\}$ of $\overline{G}-\{r\}\supseteq G$ in which $H$ has a $3$-simple tree decomposition.  Since any graph having a $3$-simple tree decomposition is planar \cite{X}, this implies that $H$ is planar.
-
-	Use the layering $\mathcal{L}=\langle L_0',L_1'\ldots\rangle$ where $L_i'=L_{\lfloor d/2\rfloor i}\cup \cdot \cup L_{\lfloor d/2\rfloor(i+1)-1}$ for each integer $i\ge 0$. That this is a layering of $G$ follows from the fact that $\dist_{G'}(v,w)\le \lfloor d/2\rfloor$ for each edge $vw\in E(G)$.  Since $|L_j\cap Y_x|\le 3$ for each integer $j\ge 0$, $|L_i'\cap Y_x|\le 3\lfloor d/2\rfloor$ and therefore $|L_i'\cap S_x|= |L_i'\cap Y_x| |L_i'\cap X_x|\le \lfloor d/2\rfloor + d -3$ for each integer $i\ge 0$ and each $x\in V(H)$. The result follows from \cref{PartitionProduct}.
+	Use the layering $\mathcal{L}=\langle L_0',L_1'\ldots\rangle$ where $L_i'=L_{\lfloor d/2\rfloor i}\cup \cdot \cup L_{\lfloor d/2\rfloor(i+1)-1}$ for each integer $i\ge 0$. That this is a layering of $G$ follows from the fact that $\dist_{G'}(v,w)\le \lfloor d/2\rfloor$ for each edge $vw\in E(G)$.  Since $|L_j\cap Y_x|\le 3$ for each integer $j\ge 0$, $|L_i'\cap Y_x|\le 3\lfloor d/2\rfloor$ and therefore $|L_i'\cap S_x|= |L_i'\cap Y_x|+ |L_i'\cap X_x|\le \lfloor d/2\rfloor + d -3$ for each integer $i\ge 0$ and each $x\in V(H)$. The result follows from \cref{PartitionProduct}.
 \end{proof}
 
 
