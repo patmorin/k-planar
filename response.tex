@@ -9,6 +9,8 @@
 \usepackage{paralist}
 \usepackage{stmaryrd}
 
+\usepackage{todonotes}
+
 \newcommand{\done}{\textcolor{blue}{Done.}}
 \newcommand{\tba}{\textcolor{red}{To be addresssed.}}
 
@@ -48,6 +50,23 @@ difficult to read due to the notation, and the paper could be substantially
 streamlined without losing the above results. Detailed suggestions follow.
 
 Major comments:
+
+
+The following comments are all related to the proof of Theorem~3.  Much of the difficulty comes from the fact that there are many things to keep track of. We are a given a graph $G$, a shortcut system $\mathcal{S}$, a layering $\mathcal{L}$, a vertex-partition $\mathcal{P}$, and a tree decomposition $\mathcal{T}$ of the quotient graph $H:=G/\mathcal{P}$.  Now we have to use these to show the existence of a new layering $\mathcal{L}'$, a new vertex partition $\mathcal{P'}$, a new tree decomposition $\mathcal{T}'$ of the new quotient graph $H':=G^{\mathcal{S}}$.
+
+During the proof, a number of related sets come up, which we have given names to. As a referee point out, these could remain unnamed and be described using an appropriate notation.  
+
+\todo[inline]{Write something more here depending on how the experiment with new notation works out.}
+
+A secondary issue is that a number of the proofs in this section are essentially "definition checking".  The relationships between the various vertex sets that arise in the proof really do just follow from their definitions (which were made with this purpose in mind).  We have done this checking explicitly, though each of these proofs could also be replaced by a sentence of the form ``This [claim/lemma] follows from the definitions of\ldots''.  It is not clear what the best choice is.
+
+The real action begins in the proof Theorem 9 (using numbering from the original submission) and especially Claim 3 (which involves some careful counting) and Claim 5 (which involves checking that we have everything needed to apply the Pillipczuk-Siebertz lemma on $k$-reachability in ``upward-directed'' graphs of treewidth $t$.)
+
+\todo[inline]{Write more here depending on how the notation experiment turns out.}
+
+ % and new vertex partition of a related graph $G^\mathcal{S}$ as we  A large part of the 
+
+
 
 1. Lemma 3: This lemma is really about ``normalised'' tree decompositions, and says that for each $x \in V(T)$, the set $V(T_x)$ has at most $t$ neighbours in $H$. Call this property (T3) and remove (Y1)  through (Y5), which should now be obvious.
 
