@@ -414,6 +414,10 @@ The following lemma shows how to interpret an $H$-partition of $G$ and a tree-de
 
 \referee{1}{1. Lemma 3: This lemma is really about ``normalised'' tree-decompositions, and says that for each $x \in V(T)$, the set $V(T_x)$ has at most $t$ neighbours in $H$. Call this property (T3) and remove (Y1) through (Y5), which should now be obvious.}
 
+\note{PM}{I've added to the \texttt{response.tex} file explaining some of this.  Each of (Y1), (Y3), (Y4), and (Y5) have a one-sentence justification. The justification for (Y2) is just definition unpacking and then using the observation that the referee recommends.}
+
+\note{PM}{I plan to do an experiment with the referee's suggested notation, in a separate git branch to see how it turns out.}
+
 Before proving \cref{generalized-tripod} we point out more properties that are immediately implied by it:
 
 \begin{compactenum}[(Y1)]\setcounter{enumi}{2}
@@ -429,17 +433,19 @@ Property~\yref{y-subsets} follows from the fact that $V_x$ is the union of sever
   % Property~\yref{thickness} follows immediately from the fact that $V(T)=V(H)$  and the fact that $\mathcal{Y}$ has layered width at most $\ell$ with respect to $\mathcal{L}$.
   Property \yref{separator} is immediate from the definitions of $F_x$ and $N_x$.  In particular, $(N_x,V(G)\setminus V_x)$ is a separation of $G$ with $F_x=N_x\cap(V(G)\setminus V_x)$.
 
-  To establish Property~\yref{ancestor-edge}, consider some vertex $w\in F_x$.  Since $w\in F_x$, there exists an edge $vw\in E(G)$ with $v\in V_x$ and $w\not\in V_x$.  Since $v\in V_x$, $v\in Y_{x'}$ for some $T$-descendant $x'$ of $x$ (possibly $x=x'$). Since $\mathcal{Y}$ is a partition, $w\in Y_{a}$ for some $a\not\in V(T_x)$.  Since $vw\in E(G)$, we have $x'a\in E(H)$.  By \tref{ancestor-edge}, one of $a$ or $x'$ is a $T$-ancestor of the other. Since $w\in Y_a\subseteq V_a$ and $w\not\in V_x\supseteq V_{x'}$, \yref{containment-i} rules out the possibility that $x'$ is a $T$-ancestor of $a$. Therefore, $a$ is a $T$-ancestor of $x$ which is a $T$-ancestor of $x'$.  Let $z_0,\ldots,z_r$ be the path in $T$ from $z_0:=x'$ to $z_r:=a$.  For each $i\in\{0,\ldots,r\}$, at least one of $a$ or $x'$ is in $B_{z_i}$, since $x'a\in E(H)$.  However, by \tref{subtree-root} $x'$ is not contained in $B_{x_i}$ for any $i\in\{1,\ldots,r\}$.  Therefore $a\in B_{x_i}$ for each $i\in\{0,\ldots,r\}$.  In particular, $a$ is contained in $B_x$.
+  To establish Property~\yref{ancestor-edge}, consider some vertex $w\in F_x$.  Since $w\in F_x$, there exists an edge $vw\in E(G)$ with $v\in V_x$ and $w\not\in V_x$.  Since $v\in V_x$, $v\in Y_{x'}$ for some $T$-descendant $x'$ of $x$ (possibly $x=x'$). Since $\mathcal{Y}$ is a partition, $w\in Y_{a}$ for some $a\not\in V(T_x)$.  Since $vw\in E(G)$, we have $x'a\in E(H)$.  By \tref{ancestor-edge}, one of $a$ or $x'$ is a $T$-ancestor of the other. Since $w\in Y_a\subseteq V_a$ and $w\not\in V_x\supseteq V_{x'}$, \yref{containment-i} rules out the possibility that $x'$ is a $T$-ancestor of $a$. Therefore, $a$ is a $T$-ancestor of $x$ which is a $T$-ancestor of $x'$.  Let $z_0,\ldots,z_r$ be the path in $T$ from $z_0:=x'$ to $z_r:=a$.  Since $x'a\in E(H)$, at least one of $a$ or $x'$ is in $B_{z_i}$, for each $i\in\{0,\ldots,r\}$ and there is at least one $i$ such that $B_{z_i}$ contains both $x'$ and $a$.  However, by \tref{subtree-root} $x'$ is not contained in $B_{z_i}$ for any $i\in\{1,\ldots,r\}$.  Therefore $a\in B_{z_i}$ for each $i\in\{0,\ldots,r\}$.  In particular, $a$ is contained in $B_x$.
   Property~\yref{ancestor-edge} now follows from the fact that $|B_x|\le t+1$ and $B_x$ contains $x$.
 \end{proof}
 
-\referee{2}{Page 7.  In the very last sentence, I think $B_{x_i}$ should be $B_{z_i}$
-(twice).  Moreover, the way the proof is written, it seems to suggest
-that we only get that $a \in B_{z_i}$ for each $i \in \{1, \dots, r\}$.
-The conclusion that $a \in B_{z_i}$ for each $i \in \{0, \dots, r\}$ is
-true though.  In a normalized tree-decomposition, if $xy$ is an edge and
-$x$ is a $T$-ancestor of $y$, then $x$ must be in $B_y$ (since the subtrees $T_x$
-and $T_y$ intersect).}
+% \referee{2}{Page 7.  In the very last sentence, I think $B_{x_i}$ should be $B_{z_i}$
+% (twice).  Moreover, the way the proof is written, it seems to suggest
+% that we only get that $a \in B_{z_i}$ for each $i \in \{1, \dots, r\}$.
+% The conclusion that $a \in B_{z_i}$ for each $i \in \{0, \dots, r\}$ is
+% true though.  In a normalized tree-decomposition, if $xy$ is an edge and
+% $x$ is a $T$-ancestor of $y$, then $x$ must be in $B_y$ (since the subtrees $T_x$
+% and $T_y$ intersect).}
+
+%\note{PM}{I addressed the preceding referee's.}
 
 We are now ready to prove our main result, which we restate here for convenience:
 
@@ -499,6 +505,8 @@ First we need to understand the relationship between sets $S_x\in\PP$ and the re
 
 \referee{1}{8. general comment: Claims 1, 2, and 4 are especially belaboured by
 notation as they are quite straightforward.}
+
+\note{PM}{Same comment: Yes, these claims are definition checking.  We'll see if the experimental notation change helps.}
 
 \begin{clm}
 	\label{s-subset}
@@ -563,6 +571,8 @@ to talk about $T$-ancestors instead. Move the definition of $H+$ and its
 directed version up, along with the explanation of what will be proven,
 so that it isn’t necessary to define the $s_i$.}
 
+\note{PM}{I also found the steps in this proof tedious. Unfortunately, when I tried to give a simple explanation for it in Banff, both Piotr and Torsten remained unconvinced until we opened the paper and walked through the steps of the proof together.  I suspect the referee who can see through these proofs if one of the authors of \cite{PS21}.}
+
 \begin{proof}
   For the tree-decomposition $(C_x:x\in V(T))$ of $J$ we use the same tree $T$ used in the tree-decomposition $(B_x:x\in V(T))$ of $H$. For each node $x$ of $T$, we define $C_x$ as follows: $C_x$ contains $x$ as well as every $T$-ancestor $a$ of $x$ such that $J$ contains an edge $ax'$ where $x$ is a $T$-ancestor of $x'$ (including the possibility that $x=x'$).
   \cref{i-ancestor} ensures that, for every edge $ax'\in E(J)$, $a,x'\in C_{x'}$.  The connectivity of $T[a]:=T[\{x\in V(T):a\in C_x\}]$ follows from the fact that, for every node $x'\in T[a]$, every node $x$ on the path in $T$ from $x'$ to  $a$ is also a node of $T[a]$.  Therefore $(C_x:x\in V(T))$ is indeed a tree-decomposition of $J$.  It remains to bound the size of each bag $C_x$.
@@ -591,7 +601,8 @@ so that it isn’t necessary to define the $s_i$.}
   We claim that $a_0,\ldots,a_p$ is a lazy walk\footnote{A \defin{lazy walk} in a graph $H$ is a walk in the pseudograph $H'$ obtained by adding a loop at each vertex of $H$.} in $H^+$.  Indeed, if $a_i\neq a_{i+1}$ for some $i\in\{0,\ldots,p-1\}$ then this is precisely because $w_i\in V_{a_i}$ but $w_{i+1}\not\in V_{a_i}$.  By definition, $w_i\in Y_{a_i'}$ for some $T$-descendant $a_i'$ of $a_i$.
   By \yref{separator}, $w_{i+1}\in F_{a_i}$ so by \yref{ancestor-edge} $w_{i+1}\in Y_{a_i''}$ for some strict $T$-ancestor $a_i''$ of $a_i$.  Since $w_iw_{i+1}\in E(G)$, $a_i'a_i''\in E(H)$.  By \tref{subtree-root}, $a_i''\in B_{a_i''}$ and $a_i''\in B_{a_i'}$.  Since $a_i$ is on the path from $a_i'$ to $a_i''$ in $T$ this implies that $a_i''\in B_{a_i}$.  Therefore $a_ia_i''\in E(H^+)$ as claimed.
 
-\referee{2}{Page 18.  Say $H'$ is connected since $X$ is connected.}
+% \referee{2}{Page 18.  Say $H'$ is connected since $X$ is connected.}
+% \note{PM}{This is in the wrong place. It refers to the proof about centered colouring, which is now just a reference.}
 
   Thus, $a_0,\ldots,a_p$ is a lazy walk in $H^+$ of length $p\le k$ where the distance $s_i$ between $a_i$ and the root $x_0$ of $T$ is non-decreasing.  By removing repeated vertices this gives a path in the directed graph $\overrightarrow{H}^+$ obtained by directing each edge $xy\in E(H^+)$ from its $T$-descendant $x$ towards its $T$-ancestor $y$.
   Finally, we are in a position to appeal to \cite[Lemma~13]{PS21} which states that the number of nodes in $\overrightarrow{H}^+$ that can be reached from any node $x$ by a directed path of length at most $k$ is at most $\binom{k+t}{t}$.
@@ -610,6 +621,7 @@ At this point, the proof of \cref{ShortcutPartition} is almost immediate from \c
 \subsection{Framed Graphs}
 
 For any integer $d\ge 3$, a (multi)graph $G$ is \defin{$d$-framed} if it admits a drawing in the plane having a biconnected plane spanning (multi) subgraph $G_0$, whose facial cycles have length at most $d$,  and such that the interior of each edge in $E(G)\setminus E(G_0)$ is contained in the interior of some face of $G_0$. The graph $G_0$ is called the \defin{frame} of $G_0$. This definition (for simple graphs) was introduced by \citet{BDGGMR}. Every $d$-framed multigraph can be described by a $(2,\binom{d}{2})$-shortcut system applied to a planar graph. Thus \cref{ShortcutProduct} is applicable. However, for framed graphs we prove the following stronger result, where the treewidth bound on $H$ is best possible.\footnote{A multigraph $G$ is \defin{contained} in a graph $G'$ if the simple graph underlying $G$ is isomorphic to a subgraph of $G'$.}
+
 
 \begin{thm}\label{d_framed_product_stucture}
 Every $d$-framed multigraph is contained in $H\boxtimes P\boxtimes K_{d+3\floor{d/2}-3}$ for some planar graph $H$ with treewidth at most 3 and for some path $P$.
@@ -685,7 +697,7 @@ This result is used below to obtain product structure theorems for 1-planar mult
 		\label{boring_figure}
 	\end{figure}
 
-	Refer to \cref{boring_figure}.  Let $M$ denote the subgraph of $N'$ containing the edges and vertices of $\overline{S}$ and the edges and vertices of $F$. By our choice of $\tau$, the graph $M$ is $2$-connected.  
+	Refer to \cref{boring_figure}.  Let $M$ denote the subgraph of $N'$ containing the edges and vertices of $\overline{S}$ and the edges and vertices of $F$. By our choice of $\tau$, the graph $M$ is $2$-connected.
   % Since $N'\subseteq G'$ contains only edges of $N\subseteq G$ that are not crossed, each component of $N-V(M)$ is contained in a single face of $M$.
 	Let $F_1,\ldots,F_m,\tau$ be the inner faces of $M$. By our choice of $v_1v_2v_3$, the vertices of each $F_i$ can be partitioned into at most three sets $P_{i,1}$, $P_{i,2}$, and $P_{i,3}$ where $P_{i,1}\subset Y$, $P_{i,2}\subseteq P_b$, and $P_{i,3}\subseteq P_c$ for some $b,c\in\{1,\ldots,k\}$.
 
@@ -706,7 +718,7 @@ This result is used below to obtain product structure theorems for 1-planar mult
 	Recall that $P_{i,1}:=V(N_i)\cap S$, $P_{i,2}:=V(N_i)\cap P_b$ and $P_{i,3}:=V(N_i)\cap P_c$ for some $b,c\in\{1,\ldots,k\}$.  For each bag $B_z$, $z\in V(T_i)$, replace each occurrence of $a_i$ by $x_0$, replace each occurrence of $b_i$ by $x_b$ and replace each occurrence of $c_i$ by $x_c$.  These replacements do not increase the size of any bag and they result in a tree decomposition of the graph obtained from $H_i$ by renaming the vertices $a_i$, $b_i$, and $c_i$ with the names $x_0$, $x_a$, and $x_b$. Now add an edge that joins $y_0$ to $z_i$ so that $T_i$ becomes a subtree of $T_0$ that is adjacent to $y_0$.  We perform this operation for each $i\in\{1,\ldots,m\}$ to obtain our final tree decomposition $\mathcal{T}:=(B_y:y\in V(T_0))$.
 
   It is now straightforward to verify that $\mathcal{T}$ is a tree decomposition of $H':=N'/\mathcal{P}$ in which each bag has size at most $4$.    To see that $\mathcal{T}$ is also a tree decomposition of $H:=N/\mathcal{P}$, consider any edge $vw\in E(N)\setminus E(N')$ with $v\in P_\alpha$ and $w\in P_\beta$.  We must verify that some bag of $\mathcal{T}$ contains $\alpha$ and $\beta$.  If both $v$ and $w$ are in $V(M)$, then $\alpha=x_a$ and $\beta=x_b$ for some $a,b\in\{0,\ldots,3\}$, in which case $B_{y_0}=\{x_0,\ldots,x_k\}$ contains $\alpha$ and $\beta$.  If neither $v$ nor $w$ are in $V(M)$ then, since no edge of $N\subseteq G$ crosses an edge of $M\subseteq G'$, both $v$ and $w$ are contained in the interior of the same face $F_i$ of $M$ so, by the inductive hypothesis there exists a bag of $\mathcal{T}_i$ that contains $\alpha$ and $\beta$ and this becomes a bag of $\mathcal{T}$ that contains $\alpha$ and $\beta$.  Finally, if $v\in V(M)$ and $w\not\in V(M)$ then $v\in P_{i,j}$ for some $j\in\{1,2,3\}$ and $w$ is in the interior of some face $F_i$ of $M$. By induction, some bag of $\mathcal{T}_i$ contains $\beta$ and $\alpha'$, where $\alpha'$ is the vertex of $H_i$ obtained by contracting $P_{i,j}$.  However, before $T_i$ is attached to $T_0$ each occurence of $\alpha'$ in $\mathcal{T}_i$ is replaced by $\alpha$, so some bag of $\mathcal{T}$ contains both $\alpha$ and $\beta$. Therefore $\mathcal{T}$ is a tree decomposition of $H$.
-  
+
   Next we verify that, when $k=3$ exactly one bag of $\mathcal{T}$ contains $\{x_1,\ldots,x_3\}$.  The bag $B_{y_0}$ contains $x_1,\ldots,x_k$. When $k=3$, each neighbour of $z_i$ of $y_0$ has a bag that contains at most two of $\{x_1,x_2,x_3\}$.  Therefore, when $k=3$, $B_y$ is the unique bag in $\mathcal{T}$ that contains $\{x_1,x_2,x_3\}$.
 
 	All that remains is to show that any triple of vertices of $H$ is contained in at most two bags of $\mathcal{T}$. By the inductive hypothesis, the only triples we need to be concerned about are the $3$-element subsets of  $\{x_0,x_1,\ldots,x_k\}$. The case $k=1$ is trivial since no triples can be formed by $\{x_0,x_1\}$.  When $k=2$, $B_{y_0}=\{x_0,x_1,x_2\}$.  In this case, the choice of $\tau$ ensures that there is at most one face $F_i$ of $M$ that has vertices of $S$, $P_1$, and $P_2$ on its boundary.  (Refer to \cref{boring_figure} to convince yourself of this.)  By the inductive hypothesis (applied to $H_i$) the bag $B_{z_i}$ is the only bag of $\mathcal{T}_i$ that contains $\{x_0,x_1,x_2\}$.  Therefore there are at most two bags, $B_y$ and $B_{z_i}$ of $\mathcal{T}$ that contain $\{x_0,x_1,x_2\}$.  This establishes (iii) for $k\in\{1,2\}$ so, from this point on we assume that $k=3$.
@@ -817,6 +829,7 @@ Every 1-planar graph is contained in $H\boxtimes P\boxtimes K_7$ for some planar
 \cref{1-planar} is an immediate consequence of \cref{d_framed_product_stucture} and the next lemma, which is of independent interest.
 
 \note{DW}{Say something about how \cref{1_planar_is_4_framed} is better than similar results in the literature.}
+\note{PM}{I don't know what to say without explaining that $4$-framed (simple) graphs only contain $3$-connected $1$-planar graphs.  Vida's example shows that there is a $1$-plane embedding of a graph that can't be augmented into a $4$-framed graph, but I haven't checked if it can't be drawn some better way. And I also don't know if the Bekos claim that $8$-framed (smple) graphs contain all $1$-planar graphs is proven anywhere and, if so, is it tight?}
 
 \begin{lem}\label{1_planar_is_4_framed}
   A graph $G$ is $1$-planar if and only if it is contained in a $4$-framed multigraph.
@@ -868,11 +881,12 @@ Theorems~\ref{ShortcutProduct}  and \ref{GenusProduct}(b) imply a product struct
 \begin{thm}
 \label{gkPlanarProduct}
 Every $(g,k)$-planar graph is contained in $H\boxtimes P \boxtimes K_\ell$ for some graph $H$ with $\tw(H) \leq \binom{k+4}{3}-1$, where $\ell:=\max\{2g,3\}\cdot(6k^2+16k+10)$.
-\note{DW}{I have changed $\tw(H) \leq \binom{k+5}{4}-1$ to $\tw(H) \leq \binom{k+4}{3}-1$, okay?}
+% \note{DW}{I have changed $\tw(H) \leq \binom{k+5}{4}-1$ to $\tw(H) \leq \binom{k+4}{3}-1$, okay?}
+%\note{PM}{Ok}
 \end{thm}
 
 \note{DW}{I am pretty sure one can get treewidth 3 for $(g,1)$-planar graphs, combining \cref{framed} with the method in \citep{DHHW}. I think the best place for this result is reference \citep{DHHW} since the present paper pre-dates \citep{DHHW} (and this addition will increase the significance of \citep{DHHW}). Okay?}
-
+\note{PM}{Okay to this and to all similar questions that come later (which I've now commented out.)}
 
 Prior to this work, the strongest structural description of $k$-planar or $(g,k)$-planar graphs (or any of the other classes presented in \cref{Examples}) was in terms of layered treewidth, which we now define.  A \defin{layered tree-decomposition} $(\mathcal{L},\mathcal{T})$ consists of a layering $\mathcal{L}$ and a tree-decomposition $\mathcal{T}$ of $G$. The layered width of $(\mathcal{L},\mathcal{T})$ is $\max\{|L\cap B|: L\in \mathcal{L},\, B\in \mathcal{T}\}$.  The \defin{layered treewidth} of $G$ is the minimum layered width of any layered tree-decomposition of $G$. \citet{dujmovic.morin.ea:layered} proved that planar graphs have layered treewidth at most 3, that graphs of Euler genus $g$ have layered treewidth at most $2g+3$, and more generally that a minor-closed class has bounded layered treewidth if and only if it excludes some apex graph. \citet{dujmovic.eppstein.ea:structure} show that every $k$-planar graph has layered treewidth at most $6(k+1)$, and more generally that every $(g,k)$-planar graph has layered treewidth at most $(4g+6)(k+1)$. It follows from this result that $(g,k)$-planar graphs have treewidth $O(\sqrt{(g+1)(k+1)n})$ and thus have balanced separators of the same order, which can also be concluded from the work of \citet{FP08}. In related work, \citet{grigoriev.bodlaender:algorithms} used structural results to obtain approximation algorithms for $(g,k)$-planar graphs, and \citet{PachToth97} determined the maximum number of edges in a $k$-planar graph (up to a constant factor).
 
@@ -933,7 +947,7 @@ Here we discuss some of the consequences of the above theorems for $k$-planar an
 \referee{1}{4. Sections 4 and 5: I think as they are currently organized they distract from the purpose of the paper, as stated in the introduction, to ``prove product structure theorems for several non-minor-closed classes of interest.'' Which of Corollaries 1--4 and Theorems 12--17 are most important? I would remove any mention of the applications from the examples section, put that section first, and state in that section a single main theorem with all of the best bounds on the product structure. The applications section is mostly a survey and I think should be focused on the most exciting new corollaries. Theorems 18 and 19 should be in the applications section.}
 
 \note{DW}{I don't want to do a complete restructuring. In our response, let's just say why we structure it the way we do.}
-
+\note{PM}{Sure, though I think they proposing a chop rather than a restructuring.}
 
 %%%%%%%%%%%%%%%%%%%
 \subsection{Queue Layouts}
@@ -947,9 +961,14 @@ $\qn(G) \leq  3 \ell \, \qn(H) + \floor{\tfrac{3}{2}\ell}
 \leq 3 \ell \, 2^{\tw(H)}  - \ceil{\tfrac{3}{2}\ell}$.
 \end{lem}
 
-\cref{qn,gkPlanarProduct} imply that $(g,k)$-planar graphs have queue-number at most $g 2^{O(k^3)}$. \note{DW}{I have changed $g 2^{O(k^4)}$ to $g 2^{O(k^3)}$, okay?}
+\cref{qn,gkPlanarProduct} imply that $(g,k)$-planar graphs have queue-number at most $g 2^{O(k^3)}$. 
+% \note{DW}{I have changed $g 2^{O(k^4)}$ to $g 2^{O(k^3)}$, okay?}
+% \note{OM}{Ok}
 Note that \citet{DJMMUW20} previously proved the bound of
-$O(g^{k+2})$ using \cref{GenusProduct} and an ad-hoc method. Our result provides a better bound when $g>2^{k^2}$ \note{DW}{I have changed $g>2^{k^3}$ to $g>2^{k^2}$, okay?}. In the case of 1-planar graphs we can improve further. \citet{ABGKP20} proved that every planar graph with treewidth at most $3$ has queue-number at most $5$. Thus the graph $H$ in \cref{1-planar} has queue-number at most $5$. \cref{qn,1-planar} then imply:
+$O(g^{k+2})$ using \cref{GenusProduct} and an ad-hoc method. Our result provides a better bound when $g>2^{k^2}$ 
+% \note{DW}{I have changed $g>2^{k^3}$ to $g>2^{k^2}$, okay?}. 
+% \note{PM}{Ok}
+In the case of 1-planar graphs we can improve further. \citet{ABGKP20} proved that every planar graph with treewidth at most $3$ has queue-number at most $5$. Thus the graph $H$ in \cref{1-planar} has queue-number at most $5$. \cref{qn,1-planar} then imply:
 
 \begin{cor}
 \label{1PlanarQueue}
@@ -977,7 +996,8 @@ If $G\subseteq H\boxtimes P \boxtimes K_\ell$ then $\pi(G)\le \ell\, 4^{\tw(H)+1
 %	$\pi(G)\le (18k^2+48k+30) 4^{\binom{k+4}{3}}$.
 \item	For every $(g,k)$-planar graph $G$,
 	$  \pi(G)\le \max\{2g,3\}\cdot(6k^2+16k+10) 4^{\binom{k+4}{3}}.$
-\note{DW}{I have changed $4^{\binom{k+5}{4}}$ to $4^{\binom{k+4}{3}}$, okay?}
+% \note{DW}{I have changed $4^{\binom{k+5}{4}}$ to $4^{\binom{k+4}{3}}$, okay?}
+% \note{PM}{Ok}
 \end{compactitem}
 \end{cor}
 
@@ -1029,7 +1049,8 @@ For every graph $H$ of treewidth at most $t$ and for every path $P$, if $G\subse
 %\item For every $k$-planar graph $G$,\; $\displaystyle \chi_p(G)\le (18k^2+48k+30)(p+1) \binom{p+ \binom{k+4}{3}-1}{ \binom{k+4}{3}-1}$.
 \item For every $(g,k)$-planar graph $G$,\;
 $\displaystyle \chi_p(G) \le \max\{2g,3\}\cdot(6k^2+16k+10) (p+1) \binom{p+\binom{k+4}{3}-1}{\binom{k+4}{3}-1}$.
-\note{DW}{I have changed $\binom{k+5}{4}$ to $\binom{k+4}{3}$, okay?}
+% \note{DW}{I have changed $\binom{k+5}{4}$ to $\binom{k+4}{3}$, okay?}
+% \note{PM}{Ok}
  \end{compactitem}
 \end{cor}
 
@@ -1047,7 +1068,7 @@ This section describes several examples of graph classes that can be obtained fr
 \subsection{Map Graphs}
 
 \note{DW}{This subsection needs a clean-up; define $(g,d)$-framed graph. Is the following lemma known (at least in the $g=0$ case)?}
-
+\note{PM}{I have no idea if this is known.  If so, it's probably not stated in terms of frames.}
 \begin{lem}
 \label{MewMapGraphLemma}
 for all integers $g\geq 0$ and $d\geq 3$, every $(g,d)$-map graph is a spanning subgraph of  $(g,d)$-framed graph.
@@ -1114,9 +1135,9 @@ For integers $g\geq 0$ and $d\geq 4$, if $\ell:=  7d(d-3)\, \max\{2g,3\}$ then e
 \end{compactitem}
 \end{thm}
 
-\note{DW}{\cref{MapPartition} has been updated.}
+% \note{DW}{\cref{MapPartition} has been updated.}
 
-\note{DW}{I am pretty sure one can get treewidth 3 here using \cref{framed} and the method in \citep{DHHW}. I think the best place for this result is reference \citep{DHHW} since the present paper pre-dates \citep{DHHW} (and this addition will increase the significance of \citep{DHHW}). Okay?}
+% \note{DW}{I am pretty sure one can get treewidth 3 here using \cref{framed} and the method in \citep{DHHW}. I think the best place for this result is reference \citep{DHHW} since the present paper pre-dates \citep{DHHW} (and this addition will increase the significance of \citep{DHHW}). Okay?}
 
 These results give the first constant upper bound on the non-repetitive chromatic number of map graphs, the first polynomial bounds on the $p$-centered chromatic number of map graphs, and the best known bounds on the queue-number of map graphs.
 
@@ -1148,7 +1169,7 @@ Then  every $(g,\delta)$-string graph:
 \end{compactitem}
 \end{thm}
 
-\note{DW}{\cref{StringPartition} has been updated.}
+% \note{DW}{\cref{StringPartition} has been updated.}
 
 Our results also give bounds on the non-repetitive chromatic number and the $p$-centered chromatic number of $(g,\delta)$-string graphs, but the bounds are weak, since such graphs $G$ have maximum degree at most $2\delta$, implying that $\pi(G) \leq (4+o(1))\delta^2$ and $\chi_p(G)\le p(64\delta)^2$ by results of \citet{DJKW16} and \citet{DFMS21}, respectively.
 
@@ -1195,7 +1216,7 @@ For integers $g\geq 0$ and $k,\Delta\geq 1$, let $\ell:= \max\{2g,3\} (2k^4+6k^2
 \end{compactitem}
 \end{thm}
 
-\note{DW}{\cref{PowerGenus} has been updated}
+% \note{DW}{\cref{PowerGenus} has been updated}
 
 This result is the first constant upper bound on the queue-number of bounded powers of graphs with bounded degree and bounded Euler genus.  For every graph $G$, since $G^k$ has maximum degree at most $\Delta^k$, a result of \citet{DJKW16} implies that $\pi(G^k) \leq (1+o(1))\Delta^{2k}$. \cref{PowerGenus} improves upon this bound when $k,g\ll\Delta$.  Similarly, a result of \citet{DFMS21} implies that $\chi_p(G^k)\le 1024p\Delta^{2k}$ and \cref{PowerGenus} improves upon this bound when $p,k,g\ll\Delta$.
 
