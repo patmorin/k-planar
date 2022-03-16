@@ -702,6 +702,9 @@ For simple 1-planar graphs it is essential that we allow frames with parallel ed
 
 \cref{d_framed_product_stucture} follows quickly from the following technical lemma, which is an extension of the analogous result for plane graphs \cite{DJMMUW20}. The following definition is a convenient way to establish the planarity of $H$ in \cref{d_framed_product_stucture}:  A tree-decomposition $\mathcal{T}$ of a graph $G$ is \defin{$t$-simple} if each of its bags has size at most $t+1$ and, for each $t$-element subset $\{v_1,\ldots,v_t\}\subseteq V(G)$, at most two bags of $\mathcal{T}$ contain $\{v_1,\ldots,v_t\}$.  Finally, a \defin{BFS spanning forest} $T$ of $G$ rooted at a set $V_0\subseteq V(G)$ is a spanning forest of $G$ with the property that $\min\{\dist_G(v,w):w\in V_0\}=\min\{\dist_T(v,w):w\in V_0\}$ for each $v\in V(G)$.
 
+\note{PM}{Consider a change of notation:   Replace $F$ with $C$.  (I was using $F$ before to be consistent with the previous section, but that notation is gone now.)}
+
+
 \begin{lem}
 	\label{induction} The setup:
 	\begin{compactenum}
