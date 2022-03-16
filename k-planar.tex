@@ -627,7 +627,10 @@ For any integer $d\ge 3$, a (multi)graph $G$ is \defin{$d$-framed} if it admits 
 Every $d$-framed multigraph is contained in $H\boxtimes P\boxtimes K_{d+3\floor{d/2}-3}$ for some planar graph $H$ with treewidth at most 3 and for some path $P$.
 \end{thm}
 
-This result is used below to obtain product structure theorems for 1-planar multigraphs and for map graphs. \todo{Move this comment to the section on $1$-planar graphs?} For simple 1-planar graphs it is essential that we allow frames with parallel edges. \note{DW}{I feel that at this point we need to justify the introduction of multigraphs.}
+This result is used below to obtain product structure theorems for 1-planar multigraphs and for map graphs. 
+% \todo{Move this comment to the section on $1$-planar graphs?} 
+For simple 1-planar graphs it is essential that we allow frames with parallel edges. 
+% \note{DW}{I feel that at this point we need to justify the introduction of multigraphs.}
 
 \cref{d_framed_product_stucture} follows quickly from the following technical lemma, which is an extension of the analogous result for plane graphs \cite{DJMMUW20}. The following definition is a convenient way to establish the planarity of $H$ in \cref{d_framed_product_stucture}:  A tree-decomposition $\mathcal{T}$ of a graph $G$ is \defin{$t$-simple} if each of its bags has size at most $t+1$ and, for each $t$-element subset $\{v_1,\ldots,v_t\}\subseteq V(G)$, at most two bags of $\mathcal{T}$ contain $\{v_1,\ldots,v_t\}$.  Finally, a \defin{BFS spanning forest} $T$ of $G$ rooted at a set $V_0\subseteq V(G)$ is a spanning forest of $G$ with the property that $\min\{\dist_G(v,w):w\in V_0\}=\min\{\dist_T(v,w):w\in V_0\}$ for each $v\in V(G)$.
 
@@ -728,12 +731,12 @@ This result is used below to obtain product structure theorems for 1-planar mult
 	We have already established that, when $k=3$, the only bag that contains $\{x_1,x_2,x_3\}$ is $B_{y_0}$, so we need only consider triples $\{x_0,x_a,x_b\}$ for distinct $a,b\in\{1,2,3\}$. By the preceding claim, there is at most one face $F_i$ with vertices of $S$, $P_a$, and $P_b$ on its boundary.  By the inductive hypothesis, the only other bag in $\mathcal{T}$ that contains $\{x_0,x_a,x_b\}$ is the bag $B_{z_i}$.  This completes the proof.
 \end{proof}
 
-\todo[inline]{Alternative to the final three paragraphs in the preceding proof:
-
-To see that $H$ is planar, consider a plane multigraph $G''$ obtained by adding stars in some of the faces of $G'$, as follows:  When creating the part $S$, add a vertex $v_\tau$ to the interior of $\tau$ that is adjacent to each vertex of $\tau$ and place $v_\tau$ in $S$.  The graph $G''\supseteq G'$ obtained this way is clearly planar.  Furthermore, for each part $P\in\mathcal{P}$, $G''[P]$ is connected.  Since planarity is preserved under edge contraction, it follows that $G''/\mathcal{P}$ is planar.  Now argue that $G/\mathcal{P}=G''/\mathcal{P}$\ldots
-}
-
-\note{DW}{The proof via 3-simplicity is shorter, so just keep it as is.}
+% \todo[inline]{Alternative to the final three paragraphs in the preceding proof:
+% 
+% To see that $H$ is planar, consider a plane multigraph $G''$ obtained by adding stars in some of the faces of $G'$, as follows:  When creating the part $S$, add a vertex $v_\tau$ to the interior of $\tau$ that is adjacent to each vertex of $\tau$ and place $v_\tau$ in $S$.  The graph $G''\supseteq G'$ obtained this way is clearly planar.  Furthermore, for each part $P\in\mathcal{P}$, $G''[P]$ is connected.  Since planarity is preserved under edge contraction, it follows that $G''/\mathcal{P}$ is planar.  Now argue that $G/\mathcal{P}=G''/\mathcal{P}$\ldots
+% }
+% 
+% \note{DW}{The proof via 3-simplicity is shorter, so just keep it as is.}
 
 Using \cref{induction}, the proof of \cref{d_framed_product_stucture} is now straightforward.
 
@@ -747,7 +750,7 @@ Using \cref{induction}, the proof of \cref{d_framed_product_stucture} is now str
 
 \begin{proof}[Proof of \cref{d_framed_product_stucture}]
 	Let $G$ be a $d$-framed multigraph with frame $G'$ having outer face $F_0$.	Let $T$ be a BFS forest of $G'$ rooted at $V(F_0)$ and let $\langle L_0,L_1,\ldots\rangle$ be the resulting BFS layering.  Let $P_1:= V(F_0)$, let $Y_1$ be any subset of $\min\{|P_1|,3\}$ vertices in $P_1$ and let $X_1:=P_1\setminus Y_1$.  Now apply \cref{induction} on $G$, $G'$, $T$, $F=F_0$, $k=1$, and $P_1=Y_1\cup X_1$.
-    This gives an $H$-partition $\mathcal{P}:=\{S_x:x\in V(H)\}$ of $G$ in which $H$ has a $3$-simple tree decomposition.  Since any graph having a $3$-simple tree decomposition is planar \cite{X}, this implies that $H$ is planar.
+    This gives an $H$-partition $\mathcal{P}:=\{S_x:x\in V(H)\}$ of $G$ in which $H$ has a $3$-simple tree decomposition.  Since any graph having a $3$-simple tree decomposition is planar \cite{knauer.ueckerdt:simple,kratochvil.vaner:note,elmallah.colbourn:on}, this implies that $H$ is planar.
 
 	Use the layering $\mathcal{L}=\langle L_0',L_1'\ldots\rangle$ where $L_i'=L_{\lfloor d/2\rfloor i}\cup \cdots \cup L_{\lfloor d/2\rfloor(i+1)-1}$ for each integer $i\ge 0$. That this is a layering of $G$ follows from the fact that $\dist_{G'}(v,w)\le \lfloor d/2\rfloor$ for each edge $vw\in E(G)$.  Since $|L_j\cap Y_x|\le 3$ for each integer $j\ge 0$, $|L_i'\cap Y_x|\le 3\lfloor d/2\rfloor$ and therefore $|L_i'\cap S_x|= |L_i'\cap Y_x|+ |L_i'\cap X_x|\le \lfloor d/2\rfloor + d -3$ for each integer $i\ge 0$ and each $x\in V(H)$. The result now follows from \cref{PartitionProduct}.
 \end{proof}
@@ -826,16 +829,25 @@ Every 1-planar graph is contained in $H\boxtimes P\boxtimes K_7$ for some planar
 %In \cref{1_planar_is_4_framed}, below, we show that every $1$-planar graph is a subgraph of a $4$-framed multigraph. This makes \cref{1-planar} an immediate consequence of the following theorem, whose proof is the subject of the rest of this section.
 
 
-\cref{1-planar} is an immediate consequence of \cref{d_framed_product_stucture} and the next lemma, which is of independent interest.
+\cref{1-planar} is an immediate consequence of \cref{d_framed_product_stucture} and the next lemma, which is of independent interest.  
 
 \note{DW}{Say something about how \cref{1_planar_is_4_framed} is better than similar results in the literature.}
-\note{PM}{I don't know what to say without explaining that $4$-framed (simple) graphs only contain $3$-connected $1$-planar graphs.  Vida's example shows that there is a $1$-plane embedding of a graph that can't be augmented into a $4$-framed graph, but I haven't checked if it can't be drawn some better way. And I also don't know if the Bekos claim that $8$-framed (smple) graphs contain all $1$-planar graphs is proven anywhere and, if so, is it tight?}
+
+\note{PM}{See my attempt below.}
+% \note{PM}{I don't know what to say without explaining that $4$-framed (simple) graphs only contain $3$-connected $1$-planar graphs.  Vida's example shows that there is a $1$-plane embedding of a graph that can't be augmented into a $4$-framed graph, but I haven't checked if it can't be drawn some better way. And I also don't know if the Bekos claim that $8$-framed (smple) graphs contain all $1$-planar graphs is proven anywhere and, if so, is it tight?}
 
 \begin{lem}\label{1_planar_is_4_framed}
   A graph $G$ is $1$-planar if and only if it is contained in a $4$-framed multigraph.
 \end{lem}
 
-\begin{proof}
+Before proving \cref{1_planar_is_4_framed}, we remark that the lemma seems not to be true if we replace `multigraph' with `graph'.  We are only aware of two previous results on the relationship between $1$-planar graphs and $d$-framed graphs \cite{BDGGMR}:
+\begin{inparaenum}[(i)]
+  \item Every $3$-connected $1$-planar graph is contained in some $4$-framed graph.
+  \item Every $1$-planar graph is contained in some $8$-framed graph.
+\end{inparaenum}
+Neither of these results allows a proof of \cref{1-planar} without sacrificing generality or accepting a larger constant.
+
+\begin{proof}[Proof of \cref{1_planar_is_4_framed}]
 Let $G$ be a $1$-plane graph. We may assume that no two edges incident to a common vertex of $G$ cross, since such a crossing can be removed by a local modification to obtain an isomorphic 1-plane graph in which the two edges do not cross\footnote{While this is true for 1-plane graphs it is not true for $k$-plane graphs with $k\ge 3$; the uncrossing operation can increase the number of crossings on a particular edge from $k$ to $2(k-1)$.}.
   % We say that a vertex $v\in V(G)$ appears on a face $F$ if $v$ is contained in the closure of $F$.
 We make $G$ into an \defin{edge-maximal} $1$-plane multigraph, by repeating the following operation:  If two vertices $v$ and $w$ of $G$ appear on a common face $F$ and there is no edge $vw\in E(G)$ contained in the boundary of $F$, then add the edge $vw$, embedded in the face $F$.  This may introduce parallel edges into $G$, but no two such edges will appear on the boundary of a common face.
@@ -1329,4 +1341,3 @@ We finish with an open problem. \cref{kPlanarProduct} shows that every $k$-plana
 \bibliographystyle{DavidNatbibStyle}
 \bibliography{k-planar}
 \end{document}
-
