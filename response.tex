@@ -23,7 +23,7 @@
 Vida Dujmovi\'c, Pat Morin, David R. Wood\\
 Journal of Combinatorial Theory Series B (JCTB9758)\\
 Response to Referee Reports}
-		
+
 \subsection*{Referee \#1}
 
 This paper proves that if a class of graphs F admits a product structure
@@ -52,28 +52,28 @@ streamlined without losing the above results. Detailed suggestions follow.
 Major comments:
 
 
-The following comments (and several additional minor comments) are all related to the proof of Theorem~3 in the original submission.  Much of the difficulty comes from the fact that there are many things to keep track of. We are a given a graph $G$, a shortcut system $\mathcal{S}$, a layering $\mathcal{L}$, a vertex-partition $\mathcal{P}$, and a tree decomposition $\mathcal{T}$ of the quotient graph $H:=G/\mathcal{P}$.  Now we have to use these to show the existence of a new layering $\mathcal{L}'$, a new vertex partition $\mathcal{P'}$, a new tree decomposition $\mathcal{T}'$ of the new quotient graph $H':=G^{\mathcal{S}}$.
+% The following comments (and several additional minor comments) are all related to the proof of Theorem~3 in the original submission.  Much of the difficulty comes from the fact that there are many things to keep track of. We are a given a graph $G$, a shortcut system $\mathcal{S}$, a layering $\mathcal{L}$, a vertex-partition $\mathcal{P}$, and a tree decomposition $\mathcal{T}$ of the quotient graph $H:=G/\mathcal{P}$.  Now we have to use these to show the existence of a new layering $\mathcal{L}'$, a new vertex partition $\mathcal{P'}$, a new tree decomposition $\mathcal{T}'$ of the new quotient graph $H':=G^{\mathcal{S}}$.
+%
+% During the proof, a number of related sets come up, which we have given names to. As a referee point out, these could remain unnamed and be described using an appropriate notation.
+%
+% \todo[inline]{Write something more here depending on how the experiment with new notation works out.}
+%
+% One issue is that a number of the proofs in this section are essentially "definition checking".  The relationships between the various vertex subsets that arise in the proof really do just follow (by design) from their definitions.  In the paper, we do this checking explicitly, though each of these proofs could also be replaced by a sentence of the form ``This [claim/lemma] follows from the definitions of\ldots''.
+%
+% However, when discussing the proof of Theorem~3 with colleagues (very familiar with product structure) recently, we found them unconvinced by high-level explanations.  It was only after carefully unpacking the definitions that they became convinced.  These conversations usually end with someone saying ``Ah, of course!''
+%
+%
+% The real action begins in the proof Theorem 9 (using numbering from the original submission) and especially Claim 3 (which involves some careful counting) and Claim 5 (which involves checking that we have everything needed to apply the Pillipczuk-Siebertz lemma on $k$-reachability in ``upward-directed'' graphs of treewidth $t$.)
+%
+% \todo[inline]{Write more here depending on how the notation experiment turns out.}
 
-During the proof, a number of related sets come up, which we have given names to. As a referee point out, these could remain unnamed and be described using an appropriate notation.  
-
-\todo[inline]{Write something more here depending on how the experiment with new notation works out.}
-
-One issue is that a number of the proofs in this section are essentially "definition checking".  The relationships between the various vertex subsets that arise in the proof really do just follow (by design) from their definitions.  In the paper, we do this checking explicitly, though each of these proofs could also be replaced by a sentence of the form ``This [claim/lemma] follows from the definitions of\ldots''.
-
-However, when discussing the proof of Theorem~3 with colleagues (very familiar with product structure) recently, we found them unconvinced by high-level explanations.  It was only after carefully unpacking the definitions that they became convinced.  These conversations usually end with someone saying ``Ah, of course!''
-
-
-The real action begins in the proof Theorem 9 (using numbering from the original submission) and especially Claim 3 (which involves some careful counting) and Claim 5 (which involves checking that we have everything needed to apply the Pillipczuk-Siebertz lemma on $k$-reachability in ``upward-directed'' graphs of treewidth $t$.)
-
-\todo[inline]{Write more here depending on how the notation experiment turns out.}
-
- % and new vertex partition of a related graph $G^\mathcal{S}$ as we  A large part of the 
+ % and new vertex partition of a related graph $G^\mathcal{S}$ as we  A large part of the
 
 
 
 1. Lemma 3: This lemma is really about ``normalised'' tree decompositions, and says that for each $x \in V(T)$, the set $V(T_x)$ has at most $t$ neighbours in $H$. Call this property (T3) and remove (Y1)  through (Y5), which should now be obvious.
 
-\tba
+This lemma has been eliminated completely.
 
 2. Proof of Theorem 9: There is too much notation throughout. As
 one example, it is hard to remember which of $T_x$, $Y_x$, $V_x$, $F_x$, $N_x$,
@@ -85,20 +85,26 @@ The set $X_v$ is only used in the statement of Claim~1, so it does not
 need a name; say what these vertices are explicitly. It may be more
 indicative to write $\phi'(x)$ for $S_x$ and $B'_x$ for $C_x$.
 
-\tba
+We agree that the notation was excessive (an unfortunate consequence of the general result on $(k,d)$-shortcut systems having evolved from a specific result about $k$-planar graphs).  We have eliminated the notations $V_x$, $N_x$, $F_x$, $X_x$, and $T_x$.
+
+The notations $Y_x$ and $B_x$ are needed since we need names for the parts of the $H$-decomposition of $G$ and the bags in the tree-decomposition of $H$.    The notation $C_x$ is limited to the proof of (newly-numbered) Claim~3, where it is used to denote the bags in the tree-decomposition that is the subject of Claim~3.
+
+We have avoided the introduction of any new notation.  The new presentation is much shorter and clearer.  We thank the referee for making us revisit this proof carefully.  The final paper is better for it.
 
 3. Theorem 10: Unfortunately I have to suggest removing it. I don’t see
 the motivation for making $H$ planar or for improving the constants.
 Are the improved constants at all close to tight? Is there another
 reason for including it?
 
-\tba
+Since the initial submission, there is now even more justification for including this special case.  A result of Bose et al on vertex ranking relies critically on the simple treewidth of $H$.  In particular, if $H$ is planar and has treewidth $3$, then it has an $\ell$-vertex ranking using $O(\log n/\log\log\log n)$ colours.  The three logs in the denominator come from the fact
+
+\todo[inline]{Continue here...}
 
 4. Sections 4 and 5: I think as they are currently organized they distract from the purpose of the paper, as stated in the introduction, to ``prove product structure theorems for several non-minor-closed classes of interest.'' Which of Corollaries 1--4 and Theorems 12--17 are most important? I would remove any mention of the applications from the examples section, put that section first, and state in that section a single main theorem with all of the best bounds on the product structure. The applications section is mostly a survey and I think should be focused on the most exciting new corollaries. Theorems 18 and 19 should be in the applications section.
 
 \tba
 
-1. abstract: ``This leads to analogous results for map graphs, string graphs, graph powers, and nearest neighbour graphs.'' $\longrightarrow$ 
+1. abstract: ``This leads to analogous results for map graphs, string graphs, graph powers, and nearest neighbour graphs.'' $\longrightarrow$
 Add ``certain types of'' or be more specific. Same comment for immediately after Theorem 4.
 
 \done

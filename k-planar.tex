@@ -359,9 +359,10 @@ The purpose of this section is to prove our main technical result, \cref{Shortcu
 For convenience, it will be helpful to assume that $\SS$ contains a length-1 $vw$-shortcut for every edge $vw\in E(G)$.  Since $G^\SS$ is defined to be a supergraph of $G$, this assumption has no effect on $G^{\SS}$ but eliminates special cases in some of our proofs.
 
 Consider a tree $T$ rooted at some node $x_0\in V(T)$. Each subtree $T'$ of $T$ is considered to be rooted at the node in $T'$ closest to $x_0$. A node $a\in V(T)$ is a \defin{$T$-ancestor} of $x\in V(T)$ (and $x$ is a \defin{$T$-descendant} of $a$) if $a$ is a vertex of the path, in $T$, from $x_0$ to $x$.  Note that each node $x\in V(T)$ is a $T$-ancestor and $T$-descendant of itself.  We say that a $T$-ancestor $a\in V(T)$ of $x\in V(T)$ is a \defin{strict} $T$-ancestor of $x$ if $a\neq x$.
-The \defin{$T$-depth} of a node $x\in V(T)$ is the length of the path, in $T$, from $x_0$ to $x$.  For each node $x\in V(T)$, define
-\[T_x := T[\{y\in V(T):\mbox{$x$ is a $T$-ancestor of $y$}\}] \]
-to be the maximal subtree of $T$ rooted at $x$.
+The \defin{$T$-depth} of a node $x\in V(T)$ is the length of the path, in $T$, from $x_0$ to $x$.
+% For each node $x\in V(T)$, define
+% \[T_x := T[\{y\in V(T):\mbox{$x$ is a $T$-ancestor of $y$}\}] \]
+% to be the maximal subtree of $T$ rooted at $x$.
 
 
 % \note{PM}{I have significantly simplified this section, which should make the referees happy. I will read it very carefully again tomorrow}
