@@ -564,10 +564,8 @@ For any integer $d\ge 3$, a (multi)graph $G$ is \defin{$d$-framed} if it admits 
 For any integer $d\ge 3$, every $d$-framed multigraph is contained in $H\boxtimes P\boxtimes K_{d+3\floor{d/2}-3}$ for some planar graph $H$ with treewidth at most 3 and for some path $P$.
 \end{thm}
 
-This result is used below to obtain product structure theorems for 1-planar multigraphs and for map graphs.
-% \todo{Move this comment to the section on $1$-planar graphs?}
+This result is used below to obtain product structure theorems for 1-planar multigraphs and for map graphs. 
 For simple 1-planar graphs it is essential that we allow frames with parallel edges.
-% \note{DW}{I feel that at this point we need to justify the introduction of multigraphs.}
 
 \cref{d_framed_product_stucture} follows quickly from the following technical lemma, which is an extension of the analogous result for plane graphs \cite{DJMMUW20}. The following definition is a convenient way to establish the planarity of $H$ in \cref{d_framed_product_stucture}:  A tree-decomposition $\mathcal{T}$ of a graph $G$ is \defin{$t$-simple} if each of its bags has size at most $t+1$ and, for each $t$-element subset $\{v_1,\ldots,v_t\}\subseteq V(G)$, at most two bags of $\mathcal{T}$ contain $\{v_1,\ldots,v_t\}$.  Finally, a \defin{BFS spanning forest} $T$ of $G$ rooted at a set $V_0\subseteq V(G)$ is a spanning forest of $G$ with the property that for each $v\in V(G)$,  \[\min\{\dist_G(v,w):w\in V_0\}=\min\{\dist_T(v,w):w\in V_0\}.\]
 
@@ -801,25 +799,22 @@ Every 1-planar graph is contained in $H\boxtimes P\boxtimes K_7$ for some planar
 %In \cref{1_planar_is_4_framed}, below, we show that every $1$-planar graph is a subgraph of a $4$-framed multigraph. This makes \cref{1-planar} an immediate consequence of the following theorem, whose proof is the subject of the rest of this section.
 
 
-\cref{1-planar} is an immediate consequence of \cref{d_framed_product_stucture} and the next lemma, which is of independent interest.
-
-\note{DW}{Say something about how \cref{1_planar_is_4_framed} is better than similar results in the literature.}
-
-\note{PM}{See my attempt below.}
-% \note{PM}{I don't know what to say without explaining that $4$-framed (simple) graphs only contain $3$-connected $1$-planar graphs.  Vida's example shows that there is a $1$-plane embedding of a graph that can't be augmented into a $4$-framed graph, but I haven't checked if it can't be drawn some better way. And I also don't know if the Bekos claim that $8$-framed (smple) graphs contain all $1$-planar graphs is proven anywhere and, if so, is it tight?}
+\cref{1-planar} is an immediate consequence of \cref{d_framed_product_stucture} and the next lemma. Similar results appear in earlier works \cite{CGP06,BDGGMR,Brandenburg19,Brandenburg20} but we state the precise lemma and provide a proof here for the sake of completeness.
 
 \begin{lem}\label{1_planar_is_4_framed}
-  A graph $G$ is $1$-planar if and only if it is contained in a $4$-framed multigraph.
+A graph $G$ is $1$-planar if and only if it is contained in a $4$-framed multigraph.
 \end{lem}
 
-Before proving \cref{1_planar_is_4_framed}, we remark that the lemma seems not to be true if we replace `multigraph' with `graph'.  We are only aware of two previous results on the relationship between $1$-planar graphs and $d$-framed graphs \cite{BDGGMR}:
-\begin{inparaenum}[(i)]
-  \item Every $3$-connected $1$-planar graph is contained in some $4$-framed graph.
-  \item Every $1$-planar graph is contained in some $8$-framed graph.
-\end{inparaenum}
-Neither of these results allows a proof of \cref{1-planar} without sacrificing generality or accepting a larger constant.
+\note{DW}{Write  ``A multigraph $G$ is $1$-planar if and only if ...''}
 
-\begin{proof}[Proof of \cref{1_planar_is_4_framed}]
+%Before proving \cref{1_planar_is_4_framed}, we remark that the lemma seems not to be true if we replace `multigraph' with `graph'.  We are only aware of two previous results on the relationship between $1$-planar graphs and $d$-framed graphs \cite{BDGGMR}:
+%\begin{inparaenum}[(i)]
+%  \item Every $3$-connected $1$-planar graph is contained in some $4$-framed graph.
+%  \item Every $1$-planar graph is contained in some $8$-framed graph.
+%\end{inparaenum}
+%Neither of these results allows a proof of \cref{1-planar} without sacrificing generality or accepting a larger constant.
+
+\begin{proof}
 Let $G$ be a $1$-plane graph. We may assume that no two edges incident to a common vertex of $G$ cross, since such a crossing can be removed by a local modification to obtain an isomorphic 1-plane graph in which the two edges do not cross\footnote{While this is true for 1-plane graphs it is not true for $k$-plane graphs with $k\ge 3$; the uncrossing operation can increase the number of crossings on a particular edge from $k$ to $2(k-1)$.}.
   % We say that a vertex $v\in V(G)$ appears on a face $F$ if $v$ is contained in the closure of $F$.
 We make $G$ into an \defin{edge-maximal} $1$-plane multigraph, by repeating the following operation:  If two vertices $v$ and $w$ of $G$ appear on a common face $F$ and there is no edge $vw\in E(G)$ contained in the boundary of $F$, then add the edge $vw$, embedded in the face $F$.  This may introduce parallel edges into $G$, but no two such edges will appear on the boundary of a common face.
@@ -1040,7 +1035,7 @@ $\displaystyle \chi_p(G) \le \max\{2g,3\}\cdot(6k^2+16k+10) (p+1) \binom{p+\bino
 \end{cor}
 
 Prior to the current work, the strongest known upper bounds on the $p$-centered chromatic number of $(g,k)$-planar graphs $G$ were doubly-exponential in $p$, as we now explain. \citet{dujmovic.eppstein.ea:structure} proved that $G$ has layered treewidth $(4g+6)(k+1)$.
-Van den Heuvel and Wood~\citep{vdHW17} showed that this implies that $G$  has $r$-strong colouring number at most $(4g + 6)(k + 1)(2r + 1)$. By a result of \citet{zhu:colouring}, $G$ has $r$-weak colouring number at most $( (4g + 6)(k + 1)(2r + 1) )^r$, which by another result of  \citet{zhu:colouring} implies that $G$ has  $p$-centered chromatic number at most $( (4g+6)(k+1)(2^{p-1} + 1) )^{2^{p-2}}$. The above results are substantial improvements, providing bounds on $\chi_p(G)$ that are polynomial in $p$ for fixed $g$ and $k$.
+Van den Heuvel and Wood~\citep{vdHW18} showed that this implies that $G$  has $r$-strong colouring number at most $(4g + 6)(k + 1)(2r + 1)$. By a result of \citet{zhu:colouring}, $G$ has $r$-weak colouring number at most $( (4g + 6)(k + 1)(2r + 1) )^r$, which by another result of  \citet{zhu:colouring} implies that $G$ has  $p$-centered chromatic number at most $( (4g+6)(k+1)(2^{p-1} + 1) )^{2^{p-2}}$. The above results are substantial improvements, providing bounds on $\chi_p(G)$ that are polynomial in $p$ for fixed $g$ and $k$.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1049,10 +1044,18 @@ Van den Heuvel and Wood~\citep{vdHW17} showed that this implies that $G$  has $r
 
 This section describes several examples of graph classes that can be obtained from a shortcut system typically applied to graphs of bounded Euler genus.
 
-
 \subsection{Map Graphs}
 
-\note{DW}{This subsection needs a clean-up; define $(g,d)$-framed graph. Is the following lemma known (at least in the $g=0$ case)?} \note{PM}{I have no idea if this is known.  If so, it's probably not stated in terms of frames.} \note{DW}{I will work this out. We should mention \citet{Brandenburg19,Brandenburg20}. \citet{Brandenburg20} also uses multigraphs, and this paper also mentions 1-planar graphs. So I suspect \cref{1_planar_is_4_framed} is known. I need to go now.}
+Map graphs are defined as follows. Start with a graph $G_0$ embedded in a surface of Euler genus $g$, with each face labelled a `nation' or a `lake', where each vertex of $G_0$ is incident with at most $d$ nations. Let $G$ be the graph whose vertices are the nations of $G_0$, where two vertices are adjacent in $G$ if the corresponding faces in $G_0$ share a vertex. Then $G$ is called a \defin{$(g,d)$-map graph}.  A $(0,d)$-map graph is called a (plane) \defin{$d$-map graph}; see \citep{FLS-SODA12,CGP02} for example. The $(g,3)$-map graphs are precisely the graphs of Euler genus at most $g$; see \citep{dujmovic.eppstein.ea:structure}.
+
+\note{DW}{This subsection needs a clean-up; define $(g,d)$-framed graph.}
+
+\begin{thm}
+\label{NewMapGraph}
+Every $d$-map graph is contained in $H \boxtimes P \boxtimes K_{ d + 3\floor{d/2} -3 }$ for some planar graph $H$ with $\tw(H) \leq 3$ and for some path $P$.
+\end{thm}
+
+\cref{NewMapGraph} is an immediate consequence of \cref{d_framed_product_stucture}} and the next lemma. Similar results to \cref{MewMapGraphLemma} appear in earlier works \cite{CGP06,BDGGMR,Brandenburg19,Brandenburg20} but we state the precise lemma and provide a proof here for the sake of completeness.
 
 \begin{lem}
 \label{MewMapGraphLemma}
@@ -1075,13 +1078,8 @@ So every face of $G_1$ has size at most $d$.
 If $vw\in E(G)$ then the nation faces of $G_0$ corresponding to $v$ and $w$ have a vertex $x$ of $G_0$ in common, implying that  $v$ and $w$ are both on the face of $G_1$ corresponding to $x$, and $vw\in E(\widehat{G_1})$. Hence $G\subseteq \widehat{G_1}$.
 \end{proof}
 
-\begin{thm}
-\label{NewMapGraph}
-Every $d$-map graph is contained in $H \boxtimes P \boxtimes K_{ d + 3\floor{d/2} -3 }$ for some graph $H$ with $\tw(H) \leq 3$ and for some path $P$.
-\end{thm}
+\note{DW}{give a better version of \cref{MapPartition} with $g=0$. }
 
-Map graphs are defined as follows. Start with a graph $G_0$ embedded in a surface of Euler genus $g$, with each face labelled a `nation' or a `lake', where each vertex of $G_0$ is incident with at most $d$ nations. Let $G$ be the graph whose vertices are the nations of $G_0$, where two vertices are adjacent in $G$ if the corresponding faces in $G_0$ share a vertex. Then $G$ is called a \defin{$(g,d)$-map graph}.  A $(0,d)$-map graph is called a (plane) \defin{$d$-map graph}; see \citep{FLS-SODA12,CGP02} for example.
-The $(g,3)$-map graphs are precisely the graphs of Euler genus at most $g$; see \citep{dujmovic.eppstein.ea:structure}.
 %So $(g,d)$-map graphs generalise graphs embedded in a surface, and we now assume that $d\geq 4$ for the remainder of this section.
 
 There is a natural drawing of a map graph obtained by positioning each vertex of $G$ inside the corresponding nation and each edge of $G$ as a curve passing through the corresponding vertex of $G_0$. It is easily seen that each edge is in at most $\floor{\frac{d-2}{2}}\ceil{\frac{d-2}{2}}$ crossings; see \citep{dujmovic.eppstein.ea:structure}. Thus $G$ is $(g,\floor{\frac{d-2}{2}}\ceil{\frac{d-2}{2}})$-planar. Also note that \cref{DrawG} with $k=2$ implies that $G$ is $(g, O(d^{2}) )$-planar. \cref{gkPlanarProduct} then establishes a product structure theorem for map graphs, but we get much better bounds by constructing a shortcut system directly.  The following lemma is reminiscent of the characterisation of $(g,d)$-map graphs in terms of the half-square of bipartite graphs \citep{CGP02,dujmovic.eppstein.ea:structure}.
@@ -1120,11 +1118,10 @@ For integers $g\geq 0$ and $d\geq 4$, if $\ell:=  7d(d-3)\, \max\{2g,3\}$ then e
 \end{compactitem}
 \end{thm}
 
-% \note{DW}{\cref{MapPartition} has been updated.}
+These results give the first constant upper bound on the non-repetitive chromatic number of map graphs, the first polynomial bounds on the $p$-centered chromatic number of map graphs, and the best known bounds on the queue-number of map graphs.
 
 % \note{DW}{I am pretty sure one can get treewidth 3 here using \cref{framed} and the method in \citep{DHHW}. I think the best place for this result is reference \citep{DHHW} since the present paper pre-dates \citep{DHHW} (and this addition will increase the significance of \citep{DHHW}). Okay?}
 
-These results give the first constant upper bound on the non-repetitive chromatic number of map graphs, the first polynomial bounds on the $p$-centered chromatic number of map graphs, and the best known bounds on the queue-number of map graphs.
 
 %%%%%%%
 \subsection{String Graphs}
