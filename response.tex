@@ -8,11 +8,13 @@
 \usepackage{amsfonts}
 \usepackage{paralist}
 \usepackage{stmaryrd}
-
+\usepackage{amssymb}
 \usepackage{todonotes}
 
 \newcommand{\done}{\textcolor{blue}{Done.}}
 \newcommand{\tba}{\textcolor{red}{To be addresssed.}}
+
+\newenvironment{response}{\color{blue}}{}
 
 \setlength{\parindent}{0ex}
 \setlength{\parskip}{1ex}
@@ -23,7 +25,7 @@
 Vida Dujmovi\'c, Pat Morin, David R. Wood\\
 Journal of Combinatorial Theory Series B (JCTB9758)\\
 Response to Referee Reports}
-		
+
 \subsection*{Referee \#1}
 
 This paper proves that if a class of graphs F admits a product structure
@@ -52,28 +54,9 @@ streamlined without losing the above results. Detailed suggestions follow.
 Major comments:
 
 
-The following comments (and several additional minor comments) are all related to the proof of Theorem~3 in the original submission.  Much of the difficulty comes from the fact that there are many things to keep track of. We are a given a graph $G$, a shortcut system $\mathcal{S}$, a layering $\mathcal{L}$, a vertex-partition $\mathcal{P}$, and a tree decomposition $\mathcal{T}$ of the quotient graph $H:=G/\mathcal{P}$.  Now we have to use these to show the existence of a new layering $\mathcal{L}'$, a new vertex partition $\mathcal{P'}$, a new tree decomposition $\mathcal{T}'$ of the new quotient graph $H':=G^{\mathcal{S}}$.
-
-During the proof, a number of related sets come up, which we have given names to. As a referee point out, these could remain unnamed and be described using an appropriate notation.  
-
-\todo[inline]{Write something more here depending on how the experiment with new notation works out.}
-
-One issue is that a number of the proofs in this section are essentially "definition checking".  The relationships between the various vertex subsets that arise in the proof really do just follow (by design) from their definitions.  In the paper, we do this checking explicitly, though each of these proofs could also be replaced by a sentence of the form ``This [claim/lemma] follows from the definitions of\ldots''.
-
-However, when discussing the proof of Theorem~3 with colleagues (very familiar with product structure) recently, we found them unconvinced by high-level explanations.  It was only after carefully unpacking the definitions that they became convinced.  These conversations usually end with someone saying ``Ah, of course!''
-
-
-The real action begins in the proof Theorem 9 (using numbering from the original submission) and especially Claim 3 (which involves some careful counting) and Claim 5 (which involves checking that we have everything needed to apply the Pillipczuk-Siebertz lemma on $k$-reachability in ``upward-directed'' graphs of treewidth $t$.)
-
-\todo[inline]{Write more here depending on how the notation experiment turns out.}
-
- % and new vertex partition of a related graph $G^\mathcal{S}$ as we  A large part of the 
-
-
-
 1. Lemma 3: This lemma is really about ``normalised'' tree decompositions, and says that for each $x \in V(T)$, the set $V(T_x)$ has at most $t$ neighbours in $H$. Call this property (T3) and remove (Y1)  through (Y5), which should now be obvious.
 
-\tba
+\textcolor{blue}{This lemma has been eliminated completely. (See the next response.)}
 
 2. Proof of Theorem 9: There is too much notation throughout. As
 one example, it is hard to remember which of $T_x$, $Y_x$, $V_x$, $F_x$, $N_x$,
@@ -85,20 +68,31 @@ The set $X_v$ is only used in the statement of Claim~1, so it does not
 need a name; say what these vertices are explicitly. It may be more
 indicative to write $\phi'(x)$ for $S_x$ and $B'_x$ for $C_x$.
 
-\tba
+\begin{response}
+  We agree that the notation was excessive (an unfortunate consequence of the general result on $(k,d)$-shortcut systems having evolved from a specific result about $k$-planar graphs).  We have eliminated the notations $V_x$, $N_x$, $F_x$, $X_x$, and $T_x$.
+
+  The notations $Y_x$ and $B_x$ are needed since we need names for the parts of the $H$-decomposition of $G$ and the bags in the tree-decomposition of $H$.    The notation $C_x$ is limited to the proof of (newly-numbered) Claim~3, where it is used to denote the bags in the tree-decomposition that is the subject of Claim~3.
+
+  We have avoided the introduction of any new notation.  The new presentation is much shorter and clearer.  We thank the referee for making us revisit this proof carefully.  The final paper is better for it.
+\end{response}
 
 3. Theorem 10: Unfortunately I have to suggest removing it. I don’t see
 the motivation for making $H$ planar or for improving the constants.
 Are the improved constants at all close to tight? Is there another
 reason for including it?
 
-\tba
+\begin{response}
+  Since the initial submission, there is now even more justification for including this special case.  A result of Bose et al on vertex ranking relies critically on the simple treewidth of $H$.  In particular, if $H$ is planar and has treewidth $3$, then $H\boxtimes P\boxtimes K_\ell$ an $r$-vertex ranking using $O(\log n/\log\log\log n)$ colours (for any fixed $r$ and $\ell$).  The three logs in the denominator come from the fact that $H$ has simple treewidth $3$.  Simple treewidth $4$ or even (non-simple) treewidth $3$ lead to more logs in the denominator.  The number of logs in the denominator is exactly the simple treewidth of $H$, and this is tight.
+  
+  Also, while adding details requested by Referee \#2 we discovered that a small change in the proof (removing both edges of a crossing pair instead of just one) results in a better constant and leads to a more general result that applies to $d$-framed graphs. This, in turn, leads to better results for $d$-map graphs.
+\end{response}
+
 
 4. Sections 4 and 5: I think as they are currently organized they distract from the purpose of the paper, as stated in the introduction, to ``prove product structure theorems for several non-minor-closed classes of interest.'' Which of Corollaries 1--4 and Theorems 12--17 are most important? I would remove any mention of the applications from the examples section, put that section first, and state in that section a single main theorem with all of the best bounds on the product structure. The applications section is mostly a survey and I think should be focused on the most exciting new corollaries. Theorems 18 and 19 should be in the applications section.
 
 \tba
 
-1. abstract: ``This leads to analogous results for map graphs, string graphs, graph powers, and nearest neighbour graphs.'' $\longrightarrow$ 
+1. abstract: ``This leads to analogous results for map graphs, string graphs, graph powers, and nearest neighbour graphs.'' $\longrightarrow$
 Add ``certain types of'' or be more specific. Same comment for immediately after Theorem 4.
 
 \done
@@ -120,40 +114,38 @@ of things discussed earlier on in the introduction.
 
 5. page 6, line 16: ``Select any node $x \in V (T_0)$'' $\longrightarrow$ ``Select any nonempty node $x \in V (T_0)$''
 
-\tba
-
 6. page 6, last paragraph of Lemma 2: This isn’t quite right since you
 have to be careful with $x_0$.
 
-\tba
+\textcolor{blue}{Both of these have been fixed by first insisting that we start with a tree decomposition having no empty bags and then adding the (empty) root $x_0$ which is used only in the first stage to ensure that every problematic node has a an edge to its parent that we can subdivide.   Then the node $x_0$ is removed before the second stage where, by definition, every problematic/redundant node has a parent.} 
 
 7. page 8, item (i): ``$S$ has small layered width with respect to the layering
 L'' $\longrightarrow$ ``$S$ has small layered width with respect to the layering $L$ of
 $G$''. Perhaps mention something about how it is easy to find the new layering.
 
-\tba
+\textcolor{blue}{We have added ``Once we have established (i) and (ii), the result follows easily since a layering of $G^\mathcal{S}$ is easily obtained from $\mathcal{L}$ by `compressing' groups of $k$ consecutive layers.''}
 
 8. general comment: Claims 1, 2, and 4 are especially belaboured by
 notation as they are quite straightforward.
 
-\tba
+\textcolor{blue}{Claims 1 and 2 are now gone, leaving only Claims 3, 4, and 5 whose proofs have now been simplified.}
 
 9. page 8, line 10: ``We say that a vertex $w \in Y_x$ contributes a vertex
 $v \in S_x$ if $v$ participates in $x$.'' This needs to be fixed.
 
-\tba
+\textcolor{blue}{Replaced with ``We say that a vertex $w\in Y_x$ \emph{contributes} a vertex $v\in S_x$ if $v=w$ or if some path in $\mathcal{S}$ that contains $v$ has $w$ as an internal vertex.''}
 
 10. page 10, Claim 5: Indices could mostly be removed by continuing
 to talk about $T$-ancestors instead. Move the definition of $H+$ and its
 directed version up, along with the explanation of what will be proven,
 so that it isn’t necessary to define the $s_i$.
 
-\tba
+\textcolor{blue}{This is greatly simplified in the new version.}
 
 11. page 10, Claim 5: The name $P_{ww'}$ is strange since in case 2. there is
 no $w'$ defined.
 
-\textcolor{blue}{Rearranged the sentence so that it is more clear we are defining $w'=w$. }
+\textcolor{blue}{This has disappeared in the new version}
 
 12. page 11, first paragraph of Section 3: ``This section applies our main results for shortcut systems to prove graph product structure theorem...'' $\longrightarrow$ ``to prove a graph product structure theorem...''
 
@@ -198,7 +190,7 @@ Page 3.  You should add the assumption that no three edges cross at
 the same point (which you can assume by perturbing the embedding).
 Otherwise, you will not get a $(k+1, 2)$-shortcut system.
 
-\tba
+\done
 
 $P$ is used twice in the statement of Theorem 3.  It is probably
 safer (and necessary?) to use a different variable for the second
@@ -223,7 +215,7 @@ Page 6. Replace 'parent in $T'$ by 'parent in $T_0$'.
 
 Page 6. The term 'hierarchical decomposition' is not defined.
 
-\textcolor{blue}{We have put `hierarchical' in quotes to indicate it is not a defined word.}
+\textcolor{blue}{The lemma that this sentence referred to is now gone, and so is the sentence.}
 
 Page 7. Although it is clear for me, 'separation' has not been
 defined.  Perhaps a blanket note saying all undefined terms are in
@@ -239,17 +231,17 @@ true though.  In a normalized tree decomposition, if $xy$ is an edge and
 $x$ is a $T$-ancestor of $y$, then $x$ must be in $B_y$ (since the subtrees $T_x$
 and $T_y$ intersect).
 
-\tba
+\done
 
 Page 8.  Can you add a brief explanation why $\mathcal{S}$ is a
 partition of $V(G)$?  It is clear that the sets in $\mathcal{S}$ are
 disjoint, but why do they cover $V(G)$?
 
-\tba
+\textcolor{blue}{We changed this sentence to ``Since $a:V(G)\to V(T)$ is a function with domain $V(G)$ and range $V(T)$, $\mathcal{P}:=(S_x : x\in V(T))$ is a sequence of pairwise disjoint sets that cover $V(G)$.''}
 
 Page 11. Replace 'belong to $F_\delta$' by 'belongs to $F_\delta$'.
 
-\done
+\textcolor{blue}{This is gone in the new version.}
 
 Page 11. In footnote 11, what the authors call a 'closed curve' I
 would call just a 'curve'.  To me, a closed curve satisfies the
@@ -261,7 +253,7 @@ Page 13. Could it be that the subgraph induced by the vertices of a
 kite is a $K_4$ with some parallel edges?  This seems relevant later in
 the proof.
 
-\tba
+\textcolor{blue}{The referee is correct, the induced graph was the wrong thing to use here.  Rather, it is the set of edges and vertices incident to the four faces that appear at a crossing.  This issue no longer appears in the new version that works with $d$-framed graphs.  The relationship between $4$-framed multigraphs and $1$-planar graphs is now stated as a lemma.}
 
 Page 13. Perhaps I am misunderstanding something, but I do not see why
 'none of the edges $vx$, $xw$, $wy$, or $yv$ are crossed by any other edges of
@@ -288,7 +280,7 @@ reproducing the entire proof and telling the reader that they can skip
 all the details if they wish.  This is just my personal opinion
 though, so the authors can ignore this request if they choose.
 
-\textcolor{blue}{Upon reflection we agree with the referee here. Indeed, while cleaning up this proof we have also improved the constant from $30$ to $7$. The proof is quite similar to the previous proof except that graph $G'$ is obtained by removing both crossing edges involved in a crossing (the spars of a kite), rather than just one.  We use the language of framed multigraph, for consistency with the literature. Thanks to the referee for forcing us to write this proof more carefully so that we could discover this improvement.}
+\textcolor{blue}{Upon reflection we agree with the referee here. Indeed, while cleaning up this proof we have also improved the constant from $30$ to $7$. The proof is quite similar to the previous proof except that graph $G'$ is obtained by removing both crossing edges involved in a crossing (the spars of a kite), rather than just one.  We now use the language of framed multigraph, for consistency with the literature. Thanks to the referee for forcing us to write this proof more carefully so that we could discover this improvement.}
 
 Page 15. Regarding the proof of Theorem 11, if it really is the same
 proof as the proof of Theorem 2, why not just prove Theorem 11 (from
@@ -313,11 +305,9 @@ be '$\alpha(w)$'.
 
 Page 18.  Say $H'$ is connected since $X$ is connected.
 
-\tba
-
 Page 18.  Replace '$|i'-i''| < p$' by  '$0< |i'-i''| < p$'.
 
-\tba
+\textcolor{blue}{This proof is now gone since the authors of [10] helpfully include this result in the journal version of their paper.}
 
 Page 20.  Where does the bound $d(d-3)/2$ come from?  The naive bound I
 compute is $d(d-1)/2$.
@@ -337,6 +327,6 @@ Page 23. Replace 'oberve' by 'observe'.
 Page 24. Petr Hliněný (together with his student) has announced that
 the answer to the open question is yes, with $C=3$ and $\ell=O(k^2)$.
 
-\textcolor{blue}{We have been told there is an error in their proof.}
+\textcolor{blue}{We have been told that there is an error in their proof.}
 
 \end{document}

@@ -356,19 +356,19 @@ Note that \cref{ShortcutPartition} is equivalent to \cref{ShortcutProduct} by \c
 \section{Shortcut Systems}
 \label{Structure}
 
-The purpose of this section is to prove our main technical result, \cref{ShortcutPartition}. This theorem shows how, given a $(k,d)$-shortcut system $\SS$ of a graph $G$, a $H$-partition of $G$ can be used to obtain a $J$-partition of $G^{\SS}$ where the layered width  does not increase dramatically and the treewidth of $J$ is not much more than the treewidth of $H$.
+The purpose of this section is to prove our main technical result, \cref{ShortcutPartition}. This theorem shows how, given a $(k,d)$-shortcut system $\SS$ of a graph $G$, an $H$-partition of $G$ can be used to obtain a $J$-partition of $G^{\SS}$ where the layered width  does not increase dramatically and the treewidth of $J$ is not much more than the treewidth of $H$.
 
 For convenience, it will be helpful to assume that $\SS$ contains a length-1 $vw$-shortcut for every edge $vw\in E(G)$.  Since $G^\SS$ is defined to be a supergraph of $G$, this assumption has no effect on $G^{\SS}$ but eliminates special cases in some of our proofs.
 
-Consider a tree $T$ rooted at some node $x_0\in V(T)$. Each subtree $T'$ of $T$ is considered to be rooted at the node in $T'$ closest to $x_0$. A node $a\in V(T)$ is a \defin{$T$-ancestor} of $x\in V(T)$ and $x$ is a \defin{$T$-descendant} of $a$ if $a$ is a vertex of the path, in $T$, from $x_0$ to $x$.  Note that each node $x\in V(T)$ is a $T$-ancestor and $T$-descendant of itself.  We say that a $T$-ancestor $a\in V(T)$ of $x\in V(T)$ is a \defin{strict} $T$-ancestor of $x$ if $a\neq x$.
-The \defin{$T$-depth} of a node $x\in V(T)$ is the length of the path, in $T$, from $x_0$ to $x$.  For each node $x\in V(T)$, define
-\[T_x := T[\{y\in V(T):\mbox{$x$ is a $T$-ancestor of $y$}\}] \]
-to be the maximal subtree of $T$ rooted at $x$.
+Consider a tree $T$ rooted at some node $x_0\in V(T)$. Each subtree $T'$ of $T$ is considered to be rooted at the node in $T'$ closest to $x_0$. A node $a\in V(T)$ is a \defin{$T$-ancestor} of $x\in V(T)$ (and $x$ is a \defin{$T$-descendant} of $a$) if $a$ is a vertex of the path, in $T$, from $x_0$ to $x$.  Note that each node $x\in V(T)$ is a $T$-ancestor and $T$-descendant of itself.  We say that a $T$-ancestor $a\in V(T)$ of $x\in V(T)$ is a \defin{strict} $T$-ancestor of $x$ if $a\neq x$.
+The \defin{$T$-depth} of a node $x\in V(T)$ is the length of the path, in $T$, from $x_0$ to $x$.
+% For each node $x\in V(T)$, define
+% \[T_x := T[\{y\in V(T):\mbox{$x$ is a $T$-ancestor of $y$}\}] \]
+% to be the maximal subtree of $T$ rooted at $x$.
 
+% \note{PM}{I have significantly simplified this section, which should make the referees happy. I will read it very carefully again tomorrow}
 
-\note{PM}{I have significantly simplified this section, which should make the referees happy. I will read it very carefully again tomorrow}
-
-We begin with a standard technique that allows us to work with a normalised tree-decomposition whose tree has same vertex set as the graph it decomposes:
+We begin with a standard technique that allows us to work with a normalised tree-decomposition whose tree has the same vertex set as the graph it decomposes:
 
 \begin{lem}\label{nice-decomposition}
   For every graph $H$ of treewidth $t$, there is a rooted tree $T$ with $V(T)=V(H)$ and a width-$t$ $T$-decomposition $(B_x:x\in V(T))$ of $H$ that has following additional properties:
@@ -384,11 +384,9 @@ We begin with a standard technique that allows us to work with a normalised tree
 \begin{proof}
   That \tref{subtree-root} implies \tref{ancestor-edge} is a standard observation: If two subtrees intersect, then one contains the root of the other.  Thus, it suffices to construct a width-$t$ tree-decomposition that satisfies \tref{subtree-root}.
 
-  Begin with any width-$t$ tree-decomposition $(B_x:x\in V(T_0))$ of $H$ that uses some tree $T_0$.  Select any node $x\in V(T_0)$, add a leaf $x_0$, with $B_{x_0}=\emptyset$, adjacent to $x$ and root $T_0$ at $x_0$. (The purpose of $x_0$ is to ensure that every node $x$ for which $B_x$ is non-empty has a parent.)  Let $f:V(H)\to V(T)$ be the function that maps each $x\in V(H)$ onto the root of the subtree $T_0[x]:=T_0[\{y\in V(T_0): x\in B_y\}]$.  If $f$ is not one-to-one, then select some distinct pair $x,y\in V(H)$ with $a:=f(x)=f(y)$.  Subdivide the edge between $a$ and its parent in $T_0$ by introducing a new node $a'$ with $B_{a'}=B_{a}\setminus\{x\}$. Now $f(y)=a'$ and $f(x)=a$, so this modification reduces the number of distinct pairs $x,y\in V(H)$ with $f(x)=f(y)$, so repeatedly performing this modification will eventually produce a tree-decomposition $(B_x:x\in V(T_0))$ of $H$ in which $f$ is one-to-one.
+  Begin with any width-$t$ tree-decomposition $(B_x:x\in V(T_0))$ of $H$ that uses some tree $T_0$ and has no empty bags.  Select any node $x\in V(T_0)$, add a leaf $x_0$, with $B_{x_0}=\emptyset$, adjacent to $x$ and root $T_0$ at $x_0$. (The purpose of $x_0$ is to ensure that every node $x$ for which $B_x$ is non-empty has a parent.)  Let $f:V(H)\to V(T)$ be the function that maps each $x\in V(H)$ onto the root of the subtree $T_0[x]:=T_0[\{y\in V(T_0): x\in B_y\}]$.  If $f$ is not one-to-one, then select some distinct pair $x,y\in V(H)$ with $a:=f(x)=f(y)$.  Subdivide the edge between $a$ and its parent in $T_0$ by introducing a new node $a'$ with $B_{a'}=B_{a}\setminus\{x\}$. Now $f(y)=a'$ and $f(x)=a$, so this modification reduces the number of distinct pairs $x,y\in V(H)$ with $f(x)=f(y)$, so repeatedly performing this modification will eventually produce a tree-decomposition $(B_x:x\in V(T_0))$ of $H$ in which $f$ is one-to-one.
 
   Next, remove the node $x_0$ from $T_0$, and consider any node $a\in V(T_0)$ such that there is no vertex $x\in V(H)$ with $f(x)=a$.  In this case, $B_{a}\subseteq B_{a'}$ where $a'$ is the parent of $a$ since any $x\in B_a\setminus B_{a'}$ would have $f(x)=a$.  In this case, contract the edge $aa'$ in $T_0$, eliminating the node $a$.  Repeating this operation will eventually produce a width-$t$ tree-decomposition of $(B_x:x\in V(T_0))$ where $f$ is a bijection between $V(H)$ and $V(T_0)$.  Renaming each node $a\in V(T_0)$ as $f^{-1}(a)$ gives a tree-decomposition $(B_x:x\in V(T))$ with $V(T)=V(H)$.  By the definition of $f$, the tree-decomposition $(B_x:x\in V(T))$ satisfies \tref{subtree-root}.
-  % To see that $(B_x:x\in V(T))$ satisifies \tref{ancestor-edge}, observe that,
-  % if $xy\in E(H)$, then at least one of $x$ or $y$ is contained in $B_z$ for every node $z$ on the path from $x$ to $y$ in $T$.  If neither $x$ nor $y$ is an ancestor of the other, then some node $z$ on this path has $T$-depth less than that of $x$ and $y$.  If $x\in B_z$ this contradicts the fact that $x$ is the root of $T[x]$.  If $y\in B_z$ this contradicts the fact that $y$ is the root of $T[y]$.
 \end{proof}
 
 % \referee{1}{6. page 6, last paragraph of Lemma 2: This isn’t quite right since you have to be careful with $x_0$.}
@@ -476,118 +474,19 @@ We are now ready to prove our main result, which we restate here for convenience
 
 \mmg*
 
-% \referee{1}{2. Proof of Theorem 9: There is too much notation throughout. As
-% 	one example, it is hard to remember which of $T_x$, $Y_x$, $V_x$, $F_x$, $N_x$,
-% 	$S_x$, $X_v$, $B_x$, $C_x$ is which. If $\phi(S)$ is written for the subset of $V(G)$
-% 	corresponding to a set $S \subseteq V(H)$ and appropriate shorthand and
-% 	standard notation for neighbourhoods are used, then $Y_x$, $V_x$, $F_x$, and
-% 	$N_x$ can be replaced by $\phi(x)$, $\phi(T_x)$, $N(\phi(T_x))$, and $V(G) \setminus N[\phi(T_x)]$.
-% 	The set $X_v$ is only used in the statement of Claim~1, so it does not
-% 	need a name; say what these vertices are explicitly. It may be more
-% 	indicative to write $\phi'(x)$ for $S_x$ and $B'_x$ for $C_x$.}
-
 \begin{proof}
-Let $\mathcal{L}:=\langle L_1,\ldots,L_h\rangle$ be a layering of $G$; let $\mathcal{Y}:=(Y_x: x\in V(H))$ be an $H$-partition of $G$ of layered width at most $\ell$ with respect to $\mathcal{L}$; and let $\mathcal{T}:=(B_x:x\in V(T))$ be a tree-decomposition of $H$ satisfying the conditions of \cref{nice-decomposition}.   
-% For each $x\in V(T)$, let $H_x:=V(T_x)$ and let $G_x:=\bigcup_{y\in H_x}Y_y$.
+Let $\mathcal{L}:=\langle L_1,\ldots,L_h\rangle$ be a layering of $G$; let $\mathcal{Y}:=(Y_x: x\in V(H))$ be an $H$-partition of $G$ of layered width at most $\ell$ with respect to $\mathcal{L}$; and let $\mathcal{T}:=(B_x:x\in V(T))$ be a tree-decomposition of $H$ satisfying the conditions of \cref{nice-decomposition}.
 
-% Apply \cref{generalized-tripod} to $G$ and let $\mathcal{L}$, $\mathcal{Y}$, $\mathcal{T}$, $T$, $H_x$, and $G_x$ be defined as in \cref{generalized-tripod}, where the partition $\mathcal{Y}$ has width $\ell$ with respect to the layering $\mathcal{L}$.
+For a node $x\in V(T)$, we say that a shortcut $P\in\SS$ \defin{crosses} $x$ if $Y_x$ contains an internal vertex of $P$.  In other words, if $P=v_0,\ldots,v_r$ and $\{v_1,\ldots,v_{r-1}\}\cap Y_x\neq\emptyset$.  We say that a vertex $v\in V(G)$ \defin{participates} in $x$ if $v\in Y_x$ or if $\SS$ contains a shortcut $P$ with $v\in V(P)$ and $P$ crosses $x$.  For each $v\in V(G)$, let $a(v)$ denote the lowest common $T$-ancestor of all the nodes $x\in V(T)$ in which $v$ participates.
 
-For a node $x\in V(T)$, we say that a shortcut $P\in\SS$ \defin{crosses} $x$ if $Y_x$ contains an internal vertex of $P$.  In other words, if $P=v_0,\ldots,v_r$ and $\{v_1,\ldots,v_{r-1}\}\cap Y_x\neq\emptyset$.  We say that a vertex $v\in V(G)$ \defin{participates} in $x$ if $v\in Y_x$, or $\SS$ contains a shortcut $P$ with $v\in V(P)$ and $P$ crosses $x$.  For each $v\in V(G)$, let $a(v)$ denote the lowest common $T$-ancestor of all the nodes $x\in V(T)$ in which $v$ participates.
-
-% \begin{clm}
-%   For each $v\in V(G)$, $v$ participates in $a(v)$.
-% \end{clm}
-% 
-% \begin{proof}
-%   Let $Z := \{v\} \cup \{\{v_1,\ldots,v_{r-1}\}:(v_0,\ldots,v_r)\in\SS, v\in \{v_0,\ldots,v_r\}\}$. Then $G[Z]$ is connected because $Z$ is the union of (vertex sets of) paths in $G$, each of which contains $v$.
-% 
-%   We claim that $v$ participates in a node $x\in V(T)$ if and only if $Z\cap Y_x\neq\emptyset$.  If $v$ participates in $x$ then either $v\in Y_x$, so $Z\cap Y_x\supseteq\{v\}$; or $v\in \{v_0,\ldots,v_r\}$ for some shortcut $(v_0,\ldots,v_r)\in\SS$ that crosses $x$, so $Z\cap Y_x\supseteq \{v_i\}$ for some $i\in\{1,\ldots,r-1\}$.  In the other direction, if $Z\cap Y_x\neq\emptyset$, then either $Z\cap Y_x\supseteq \{v\}$, so $v\in Y_x$; or $Z\cap Y_x\supseteq \{v_i\}$ where $i\in\{1,\ldots,r\}$, $(v_0,\ldots,v_r)\in\SS$ and $v\in\{v_0,\ldots,v_r\}$, so $v\in V(P)$ for a path $P=(v_0,\ldots,v_r)\in\SS$ that crosses $x$.
-% 
-%   Let $X_H:=\{x\in V(H): Z\cap Y_x\neq\emptyset\}$.  Therefore $X_H$ contains every every node in which $v$ participates.  The connectivity of $G[Z]$ implies that $H[X_H]$ is connected. The fact that $\mathcal{T}$ is a normalized tree decomposition of $H$ implies that some node $a\in X_H$ is a $T$-ancestor of every node in $X_H$.  Thus, $v$ participates in the node $a=a(v)$ that is the lowest common $T$-ancestor of every node in which $v$ participates, as required.  
-% \end{proof}
-
-
-% \begin{proof}
-%   Let $a(v)$.  If $v\in Y_{a(v)}$ then $v$ participates in $a(v)$, by definition, and we are done.  Otherwise, there are two nodes $x,y\in V(T)$ in which $x$ participates and whose lowest common $T$-ancestor is $a(v)$.
-% 
-%   There are two cases to consider:  
-%   \begin{compactenum}
-%     \item If $v\in Y_x$ then $v\not\in Y_y$.  Since $v$ participates in $Y_y$, there exist a shortcut $P:=v_0,\ldots,v_r$ in $\SS$ with $v=v_\alpha$ and $v_\beta\in Y_y$ for some $\alpha\in\{0,\ldots,r\}$ and $\beta\in\{1,\ldots,r-1\}$.  Without loss of generality, $\alpha < \beta$.
-% 
-%     For each $i\in\{0,\ldots,r\}$, let $Y_{x_i}$ be the part of $\mathcal{Y}$ that contains $v_i$.  Since $G[\{v_\alpha,\ldots,v_\beta\}]$ is connected, $H[\{x_\alpha,\ldots,x_\beta\}]$ connected.  Since $\mathcal{T}$ is a normalized tree decomposition of $H$, $x_j$ is a $T$-ancestor of every node in $x_\alpha,\ldots,x_\beta$ for some $j\in\{\alpha,\ldots,\beta\}$.      In particular $x_j$ is a $T$-ancestor of $x=x_\alpha$ and $y=x_\beta$, so $x_j$ is a $T$-ancestor of $a(v)$.  Since $v_j\in V(P)$ and $v_j\in Y_{x_j}$ this implies that $v$ participates in $x_j$.  Therefore $v$ participates in a $T$-ancestor of $a(v)$, which can only mean that $v$ participates in $a(v)$.
-% 
-%     \item If $v\not\in Y_x$ and $v\not\in Y_y$ then there are shortcuts $P_1,P_2\in\SS$ with $v\in V(P_1)$, $v\in V(P_2)$ where $P_1$ has an internal vertex $w_1\in Y_x$ and $P_2$ has an internal vertex $w_2\in Y_y$.    
-% 
-% 
-%     .  Since $v$ participates in $Y_y$, there exist a shortcut $v_0,\ldots,v_r$ in $\SS$ with $v=v_\alpha$ and $v_\beta\in Y_y$ for some $\alpha\in\{0,\ldots,r\}$ and $\beta\in\{1,\ldots,r-1\}$.  Without loss of generality, $\alpha < \beta$.
-% 
-%     For each $i\in\{0,\ldots,r\}$, let $Y_{x_i}$ be the part of $\mathcal{Y}$ that contains $v_i$.  Since $G[\{v_\alpha,\ldots,v_\beta\}]$ is connected, $H[\{x_\alpha,\ldots,x_\beta\}]$ connected.  Since $\mathcal{T}$ is a normalized tree decomposition of $H$, $x_j$ is a $T$-ancestor of every node in $x_\alpha,\ldots,x_\beta$ for some $j\in\{\alpha,\ldots,\beta\}$.  In particular $x_j$ is a $T$-ancestor of $x=x_\alpha$ and $y=x_\beta$, so $x_j$ is a $T$-ancestor of $a(v)$. Since $v_j\in Y_{x_j}$, and $v\not\in Y_{a(v)}$ this implies that $v$ participates in $Y_{x_j}$.  Therefore $v$ participates in a $T$-ancestor of $a(v)$, which means that $v$ participates in $a(v)$.
-% 
-% 
-%   \end{compactenum}
-% \end{proof}
-
-
-% We let $X_v$ denote the set of nodes $x\in V(T)$ such that $v$ participates in $x$.
-
-% \begin{clm}\label{x-v-ancestor}
-%   For any $v\in V(G)$ there exists a (unique) node $a(v)\in X_v$ such that
-%   $a(v)$ is a $T$-ancestor of every node in $X_v$.
-% \end{clm}
-% 
-% \begin{proof}
-%   Let $Z := \{v\} \cup \{\{v_1,\ldots,v_{r-1}\}:(v_0,\ldots,v_r)\in\SS, v\in \{v_0,\ldots,v_r\}\}$. Then $G[Z]$ is connected because $Z$ is the union of (vertex sets of) paths in $G$, each of which contains $v$.
-% 
-%   We claim that $v$ participates in a node $x\in V(T)$ if and only if $Z\cap Y_x\neq\emptyset$.  If $v$ participates in $x$ then either $v\in Y_x$, so $Z\cap Y_x\supseteq\{v\}$; or $v\in \{v_0,\ldots,v_r\}$ for some shortcut $(v_0,\ldots,v_r)\in\SS$ that crosses $x$, so $Z\cap Y_x\supseteq \{v_i\}$ for some $i\in\{1,\ldots,r-1\}$.  In the other direction, if $Z\cap Y_x\neq\emptyset$, then either $Z\cap Y_x\supseteq \{v\}$, so $v\in Y_x$; or $Z\cap Y_x\supseteq \{v_i\}$ where $i\in\{1,\ldots,r\}$, $(v_0,\ldots,v_r)\in\SS$ and $v\in\{v_0,\ldots,v_r\}$, so $v\in V(P)$ for a path $P=(v_0,\ldots,v_r)\in\SS$ that crosses $x$.
-% 
-% 
-%   Let $X_H:=\{x\in V(H): Z\cap Y_x\neq\emptyset\}$.  The connectivity of $G[Z]$ implies that $H[X_H]$ is connected.  This implies that $T':=T[]
-% 
-% 
-% 
-%   %Property~\tref{ancestor-edge} implies that, for every $xy\in E(H)$, one of $x$ or $y$ is a $T$-ancestor of the other.
-%   Choose $a(v)\in X_H$ to be the member of $X_H$ that does not have a strict $T$-ancestor in $X_H$.  Transitivity of the $T$-ancestor relationship, \tref{ancestor-edge}, and connectivity of $H[X_H]$ implies that such an $a(v)$ exists and is a $T$-ancestor of every node $x\in X_H$, as required.
-% \end{proof}
-
-% \note{DW}{Use $\SS$ for the given shortcut system and $\PP$ for the partition?}
-% \note{PM}{Yes, I've done this.  Again, I was carefuly, but need to reread.}
-
-For each $x\in V(T)$, define $S_x := \{v\in V(G): a(v)= x\}$. Observe that $\PP:=(S_x : x\in V(T))$ is a sequence of pairwise disjoint sets that cover $V(G)$. Let $J:=G^\SS/\PP$ denote the resulting quotient graph. We consider $V(J)\subseteq V(T)$, where each $x\in V(J)$ is the vertex obtained by contracting $S_x$ in $G^{\SS}$. (Any node $x\in V(T)$ with $S_x=\emptyset$ does not contribute a vertex to $J$.)
-
-% \referee{2}{Page 8.  Can you add a brief explanation why $\PP$ is a
-% 	partition of $V(G)$?  It is clear that the sets in $\PP$ are
-% 	disjoint, but why do they cover $V(G)$?}
-% \note{PM}{I added an explanation in a footnote since this is obvious.  In particular, for any function $f$, $\{f^{-1}(x):x\in\operatorname{range}(f)\}$ is a partition of $\operatorname{domain}(f)$.}
+For each $x\in V(T)$, define $S_x := \{v\in V(G): a(v)= x\}$. Since $a:V(G)\to V(T)$ is a function with domain $V(G)$ and range $V(T)$, $\PP:=(S_x : x\in V(T))$ is a sequence of pairwise disjoint sets that cover $V(G)$. Let $J:=G^\SS/\PP$ denote the resulting quotient graph. We consider $V(J)\subseteq V(T)$, where each $x\in V(J)$ is the vertex obtained by contracting $S_x$ in $G^{\SS}$. (Any node $x\in V(T)$ with $S_x=\emptyset$ does not contribute a vertex to $J$.)
 
 From this point onward, the plan is to show that:
 \begin{compactenum}[(i)]
   \item $\PP$ has small layered width with respect to the layering $\mathcal{L}$ of $G$ and that
   \item $J$ has small treewidth.
 \end{compactenum}
-Once we have established (i) and (ii), the result follows easily since a layering of $G^\SS$ is easily obtained from $\mathcal{L}$ by `compressing' groups of $k$ consecutive layers.
-% \referee{1}{7. page 8, item (i): ``$P$ has small layered width with respect to the layering $L$'' $\longrightarrow$ ``$P$ has small layered width with respect to the layering $L$ of $G$''.}
-% \referee{1}{Perhaps mention something about how it is easy to find the new layering.}
-
-
-% First we need to understand the relationship between sets $S_x\in\PP$ and the related sets $Y_x$, $V_x$, $F_x$, and $N_x$.
-
-% \referee{1}{8. general comment: Claims 1, 2, and 4 are especially belaboured by
-% notation as they are quite straightforward.}
-
-% \note{PM}{Same comment: Yes, these claims are definition checking.  We'll see if the experimental notation change helps.}
-
-% \begin{clm}
-% 	\label{s-subset}
-%   For every $x\in V(T)$, 
-%   % $S_x\subseteq V_x$.
-%   $S_x\subseteq \bigcup_{x'\in V(T_x)} Y_{x'}$.
-% \end{clm}
-% 
-% \begin{proof}
-%   Let $v$ be any vertex in $S_x$ (which implies that $a(v)=x$) and let $Y_y$ be the part of $\mathcal{Y}$ that contains $v$.  By definition, $v$ participates in $y$ so by definition $a(v)$ is a $T$-ancestor of $y$, so $y\in V(T_{a(v)})$.  Therefore, $v\in Y_y\subseteq \bigcup_{x'\in V(T_x)} Y_{x'}$, as required.
-% \end{proof}
-
-% Next we complete Step~(i) and show that $\PP$ has small layered width with respect to the layering $\mathcal{L}=\langle L_1,\ldots,L_h\rangle$:
+Once we have established (i) and (ii), the result follows easily since a layering of $G^\SS$ is easily obtained from $\mathcal{L}$ by `compressing' groups of $k$ consecutive layers.  We begin with Step~(i):
 
 \begin{clm}
 	\label{general-width}
@@ -598,13 +497,7 @@ Once we have established (i) and (ii), the result follows easily since a layerin
   Recall that $S_x$ is defined by vertices that participate in $x$, and these are vertices that are either in $Y_x$ or in shortcuts that cross $Y_x$.  We say that a vertex $w\in Y_x$ \defin{contributes} a vertex $v\in S_x$ if $v=w$ or if some path in $\SS$ that contains $v$ has $w$ as an internal vertex.
   We upper bound the number of vertices in $S_x\cap L_i$ by upper-bounding the number of vertices contributed to $S_x\cap L_i$ by each $w\in Y_x$.
 
-  Refer to \cref{contribute}.  If $w\in Y_x\cap L_i$ and no path in $\SS$ includes $w$ as an internal vertex then $w$ contributes at most one vertex, itself, to $S_x\cap L_i$.
-  Otherwise, consider some path $P\in\SS$ that contains $w$ as an internal vertex.  If $w\in L_{i}$, then $P$ contributes at most $k+1$ vertices to $S_x\cap L_i$.  If $w\in L_{i-1}\cup L_{i+1}$, then $P$ contributes at most $k$ vertices to $S_x\cap L_i$. If $w\in L_{i-j}\cup L_{i+j}$ for $j\ge 2$, then $P$ contributes at most $k-j$ vertices to $S_x\cap L_i$.
-%
-% \referee{1}{9. page 8, line 10: ``We say that a vertex $w \in Y_x$ contributes a vertex
-%   $v \in S_x$ if $v$ participates in $x$.'' This needs to be fixed.}
-%
-% \note{DW}{What is wrong here?}
+  Refer to \cref{contribute}.  If $w\in Y_x\cap L_i$ and no path in $\SS$ includes $w$ as an internal vertex then $w$ contributes at most one vertex, itself, to $S_x\cap L_i$.  Otherwise, consider some path $P\in\SS$ that contains $w$ as an internal vertex.  If $w\in L_{i}$, then $P$ contributes at most $k+1$ vertices to $S_x\cap L_i$.  If $w\in L_{i-1}\cup L_{i+1}$, then $P$ contributes at most $k$ vertices to $S_x\cap L_i$. If $w\in L_{i-j}\cup L_{i+j}$ for $j\ge 2$, then $P$ contributes at most $k-j$ vertices to $S_x\cap L_i$.
 
   \begin{figure}[htbp]
     \begin{center}
@@ -616,45 +509,24 @@ Once we have established (i) and (ii), the result follows easily since a layerin
 
 
   For any $j$, the number of vertices $w\in L_{i+j}\cap Y_x$ is at most $\ell$. Each such vertex $w$ is an internal vertex of at most $d$ paths in $\SS$. Therefore,
-  \[  |S_x\cap L_i|\le d\ell  \, \Big(k+1 + 2k + \sum_{j=2}^k 2(k-j)\Big) %= d(2k+1) + \sum_{i=1}^{k-2} i
+  \[  |S_x\cap L_i|\le d\ell  \, \Big(k+1 + 2k + \sum_{j=2}^k 2(k-j)\Big)
+  %= d(2k+1) + \sum_{i=1}^{k-2} i
       = d\ell(k^2 +3) \enspace . \qedhere
   \]
 \end{proof}
 
-We now proceed with Step~(ii), showing that $J$ has small treewidth. To accomplish this, we construct a small width tree-decomposition $\mathcal{C}:=(C_x:x\in V(T))$ of $J$ using the same tree $T$ used in $\mathcal{T}$.  The following claim will be useful in showing that the resulting decomposition has small width.
+We now proceed with Step~(ii), showing that $J$ has small treewidth. To accomplish this, we construct a small width tree-decomposition $\mathcal{C}:=(C_x:x\in V(T))$ of $J$ using the same tree $T$ used in the tree decomposition $\mathcal{T}$ of $H$.  The following claim will be useful in showing that the resulting decomposition has small width.
 
 \begin{clm}\label{i-ancestor}
   For each edge $xy\in E(J)$, one of $x$ or $y$ is a $T$-ancestor of the other.
 \end{clm}
 
 \begin{proof}
-  If $xy\in E(J)$ then there exists a shortcut $P:=v_0,\ldots,v_r\in\SS$ with endpoints $v_0\in S_x$ and $v_r\in S_y$.\footnote{Recall that we have made the assumption that $\SS$ contains a length-$1$ $vw$-shortcut for each edge $vw\in E(G)$.}  For each $i\in\{0,\ldots,r\}$, let $Y_{x_i}$ be the part in $\mathcal{T}$ that contains $v_i$.  Since $P$ is a connected subgraph of $G$, $H[\{x_0,\ldots,x_r\}]$ is a connected subgraph of $H$.  Since $\mathcal{T}$ is a normalized tree decomposition of $H$, some node $x_i\in V(T)$ is a $T$-ancestor of all nodes in $x_0,\ldots,x_r$.  
-  
+  If $xy\in E(J)$ then there exists a shortcut $P:=v_0,\ldots,v_r\in\SS$ with endpoints $v_0\in S_x$ and $v_r\in S_y$.\footnote{Recall that we have made the assumption that $\SS$ contains a length-$1$ $vw$-shortcut for each edge $vw\in E(G)$.}  For each $i\in\{0,\ldots,r\}$, let $Y_{x_i}$ be the part in $\mathcal{Y}$ that contains $v_i$.  Since $P$ is a connected subgraph of $G$, $H[\{x_0,\ldots,x_r\}]$ is a connected subgraph of $H$.  Since $\mathcal{T}$ is a normalized tree decomposition of $H$, some node $x_i$ is a $T$-ancestor of all nodes in $x_0,\ldots,x_r$.
+
   We claim that at least one of $v_0$ or $v_r$ participates in $x_i$.  If $i=0$ then $v_0\in Y_{x_0}=Y_{x_i}$ so $v_0$ participates in $x_i$. Similarly, if $i=r$ then $v_r$ participates in $x_r$.  Otherwise $i\in\{1,\ldots,r-1\}$ so $v_i$ is an internal vertex of the shortcut $P$, so $P$ crosses $x_i$.  Since $v_0,v_r\in V(P)$, this implies that $v_0$ and $v_r$ both participate in $x_i$.
-  
-  Suppose, without loss of generality, that $v_0$ participates in $x_i$.  Then $a(v_0)=x$ is a $T$-ancestor of $x_i$ which a $T$-ancestor of $x_r$.  Finally $a(v_r)=y$ is a $T$-ancestor of $x_r$.  Therefore, both $x$ and $y$ are contained in the path from the root of $T$ to $x_r$, so one is a $T$-ancestor of the other. 
-  % 
-  % 
-  % is a lazy walk in $H$.
-  % 
-  % Let $P:=v_0,\ldots,v_r$ (where $v_0=v$ and $v_r=w$)
-  % Suppose, for the sake of contradiction that neither $x$ nor $y$ is an ancestor of the other.  Then
-  % 
-  % 
-  % 
-  % 
-  % 
-  % 
-  % If $P$ has length $1$ (so $vw\in E(G)$) then $
-  % 
-  % 
-  % 
-  % By \cref{s-subset}, $v\in G_x$ and $w\in G_y$.
-  % 
-  % 
-  % 
-  % 
-  % Suppose, for the sake of contradiction, that neither $x$ nor $y$ is a $T$-ancestor of the other.  Since $xy\in E(J)$, $G^\SS$ contains an edge $vw$ with $v\in S_x$ and $w\in S_y$.  Since $vw\in E(G^{\SS})$,  $\SS$ contains a $vw$-shortcut $P$.  By \cref{s-subset}, $v\in V_x$ and $w\in V_y$.  By \yref{containment-i}, if neither $x$ nor $y$ is a $T$-ancestor of the other, then $V_x$ and $V_y$ are disjoint.  By \yref{ancestor-edge}, $N_x$ and $V_y$ are also disjoint.  By \yref{separator} $P$ contains an internal vertex $v'\in F_x$.  By \yref{ancestor-edge}, $v'\in Y_a$ for some strict $T$-ancestor $a$ of $x$.  But this implies that $a(v)=a'$ so $v\in S_{a'}$ for some $T$-ancestor $a'$ of $a$, contradicting the assumption that $v\in S_x$.
+
+  Suppose, without loss of generality, that $v_0$ participates in $x_i$.  Then $a(v_0)=x$ is a $T$-ancestor of $x_i$ which a $T$-ancestor of $x_r$.  Finally $a(v_r)=y$ is a $T$-ancestor of $x_r$.  Therefore, both $x$ and $y$ are contained in the path from the root of $T$ to $x_r$, so one of $x$ or $y$ is a $T$-ancestor of the other.
 \end{proof}
 
 \begin{clm}
@@ -662,26 +534,21 @@ We now proceed with Step~(ii), showing that $J$ has small treewidth. To accompli
 The graph $J$ has a tree-decomposition in which every bag has size at most $\binom{k+t}{t}$.
 \end{clm}
 
-% \referee{1}{10. page 10, Claim 5: Indices could mostly be removed by continuing
-% to talk about $T$-ancestors instead. Move the definition of $H+$ and its
-% directed version up, along with the explanation of what will be proven,
-% so that it isn’t necessary to define the $s_i$.}
-% 
-% \note{PM}{I also found the steps in this proof tedious. Unfortunately, when I tried to give a simple explanation for it in Banff, both Piotr and Torsten remained unconvinced until we opened the paper and walked through the steps of the proof together.  I suspect the referee who can see through these proofs if one of the authors of \cite{PS21}.}
-
 \begin{proof}
   For the tree-decomposition $(C_x:x\in V(T))$ of $J$ we use the same tree $T$ used in the tree-decomposition $(B_x:x\in V(T))$ of $H$. For each node $x$ of $T$, we define $C_x$ as follows: $C_x$ contains $x$ as well as every $T$-ancestor $a$ of $x$ such that $J$ contains an edge $ax'$ where $x$ is a $T$-ancestor of $x'$ (including the possibility that $x=x'$).
-  \cref{i-ancestor} ensures that, for every edge $ax'\in E(J)$, $a,x'\in C_{x'}$.  The connectivity of $T[a]:=T[\{x\in V(T):a\in C_x\}]$ follows from the fact that, for every node $x'\in T[a]$, every node $x$ on the path in $T$ from $x'$ to  $a$ is also a node of $T[a]$.  Therefore $(C_x:x\in V(T))$ is indeed a tree-decomposition of $J$.  
-  
-  It remains to show that each bag in our tree decomposition has size at most $\binom{k+t}{t}$.  We will do this by appealing to an elegant result of \citet{PS21}. 
-  % on the number of $k$-reachable vertices. in a directed graph obtained by directing the edges of a supergraph of $H$.  \
-  Specifically, let $H^+$ denote the supergraph of $H$ that contains the edge $xy$ if and only if some bag $B_z\in\mathcal{T}$ contains both $x$ and $y$ (i.e., $H^+$ is the chordal closure of $H$ with respect to $\mathcal{T}$).  Let $\overrightarrow{H}^+$ be the directed graph obtained by directing each edge $xy$ of $H^+$ in the direction $\overrightarrow{xy}$ so that $y$ is a $T$-ancestor of $x$.  \citet[Lemma~13]{PS21} show that, for any $x\in V(\overrightarrow{H}^+)$, the number of vertices of $\overrightarrow{H}^+$ that can be reached by a directed path that originates at $x$ and has length at most $k$ is at most $\binom{k+t}{t}$.
+  \cref{i-ancestor} ensures that, for every edge $ax'\in E(J)$, both $a$ and $x$ are contained in $C_{x'}$.  The connectivity of $T[a]:=T[\{x\in V(T):a\in C_x\}]$ follows from the fact that, for every node $x'\in V(T[a])$, every node $x$ on the path in $T$ from $a$ to  $x'$ is also a node of $T[a]$.  Therefore $(C_x:x\in V(T))$ is indeed a tree-decomposition of $J$.
 
-  Consider an arbitrary node $x\in V(T)$ and suppose that some strict $T$-ancestor $a$ of $x$ is contained in $C_x$.  We will show that $\overrightarrow{H}^+$ contains a directed path from $x$ to $a$ of length at most $k$.  Since there $a$ a strict $T$-ancestor of $x$, $a\neq x$ so any path from $x$ to $a$ has length at least $1$. By \cite[Lemma~13]{PS21}, this implies that the number of strict $T$-ancestors of $x$ contained in $C_x$ is at most $\binom{k+t}{t}-1$ and therefore $|C_x|\le\binom{k+t}{t}$.
-  
-  Since $a\in C_x$, there exists a $T$-descendant $x'$ of $x$ such that $ax'\in E(J)$.  Therefore, there exists a shortcut $v_0,\ldots,v_r$ in $\SS$ with $v_0\in S_{x'}$ and $v_r\in S_a$.  For each $i\in\{0,\ldots,r\}$, let $Y_{x_i}$ be the part of $\mathcal{Y}$ that contains $v_i$.  Since $v_0,\ldots,v_r$ is a path in $G$, $x_0,\ldots,x_r$ is a lazy walk in $H$.\footnote{A \defin{lazy walk} is a graph $G$ is a walk in the pseudograph obtained by adding a self-loop at each vertex of $G$.}  Let $j$ be the minimum integer such that $x_j$ is a strict $T$-ancestor of $x$.  Since $x'=x_0$ is a $T$-descendant of $x$ and $a=x_r$ is a strict $T$-ancestor of $x$, $j\in\{1,\ldots,r\}$ and $x_{j-1}$ is a $T$-descendant of $x$ (possibly $x_{j-1}=x$).  Since $x_{j-1}x_j\in E(H)$, $x_j \in B_{x_{j-1}}$ and therefore $x_j\in B_x$.  Therefore $xx_j\in E(H^+)$.  
-  
-  Therefore $W:=y_0,\ldots,y_s:=x,x_j,x_{j+1},\ldots,x_r$ is a lazy walk in $H^+$ of length $r\le k$.  For each $j\in \{0,\ldots,s\}$, let $z_j$ be the lowest common $T$-ancestor of $y_0,\ldots,y_j$.  By using the same reasoning used to conclude that $xx_j\in E(H^+)$ we conclude that $z_{i-1}=z_i$ or $z_{i-1}z_i\in E(H^+)$ for each $i\in\{1,\ldots,s\}$, so $z_0,\ldots,z_s$ is a directed lazy walk in $\overrightarrow{H}^+$.  Finally, let $\overrightarrow{W}$ be the path in $\overrightarrow{H}^+$ obtained by removing removing duplicates from $z_0,\ldots,z_s$.  Then $\overrightarrow{W}$ is a directed path in $\overrightarrow{H}^+$ from $x$ to $a$ of length $s\le r\le k$.  This completes the proof.
+  It remains to show that each bag in our tree decomposition has size at most $\binom{k+t}{t}$.  We will do this by appealing to an elegant result of \citet{PS21} on $k$-reachability in directed skeletons, which we now explain.
+
+  Let $H^+$ denote the supergraph of $H$ that contains the edge $xy$ if and only if some bag $B_z\in\mathcal{T}$ contains both $x$ and $y$ (i.e., $H^+$ is the chordal closure of $H$ with respect to $\mathcal{T}$).  Let $\overrightarrow{H}^+$ be the directed graph obtained by directing each edge $xy$ of $H^+$ in the direction $\overrightarrow{xy}$ so that $y$ is a $T$-ancestor of $x$. Observe that directed path in $\overrightarrow{H}^+$ that begins at $x$ leads to a $T$-ancestor of $x$.  \citet[Lemma~13]{PS21} show that, for any $x\in V(\overrightarrow{H}^+)$, the number of strict $T$-ancestors of $x$ that can be reached by a directed path of length at most $k$ that begins at $x$ is at most $\binom{k+t}{t}-1$.
+
+  Consider an arbitrary node $x\in V(T)$ and suppose that some strict $T$-ancestor $a$ of $x$ is contained in $C_x$.  We will show that $\overrightarrow{H}^+$ contains a directed path from $x$ to $a$ of length at most $k$.  By \cite[Lemma~13]{PS21}, this implies that the number of strict $T$-ancestors of $x$ contained in $C_x$ is at most $\binom{k+t}{t}-1$ and therefore $|C_x|\le\binom{k+t}{t}$.
+
+  Since $a\in C_x$, there exists a $T$-descendant $x'$ of $x$ such that $ax'\in E(J)$.  Therefore, there exists a shortcut $P:=v_0,\ldots,v_r$ in $\SS$ with $v_0\in S_{x'}$ and $v_r\in S_a$.  For each $i\in\{0,\ldots,r\}$, let $Y_{x_i}$ be the part of $\mathcal{Y}$ that contains $v_i$.  For each $i\in\{1,\ldots,r-1\}$, $v_i\in Y_{x_i}$ is an internal vertex of $P$, so $v_r$ participates in $x_i$.  Therefore $a=a(v_r)$ is a $T$-ancestor of $x_i$ for each $i\in\{1,\ldots,r-1\}$.
+
+  Since $v_0,\ldots,v_r$ is a path in $G$, $x_0,\ldots,x_r$ is a lazy walk in $H$.\footnote{A \defin{lazy walk} is a graph $G$ is a walk in the pseudograph obtained by adding a self-loop at each vertex of $G$.}  Let $j$ be the minimum integer such that $x_j$ is a strict $T$-ancestor of $x$.  Since $x'=x_0$ is a $T$-descendant of $x$ and $a=x_r$ is a strict $T$-ancestor of $x$, $j\in\{1,\ldots,r\}$ and $x_{j-1}$ is a $T$-descendant of $x$ (possibly $x_{j-1}=x$).  Since $x_{j-1}x_j\in E(H)$, $x_j \in B_{x_{j-1}}$ and therefore $x_j\in B_x$.  Therefore $xx_j\in E(H^+)$.
+
+  Therefore $W:=y_0,\ldots,y_s:=x,x_j,x_{j+1},\ldots,x_r$ is a lazy walk in $H^+$ of length $r\le k$.  For each $j\in \{0,\ldots,s\}$, let $z_j$ be the lowest common $T$-ancestor of $y_0,\ldots,y_j$.  The same reasoning used to conclude that $xx_j\in E(H^+)$ can be used to conclude that $z_{i-1}=z_i$ or $z_{i-1}z_i\in E(H^+)$ for each $i\in\{1,\ldots,s\}$.  Therefore $z_0,\ldots,z_s$ is a directed lazy walk in $\overrightarrow{H}^+$.  Finally, let $\overrightarrow{W}$ be the path in $\overrightarrow{H}^+$ obtained by removing removing duplicates from $z_0,\ldots,z_s$.  Then $\overrightarrow{W}$ is a directed path in $\overrightarrow{H}^+$ from $x$ to $a$ of length $s\le r\le k$.  This completes the proof.
 \end{proof}
 
 At this point, the proof of \cref{ShortcutPartition} is almost immediate from \cref{general-width,general-bag-size}, except that the layering $\mathcal{L}$ of $G$ may not be a valid layering of $G^{\SS}$.  In particular, $G^{\SS}$ may contain edges $vw$ with $v\in L_i$ and $w\in L_{i+j}$ for any $j\in\{0,\ldots,k\}$.  To resolve this, we use a new layering $\mathcal{L}':=\langle L_0',\ldots,L_h'\rangle$ in which $L_i'=\bigcup_{j=ki}^{ki+k-1} L_i$.  This increases the layered width given by \cref{general-width} from $d\ell(k^2+3)$ to $d\ell(k^3+3k)$.  Therefore $G$ has an $H$-partition of layered width at most $d\ell(k^3+3k)$ in which $H$ has treewidth at most $\binom{k+t}{t}$, completing the proof of \cref{ShortcutPartition}.
@@ -697,14 +564,14 @@ For any integer $d\ge 3$, a (multi)graph $G$ is \defin{$d$-framed} if it admits 
 For any integer $d\ge 3$, every $d$-framed multigraph is contained in $H\boxtimes P\boxtimes K_{d+3\floor{d/2}-3}$ for some planar graph $H$ with treewidth at most 3 and for some path $P$.
 \end{thm}
 
-This result is used below to obtain product structure theorems for 1-planar multigraphs and for map graphs. 
-% \todo{Move this comment to the section on $1$-planar graphs?} 
-For simple 1-planar graphs it is essential that we allow frames with parallel edges. 
+This result is used below to obtain product structure theorems for 1-planar multigraphs and for map graphs.
+% \todo{Move this comment to the section on $1$-planar graphs?}
+For simple 1-planar graphs it is essential that we allow frames with parallel edges.
 % \note{DW}{I feel that at this point we need to justify the introduction of multigraphs.}
 
 \cref{d_framed_product_stucture} follows quickly from the following technical lemma, which is an extension of the analogous result for plane graphs \cite{DJMMUW20}. The following definition is a convenient way to establish the planarity of $H$ in \cref{d_framed_product_stucture}:  A tree-decomposition $\mathcal{T}$ of a graph $G$ is \defin{$t$-simple} if each of its bags has size at most $t+1$ and, for each $t$-element subset $\{v_1,\ldots,v_t\}\subseteq V(G)$, at most two bags of $\mathcal{T}$ contain $\{v_1,\ldots,v_t\}$.  Finally, a \defin{BFS spanning forest} $T$ of $G$ rooted at a set $V_0\subseteq V(G)$ is a spanning forest of $G$ with the property that for each $v\in V(G)$,  \[\min\{\dist_G(v,w):w\in V_0\}=\min\{\dist_T(v,w):w\in V_0\}.\]
 
-\note{PM}{Consider a change of notation:   Replace $F$ with $C$.  (I was using $F$ before to be consistent with the previous section, but that notation is gone now.)} \note{DW}{I agree.}
+%\note{PM}{Consider a change of notation:   Replace $F$ with $C$.  (I was using $F$ before to be consistent with the previous section, but that notation is gone now.)} \note{DW}{I agree.}
 
 \note{DW}{I suggest $G'$ be changed to $G_0$ throughout (since $G'$ feels like a graph derived from $G$, which it is not). Similarly, replace $N'$ by $N_0$.}
 
@@ -730,6 +597,27 @@ For simple 1-planar graphs it is essential that we allow frames with parallel ed
 		\item For each $x\in V(H)$, $S_x=Y_x\cup X_x$ where $|X_x|\le d-3$ and $|Y_x\cap L_j|\le 3$ for each $j\ge 0$ \note{DW}{suggested revision, ``$S_x$ has a partition $\{X_x,Y_x\}$ where $|X_x|\le d-3$ and $|Y_x\cap L_j|\le 3$ for each $j\ge 0$''};
 		\item $H$ has a $3$-simple tree decomposition $\mathcal{T}$ and, if $k=3$, then $\{x_1,x_2,x_3\}$ is contained in exactly one bag of $\mathcal{T}$.
 	\end{compactenum}
+%\note{PM}{I've changed my mind about this notation change.  We end up applying the lemma inductively on the faces $F_1,\ldots,F_m$ of $M$ (which are cycles in $G$).  It makes sense that the original cycle in $G$ is called $F$.}
+%\note{DW}{okay}
+%\begin{lem}
+%  \label{induction} The setup:
+%  \begin{compactenum}
+%    \item Let $G$ be a $d$-framed multigraph and let $G'$ be a frame of $G$.
+%    \item Let $F_0$ be the outer face of $G'$ and let $T$ be a BFS spanning forest of $G'$ rooted at $V(F_0)$.
+%    \item For every integer $j\ge 0$, let $L_j=\{v\in V(G):\dist_T(v,V(F_0))=j\}$.
+%    \item Let $F$ be a cycle in $G'$ whose vertices are partitioned into $k\le 3$ sets $P_1,\ldots,P_k$ such that for each $i\in\{1,\ldots,k\}$,
+%    \begin{compactenum}
+%      \item $F[P_i]$ is connected; and
+%      \item $P_i=Y_i\cup X_i$ where $|X_i|\le d-3$ and $|Y_i\cap L_j| \le 3$ for each $j\ge 0$.
+%    \end{compactenum}
+%    \item Let $N$ and $N'$ be the subgraphs of $G$ and $G'$ consisting only of those edges and vertices contained in the closure of $F$.
+%  \end{compactenum}
+%  Then $N$ has an $H$-partition $\PP=\{S_x: x\in V(H)\}$ such that:
+%  \begin{compactenum}[(i)]
+%    \item for each $i\in\{1,\ldots,k\}$, there exists $x_i\in V(H)$ such that $P_i=S_{x_i}$;
+%    \item For each $x\in V(H)$, $S_x=Y_x\cup X_x$ where $|X_x|\le d-3$ and $|Y_x\cap L_j|\le 3$ for each $j\ge 0$;
+%    \item $H$ has a $3$-simple tree decomposition $\mathcal{T}$ and, if $k=3$, then $\{x_1,x_2,x_3\}$ is contained in exactly one bag of $\mathcal{T}$.
+%  \end{compactenum}
 \end{lem}
 
 \begin{proof}
@@ -746,8 +634,9 @@ For simple 1-planar graphs it is essential that we allow frames with parallel ed
 
 \note{DW}{Now assume that $N'$ has at least two internal faces.}
 
-	In the general case, our $H$-partition $\mathcal{P}$ will include $P_1$, $P_2$ , $P_3$ and a (possibly empty) part $S$ that is defined by three vertices $v_1v_2v_3$ that belong to a common inner face $\tau$ of $N'$.  There is one case to consider for each possible value of $k$ (see \cref{boring_figure}):
-	\begin{compactenum}
+In the general case, our $H$-partition $\mathcal{P}$ will include $P_1$, $P_2$ , $P_3$ and a (possibly empty) part $S$ that will be determined by three vertices $v_1v_2v_3$ that belong to a common inner face $\tau$ of $N'$.  We first explain how $v_1$, $v_2$ and $v_3$ are chosen and explain how these are used to define $S$.  There is one case to consider for each possible value of $k$ (see \cref{boring_figure}):
+
+\begin{compactenum}
 		\item If $k=1$ then let $\tau:=v_1,\ldots,v_p$ be an inner face of $N'$ that contains at least one edge $v_1v_2$ of $F$ on its boundary.
 
 		\item If $k= 2$ then let $\tau:=v_1,\ldots,v_p$ be an inner face of $N'$ that contains at least one edge $v_1v_2$ of $F$ on its boundary and such that $v_1\in P_1$ and $v_2\in P_2$.
@@ -814,10 +703,10 @@ For simple 1-planar graphs it is essential that we allow frames with parallel ed
 \end{proof}
 
 % \todo[inline]{Alternative to the final three paragraphs in the preceding proof:
-% 
+%
 % To see that $H$ is planar, consider a plane multigraph $G''$ obtained by adding stars in some of the faces of $G'$, as follows:  When creating the part $S$, add a vertex $v_\tau$ to the interior of $\tau$ that is adjacent to each vertex of $\tau$ and place $v_\tau$ in $S$.  The graph $G''\supseteq G'$ obtained this way is clearly planar.  Furthermore, for each part $P\in\mathcal{P}$, $G''[P]$ is connected.  Since planarity is preserved under edge contraction, it follows that $G''/\mathcal{P}$ is planar.  Now argue that $G/\mathcal{P}=G''/\mathcal{P}$\ldots
 % }
-% 
+%
 % \note{DW}{The proof via 3-simplicity is shorter, so just keep it as is.}
 
 Using \cref{induction}, the proof of \cref{d_framed_product_stucture} is now straightforward.
@@ -912,7 +801,7 @@ Every 1-planar graph is contained in $H\boxtimes P\boxtimes K_7$ for some planar
 %In \cref{1_planar_is_4_framed}, below, we show that every $1$-planar graph is a subgraph of a $4$-framed multigraph. This makes \cref{1-planar} an immediate consequence of the following theorem, whose proof is the subject of the rest of this section.
 
 
-\cref{1-planar} is an immediate consequence of \cref{d_framed_product_stucture} and the next lemma, which is of independent interest.  
+\cref{1-planar} is an immediate consequence of \cref{d_framed_product_stucture} and the next lemma, which is of independent interest.
 
 \note{DW}{Say something about how \cref{1_planar_is_4_framed} is better than similar results in the literature.}
 
@@ -1057,12 +946,12 @@ $\qn(G) \leq  3 \ell \, \qn(H) + \floor{\tfrac{3}{2}\ell}
 \leq 3 \ell \, 2^{\tw(H)}  - \ceil{\tfrac{3}{2}\ell}$.
 \end{lem}
 
-\cref{qn,gkPlanarProduct} imply that $(g,k)$-planar graphs have queue-number at most $g 2^{O(k^3)}$. 
+\cref{qn,gkPlanarProduct} imply that $(g,k)$-planar graphs have queue-number at most $g 2^{O(k^3)}$.
 % \note{DW}{I have changed $g 2^{O(k^4)}$ to $g 2^{O(k^3)}$, okay?}
 % \note{OM}{Ok}
 Note that \citet{DJMMUW20} previously proved the bound of
-$O(g^{k+2})$ using \cref{GenusProduct} and an ad-hoc method. Our result provides a better bound when $g>2^{k^2}$ 
-% \note{DW}{I have changed $g>2^{k^3}$ to $g>2^{k^2}$, okay?}. 
+$O(g^{k+2})$ using \cref{GenusProduct} and an ad-hoc method. Our result provides a better bound when $g>2^{k^2}$
+% \note{DW}{I have changed $g>2^{k^3}$ to $g>2^{k^2}$, okay?}.
 % \note{PM}{Ok}
 In the case of 1-planar graphs we can improve further. \citet{ABGKP20} proved that every planar graph with treewidth at most $3$ has queue-number at most $5$. Thus the graph $H$ in \cref{1-planar} has queue-number at most $5$. \cref{qn,1-planar} then imply:
 
