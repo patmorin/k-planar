@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
-<ipe version="70218" creator="Ipe 7.2.24">
-<info created="D:20211118165136" modified="D:20211119101305"/>
+<ipe version="70218" creator="Ipe 7.2.23">
+<info created="D:20211118165136" modified="D:20211124083438"/>
 <preamble>\usepackage{sfmath}</preamble>
 <ipestyle name="basic">
 <symbol name="arrow/arc(spx)">
@@ -315,9 +315,12 @@ h
 <layer name="good-case"/>
 <layer name="bad-case"/>
 <layer name="H'"/>
+<layer name="shortcut"/>
+<layer name="beta"/>
 <view layers="alpha good-case" active="alpha"/>
-<view layers="alpha bad-case" active="bad-case"/>
-<view layers="alpha bad-case H'" active="H'"/>
+<view layers="alpha good-case shortcut" active="shortcut"/>
+<view layers="alpha good-case H' shortcut" active="H'"/>
+<view layers="alpha bad-case H' shortcut beta" active="beta"/>
 <path layer="good-case" matrix="0.4 0 0 0.4 193.099 364.8" stroke="black" pen="heavier">
 320 752 m
 336 720
@@ -393,7 +396,7 @@ h
 <use matrix="0.8 0 0 0.8 57.4527 121.6" name="mark/fdisk(sfx)" pos="231.278 605.436" size="normal" stroke="black" fill="white"/>
 <use matrix="0.8 0 0 0.8 57.4527 121.6" name="mark/fdisk(sfx)" pos="245.094 603.899" size="normal" stroke="black" fill="white"/>
 <use matrix="0.8 0 0 0.8 57.4527 121.6" name="mark/fdisk(sfx)" pos="259.152 611.312" size="normal" stroke="black" fill="white"/>
-<path layer="bad-case" matrix="0.8 0 0 0.8 57.4527 121.6" stroke="orange" pen="ultrafat" cap="1">
+<path layer="shortcut" matrix="0.8 0 0 0.8 57.4527 121.6" stroke="orange" pen="ultrafat" cap="1">
 191.047 594.738 m
 205.635 604.271
 221.038 593.921

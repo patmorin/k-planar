@@ -19,8 +19,8 @@
 
 \DeclareMathOperator{\tw}{tw}
 
-\title{Graph Product Structure for Non-Minor-Closed Classes}
-\author{Vida Dujmović \and Pat Morin \and David R. Wood}
+\title[$k$-planar product structure]{Graph Product Structure for Non-Minor-Closed Classes}
+\author[Dujmović, M, Wood]{Vida Dujmović \and Pat Morin \and David R. Wood}
 \titlegraphic{\includegraphics[height=1em]{by}}
 
 \begin{document}
@@ -29,18 +29,18 @@
   \titlepage
 \end{frame}
 
-\begin{frame}
-    \frametitle{Outline}
-
-    \begin{itemize}
-        \item $k$-planar graphs
-        \item $(k,d)$-shortcut systems
-        \item statement of main theorem
-        \item applications
-        \item proof of main theorem
-        \item open problem
-    \end{itemize}
-\end{frame}
+% \begin{frame}
+%     \frametitle{Outline}
+%
+%     \begin{itemize}
+%         \item $k$-planar graphs
+%         \item $(k,d)$-shortcut systems
+%         \item statement of main theorem
+%         \item applications
+%         \item proof of main theorem
+%         \item open problem
+%     \end{itemize}
+% \end{frame}
 
 \begin{frame}
     \frametitle{Motivation: $k$-Planar Graphs}
@@ -107,6 +107,7 @@
   \vspace{1cm}
   \uncover<2->{\textbf{Example:} $G'$ is ${\color{red} k}$-planar
     \begin{itemize}
+      \item $G'\subseteq G^{\mathcal{P}}$, with $G$ planar and $\mathcal{P}$ a $(k+1,2)$-shortcut system for $G$
       \item $t=3$, $\ell=3$, $d=2$, $k={\color{red}k}+1$
       \item $t'=O(k^3)$, $\ell'=O(k^3)$
     \end{itemize}
@@ -186,6 +187,18 @@
   \end{itemize}
 \end{frame}
 
+\begin{frame}
+  \frametitle{Progress so Far}
+
+  \begin{itemize}
+    \item $\mathcal{P'}$ is a $(k,dk\ell)$-shortcut system over $H\boxtimes P$
+    \item So far, $G^{\mathcal{P}}\subseteq (H\boxtimes P)^\mathcal{P'}\boxtimes K_{\ell k}$
+    \item Shortcuts in $\mathcal{P'}$ project onto edges of $P$
+    \item Shortcuts in $\mathcal{P'}$ project onto paths in $H$
+    \item Time to study $\tw(H')$ where $H':=H^{\mathcal{P}}$
+  \end{itemize}
+\end{frame}
+
 
 \begin{frame}
   \frametitle{Nice Tree Decompositions}
@@ -208,7 +221,7 @@
 \begin{frame}
   \frametitle{Alternative View}
   \framesubtitle{Constructing the bags from the tree}
-  
+
   \begin{itemize}
     \item<1-> Start with $T$ such that $x\prec_T y$ or $y\prec_T x$ for each $xy\in E(H)$
     \item<2-> $B_x\gets\{x\}$ for each $x\in V(T)$
@@ -223,12 +236,16 @@
 \begin{frame}
   \frametitle{A Useful Lemma}
 
-  \textbf{Lemma (Pilipczuk--Siebertz):}\footnote{Yes, the same paper!} For any $z\in V(H)$ the number of $x\in V(H)$ such that $x\prec_T z\prec_T z'$ and $\mathop{dist}_H(x,z')\le k$ is at most $\binom{k+t}{t}$.
-  \begin{center}
-    \multiinclude[<+>][format=pdf,start=1]{figs/pz}%
-  \end{center}
   \begin{itemize}
-      \item<2->Problem: $vw$-shortcut in $H\boxtimes P$ projects onto $xz'$ shortcut in $H$, but $x\not\preceq_T z'$ and $z'\not\preceq_T x$
+    \item $(B_x:x\in V(T))$ is a nice width-$t$ tree decomposition of $H$.
+
+    \item[]\textbf{Lemma (Pilipczuk--Siebertz):}\footnote{Yes, the same paper!} For any $z\in V(T)$ the number of $x\in V(T)$ such that $x\prec_T z\prec_T z'$ and $\mathop{dist}_H(x,z')\le k$ is at most $\binom{k+t}{t}$.
+    \begin{center}
+      \multiinclude[<+>][format=pdf,start=1]{figs/pz}%
+    \end{center}
+  \end{itemize}
+  \begin{itemize}
+      \item<4->Problem: $vw$-shortcut in projects onto $xz'$ shortcut in $H$, but $x\not\preceq_T z'$ and $z'\not\preceq_T x$
   \end{itemize}
 \end{frame}
 
@@ -260,7 +277,7 @@
       \includegraphics[scale=.8]{figs/nice-td-6}%
     \end{center}
     \item<2-> $\mathcal{S}:=(S_x:x\in V(T))$ is a partition of $V(G)$
-    \item<3->[$(\star)$] For any $vw$-shortcut in $H\boxtimes P$, $a(v)\preceq_T a(w)$ or $a(w)\preceq_T a(v)$
+    \item<3->[$(\star)$] For any $vw$-shortcut, $a(v)\preceq_T a(w)$ or $a(w)\preceq_T a(v)$
 \end{itemize}
 \end{frame}
 
@@ -269,7 +286,7 @@
   \frametitle{Now the Crazy Part}
 
   \begin{itemize}
-      \item[$(\star)$] For any $vw$-shortcut in $H\boxtimes P$, $a(v)\preceq_T a(w)$ or $a(w)\preceq_T a(v)$
+      \item[$(\star)$] For any $vw$-shortcut, $a(v)\preceq_T a(w)$ or $a(w)\preceq_T a(v)$
   \end{itemize}
 
     \vspace{.5cm}
@@ -324,17 +341,17 @@
 
 \begin{frame}
   \frametitle{Discussion}
-  
+
   \begin{itemize}
     \item<1-> Optimizing for $k$-planar $G$ shows $G\subseteq H\boxtimes P\boxtimes K_\ell$ for $\tw(H)\le \binom{k+4}{3}-1$ and $\ell\le 18k^{\color{red}2}+48k+30$.
-    
+
     \item<2-> Optimizing for $1$-planar $G$ shows $G\subseteq H\boxtimes P\boxtimes K_{30}$ with $\tw(H)\le 3$
-    
+
     \item<3-> \textbf{Open Problem:} Does there exist $C\in\N$ and $f:\N\to\N$ such that for $k$-planar $G$,  $G\subseteq H\boxtimes P\boxtimes K_{f(k)}$ where $\tw(H)\le C$? \uncover<4->{(Maybe $C=3$)}\vspace{1.5cm}
-    
+
     \item<5->[] \centerline{\Large\bfseries Thank You!}
   \end{itemize}
-  
+
 \end{frame}
 
 
