@@ -318,7 +318,7 @@ Note that \cref{ShortcutPartition} is equivalent to \cref{ShortcutProduct} by \c
 The purpose of this section is to prove our main technical result, \cref{ShortcutPartition}, and its specialization to $k$-planar graphs \cref{kPlanarProduct}.
 
 
-\subsection{Product Structure for Shortcut Systems}
+\subsection{Shortcut Systems}
 
 \cref{ShortcutPartition} shows how, given a $(k,d)$-shortcut system $\SS$ of a graph $G$, an $H$-partition of $G$ can be used to obtain a $J$-partition of $G^{\SS}$ where the layered width  does not increase dramatically and the treewidth of $J$ is not much more than the treewidth of $H$.
 
@@ -519,7 +519,7 @@ The graph $J$ has a tree-decomposition in which every bag has size at most $\bin
 At this point, the proof of \cref{ShortcutPartition} is almost immediate from \cref{general-width,general-bag-size}, except that the layering $\mathcal{L}$ of $G$ may not be a valid layering of $G^{\SS}$.  In particular, $G^{\SS}$ may contain edges $vw$ with $v\in L_i$ and $w\in L_{i+j}$ for any $j\in\{0,\ldots,k\}$.  To resolve this, we use a new layering $\mathcal{L}':=\langle L_0',\ldots,L_h'\rangle$ in which $L_i'=\bigcup_{j=ki}^{ki+k-1} L_i$.  This increases the layered width given by \cref{general-width} from $d\ell(k^2+3)$ to $d\ell(k^3+3k)$.  Therefore $G$ has an $H$-partition of layered width at most $d\ell(k^3+3k)$ in which $H$ has treewidth at most $\binom{k+t}{t}-1$, completing the proof of \cref{ShortcutPartition}.
 \end{proof}
 
-\subsection{\boldmath Product Structure for $k$-Planar Graphs}
+\subsection{\boldmath $k$-Planar Graphs}
 
 % \note{DW}{These definitions should appear earlier, certainly before the definition of framed graph, which should be defined as an ``embedded graph''. One option is to put this whole paragraph as a footnote in the introduction where we first mention $k$-planar graphs. The experienced reader can skip this paragraph, which says to me it should be a footnote.}
 
@@ -569,6 +569,25 @@ As mentioned in \cref{Introduction}, \cref{PlanarProduct,ShortcutProduct} imply 
 \end{proof}
 
 % \subsection{Examples}
+
+
+\subsection{\boldmath $(g,k)$-Planar Graphs}
+
+The definition of $k$-planar graphs naturally generalises for other surfaces. A graph $G$ drawn on a surface $\Sigma$ is $(\Sigma,k)$-plane if every edge of $G$ is involved in at most $k$ crossings.  A graph $G$ is $(g,k)$-planar if it is isomorphic to some $(\Sigma,k)$-plane graph, for some surface $\Sigma$ with Euler genus at most $g$. \cref{AddDummy} immediately generalises as follows:
+
+\begin{obs}
+\label{gAddDummy}
+Every $(g,k)$-planar graph $G$ is contained in $G_0^\SS$ for some graph $G_0$ of Euler genus at most $g$ and some $(k+1,2)$-shortcut system $\SS$ for $G_0$. Moreover, $V(G) \subseteq V(G_0)$ and for every edge $vw \in E(G)$ there is a $vw$-path $P$ in $G_0$ of length at most $k+1$, such that every internal vertex in $P$ has degree at most $4$ in $G_0$.
+\end{obs}
+
+Theorems~\ref{ShortcutProduct}  and \ref{GenusProduct}(b) imply a product structure theorem for $(g,k)$-planar graphs. The obtained bounds are improved by the following result, which is proved using exactly the same approach used in the proof of \cref{kPlanarProduct} (applying \cref{GenusProduct}(b) instead of \cref{PlanarProduct}(b)). We omit repeating the details.
+
+\begin{thm}
+\label{gkPlanarProduct}
+Every $(g,k)$-planar graph is contained in $H\boxtimes P \boxtimes K_\ell$ for some graph $H$ with $\tw(H) \leq \binom{k+4}{3}-1$, where $\ell:=\max\{2g,3\}\cdot(6k^2+16k+10)$.
+% \note{DW}{I have changed $\tw(H) \leq \binom{k+5}{4}-1$ to $\tw(H) \leq \binom{k+4}{3}-1$, okay?}
+%\note{PM}{Ok}
+\end{thm}
 
 
 %%%%%%%
@@ -1032,85 +1051,6 @@ Let $G$ be a $(g,d)$-map graph. So there is a graph $G_0$ embedded in a surface 
 
 
 
-%%%%%%%%%%%%%%%%%%%
-\section{Allowing Crossings}
-\label{sec-k-planar}
-
-This section applies our main results for shortcut systems to prove a product structure theorem for graphs drawn with a bounded number of crossings per edge. Then we show how to improve the bounds in this case.
-
-
-
-\subsection{\boldmath $(g,k)$-Planar Graphs}
-
-The definition of $k$-planar graphs naturally generalises for other surfaces. A graph $G$ drawn on a surface $\Sigma$ is $(\Sigma,k)$-plane if every edge of $G$ is involved in at most $k$ crossings.  A graph $G$ is $(g,k)$-planar if it is isomorphic to some $(\Sigma,k)$-plane graph, for some surface $\Sigma$ with Euler genus at most $g$. \cref{AddDummy} immediately generalises as follows:
-
-\begin{obs}
-\label{gAddDummy}
-Every $(g,k)$-planar graph $G$ is contained in $G_0^\SS$ for some graph $G_0$ of Euler genus at most $g$ and some $(k+1,2)$-shortcut system $\SS$ for $G_0$. Moreover, $V(G) \subseteq V(G_0)$ and for every edge $vw \in E(G)$ there is a $vw$-path $P$ in $G_0$ of length at most $k+1$, such that every internal vertex in $P$ has degree at most $4$ in $G_0$.
-\end{obs}
-
-Theorems~\ref{ShortcutProduct}  and \ref{GenusProduct}(b) imply a product structure theorem for $(g,k)$-planar graphs. The obtained bounds are improved by the following result, which is proved using exactly the same approach used in the proof of \cref{kPlanarProduct} (applying \cref{GenusProduct}(b) instead of \cref{PlanarProduct}(b)). We omit repeating the details.
-
-\begin{thm}
-\label{gkPlanarProduct}
-Every $(g,k)$-planar graph is contained in $H\boxtimes P \boxtimes K_\ell$ for some graph $H$ with $\tw(H) \leq \binom{k+4}{3}-1$, where $\ell:=\max\{2g,3\}\cdot(6k^2+16k+10)$.
-% \note{DW}{I have changed $\tw(H) \leq \binom{k+5}{4}-1$ to $\tw(H) \leq \binom{k+4}{3}-1$, okay?}
-%\note{PM}{Ok}
-\end{thm}
-
-%\note{DW}{I am pretty sure one can get treewidth 3 for $(g,1)$-planar graphs, combining \cref{d_framed_product_stucture} with the method in \citep{DHHW}. I think the best place for this result is reference \citep{DHHW} since the present paper pre-dates \citep{DHHW} (and this addition will increase the significance of \citep{DHHW}). Okay?}
-%\note{PM}{Okay to this and to all similar questions that come later (which I've now commented out.)}
-%\note{DW}{Robert is working on it.}
-
-Prior to this work, the strongest structural description of $k$-planar or $(g,k)$-planar graphs (or any of the other classes presented in \cref{Examples}) was in terms of layered treewidth, which we now define.  A \defin{layered tree-decomposition} $(\mathcal{L},\mathcal{T})$ consists of a layering $\mathcal{L}$ and a tree-decomposition $\mathcal{T}$ of $G$. The layered width of $(\mathcal{L},\mathcal{T})$ is $\max\{|L\cap B|: L\in \mathcal{L},\, B\in \mathcal{T}\}$.  The \defin{layered treewidth} of $G$ is the minimum layered width of any layered tree-decomposition of $G$. \citet{dujmovic.morin.ea:layered} proved that planar graphs have layered treewidth at most 3, that graphs of Euler genus $g$ have layered treewidth at most $2g+3$, and more generally that a minor-closed class has bounded layered treewidth if and only if it excludes some apex graph. \citet{dujmovic.eppstein.ea:structure} show that every $k$-planar graph has layered treewidth at most $6(k+1)$, and more generally that every $(g,k)$-planar graph has layered treewidth at most $(4g+6)(k+1)$. It follows from this result that $(g,k)$-planar graphs have treewidth $O(\sqrt{(g+1)(k+1)n})$ and thus have balanced separators of the same order, which can also be concluded from the work of \citet{FP08}. In related work, \citet{grigoriev.bodlaender:algorithms} used structural results to obtain approximation algorithms for $(g,k)$-planar graphs, and \citet{PachToth97} determined the maximum number of edges in a $k$-planar graph (up to a constant factor).
-
-If a graph class admits bounded layered partitions, then it also has bounded layered treewidth. In particular, if $\PP=(P_x:x\in V(H))$ is an $H$-partition of $G$ of layered width $\ell$ with respect to some layering $\mathcal{L}$ of $G$ and $(B_x:x\in V(T))$ is a width-$t$ tree-decomposition of $H$, then setting $C_x = \bigcup_{y\in B_x} P_y$ for each $x\in V(T)$ gives a tree-decomposition $(C_x:x\in V(T))$ of $G$ that has layered treewidth $(t+1)\ell$ \cite{DJMMUW20}. Therefore, any property that holds for graphs of bounded layered treewidth also holds for $G$. What sets layered partitions apart from layered treewidth is that they lead to constant upper bounds on the queue-number  and non-repetitive chromatic number, whereas for both these parameters, the best known upper bound obtainable via layered treewidth is $O(\log n)$; see \cref{Applications}.
-
-
-\subsection{Rough Characterisation}
-\label{Characterisation}
-
-\cref{gAddDummy} shows that $(g,k)$-planar graphs can be obtained by a shortcut system applied to a graph of Euler genus $g$, where internal vertices on the paths have bounded degree. This observation and the following converse result together provide a rough characterisation of $(g,k)$-planar graphs, which is interesting in its own right, and is useful for showing that various classes of graphs are $(g,k)$-planar.
-
-\begin{lem}
-	\label{DrawG}
-	Fix integers $g\geq 0$ and $k,\Delta\geq 2$.
-	Let $G_0$ be a graph of Euler genus at most $g$. Let $G$ be
-	a graph with $V(G) \subseteq V(G_0)$ such that for every edge $vw \in
-	E(G)$ there is a $vw$-path $P_{vw}$ in $G_0$ of length at most $k$, such
-	that every internal vertex on $P_{vw}$ has degree at most $\Delta$ in
-	$G_0$. Then $G$ is $(g, 2k(k+1)\Delta^{k} )$-planar.
-\end{lem}
-
-\begin{proof}
-	For a vertex $x$ of $G_0$ with degree at most $\Delta$, and for $i\in\{1,\dots,k-1\}$, say a vertex $v$ is \defin{$i$-close} to $x$ if there is a $vx$-path $P$ in $G_0$ of length at most $i$ such that every internal vertex in $P$  has degree at most $\Delta$ in $G_0$.
-	For each edge $vw$ of $G$, say that $vw$ \defin{passes through} each internal vertex on $P_{vw}$.	Say $vw$ passes through $x$. Then $v$ is $i$-close to $x$ and $w$ is $j$-close to $x$ for some $i,j\in\{1,\dots,k-1\}$ with $i+j\leq k$. At most $\Delta^{i}$ vertices are $i$-close to $x$.
-	Thus, the number of edges of $G$ that pass through $x$ is at most
-	\[
-	\sum_{i=1}^{k-1} \sum_{j=1}^{k-i} \Delta^i \Delta^j
-	= \sum_{i=1}^{k-1} \Delta^i  \sum_{j=1}^{k-i} \Delta^j
-	< \sum_{i=1}^{k-1} \Delta^i  2 \Delta^{k-i}
-	= \sum_{i=1}^{k-1} 2\Delta^k
-	< 2k \Delta^k \enspace.
-	\]
-	Fix a $(\Sigma,k)$-plane drawing of $G_0$ in a surface $\Sigma$ of Euler genus at most $g$. Choose $\epsilon>\epsilon'>0$.
-	For each vertex $v$ of $G_0$, let $B_v$ be the \defin{ball} $\{x\in \mathbb{R}^2:\dist(x,v)\leq\epsilon\}$
-	For each edge $vw$ of $G_0$, let $C_{vw}$ be the \defin{channel} $\{x\in \mathbb{R}^2:\dist(x,vw)\leq\epsilon'\}\setminus(B_v\cup B_w)$.
-	We may choose $\epsilon>\epsilon'>0$ sufficiently small so that
-	(i) $B_v\cap B_w=\emptyset$ for distinct $v,w\in V(G_0)$,
-	(ii) $C_{vw}\neq\emptyset$ for $vw\in E(G_0)$,
-	(iii) $B_v\cap C_{xy}=\emptyset$ for $v\in V(G_0)$ and $xy\in E(G_0)$, and
-	(iv) $C_{vw}\cap C_{xy}=\emptyset$ for distinct $vw,xy\in E(G_0)$.
-	Draw each edge $vw$ of $G$ following the sequence of balls and channels defined by the vertices and edges in $P_{vw}$.
-	This can be done so that whenever edges $vw$ and $xy$ of $G$ cross, the crossing point is in $B_z$ for some vertex $z$ of $G_0$ that is internal in $P_{vw}$ or in $P_{xy}$, and $vw$ and $xy$ cross at most once in each such $B_z$.
-
-Thus, for each edge $vw$ of $G$, every edge of $G$ that crosses $vw$ passes through a vertex on $P_{vw}$ (including $v$ and/or $w$ if they too have degree at most $\Delta$).
-	Since $P_{vw}$ has at most $k+1$ vertices, and less than $2k\Delta^{k}$ edges of $G$ pass through each vertex on $P_{vw}$, the edge $vw$ is crossed by less than $2k(k+1)\Delta^{k}$ edges in $G$. Hence $G$ is $(g, 2k(k+1)\Delta^{k} )$-planar.
-\end{proof}
-
-%\referee{2}{Page 16.  At the end of Page 16, I do not see why 'every pair of edges cross at most once.'  Without further assumptions, it seems as if two paths in the path system could intersect several times.  Therefore, by drawing 'each edge vw of G alongside $P_{vw}$ in $G_0$', there may be two edges which cross several times.  It seems this can be fixed by choosing the path system carefully by 'uncrossing' paths which intersect at more than two internal vertices.}
-%
-%\note{DW}{I have revised the proof to address this error. I couldn't think of a way to do this without introducing balls and channels (and without vigorous hand-waving). Is it readable?}
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 \section{Applications}
@@ -1268,6 +1208,68 @@ We finish with an open problem. \cref{kPlanarProduct} shows that every $k$-plana
 
 
 
+
+
+
+\section{Orphaned Section on Structure}
+
+%%%%%%%%%%%%%%%%%%%
+\label{sec-k-planar}
+
+
+%\note{DW}{I am pretty sure one can get treewidth 3 for $(g,1)$-planar graphs, combining \cref{d_framed_product_stucture} with the method in \citep{DHHW}. I think the best place for this result is reference \citep{DHHW} since the present paper pre-dates \citep{DHHW} (and this addition will increase the significance of \citep{DHHW}). Okay?}
+%\note{PM}{Okay to this and to all similar questions that come later (which I've now commented out.)}
+%\note{DW}{Robert is working on it.}
+
+Prior to this work, the strongest structural description of $k$-planar or $(g,k)$-planar graphs (or any of the other classes presented in \cref{Examples}) was in terms of layered treewidth, which we now define.  A \defin{layered tree-decomposition} $(\mathcal{L},\mathcal{T})$ consists of a layering $\mathcal{L}$ and a tree-decomposition $\mathcal{T}$ of $G$. The layered width of $(\mathcal{L},\mathcal{T})$ is $\max\{|L\cap B|: L\in \mathcal{L},\, B\in \mathcal{T}\}$.  The \defin{layered treewidth} of $G$ is the minimum layered width of any layered tree-decomposition of $G$. \citet{dujmovic.morin.ea:layered} proved that planar graphs have layered treewidth at most 3, that graphs of Euler genus $g$ have layered treewidth at most $2g+3$, and more generally that a minor-closed class has bounded layered treewidth if and only if it excludes some apex graph. \citet{dujmovic.eppstein.ea:structure} show that every $k$-planar graph has layered treewidth at most $6(k+1)$, and more generally that every $(g,k)$-planar graph has layered treewidth at most $(4g+6)(k+1)$. It follows from this result that $(g,k)$-planar graphs have treewidth $O(\sqrt{(g+1)(k+1)n})$ and thus have balanced separators of the same order, which can also be concluded from the work of \citet{FP08}. In related work, \citet{grigoriev.bodlaender:algorithms} used structural results to obtain approximation algorithms for $(g,k)$-planar graphs, and \citet{PachToth97} determined the maximum number of edges in a $k$-planar graph (up to a constant factor).
+
+If a graph class admits bounded layered partitions, then it also has bounded layered treewidth. In particular, if $\PP=(P_x:x\in V(H))$ is an $H$-partition of $G$ of layered width $\ell$ with respect to some layering $\mathcal{L}$ of $G$ and $(B_x:x\in V(T))$ is a width-$t$ tree-decomposition of $H$, then setting $C_x = \bigcup_{y\in B_x} P_y$ for each $x\in V(T)$ gives a tree-decomposition $(C_x:x\in V(T))$ of $G$ that has layered treewidth $(t+1)\ell$ \cite{DJMMUW20}. Therefore, any property that holds for graphs of bounded layered treewidth also holds for $G$. What sets layered partitions apart from layered treewidth is that they lead to constant upper bounds on the queue-number  and non-repetitive chromatic number, whereas for both these parameters, the best known upper bound obtainable via layered treewidth is $O(\log n)$; see \cref{Applications}.
+
+
+\subsection{Rough Characterisation}
+\label{Characterisation}
+
+\cref{gAddDummy} shows that $(g,k)$-planar graphs can be obtained by a shortcut system applied to a graph of Euler genus $g$, where internal vertices on the paths have bounded degree. This observation and the following converse result together provide a rough characterisation of $(g,k)$-planar graphs, which is interesting in its own right, and is useful for showing that various classes of graphs are $(g,k)$-planar.
+
+\begin{lem}
+	\label{DrawG}
+	Fix integers $g\geq 0$ and $k,\Delta\geq 2$.
+	Let $G_0$ be a graph of Euler genus at most $g$. Let $G$ be
+	a graph with $V(G) \subseteq V(G_0)$ such that for every edge $vw \in
+	E(G)$ there is a $vw$-path $P_{vw}$ in $G_0$ of length at most $k$, such
+	that every internal vertex on $P_{vw}$ has degree at most $\Delta$ in
+	$G_0$. Then $G$ is $(g, 2k(k+1)\Delta^{k} )$-planar.
+\end{lem}
+
+\begin{proof}
+	For a vertex $x$ of $G_0$ with degree at most $\Delta$, and for $i\in\{1,\dots,k-1\}$, say a vertex $v$ is \defin{$i$-close} to $x$ if there is a $vx$-path $P$ in $G_0$ of length at most $i$ such that every internal vertex in $P$  has degree at most $\Delta$ in $G_0$.
+	For each edge $vw$ of $G$, say that $vw$ \defin{passes through} each internal vertex on $P_{vw}$.	Say $vw$ passes through $x$. Then $v$ is $i$-close to $x$ and $w$ is $j$-close to $x$ for some $i,j\in\{1,\dots,k-1\}$ with $i+j\leq k$. At most $\Delta^{i}$ vertices are $i$-close to $x$.
+	Thus, the number of edges of $G$ that pass through $x$ is at most
+	\[
+	\sum_{i=1}^{k-1} \sum_{j=1}^{k-i} \Delta^i \Delta^j
+	= \sum_{i=1}^{k-1} \Delta^i  \sum_{j=1}^{k-i} \Delta^j
+	< \sum_{i=1}^{k-1} \Delta^i  2 \Delta^{k-i}
+	= \sum_{i=1}^{k-1} 2\Delta^k
+	< 2k \Delta^k \enspace.
+	\]
+	Fix a $(\Sigma,k)$-plane drawing of $G_0$ in a surface $\Sigma$ of Euler genus at most $g$. Choose $\epsilon>\epsilon'>0$.
+	For each vertex $v$ of $G_0$, let $B_v$ be the \defin{ball} $\{x\in \mathbb{R}^2:\dist(x,v)\leq\epsilon\}$
+	For each edge $vw$ of $G_0$, let $C_{vw}$ be the \defin{channel} $\{x\in \mathbb{R}^2:\dist(x,vw)\leq\epsilon'\}\setminus(B_v\cup B_w)$.
+	We may choose $\epsilon>\epsilon'>0$ sufficiently small so that
+	(i) $B_v\cap B_w=\emptyset$ for distinct $v,w\in V(G_0)$,
+	(ii) $C_{vw}\neq\emptyset$ for $vw\in E(G_0)$,
+	(iii) $B_v\cap C_{xy}=\emptyset$ for $v\in V(G_0)$ and $xy\in E(G_0)$, and
+	(iv) $C_{vw}\cap C_{xy}=\emptyset$ for distinct $vw,xy\in E(G_0)$.
+	Draw each edge $vw$ of $G$ following the sequence of balls and channels defined by the vertices and edges in $P_{vw}$.
+	This can be done so that whenever edges $vw$ and $xy$ of $G$ cross, the crossing point is in $B_z$ for some vertex $z$ of $G_0$ that is internal in $P_{vw}$ or in $P_{xy}$, and $vw$ and $xy$ cross at most once in each such $B_z$.
+
+Thus, for each edge $vw$ of $G$, every edge of $G$ that crosses $vw$ passes through a vertex on $P_{vw}$ (including $v$ and/or $w$ if they too have degree at most $\Delta$).
+	Since $P_{vw}$ has at most $k+1$ vertices, and less than $2k\Delta^{k}$ edges of $G$ pass through each vertex on $P_{vw}$, the edge $vw$ is crossed by less than $2k(k+1)\Delta^{k}$ edges in $G$. Hence $G$ is $(g, 2k(k+1)\Delta^{k} )$-planar.
+\end{proof}
+
+%\referee{2}{Page 16.  At the end of Page 16, I do not see why 'every pair of edges cross at most once.'  Without further assumptions, it seems as if two paths in the path system could intersect several times.  Therefore, by drawing 'each edge vw of G alongside $P_{vw}$ in $G_0$', there may be two edges which cross several times.  It seems this can be fixed by choosing the path system carefully by 'uncrossing' paths which intersect at more than two internal vertices.}
+%
+%\note{DW}{I have revised the proof to address this error. I couldn't think of a way to do this without introducing balls and channels (and without vigorous hand-waving). Is it readable?}
 
 
 
