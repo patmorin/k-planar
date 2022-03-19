@@ -1067,11 +1067,11 @@ Map graphs are defined as follows. Start with a graph $G_0$ embedded in a surfac
 \note{DW}{This subsection needs a clean-up; define $(g,d)$-framed graph.}
 
 \begin{thm}
-\label{NewMapGraph}
+\label{MapGraphProduct}
 Every $d$-map graph is contained in $H \boxtimes P \boxtimes K_{ d + 3\floor{d/2} -3 }$ for some planar graph $H$ with $\tw(H) \leq 3$ and for some path $P$.
 \end{thm}
 
-\cref{NewMapGraph} is an immediate consequence of \cref{d_framed_product_stucture} and the next lemma. Similar results to \cref{MewMapGraphLemma} appear in earlier works \cite{CGP06,BDGGMR,Brandenburg19,Brandenburg20} but we state the precise lemma and provide a proof here for the sake of completeness.
+\cref{MapGraphProduct} is an immediate consequence of \cref{d_framed_product_stucture} and the next lemma. Similar results to \cref{MewMapGraphLemma} appear in earlier works \cite{CGP06,BDGGMR,Brandenburg19,Brandenburg20} but we state the precise lemma and provide a proof here for the sake of completeness.
 
 \begin{lem}
 \label{MewMapGraphLemma}
@@ -1094,7 +1094,18 @@ So every face of $G_1$ has size at most $d$.
 If $vw\in E(G)$ then the nation faces of $G_0$ corresponding to $v$ and $w$ have a vertex $x$ of $G_0$ in common, implying that  $v$ and $w$ are both on the face of $G_1$ corresponding to $x$, and $vw\in E(\widehat{G_1})$. Hence $G\subseteq \widehat{G_1}$.
 \end{proof}
 
-\note{DW}{give a better version of \cref{MapPartition} with $g=0$. }
+\cref{MapGraphProduct,qn,p-centered,non-repetitive} imply the following result.
+
+\begin{thm}
+\label{PlaneMapApps}
+Every $d$-map graph $G$:
+	\begin{compactitem}
+		\item has queue-number $\qn(G) \leq 24 (d+3\floor{d/2}-3) \,  - \ceil{\tfrac{3}{2} (d+3\floor{d/2}-3)}$.
+		\item has $p$-centered chromatic number $\chi_p(G) \leq (d+3\floor{d/2}-3) (p+1)\,  \binom{p+3}{3}$,
+		\item has non-repetitive chromatic number $ \pi(G) \leq 256(d+3\floor{d/2}-3) $.
+	\end{compactitem}
+\end{thm}
+
 
 %So $(g,d)$-map graphs generalise graphs embedded in a surface, and we now assume that $d\geq 4$ for the remainder of this section.
 
