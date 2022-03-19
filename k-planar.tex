@@ -315,7 +315,7 @@ The assumption that $X$ is apex is needed in \cref{ApexMinorFree}, since if the 
 
 While strong products enable concise statements of the theorems in \cref{Introduction}, to prove such results it is helpful to work with layerings and partitions, which we now introduce.
 
-A \defin{layering} of a graph $G$ is a sequence $\mathcal{L}=\langle L_0,L_1,\ldots\rangle $ such that $\{L_0,L_1,\ldots\}$ is a partition of $V(G)$ 
+A \defin{layering} of a graph $G$ is a sequence $\mathcal{L}=\langle L_0,L_1,\ldots\rangle $ such that $\{L_0,L_1,\ldots\}$ is a partition of $V(G)$
 \note{DW}{just write ``is an ordered partition $\mathcal{L}=\langle L_0,L_1,\ldots\rangle $ such that for every edge ...''}
 and for every edge $vw\in E(G)$, if $v\in L_i$ and $w\in L_j$ then $|j-i|\leq 1$.  For any partition $\PP=\{S_1,\ldots,S_p\}$ of $V(G)$, a \defin{quotient graph} $H=G/\PP$ has a $p$-element vertex set $V(H)=\{x_1,\ldots,x_p\}$ and $x_ix_j\in E(H)$ if and only if there exists an edge $vw\in E(G)$ such that $v\in S_i$ and $w\in S_j$. To highlight the importance of the quotient graph $H$, we call $\PP$ an \defin{$H$-partition} and write this concisely as $\PP=\{S_x : x\in V(H)\}$ so that each element of $\PP$ is indexed by the vertex it creates in $H$ \note{DW}{``is indexed by the corresponding vertex in $H$''.}
 
@@ -393,8 +393,8 @@ We begin with a standard technique that allows us to work with a normalised tree
 % \note{PM}{I addressed this by removing $x_0$ from $T_0$ at the beginning of the second paragraph.}
 
 %\subsection{Generalized Tripod Partitions}
-% 
-% 
+%
+%
 % \begin{figure}[htbp]
 %   \begin{center}
 %     \includegraphics{figs/tripoddo}
@@ -416,33 +416,33 @@ We begin with a standard technique that allows us to work with a normalised tree
 %   \item $N_x:=V_x\cup F_x=N_G[G_x]$
 % \end{compactitem}
 % }
-% 
+%
 % \begin{lem}\label{generalized-tripod}
-%   Let $G$ be a graph; let $\mathcal{L}:=\langle L_1,\ldots,L_h\rangle$ be a layering of $G$; let $\mathcal{Y}:Y_x: x\in V(H))$ be an $H$-partition of $G$ of layered width at most $\ell$ with respect to $\mathcal{L}$ where $H$ has treewidth at most $t$; and let $\mathcal{T}:=(B_x:x\in V(T))$ be a tree-decomposition of $H$ satisfying the conditions of \cref{nice-decomposition}. 
+%   Let $G$ be a graph; let $\mathcal{L}:=\langle L_1,\ldots,L_h\rangle$ be a layering of $G$; let $\mathcal{Y}:Y_x: x\in V(H))$ be an $H$-partition of $G$ of layered width at most $\ell$ with respect to $\mathcal{L}$ where $H$ has treewidth at most $t$; and let $\mathcal{T}:=(B_x:x\in V(T))$ be a tree-decomposition of $H$ satisfying the conditions of \cref{nice-decomposition}.
 %   For each $x\in V(T)$, let $H_x:=V(T_x)$ and let $G_x:=\bigcup_{y\in H_x}Y_y$.
-% 
+%
 %   \begin{compactenum}[(Y1)]
 %     % \item\ylabel{thickness} $\mathcal{Y}=(Y_x: x\in V(T))$ is a partition of $V(G)$ of layered width at most $\ell$ with respect to $\mathcal{L}$.
 %     % \item\ylabel{separator} For each $x\in V(T)$, $N_G(\phi(T_x))$ separates $\phi(T_x)$ from $N
 %     % there is no edge $vw\in E(G)$ with $v\in V_x$ and $w\in V(G)\setminus N_x$.
-% 
+%
 %     \item\ylabel{ancestor-edge} For each $x\in V(T)$, there is a set $\{a_1,\ldots,a_{t'}\}$ of $t'\le t$ strict $T$-ancestors of $x$ such that $N_G(G_x) \subseteq \bigcup_{i=1}^{t'} Y_{a_i}$.
 %   \end{compactenum}
 % \end{lem}
-% 
+%
 % \begin{proof}
 %   Let $\{a_1,\ldots,a_{t'}\}:= B_x\setminus\{x\}$.  Then, by the definition of a normalized tree decomposition $N_H(H_x))\subseteq\{a_1,\ldots,a_{t'}\}$.  Therefore $N_G(G_x)\subseteq \bigcup_{i=1}^{t'} Y_{a_i}$.
 % \end{proof}
 
 
 % \referee{1}{1. Lemma 3: This lemma is really about ``normalised'' tree-decompositions, and says that for each $x \in V(T)$, the set $V(T_x)$ has at most $t$ neighbours in $H$. Call this property (T3) and remove (Y1) through (Y5), which should now be obvious.}
-% 
+%
 % \note{PM}{I've added to the \texttt{response.tex} file explaining some of this.  Each of (Y1), (Y3), (Y4), and (Y5) have a one-sentence justification. The justification for (Y2) is just definition unpacking and then using the observation that the referee recommends.}
-% 
+%
 % \note{PM}{I plan to do an experiment with the referee's suggested notation, in a separate git branch to see how it turns out.}
-% 
+%
 % Before proving \cref{generalized-tripod} we point out more properties that are immediately implied by it:
-% 
+%
 % \begin{compactenum}[(Y1)]\setcounter{enumi}{2}
 %   \item\ylabel{y-subsets} $Y_x\subseteq V_x$ for every $x\in V(T)$. \note{PM}{$Y_x$, for $x\in V(T)$ is not defined!}
 %   \item\ylabel{containment-i} $V_x\subseteq V_a$ for every $T$-ancestor $a$ of $x$.
@@ -450,12 +450,12 @@ We begin with a standard technique that allows us to work with a normalised tree
 % \end{compactenum}
 
 % Property~\yref{y-subsets} follows from the fact that $V_x$ is the union of several sets, one of which is $Y_x$.  Property~\yref{containment-i} follows from the definition of $V_x$ and the fact that $V(T_x)\subseteq V(T_a)$. To show Property~\yref{containment-ii} first note that, by \yref{containment-i} it suffices to consider vertices $w\in F_x=N_x\setminus V_x$. By definition, every vertex $w\in F_x$ is adjacent, in $G$, to a vertex $v\in V_x$.  By \yref{containment-i}, $v\in V_a$, so $w$ is either in $V_a$ or $w$ satisfies the condition $vw\in E(G)$, $v\in V_a$, and $w\not\in V_a$, so $w\in F_a$.  In either case $w\in N_a=V_a\cup F_a$.  Note that none of \yref{y-subsets}--\yref{containment-ii} depends on \yref{ancestor-edge} (which is important, since \yref{containment-i} is used to establish \yref{ancestor-edge} in the following proof).
-% 
-% 
+%
+%
 % \begin{proof}[Proof of \cref{generalized-tripod}]
 %   % Property~\yref{thickness} follows immediately from the fact that $V(T)=V(H)$  and the fact that $\mathcal{Y}$ has layered width at most $\ell$ with respect to $\mathcal{L}$.
 %   Property \yref{separator} is immediate from the definitions of $F_x$ and $N_x$.  In particular, $(N_x,V(G)\setminus V_x)$ is a separation of $G$ with $F_x=N_x\cap(V(G)\setminus V_x)$.
-% 
+%
 %   To establish Property~\yref{ancestor-edge}, consider some vertex $w\in F_x$.  Since $w\in F_x$, there exists an edge $vw\in E(G)$ with $v\in V_x$ and $w\not\in V_x$.  Since $v\in V_x$, $v\in Y_{x'}$ for some $T$-descendant $x'$ of $x$ (possibly $x=x'$). Since $\mathcal{Y}$ is a partition, $w\in Y_{a}$ for some $a\not\in V(T_x)$.  Since $vw\in E(G)$, we have $x'a\in E(H)$.  By \tref{ancestor-edge}, one of $a$ or $x'$ is a $T$-ancestor of the other. Since $w\in Y_a\subseteq V_a$ and $w\not\in V_x\supseteq V_{x'}$, \yref{containment-i} rules out the possibility that $x'$ is a $T$-ancestor of $a$. Therefore, $a$ is a $T$-ancestor of $x$ which is a $T$-ancestor of $x'$.  Let $z_0,\ldots,z_r$ be the path in $T$ from $z_0:=x'$ to $z_r:=a$.  Since $x'a\in E(H)$, at least one of $a$ or $x'$ is in $B_{z_i}$, for each $i\in\{0,\ldots,r\}$ and there is at least one $i$ such that $B_{z_i}$ contains both $x'$ and $a$.  However, by \tref{subtree-root} $x'$ is not contained in $B_{z_i}$ for any $i\in\{1,\ldots,r\}$.  Therefore $a\in B_{z_i}$ for each $i\in\{0,\ldots,r\}$.  In particular, $a$ is contained in $B_x$.
 %   Property~\yref{ancestor-edge} now follows from the fact that $|B_x|\le t+1$ and $B_x$ contains $x$.
 % \end{proof}
@@ -564,7 +564,7 @@ For any integer $d\ge 3$, a (multi)graph $G$ is \defin{$d$-framed} if it admits 
 For any integer $d\ge 3$, every $d$-framed multigraph is contained in $H\boxtimes P\boxtimes K_{d+3\floor{d/2}-3}$ for some planar graph $H$ with treewidth at most 3 and for some path $P$.
 \end{thm}
 
-This result is used below to obtain product structure theorems for 1-planar multigraphs and for map graphs. 
+This result is used below to obtain product structure theorems for 1-planar multigraphs and for map graphs.
 For simple 1-planar graphs it is essential that we allow frames with parallel edges.
 
 \cref{d_framed_product_stucture} follows quickly from the following technical lemma, which is an extension of the analogous result for plane graphs \cite{DJMMUW20}. The following definition is a convenient way to establish the planarity of $H$ in \cref{d_framed_product_stucture}:  A tree-decomposition $\mathcal{T}$ of a graph $G$ is \defin{$t$-simple} if each of its bags has size at most $t+1$ and, for each $t$-element subset $\{v_1,\ldots,v_t\}\subseteq V(G)$, at most two bags of $\mathcal{T}$ contain $\{v_1,\ldots,v_t\}$.  Finally, a \defin{BFS spanning forest} $T$ of $G$ rooted at a set $V_0\subseteq V(G)$ is a spanning forest of $G$ with the property that for each $v\in V(G)$,  \[\min\{\dist_G(v,w):w\in V_0\}=\min\{\dist_T(v,w):w\in V_0\}.\]
@@ -621,8 +621,8 @@ For simple 1-planar graphs it is essential that we allow frames with parallel ed
 \begin{proof}
 	This proof is similar to the proof of Lemma~13 by \citet{DJMMUW20}, but is complicated by several factors.  In particular, the reader should keep in mind that $G$ and $G'$ are multigraphs and that the cycle $F$ may consist of two vertices and two (parallel) edges.
 
-	The proof is by induction on the number of inner faces of $N'$.  A particular easy case occurs when $V(N')=V(F)$, for which we can simply take 
-	\note{DW}{Suggested revision, ``In the base case, $N'$ has only one inner face, and we can simply take ...} 	
+	The proof is by induction on the number of inner faces of $N'$.  A particular easy case occurs when $V(N')=V(F)$, for which we can simply take
+	\note{DW}{Suggested revision, ``In the base case, $N'$ has only one inner face, and we can simply take ...}
 	$\PP:=\{P_1,\ldots,P_k\}$ and verify that the preconditions of the lemma (the `setup') ensure that $\PP$ satisfies the requirements (i)--(iv):
 	\begin{compactenum}[(i)]
 		\item By definition, each of $P_1,\ldots,P_k$ is a part of $\mathcal{P}$.
@@ -640,7 +640,7 @@ In the general case, our $H$-partition $\mathcal{P}$ will include $P_1$, $P_2$ ,
 		\item If $k= 2$ then let $\tau:=v_1,\ldots,v_p$ be an inner face of $N'$ that contains at least one edge $v_1v_2$ of $F$ on its boundary and such that $v_1\in P_1$ and $v_2\in P_2$.
 
 		\item If $k=3$ then assign each vertex $v$ of $N'$ a colour $\alpha(v)\in\{1,\ldots,3\}$ as follows:  Let $w$ be the first vertex of $F$ encountered on the path in $T$ from $v$ to the appropriate vertex of $F_0$.  (This implies that $w=v$ when $v$ is a vertex of $F$.)  Since $w\in V(F)$, $w\in P_i$ for some $i\in\{1,\ldots,k\}$ and we define $\alpha(v):=i$.  Now, for each $d'\in\{4,\ldots,d\}$ and each $d'$-sided inner face $F$ of $N'$, add edges $d'-2$
-		\note{DW}{should be $d'-3$, right?} edges inside of $F$ to split it into $3$-sided faces.  This yields a plane supergraph $N''$ of $N'$ in which each inner face has exactly three edges on its boundary. By Sperner's Lemma there exists an inner face $\tau'':=v_1,v_2,v_3$ of $N''$ such that $\alpha(v_i)=i$ for each $i\in\{1,2,3\}$.  Let $\tau:=v_1,\ldots,v_p$ be the face \note{DW}{``be the facial cycle''} of $N'$ that contains $\tau''$.		
+		\note{DW}{should be $d'-3$, right?} edges inside of $F$ to split it into $3$-sided faces.  This yields a plane supergraph $N''$ of $N'$ in which each inner face has exactly three edges on its boundary. By Sperner's Lemma there exists an inner face $\tau'':=v_1,v_2,v_3$ of $N''$ such that $\alpha(v_i)=i$ for each $i\in\{1,2,3\}$.  Let $\tau:=v_1,\ldots,v_p$ be the face \note{DW}{``be the facial cycle''} of $N'$ that contains $\tau''$.
 	\end{compactenum}
 
 	%  \todo[inline]{%
@@ -649,7 +649,7 @@ In the general case, our $H$-partition $\mathcal{P}$ will include $P_1$, $P_2$ ,
 	%    DW: great. This is basically the same as the proof of the Hex Lemma.
 	%  }
 
-	We can now define the vertices in $S$.  For each $i\in\{1,2,3\}$, let $Q_i$ be the shortest path, in $T$, from $v_i$ to a vertex in $V(F)$.  Let $\overline{S}$ denote the subgraph of $N'$ consisting of vertices and edges of $Q_1$, $Q_2$, $Q_3$, and $\tau$.  
+	We can now define the vertices in $S$.  For each $i\in\{1,2,3\}$, let $Q_i$ be the shortest path, in $T$, from $v_i$ to a vertex in $V(F)$.  Let $\overline{S}$ denote the subgraph of $N'$ consisting of vertices and edges of $Q_1$, $Q_2$, $Q_3$, and $\tau$.
 	Let $S:=V(\overline{S})\setminus V(F)$, let $Y:=(V(Q_1)\cup V(Q_2)\cup V(Q_3))\setminus V(F)$, and let $X:=S\setminus Y$. Observe that, for each $i\in\{1,2,3\}$ and each $j\ge 0$, $|V(Q_i)\cap L_j|\le 1$.  Therefore $|Y\cap L_j|\le 3$ for each integer $j\ge 0$. Furthermore, $|X|\le p-3\le d-3$, since $v_1,v_2,v_3\in Y\cup V(F)$. Therefore, using $S:=Y\cup X$ as a part in the partition $\PP$ will not violate condition~(ii) \note{DW}{Use ``satisfies'' instead of ``will not violate''}.
 
 	% We claim that, for each integer $i\ge 0$, $|V(\overline{Y}^+)\cap L_i|\le 15$.  First observe that, since $Q_1,Q_2,Q_3$ are each vertical paths in $T$,  $\overline{Y}$ contains at most three vertices of $L_i$, each incident on at most two edges of $\overline{Y}$.  Since $\dist_{G'}(v,w)\le 2$ for each $vw\in E(G)$, any vertex $x\in V(\overline{Y}^+)\setminus V(\overline{Y})\cap L_i$, is incident to an edge $xy\in E(G)$ that crosses one of the at most six edges in $\overline{Y}$ having an endpoint in $L_i$.  These at most six edges have at most 12 endpoints.  Therefore $|V(\overline{Y}^+)\setminus V(\overline{Y})\cap L_i|\le 6\times 2=12$, so $|V(\overline{Y}^+)\cap L_i|\le 12+3=15$.
@@ -1055,7 +1055,7 @@ Map graphs are defined as follows. Start with a graph $G_0$ embedded in a surfac
 Every $d$-map graph is contained in $H \boxtimes P \boxtimes K_{ d + 3\floor{d/2} -3 }$ for some planar graph $H$ with $\tw(H) \leq 3$ and for some path $P$.
 \end{thm}
 
-\cref{NewMapGraph} is an immediate consequence of \cref{d_framed_product_stucture}} and the next lemma. Similar results to \cref{MewMapGraphLemma} appear in earlier works \cite{CGP06,BDGGMR,Brandenburg19,Brandenburg20} but we state the precise lemma and provide a proof here for the sake of completeness.
+\cref{NewMapGraph} is an immediate consequence of \cref{d_framed_product_stucture} and the next lemma. Similar results to \cref{MewMapGraphLemma} appear in earlier works \cite{CGP06,BDGGMR,Brandenburg19,Brandenburg20} but we state the precise lemma and provide a proof here for the sake of completeness.
 
 \begin{lem}
 \label{MewMapGraphLemma}
