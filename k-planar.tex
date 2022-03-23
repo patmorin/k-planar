@@ -206,12 +206,12 @@ For the important special case of $1$-planar graphs, we are able to obtain bette
   Every $1$-planar graph is contained in $H\boxtimes P\boxtimes K_{7}$, for some planar graph $H$ of treewidth $3$ and for some path $P$.
 \end{thm}
 
-% A planar graph of treewidth at most $3$ is said to have \emph{simple treewidth} $3$.  
+% A planar graph of treewidth at most $3$ is said to have \emph{simple treewidth} $3$.
 
 For at least one application, the planarity of $H$ is critical in obtaining asymptotically tight bounds \cite{BDJM}. \cref{1_planar_product} is proven in the more general setting of $d$-framed multigraphs. This more general result implies a product structure theorem for $d$-map graphs in which $H$ is also planar.
 
-% 
-% 
+%
+%
 % These theorems have applications in diverse areas, which we explore in \cref{Applications}.
 
 % This theorem has applications in diverse areas, including queue layouts  \citep{DJMMUW20}, non-repetitive colouring  \citep{dujmovic.esperet.ea:planar}, $p$-centered colouring  \citep{DFMS21}, and adjacency labelling \citep{DEJGMM21}, which we explore in \cref{Applications}. For example, we prove that $k$-planar graphs have bounded non-repetitive chromatic number (for fixed $k$). Prior to the recent work of \citet{dujmovic.esperet.ea:planar}, it was even open whether planar graphs have bounded non-repetitive chromatic number.
@@ -275,6 +275,8 @@ Theorem~\ref{PlanarProduct}(b), \cref{ShortcutProduct}, and \cref{AddDummy} impl
 \subsection{Layered Partitions}
 \label{LayeredPartitions}
 
+\note{PM}{Move this section out of the introduction, into a ``preliminaries'' section?}
+
 While strong products enable concise statements of the theorems in \cref{Introduction}, to prove such results it is helpful to work with layerings and partitions, which we now introduce.
 
 A \defin{layering} of a graph $G$
@@ -314,14 +316,42 @@ The following result is the main technical contribution of the paper. Loosely sp
 
 Note that \cref{ShortcutPartition} is equivalent to \cref{ShortcutProduct} by \cref{PartitionProduct}.
 
-\subsection{Outline}
+\subsection{Overview and Outline}
 
-The remainder of this paper is organized as follows: 
+\cref{summary_table} summarizes existing results on product structure theorems for minor-closed graph classes and new results for non-minor-closed graph classes.  The remainder of this paper is organized as follows:
+
+
+\begin{table}
+  \begin{center}
+    \begin{tabular}{lccl}
+      \textbf{Graph class} & \boldmath $\tw(H)$ & \boldmath $\ell$ & \textbf{Ref.} \\ \hline\hline
+      Planar & $3^*$ & $3$ & \cite{DJMMUW20} \\
+      Planar & $6^*$ & $1$ & \cite{UWY} \\
+      Genus-$g$ & $3^*$ & $\max\{2g,3\}$ & \cite{DHHW} \\
+      Genus-$g$ & $2g+6$ & 1 & \cite{UWY} \\
+      Apex-minor-free & $O(1)$ & $O(1)$ & \cite{DJMMUW20} \\[1ex]
+      % B-minor-free & $O(1)$ & $O(1)$ & \cite{DJMMUW20} \\
+      $k$-planar & $\binom{k+4}{3}-1$ & $18k^2 + 48k + 30$ & \cref{kPlanarProduct} \\
+      $(g,k)$-planar & $\binom{k+4}{3}-1$ & $\max\{2g,3\}(6k^2+16k+10)$ & \cref{gkPlanarProduct} \\
+      $(g,\delta)$-string & $\binom{\delta+4}{3}-1$ & $\max\{2g,3\}(\delta^4 + 4\delta^3 + 9\delta^2 + 10\delta+4)$ & \cref{StringPartition} \\
+      $k$-NN & $O(k^6)$ & $O(k^4)$ & \cref{nn_product_structure} \\
+      $d$-framed & $3^*$ & $d+ 3\floor{d/2} - 3$ & \cref{d_framed_product_stucture} \\
+      $1$-planar & $3^*$ & $7$ & \cref{1_planar_product} \\
+      $d$-map & $3^*$ & $d+ 3\floor{d/2} - 3$ & \cref{NewMapGraph} \\
+      $(g,d)$-map & $\textcolor{red}{?}$ & $\textcolor{red}{?}$ & \textcolor{red}{\cref{NewMapGraph}} \\ \hline
+      \\[.2ex]
+      \multicolumn{4}{l}{$^*$ the bound also applies to the simple treewidth of $H$.}
+    \end{tabular}
+  \end{center}
+  \caption{Summary of known product structure theorems.}
+  \label{summary_table}
+\end{table}
+
 \begin{compactitem}
-  \item In \cref{Structure} we prove our main result for shortcut systems (\cref{ShortcutProduct}), and its optimisations for $k$-planar graphs and their genus-$g$ generalisation (\cref{kPlanarProduct,gkPlanarProduct}).  
+  \item In \cref{Structure} we prove our main result for shortcut systems (\cref{ShortcutProduct}), and its optimisations for $k$-planar graphs and their genus-$g$ generalisation (\cref{kPlanarProduct,gkPlanarProduct}).
   \item \Cref{examples} uses \cref{Structure} to derive product structure theorems for string graphs, powers of bounded-degree graphs, and $k$-nearest neighbour graphs.
-  \item \Cref{FramedSection} proves a product structure theorem for $d$-framed multigraphs in which the graph $H$ has treewidth $3$ and is planar.  Using this result, we derive product structure theorems for $1$-planar graphs and map graphs, again with a planar graph $H$.  
-  \item \Cref{Applications} quickly surveys applications of product structure and the consequences of the current work.  
+  \item \Cref{FramedSection} proves a product structure theorem for $d$-framed multigraphs in which the graph $H$ has treewidth $3$ and is planar.  Using this result, we derive product structure theorems for $1$-planar graphs and map graphs, again with a planar graph $H$.
+  \item \Cref{Applications} quickly surveys applications of product structure and the consequences of the current work.
   \item \cref{WrappingUp} concludes with an open problem.
 \end{compactitem}
 
@@ -810,7 +840,7 @@ Note that \cref{nearest-neighbour} is tight up to the leading constant:  Every $
 \cref{nearest-neighbour} and \cref{kPlanarProduct} immediately imply
 
 
-\begin{thm}
+\begin{thm}\label{nn_product_structure}
   Every $k$-nearest neighbour graph is a subgraph of $H\boxtimes P\boxtimes K_{\ell}$ for some graph $H$ of treewidth $O(k^6)$ and some $\ell\in O(k^4)$.
 \end{thm}
 
@@ -836,7 +866,7 @@ Note that \cref{nearest-neighbour} is tight up to the leading constant:  Every $
 % }
 
 
-For any integer $d\ge 3$, a (multi)graph $G$ is \defin{$d$-framed} if it has an embedding in $\R^2$ having a biconnected plane spanning (multi)subgraph $G_0$, whose facial cycles each have length at most $d$,  and such that the interior of each edge in $E(G)\setminus E(G_0)$ is contained in the interior of some face of $G_0$. The graph $G_0$ is called the \defin{frame} of $G$. This definition (for simple graphs) was introduced by \citet{BDGGMR}. 
+For any integer $d\ge 3$, a (multi)graph $G$ is \defin{$d$-framed} if it has an embedding in $\R^2$ having a biconnected plane spanning (multi)subgraph $G_0$, whose facial cycles each have length at most $d$,  and such that the interior of each edge in $E(G)\setminus E(G_0)$ is contained in the interior of some face of $G_0$. The graph $G_0$ is called the \defin{frame} of $G$. This definition (for simple graphs) was introduced by \citet{BDGGMR}.
 
 Every $d$-framed multigraph can be described by a $(2,\binom{d}{2})$-shortcut system applied to a planar multigraph (by adding a vertex inside each face $F$ of $G_0$ adjacent to the vertices of $F$). Thus \cref{ShortcutProduct} is applicable. However, for framed graphs we prove the following stronger result, where the treewidth bound on $H$ is best possible.\footnote{A multigraph $G$ is \defin{contained} in a graph $G'$ if the simple graph underlying $G$ is isomorphic to a subgraph of $G'$.}
 
@@ -1139,9 +1169,9 @@ Let $G$ be a $(g,d)$-map graph. So there is a graph $G_0$ embedded in a surface 
 As discussed in the introduction, product structure has been used to resolve a number of problems on planar graphs.  In most cases, these results hold for any graph with product structure. In this section, we survey some of the consequences of this for the graph classes considered in the previous two sections.
 
 % Here we discuss some of the consequences of the above theorems for $k$-planar and $(g,k)$-planar graphs.
-% 
+%
 % \referee{1}{4. Sections 4 and 5: I think as they are currently organized they distract from the purpose of the paper, as stated in the introduction, to ``prove product structure theorems for several non-minor-closed classes of interest.'' Which of Corollaries 1--4 and Theorems 12--17 are most important? I would remove any mention of the applications from the examples section, put that section first, and state in that section a single main theorem with all of the best bounds on the product structure. The applications section is mostly a survey and I think should be focused on the most exciting new corollaries. Theorems 18 and 19 should be in the applications section.}
-% 
+%
 % \note{DW}{I don't want to do a complete restructuring. In our response, let's just say why we structure it the way we do.}
 % \note{PM}{Sure, though I think they proposing a chop rather than a restructuring.}
 
@@ -1157,8 +1187,8 @@ $\qn(G) \leq  3 \ell \, \qn(H) + \floor{\tfrac{3}{2}\ell}
 \leq 3 \ell \, 2^{\tw(H)}  - \ceil{\tfrac{3}{2}\ell}$.
 \end{lem}
 
-Since all the product structure theorems presented thus far upper bound the treewidth of $H$, 
-\cref{qn} immediately implies bounds on the queue number of all graphs in these classes.  An improvement can be made in the cases where $H$ is planar and has treewidth $3$, as follows.  
+Since all the product structure theorems presented thus far upper bound the treewidth of $H$,
+\cref{qn} immediately implies bounds on the queue number of all graphs in these classes.  An improvement can be made in the cases where $H$ is planar and has treewidth $3$, as follows.
 \citet{ABGKP20} proved that every planar graph with treewidth at most $3$ has queue-number at most $5$. Thus the graph $H$ in \cref{1_planar_product} has queue-number at most $5$. \cref{qn,1_planar_product,NewMapGraph} then imply:
 
 \begin{cor}
@@ -1179,18 +1209,18 @@ Every $d$-map graph has queue-number at most $24 (d+3\floor{d/2}-3) \,  - \ceil{
 % \note{PM}{Ok}
 
 The following corollary summarizes the results for other graph classes.
-\begin{cor}\label{q_cor} 
+\begin{cor}\label{q_cor}
   The following bounds hold for the queue number of any graph from each of the following classes:
   \begin{compactenum}
     \item $k$-planar: $2^{O(k^3)}$
-    \item $(g,k)$-planar: $g2^{O(k^3)}$ 
+    \item $(g,k)$-planar: $g2^{O(k^3)}$
     \item $(g,\delta)$-string: $g2^{O(\delta^3)}$
     \item $1$-planar: $115$
     \item $d$-map: $24 (d+3\floor{d/2}-3) \,  - \ceil{\tfrac{3}{2} (d+3\floor{d/2}-3)}$
     \item $(g,d)$-map: $g2^{O(d)}$
     \item $k$-NN: $2^{O(k^6)}$
     % \item $(g,d)$-map graph
-    % \item 
+    % \item
   \end{compactenum}
 \end{cor}
 
@@ -1209,7 +1239,7 @@ If $G\subseteq H\boxtimes P \boxtimes K_\ell$ then $\pi(G)\le \ell\, 4^{\tw(H)+1
 \end{lem}
 
 % \cref{non-repetitive,kPlanarProduct,1-planar,gkPlanarProduct} imply the following result:
-% 
+%
 % \begin{cor}\quad
 % \begin{compactitem}
 % \item	For every $1$-planar graph $G$, $\pi(G)\le 7\times 4^4=1792$.
@@ -1223,18 +1253,18 @@ If $G\subseteq H\boxtimes P \boxtimes K_\ell$ then $\pi(G)\le \ell\, 4^{\tw(H)+1
 % \end{cor}
 
 The following corollary summarizes the results for other graph classes.
-\begin{cor}\label{q_cor} 
+\begin{cor}\label{q_cor}
   The following bounds hold for the nonrepetitive chromatic number of any graph from each of the following classes:
   \begin{compactenum}
     \item $k$-planar: $(18k^2+48k+30) 4^{\binom{k+4}{3}}$
-    \item $(g,k)$-planar: $\max\{2g,3\}\cdot(6k^2+16k+10) 4^{\binom{k+4}{3}}$ 
+    \item $(g,k)$-planar: $\max\{2g,3\}\cdot(6k^2+16k+10) 4^{\binom{k+4}{3}}$
     \item $(g,\delta)$-string: $g4^{O(\delta^3)}$
     \item $1$-planar: $1792$
     \item $d$-map: $24 (d+3\floor{d/2}-3) \,  - \ceil{\tfrac{3}{2} (d+3\floor{d/2}-3)}$
     \item $(g,d)$-map: $g4^{O(d)}$
     \item $k$-NN: $4^{O(k^6)}$
     % \item $(g,d)$-map graph
-    % \item 
+    % \item
   \end{compactenum}
 \end{cor}
 
@@ -1416,7 +1446,7 @@ For every integer $k\geq 1$ there exists integers $t\leq O(k^6)$ and $\ell\leq O
 \label{Generalisations}
 
 % As mentioned above, product structure theorems have been established for several minor-closed classes in addition to planar graphs. The first generalises \cref{PlanarProduct} for graphs of bounded Euler genus.
-% 
+%
 % \begin{thm}[\citep{DJMMUW20,UWY,DHHW}]
 % \label{GenusProduct}
 % Every graph of Euler genus $g$ is contained in:
