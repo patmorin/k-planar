@@ -1232,17 +1232,21 @@ $\qn(G) \leq  3 \ell \, \qn(H) + \floor{\tfrac{3}{2}\ell}
 
 Since all the product structure theorems presented thus far upper bound the treewidth of $H$,
 \cref{qn} immediately implies bounds on the queue number of all graphs in these classes.  An improvement can be made in the cases where $H$ is planar and has treewidth $3$, as follows.
-\citet{ABGKP20} proved that every planar graph with treewidth at most $3$ has queue-number at most $5$. Thus the graph $H$ in \cref{1_planar_product} has queue-number at most $5$. \cref{qn,1_planar_product,dMapProduct} then imply:
+\citet{ABGKP20} proved that every planar graph with treewidth at most $3$ has queue-number at most $5$. Thus the graph $H$ in \cref{1_planar_product,dMapProduct} has queue-number at most $5$, which with \cref{qn} implies:
 
 \begin{cor}
 \label{1PlanarQueue}
-Every 1-planar graph has queue-number at most $3 \times 7 \times 5 + \floor{\tfrac{3}{2} \times 7} = 115$.
+Every 1-planar graph has queue-number at most 
+$3 \times 7 \times 5 + \floor{\tfrac{3}{2} \times 7} = 115$.
 \end{cor}
 
 \begin{cor}
 \label{dMapQueue}
-Every $d$-map graph has queue-number at most $24 (d+3\floor{d/2}-3) \,  - \ceil{\tfrac{3}{2} (d+3\floor{d/2}-3)}$.
+Every $d$-map graph has queue-number at most 
+$15 (d+3\floor{d/2}-3)  + \floor{\tfrac{3}{2}(d+3\floor{d/2}-3)}$.
+\note{DW}{I have updated this bound using the better qn bound for planar 3-trees. Note that with $d=3$ we get the original bound of 49.}
 \end{cor}
+
 
 
 % \cref{qn,gkPlanarProduct} imply that $(g,k)$-planar graphs have queue-number at most $g 2^{O(k^3)}$.
@@ -1258,8 +1262,8 @@ The following corollary summarizes the results for other graph classes.
     \item $k$-planar: $2^{O(k^3)}$
     \item $(g,k)$-planar: $\max\{1,g\}\cdot 2^{O(k^3)}$
     \item $(g,\delta)$-string: $\max\{1,g\}\cdot 2^{O(\delta^3)}$
-    \item $1$-planar: $115$
-    \item $d$-map: $24 (d+3\floor{d/2}-3) \,  - \ceil{\tfrac{3}{2} (d+3\floor{d/2}-3)}$
+    \item $1$-planar: $115$ \note{DW}{delete?}
+    \item $d$-map: $24 (d+3\floor{d/2}-3) \,  - \ceil{\tfrac{3}{2} (d+3\floor{d/2}-3)}$ \note{DW}{delete?}
     \item $(g,d)$-map: $\max\{1,g\}\cdot 2^{O(d)}$
     \item $k$-NN: $2^{O(k^6)}$
     % \item $(g,d)$-map graph
