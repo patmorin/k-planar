@@ -164,10 +164,11 @@ and treewidth\footnote{For a tree $T$, a \defin{$T$-decomposition} of a graph $G
 \begin{compactitem}
 \item \citet{DJMMUW20} use it to prove that planar graphs have bounded queue-number (resolving a conjecture of \citet{HLR92}).
 \item  \citet{dujmovic.esperet.ea:planar} use it to prove that planar graphs have bounded non-repetitive chromatic number (resolving a conjecture of \citet{AGHR-RSA02}).
+\item \citet{DFMS21} use it to prove that planar graphs have $p$-centered chromatic number $O(p^2\log p)$ and give a matching lower bound.
 \item \citet{DEJGMM21} use it to find asymptotically optimal adjacency labellings of planar graphs (resolving a problem of \citet{kannan.naor.ea:implicit}).
 \item \citet{EJM} use it to show the existence of a 'universal graph' with $n^{1+o(1)}$ vertices and edges that contains every $n$-vertex planar graph as an induced subgraph (resolving a problem of \citet{babai.chung.ea:on}).
 \end{compactitem}
-In addition, \cref{PlanarProduct} has been used to resolve or make substantial progress on a number of other problems on planar graphs, including $p$-centered colouring \cite{DFMS21}, $\ell$-vertex ranking~\citep{BDJM}, twin-width~\citep{BKW}, and odd colourings~\citep{DMO}.
+In addition, \cref{PlanarProduct} has been used to resolve or make substantial progress on a number of other problems on planar graphs, including $\ell$-vertex ranking~\citep{BDJM}, twin-width~\citep{BKW}, and odd colourings~\citep{DMO}.
 
 % \item \citet{DFMS21} use it to make dramatic improvements to the best known bounds for $p$-centered colourings of planar graphs.
 % \item \citet{bonamy.gavoille.ea:shorter} use it to find shorter adjacency labellings of planar graphs (improving on a sequence of results starting with the work of \citet{kannan.naor.ea:implicit}).
@@ -182,14 +183,16 @@ In addition, \cref{PlanarProduct} has been used to resolve or make substantial p
 
 % \note{PM}{Agreed. I cut this down to a list of famous open problem. We don't need to sell this so hard anymore.}
 
-All of these results hold for any graph class that has a product structure theorem analogous to \cref{PlanarProduct}; that is, for any graph class  $\mathcal{G}$ where every graph in $\mathcal{G}$ is contained in $H\boxtimes P\boxtimes K_\ell$ where $H$ has bounded treewidth, $P$ is a path, and $\ell$ is bounded.\footnote{It is easily seen that $\tw(H\boxtimes K_\ell) \leq (\tw(H)+1)\ell-1$, so we may assume that $\ell=1$ in this statement.} These applications motivate finding product structure theorems for other graph classes. \citet{DJMMUW20} prove product structure theorems for graphs of bounded Euler genus\footnote{The \textit{Euler genus} of a surface with $h$ handles and $c$ crosscaps is $2h+c$. The \textit{Euler genus} of a graph $G$ is the minimum integer $g$ such that $G$ embeds in a surface of Euler genus $g$. Of course, a graph is planar if and only if it has Euler genus 0; see \citep{mohar.thomassen:graphs} for more about graph embeddings in surfaces.} and for apex-minor-free graphs,\footnote{A graph $M$ is a \textit{minor} of a graph $G$ if a graph isomorphic to $M$ can be obtained from a subgraph of $G$ by contracting edges. A class $\mathcal{G}$ of graphs is \defin{minor-closed} if for every graph $G\in\mathcal{G}$, every minor of $G$ is in $\mathcal{G}$. A minor-closed class is \defin{proper} if it is not the class of all graphs. For example, for fixed $g\geq 0$, the class of graphs with Euler genus at most $g$ is a proper minor-closed class. A graph $G$ is $t$-apex if it contains a set $A$ of at most $t$ vertices such that $G-A$ is planar. A 1-apex graph is \defin{apex}.  A minor-closed class $\mathcal{G}$ is apex-minor-free if some apex graph is not in $\mathcal{G}$.} and \citet{DEMWW22} do so for graphs in any minor-closed class and with bounded maximum degree. See \cref{Generalisations} for more precise statements and see \citep{DHJLW21} for a survey on this topic.
+All of these results hold for any graph class that has a product structure theorem analogous to \cref{PlanarProduct}; that is, for any graph class  $\mathcal{G}$ where every graph in $\mathcal{G}$ is contained in $H\boxtimes P\boxtimes K_\ell$ where $H$ has bounded treewidth, $P$ is a path, and $\ell$ is bounded.\footnote{It is easily seen that $\tw(H\boxtimes K_\ell) \leq (\tw(H)+1)\ell-1$, so we may assume that $\ell=1$ in this statement.} These applications motivate finding product structure theorems for other graph classes. \citet{DJMMUW20} prove product structure theorems for graphs of bounded Euler genus\footnote{The \textit{Euler genus} of a surface with $h$ handles and $c$ crosscaps is $2h+c$. The \textit{Euler genus} of a graph $G$ is the minimum integer $g$ such that $G$ embeds in a surface of Euler genus $g$. Of course, a graph is planar if and only if it has Euler genus 0; see \citep{mohar.thomassen:graphs} for more about graph embeddings in surfaces.} and for apex-minor-free graphs,\footnote{A graph $M$ is a \textit{minor} of a graph $G$ if a graph isomorphic to $M$ can be obtained from a subgraph of $G$ by contracting edges. A class $\mathcal{G}$ of graphs is \defin{minor-closed} if for every graph $G\in\mathcal{G}$, every minor of $G$ is in $\mathcal{G}$. A minor-closed class is \defin{proper} if it is not the class of all graphs. For example, for fixed $g\geq 0$, the class of graphs with Euler genus at most $g$ is a proper minor-closed class. A graph $G$ is $t$-apex if it contains a set $A$ of at most $t$ vertices such that $G-A$ is planar. A 1-apex graph is \defin{apex}.  A minor-closed class $\mathcal{G}$ is apex-minor-free if some apex graph is not in $\mathcal{G}$.} and \citet{DEMWW22} do so for bounded-degree graphs in any minor-closed class. See 
+% \cref{Generalisations} for more precise statements and see 
+\citep{DHJLW21} for a survey on this topic.
 
 The main purpose of this paper is to prove product structure theorems for several non-minor-closed classes of interest. Our results are the first of this type for non-minor-closed classes.
 
 \subsection{$k$-Planar Graphs}
-\label{k_planar_section}
+% \label{k_planar_section}
 
-We start with the example of $k$-planar graphs. A graph is \defin{$k$-planar} if it has a drawing in the plane in which each edge is involved in at most $k$ crossings, where no three edges cross at a single point (see \cref{sec-k-planar} for a formal definition). Such graphs provide a natural generalisation of planar graphs, and are important in graph drawing research; see the recent bibliography on 1-planar graphs and the 140 references therein \citep{kobourov.liotta.ea:annotated}. It is well-known that the family of $k$-planar graphs is not minor-closed.  Indeed, 1-planar graphs may contain arbitrarily large complete graph minors~\citep{dujmovic.eppstein.ea:structure}. Hence the above results are not applicable for  $k$-planar graphs. We extend \cref{PlanarProduct} as follows.
+We start with the example of $k$-planar graphs. A graph is \defin{$k$-planar} if it has a drawing in the plane in which each edge is involved in at most $k$ crossings, where no three edges cross at a single point (see \cref{k_planar_section} for a formal definition). Such graphs provide a natural generalisation of planar graphs, and are important in graph drawing research; see the recent bibliography on 1-planar graphs and the 140 references therein \citep{kobourov.liotta.ea:annotated}. It is well-known that the family of $k$-planar graphs is not minor-closed.  Indeed, 1-planar graphs may contain arbitrarily large complete graph minors~\citep{dujmovic.eppstein.ea:structure}. Hence the above results are not applicable for  $k$-planar graphs. We extend \cref{PlanarProduct} as follows.
 
 \begin{thm}
 \label{kPlanarProduct}
@@ -200,7 +203,7 @@ Every $k$-planar graph is contained in $H\boxtimes P\boxtimes K_{18k^2+48k+30}$,
 %\note{PM}{Yes, I think so.  Two theorems, like this, or one?}
 %\note{DW}{two theorems}
 
-For the important special case of $1$-planar graphs, we are able to obtain better constants and an additional property (planarity) on $H$.
+For the important special case of $1$-planar graphs, we are able to obtain better constants and an additional property (planarity) of $H$.
 
 \begin{thm}\label{1_planar_product}
   Every $1$-planar graph is contained in $H\boxtimes P\boxtimes K_{7}$, for some planar graph $H$ of treewidth $3$ and for some path $P$.
@@ -208,7 +211,7 @@ For the important special case of $1$-planar graphs, we are able to obtain bette
 
 % A planar graph of treewidth at most $3$ is said to have \emph{simple treewidth} $3$.
 
-For at least one application, the planarity of $H$ is critical in obtaining asymptotically tight bounds \cite{BDJM}. \cref{1_planar_product} is proven in the more general setting of $d$-framed multigraphs. This more general result implies a product structure theorem for $d$-map graphs in which $H$ is also planar.
+For at least two applications, the planarity of $H$ is critical in obtaining asymptotically tight bounds \cite{BDJM,DFMS21}. \cref{1_planar_product} is proven in the more general setting of $d$-framed multigraphs. This more general result implies a product structure theorem for $d$-map graphs in which $H$ is also planar.
 
 %
 %
@@ -226,7 +229,7 @@ For at least one application, the planarity of $H$ is critical in obtaining asym
 
 \subsection{Shortcut Systems}
 
-Although $k$-planar graphs are the most high-profile target for a generalization of \cref{PlanarProduct}, we actually prove a substantially stronger result than \cref{kPlanarProduct} using the following definition. A non-empty set $\SS$ of non-trivial paths in a graph $G$ is a \defin{$(k,d)$-shortcut system} (for $G$) if:
+Although $k$-planar graphs are the most high-profile target for a generalization of \cref{PlanarProduct}, we actually prove a more general result than \cref{kPlanarProduct} using the following definition. A non-empty set $\SS$ of non-trivial paths in a graph $G$ is a \defin{$(k,d)$-shortcut system} (for $G$) if:
 
 \begin{compactitem}
 \item every path in $\SS$ has length at most $k$,\footnote{A path of length $k$ consists of $k$ edges and $k+1$ vertices.  A path is \defin{trivial} if it has length 0 and \defin{non-trivial} otherwise.} and
@@ -244,7 +247,7 @@ Every $k$-planar graph is contained in $G^\SS$ for some planar graph $G$ and som
 The proof of \cref{AddDummy} is trivial: Given a $k$-plane embedding of a graph $G'$, create a planar graph $G$ by adding a dummy vertex at each crossing point. For each edge $vw\in E(G')$ there is a path $P$ in $G$ between $v$ and $w$ of length at most $k+1$ in which every internal vertex is a dummy vertex. Let $\SS$ be the set of such paths $P$. For each vertex $v$ of $G$, at most two paths in $\SS$ use $v$ as an internal vertex (since no original vertex of $G'$ is an internal vertex of a path in $\SS$). Thus $\SS$ is a $(k+1,2)$-shortcut system for $G$, such that $G'\subseteq G^\SS$. This idea can be pushed further to obtain a rough characterisation of $k$-planar graphs, which is interesting in its own right, and is useful for showing that various classes of graphs are $k$-planar (see \cref{Characterisation}).
 
 
-The following theorem is one of the main contributions of the paper. It says that if a graph class $\mathcal{G}$ has a product structure theorem, then the class of graphs obtained by applying a shortcut system to graphs in $\mathcal{G}$ also has a product structure theorem.
+The following theorem is one of the main contributions of the paper. It says that if a graph class $\mathcal{G}$ has a product structure theorem like \cref{PlanarProduct}(b), then so too does the class of graphs obtained by applying shortcut systems to graphs in $\mathcal{G}$.
 
 \begin{thm}
 \label{ShortcutProduct}
@@ -258,7 +261,7 @@ Let $G$ be a graph contained in $H\boxtimes P \boxtimes K_\ell$, for some graph 
 % \note{DW}{Use $\SS$ for shortcut system, okay?}
 % \note{PM}{Ok.  I've implemented this change.  I was careful, but will still reread.}
 
-Theorem~\ref{PlanarProduct}(b), \cref{ShortcutProduct}, and \cref{AddDummy} imply \cref{kPlanarProduct} with $K_{6(k^3+3k)}$ instead of $K_{18k^2+48k+30}$. Some further observations presented in \cref{sec-k-planar} lead to the improved result.  \cref{ShortcutProduct} is applicable for many graph classes in addition to $k$-planar graphs. Some examples are explored in \cref{first_example,mid_example,last_example}.
+Theorem~\ref{PlanarProduct}(b), \cref{ShortcutProduct}, and \cref{AddDummy} imply \cref{kPlanarProduct} with $K_{6(k^3+3k)}$ instead of $K_{18k^2+48k+30}$. Some further observations presented in \cref{k_planar_section} lead to the improved result.  \cref{ShortcutProduct} is applicable for many graph classes in addition to $k$-planar graphs. Some examples are explored in \cref{first_example,mid_example,last_example}.
 
 % Here is one example. The \defin{$k$-th power} of a graph $G$ is the graph $G^k$ with vertex set $V(G^k):=V(G)$, where $vw\in E(G^k)$ if and only if $\dist_G(v,w)\leq k$.\footnote{For a graph $G$ and two vertices $v,w\in V(G)$, $\dist_G(v,w)$  denotes the length of a shortest path, in $G$, with endpoints $v$ and $w$.  We define $\dist_G(v,w):=\infty$ if $v$ and $w$ are in different connected components of $G$.} If $G$ has maximum degree $\Delta$, then $G^k = G^\SS$ for some $(k,2k\Delta^{k})$-shortcut system $\SS$; see \cref{PowerShortcut}. Theorems~\ref{PlanarProduct}(b) and \ref{ShortcutProduct} then imply:
 
@@ -270,14 +273,56 @@ Theorem~\ref{PlanarProduct}(b), \cref{ShortcutProduct}, and \cref{AddDummy} impl
 % \cref{Examples} presents further examples of graph classes that can be constructed using shortcut systems, including certain types of map graphs, string graphs, and $k$-nearest neighbour graphs. \cref{ShortcutProduct} implies product structure theorems for each of these classes. All of the above-mentioned applications also hold for these examples.
 
 
+\subsection{Overview and Outline}
+
+\cref{summary_table} summarizes existing results on product structure theorems for minor-closed graph classes and new results for non-minor-closed graph classes.  The remainder of this paper is organized as follows:
+
+
+\begin{table}
+  \begin{center}
+    \begin{tabular}{lccl}
+      \textbf{Graph class} & \boldmath $\tw(H)$ & \boldmath $\ell$ & \textbf{Ref.} \\ \hline\hline
+      Planar & $3^*$ & $3$ & \cite{DJMMUW20} \\
+      Planar & $6^*$ & $1$ & \cite{UWY} \\
+      Genus-$g$ & $3^*$ & $\max\{2g,3\}$ & \cite{DHHW} \\
+      Genus-$g$ & $2g+6$ & 1 & \cite{UWY} \\
+      Apex-minor-free & $O(1)$ & $O(1)$ & \cite{DJMMUW20} \\[1ex]
+      % B-minor-free & $O(1)$ & $O(1)$ & \cite{DJMMUW20} \\
+      $k$-planar & $\binom{k+4}{3}-1$ & $18k^2 + 48k + 30$ & \cref{kPlanarProduct} \\
+      $(g,k)$-planar & $\binom{k+4}{3}-1$ & $\max\{2g,3\}(6k^2+16k+10)$ & \cref{gkPlanarProduct} \\
+      $(g,\delta)$-string & $\binom{\delta+4}{3}-1$ & $\max\{2g,3\}(\delta^4 + 4\delta^3 + 9\delta^2 + 10\delta+4)$ & \cref{StringProduct} \\
+      $k$-NN & $O(k^6)$ & $O(k^4)$ & \cref{nn_product_structure} \\
+      $d$-framed & $3^*$ & $d+ 3\floor{d/2} - 3$ & \cref{d_framed_product_stucture} \\
+      $1$-planar & $3^*$ & $7$ & \cref{1_planar_product} \\
+      $d$-map & $3^*$ & $d+ 3\floor{d/2} - 3$ & \cref{dMapProduct} \\
+      $(g,d)$-map & $9$ & $\max\{2g,3\}\,(7d^2 -21d)$ & \cref{gdMapProduct} \\ \hline
+      \\[.2ex]
+      \multicolumn{4}{l}{$^*$ the bound also applies to the simple treewidth of $H$.}
+    \end{tabular}
+  \end{center}
+  \caption{Known product structure theorems (of the form $G\subseteq H\boxtimes P\boxtimes K_\ell$).}
+  \label{summary_table}
+\end{table}
+
+\begin{compactitem}
+  \item In \cref{Structure} we prove our main result for shortcut systems (\cref{ShortcutProduct}), and its optimisations for $k$-planar graphs and their genus-$g$ generalisation (\cref{kPlanarProduct,gkPlanarProduct}).
+  \item \Cref{examples} uses \cref{ShortcutProduct,kPlanarProduct,gkPlanarProduct} to derive product structure theorems for string graphs, powers of bounded-degree graphs, map graphs, and $k$-nearest neighbour graphs.
+  \item \Cref{FramedSection} proves a product structure theorem for $d$-framed multigraphs in which the graph $H$ has treewidth $3$ and is planar.  Using this result, we derive improved product structure theorems for $1$-planar graphs and planar map graphs, again with a planar graph $H$.
+  \item \Cref{Applications} quickly surveys applications of product structure and the consequences of the current work.
+  \item \cref{WrappingUp} concludes with an open problem.
+\end{compactitem}
+
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Layered Partitions}
-\label{LayeredPartitions}
+\section{\boldmath Shortcut Systems and $k$-Planar Graphs}
+\label{Structure}
 
-\note{PM}{Move this section out of the introduction, into a ``preliminaries'' section?}
-
+The purpose of this section is to prove \cref{ShortcutProduct} and its specialization to $k$-planar graphs, \cref{kPlanarProduct}.
 While strong products enable concise statements of the theorems in \cref{Introduction}, to prove such results it is helpful to work with layerings and partitions, which we now introduce.
+
+\subsection{Layered Partitions}
 
 A \defin{layering} of a graph $G$
 % is a sequence $\mathcal{L}=\langle L_0,L_1,\ldots\rangle $ such that $\{L_0,L_1,\ldots\}$ is a partition of $V(G)$
@@ -298,76 +343,39 @@ For every graph $H$, a graph $G$ has an $H$-partition of layered width at most $
 \end{lem}
 
 As an example of the use of layered partitions, to prove \cref{PlanarProduct}(a),
-\citet{DJMMUW20} showed that every planar graph has an $H$-partition of layered width $1$ for some planar graph $H$ of treewidth at most $8$ (improved to $6$ in \cite{UWY}). The proof is constructive and gives a simple quadratic-time algorithm for finding the corresponding partition and layering.\footnote{\citet{bose.morin.ea:optimal} have recently given linear time algorithms for computing layered $H$-partitions of planar graphs.} At the core of their work is the elegant proof by \citet{PS21} of the following result:
+\citet{DJMMUW20} build on an earlier result of \citet{PS21} to show that every planar graph has an $H$-partition of layered width $1$ for some planar graph $H$ of treewidth at most $8$ (improved to $6$ in \cite{UWY}). The proof is constructive and gives a simple quadratic-time algorithm for finding the corresponding partition and layering.\footnote{\citet{bose.morin.ea:optimal} have recently given linear time algorithms for computing layered $H$-partitions of planar graphs.} 
 
-\begin{thm}[\citep{PS21}]
-\label{ps}
-  Every planar triangulation $G$ has an $H$-partition $\PP$ such that $\tw(H)\leq 8$ and $G[P]$ is a shortest path in $G$ for each $P\in\PP$.
-\end{thm}
 
-Indeed, the above-mentioned result of \citet{DJMMUW20} is a slight strengthening of \cref{ps}, where for each $P\in\PP$ no two vertices of $P$ have the same distance to some fixed root vertex $r$.
+% \note{PM}{This feels out of place now that this section has been moved out of the introduction.  Delete?
+% 
+% At the core of their work is the elegant proof by \citet{PS21} of the following result:
+% 
+% \begin{thm}[\citep{PS21}]
+% \label{ps}
+%   Every planar triangulation $G$ has an $H$-partition $\PP$ such that $\tw(H)\leq 8$ and $G[P]$ is a shortest path in $G$ for each $P\in\PP$.
+% \end{thm}
+% 
+% Indeed, the above-mentioned result of \citet{DJMMUW20} is a slight strengthening of \cref{ps}, where for each $P\in\PP$ no two vertices of $P$ have the same distance to some fixed root vertex $r$.
+% }
 
-The following result is the main technical contribution of the paper.   Loosely speaking, it shows that if a graph $G$ has product structure, then so too does $G^\SS$ for every shortcut system $\SS$ of $G$.
+By \cref{PartitionProduct}, \cref{ShortcutProduct} is equivalent to the following result, whose proof is the subject of the next section.
 
-\begin{restatable}{thm}{mmg}
+\begin{thm}
 	\label{ShortcutPartition}
 	Let $G$ be a graph having an $H$-partition of layered width $\ell$ in which $H$ has treewidth at most $t$ and let $\SS$ be a $(k,d)$-shortcut system for $G$.  Then $G^\SS$ has a $J$-partition of layered width at most $d\ell(k^3+3k)$ for some graph $J$ of treewidth at most $\binom{k+t}{t}-1$.
-\end{restatable}
-
-Note that \cref{ShortcutPartition} is equivalent to \cref{ShortcutProduct} by \cref{PartitionProduct}.
-
-\subsection{Overview and Outline}
-
-\cref{summary_table} summarizes existing results on product structure theorems for minor-closed graph classes and new results for non-minor-closed graph classes.  The remainder of this paper is organized as follows:
-
-
-\begin{table}
-  \begin{center}
-    \begin{tabular}{lccl}
-      \textbf{Graph class} & \boldmath $\tw(H)$ & \boldmath $\ell$ & \textbf{Ref.} \\ \hline\hline
-      Planar & $3^*$ & $3$ & \cite{DJMMUW20} \\
-      Planar & $6^*$ & $1$ & \cite{UWY} \\
-      Genus-$g$ & $3^*$ & $\max\{2g,3\}$ & \cite{DHHW} \\
-      Genus-$g$ & $2g+6$ & 1 & \cite{UWY} \\
-      Apex-minor-free & $O(1)$ & $O(1)$ & \cite{DJMMUW20} \\[1ex]
-      % B-minor-free & $O(1)$ & $O(1)$ & \cite{DJMMUW20} \\
-      $k$-planar & $\binom{k+4}{3}-1$ & $18k^2 + 48k + 30$ & \cref{kPlanarProduct} \\
-      $(g,k)$-planar & $\binom{k+4}{3}-1$ & $\max\{2g,3\}(6k^2+16k+10)$ & \cref{gkPlanarProduct} \\
-      $(g,\delta)$-string & $\binom{\delta+4}{3}-1$ & $\max\{2g,3\}(\delta^4 + 4\delta^3 + 9\delta^2 + 10\delta+4)$ & \cref{StringPartition} \\
-      $k$-NN & $O(k^6)$ & $O(k^4)$ & \cref{nn_product_structure} \\
-      $d$-framed & $3^*$ & $d+ 3\floor{d/2} - 3$ & \cref{d_framed_product_stucture} \\
-      $1$-planar & $3^*$ & $7$ & \cref{1_planar_product} \\
-      $d$-map & $3^*$ & $d+ 3\floor{d/2} - 3$ & \cref{dMapProduct} \\
-      $(g,d)$-map & $\textcolor{red}{?}$ & $\textcolor{red}{?}$ & \textcolor{red}{\cref{dMapProduct}} \\ \hline
-      \\[.2ex]
-      \multicolumn{4}{l}{$^*$ the bound also applies to the simple treewidth of $H$.}
-    \end{tabular}
-  \end{center}
-  \caption{Summary of known product structure theorems.}
-  \label{summary_table}
-\end{table}
-
-\begin{compactitem}
-  \item In \cref{Structure} we prove our main result for shortcut systems (\cref{ShortcutProduct}), and its optimisations for $k$-planar graphs and their genus-$g$ generalisation (\cref{kPlanarProduct,gkPlanarProduct}).
-  \item \Cref{examples} uses \cref{Structure} to derive product structure theorems for string graphs, powers of bounded-degree graphs, and $k$-nearest neighbour graphs.
-  \item \Cref{FramedSection} proves a product structure theorem for $d$-framed multigraphs in which the graph $H$ has treewidth $3$ and is planar.  Using this result, we derive product structure theorems for $1$-planar graphs and map graphs, again with a planar graph $H$.
-  \item \Cref{Applications} quickly surveys applications of product structure and the consequences of the current work.
-  \item \cref{WrappingUp} concludes with an open problem.
-\end{compactitem}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{\boldmath Shortcut Systems and $k$-Planar Graphs}
-\label{Structure}
-
-The purpose of this section is to prove \cref{ShortcutPartition} and its specialization to $k$-planar graphs \cref{kPlanarProduct}.
+\end{thm}
 
 
 \subsection{Shortcut Systems}
 
-\cref{ShortcutPartition} shows how, given a $(k,d)$-shortcut system $\SS$ of a graph $G$, an $H$-partition of $G$ can be used to obtain a $J$-partition of $G^{\SS}$ where the layered width  does not increase dramatically and the treewidth of $J$ is not much more than the treewidth of $H$.  For convenience, it will be helpful to assume that $\SS$ contains a length-1 $vw$-shortcut for every edge $vw\in E(G)$.  Since $G^\SS$ is defined to be a supergraph of $G$, this assumption has no effect on $G^{\SS}$ but eliminates special cases in some of our proofs.
+We now prove \cref{ShortcutPartition}.
+For convenience, it will be helpful to assume that $\SS$ contains a length-1 $vw$-shortcut for every edge $vw\in E(G)$.  Since $G^\SS$ is defined to be a supergraph of $G$, this assumption has no effect on $G^{\SS}$ but eliminates special cases in some of our proofs.
 
-Consider a tree $T$ rooted at some node $x_0\in V(T)$. Each subtree $T'$ of $T$ is considered to be rooted at the node in $T'$ closest to $x_0$. A node $a\in V(T)$ is a \defin{$T$-ancestor} of $x\in V(T)$ (and $x$ is a \defin{$T$-descendant} of $a$) if $a$ is a vertex of the path, in $T$, from $x_0$ to $x$.  Note that each node $x\in V(T)$ is a $T$-ancestor and $T$-descendant of itself.  We say that a $T$-ancestor $a\in V(T)$ of $x\in V(T)$ is a \defin{strict} $T$-ancestor of $x$ if $a\neq x$.
-The \defin{$T$-depth} of a node $x\in V(T)$ is the length of the path, in $T$, from $x_0$ to $x$.  The \defin{lowest common ancestor} of a non-empty set $S\subseteq V(T)$ is the maximum $T$-depth node of $T$ that is a $T$-ancestor of every node in $S$.
+Let $T$ be a tree rooted at some node $x_0\in V(T)$.  A node $a\in V(T)$ is a \defin{$T$-ancestor} of $x\in V(T)$ (and $x$ is a \defin{$T$-descendant} of $a$) if $a$ is a vertex of the path, in $T$, from $x_0$ to $x$.  Note that each node $x\in V(T)$ is a $T$-ancestor and $T$-descendant of itself.  We say that a $T$-ancestor $a\in V(T)$ of $x\in V(T)$ is a \defin{strict} $T$-ancestor of $x$ if $a\neq x$.
+The \defin{$T$-depth} of a node $x\in V(T)$ is the length of the path, in $T$, from $x_0$ to $x$.  The \defin{lowest common $T$-ancestor} of a non-empty set $S\subseteq V(T)$ is the maximum $T$-depth node of $T$ that is a $T$-ancestor of every node in $S$.  In the following, we treat any subtree $T'$ of $T$ as a rooted tree whose root is the lowest common $T$-ancestor of $V(T')$.
+
+
+
 % For each node $x\in V(T)$, define
 % \[T_x := T[\{y\in V(T):\mbox{$x$ is a $T$-ancestor of $y$}\}] \]
 % to be the maximal subtree of $T$ rooted at $x$.
@@ -562,6 +570,7 @@ At this point, the proof of \cref{ShortcutPartition} is almost immediate from \c
 \end{proof}
 
 \subsection{\boldmath $k$-Planar Graphs}
+\label{k_planar_section}
 
 % \note{DW}{These definitions should appear earlier, certainly before the definition of framed graph, which should be defined as an ``embedded graph''. One option is to put this whole paragraph as a footnote in the introduction where we first mention $k$-planar graphs. The experienced reader can skip this paragraph, which says to me it should be a footnote.}
 
@@ -614,6 +623,7 @@ As mentioned in \cref{Introduction}, \cref{PlanarProduct,ShortcutProduct} imply 
 
 
 \subsection{\boldmath $(g,k)$-Planar Graphs}
+\label{gk_planar_section}
 
 As mentioned in the introduction, product structure theorems have been established for several minor-closed classes in addition to planar graphs, including the following version of \cref{PlanarProduct} for graphs of bounded Euler genus.
 
@@ -621,7 +631,7 @@ As mentioned in the introduction, product structure theorems have been establish
   Every graph of Euler genus $g$ is contained in:
   \begin{compactenum}[(a)]
   \item $H  \boxtimes P$ for some graph $H$ of treewidth at most $2g+6$  and some path $P$.
-  \item $H \boxtimes P \boxtimes K_{\max\{2g,3\}}$ for some graph $H$ of treewidth at most $3$ and for some path $P$.
+  \item $H \boxtimes P \boxtimes K_{\max\{2g,3\}}$ for some planar graph $H$ of treewidth at most $3$ and for some path $P$.
   \end{compactenum}
 \end{thm}
 
@@ -695,7 +705,7 @@ Every $(g,k)$-planar graph is contained in $H\boxtimes P \boxtimes K_\ell$ for s
 \section{Graphs Derived from Shortcut Systems}
 \label{examples}
 
-In this section we give three examples of well-known graph families that can be expressed in terms of shortcut systems and which therefore have product structure theorems.
+In this section we give four examples of well-known graph families that can be expressed in terms of shortcut systems and which therefore have product structure theorems.
 
 
 %%%%%%%
@@ -715,10 +725,12 @@ Let $\mathcal{C}=\{C_v:v\in V(G)\}$ be a set of curves in a surface of Euler gen
 $\floor{\frac{k}{2}}$-th vertex already on $C_v$ and the $\floor{\frac{k}{2}+1}$-th such vertex. For each edge $vw$ of $G$, there is a path $P_{vw}$ of length at most $2\ceil{\frac{\delta}{2}}\leq \delta+1$ in $G_0$ between $v$ and $w$. Let $\SS$ be the set of all such paths $P_{vw}$. Consider a vertex $x$ in $G_0$ that is an internal vertex on some path in $\SS$. Then $x$ is at the intersection of $C_v$ and $C_w$ for some edge $vw\in E(G)$. If some path $P\in \SS$ passes through $x$, then $P=P_{vu}$ for some edge $vu$ incident to $v$, or $P=P_{wu}$ for some edge $wu$ incident to $w$. At most $\ceil{\frac{\delta}{2}}$ paths in $\SS$ corresponding to edges incident to $v$ pass through $x$, and similarly for edges incident to $w$. Thus at most $2\ceil{\frac{\delta}{2}}\leq\delta+1$ paths in $\SS$ use $x$ as an internal vertex. Thus $\SS$ is a $(\delta+1,\delta+1)$-shortcut system for $G_0$, and by construction, $G \subseteq G_0^\SS$.
 \end{proof}
 
-A similar proof to that of \cref{StringShortcut} shows that every $(g,\delta)$-string graph is $(g,2\delta^2)$-planar. Theorems~\ref{PlanarProduct}(b), \ref{ShortcutProduct}  and \ref{GenusProduct}(b):
+% A similar proof to that of \cref{StringShortcut} shows that every $(g,\delta)$-string graph is $(g,2\delta^2)$-planar. 
+
+\cref{StringShortcut,ShortcutProduct,GenusProduct} now imply:
  % and \cref{StringShortcut,qn} imply:
 
-\begin{thm}\label{StringPartition}
+\begin{thm}\label{StringProduct}
 For integers $g\geq 0$ and $\delta\geq 2$, let $\ell:= \max\{2g,3\} \,(\delta^4 + 4 \delta^3 + 9 \delta^2 + 10 \delta + 4)$ and $t:= \binom{ \delta+4}{3}-1$.
 Then  every $(g,\delta)$-string graph is contained in $H\boxtimes P \boxtimes K_{\ell}$ for some path $P$ and for some graph $H$ with treewidth $t$,
 \end{thm}
@@ -828,8 +840,8 @@ Let $G$ be a $(g,d)$-map graph. So there is a graph $G_0$ embedded in a surface 
 
 \begin{thm}
 \label{gdMapProduct}
-For integers $g\geq 0$ and $d\geq 3$, let $\ell:= 14\max\{2g,3\}\,\binom{d}{2}$.
-Then every $(g,d)$-string graph is contained in $H\boxtimes P \boxtimes K_{\ell}$ for some path $P$ and for some graph $H$ with treewidth $9$,
+For integers $g\geq 0$ and $d\geq 3$, let $\ell:= \max\{2g,3\}(7d^2-21d)$.
+Then every $(g,d)$-map graph is contained in $H\boxtimes P \boxtimes K_{\ell}$ for some path $P$ and for some graph $H$ with treewidth $9$,
 \end{thm}
 
 
@@ -1157,9 +1169,12 @@ Every $d$-map graph is contained in $H \boxtimes P \boxtimes K_{ d + 3\floor{d/2
 
 \cref{dMapProduct} is an immediate consequence of \cref{d_framed_product_stucture} and the next lemma. Similar results to \cref{MewMapGraphLemma} appear in earlier works \cite{CGP06,BDGGMR,Brandenburg19,Brandenburg20} but we state the precise lemma and provide a proof here for the sake of completeness.
 
+
+\note{PM}{Got rid of genus-$g$ in the following. We use shortcuts for $(g,d)$-map graphs and now we don't have to define $(g,d)$-frame.}
+
 \begin{lem}
 \label{MewMapGraphLemma}
-For all integers $g\geq 0$ and $d\geq 3$, every $d$-map graph is a spanning subgraph of a $d$-framed graph.\todo{All I did here was remove references to $g$}
+For all integers $g\geq 0$ and $d\geq 3$, every $d$-map graph is a spanning subgraph of a $d$-framed graph.
 \end{lem}
 
 \begin{proof}
@@ -1175,10 +1190,10 @@ Each face of $G_1$ corresponds to a vertex of $G_0$ or a lake of $G_0$.
 Triangulate each face of $G_1$ corresponding to a lake of $G_0$. 
 
 For each face $F$ of $G_1$ that corresponds to a vertex $x$ of $G_0$, the size of $F$ equals the number of nations incident to $x$, which is at most $d$.
-So every face of $G_1$ has size at most $d$.  Let $\hat{G}_1$ be the $d$-framed graph whose frame is $G_1$.  
+So every face of $G_1$ has size at most $d$.  Let $\widehat{G}_1$ be the $d$-framed graph whose frame is $G_1$.  
 
-To complete the proof, we now show that $\hat{G}_1$ contains $G$.
-If $vw\in E(G)$ then the nation faces of $G_0$ corresponding to $v$ and $w$ have a vertex $x$ of $G_0$ in common.   If some face of $G_1$ corresponds to $x$ then $v$ and $w$ are on a common face of $G_1$ so $vw\in E(\hat{G}_1)$.  If no face of $G_1$ corresponds to $x$ then the only two nation faces of $G_0$ with $x$ on their boundary those corresponding to $v$ and $w$, in which case $vw\in E(G_1)\subseteq E(\hat{G}_1)$.  Therefore $G\subseteq\hat{G}_1$.
+To complete the proof, we now show that $\widehat{G}_1$ contains every edge of $G$.
+If $vw\in E(G)$ then the nation faces of $G_0$ corresponding to $v$ and $w$ have a vertex $x$ of $G_0$ in common.   If some face of $G_1$ corresponds to $x$ then $v$ and $w$ are on a common face of $G_1$ so $vw\in E(\widehat{G}_1)$.  If no face of $G_1$ corresponds to $x$\footnote{This can occur when $x$ is on the boundary of exactly two nation faces and two lake faces.} then the only two nation faces of $G_0$ with $x$ on their boundary are those corresponding to $v$ and $w$, in which case $vw\in E(G_1)\subseteq E(\widehat{G}_1)$.  Therefore $G\subseteq\widehat{G}_1$.
 \end{proof}
 
 % \note{DW}{give a better version of \cref{MapPartition} with $g=0$. }
@@ -1291,7 +1306,7 @@ Combining \cref{non-repetitive} with our results on product structure, we obtain
     \item $d$-map: $256(d+3\floor{d/2}-3)$
     % \item $(g,d)$-map: $g4^{O(d)}$
     % \item $k$-NN: $4^{O(k^6)}$
-    \item $(g,d)$-map graph: \textcolor{red}{??}
+    \item $(g,d)$-map graph: $(7d^2-21d)\cdot 4^{10}$
     % \item
   \end{compactenum}
 \end{cor}
@@ -1304,8 +1319,8 @@ Prior to the current work, the strongest upper bound on the non-repetitive chrom
 
 A $c$-colouring $\phi$ of $G$ is \defin{$p$-centered} if, for every connected subgraph $X\subseteq G$, $|\{\phi(v):v\in V(X)\}| > p$ or there exists some $v\in V(X)$ such that $\phi(v)\neq \phi(w)$ for every $w\in V(X)\setminus\{v\}$.  In words, either $X$ receives more than $p$ colours or some vertex in $X$ receives a unique colour.  Let $\chi_p(G)$ be the minimum integer $c$ such that $G$ has a $p$-centered $c$-colouring. Centered colourings are important since they characterise classes of bounded expansion, which is a key concept in the sparsity theory of \citet{Sparsity}.
 
-\citet{PS21} and \citet{DFMS21} use \cref{ps} and \cref{PlanarProduct}(b), respectively, to show that $\chi_p(G)$ is polynomial in $p$ when $G$ is planar or of bounded Euler genus.
-Upper bounds on $\chi_p$ for graphs of given treewidth~\citep{PS21} and for graph products~\citep{DFMS21} imply the next lemma.
+% \citet{PS21} and 
+\citet{DFMS21} use \cref{PlanarProduct} and \cref{PlanarProduct}(b), respectively, to show that $\chi_p(G)\in O(p^2\log p)$ when $G$ is planar or of bounded Euler genus.  Upper bounds on $\chi_p$ for graphs of given treewidth~\citep{PS21} and for graph products~\citep{DFMS21} imply the next lemma.
 
 %In the journal version, \citet{DFMS21} proved that $\chi_p(H_1\boxtimes H_2) \leq \chi_p(H_1) \cdot \chi(H_2^p)$ where $H_2^p$ is the $p$-th power of $H_2$. Apply this with $H_2:= P \boxtimes K_\ell$. Then $H_2^p= P^p\boxtimes K_\ell$ and $\chi(H_2^p)=(p+1)\ell$. So $\chi_p(H\boxtimes P \boxtimes K_\ell) \leq \chi_p(H_1) \cdot (p+1)\ell$. }
 
