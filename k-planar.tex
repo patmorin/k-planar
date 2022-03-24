@@ -279,7 +279,7 @@ Theorem~\ref{PlanarProduct}(b), \cref{ShortcutProduct}, and \cref{AddDummy} impl
 
 
 \begin{table}[h]
-  \begin{center}
+  \centering{
     \begin{tabular}{lccl}
       \textbf{Graph class} & \boldmath $\tw(H)$ & \boldmath $\ell$ & \textbf{Reference} \\ \hline
       planar & $3^*$ & $3$ & \cite{DJMMUW20} \\
@@ -295,11 +295,10 @@ Theorem~\ref{PlanarProduct}(b), \cref{ShortcutProduct}, and \cref{AddDummy} impl
       $d$-framed & $3^*$ & $d+ 3\floor{d/2} - 3$ & \cref{d_framed_product_stucture} \\
       $1$-planar & $3^*$ & $7$ & \cref{1_planar_product} \\
       $d$-map & $3^*$ & $d+ 3\floor{d/2} - 3$ & \cref{dMapProduct} \\
-      $(g,d)$-map & $9$ & $\max\{2g,3\}\,(7d^2 -21d)$ & \cref{gdMapProduct} \\ \hline
-      \\[.2ex]
-      \multicolumn{4}{l}{$^*$ the bound also applies to the simple treewidth of $H$.}
+      $(g,d)$-map & $9$ & $\max\{2g,3\}\,(7d^2 -21d)$ & \cref{gdMapProduct} \\ \hline 
+      \multicolumn{4}{l}{$^*$ these bounds also applies to the simple treewidth of $H$.}
     \end{tabular}
-  \end{center}
+  }
   \caption{Known product structure theorems (of the form $G\subseteq H\boxtimes P\boxtimes K_\ell$).}
   \label{summary_table}
 \end{table}
