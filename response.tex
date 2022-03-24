@@ -12,6 +12,7 @@
 \usepackage{todonotes}
 
 \newcommand{\done}{\textcolor{blue}{Done.}}
+\newcommand{\changed}{\textcolor{blue}{Revised accordingly.}}
 \newcommand{\tba}{\textcolor{red}{To be addresssed.}}
 
 \newenvironment{response}{\color{blue}}{}
@@ -26,32 +27,34 @@ Vida Dujmovi\'c, Pat Morin, David R. Wood\\
 Journal of Combinatorial Theory Series B (JCTB9758)\\
 Response to Referee Reports}
 
+Both referees strongly recommend acceptance. We have revised the paper according to the referee reports as detailed below. 
+
 \subsection*{Referee \#1}
 
-This paper proves that if a class of graphs F admits a product structure
-theorem, then the class of all graphs which have a 1-subdivision in F admits
-a product structure theorem as well. The main theorem, Theorem 3, while
-equivalent to the above statement using standard techniques, is stated in
-a different way which is considerably more useful for applications and for
-obtaining good bounds. As applications of Theorem 3, the paper shows that
-the following classes admit a product structure theorem:
-
-\begin{itemize}
-\item graphs drawn on a fixed surface with each edge in $\leq k$ crossings,
-\item map graphs of degree $\leq k$ graphs embedded in a fixed surface,
-\item string graphs with each curve in $\leq k$ intersections,
-\item $k$-nearest neighbour graphs in the plane, and
-\item powers of classes of graphs of degree $\leq k$ which admit a product structure theorem.
-\end{itemize}
-
-All but the last bullet point are shown to follow from the first.
-The main results in the paper are correct, strong, and of high interest,
-and the paper should definitely be accepted to JCTB after some
-(fairly significant) revisions. In particular, the proof of Theorem 3 is
-difficult to read due to the notation, and the paper could be substantially
-streamlined without losing the above results. Detailed suggestions follow.
-
-Major comments:
+%This paper proves that if a class of graphs F admits a product structure
+%theorem, then the class of all graphs which have a 1-subdivision in F admits
+%a product structure theorem as well. The main theorem, Theorem 3, while
+%equivalent to the above statement using standard techniques, is stated in
+%a different way which is considerably more useful for applications and for
+%obtaining good bounds. As applications of Theorem 3, the paper shows that
+%the following classes admit a product structure theorem:
+%
+%\begin{itemize}
+%\item graphs drawn on a fixed surface with each edge in $\leq k$ crossings,
+%\item map graphs of degree $\leq k$ graphs embedded in a fixed surface,
+%\item string graphs with each curve in $\leq k$ intersections,
+%\item $k$-nearest neighbour graphs in the plane, and
+%\item powers of classes of graphs of degree $\leq k$ which admit a product structure theorem.
+%\end{itemize}
+%
+%All but the last bullet point are shown to follow from the first.
+%The main results in the paper are correct, strong, and of high interest,
+%and the paper should definitely be accepted to JCTB after some
+%(fairly significant) revisions. In particular, the proof of Theorem 3 is
+%difficult to read due to the notation, and the paper could be substantially
+%streamlined without losing the above results. Detailed suggestions follow.
+%
+%Major comments:
 
 
 1. Lemma 3: This lemma is really about ``normalised'' tree decompositions, and says that for each $x \in V(T)$, the set $V(T_x)$ has at most $t$ neighbours in $H$. Call this property (T3) and remove (Y1)  through (Y5), which should now be obvious.
@@ -90,7 +93,7 @@ reason for including it?
 
 4. Sections 4 and 5: I think as they are currently organized they distract from the purpose of the paper, as stated in the introduction, to ``prove product structure theorems for several non-minor-closed classes of interest.'' Which of Corollaries 1--4 and Theorems 12--17 are most important? I would remove any mention of the applications from the examples section, put that section first, and state in that section a single main theorem with all of the best bounds on the product structure. The applications section is mostly a survey and I think should be focused on the most exciting new corollaries. Theorems 18 and 19 should be in the applications section.
 
-\tba
+\textcolor{blue}{We have reorganised the paper, addressing this comment. }
 
 1. abstract: ``This leads to analogous results for map graphs, string graphs, graph powers, and nearest neighbour graphs.'' $\longrightarrow$
 Add ``certain types of'' or be more specific. Same comment for immediately after Theorem 4.
@@ -113,6 +116,8 @@ of things discussed earlier on in the introduction.
 \done
 
 5. page 6, line 16: ``Select any node $x \in V (T_0)$'' $\longrightarrow$ ``Select any nonempty node $x \in V (T_0)$''
+
+\tba
 
 6. page 6, last paragraph of Lemma 2: This isn’t quite right since you
 have to be careful with $x_0$.
@@ -153,29 +158,29 @@ no $w'$ defined.
 
 \subsection*{Referee \#2}
 
-The Graph Product Structure Theorem of Dujmović, Joret,
-Micek, Morin, Ueckerdt, and Wood (FOCS '19) asserts that every planar
-graph is a subgraph of the strong product of a graph of treewidth at
-most 8 and a path.  This has been the key tool in resolving several
-longstanding open problems on planar graphs (and graphs in
-minor-closed classes), including problems on queue layouts,
-non-repetitive colouring, $p$-centered colouring, and universal graphs.
-This paper extends the Graph Product Structure Theorem beyond
-minor-closed classes.  The authors prove product structure theorems
-for k-planar graphs, map graphs, string graphs, graph powers, and
-nearest neighbour graphs.   The authors also present several
-applications of their results.  These are essentially the same
-applications as for the original Graph Product Structure Theorem; the
-point being that the applications typically follow quite easily once a
-product structure theorem is established.
-
-This paper is a significant step in answering the (ambitious) question
-of which graph classes admit product structure theorems. It is
-extremely well-written (with very few typos) and was a pleasure to
-read.  It is certainly well within the scope of JCTB and I strongly
-recommend it for acceptance.
-
-Below are some typos and suggestions for the authors.
+%The Graph Product Structure Theorem of Dujmović, Joret,
+%Micek, Morin, Ueckerdt, and Wood (FOCS '19) asserts that every planar
+%graph is a subgraph of the strong product of a graph of treewidth at
+%most 8 and a path.  This has been the key tool in resolving several
+%longstanding open problems on planar graphs (and graphs in
+%minor-closed classes), including problems on queue layouts,
+%non-repetitive colouring, $p$-centered colouring, and universal graphs.
+%This paper extends the Graph Product Structure Theorem beyond
+%minor-closed classes.  The authors prove product structure theorems
+%for k-planar graphs, map graphs, string graphs, graph powers, and
+%nearest neighbour graphs.   The authors also present several
+%applications of their results.  These are essentially the same
+%applications as for the original Graph Product Structure Theorem; the
+%point being that the applications typically follow quite easily once a
+%product structure theorem is established.
+%
+%This paper is a significant step in answering the (ambitious) question
+%of which graph classes admit product structure theorems. It is
+%extremely well-written (with very few typos) and was a pleasure to
+%read.  It is certainly well within the scope of JCTB and I strongly
+%recommend it for acceptance.
+%
+%Below are some typos and suggestions for the authors.
 
 
 Page 3.  The sentence 'For each $vw \in E(G')$ there is a path $P$ in $G$
@@ -231,7 +236,7 @@ true though.  In a normalized tree decomposition, if $xy$ is an edge and
 $x$ is a $T$-ancestor of $y$, then $x$ must be in $B_y$ (since the subtrees $T_x$
 and $T_y$ intersect).
 
-\done
+\changed
 
 Page 8.  Can you add a brief explanation why $\mathcal{S}$ is a
 partition of $V(G)$?  It is clear that the sets in $\mathcal{S}$ are
@@ -247,7 +252,7 @@ Page 11. In footnote 11, what the authors call a 'closed curve' I
 would call just a 'curve'.  To me, a closed curve satisfies the
 additional condition that $f(0)=f(1)$.
 
-\done
+\changed
 
 Page 13. Could it be that the subgraph induced by the vertices of a
 kite is a $K_4$ with some parallel edges?  This seems relevant later in
@@ -286,7 +291,7 @@ Page 15. Regarding the proof of Theorem 11, if it really is the same
 proof as the proof of Theorem 2, why not just prove Theorem 11 (from
 which Theorem 2 follows as a special case)?
 
-\textcolor{blue}{We have written the entire paper starting with simpler cases before moving onto the more general. This approach may use a few more words, but we think the paper becomes more accessible for more readers this way.}
+\textcolor{blue}{We have written the paper starting with simpler cases before moving onto the more general. This approach may use a few more words, but we think the paper becomes more accessible for more readers this way.}
 
 Page 16.  At the end of Page 16, I do not see why 'every pair of edges
 cross at most once.'  Without further assumptions, it seems as if two
@@ -296,14 +301,16 @@ edges which cross several times.  It seems this can be fixed by
 choosing the path system carefully by 'uncrossing' paths which
 intersect at more than two internal vertices.
 
-\textcolor{blue}{The referee is right here: two edges may cross more than once. We do not want to `uncross' since this does not maintain the bound on the number of crossings per edge. We have revised the proof avoiding the claim that every pair of edges cross at most once. The lemma itself has not changed. }
+\textcolor{blue}{The referee is right here: two edges may cross more than once. We do not want to `uncross' since this does not maintain the bound on the number of crossings per edge. We have revised the proof avoiding the claim that every pair of edges cross at most once. The lemma itself has not changed.}
 
 Page 18. In point 1 in the proof of Lemma 9, I think '$\phi(w)$' should
 be '$\alpha(w)$'.
 
-\done
+\changed
 
 Page 18.  Say $H'$ is connected since $X$ is connected.
+
+\tba
 
 Page 18.  Replace '$|i'-i''| < p$' by  '$0< |i'-i''| < p$'.
 
