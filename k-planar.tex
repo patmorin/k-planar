@@ -914,7 +914,7 @@ Note that \cref{nearest-neighbour} is tight up to the leading constant:  Every $
 % % (Possibly with the order of 2 and 3 reversed.)
 % }
 
-
+\note{DW}{I suggest we use the language of ``embedded graph'' here}
 For any integer $d\ge 3$, a (multi)graph $G$ is \defin{$d$-framed} if it has an embedding in $\R^2$ having a biconnected plane spanning (multi)subgraph $G_0$, whose facial cycles each have length at most $d$,  and such that the interior of each edge in $E(G)\setminus E(G_0)$ is contained in the interior of some face of $G_0$. The graph $G_0$ is called the \defin{frame} of $G$. This definition (for simple graphs) was introduced by \citet{BDGGMR}.
 
 Every $d$-framed multigraph can be described by a $(2,\binom{d}{2})$-shortcut system applied to a planar multigraph (by adding a vertex inside each face $F$ of $G_0$ adjacent to the vertices of $F$). Thus \cref{ShortcutProduct} is applicable. However, for framed graphs we prove the following stronger result, where the treewidth bound on $H$ is best possible.\footnote{A multigraph $G$ is \defin{contained} in a graph $G'$ if the simple graph underlying $G$ is isomorphic to a subgraph of $G'$.}
@@ -927,13 +927,11 @@ For any integer $d\ge 3$, every $d$-framed multigraph is contained in $H\boxtime
 
 \cref{d_framed_product_stucture} is a consequence of the following technical lemma, which is an extension of the analogous result for plane graphs~\cite{DJMMUW20}. The following definition is a convenient way to establish the planarity of $H$ in \cref{d_framed_product_stucture}:  A tree-decomposition $\mathcal{T}$ of a graph $G$ is \defin{$t$-simple} if each of its bags has size at most $t+1$ and, for each $t$-element subset $\{v_1,\ldots,v_t\}\subseteq V(G)$, at most two bags of $\mathcal{T}$ contain $\{v_1,\ldots,v_t\}$.  Finally, a \defin{BFS spanning forest} $T$ of $G$ rooted at a set $V_0\subseteq V(G)$ is a spanning forest of $G$ with the property that for each $v\in V(G)$,  \[\min\{\dist_G(v,w):w\in V_0\}=\min\{\dist_T(v,w):w\in V_0\}.\]
 
-%\note{PM}{Consider a change of notation:   Replace $F$ with $C$.  (I was using $F$ before to be consistent with the previous section, but that notation is gone now.)} \note{DW}{I agree.}
-
 \note{DW}{I suggest $G'$ be changed to $G_0$ throughout (since $G'$ feels like a graph derived from $G$, which it is not). Similarly, replace $N'$ by $N_0$.}
 
 \note{PM}{I would also like to change $G'$ to $G_0$ and $N'$ to $N_0$.  One issue is holding me back, though: We recurse on cycles $F_1,\ldots,F_m$ that define subgraphs $N_1,\ldots,N_m$ of $G$ and subgraphs $N_1',\ldots,N_m'$ of $G'$.  Will these latter subgraphs becomes $N_{0,1},\ldots,N_{0,m}$?}
 
-% \note{DW}{We need to define ``closure''}
+\note{DW}{Some suggestions: Replace $G'$ by $F$ (the frame), replace $F_0$ by $C$ (the outer-cycle), replace $F_1,\dots,F_m$ by $C_1,\dots,C_m$. Use $F_1,\dots,F_m$ for the subgraph of $F$ inside $C_i$. Use $G_i$ for the subgraph of $G$ inside $C_i$.}
 
 \begin{lem}
 	\label{induction} The setup:
@@ -952,7 +950,7 @@ For any integer $d\ge 3$, every $d$-framed multigraph is contained in $H\boxtime
 	\begin{compactenum}[(i)]
 		\item for each $i\in\{1,\ldots,k\}$, there exists $x_i\in V(H)$ such that $P_i=S_{x_i}$;
 		\item For each $x\in V(H)$, $S_x$ has a partition $\{X_x,Y_x\}$ where $|X_x|\le d-3$ and $|Y_x\cap L_j|\le 3$ for each $j\ge 0$;
-		\item $H$ has a $3$-simple tree decomposition $\mathcal{T}$ and, if $k=3$, then $\{x_1,x_2,x_3\}$ is contained in exactly one bag of $\mathcal{T}$.
+		\item $H$ has a $3$-simple tree decomposition $\mathcal{T}$ and, if $k=3$ then $\{x_1,x_2,x_3\}$ is contained in exactly one bag of $\mathcal{T}$.
 	\end{compactenum}
 %\note{PM}{I've changed my mind about this notation change.  We end up applying the lemma inductively on the faces $F_1,\ldots,F_m$ of $M$ (which are cycles in $G$).  It makes sense that the original cycle in $G$ is called $F$.}
 %\note{DW}{okay}
@@ -1124,9 +1122,9 @@ A multigraph $G$ is $1$-planar if and only if it is contained in a $4$-framed mu
 \begin{proof}
 Let $G$ be a $1$-plane multigraph. We may assume that no two edges incident to a common vertex of $G$ cross, since such a crossing can be removed by a local modification to obtain an isomorphic 1-plane graph in which the two edges do not cross\footnote{While this is true for 1-plane graphs it is not true for $k$-plane graphs with $k\ge 3$; the uncrossing operation can increase the number of crossings on a particular edge from $k$ to $2(k-1)$.}.
   % We say that a vertex $v\in V(G)$ appears on a face $F$ if $v$ is contained in the closure of $F$.
-We make $G$ into an \defin{edge-maximal} $1$-plane multigraph, by repeating the following operation:  If two vertices $v$ and $w$ of $G$ appear on a common face $F$ and there is no edge $vw\in E(G)$ contained in the boundary of $F$, then add the edge $vw$, embedded in the face $F$.  This may introduce parallel edges into $G$, but no two such edges will appear on the boundary of a common face.
+We make $G$ into an \defin{edge-maximal} $1$-plane multigraph, by repeating the following operation:  If two vertices $v$ and $w$ of $G$ appear on a common face $F$ and there is no edge $vw\in E(G)$ contained in the boundary of $F$, then add the edge $vw$, embedded in the face $F$.  This may introduce parallel edges into $G$, but no two such edges  appear on the boundary of a common face.
 
-\begin{figure}
+\begin{figure}[h]
   \begin{center}
     \begin{tabular}{c@{\hspace{1cm}}c}
         \includegraphics{figs/one_planar_example-3} &
@@ -1148,7 +1146,7 @@ If $W$ contains a dummy vertex $w_i$, then neither $w_{i-1}$ nor $w_{i+1}$ is a 
 %   \item bounded by one edge of $G$ that is not crossed plus portions of two edges of $G$ that cross each other.
 % \end{inparaenum}
 
-Consider some pair of edges $vw$ and $xy$ that cross at $p$.  The point $p$ is a vertex of $G_0$ that has degree $4$.  There are four faces $F_1,\ldots,F_4$ of $G_0$ that contain $p$ and, from the preceding discussion each of $vx$, $xw$, $wy$, and $yv$ is an uncrossed edge of $G$.  Therefore, by removing each pair of crossing edges from $G$ we obtain a plane multigraph $G'$ each of whose faces is bounded by three or four edges; see \cref{one_planar_example}(b).  Therefore $G$ is a $4$-framed graph with frame $G'$.
+Consider some pair of edges $vw$ and $xy$ that cross at point $p$, which a degree-4 vertex of $G_0$.  There are four faces $F_1,\ldots,F_4$ of $G_0$ that contain $p$ and, from the preceding discussion each of $vx$, $xw$, $wy$, and $yv$ is an uncrossed edge of $G$.  Therefore, by removing each pair of crossing edges from $G$ we obtain a plane multigraph $G'$ each of whose faces is bounded by three or four edges; see \cref{one_planar_example}(b).  Therefore $G$ is a $4$-framed graph with frame $G'$.
 % Since, for any pair of crossing edges $\{vw,xy\}$ that we remove this way, $vxwy$ is a cycle in $G'$, $\dist_{G'}(v,w)\le 2$ and $\dist_{G'}(x,y)\le 2$.
 % It follows immediately that, for any pair of vertices $a,b\in V(G)$, $\dist_{G'}(a,b)\le 2\dist_G(a,b)$.
 \end{proof}
@@ -1171,11 +1169,13 @@ Every $d$-map graph is contained in $H \boxtimes P \boxtimes K_{ d + 3\floor{d/2
 \cref{dMapProduct} is an immediate consequence of \cref{d_framed_product_stucture} and the next lemma. Similar results to \cref{MewMapGraphLemma} appear in earlier works \cite{CGP06,BDGGMR,Brandenburg19,Brandenburg20} but we state the precise lemma and provide a proof here for the sake of completeness.
 
 
-\note{PM}{Got rid of genus-$g$ in the following. We use shortcuts for $(g,d)$-map graphs and now we don't have to define $(g,d)$-frame.}
+%\note{PM}{Got rid of genus-$g$ in the following. We use shortcuts for $(g,d)$-map graphs and now we don't have to define $(g,d)$-frame.}
 
 \begin{lem}
 \label{MewMapGraphLemma}
-For all integers $g\geq 0$ and $d\geq 3$, every $d$-map graph is a spanning subgraph of a $d$-framed graph.
+For every %all 
+integer %s $g\geq 0$ and
+ $d\geq 3$, every $d$-map graph is a spanning subgraph of a $d$-framed graph.
 \end{lem}
 
 \begin{proof}
