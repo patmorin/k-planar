@@ -920,10 +920,10 @@ Note that \cref{nearest-neighbour} is tight up to the leading constant:  Every $
 % % (Possibly with the order of 2 and 3 reversed.)
 % }
 
-\note{DW}{I suggest we use the language of ``embedded graph'' here}
-For any integer $d\ge 3$, a (multi)graph $G$ is \defin{$d$-framed} if it has an embedding in $\R^2$ having a biconnected plane spanning (multi)subgraph $G_0$, whose facial cycles each have length at most $d$,  and such that the interior of each edge in $E(G)\setminus E(G_0)$ is contained in the interior of some face of $G_0$. The graph $G_0$ is called the \defin{frame} of $G$. This definition (for simple graphs) was introduced by \citet{BDGGMR}.
+% \note{DW}{I suggest we use the language of ``embedded graph'' here}
+For any integer $d\ge 3$, an embedded (multi)graph $G$ is \defin{$d$-framed} if it has a biconnected plane spanning (multi)subgraph $G_0$, whose facial cycles each have length at most $d$,  and such that the interior of each edge in $E(G)\setminus E(G_0)$ is contained in the interior of some face of $G_0$. The embedded (multi)graph $G_0$ is called the \defin{frame} of $G$. This definition (for simple graphs) was introduced by \citet{BDGGMR}.
 
-Every $d$-framed multigraph can be described by a $(2,\binom{d}{2})$-shortcut system applied to a planar multigraph (by adding a vertex inside each face $F$ of $G_0$ adjacent to the vertices of $F$). Thus \cref{ShortcutProduct} is applicable. However, for framed graphs we prove the following stronger result, where the treewidth bound on $H$ is best possible.\footnote{A multigraph $G$ is \defin{contained} in a graph $G'$ if the simple graph underlying $G$ is isomorphic to a subgraph of $G'$.}
+Every $d$-framed multigraph can be described by a $(2,d(d-3)/2)$-shortcut system applied to a plane multigraph by adding a vertex inside each face $F$ of $G_0$ adjacent to the vertices of $F$ and creating a shortcut between each non-consecutive pair of vertices of $F$. Thus \cref{ShortcutProduct} is applicable. However, for framed graphs we prove the following stronger result, where the treewidth bound on $H$ is best possible.\footnote{A multigraph $G$ is \defin{contained} in a graph $G'$ if the simple graph underlying $G$ is isomorphic to a subgraph of $G'$.}
 
 \begin{thm}\label{d_framed_product_stucture}
 For any integer $d\ge 3$, every $d$-framed multigraph is contained in $H\boxtimes P\boxtimes K_{d+3\floor{d/2}-3}$ for some planar graph $H$ with treewidth at most 3 and for some path $P$.
@@ -984,9 +984,10 @@ For any integer $d\ge 3$, every $d$-framed multigraph is contained in $H\boxtime
 \begin{proof}
 	This proof is similar to the proof of Lemma~13 by \citet{DJMMUW20}, but is complicated by several factors.  In particular, the reader should keep in mind that $G$ and $G'$ are multigraphs and that the cycle $F$ may consist of two vertices and two (parallel) edges.
 
-	The proof is by induction on the number of inner faces of $N'$.  A particular easy case occurs when $V(N')=V(F)$, for which we can simply take
-	\note{DW}{Suggested revision, ``In the base case, $N'$ has only one inner face, and we can simply take ...} \note{PM}{I debated what to put here since, even when $N'$ has only one face, the rules below work for picking $\tau$.  The \emph{real} base case occurs when $N'$ has zero faces, but that's not something that ever happens since we only ever apply induction on the inner faces of $M$ (except $\tau$).  I settled on this ``base case'' since it's clear that, in this case, the partition $\mathcal{P}$ is already decided.}
-  \note{PM}{The longwinded version is that induction is on the pair $(x,y)$ where $x=|V(N-F)|$ and $y$ is the number of inner faces of $N'$.  The base cases are $(0,y)$ for any $y$.}
+	The proof is by induction on the number of inner faces of $N'$.  A particular easy case occurs $N'$ has no inner vertices, i.e., $V(N')=V(F)$. In this case we can simply take
+	\note{DW}{Suggested revision, ``In the base case, $N'$ has only one inner face, and we can simply take ...} 
+  % \note{PM}{I debated what to put here since, even when $N'$ has only one face, the rules below work for picking $\tau$.  The \emph{real} base case occurs when $N'$ has zero faces, but that's not something that ever happens since we only ever apply induction on the inner faces of $M$ (except $\tau$).  I settled on this ``base case'' since it's clear that, in this case, the partition $\mathcal{P}$ is already decided.}
+  \note{PM}{The longwinded version is that induction is on $(x,y)$ where $x$ is the number of inner vertices of $N'$ and $y$ is the number of inner faces of $N'$.  The base cases are $(0,y)$ for any $y$.  Unfortunately, we can't just induct on $x$ because it doesn't always decrease.}
 	$\PP:=\{P_1,\ldots,P_k\}$ and verify that the preconditions of the lemma (the `setup') ensure that $\PP$ satisfies the requirements (i)--(iii):
 	\begin{compactenum}[(i)]
 		\item By definition, each of $P_1,\ldots,P_k$ is a part of $\mathcal{P}$.
@@ -994,9 +995,10 @@ For any integer $d\ge 3$, every $d$-framed multigraph is contained in $H\boxtime
 		\item The trivial tree decomposition of $H$ that has a single bag containing $\{x_1,\ldots,x_k\}$ is $3$-simple and, if $k=3$, has exactly one bag that contains $\{x_1,\ldots,x_3\}$.
 	\end{compactenum}
 
-\note{DW}{Now assume that $N'$ has at least two internal faces.}
+% \note{DW}{Now assume that $N'$ has at least two internal faces.}
 
-In the general case, our $H$-partition $\mathcal{P}$ will include $P_1$, $P_2$ , $P_3$ and a (possibly empty) part $S$ that will be determined by three vertices $v_1v_2v_3$ that belong to a common inner face $\tau$ of $N'$.  We first explain how $v_1$, $v_2$ and $v_3$ are chosen and then explain how these are used to define $S$.  There is one case to consider for each possible value of $k$ (see \cref{boring_figure}):
+We now move onto the case in which $N'$ contains at least one inner vertex.
+Our $H$-partition $\mathcal{P}$ will include $P_1$, $P_2$ , $P_3$ and a (possibly empty) part $S$ that will be determined by three vertices $v_1v_2v_3$ that belong to a common inner face $\tau$ of $N'$.  We first explain how $v_1$, $v_2$ and $v_3$ are chosen and then explain how these are used to define $S$.  There is one case to consider for each possible value of $k$ (see \cref{boring_figure}):
 
 \begin{compactenum}
 		\item If $k=1$ then let $\tau:=v_1,\ldots,v_p$ be an inner face of $N'$ that contains at least one edge $v_1v_2$ of $F$ on its boundary.
@@ -1143,9 +1145,10 @@ We make $G$ into an \defin{edge-maximal} $1$-plane multigraph, by repeating the 
     \label{one_planar_example}
 \end{figure}
 
+Refer to \cref{one_planar_example}.
 To understand the structure of $G$, it is helpful to consider the plane graph $G_0$ obtained by replacing each pair of edges $vw$ and $xy$ that cross at $p$ with four edges $vp$, $wp$, $xp$, and $yp$ meeting at a newly added \defin{dummy vertex} $p$. Let $F$ be a face of $G_0$ and let $W:=w_0,\ldots,w_{r-1}$ be the facial walk around $F$. In the following paragraphs, subscripts on the vertices in $W$ are implicitly taken modulo $r$. By edge maximality, if $W$ contains only non-dummy vertices, then it contains exactly three vertices and $F$ is bounded by three edges of $G$.
 
-If $W$ contains a dummy vertex $w_i$, then neither $w_{i-1}$ nor $w_{i+1}$ is a dummy vertex since if $w_{i-1}$ (respectively $w_{i+1}$) were a dummy vertex then the edge of $G$ that contains $w_{i-1}w_i$ (respectively $w_iw_{i+1}$) would be involved in at least two crossings.  Therefore each dummy vertex $w_i$ of $W$ is surrounded by two non-dummy vertices $w_{i-1},w_{i+1}\in V(G)$.  Since $w_i$ has degree $4$ in $G_0$ and $F$ does not have two parallel edges on its boundary, $w_{i-1}\neq w_{i+1}$.  Since $G$ is edge-maximal the edge $w_{i-1}w_i$ is an edge of $G$ on the boundary of $F$.  Therefore, if $F$ has a dummy vertex $w_i$ in its facial walk $W$, then $W=w_{i-1},w_i,w_{i+1}$ and $F$ is bounded by three edges of $G_0$, each of which is contained in a different edge of $G$.
+If $W$ contains a dummy vertex $w_i$, then neither $w_{i-1}$ nor $w_{i+1}$ is a dummy vertex since if $w_{i-1}$ (respectively $w_{i+1}$) were a dummy vertex then the edge of $G$ that contains $w_{i-1}w_i$ (respectively $w_iw_{i+1}$) would be involved in at least two crossings.  Therefore each dummy vertex $w_i$ of $W$ is flanked by two non-dummy vertices $w_{i-1},w_{i+1}\in V(G)$.  Since $w_i$ has degree $4>1$ in $G_0$ and no two edges incident to a common vertex cross each other, $w_{i-1}\neq w_{i+1}$.  Since $G$ is edge-maximal the edge $w_{i-1}w_{i+1}$ is an edge of $G$ on the boundary of $F$.  Therefore, if $F$ has a dummy vertex $w_i$ in its facial walk $W$, then $W=w_{i-1},w_i,w_{i+1}$ and $F$ is bounded by three edges of $G_0$, each of which is contained in a different edge of $G$.
 
 % Therefore each face of $G_0$ is a $3$-cycle that contains at most one dummy vertex.  This implies that each face of $G$ is one of two types:
 % \begin{inparaenum}[(i)]
@@ -1153,7 +1156,7 @@ If $W$ contains a dummy vertex $w_i$, then neither $w_{i-1}$ nor $w_{i+1}$ is a 
 %   \item bounded by one edge of $G$ that is not crossed plus portions of two edges of $G$ that cross each other.
 % \end{inparaenum}
 
-Consider some pair of edges $vw$ and $xy$ that cross at point $p$, which a degree-4 vertex of $G_0$.  There are four faces $F_1,\ldots,F_4$ of $G_0$ that contain $p$ and, from the preceding discussion each of $vx$, $xw$, $wy$, and $yv$ is an uncrossed edge of $G$.  Therefore, by removing each pair of crossing edges from $G$ we obtain a plane multigraph $G'$ each of whose faces is bounded by three or four edges; see \cref{one_planar_example}(b).  Therefore $G$ is a $4$-framed graph with frame $G'$.
+Consider some pair of edges $vw$ and $xy$ that cross at point $p$, which is a degree-4 vertex of $G_0$.  Since no pair of edges incident to a common vertex cross each other, $v$, $w$, $x$, and $y$ are all distinct.  There are four faces $F_1,\ldots,F_4$ of $G_0$ with $p$ on their boundary and, from the preceding discussion each of $vx$, $xw$, $wy$, and $yv$ is an uncrossed edge of $G$.  Therefore, by removing each pair of crossing edges from $G$ we obtain a plane multigraph $G'$ each of whose faces is bounded by three or four edges.  Therefore $G$ is a $4$-framed graph with frame $G'$.
 % Since, for any pair of crossing edges $\{vw,xy\}$ that we remove this way, $vxwy$ is a cycle in $G'$, $\dist_{G'}(v,w)\le 2$ and $\dist_{G'}(x,y)\le 2$.
 % It follows immediately that, for any pair of vertices $a,b\in V(G)$, $\dist_{G'}(a,b)\le 2\dist_G(a,b)$.
 \end{proof}
@@ -1410,7 +1413,7 @@ As with nonrepetitive chromatic number, our results also imply bounds on the $p$
 
 \subsection{Universal Graphs}
 
-As mentioned in \cref{Introduction}, \citet{DEJGMM21} prove results about adjacency labelling schemes for planar graphs. Stated in terms of universal graphs, their main theorem is interpreted as follows:
+As mentioned in \cref{Introduction}, \citet{DEJGMM21,EJM} prove results about adjacency labelling schemes for planar graphs. Stated in terms of universal graphs, their main theorem is interpreted as follows:
 
 \begin{thm}[\citep{DEJGMM21,EJM}]
 	\label{Universal}
@@ -1440,129 +1443,129 @@ Combining \cref{Universal} with our results on product structure yields the foll
 
 
 
-\section{Orphaned Text}
-
-\subsection{Text following \cref{gkPlanarProduct}}
-
-Prior to this work, the strongest structural description of $k$-planar or $(g,k)$-planar graphs (or any of the other classes presented in \cref{examples}) was in terms of layered treewidth, which we now define.  A \defin{layered tree-decomposition} $(\mathcal{L},\mathcal{T})$ consists of a layering $\mathcal{L}$ and a tree-decomposition $\mathcal{T}$ of $G$. The layered width of $(\mathcal{L},\mathcal{T})$ is $\max\{|L\cap B|: L\in \mathcal{L},\, B\in \mathcal{T}\}$.  The \defin{layered treewidth} of $G$ is the minimum layered width of any layered tree-decomposition of $G$. \citet{dujmovic.morin.ea:layered} proved that planar graphs have layered treewidth at most 3, that graphs of Euler genus $g$ have layered treewidth at most $2g+3$, and more generally that a minor-closed class has bounded layered treewidth if and only if it excludes some apex graph. \citet{dujmovic.eppstein.ea:structure} show that every $k$-planar graph has layered treewidth at most $6(k+1)$, and more generally that every $(g,k)$-planar graph has layered treewidth at most $(4g+6)(k+1)$. It follows from this result that $(g,k)$-planar graphs have treewidth $O(\sqrt{(g+1)(k+1)n})$ and thus have balanced separators of the same order, which can also be concluded from the work of \citet{FP08}. In related work, \citet{grigoriev.bodlaender:algorithms} used structural results to obtain approximation algorithms for $(g,k)$-planar graphs, and \citet{PachToth97} determined the maximum number of edges in a $k$-planar graph (up to a constant factor).
-
-If a graph class admits bounded layered partitions, then it also has bounded layered treewidth. In particular, if $\PP=(P_x:x\in V(H))$ is an $H$-partition of $G$ of layered width $\ell$ with respect to some layering $\mathcal{L}$ of $G$ and $(B_x:x\in V(T))$ is a width-$t$ tree-decomposition of $H$, then setting $C_x = \bigcup_{y\in B_x} P_y$ for each $x\in V(T)$ gives a tree-decomposition $(C_x:x\in V(T))$ of $G$ that has layered treewidth $(t+1)\ell$ \cite{DJMMUW20}. Therefore, any property that holds for graphs of bounded layered treewidth also holds for $G$. What sets layered partitions apart from layered treewidth is that they lead to constant upper bounds on the queue-number  and non-repetitive chromatic number, whereas for both these parameters, the best known upper bound obtainable via layered treewidth is $O(\log n)$; see \cref{Applications}.
-
-
-
-%%%%%%%%%%%%%%%%%%%
-\label{sec-k-planar}
-
-
-%\note{DW}{I am pretty sure one can get treewidth 3 for $(g,1)$-planar graphs, combining \cref{d_framed_product_stucture} with the method in \citep{DHHW}. I think the best place for this result is reference \citep{DHHW} since the present paper pre-dates \citep{DHHW} (and this addition will increase the significance of \citep{DHHW}). Okay?}
-%\note{PM}{Okay to this and to all similar questions that come later (which I've now commented out.)}
-%\note{DW}{Robert is working on it.}
-
-
-
-
-
-This section describes several examples of graph classes that can be obtained from a shortcut system typically applied to graphs of bounded Euler genus.
-
-\subsection{Orphaned Theorems}
-
-Theorems~\ref{PlanarProduct}(b),  \ref{ShortcutProduct} and  \ref{GenusProduct}(b) and \cref{MapShortcut,qn,p-centered,non-repetitive} imply the following result.
-
-%\begin{thm}
-%\label{PlaneMapPartition}
-%\note{DW}{For every integer $d\geq 4$, }
-%Every $d$-map graph $G$:
-%	\begin{compactitem}
-%		\item is contained in $H \boxtimes P \boxtimes K_{21d(d-3)}$ for some path $P$ and for some graph $H$ with $\tw(H)\leq 9$,
-%		\item has queue-number $\qn(G) < 32225\, d(d-3)$.
-%		\item has $p$-centered chromatic number $\chi_p(G) \leq 21d(d-3) (p+1)  \binom{p+9}{9}$,
-%		\item has non-repetitive chromatic number $ \pi(G) \leq 21 \cdot 4^{10} d(d-3)$.
-%	\end{compactitem}
-%\end{thm}
-
-\begin{thm}
-\label{MapPartition}
-For integers $g\geq 0$ and $d\geq 4$, if $\ell:=  7d(d-3)\, \max\{2g,3\}$ then every $(g,d)$-map graph $G$:
-\begin{compactitem}
-\item is contained in $H \boxtimes P \boxtimes K_{\ell}$ for some path $P$ and for some graph $H$ with $\tw(H)\leq 9$,
-\item has queue-number $\qn(G) <  1535\, \ell $.
-\item has $p$-centered chromatic number $\chi_p(G) \leq \ell (p+1)\,  \binom{p+9}{9}$,
-\item has non-repetitive chromatic number $ \pi(G) \leq 4^{10}\,\ell $.
-\end{compactitem}
-\end{thm}
-
-These results give the first constant upper bound on the non-repetitive chromatic number of map graphs, the first polynomial bounds on the $p$-centered chromatic number of map graphs, and the best known bounds on the queue-number of map graphs.
-
-% \note{DW}{I am pretty sure one can get treewidth 3 here using \cref{framed} and the method in \citep{DHHW}. I think the best place for this result is reference \citep{DHHW} since the present paper pre-dates \citep{DHHW} (and this addition will increase the significance of \citep{DHHW}). Okay?}
-
-
-% \subsection{Orphaned Section}
+% \section{Orphaned Text}
 % 
-% \cref{nearest-neighbour,kPlanarProduct,qn,p-centered} imply:
+% \subsection{Text following \cref{gkPlanarProduct}}
 % 
-% \begin{cor}
-% \label{k-nn}
-% For every integer $k\geq 1$ there exists integers $t\leq O(k^6)$ and $\ell\leq O(k^4)$ such that every $k$-nearest-neighbour graph:
+% Prior to this work, the strongest structural description of $k$-planar or $(g,k)$-planar graphs (or any of the other classes presented in \cref{examples}) was in terms of layered treewidth, which we now define.  A \defin{layered tree-decomposition} $(\mathcal{L},\mathcal{T})$ consists of a layering $\mathcal{L}$ and a tree-decomposition $\mathcal{T}$ of $G$. The layered width of $(\mathcal{L},\mathcal{T})$ is $\max\{|L\cap B|: L\in \mathcal{L},\, B\in \mathcal{T}\}$.  The \defin{layered treewidth} of $G$ is the minimum layered width of any layered tree-decomposition of $G$. \citet{dujmovic.morin.ea:layered} proved that planar graphs have layered treewidth at most 3, that graphs of Euler genus $g$ have layered treewidth at most $2g+3$, and more generally that a minor-closed class has bounded layered treewidth if and only if it excludes some apex graph. \citet{dujmovic.eppstein.ea:structure} show that every $k$-planar graph has layered treewidth at most $6(k+1)$, and more generally that every $(g,k)$-planar graph has layered treewidth at most $(4g+6)(k+1)$. It follows from this result that $(g,k)$-planar graphs have treewidth $O(\sqrt{(g+1)(k+1)n})$ and thus have balanced separators of the same order, which can also be concluded from the work of \citet{FP08}. In related work, \citet{grigoriev.bodlaender:algorithms} used structural results to obtain approximation algorithms for $(g,k)$-planar graphs, and \citet{PachToth97} determined the maximum number of edges in a $k$-planar graph (up to a constant factor).
+% 
+% If a graph class admits bounded layered partitions, then it also has bounded layered treewidth. In particular, if $\PP=(P_x:x\in V(H))$ is an $H$-partition of $G$ of layered width $\ell$ with respect to some layering $\mathcal{L}$ of $G$ and $(B_x:x\in V(T))$ is a width-$t$ tree-decomposition of $H$, then setting $C_x = \bigcup_{y\in B_x} P_y$ for each $x\in V(T)$ gives a tree-decomposition $(C_x:x\in V(T))$ of $G$ that has layered treewidth $(t+1)\ell$ \cite{DJMMUW20}. Therefore, any property that holds for graphs of bounded layered treewidth also holds for $G$. What sets layered partitions apart from layered treewidth is that they lead to constant upper bounds on the queue-number  and non-repetitive chromatic number, whereas for both these parameters, the best known upper bound obtainable via layered treewidth is $O(\log n)$; see \cref{Applications}.
+% 
+% 
+% 
+% %%%%%%%%%%%%%%%%%%%
+% \label{sec-k-planar}
+% 
+% 
+% %\note{DW}{I am pretty sure one can get treewidth 3 for $(g,1)$-planar graphs, combining \cref{d_framed_product_stucture} with the method in \citep{DHHW}. I think the best place for this result is reference \citep{DHHW} since the present paper pre-dates \citep{DHHW} (and this addition will increase the significance of \citep{DHHW}). Okay?}
+% %\note{PM}{Okay to this and to all similar questions that come later (which I've now commented out.)}
+% %\note{DW}{Robert is working on it.}
+% 
+% 
+% 
+% 
+% 
+% This section describes several examples of graph classes that can be obtained from a shortcut system typically applied to graphs of bounded Euler genus.
+% 
+% \subsection{Orphaned Theorems}
+% 
+% Theorems~\ref{PlanarProduct}(b),  \ref{ShortcutProduct} and  \ref{GenusProduct}(b) and \cref{MapShortcut,qn,p-centered,non-repetitive} imply the following result.
+% 
+% %\begin{thm}
+% %\label{PlaneMapPartition}
+% %\note{DW}{For every integer $d\geq 4$, }
+% %Every $d$-map graph $G$:
+% %	\begin{compactitem}
+% %		\item is contained in $H \boxtimes P \boxtimes K_{21d(d-3)}$ for some path $P$ and for some graph $H$ with $\tw(H)\leq 9$,
+% %		\item has queue-number $\qn(G) < 32225\, d(d-3)$.
+% %		\item has $p$-centered chromatic number $\chi_p(G) \leq 21d(d-3) (p+1)  \binom{p+9}{9}$,
+% %		\item has non-repetitive chromatic number $ \pi(G) \leq 21 \cdot 4^{10} d(d-3)$.
+% %	\end{compactitem}
+% %\end{thm}
+% 
+% \begin{thm}
+% \label{MapPartition}
+% For integers $g\geq 0$ and $d\geq 4$, if $\ell:=  7d(d-3)\, \max\{2g,3\}$ then every $(g,d)$-map graph $G$:
 % \begin{compactitem}
-% \item is contained in $H\boxtimes P \boxtimes K_\ell$ for some graph $H$ with treewidth $t$ and some path $P$,
-% \item has queue-number at most $2^{O(k^6)}$, and
-% \item has $p$-centered chromatic number at most $\ell (p+1)\binom{p+t}{t}$.
+% \item is contained in $H \boxtimes P \boxtimes K_{\ell}$ for some path $P$ and for some graph $H$ with $\tw(H)\leq 9$,
+% \item has queue-number $\qn(G) <  1535\, \ell $.
+% \item has $p$-centered chromatic number $\chi_p(G) \leq \ell (p+1)\,  \binom{p+9}{9}$,
+% \item has non-repetitive chromatic number $ \pi(G) \leq 4^{10}\,\ell $.
 % \end{compactitem}
-% \end{cor}
-% 
-% \cref{non-repetitive,k-nn} also give bounds on the non-repetitive chromatic number of a $k$-nearest neighbour graph $G$. However, the bound is weak, since $G$ has maximum degree at most $6k$, implying that $\pi(G) \leq (36+o(1))k^2$ by a result of \citet{DJKW16}.
-
-
-
-
-\subsection{Generalisations}
-\label{Generalisations}
-
-% As mentioned above, product structure theorems have been established for several minor-closed classes in addition to planar graphs. The first generalises \cref{PlanarProduct} for graphs of bounded Euler genus.
-%
-% \begin{thm}[\citep{DJMMUW20,UWY,DHHW}]
-% \label{GenusProduct}
-% Every graph of Euler genus $g$ is contained in:
-% \begin{compactenum}[(a)]
-% \item $H  \boxtimes P$ for some graph $H$ of treewidth at most $2g+6$  and some path $P$.
-% \item $H \boxtimes P \boxtimes K_{\max\{2g,3\}}$ for some graph $H$ of treewidth at most $3$ and for some path $P$.
-% \end{compactenum}
 % \end{thm}
-
-\citet{DJMMUW20} generalised \cref{GenusProduct} for apex-minor-free graphs as follows.
-
-\begin{thm}[\citep{DJMMUW20}]
-\label{ApexMinorFree}
-For every apex graph $X$, there exists $c\in\mathbb{N}$ such that every $X$-minor-free graph is contained in $H\boxtimes P$ for some graph $H$ with $\tw(H)\leq c$ and some path $P$.
-\end{thm}
-
-The assumption that $X$ is apex is needed in \cref{ApexMinorFree}, since if the class of $X$-minor-free graphs has a product structure theorem analogous to \cref{PlanarProduct}, then $X$ is apex \citep{DJMMUW20}. On the other hand, \citet{DEMWW22} proved a product structure theorem for bounded degree graphs in any minor-closed class.
-
-\begin{thm}[\citep{DEMWW22}]
-	\label{MinorFreeDegree}
-	For every graph $X$ there exists $c\in\mathbb{N}$ such that for every $\Delta\in\mathbb{N}$, every $X$-minor-free graph $G$ with maximum degree at most $\Delta$ is contained in $H\boxtimes P$ for some graph $H$ with $\tw(H) \leq c\Delta$ and for some path $P$.
-\end{thm}
-
-%The next three results are immediate corollaries of \cref{GenusProduct,ApexMinorFree,ShortcutProduct,MinorFreeDegree}.
-%
-%\begin{thm}
-%Let $\SS$ be a $(k,d)$-shortcut system for a graph $G$ of Euler genus $g$. Then $G^\SS$ is contained in $H\boxtimes P$ for some graph $H$ of treewidth at most $d(k^3+3k)\binom{k+2g+8}{2g+8}-1$ and for some path $P$.
-%\end{thm}
-%
-%\begin{thm}
-%For every apex graph $X$ and for all integers $k,d\geq 1$, there is an integer $c$ such that for every $X$-minor-free graph $G$ and for every $(k,d)$-shortcut system $\SS$ for $G$, $G^\SS\subseteq H\boxtimes P$ for some graph $H$ with $\tw(H)\leq c$ and for some path $P$.
-%\end{thm}
-%
-%\begin{thm}
-%For every graph $X$ and for all integers $k,\Delta\geq 1$, there is an integer $c$ such that for every $X$-minor-free graph $G$ with maximum degree $\Delta$ and for every $(k,\Delta)$-shortcut system $\SS$ for $G$, $G^\SS \subseteq H \boxtimes P$ for some graph $H$ with $\tw(H)\leq c$ and for some path $P$.
-%\end{thm}
-%
-%\note{DW}{delete the above three theorems, they are never used}
-
-
-
-
-%\subsection*{Note Added in Proof} Subsequent to the initial release of this paper, the treewidth 8 bound in \cref{PlanarProduct} was improved to 6 by \citet{UWY}, which implies that the treewidth $2g+8$ bound in \cref{GenusProduct}(a) can be improved to $2g+6$. Simmilarly, the treewidth 4 bound in \cref{GenusProduct}(b) was improved to 3 by \citet{DHHW}. \note{DW}{Say more about the consequence for the bounds in the rest of the paper}
+% 
+% These results give the first constant upper bound on the non-repetitive chromatic number of map graphs, the first polynomial bounds on the $p$-centered chromatic number of map graphs, and the best known bounds on the queue-number of map graphs.
+% 
+% % \note{DW}{I am pretty sure one can get treewidth 3 here using \cref{framed} and the method in \citep{DHHW}. I think the best place for this result is reference \citep{DHHW} since the present paper pre-dates \citep{DHHW} (and this addition will increase the significance of \citep{DHHW}). Okay?}
+% 
+% 
+% % \subsection{Orphaned Section}
+% % 
+% % \cref{nearest-neighbour,kPlanarProduct,qn,p-centered} imply:
+% % 
+% % \begin{cor}
+% % \label{k-nn}
+% % For every integer $k\geq 1$ there exists integers $t\leq O(k^6)$ and $\ell\leq O(k^4)$ such that every $k$-nearest-neighbour graph:
+% % \begin{compactitem}
+% % \item is contained in $H\boxtimes P \boxtimes K_\ell$ for some graph $H$ with treewidth $t$ and some path $P$,
+% % \item has queue-number at most $2^{O(k^6)}$, and
+% % \item has $p$-centered chromatic number at most $\ell (p+1)\binom{p+t}{t}$.
+% % \end{compactitem}
+% % \end{cor}
+% % 
+% % \cref{non-repetitive,k-nn} also give bounds on the non-repetitive chromatic number of a $k$-nearest neighbour graph $G$. However, the bound is weak, since $G$ has maximum degree at most $6k$, implying that $\pi(G) \leq (36+o(1))k^2$ by a result of \citet{DJKW16}.
+% 
+% 
+% 
+% 
+% \subsection{Generalisations}
+% \label{Generalisations}
+% 
+% % As mentioned above, product structure theorems have been established for several minor-closed classes in addition to planar graphs. The first generalises \cref{PlanarProduct} for graphs of bounded Euler genus.
+% %
+% % \begin{thm}[\citep{DJMMUW20,UWY,DHHW}]
+% % \label{GenusProduct}
+% % Every graph of Euler genus $g$ is contained in:
+% % \begin{compactenum}[(a)]
+% % \item $H  \boxtimes P$ for some graph $H$ of treewidth at most $2g+6$  and some path $P$.
+% % \item $H \boxtimes P \boxtimes K_{\max\{2g,3\}}$ for some graph $H$ of treewidth at most $3$ and for some path $P$.
+% % \end{compactenum}
+% % \end{thm}
+% 
+% \citet{DJMMUW20} generalised \cref{GenusProduct} for apex-minor-free graphs as follows.
+% 
+% \begin{thm}[\citep{DJMMUW20}]
+% \label{ApexMinorFree}
+% For every apex graph $X$, there exists $c\in\mathbb{N}$ such that every $X$-minor-free graph is contained in $H\boxtimes P$ for some graph $H$ with $\tw(H)\leq c$ and some path $P$.
+% \end{thm}
+% 
+% The assumption that $X$ is apex is needed in \cref{ApexMinorFree}, since if the class of $X$-minor-free graphs has a product structure theorem analogous to \cref{PlanarProduct}, then $X$ is apex \citep{DJMMUW20}. On the other hand, \citet{DEMWW22} proved a product structure theorem for bounded degree graphs in any minor-closed class.
+% 
+% \begin{thm}[\citep{DEMWW22}]
+% 	\label{MinorFreeDegree}
+% 	For every graph $X$ there exists $c\in\mathbb{N}$ such that for every $\Delta\in\mathbb{N}$, every $X$-minor-free graph $G$ with maximum degree at most $\Delta$ is contained in $H\boxtimes P$ for some graph $H$ with $\tw(H) \leq c\Delta$ and for some path $P$.
+% \end{thm}
+% 
+% %The next three results are immediate corollaries of \cref{GenusProduct,ApexMinorFree,ShortcutProduct,MinorFreeDegree}.
+% %
+% %\begin{thm}
+% %Let $\SS$ be a $(k,d)$-shortcut system for a graph $G$ of Euler genus $g$. Then $G^\SS$ is contained in $H\boxtimes P$ for some graph $H$ of treewidth at most $d(k^3+3k)\binom{k+2g+8}{2g+8}-1$ and for some path $P$.
+% %\end{thm}
+% %
+% %\begin{thm}
+% %For every apex graph $X$ and for all integers $k,d\geq 1$, there is an integer $c$ such that for every $X$-minor-free graph $G$ and for every $(k,d)$-shortcut system $\SS$ for $G$, $G^\SS\subseteq H\boxtimes P$ for some graph $H$ with $\tw(H)\leq c$ and for some path $P$.
+% %\end{thm}
+% %
+% %\begin{thm}
+% %For every graph $X$ and for all integers $k,\Delta\geq 1$, there is an integer $c$ such that for every $X$-minor-free graph $G$ with maximum degree $\Delta$ and for every $(k,\Delta)$-shortcut system $\SS$ for $G$, $G^\SS \subseteq H \boxtimes P$ for some graph $H$ with $\tw(H)\leq c$ and for some path $P$.
+% %\end{thm}
+% %
+% %\note{DW}{delete the above three theorems, they are never used}
+% 
+% 
+% 
+% 
+% %\subsection*{Note Added in Proof} Subsequent to the initial release of this paper, the treewidth 8 bound in \cref{PlanarProduct} was improved to 6 by \citet{UWY}, which implies that the treewidth $2g+8$ bound in \cref{GenusProduct}(a) can be improved to $2g+6$. Simmilarly, the treewidth 4 bound in \cref{GenusProduct}(b) was improved to 3 by \citet{DHHW}. \note{DW}{Say more about the consequence for the bounds in the rest of the paper}
 
 % %%%  Squashing the bibliography
    \let\oldthebibliography=\thebibliography
