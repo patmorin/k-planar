@@ -166,7 +166,7 @@ and treewidth\footnote{For a tree $T$, a \defin{$T$-decomposition} of a graph $G
 \item  \citet{dujmovic.esperet.ea:planar} use it to prove that planar graphs have bounded non-repetitive chromatic number (resolving a conjecture of \citet{AGHR-RSA02}).
 \item \citet{DFMS21} use it to prove that planar graphs have $p$-centered chromatic number $O(p^2\log p)$ and give a matching lower bound.
 \item \citet{DEJGMM21} use it to find asymptotically optimal adjacency labellings of planar graphs (resolving a problem of \citet{kannan.naor.ea:implicit}).
-\item \citet{EJM} use it to show the existence of a 'universal graph' with $n^{1+o(1)}$ vertices and edges that contains every $n$-vertex planar graph as an induced subgraph (resolving a problem of \citet{babai.chung.ea:on}).
+\item \citet{EJM} use it to show the existence of a `universal graph' with $n^{1+o(1)}$ vertices and edges that contains every $n$-vertex planar graph as an induced subgraph (resolving a problem of \citet{babai.chung.ea:on}).
 \end{compactitem}
 In addition, \cref{PlanarProduct} has been used to resolve or make substantial progress on a number of other problems on planar graphs, including $\ell$-vertex ranking~\citep{BDJM}, twin-width~\citep{BKW}, and odd colourings~\citep{DMO}.
 
@@ -211,7 +211,7 @@ For the important special case of $1$-planar graphs, we are able to obtain bette
 
 % A planar graph of treewidth at most $3$ is said to have \emph{simple treewidth} $3$.
 
-For at least two applications, the planarity of $H$ is critical in obtaining asymptotically tight bounds \cite{BDJM,DFMS21}. \cref{1_planar_product} is proven in the more general setting of $d$-framed multigraphs. This more general result implies a product structure theorem for $d$-map graphs in which $H$ is also planar.
+For at least two applications, the planarity of $H$ in \cref{1_planar_product} is critical in obtaining asymptotically tight bounds \cite{BDJM,DFMS21}. \cref{1_planar_product} is proven in the more general setting of $d$-framed multigraphs. This more general result also implies a product structure theorem for $d$-map graphs in which $H$ is a planar.
 
 %
 %
@@ -275,18 +275,18 @@ Theorem~\ref{PlanarProduct}(b), \cref{ShortcutProduct}, and \cref{AddDummy} impl
 
 \subsection{Overview and Outline}
 
-\cref{summary_table} summarizes existing results on product structure theorems for minor-closed graph classes and new results for non-minor-closed graph classes.  The remainder of this paper is organized as follows:
+\cref{summary_table} summarizes existing results on product structure theorems for minor-closed graph classes and new results for non-minor-closed graph classes.  
 
 
-\begin{table}
+\begin{table}[h]
   \begin{center}
     \begin{tabular}{lccl}
-      \textbf{Graph class} & \boldmath $\tw(H)$ & \boldmath $\ell$ & \textbf{Ref.} \\ \hline\hline
-      Planar & $3^*$ & $3$ & \cite{DJMMUW20} \\
-      Planar & $6^*$ & $1$ & \cite{UWY} \\
-      Genus-$g$ & $3^*$ & $\max\{2g,3\}$ & \cite{DHHW} \\
-      Genus-$g$ & $2g+6$ & 1 & \cite{UWY} \\
-      Apex-minor-free & $O(1)$ & $O(1)$ & \cite{DJMMUW20} \\[1ex]
+      \textbf{Graph class} & \boldmath $\tw(H)$ & \boldmath $\ell$ & \textbf{Reference} \\ \hline
+      planar & $3^*$ & $3$ & \cite{DJMMUW20} \\
+      planar & $6^*$ & $1$ & \cite{UWY} \\
+      genus $g$ & $3^*$ & $\max\{2g,3\}$ & \cite{DHHW} \\
+%      genus $g$ & $2g+6$ & 1 & \cite{UWY} \\
+      apex-minor-free & $O(1)$ & $O(1)$ & \cite{DJMMUW20} \\[1ex]
       % B-minor-free & $O(1)$ & $O(1)$ & \cite{DJMMUW20} \\
       $k$-planar & $\binom{k+4}{3}-1$ & $18k^2 + 48k + 30$ & \cref{kPlanarProduct} \\
       $(g,k)$-planar & $\binom{k+4}{3}-1$ & $\max\{2g,3\}(6k^2+16k+10)$ & \cref{gkPlanarProduct} \\
@@ -304,6 +304,7 @@ Theorem~\ref{PlanarProduct}(b), \cref{ShortcutProduct}, and \cref{AddDummy} impl
   \label{summary_table}
 \end{table}
 
+The remainder of this paper is organized as follows:
 \begin{compactitem}
   \item In \cref{Structure} we prove our main result for shortcut systems (\cref{ShortcutProduct}), and its optimisations for $k$-planar graphs and their genus-$g$ generalisation (\cref{kPlanarProduct,gkPlanarProduct}).
   \item \Cref{examples} uses \cref{ShortcutProduct,kPlanarProduct,gkPlanarProduct} to derive product structure theorems for string graphs, powers of bounded-degree graphs, map graphs, and $k$-nearest neighbour graphs.
@@ -635,7 +636,7 @@ As mentioned in the introduction, product structure theorems have been establish
   \end{compactenum}
 \end{thm}
 
-The definition of $k$-planar graphs naturally generalises to genus-$g$ surfaces. A graph $G$ embedded on a surface $\Sigma$ is $(\Sigma,k)$-plane if every edge of $G$ is involved in at most $k$ crossings.  A graph $G$ is $(g,k)$-planar if it is isomorphic to some $(\Sigma,k)$-plane graph, for some surface $\Sigma$ with Euler genus at most $g$. \cref{AddDummy} immediately generalises as follows:
+The definition of $k$-planar graphs naturally generalises to genus-$g$ surfaces. A graph $G$ embedded on a surface $\Sigma$ is \defin{$(\Sigma,k)$-plane} if every edge of $G$ is involved in at most $k$ crossings.  A graph $G$ is \defin{$(g,k)$-planar} if it is isomorphic to some $(\Sigma,k)$-plane graph, for some surface $\Sigma$ with Euler genus at most $g$. \cref{AddDummy} immediately generalises as follows:
 
 \begin{obs}
 \label{gAddDummy}
@@ -924,7 +925,7 @@ For any integer $d\ge 3$, every $d$-framed multigraph is contained in $H\boxtime
 
 \cref{d_framed_product_stucture} is used below to obtain product structure theorems for 1-planar multigraphs and for map graphs.  For simple 1-planar graphs it is essential that we allow frames with parallel edges.
 
-\cref{d_framed_product_stucture} follows quickly from the following technical lemma, which is an extension of the analogous result for plane graphs \cite{DJMMUW20}. The following definition is a convenient way to establish the planarity of $H$ in \cref{d_framed_product_stucture}:  A tree-decomposition $\mathcal{T}$ of a graph $G$ is \defin{$t$-simple} if each of its bags has size at most $t+1$ and, for each $t$-element subset $\{v_1,\ldots,v_t\}\subseteq V(G)$, at most two bags of $\mathcal{T}$ contain $\{v_1,\ldots,v_t\}$.  Finally, a \defin{BFS spanning forest} $T$ of $G$ rooted at a set $V_0\subseteq V(G)$ is a spanning forest of $G$ with the property that for each $v\in V(G)$,  \[\min\{\dist_G(v,w):w\in V_0\}=\min\{\dist_T(v,w):w\in V_0\}.\]
+\cref{d_framed_product_stucture} is a consequence of the following technical lemma, which is an extension of the analogous result for plane graphs~\cite{DJMMUW20}. The following definition is a convenient way to establish the planarity of $H$ in \cref{d_framed_product_stucture}:  A tree-decomposition $\mathcal{T}$ of a graph $G$ is \defin{$t$-simple} if each of its bags has size at most $t+1$ and, for each $t$-element subset $\{v_1,\ldots,v_t\}\subseteq V(G)$, at most two bags of $\mathcal{T}$ contain $\{v_1,\ldots,v_t\}$.  Finally, a \defin{BFS spanning forest} $T$ of $G$ rooted at a set $V_0\subseteq V(G)$ is a spanning forest of $G$ with the property that for each $v\in V(G)$,  \[\min\{\dist_G(v,w):w\in V_0\}=\min\{\dist_T(v,w):w\in V_0\}.\]
 
 %\note{PM}{Consider a change of notation:   Replace $F$ with $C$.  (I was using $F$ before to be consistent with the previous section, but that notation is gone now.)} \note{DW}{I agree.}
 
@@ -1243,7 +1244,7 @@ $3 \times 7 \times 5 + \floor{\tfrac{3}{2} \times 7} = 115$.
 \begin{cor}
 \label{dMapQueue}
 Every $d$-map graph has queue-number at most 
-$15 (d+3\floor{d/2}-3)  + \floor{\tfrac{3}{2}(d+3\floor{d/2}-3)}$.
+$\floor{ \frac{33}{2} (d+3\floor{d/2}-3) }$.
 \note{DW}{I have updated this bound using the better qn bound for planar 3-trees. Note that with $d=3$ we get the original bound of 49.}
 \end{cor}
 
@@ -1311,8 +1312,8 @@ Combining \cref{non-repetitive} with our results on product structure, we obtain
     % \item $(g,d)$-map: $g4^{O(d)}$
     % \item $k$-NN: $4^{O(k^6)}$
     \item $(g,d)$-map graph: $(7d^2-21d)\cdot 4^{10}$
-    % \item
   \end{compactenum}
+\note{DW}{I prefer bullets here}
 \end{cor}
 
 Prior to the current work, the strongest upper bound on the non-repetitive chromatic number of $n$-vertex  $k$-planar graphs was $O(k\log n)$ \cite{dujmovic.morin.ea:layered}.  Our results also give bounds on the nonrepetitive chromatic number of $(g,\delta)$-string graphs and $k$-nearest-neighbour graphs, but these bounds are weaker than existing results based on maximum degree.  The bounds obtained from product structure are exponential in $\delta$ and $k^2$, respectively.  However, each of these graph classes has degree bounded by $O(\delta)$ and $O(k^2)$, respectively, and therefore have nonrepetitive chromatic number $O(\delta^2)$ and $O(k^{4})$, respectively \cite{DJKW16}.
@@ -1369,6 +1370,7 @@ For every graph $H$ of treewidth at most $t$ and for every path $P$, if $G\subse
 % \end{cor}
 
 For planar graphs of treewidth at most $3$ an $O(p^2\log p)$ upper bound is known:
+\note{DW}{I prefer ``a $O(p^2\log p)$'', pronounced ``a big-O...''}
 
 \begin{lem}\cite{DFMS21}\label{simple_3tree_centered_colouring}
   For every planar graph $H$ of treewidth at most $3$, 
@@ -1390,8 +1392,8 @@ Combining \cref{p-centered,simple_3tree_centered_colouring} with our results on 
     % \item $(g,d)$-map: $g4^{O(d)}$
     % \item $k$-NN: $4^{O(k^6)}$
     \item $(g,d)$-map: $\max\{2g,3\}\cdot 7d(d-3)(p+1)\cdot \binom{p+9}{9}$
-    % \item
   \end{compactenum}
+\note{DW}{I prefer bullets here}
 \end{cor}
 
 
