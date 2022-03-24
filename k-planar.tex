@@ -286,22 +286,24 @@ Theorem~\ref{PlanarProduct}(b), \cref{ShortcutProduct}, and \cref{AddDummy} impl
       planar & $6^*$ & $1$ & \cite{UWY} \\
       genus $g$ & $3^*$ & $\max\{2g,3\}$ & \cite{DHHW} \\
 %      genus $g$ & $2g+6$ & 1 & \cite{UWY} \\
-      apex-minor-free & $O(1)$ & $O(1)$ & \cite{DJMMUW20} \\[1ex]
+      apex-minor-free & $O(1)$ & $O(1)$ & \cite{DJMMUW20} \\
       % B-minor-free & $O(1)$ & $O(1)$ & \cite{DJMMUW20} \\
       $k$-planar & $\binom{k+4}{3}-1$ & $18k^2 + 48k + 30$ & \cref{kPlanarProduct} \\
       $(g,k)$-planar & $\binom{k+4}{3}-1$ & $\max\{2g,3\}(6k^2+16k+10)$ & \cref{gkPlanarProduct} \\
       $(g,\delta)$-string & $\binom{\delta+4}{3}-1$ & $\max\{2g,3\}(\delta^4 + 4\delta^3 + 9\delta^2 + 10\delta+4)$ & \cref{StringProduct} \\
-      $k$-NN & $O(k^6)$ & $O(k^4)$ & \cref{nn_product_structure} \\
+      $k$-nearest-neighbour & $O(k^6)$ & $O(k^4)$ & \cref{nn_product_structure} \\
       $d$-framed & $3^*$ & $d+ 3\floor{d/2} - 3$ & \cref{d_framed_product_stucture} \\
       $1$-planar & $3^*$ & $7$ & \cref{1_planar_product} \\
       $d$-map & $3^*$ & $d+ 3\floor{d/2} - 3$ & \cref{dMapProduct} \\
       $(g,d)$-map & $9$ & $\max\{2g,3\}\,(7d^2 -21d)$ & \cref{gdMapProduct} \\ \hline 
-      \multicolumn{4}{l}{$^*$ these bounds also applies to the simple treewidth of $H$.}
+      \multicolumn{4}{l}{$^*$ these bounds also apply to the simple treewidth of $H$.}
     \end{tabular}
   }
   \caption{Known product structure theorems (of the form $G\subseteq H\boxtimes P\boxtimes K_\ell$).}
   \label{summary_table}
 \end{table}
+
+\note{DW}{why is the $2g+6$ commented out from the table?}
 
 The remainder of this paper is organized as follows:
 \begin{compactitem}
@@ -318,8 +320,7 @@ The remainder of this paper is organized as follows:
 \section{\boldmath Shortcut Systems and $k$-Planar Graphs}
 \label{Structure}
 
-The purpose of this section is to prove \cref{ShortcutProduct} and its specialization to $k$-planar graphs, \cref{kPlanarProduct}.
-While strong products enable concise statements of the theorems in \cref{Introduction}, to prove such results it is helpful to work with layerings and partitions, which we now introduce.
+The purpose of this section is to prove \cref{ShortcutProduct} and its specialization to $k$-planar graphs, \cref{kPlanarProduct}. While strong products enable concise statements of the theorems in \cref{Introduction}, to prove such results it is helpful to work with layerings and partitions, which we now introduce.
 
 \subsection{Layered Partitions}
 
@@ -902,6 +903,9 @@ Note that \cref{nearest-neighbour} is tight up to the leading constant:  Every $
 \section{Framed Graphs, $1$-Planar Graphs, and (Plane) Map Graphs}
 \label{FramedSection}
 
+\note{DW}{Suggested section name ``Graphs Derived From Framed Graphs'' or just 
+``Framed Graphs''}
+
 % Next we consider
 %
 % %%%%%%%%%%%%%%%%%%%
@@ -923,7 +927,7 @@ Note that \cref{nearest-neighbour} is tight up to the leading constant:  Every $
 % \note{DW}{I suggest we use the language of ``embedded graph'' here}
 For any integer $d\ge 3$, an embedded (multi)graph $G$ is \defin{$d$-framed} if it has a biconnected plane spanning (multi)subgraph $G_0$, whose facial cycles each have length at most $d$,  and such that the interior of each edge in $E(G)\setminus E(G_0)$ is contained in the interior of some face of $G_0$. The embedded (multi)graph $G_0$ is called the \defin{frame} of $G$. This definition (for simple graphs) was introduced by \citet{BDGGMR}.
 
-Every $d$-framed multigraph can be described by a $(2,d(d-3)/2)$-shortcut system applied to a plane multigraph by adding a vertex inside each face $F$ of $G_0$ adjacent to the vertices of $F$ and creating a shortcut between each non-consecutive pair of vertices of $F$. Thus \cref{ShortcutProduct} is applicable. However, for framed graphs we prove the following stronger result, where the treewidth bound on $H$ is best possible.\footnote{A multigraph $G$ is \defin{contained} in a graph $G'$ if the simple graph underlying $G$ is isomorphic to a subgraph of $G'$.}
+Every $d$-framed multigraph can be described by a $(2,d(d-3)/2)$-shortcut system applied to a plane multigraph by adding a vertex inside each face $F$ of $G_0$ adjacent to the vertices of $F$ and creating a shortcut between each non-consecutive pair of vertices of $F$. Thus \cref{ShortcutProduct} is applicable. However, for framed graphs we prove the following stronger result, where the treewidth bound on $H$ is best possible.\footnote{A multigraph $G$ is \defin{contained} in a graph $X$ if the simple graph underlying $G$ is contained in $X$.}
 
 \begin{thm}\label{d_framed_product_stucture}
 For any integer $d\ge 3$, every $d$-framed multigraph is contained in $H\boxtimes P\boxtimes K_{d+3\floor{d/2}-3}$ for some planar graph $H$ with treewidth at most 3 and for some path $P$.
@@ -987,7 +991,9 @@ For any integer $d\ge 3$, every $d$-framed multigraph is contained in $H\boxtime
 	The proof is by induction on the number of inner faces of $N_0$.  A particular easy case occurs when $N_0$ has no inner vertices, i.e., $V(N_0)=V(F)$. In this case we can simply take
 	\note{DW}{Suggested revision, ``In the base case, $N_0$ has only one inner face, and we can simply take ...} 
   % \note{PM}{I debated what to put here since, even when $N'$ has only one face, the rules below work for picking $\tau$.  The \emph{real} base case occurs when $N'$ has zero faces, but that's not something that ever happens since we only ever apply induction on the inner faces of $M$ (except $\tau$).  I settled on this ``base case'' since it's clear that, in this case, the partition $\mathcal{P}$ is already decided.}
-  \note{PM}{The longwinded version is that induction is on $(x,y)$ where $x$ is the number of inner vertices of $N_0$ and $y$ is the number of inner faces of $N_0$.  The base cases are $(0,y)$ for any $y$.  Unfortunately, we can't just induct on $x$ because it doesn't always decrease.}
+  \note{PM}{The longwinded version is that induction is on $(x,y)$ where $x$ is the number of inner vertices of $N_0$ and $y$ is the number of inner faces of $N_0$.  The base cases are $(0,y)$ for any $y$.  Unfortunately, we can't just induct on $x$ because it doesn't always decrease.} \note{DW}{We need to make it clear what we are doing induction on. 
+I suggest we write, ``we proceed by  
+induction on $(x,y)$ where $x$ is the number of inner vertices of $N_0$ and $y$ is the number of inner faces of $N_0$. ''}
 	$\PP:=\{P_1,\ldots,P_k\}$ and verify that the preconditions of the lemma (the `setup') ensure that $\PP$ satisfies the requirements (i)--(iii):
 	\begin{compactenum}[(i)]
 		\item By definition, each of $P_1,\ldots,P_k$ is a part of $\mathcal{P}$.
@@ -1189,8 +1195,8 @@ integer %s $g\geq 0$ and
 \end{lem}
 
 \begin{proof}
-% \note{PM}{I fixed some issues here that come from the fact that some vertices of $G_0$ do not contribute faces to $G_1$.  This happens when two nations and two lakes meet at a vertex $x$.  It's not an issue but it means we can't write ``the face of $G_1$ that corresponds to $x$.''}
-Let $G_0$ be a graph embedded in the plane, with each face labelled a nation or a face, and where each vertex of $G_0$ is incident with at most $d$ nations. If two lakes have a common edge in their boundaries, then we may delete the edges and merge the lakes. Now assume that no two lakes have a common edge in their boundaries.
+% \note{PM}{I fixed some issues here that come from the fact that some vertices of $G_0$ do not contribute faces to $G_1$.  This happens when two nations and two lakes meet at a vertex $x$.  It's not an issue but it means we can't write ``the face of $G_1$ that corresponds to $x$.''} \note{DW}{Good}
+Let $G_0$ be a graph embedded in the plane, with each face labelled a nation or a face, and where each vertex of $G_0$ is incident with at most $d$ nations. If two lakes have a common edge in their boundaries, then we may delete the edges and merge the lakes \note{DW}{Delete the previous sentence? This sentence is incompatible with ``in the clockwise or anticlockwise order of faces around $x$, all the faces between $A$ and $B$ are lakes'' below.}. Now assume that no two lakes have a common edge in their boundaries.
 Let $G$ be the corresponding map graph.
 Let $G_1$ be the graph with $V(G_1):=V(G)$, which is the set of nations, and whose edge set we now define.  Consider vertices $v$ and $w$ of $G_1$.
 Let $A$ and $B$ be the nation faces of $G_0$ corresponding to $v$ and $w$.
@@ -1200,11 +1206,10 @@ or there is a vertex $x$ of $G_0$ in the boundary of $A$ and $B$, and in the clo
 Each face of $G_1$ corresponds to a vertex of $G_0$ or a lake of $G_0$.
 Triangulate each face of $G_1$ corresponding to a lake of $G_0$. 
 
-For each face $F$ of $G_1$ that corresponds to a vertex $x$ of $G_0$, the size of $F$ equals the number of nations incident to $x$, which is at most $d$.
-So every face of $G_1$ has size at most $d$.  Let $\widehat{G}_1$ be the $d$-framed graph whose frame is $G_1$.  
+For each face $F$ of $G_1$ that corresponds to a vertex $x$ of $G_0$, the size of $F$ \note{DW}{Is ``size'' defined? Do we mean length of the facial cycle? } equals the number of nations incident to $x$, which is at most $d$. So every face of $G_1$ has size at most $d$.  Let $\widehat{G}_1$ be the $d$-framed graph whose frame is $G_1$.  \note{DW}{I like this notation. Should we use it throughout?}
 
 To complete the proof, we now show that $\widehat{G}_1$ contains every edge of $G$.
-If $vw\in E(G)$ then the nation faces of $G_0$ corresponding to $v$ and $w$ have a vertex $x$ of $G_0$ in common.   If some face of $G_1$ corresponds to $x$ then $v$ and $w$ are on a common face of $G_1$ so $vw\in E(\widehat{G}_1)$.  If no face of $G_1$ corresponds to $x$\footnote{This can occur when $x$ is on the boundary of exactly two nation faces and two lake faces.} then the only two nation faces of $G_0$ with $x$ on their boundary are those corresponding to $v$ and $w$, in which case $vw\in E(G_1)\subseteq E(\widehat{G}_1)$.  Therefore $G\subseteq\widehat{G}_1$.
+If $vw\in E(G)$ then the nation faces of $G_0$ corresponding to $v$ and $w$ have a vertex $x$ of $G_0$ in common.   If some face of $G_1$ corresponds to $x$, then $v$ and $w$ are on a common face of $G_1$ so $vw\in E(\widehat{G}_1)$.  If no face of $G_1$ corresponds to $x$\footnote{This can occur when $x$ is on the boundary of exactly two nation faces and two lake faces.}, then the only two nation faces of $G_0$ with $x$ on their boundary are those corresponding to $v$ and $w$, in which case $vw\in E(G_1)\subseteq E(\widehat{G}_1)$.  Therefore $G\subseteq\widehat{G}_1$.
 \end{proof}
 
 % \note{DW}{give a better version of \cref{MapPartition} with $g=0$. }
@@ -1220,7 +1225,7 @@ If $vw\in E(G)$ then the nation faces of $G_0$ corresponding to $v$ and $w$ have
 \section{Applications}
 \label{Applications}
 
-As discussed in the introduction, product structure has been used to resolve a number of problems on planar graphs.  In most cases, these results hold for any graph with product structure. In this section, we survey some of the consequences of this for the graph classes considered in the previous two sections.
+As discussed in the introduction, product structure has been used to resolve a number of problems on planar graphs.  In most cases, these results hold for any graph class with product structure. In this section, we survey some of the consequences of this for the graph classes considered in the previous two sections.
 
 % Here we discuss some of the consequences of the above theorems for $k$-planar and $(g,k)$-planar graphs.
 %
@@ -1232,7 +1237,7 @@ As discussed in the introduction, product structure has been used to resolve a n
 %%%%%%%%%%%%%%%%%%%
 \subsection{Queue Layouts}
 
-For an integer $k\geq 0$, a \textit{$k$-queue layout} of a graph $G$ consists of a linear ordering $\preceq$ of $V(G)$ and a partition $\{E_1,E_2,\dots,E_k\}$ of $E(G)$, such that for $i\in\{1,2,\dots,k\}$, no two edges in $E_i$ are nested with respect to $\preceq$. That is, it is not the case that $v\prec x \prec y \prec w$ for edges $vw,xy\in E_i$. The \textit{queue-number} of a graph $G$, denoted by $\qn(G)$, is the minimum integer $k$ such that $G$ has a $k$-queue layout. Queue-number was introduced by \citet{HLR92}, who famously conjectured that planar graphs have bounded queue-number. \citet{DJMMUW20} recently proved this conjecture using \cref{PlanarProduct} and the following lemma. Indeed, resolving this question was the motivation for the development of \cref{PlanarProduct}.
+For an integer $k\geq 0$, a \defin{$k$-queue layout} of a graph $G$ consists of a linear ordering $\preceq$ of $V(G)$ and a partition $\{E_1,E_2,\dots,E_k\}$ of $E(G)$, such that for $i\in\{1,2,\dots,k\}$, no two edges in $E_i$ are nested with respect to $\preceq$. That is, it is not the case that $v\prec x \prec y \prec w$ for edges $vw,xy\in E_i$. The \defin{queue-number} of a graph $G$, denoted by \defin{$\qn(G)$}, is the minimum integer $k$ such that $G$ has a $k$-queue layout. Queue-number was introduced by \citet{HLR92}, who famously conjectured that planar graphs have bounded queue-number. \citet{DJMMUW20} recently proved this conjecture using \cref{PlanarProduct} and the following lemma. Indeed, resolving this question was the motivation for the development of \cref{PlanarProduct}.
 
 \begin{lem}[\citep{DJMMUW20}]
 \label{qn}
@@ -1241,9 +1246,7 @@ $\qn(G) \leq  3 \ell \, \qn(H) + \floor{\tfrac{3}{2}\ell}
 \leq 3 \ell \, 2^{\tw(H)}  - \ceil{\tfrac{3}{2}\ell}$.
 \end{lem}
 
-Since all the product structure theorems presented thus far upper bound the treewidth of $H$,
-\cref{qn} immediately implies bounds on the queue number of all graphs in these classes.  An improvement can be made for $1$-planar and $d$-map graphs since, in the cases $H$ is planar and has treewidth $3$.
-\citet{ABGKP20} proved that every planar graph with treewidth at most $3$ has queue-number at most $5$. Thus the graph $H$ in \cref{1_planar_product,dMapProduct} has queue-number at most $5$.
+Since all the product structure theorems presented thus far upper bound the treewidth of $H$, \cref{qn} immediately implies bounds on the queue number of all graphs in these classes.  An improvement can be made for $1$-planar and $d$-map graphs since then $H$ is planar with treewidth at most $3$. \citet{ABGKP20} proved that every planar graph with treewidth at most $3$ has queue-number at most $5$. Thus the graph $H$ in \cref{1_planar_product,dMapProduct} has queue-number at most $5$.
 % , which with \cref{qn} implies:
 % 
 % \begin{cor}
@@ -1269,19 +1272,18 @@ Since all the product structure theorems presented thus far upper bound the tree
 The following corollary summarizes all of these results.
 \begin{cor}\label{q_cor}
   The following bounds hold for the queue number of any graph from each of the following classes:
-  \begin{compactenum}
+  \begin{compactitem}
     \item $k$-planar: $2^{O(k^3)}$
     \item $(g,k)$-planar: $\max\{1,g\}\cdot 2^{O(k^3)}$
     \item $(g,\delta)$-string: $\max\{1,g\}\cdot 2^{O(\delta^3)}$
     \item $1$-planar: $115$ 
     \item $d$-map: $\floor{ \frac{33}{2} (d+3\floor{d/2}-3) }$ 
     \item $(g,d)$-map: $\max\{1,g\}\cdot 2^{O(d)}$
-    \item $k$-NN: $2^{O(k^6)}$
-    % \item $(g,d)$-map graph
-    % \item
-  \end{compactenum}
+    \item $k$-nearest-neighbour: $2^{O(k^6)}$
+  \end{compactitem}
 \end{cor}
-\note{PM}{For uniformity, I got rid of the two corollaries on $d$-map and $1$-planar graphs and kept them in \cref{q_cor}.  The text is still commented out in the source in case someone feels strongly about keeping them.}
+%\note{PM}{For uniformity, I got rid of the two corollaries on $d$-map and $1$-planar graphs and kept them in \cref{q_cor}.  The text is still commented out in the source in case someone feels strongly about keeping them.}
+
 
 Note that \citet{DJMMUW20} previously proved the bound of
 $O(g^{k+2})$ for $k$-planar graphs using \cref{GenusProduct} and an ad-hoc method. Our result provides a better bound when $g>2^{k^2}$.
@@ -1321,7 +1323,7 @@ Combining \cref{non-repetitive} with our results on product structure, we obtain
     \item $1$-planar: $1792$
     \item $d$-map: $256(d+3\floor{d/2}-3)$
     % \item $(g,d)$-map: $g4^{O(d)}$
-    % \item $k$-NN: $4^{O(k^6)}$
+    % \item $k$-nearest-neighbour: $4^{O(k^6)}$
     \item $(g,d)$-map graph: $(7d^2-21d)\cdot 4^{10}$
   \end{compactitem}
 \end{cor}
@@ -1400,7 +1402,7 @@ Combining \cref{p-centered,simple_3tree_centered_colouring} with our results on 
     \item $1$-planar: $7(p+1)^2(p\ceil{\log(p+1)}+2p+1)$
     \item $d$-map: $(d+3\floor{d/2}-3)\cdot (p+1)^2(p\ceil{\log(p+1)}+2p+1)$
     % \item $(g,d)$-map: $g4^{O(d)}$
-    % \item $k$-NN: $4^{O(k^6)}$
+    % \item $k$-nearest-neighbour: $4^{O(k^6)}$
     \item $(g,d)$-map: $\max\{2g,3\}\cdot 7d(d-3)(p+1)\cdot \binom{p+9}{9}$
   \end{compactitem}
 \end{cor}
@@ -1413,7 +1415,7 @@ As with nonrepetitive chromatic number, our results also imply bounds on the $p$
 
 \subsection{Universal Graphs}
 
-As mentioned in \cref{Introduction}, \citet{DEJGMM21,EJM} prove results about adjacency labelling schemes for planar graphs. Stated in terms of universal graphs, their main theorem is interpreted as follows:
+As mentioned in \cref{Introduction}, \citet{DEJGMM21} and \citet{EJM} prove results about adjacency labelling schemes for planar graphs. Stated in terms of universal graphs, their main theorem is interpreted as follows:
 
 \begin{thm}[\citep{DEJGMM21,EJM}]
 	\label{Universal}
@@ -1426,7 +1428,7 @@ Combining \cref{Universal} with our results on product structure yields the foll
 
 \begin{cor}\label{universal_cor}
 	\label{UniversalUniversal}
-	For every fixed graph $X$ and all fixed integers $d,\delta,\Delta,g,k>0$, and every integer $n>0$, there exists a graph $U_n$ with $n^{1+o(1)}$ vertices and edges such that $U_n$ contains all of the following graphs as induced subgraphs:
+	For every fixed graph $X$ and all fixed integers $d,\delta,\Delta,g,k>0$, and every integer $n>0$, there exists a graph $U_n$ with $n^{1+o(1)}$ vertices and edges such that $U_n$ contains the following graphs as induced subgraphs:
 	\begin{compactitem}
 		\item every $n$-vertex $(g,k)$-planar graph;
 		\item every $n$-vertex $(g,d)$-map graph;

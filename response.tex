@@ -85,11 +85,13 @@ Are the improved constants at all close to tight? Is there another
 reason for including it?
 
 \begin{response}
-  Since the initial submission, there is now even more justification for including this special case.  A result of Bose et al on vertex ranking relies critically on the simple treewidth of $H$, as does the result of D\,ebski et al on $p$-centered colouring.  In both case, if $H$ does not have simple treewidth $3$ then one does not get an asymptotically tight bound.
+There is a lot of motivation for proving this result with $H$ of treewidth 3 and planar. First, the treewidth bound is best possible (even for planar graphs). Having $H$ planar means that $H$ is in fact a planar 3-tree (also called stack polytope or Appolonian etwork). It follows that we get better bounds for queue-number for example. 
+	
+Since the initial submission, there is now even more justification for including this material.  A result of Bose et al on vertex ranking relies critically on the simple treewidth of $H$, as does the result of Debski et al on $p$-centered colouring.  In both case, if $H$ does not have simple treewidth $3$ then one does not get an asymptotically tight bound.
   
-  Also, while adding details requested by Referee \#2 we discovered that a small change in the proof (removing both edges of a crossing pair instead of just one) results in a better constant and leads to a more general result that applies to $d$-framed graphs. This, in turn, leads to better results for $d$-map graphs.
+Also, while adding details requested by Referee \#2 we discovered that a small change in the proof (removing both edges of a crossing pair instead of just one) results in a better constant and leads to a more general result that applies to $d$-framed graphs. This, in turn, leads to better results for $d$-map graphs.
   
-  The former Theorem~10 (on $1$-planar graphs) is now a consequence of  Theorem~23 on ($d$-framed graphs).
+The former Theorem~10 (on $1$-planar graphs) is now a consequence of  Theorem~23 on ($d$-framed graphs).
 \end{response}
 
 
