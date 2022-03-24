@@ -623,6 +623,11 @@ As mentioned in \cref{Introduction}, \cref{PlanarProduct,ShortcutProduct} imply 
 % \subsection{Examples}
 
 
+\cref{kPlanarProduct} shows that every $k$-planar graph is contained in $H\boxtimes P \boxtimes K_\ell$ for some graph $H$ with treewidth $O(k^3)$ where $\ell\leq O(k^2)$.  In some applications, the treewidth of $H$ is much more important than the value of $\ell$, which leads to the following question:  
+
+\noindent\textbf{Open Problem:}
+  Does there exist a function $\ell:\N\to\N$ and a universal constant $C$ such that every $k$-planar graph is contained in $H\boxtimes P \boxtimes K_{\ell(k)}$ for some graph $H$ with treewidth at most $C$?  Perhaps $C=3$, which is the case for planar graphs (\cref{PlanarProduct}(b)) and for $1$-planar graphs (\cref{1_planar_product}). Note that $C\geq 3$ even for planar graphs \citep{DJMMUW20}.
+
 \subsection{\boldmath $(g,k)$-Planar Graphs}
 \label{gk_planar_section}
 
@@ -651,6 +656,9 @@ Every $(g,k)$-planar graph is contained in $H\boxtimes P \boxtimes K_\ell$ for s
 % \note{DW}{I have changed $\tw(H) \leq \binom{k+5}{4}-1$ to $\tw(H) \leq \binom{k+4}{3}-1$, okay?}
 %\note{PM}{Ok}
 \end{thm}
+
+
+
 
 
 
@@ -1303,7 +1311,7 @@ If $G\subseteq H\boxtimes P \boxtimes K_\ell$ then $\pi(G)\le \ell\, 4^{\tw(H)+1
 Combining \cref{non-repetitive} with our results on product structure, we obtain the following corollary:
 \begin{cor}\label{nonrepetitive_cor}
   The following bounds hold for the nonrepetitive chromatic number of any graph from each of the following classes:
-  \begin{compactenum}
+  \begin{compactitem}
     \item $k$-planar: $(18k^2+48k+30)\cdot 4^{\binom{k+4}{3}}$
     \item $(g,k)$-planar: $\max\{2g,3\}\cdot(6k^2+16k+10) 4^{\binom{k+4}{3}}$
     % \item $(g,\delta)$-string: $g4^{O(\delta^3)}$
@@ -1312,8 +1320,7 @@ Combining \cref{non-repetitive} with our results on product structure, we obtain
     % \item $(g,d)$-map: $g4^{O(d)}$
     % \item $k$-NN: $4^{O(k^6)}$
     \item $(g,d)$-map graph: $(7d^2-21d)\cdot 4^{10}$
-  \end{compactenum}
-\note{DW}{I prefer bullets here}
+  \end{compactitem}
 \end{cor}
 
 Prior to the current work, the strongest upper bound on the non-repetitive chromatic number of $n$-vertex  $k$-planar graphs was $O(k\log n)$ \cite{dujmovic.morin.ea:layered}.  Our results also give bounds on the nonrepetitive chromatic number of $(g,\delta)$-string graphs and $k$-nearest-neighbour graphs, but these bounds are weaker than existing results based on maximum degree.  The bounds obtained from product structure are exponential in $\delta$ and $k^2$, respectively.  However, each of these graph classes has degree bounded by $O(\delta)$ and $O(k^2)$, respectively, and therefore have nonrepetitive chromatic number $O(\delta^2)$ and $O(k^{4})$, respectively \cite{DJKW16}.
@@ -1383,7 +1390,7 @@ Combining \cref{p-centered,simple_3tree_centered_colouring} with our results on 
 
 \begin{cor}\label{p_centered_cor}
   The following bounds hold for the $p$-centered chromatic number of any graph from each of the following classes:
-  \begin{compactenum}
+  \begin{compactitem}
     \item $k$-planar: $(18k^2+48k+30)\cdot 4^{\binom{k+4}{3}}$
     \item $(g,k)$-planar: $\max\{2g,3\}\cdot(6k^2+16k+10)(p+1)\binom{p+\binom{k+4}{3}-1}{\binom{k+4}{3}-1}$
     % \item $(g,\delta)$-string: $g4^{O(\delta^3)}$
@@ -1392,8 +1399,7 @@ Combining \cref{p-centered,simple_3tree_centered_colouring} with our results on 
     % \item $(g,d)$-map: $g4^{O(d)}$
     % \item $k$-NN: $4^{O(k^6)}$
     \item $(g,d)$-map: $\max\{2g,3\}\cdot 7d(d-3)(p+1)\cdot \binom{p+9}{9}$
-  \end{compactenum}
-\note{DW}{I prefer bullets here}
+  \end{compactitem}
 \end{cor}
 
 
@@ -1428,12 +1434,6 @@ Combining \cref{Universal} with our results on product structure yields the foll
 \end{cor}
 
 
-\section{Wrapping Up}
-\label{WrappingUp}
-
-\note{DW}{This problem does not deserve a section of its own. Move to end of \cref{gk_planar_section}?}
-
-We finish with an open problem. \cref{kPlanarProduct} shows that every $k$-planar graph is contained in $H\boxtimes P \boxtimes K_\ell$ for some graph $H$ with treewidth $O(k^3)$ where $\ell\leq O(k^2)$. Does there exist a function $\ell:\N\to\N$ and a universal constant $C$ such that every $k$-planar graph is contained in $H\boxtimes P \boxtimes K_{\ell(k)}$ for some graph $H$ with treewidth at most $C$?  Perhaps $C=3$. Note that $C\geq 3$ even for planar graphs \citep{DJMMUW20}.
 
 
 
