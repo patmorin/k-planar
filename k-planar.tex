@@ -933,24 +933,24 @@ For any integer $d\ge 3$, every $d$-framed multigraph is contained in $H\boxtime
 
 \cref{d_framed_product_stucture} is a consequence of the following technical lemma, which is an extension of the analogous result for plane graphs~\cite{DJMMUW20}. The following definition is a convenient way to establish the planarity of $H$ in \cref{d_framed_product_stucture}:  A tree-decomposition $\mathcal{T}$ of a graph $G$ is \defin{$t$-simple} if each of its bags has size at most $t+1$ and, for each $t$-element subset $\{v_1,\ldots,v_t\}\subseteq V(G)$, at most two bags of $\mathcal{T}$ contain $\{v_1,\ldots,v_t\}$.  Finally, a \defin{BFS spanning forest} $T$ of $G$ rooted at a set $V_0\subseteq V(G)$ is a spanning forest of $G$ with the property that for each $v\in V(G)$,  \[\min\{\dist_G(v,w):w\in V_0\}=\min\{\dist_T(v,w):w\in V_0\}.\]
 
-\note{DW}{I suggest $G'$ be changed to $G_0$ throughout (since $G'$ feels like a graph derived from $G$, which it is not). Similarly, replace $N'$ by $N_0$.}
-
-\note{PM}{I would also like to change $G'$ to $G_0$ and $N'$ to $N_0$.  One issue is holding me back, though: We recurse on cycles $F_1,\ldots,F_m$ that define subgraphs $N_1,\ldots,N_m$ of $G$ and subgraphs $N_1',\ldots,N_m'$ of $G'$.  Will these latter subgraphs becomes $N_{0,1},\ldots,N_{0,m}$?}
-
-\note{DW}{Some suggestions: Replace $G'$ by $F$ (the frame), replace $F_0$ by $C$ (the outer-cycle), replace $F_1,\dots,F_m$ by $C_1,\dots,C_m$. Use $F_1,\dots,F_m$ for the subgraph of $F$ inside $C_i$. Use $G_i$ for the subgraph of $G$ inside $C_i$.}
+% \note{DW}{I suggest $G'$ be changed to $G_0$ throughout (since $G'$ feels like a graph derived from $G$, which it is not). Similarly, replace $N'$ by $N_0$.}
+% 
+% \note{PM}{I would also like to change $G'$ to $G_0$ and $N'$ to $N_0$.  One issue is holding me back, though: We recurse on cycles $F_1,\ldots,F_m$ that define subgraphs $N_1,\ldots,N_m$ of $G$ and subgraphs $N_1',\ldots,N_m'$ of $G'$.  Will these latter subgraphs becomes $N_{0,1},\ldots,N_{0,m}$?}
+% 
+% \note{DW}{Some suggestions: Replace $G'$ by $F$ (the frame), replace $F_0$ by $C$ (the outer-cycle), replace $F_1,\dots,F_m$ by $C_1,\dots,C_m$. Use $F_1,\dots,F_m$ for the subgraph of $F$ inside $C_i$. Use $G_i$ for the subgraph of $G$ inside $C_i$.}
 
 \begin{lem}
 	\label{induction} The setup:
 	\begin{compactenum}
-		\item Let $G$ be a $d$-framed multigraph and let $G'$ be a frame of $G$.
-		\item Let $F_0$ be the outer face of $G'$ and let $T$ be a BFS spanning forest of $G'$ rooted at $V(F_0)$.
+		\item Let $G$ be a $d$-framed multigraph and let $G_0$ be a frame of $G$.
+		\item Let $F_0$ be the outer face of $G_0$ and let $T$ be a BFS spanning forest of $G_0$ rooted at $V(F_0)$.
 		\item For every integer $j\ge 0$, let $L_j=\{v\in V(G):\dist_T(v,V(F_0))=j\}$.
 		\item Let $F$ be a cycle in $G'$ that $V(F)$ is partitioned into $k\le 3$ sets $P_1,\ldots,P_k$ such that for each $i\in\{1,\ldots,k\}$,
 		\begin{compactenum}
 			\item $F[P_i]$ is connected; and
 			\item $P_i$ has a partition $\{X_i,Y_i\}$ where $|X_i|\le d-3$ and $|Y_i\cap L_j| \le 3$ for each $j\ge 0$.
 		\end{compactenum}
-		\item Let $N$ and $N'$ be the subgraphs of $G$ and $G'$ consisting only of those edges and vertices contained in the interior or boundary of $F$.
+		\item Let $N$ and $N_0$ be the subgraphs of $G$ and $G_0$ consisting only of those edges and vertices contained in the interior or boundary of $F$.
 	\end{compactenum}
 	Then $N$ has an $H$-partition $\PP=\{S_x: x\in V(H)\}$ such that:
 	\begin{compactenum}[(i)]
@@ -982,12 +982,12 @@ For any integer $d\ge 3$, every $d$-framed multigraph is contained in $H\boxtime
 \end{lem}
 
 \begin{proof}
-	This proof is similar to the proof of Lemma~13 by \citet{DJMMUW20}, but is complicated by several factors.  In particular, the reader should keep in mind that $G$ and $G'$ are multigraphs and that the cycle $F$ may consist of two vertices and two (parallel) edges.
+	This proof is similar to the proof of Lemma~13 by \citet{DJMMUW20}, but is complicated by several factors.  In particular, the reader should keep in mind that $G$ and $G_0$ are multigraphs and that the cycle $F$ may consist of two vertices and two (parallel) edges.
 
-	The proof is by induction on the number of inner faces of $N'$.  A particular easy case occurs $N'$ has no inner vertices, i.e., $V(N')=V(F)$. In this case we can simply take
-	\note{DW}{Suggested revision, ``In the base case, $N'$ has only one inner face, and we can simply take ...} 
+	The proof is by induction on the number of inner faces of $N_0$.  A particular easy case occurs when $N_0$ has no inner vertices, i.e., $V(N_0)=V(F)$. In this case we can simply take
+	\note{DW}{Suggested revision, ``In the base case, $N_0$ has only one inner face, and we can simply take ...} 
   % \note{PM}{I debated what to put here since, even when $N'$ has only one face, the rules below work for picking $\tau$.  The \emph{real} base case occurs when $N'$ has zero faces, but that's not something that ever happens since we only ever apply induction on the inner faces of $M$ (except $\tau$).  I settled on this ``base case'' since it's clear that, in this case, the partition $\mathcal{P}$ is already decided.}
-  \note{PM}{The longwinded version is that induction is on $(x,y)$ where $x$ is the number of inner vertices of $N'$ and $y$ is the number of inner faces of $N'$.  The base cases are $(0,y)$ for any $y$.  Unfortunately, we can't just induct on $x$ because it doesn't always decrease.}
+  \note{PM}{The longwinded version is that induction is on $(x,y)$ where $x$ is the number of inner vertices of $N_0$ and $y$ is the number of inner faces of $N_0$.  The base cases are $(0,y)$ for any $y$.  Unfortunately, we can't just induct on $x$ because it doesn't always decrease.}
 	$\PP:=\{P_1,\ldots,P_k\}$ and verify that the preconditions of the lemma (the `setup') ensure that $\PP$ satisfies the requirements (i)--(iii):
 	\begin{compactenum}[(i)]
 		\item By definition, each of $P_1,\ldots,P_k$ is a part of $\mathcal{P}$.
@@ -997,15 +997,15 @@ For any integer $d\ge 3$, every $d$-framed multigraph is contained in $H\boxtime
 
 % \note{DW}{Now assume that $N'$ has at least two internal faces.}
 
-We now move onto the case in which $N'$ contains at least one inner vertex.
-Our $H$-partition $\mathcal{P}$ will include $P_1$, $P_2$ , $P_3$ and a (possibly empty) part $S$ that will be determined by three vertices $v_1v_2v_3$ that belong to a common inner face $\tau$ of $N'$.  We first explain how $v_1$, $v_2$ and $v_3$ are chosen and then explain how these are used to define $S$.  There is one case to consider for each possible value of $k$ (see \cref{boring_figure}):
+We now move onto the case in which $N_0$ contains at least one inner vertex.
+Our $H$-partition $\mathcal{P}$ will include $P_1$, $P_2$ , $P_3$ and a (possibly empty) part $S$ that will be determined by three vertices $v_1v_2v_3$ that belong to a common inner face $\tau$ of $N_0$.  We first explain how $v_1$, $v_2$ and $v_3$ are chosen and then explain how these are used to define $S$.  There is one case to consider for each possible value of $k$ (see \cref{boring_figure}):
 
 \begin{compactenum}
-		\item If $k=1$ then let $\tau:=v_1,\ldots,v_p$ be an inner face of $N'$ that contains at least one edge $v_1v_2$ of $F$ on its boundary.
+		\item If $k=1$ then let $\tau:=v_1,\ldots,v_p$ be an inner face of $N_0$ that contains at least one edge $v_1v_2$ of $F$ on its boundary.
 
-		\item If $k= 2$ then let $\tau:=v_1,\ldots,v_p$ be an inner face of $N'$ that contains at least one edge $v_1v_2$ of $F$ on its boundary and such that $v_1\in P_1$ and $v_2\in P_2$.
+		\item If $k= 2$ then let $\tau:=v_1,\ldots,v_p$ be an inner face of $N_0$ that contains at least one edge $v_1v_2$ of $F$ on its boundary and such that $v_1\in P_1$ and $v_2\in P_2$.
 
-		\item If $k=3$ then assign each vertex $v$ of $N'$ a colour $\alpha(v)\in\{1,\ldots,3\}$ as follows:  Let $w$ be the first vertex of $F$ encountered on the path in $T$ from $v$ to the appropriate vertex of $F_0$.  (This implies that $w=v$ when $v$ is a vertex of $F$.)  Since $w\in V(F)$, $w\in P_i$ for some $i\in\{1,\ldots,k\}$ and we define $\alpha(v):=i$.  Now, for each $d'\in\{4,\ldots,d\}$ and each $d'$-sided inner face $F$ of $N'$, add $d'-3$ edges inside of $F$ to split it into $3$-sided faces.  This yields a plane supergraph $N''$ of $N'$ in which each inner face has exactly three edges on its boundary. By Sperner's Lemma there exists an inner face $\tau'':=v_1,v_2,v_3$ of $N''$ such that $\alpha(v_i)=i$ for each $i\in\{1,2,3\}$.  Let $\tau:=v_1,\ldots,v_p$ be  the facial cycle of $N'$ that contains $\tau''$.
+		\item If $k=3$ then assign each vertex $v$ of $N_0$ a colour $\alpha(v)\in\{1,\ldots,3\}$ as follows:  Let $w$ be the first vertex of $F$ encountered on the path in $T$ from $v$ to the appropriate vertex of $F_0$.  (This implies that $w=v$ when $v$ is a vertex of $F$.)  Since $w\in V(F)$, $w\in P_i$ for some $i\in\{1,\ldots,k\}$ and we define $\alpha(v):=i$.  Now, for each $d'\in\{4,\ldots,d\}$ and each $d'$-sided inner face $F$ of $N_0$, add $d'-3$ edges inside of $F$ to split it into $3$-sided faces.  This yields a plane supergraph $N_0'$ of $N_0$ in which each inner face has exactly three edges on its boundary. By Sperner's Lemma there exists an inner face $\tau':=v_1,v_2,v_3$ of $N_0'$ such that $\alpha(v_i)=i$ for each $i\in\{1,2,3\}$.  Let $\tau:=v_1,\ldots,v_p$ be  the facial cycle of $N_0$ that contains $\tau'$.
 	\end{compactenum}
 
 	%  \todo[inline]{%
@@ -1014,7 +1014,7 @@ Our $H$-partition $\mathcal{P}$ will include $P_1$, $P_2$ , $P_3$ and a (possibl
 	%    DW: great. This is basically the same as the proof of the Hex Lemma.
 	%  }
 
-	We can now define the vertices in $S$.  For each $i\in\{1,2,3\}$, let $Q_i$ be the shortest path, in $T$, from $v_i$ to a vertex in $V(F)$.  Let $\overline{S}$ denote the subgraph of $N'$ consisting of vertices and edges of $Q_1$, $Q_2$, $Q_3$, and $\tau$.
+	We can now define the vertices in $S$.  For each $i\in\{1,2,3\}$, let $Q_i$ be the shortest path, in $T$, from $v_i$ to a vertex in $V(F)$.  Let $\overline{S}$ denote the subgraph of $N_0$ consisting of vertices and edges of $Q_1$, $Q_2$, $Q_3$, and $\tau$.
 	Let $S:=V(\overline{S})\setminus V(F)$, let $Y:=(V(Q_1)\cup V(Q_2)\cup V(Q_3))\setminus V(F)$, and let $X:=S\setminus Y$. Observe that, for each $i\in\{1,2,3\}$ and each $j\ge 0$, $|V(Q_i)\cap L_j|\le 1$.  Therefore $|Y\cap L_j|\le 3$ for each integer $j\ge 0$. Furthermore, $X\subseteq V(\tau)\setminus\{x_1,x_2,x_3\}$, so $|X|\le p-3\le d-3$. Therefore, using $S:=Y\cup X$ as a part in the partition $\PP$ satisfies condition~(ii).
 
 	% We claim that, for each integer $i\ge 0$, $|V(\overline{Y}^+)\cap L_i|\le 15$.  First observe that, since $Q_1,Q_2,Q_3$ are each vertical paths in $T$,  $\overline{Y}$ contains at most three vertices of $L_i$, each incident on at most two edges of $\overline{Y}$.  Since $\dist_{G'}(v,w)\le 2$ for each $vw\in E(G)$, any vertex $x\in V(\overline{Y}^+)\setminus V(\overline{Y})\cap L_i$, is incident to an edge $xy\in E(G)$ that crosses one of the at most six edges in $\overline{Y}$ having an endpoint in $L_i$.  These at most six edges have at most 12 endpoints.  Therefore $|V(\overline{Y}^+)\setminus V(\overline{Y})\cap L_i|\le 6\times 2=12$, so $|V(\overline{Y}^+)\cap L_i|\le 12+3=15$.
@@ -1030,17 +1030,17 @@ Our $H$-partition $\mathcal{P}$ will include $P_1$, $P_2$ , $P_3$ and a (possibl
 				$k=1$ & $k=2$ & $k=3$
 			\end{tabular}
 		\end{center}
-		\caption{Three cases when choosing the face $\tau$ of $N'$.}
+		\caption{Three cases when choosing the face $\tau$ of $N_0$.}
 		\label{boring_figure}
 	\end{figure}
 
-	Refer to \cref{boring_figure}.  Let $M$ denote the subgraph of $N'$ containing the edges and vertices of $\overline{S}$ and the edges and vertices of $F$. By our choice of $\tau$, the graph $M$ is $2$-connected.
+	Refer to \cref{boring_figure}.  Let $M$ denote the subgraph of $N_0$ containing the edges and vertices of $\overline{S}$ and the edges and vertices of $F$. By our choice of $\tau$, the graph $M$ is $2$-connected.
   % Since $N'\subseteq G'$ contains only edges of $N\subseteq G$ that are not crossed, each component of $N-V(M)$ is contained in a single face of $M$.
 	Let $F_1,\ldots,F_m,\tau$ be the inner faces of $M$. By our choice of $v_1v_2v_3$, the vertices of each $F_i$ can be partitioned into at most three sets $P_{i,1}$, $P_{i,2}$, and $P_{i,3}$ where $P_{i,1}\subset Y$, $P_{i,2}\subseteq P_b$, and $P_{i,3}\subseteq P_c$ for some $b,c\in\{1,\ldots,k\}$.
 
 	In the following, in order to avoid introducing even more notation or constantly adding the modifier ``when it exists'', we will assume that $V(F_i)\cap S\neq\emptyset$ and that there are exactly two distinct $b,c\in\{1,\ldots,k\}$ such that $V(F_i)\cap P_b\neq\emptyset$ and $V(F_i)\cap P_c\neq\emptyset$.  When this assumption does not hold, exactly the same reasoning can be used, while omitting one or more of $P_{i,1}$, $P_{i,2}$ or $P_{i,3}$.
 
-	Since $M$ is $2$-connected and $\overline{S}$ is connected, $F_i[P_{i,j}]$ is connected, for each $j\in\{1,2,3\}$.  Let $N_i$ and $N_i'$ be the subgraphs of $N$ and $N'$ contained in the interior or boundary of $F_i$.  Every inner face of $N_i'$ is an inner face of $N'$ and $\tau$ is not an inner face of $N_i'$.  Therefore $N_i'$ has fewer inner faces than $N'$.  Therefore, we can apply induction using the cycle $F_i$ and the partition $P_{i,1},P_{i,2},P_{i,3}$ of $V(F_i)$.  The result of the induction is a $H_i$-partition $\mathcal{P}_i$ of $N_i$.
+	Since $M$ is $2$-connected and $\overline{S}$ is connected, $F_i[P_{i,j}]$ is connected, for each $j\in\{1,2,3\}$.  Let $N_i$ and $N_{0,i}$ be the subgraphs of $N$ and $N_0$ contained in the interior or boundary of $F_i$.  Every inner face of $N_{0,i}$ is an inner face of $N_0$ and $\tau$ is not an inner face of $N_{0,i}$.  Therefore $N_{0,i}$ has fewer inner faces than $N_{0}$.  Therefore, we can apply induction using the cycle $F_i$ and the partition $P_{i,1},P_{i,2},P_{i,3}$ of $V(F_i)$.  The result of the induction is a $H_i$-partition $\mathcal{P}_i$ of $N_i$.
 	% The partition $\mathcal{P}_i$ contains each of $P_{i,1}$, $P_{i,2}$ and $P_{i,3}$.
 	We can now define our partition
 	\[
@@ -1054,7 +1054,7 @@ Our $H$-partition $\mathcal{P}$ will include $P_1$, $P_2$ , $P_3$ and a (possibl
 
 	Recall that $P_{i,1}:=V(N_i)\cap S$, $P_{i,2}:=V(N_i)\cap P_b$ and $P_{i,3}:=V(N_i)\cap P_c$ for some $b,c\in\{1,\ldots,k\}$.  For each bag $B_z$, $z\in V(T_i)$, replace each occurrence of $a_i$ by $x_0$, replace each occurrence of $b_i$ by $x_b$ and replace each occurrence of $c_i$ by $x_c$.  These replacements do not increase the size of any bag and they result in a tree decomposition of the graph obtained from $H_i$ by renaming the vertices $a_i$, $b_i$, and $c_i$ with the names $x_0$, $x_a$, and $x_b$. Now add an edge that joins $y_0$ to $z_i$ so that $T_i$ becomes a subtree of $T_0$ that is adjacent to $y_0$.  We perform this operation for each $i\in\{1,\ldots,m\}$ to obtain our final tree decomposition $\mathcal{T}:=(B_y:y\in V(T_0))$.
 
-  It is now straightforward to verify that $\mathcal{T}$ is a tree decomposition of $H':=N'/\mathcal{P}$ in which each bag has size at most $4$.    To see that $\mathcal{T}$ is also a tree decomposition of $H:=N/\mathcal{P}$, consider any edge $vw\in E(N)\setminus E(N')$ with $v\in P_\alpha$ and $w\in P_\beta$.  We must verify that some bag of $\mathcal{T}$ contains $\alpha$ and $\beta$.  If both $v$ and $w$ are in $V(M)$, then $\alpha=x_a$ and $\beta=x_b$ for some $a,b\in\{0,\ldots,3\}$, in which case $B_{y_0}=\{x_0,\ldots,x_k\}$ contains $\alpha$ and $\beta$.  If neither $v$ nor $w$ are in $V(M)$ then, since no edge of $N\subseteq G$ crosses an edge of $M\subseteq G'$, both $v$ and $w$ are contained in the interior of the same face $F_i$ of $M$ so, by the inductive hypothesis there exists a bag of $\mathcal{T}_i$ that contains $\alpha$ and $\beta$ and this becomes a bag of $\mathcal{T}$ that contains $\alpha$ and $\beta$.  Finally, if $v\in V(M)$ and $w\not\in V(M)$ then $v\in P_{i,j}$ for some $j\in\{1,2,3\}$ and $w$ is in the interior of some face $F_i$ of $M$. By induction, some bag of $\mathcal{T}_i$ contains $\beta$ and $\alpha'$, where $\alpha'$ is the vertex of $H_i$ obtained by contracting $P_{i,j}$.  However, before $T_i$ is attached to $T_0$ each occurence of $\alpha'$ in $\mathcal{T}_i$ is replaced by $\alpha$, so some bag of $\mathcal{T}$ contains both $\alpha$ and $\beta$. Therefore $\mathcal{T}$ is a tree decomposition of $H$.
+  It is now straightforward to verify that $\mathcal{T}$ is a tree decomposition of $H_0:=N_0/\mathcal{P}$ in which each bag has size at most $4$.    To see that $\mathcal{T}$ is also a tree decomposition of $H:=N/\mathcal{P}$, consider any edge $vw\in E(N)\setminus E(N_0)$ with $v\in P_\alpha$ and $w\in P_\beta$.  We must verify that some bag of $\mathcal{T}$ contains $\alpha$ and $\beta$.  If both $v$ and $w$ are in $V(M)$, then $\alpha=x_a$ and $\beta=x_b$ for some $a,b\in\{0,\ldots,3\}$, in which case $B_{y_0}=\{x_0,\ldots,x_k\}$ contains $\alpha$ and $\beta$.  If neither $v$ nor $w$ are in $V(M)$ then, since no edge of $N\subseteq G$ crosses an edge of $M\subseteq G_0$, both $v$ and $w$ are contained in the interior of the same face $F_i$ of $M$ so, by the inductive hypothesis there exists a bag of $\mathcal{T}_i$ that contains $\alpha$ and $\beta$ and this becomes a bag of $\mathcal{T}$ that contains $\alpha$ and $\beta$.  Finally, if $v\in V(M)$ and $w\not\in V(M)$ then $v\in P_{i,j}$ for some $j\in\{1,2,3\}$ and $w$ is in the interior of some face $F_i$ of $M$. By induction, some bag of $\mathcal{T}_i$ contains $\beta$ and $\alpha'$, where $\alpha'$ is the vertex of $H_i$ obtained by contracting $P_{i,j}$.  However, before $T_i$ is attached to $T_0$ each occurence of $\alpha'$ in $\mathcal{T}_i$ is replaced by $\alpha$, so some bag of $\mathcal{T}$ contains both $\alpha$ and $\beta$. Therefore $\mathcal{T}$ is a tree decomposition of $H$.
 
   Next we verify that, when $k=3$ exactly one bag of $\mathcal{T}$ contains $\{x_1,\ldots,x_3\}$.  The bag $B_{y_0}$ contains $x_1,\ldots,x_k$. When $k=3$, each neighbour of $z_i$ of $y_0$ has a bag that contains at most two of $\{x_1,x_2,x_3\}$.  Therefore, when $k=3$, $B_y$ is the unique bag in $\mathcal{T}$ that contains $\{x_1,x_2,x_3\}$.
 
@@ -1083,10 +1083,10 @@ Using \cref{induction}, the proof of \cref{d_framed_product_stucture} is now str
 % }
 
 \begin{proof}[Proof of \cref{d_framed_product_stucture}]
-	Let $G$ be a $d$-framed multigraph with frame $G'$ having outer face $F_0$.	Let $T$ be a BFS forest of $G'$ rooted at $V(F_0)$ and let $\langle L_0,L_1,\ldots\rangle$ be the resulting BFS layering.  Let $P_1:= V(F_0)$, let $Y_1$ be any subset of $\min\{|P_1|,3\}$ vertices in $P_1$ and let $X_1:=P_1\setminus Y_1$.  Now apply \cref{induction} on $G$, $G'$, $T$, $F=F_0$, $k=1$, and $P_1=Y_1\cup X_1$.
+	Let $G$ be a $d$-framed multigraph with frame $G_0$ having outer face $F_0$.	Let $T$ be a BFS forest of $G_0$ rooted at $V(F_0)$ and let $\langle L_0,L_1,\ldots\rangle$ be the resulting BFS layering.  Let $P_1:= V(F_0)$, let $Y_1$ be any subset of $\min\{|P_1|,3\}$ vertices in $P_1$ and let $X_1:=P_1\setminus Y_1$.  Now apply \cref{induction} on $G$, $G_0$, $T$, $F=F_0$, $k=1$, and $P_1=Y_1\cup X_1$.
     This gives an $H$-partition $\mathcal{P}:=\{S_x:x\in V(H)\}$ of $G$ in which $H$ has a $3$-simple tree decomposition.  Since any graph having a $3$-simple tree decomposition is planar \cite{knauer.ueckerdt:simple,kratochvil.vaner:note,elmallah.colbourn:on}, this implies that $H$ is planar.
 
-	Use the layering $\mathcal{L}=\langle L_0',L_1'\ldots\rangle$ where $L_i'=L_{\lfloor d/2\rfloor i}\cup \cdots \cup L_{\lfloor d/2\rfloor(i+1)-1}$ for each integer $i\ge 0$. That this is a layering of $G$ follows from the fact that $\dist_{G'}(v,w)\le \lfloor d/2\rfloor$ for each edge $vw\in E(G)$.  Since $|L_j\cap Y_x|\le 3$ for each integer $j\ge 0$, $|L_i'\cap Y_x|\le 3\lfloor d/2\rfloor$ and therefore $|L_i'\cap S_x|= |L_i'\cap Y_x|+ |L_i'\cap X_x|\le \lfloor d/2\rfloor + d -3$ for each integer $i\ge 0$ and each $x\in V(H)$. The result now follows from \cref{PartitionProduct}.
+	Use the layering $\mathcal{L}=\langle L_0',L_1'\ldots\rangle$ where $L_i'=L_{\lfloor d/2\rfloor i}\cup \cdots \cup L_{\lfloor d/2\rfloor(i+1)-1}$ for each integer $i\ge 0$. That this is a layering of $G$ follows from the fact that $\dist_{G_0}(v,w)\le \lfloor d/2\rfloor$ for each edge $vw\in E(G)$.  Since $|L_j\cap Y_x|\le 3$ for each integer $j\ge 0$, $|L_i'\cap Y_x|\le 3\lfloor d/2\rfloor$ and therefore $|L_i'\cap S_x|= |L_i'\cap Y_x|+ |L_i'\cap X_x|\le \lfloor d/2\rfloor + d -3$ for each integer $i\ge 0$ and each $x\in V(H)$. The result now follows from \cref{PartitionProduct}.
 \end{proof}
 
 
@@ -1138,17 +1138,17 @@ We make $G$ into an \defin{edge-maximal} $1$-plane multigraph, by repeating the 
     \begin{tabular}{c@{\hspace{1cm}}c}
         \includegraphics{figs/one_planar_example-3} &
         \includegraphics{figs/one_planar_example-4} \\
-        $G$ & $G'$
+        $G$ & $G_0$
      \end{tabular}
     \end{center}
-    \caption{The graph $G'$ obtained by removing pairs of crossing edges from $G$ is a plane multigraph whose faces all have three or four sides.}
+    \caption{The graph $G_0$ obtained by removing pairs of crossing edges from $G$ is a plane multigraph whose faces all have three or four sides.}
     \label{one_planar_example}
 \end{figure}
 
 Refer to \cref{one_planar_example}.
-To understand the structure of $G$, it is helpful to consider the plane graph $G_0$ obtained by replacing each pair of edges $vw$ and $xy$ that cross at $p$ with four edges $vp$, $wp$, $xp$, and $yp$ meeting at a newly added \defin{dummy vertex} $p$. Let $F$ be a face of $G_0$ and let $W:=w_0,\ldots,w_{r-1}$ be the facial walk around $F$. In the following paragraphs, subscripts on the vertices in $W$ are implicitly taken modulo $r$. By edge maximality, if $W$ contains only non-dummy vertices, then it contains exactly three vertices and $F$ is bounded by three edges of $G$.
+To understand the structure of $G$, it is helpful to consider the plane graph $G'$ obtained by replacing each pair of edges $vw$ and $xy$ that cross at $p$ with four edges $vp$, $wp$, $xp$, and $yp$ meeting at a newly added \defin{dummy vertex} $p$. Let $F$ be a face of $G_0$ and let $W:=w_0,\ldots,w_{r-1}$ be the facial walk around $F$. In the following paragraphs, subscripts on the vertices in $W$ are implicitly taken modulo $r$. By edge maximality, if $W$ contains only non-dummy vertices, then it contains exactly three vertices and $F$ is bounded by three edges of $G$.
 
-If $W$ contains a dummy vertex $w_i$, then neither $w_{i-1}$ nor $w_{i+1}$ is a dummy vertex since if $w_{i-1}$ (respectively $w_{i+1}$) were a dummy vertex then the edge of $G$ that contains $w_{i-1}w_i$ (respectively $w_iw_{i+1}$) would be involved in at least two crossings.  Therefore each dummy vertex $w_i$ of $W$ is flanked by two non-dummy vertices $w_{i-1},w_{i+1}\in V(G)$.  Since $w_i$ has degree $4>1$ in $G_0$ and no two edges incident to a common vertex cross each other, $w_{i-1}\neq w_{i+1}$.  Since $G$ is edge-maximal the edge $w_{i-1}w_{i+1}$ is an edge of $G$ on the boundary of $F$.  Therefore, if $F$ has a dummy vertex $w_i$ in its facial walk $W$, then $W=w_{i-1},w_i,w_{i+1}$ and $F$ is bounded by three edges of $G_0$, each of which is contained in a different edge of $G$.
+If $W$ contains a dummy vertex $w_i$, then neither $w_{i-1}$ nor $w_{i+1}$ is a dummy vertex since if $w_{i-1}$ (respectively $w_{i+1}$) were a dummy vertex then the edge of $G$ that contains $w_{i-1}w_i$ (respectively $w_iw_{i+1}$) would be involved in at least two crossings.  Therefore each dummy vertex $w_i$ of $W$ is flanked by two non-dummy vertices $w_{i-1},w_{i+1}\in V(G)$.  Since $w_i$ has degree $4>1$ in $G'$ and no two edges incident to a common vertex cross each other, $w_{i-1}\neq w_{i+1}$.  Since $G$ is edge-maximal the edge $w_{i-1}w_{i+1}$ is an edge of $G$ on the boundary of $F$.  Therefore, if $F$ has a dummy vertex $w_i$ in its facial walk $W$, then $W=w_{i-1},w_i,w_{i+1}$ and $F$ is bounded by three edges of $G'$, each of which is contained in a different edge of $G$.
 
 % Therefore each face of $G_0$ is a $3$-cycle that contains at most one dummy vertex.  This implies that each face of $G$ is one of two types:
 % \begin{inparaenum}[(i)]
@@ -1156,7 +1156,7 @@ If $W$ contains a dummy vertex $w_i$, then neither $w_{i-1}$ nor $w_{i+1}$ is a 
 %   \item bounded by one edge of $G$ that is not crossed plus portions of two edges of $G$ that cross each other.
 % \end{inparaenum}
 
-Consider some pair of edges $vw$ and $xy$ that cross at point $p$, which is a degree-4 vertex of $G_0$.  Since no pair of edges incident to a common vertex cross each other, $v$, $w$, $x$, and $y$ are all distinct.  There are four faces $F_1,\ldots,F_4$ of $G_0$ with $p$ on their boundary and, from the preceding discussion each of $vx$, $xw$, $wy$, and $yv$ is an uncrossed edge of $G$.  Therefore, by removing each pair of crossing edges from $G$ we obtain a plane multigraph $G'$ each of whose faces is bounded by three or four edges.  Therefore $G$ is a $4$-framed graph with frame $G'$.
+Consider some pair of edges $vw$ and $xy$ that cross at point $p$, which is a degree-4 vertex of $G'$.  Since no pair of edges incident to a common vertex cross each other, $v$, $w$, $x$, and $y$ are all distinct.  There are four faces $F_1,\ldots,F_4$ of $G'$ with $p$ on their boundary and, from the preceding discussion each of $vx$, $xw$, $wy$, and $yv$ is an uncrossed edge of $G$.  Therefore, by removing each pair of crossing edges from $G$ we obtain a plane multigraph $G_0$ each of whose faces is bounded by three or four edges.  Therefore $G$ is a $4$-framed graph with frame $G_0$.
 % Since, for any pair of crossing edges $\{vw,xy\}$ that we remove this way, $vxwy$ is a cycle in $G'$, $\dist_{G'}(v,w)\le 2$ and $\dist_{G'}(x,y)\le 2$.
 % It follows immediately that, for any pair of vertices $a,b\in V(G)$, $\dist_{G'}(a,b)\le 2\dist_G(a,b)$.
 \end{proof}
