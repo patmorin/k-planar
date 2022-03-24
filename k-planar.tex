@@ -986,7 +986,8 @@ For any integer $d\ge 3$, every $d$-framed multigraph is contained in $H\boxtime
 
 	The proof is by induction on the number of inner faces of $N'$.  A particular easy case occurs when $V(N')=V(F)$, for which we can simply take
 	\note{DW}{Suggested revision, ``In the base case, $N'$ has only one inner face, and we can simply take ...} \note{PM}{I debated what to put here since, even when $N'$ has only one face, the rules below work for picking $\tau$.  The \emph{real} base case occurs when $N'$ has zero faces, but that's not something that ever happens since we only ever apply induction on the inner faces of $M$ (except $\tau$).  I settled on this ``base case'' since it's clear that, in this case, the partition $\mathcal{P}$ is already decided.}
-	$\PP:=\{P_1,\ldots,P_k\}$ and verify that the preconditions of the lemma (the `setup') ensure that $\PP$ satisfies the requirements (i)--(iv):
+  \note{PM}{The longwinded version is that induction is on the pair $(x,y)$ where $x=|V(N-F)|$ and $y$ is the number of inner faces of $N'$.  The base cases are $(0,y)$ for any $y$.}
+	$\PP:=\{P_1,\ldots,P_k\}$ and verify that the preconditions of the lemma (the `setup') ensure that $\PP$ satisfies the requirements (i)--(iii):
 	\begin{compactenum}[(i)]
 		\item By definition, each of $P_1,\ldots,P_k$ is a part of $\mathcal{P}$.
 		\item Assumption 4(b) ensures, for each $x\in V(H)$, the existence of $X_x$ and $Y_x$ such that $|X_x|\le d-3$ and $|Y_x\cap L_j|\le 3$ for each integer $j\ge 0$.
@@ -1238,45 +1239,46 @@ $\qn(G) \leq  3 \ell \, \qn(H) + \floor{\tfrac{3}{2}\ell}
 \end{lem}
 
 Since all the product structure theorems presented thus far upper bound the treewidth of $H$,
-\cref{qn} immediately implies bounds on the queue number of all graphs in these classes.  An improvement can be made in the cases where $H$ is planar and has treewidth $3$, as follows.
-\citet{ABGKP20} proved that every planar graph with treewidth at most $3$ has queue-number at most $5$. Thus the graph $H$ in \cref{1_planar_product,dMapProduct} has queue-number at most $5$, which with \cref{qn} implies:
-
-\begin{cor}
-\label{1PlanarQueue}
-Every 1-planar graph has queue-number at most 
-$3 \times 7 \times 5 + \floor{\tfrac{3}{2} \times 7} = 115$.
-\end{cor}
-
-\begin{cor}
-\label{dMapQueue}
-Every $d$-map graph has queue-number at most 
-$\floor{ \frac{33}{2} (d+3\floor{d/2}-3) }$.
-\note{DW}{I have updated this bound using the better qn bound for planar 3-trees. Note that with $d=3$ we get the original bound of 49.}
-\end{cor}
-
-
-
+\cref{qn} immediately implies bounds on the queue number of all graphs in these classes.  An improvement can be made for $1$-planar and $d$-map graphs since, in the cases $H$ is planar and has treewidth $3$.
+\citet{ABGKP20} proved that every planar graph with treewidth at most $3$ has queue-number at most $5$. Thus the graph $H$ in \cref{1_planar_product,dMapProduct} has queue-number at most $5$.
+% , which with \cref{qn} implies:
+% 
+% \begin{cor}
+% \label{1PlanarQueue}
+% Every 1-planar graph has queue-number at most 
+% $3 \times 7 \times 5 + \floor{\tfrac{3}{2} \times 7} = 115$.
+% \end{cor}
+% 
+% \begin{cor}
+% \label{dMapQueue}
+% Every $d$-map graph has queue-number at most 
+% $\floor{ \frac{33}{2} (d+3\floor{d/2}-3) }$.
+% \note{DW}{I have updated this bound using the better qn bound for planar 3-trees. Note that with $d=3$ we get the original bound of 49.}
+% \end{cor}
+% 
+% 
+% 
 % \cref{qn,gkPlanarProduct} imply that $(g,k)$-planar graphs have queue-number at most $g 2^{O(k^3)}$.
 % \note{DW}{I have changed $g 2^{O(k^4)}$ to $g 2^{O(k^3)}$, okay?}
 % \note{OM}{Ok}
 % \note{DW}{I have changed $g>2^{k^3}$ to $g>2^{k^2}$, okay?}.
 % \note{PM}{Ok}
-
-The following corollary summarizes the results for other graph classes.
+The following corollary summarizes all of these results.
 \begin{cor}\label{q_cor}
   The following bounds hold for the queue number of any graph from each of the following classes:
   \begin{compactenum}
     \item $k$-planar: $2^{O(k^3)}$
     \item $(g,k)$-planar: $\max\{1,g\}\cdot 2^{O(k^3)}$
     \item $(g,\delta)$-string: $\max\{1,g\}\cdot 2^{O(\delta^3)}$
-    \item $1$-planar: $115$ \note{DW}{delete?}
-    \item $d$-map: $24 (d+3\floor{d/2}-3) \,  - \ceil{\tfrac{3}{2} (d+3\floor{d/2}-3)}$ \note{DW}{delete?}
+    \item $1$-planar: $115$ 
+    \item $d$-map: $\floor{ \frac{33}{2} (d+3\floor{d/2}-3) }$ 
     \item $(g,d)$-map: $\max\{1,g\}\cdot 2^{O(d)}$
     \item $k$-NN: $2^{O(k^6)}$
     % \item $(g,d)$-map graph
     % \item
   \end{compactenum}
 \end{cor}
+\note{PM}{For uniformity, I got rid of the two corollaries on $d$-map and $1$-planar graphs and kept them in \cref{q_cor}.  The text is still commented out in the source in case someone feels strongly about keeping them.}
 
 Note that \citet{DJMMUW20} previously proved the bound of
 $O(g^{k+2})$ for $k$-planar graphs using \cref{GenusProduct} and an ad-hoc method. Our result provides a better bound when $g>2^{k^2}$.
@@ -1374,8 +1376,8 @@ For every graph $H$ of treewidth at most $t$ and for every path $P$, if $G\subse
 %  \end{compactitem}
 % \end{cor}
 
-For planar graphs of treewidth at most $3$ an $O(p^2\log p)$ upper bound is known:
-\note{DW}{I prefer ``a $O(p^2\log p)$'', pronounced ``a big-O...''}
+For planar graphs of treewidth at most $3$ a $O(p^2\log p)$ upper bound is known:
+% \note{DW}{I prefer ``a $O(p^2\log p)$'', pronounced ``a big-O...''}
 
 \begin{lem}\cite{DFMS21}\label{simple_3tree_centered_colouring}
   For every planar graph $H$ of treewidth at most $3$, 
@@ -1404,7 +1406,7 @@ Combining \cref{p-centered,simple_3tree_centered_colouring} with our results on 
 Prior to the current work, the strongest known upper bounds on the $p$-centered chromatic number of $(g,k)$-planar graphs $G$ were doubly-exponential in $p$, as we now explain. \citet{dujmovic.eppstein.ea:structure} proved that $G$ has layered treewidth $(4g+6)(k+1)$.
 Van den Heuvel and Wood~\citep{vdHW18} showed that this implies that $G$  has $r$-strong colouring number at most $(4g + 6)(k + 1)(2r + 1)$. By a result of \citet{zhu:colouring}, $G$ has $r$-weak colouring number at most $( (4g + 6)(k + 1)(2r + 1) )^r$, which by another result of  \citet{zhu:colouring} implies that $G$ has  $p$-centered chromatic number at most $( (4g+6)(k+1)(2^{p-1} + 1) )^{2^{p-2}}$. The above results are substantial improvements, providing bounds on $\chi_p(G)$ that are polynomial in $p$ for fixed $g$ and $k$.
 
-As with nonrepetitive chromatic number, our results also imply bounds on the $p$-centered chromatic numer of $(g,\delta)$-string graphs and $k$-nearest-neighbour graphs, but these bounds are weaker than the bounds implied by the fact that these graphs have bounded maximum degree \cite{DFMS21}.
+As with nonrepetitive chromatic number, our results also imply bounds on the $p$-centered chromatic numer of $(g,\delta)$-string graphs, powers of bounded-degree graphs, and $k$-nearest-neighbour graphs, but these bounds are weaker than the bounds implied by the fact that these graphs have bounded maximum degree \cite{DFMS21}.
 
 \subsection{Universal Graphs}
 
