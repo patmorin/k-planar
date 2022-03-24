@@ -76,7 +76,7 @@ indicative to write $\phi'(x)$ for $S_x$ and $B'_x$ for $C_x$.
 
   The notations $Y_x$ and $B_x$ are needed since we need names for the parts of the $H$-decomposition of $G$ and the bags in the tree-decomposition of $H$.    The notation $C_x$ is limited to the proof of (newly-numbered) Claim~3, where it is used to denote the bags in the tree-decomposition that is the subject of Claim~3.
 
-  We have avoided the introduction of any new notation.  The new presentation is much shorter and clearer.  We thank the referee for making us revisit this proof carefully.  The final paper is better for it.
+  We have avoided the introduction of any new notation, including $\phi$.  The new presentation is much shorter and clearer.  We thank the referee for making us revisit this proof carefully.  The final paper is better for it.
 \end{response}
 
 3. Theorem 10: Unfortunately I have to suggest removing it. I don’t see
@@ -85,9 +85,11 @@ Are the improved constants at all close to tight? Is there another
 reason for including it?
 
 \begin{response}
-  Since the initial submission, there is now even more justification for including this special case.  A result of Bose et al on vertex ranking relies critically on the simple treewidth of $H$.  In particular, if $H$ is planar and has treewidth $3$, then $H\boxtimes P\boxtimes K_\ell$ an $r$-vertex ranking using $O(\log n/\log\log\log n)$ colours (for any fixed $r$ and $\ell$).  The three logs in the denominator come from the fact that $H$ has simple treewidth $3$.  Simple treewidth $4$ or even (non-simple) treewidth $3$ lead to more logs in the denominator.  The number of logs in the denominator is exactly the simple treewidth of $H$, and this is tight.
+  Since the initial submission, there is now even more justification for including this special case.  A result of Bose et al on vertex ranking relies critically on the simple treewidth of $H$, as does the result of D\,ebski et al on $p$-centered colouring.  In both case, if $H$ does not have simple treewidth $3$ then one does not get an asymptotically tight bound.
   
   Also, while adding details requested by Referee \#2 we discovered that a small change in the proof (removing both edges of a crossing pair instead of just one) results in a better constant and leads to a more general result that applies to $d$-framed graphs. This, in turn, leads to better results for $d$-map graphs.
+  
+  The former Theorem~10 (on $1$-planar graphs) is now a consequence of  Theorem~23 on ($d$-framed graphs).
 \end{response}
 
 
@@ -208,7 +210,7 @@ rooted at any vertex, so it is a bit imprecise to say that $T[x]$ is
 rooted at $x$.  I suggest adding that a subtree of a tree rooted at $r$,
 is always considered to be rooted at the vertex closest to $r$.
 
-\done
+\textcolor{blue}{Fixed, though in a different way.  Since we have to define lowest common $T$-ancestors anyway, we define the subtree $T'$ of $T$ to be rooted at at the lowest common $T$-ancestor of $V(T')$.}
 
 Page 6. Replace 'that satisfies (T2)' by 'that satisfies (T1)'.
 
@@ -226,7 +228,7 @@ Page 7. Although it is clear for me, 'separation' has not been
 defined.  Perhaps a blanket note saying all undefined terms are in
 Diestel's textbook should be added.
 
-\done
+\textcolor{blue}{This sentence is now gone.}
 
 Page 7.  In the very last sentence, I think $B_{x_i}$ should be $B_{z_i}$
 (twice).  Moreover, the way the proof is written, it seems to suggest
