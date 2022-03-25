@@ -114,7 +114,7 @@ David R. Wood%
 \maketitle
 
 \begin{abstract}
-Dujmovi\'c~et~al.~[\emph{J.~ACM}~'20] recently proved that every planar graph is isomorphic to a subgraph of the strong product of a graph of bounded treewidth and a path. Analogous results were obtained for graphs of bounded Euler genus or apex-minor-free graphs. These tools have been used to solve longstanding problems on queue layouts, non-repetitive colouring, $p$-centered colouring, and adjacency labelling. This paper proves analogous product structure theorems for various non-minor-closed classes. One noteable example is $k$-planar graphs (those with a drawing in the plane in which each edge is involved in at most $k$ crossings). We prove that every $k$-planar graph is isomorphic to a subgraph of the strong product of a graph of treewidth $O(k^5)$ and a path. This is the first result of this type for a non-minor-closed class of graphs. It implies, amongst other results, that $k$-planar graphs have non-repetitive chromatic number upper-bounded by a function of $k$. All these results generalise for drawings of graphs on arbitrary surfaces. In fact, we work in a much more general setting based on so-called shortcut systems that are of independent interest. This leads to analogous results for certain types of map graphs, string graphs, graph powers, and nearest neighbour graphs.
+Dujmovi\'c~et~al.~[\emph{J.~ACM}~'20] recently proved that every planar graph is isomorphic to a subgraph of the strong product of a bounded treewidth graph and a path. Analogous results were obtained for graphs of bounded Euler genus or apex-minor-free graphs. These tools have been used to solve longstanding problems on queue layouts, non-repetitive colouring, $p$-centered colouring, and adjacency labelling. This paper proves analogous product structure theorems for various non-minor-closed classes. One noteable example is $k$-planar graphs (those with a drawing in the plane in which each edge is involved in at most $k$ crossings). We prove that every $k$-planar graph is isomorphic to a subgraph of the strong product of a graph of treewidth $O(k^5)$ and a path. This is the first result of this type for a non-minor-closed class of graphs. It implies, amongst other results, that $k$-planar graphs have non-repetitive chromatic number upper-bounded by a function of $k$. All these results generalise for drawings of graphs on arbitrary surfaces. In fact, we work in a much more general setting based on so-called shortcut systems that are of independent interest. This leads to analogous results for certain types of map graphs, string graphs, graph powers, and nearest neighbour graphs.
 \end{abstract}
 \end{titlepage}
 \pagenumbering{roman}
@@ -227,7 +227,7 @@ Although $k$-planar graphs are the most high-profile target for a generalization
 
 \begin{compactitem}
 \item every path in $\SS$ has length at most $k$,\footnote{A path of length $k$ consists of $k$ edges and $k+1$ vertices.  A path is \defin{trivial} if it has length 0 and \defin{non-trivial} otherwise.} and
-\item for every $v\in V(G)$, the number of paths in $\SS$ that use $v$ as an internal vertex is at most $d$.
+\item for every $v\in V(G)$, the number of paths in $\SS$ that include $v$ as an internal vertex is at most $d$.
 \end{compactitem}
 Each path $P\in\SS$ is called a \defin{shortcut}; if $P$ has endpoints $v$ and $w$ then it is a \defin{$vw$-shortcut}. Given a graph $G$ and a $(k,d)$-shortcut system $\SS$ for $G$, let $G^{\SS}$ denote the supergraph of $G$ obtained by adding the edge $vw$ for each $vw$-shortcut in $\SS$.
 
@@ -305,7 +305,7 @@ The remainder of this paper is organized as follows:
   \item In \cref{Structure} we prove our main result for shortcut systems (\cref{ShortcutProduct}), and its optimisations for $k$-planar graphs and their genus-$g$ generalisation (\cref{kPlanarProduct,gkPlanarProduct}).
   \item \Cref{examples} uses \cref{ShortcutProduct,kPlanarProduct,gkPlanarProduct} to derive product structure theorems for string graphs, powers of bounded-degree graphs, map graphs, and $k$-nearest neighbour graphs.
   \item \Cref{FramedSection} proves a product structure theorem for $d$-framed multigraphs in which the graph $H$ has treewidth $3$ and is planar.  Using this result, we derive improved product structure theorems for $1$-planar graphs and planar map graphs, again with a planar graph $H$.
-  \item \Cref{Applications} quickly surveys applications of product structure and the consequences of the current work.
+  \item \Cref{Applications} quickly surveys applications of product structure theorems and the consequences of the current work.
 \end{compactitem}
 
 
@@ -532,11 +532,11 @@ We now proceed with Step~(ii), showing that $J$ has small treewidth. To accompli
 \end{clm}
 
 \begin{proof}
-  If $xy\in E(J)$ then there exists a shortcut $P:=v_0,\ldots,v_r\in\SS$ with endpoints $v_0\in S_x$ and $v_r\in S_y$.\footnote{Recall that we have made the assumption that $\SS$ contains a length-$1$ $vw$-shortcut for each edge $vw\in E(G)$.}  For each $i\in\{0,\ldots,r\}$, let $Y_{x_i}$ be the part in $\mathcal{Y}$ that contains $v_i$.  Since $P$ is a connected subgraph of $G$, $H[\{x_0,\ldots,x_r\}]$ is a connected subgraph of $H$.  Since $\mathcal{T}$ is a normalized tree decomposition of $H$, some node $x_i$ is a $T$-ancestor of all nodes in $x_0,\ldots,x_r$.
+  If $xy\in E(J)$ then there exists a shortcut $P:=v_0,\ldots,v_r\in\SS$ with endpoints $v_0\in S_x$ and $v_r\in S_y$.\footnote{Recall that we have made the assumption that $\SS$ contains a length-$1$ $vw$-shortcut for each edge $vw\in E(G)$.}  For each $i\in\{0,\ldots,r\}$, let $Y_{x_i}$ be the part in $\mathcal{Y}$ that contains $v_i$.  Since $P$ is a connected subgraph of $G$, $H[\{x_0,\ldots,x_r\}]$ is a connected subgraph of $H$.  Since $\mathcal{T}$ is a normalized tree decomposition of $H$, \tref{ancestor-edge} implies that some node $x_i$ is a $T$-ancestor of all nodes in $x_0,\ldots,x_r$.
 
   We claim that at least one of $v_0$ or $v_r$ participates in $x_i$.  If $i=0$ then $v_0\in Y_{x_0}=Y_{x_i}$ so $v_0$ participates in $x_i$. Similarly, if $i=r$ then $v_r$ participates in $x_r$.  Otherwise $i\in\{1,\ldots,r-1\}$ so $v_i$ is an internal vertex of the shortcut $P$, so $P$ crosses $x_i$.  Since $v_0,v_r\in V(P)$, this implies that $v_0$ and $v_r$ both participate in $x_i$.
 
-  Suppose, without loss of generality, that $v_0$ participates in $x_i$.  Then $a(v_0)=x$ is a $T$-ancestor of $x_i$ which a $T$-ancestor of $x_r$.  Finally $a(v_r)=y$ is a $T$-ancestor of $x_r$.  Therefore, both $x$ and $y$ are contained in the path from the root of $T$ to $x_r$, so at least one of $x$ or $y$ is a $T$-ancestor of the other.
+  Suppose, without loss of generality, that $v_0$ participates in $x_i$.  Then $a(v_0)=x$ is a $T$-ancestor of $x_i$ which a $T$-ancestor of $x_r$.  Finally $a(v_r)=y$ is a $T$-ancestor of $x_r$.  Therefore, both $x$ and $y$ are contained in the path from the root of $T$ to $x_r$, so at least one of $x$ or $y$ is a $T$-ancestor of the other.  This completes the proof of \cref{i-ancestor}
 \end{proof}
 
 \begin{clm}
@@ -558,7 +558,7 @@ The graph $J$ has a tree-decomposition in which every bag has size at most $\bin
 
   Since $v_0,\ldots,v_r$ is a path in $G$, $x_0,\ldots,x_r$ is a lazy walk in $H$.\footnote{A \defin{lazy walk} is a graph $G$ is a walk in the pseudograph obtained by adding a self-loop at each vertex of $G$.}  Let $j$ be the minimum integer such that $x_j$ is a strict $T$-ancestor of $x$.  Since $x'=x_0$ is a $T$-descendant of $x$ and $a=x_r$ is a strict $T$-ancestor of $x$, $j\in\{1,\ldots,r\}$ and $x_{j-1}$ is a $T$-descendant of $x$ (possibly $x_{j-1}=x$).  Since $x_{j-1}x_j\in E(H)$, $x_j \in B_{x_{j-1}}$ and therefore $x_j\in B_x$.  Therefore $xx_j\in E(H^+)$.
 
-  Therefore $W:=y_0,\ldots,y_s:=x,x_j,x_{j+1},\ldots,x_r$ is a lazy walk in $H^+$ of length $r\le k$.  For each $j\in \{0,\ldots,s\}$, let $z_j$ be the lowest common $T$-ancestor of $y_0,\ldots,y_j$.  The same reasoning used to conclude that $xx_j\in E(H^+)$ can be used to conclude that $z_{i-1}=z_i$ or $z_{i-1}z_i\in E(H^+)$ for each $i\in\{1,\ldots,s\}$.  Therefore $z_0,\ldots,z_s$ is a directed lazy walk in $\overrightarrow{H}^+$.  Finally, let $\overrightarrow{W}$ be the path in $\overrightarrow{H}^+$ obtained by removing removing duplicates from $z_0,\ldots,z_s$.  Then $\overrightarrow{W}$ is a directed path in $\overrightarrow{H}^+$ from $x$ to $a$ of length at most $s\le r\le k$.  This completes the proof.
+  Therefore $W:=y_0,\ldots,y_s:=x,x_j,x_{j+1},\ldots,x_r$ is a lazy walk in $H^+$ of length $r\le k$.  For each $j\in \{0,\ldots,s\}$, let $z_j$ be the lowest common $T$-ancestor of $y_0,\ldots,y_j$.  The same reasoning used to conclude that $xx_j\in E(H^+)$ can be used to conclude that $z_{i-1}=z_i$ or $z_{i-1}z_i\in E(H^+)$ for each $i\in\{1,\ldots,s\}$.  Therefore $z_0,\ldots,z_s$ is a directed lazy walk in $\overrightarrow{H}^+$.  Finally, let $\overrightarrow{W}$ be the path in $\overrightarrow{H}^+$ obtained by removing removing duplicates from $z_0,\ldots,z_s$.  Then $\overrightarrow{W}$ is a directed path in $\overrightarrow{H}^+$ from $x$ to $a$ of length at most $s\le r\le k$.  This completes the proof of \cref{general-bag-size}.
 \end{proof}
 
 At this point, the proof of \cref{ShortcutPartition} is almost immediate from \cref{general-width,general-bag-size}, except that the layering $\mathcal{L}$ of $G$ may not be a valid layering of $G^{\SS}$.  In particular, $G^{\SS}$ may contain edges $vw$ with $v\in L_i$ and $w\in L_{i+j}$ for any $j\in\{0,\ldots,k\}$.  To resolve this, we use a new layering $\mathcal{L}':=\langle L_0',\ldots,L_h'\rangle$ in which $L_i'=\bigcup_{j=ki}^{ki+k-1} L_i$.  This increases the layered width given by \cref{general-width} from $d\ell(k^2+3)$ to $d\ell(k^3+3k)$.  Therefore $G$ has an $H$-partition of layered width at most $d\ell(k^3+3k)$ in which $H$ has treewidth at most $\binom{k+t}{t}-1$, completing the proof of \cref{ShortcutPartition}.
@@ -933,7 +933,7 @@ Every $d$-framed multigraph can be described by a $(2,d(d-3)/2)$-shortcut system
 For any integer $d\ge 3$, every $d$-framed multigraph is contained in $H\boxtimes P\boxtimes K_{d+3\floor{d/2}-3}$ for some planar graph $H$ with treewidth at most 3 and for some path $P$.
 \end{thm}
 
-\cref{d_framed_product_stucture} is used below to obtain product structure theorems for 1-planar multigraphs and for map graphs.  For simple 1-planar graphs it is essential that we allow frames with parallel edges.
+\cref{d_framed_product_stucture} is used below to obtain product structure theorems for 1-planar multigraphs and for map graphs.  Even for simple 1-planar graphs it is essential that we allow frames with parallel edges.
 
 \cref{d_framed_product_stucture} is a consequence of the following technical lemma, which is an extension of the analogous result for plane graphs~\cite{DJMMUW20}. The following definition is a convenient way to establish the planarity of $H$ in \cref{d_framed_product_stucture}:  A tree-decomposition $\mathcal{T}$ of a graph $G$ is \defin{$t$-simple} if each of its bags has size at most $t+1$ and, for each $t$-element subset $\{v_1,\ldots,v_t\}\subseteq V(G)$, at most two bags of $\mathcal{T}$ contain $\{v_1,\ldots,v_t\}$.  Finally, a \defin{BFS spanning forest} $T$ of $G$ rooted at a set $V_0\subseteq V(G)$ is a spanning forest of $G$ with the property that for each $v\in V(G)$,  \[\min\{\dist_G(v,w):w\in V_0\}=\min\{\dist_T(v,w):w\in V_0\}.\]
 
@@ -949,7 +949,7 @@ For any integer $d\ge 3$, every $d$-framed multigraph is contained in $H\boxtime
 		\item Let $G$ be a $d$-framed multigraph and let $G_0$ be a frame of $G$.
 		\item Let $F_0$ be the outer face of $G_0$ and let $T$ be a BFS spanning forest of $G_0$ rooted at $V(F_0)$.
 		\item For every integer $j\ge 0$, let $L_j=\{v\in V(G):\dist_T(v,V(F_0))=j\}$.
-		\item Let $F$ be a cycle in $G'$ that $V(F)$ is partitioned into $k\le 3$ sets $P_1,\ldots,P_k$ such that for each $i\in\{1,\ldots,k\}$,
+		\item Let $F$ be a cycle in $G_0$ whose vertices are partitioned into $k\le 3$ sets $P_1,\ldots,P_k$ such that for each $i\in\{1,\ldots,k\}$,
 		\begin{compactenum}
 			\item $F[P_i]$ is connected; and
 			\item $P_i$ has a partition $\{X_i,Y_i\}$ where $|X_i|\le d-3$ and $|Y_i\cap L_j| \le 3$ for each $j\ge 0$.
@@ -1045,7 +1045,7 @@ Our $H$-partition $\mathcal{P}$ will include $P_1$, $P_2$ , $P_3$ and a (possibl
 
 	In the following, in order to avoid introducing even more notation or constantly adding the modifier ``when it exists'', we will assume that $V(F_i)\cap S\neq\emptyset$ and that there are exactly two distinct $b,c\in\{1,\ldots,k\}$ such that $V(F_i)\cap P_b\neq\emptyset$ and $V(F_i)\cap P_c\neq\emptyset$.  When this assumption does not hold, exactly the same reasoning can be used, while omitting one or more of $P_{i,1}$, $P_{i,2}$ or $P_{i,3}$.
 
-	Since $M$ is $2$-connected and $\overline{S}$ is connected, $F_i[P_{i,j}]$ is connected, for each $j\in\{1,2,3\}$.  Let $N_i$ and $N_{0,i}$ be the subgraphs of $N$ and $N_0$ contained in the interior or boundary of $F_i$.  Every inner face of $N_{0,i}$ is an inner face of $N_0$ and $\tau$ is not an inner face of $N_{0,i}$.  Therefore $N_{0,i}$ has fewer inner faces than $N_{0}$.  Therefore, we can apply induction using the cycle $F_i$ and the partition $P_{i,1},P_{i,2},P_{i,3}$ of $V(F_i)$.  The result of the induction is a $H_i$-partition $\mathcal{P}_i$ of $N_i$.
+	Since $M$ is $2$-connected and $\overline{S}$ is connected, $F_i[P_{i,j}]$ is connected, for each $j\in\{1,2,3\}$.  Let $N_i$ and $N_{0,i}$ be the subgraphs of $N$ and $N_0$ contained in the interior or boundary of $F_i$.  Every inner vertex of $N_{0,i}$ is an inner vertex of $N_{0}$.  Every inner face of $N_{0,i}$ is an inner face of $N_0$ and $\tau$ is not an inner face of $N_{0,i}$.  Therefore $N_{0,i}$ has no more inner vertices than $N_0$ and has fewer inner faces than $N_{0}$.  Therefore, we can apply induction using the cycle $F_i$ and the partition $P_{i,1},P_{i,2},P_{i,3}$ of $V(F_i)$.  The result of the induction is a $H_i$-partition $\mathcal{P}_i$ of $N_i$.
 	% The partition $\mathcal{P}_i$ contains each of $P_{i,1}$, $P_{i,2}$ and $P_{i,3}$.
 	We can now define our partition
 	\[
@@ -1222,7 +1222,7 @@ or there is a vertex $x$ of $G_0$ in the boundary of $A$ and $B$, and in the clo
 Each face of $G_1$ corresponds to a vertex of $G_0$ or a lake of $G_0$.
 Triangulate each face of $G_1$ corresponding to a lake of $G_0$.
 
-For each face $F$ of $G_1$ that corresponds to a vertex $x$ of $G_0$, the size of $F$ \note{DW}{Is ``size'' defined? Do we mean length of the facial cycle? } equals the number of nations incident to $x$, which is at most $d$. So every face of $G_1$ has size at most $d$.  Let $\widehat{G}_1$ be the $d$-framed graph whose frame is $G_1$.  \note{DW}{I like this notation. Should we use it throughout?}
+For each face $F$ of $G_1$ that corresponds to a vertex $x$ of $G_0$, the size of $F$ \note{DW}{Is ``size'' defined? Do we mean length of the facial cycle? } equals the number of nations incident to $x$, which is at most $d$. So every face of $G_1$ has size at most $d$.  Let $\widehat{G}_1$ be the $d$-framed graph whose frame is $G_1$.  \note{DW}{I like this notation. Should we use it throughout?} \note{PM}{No. For most things I prefer $G$ and $G_0$ rather than $\widehat{G}_0$ and $G_0$.}
 
 To complete the proof, we now show that $\widehat{G}_1$ contains every edge of $G$.
 If $vw\in E(G)$ then the nation faces of $G_0$ corresponding to $v$ and $w$ have a vertex $x$ of $G_0$ in common.   If some face of $G_1$ corresponds to $x$, then $v$ and $w$ are on a common face of $G_1$ so $vw\in E(\widehat{G}_1)$.  If no face of $G_1$ corresponds to $x$\footnote{This can occur when $x$ is on the boundary of exactly two nation faces and two lake faces.}, then the only two nation faces of $G_0$ with $x$ on their boundary are those corresponding to $v$ and $w$, in which case $vw\in E(G_1)\subseteq E(\widehat{G}_1)$.  Therefore $G\subseteq\widehat{G}_1$.
@@ -1330,8 +1330,8 @@ If $G\subseteq H\boxtimes P \boxtimes K_\ell$ then $\pi(G)\le \ell\, 4^{\tw(H)+1
 % \end{cor}
 
 Combining \cref{non-repetitive} with our results on product structure, we obtain the following corollary:
-\begin{cor}\label{nonrepetitive_cor}
-  The following bounds hold for the nonrepetitive chromatic number of any graph from each of the following classes:
+\begin{cor}\label{non-repetitive_cor}
+  The following bounds hold for the non-repetitive chromatic number of any graph from each of the following classes:
   \begin{compactitem}
     \item $k$-planar: $(18k^2+48k+30)\cdot 4^{\binom{k+4}{3}}$
     \item $(g,k)$-planar: $\max\{2g,3\}\cdot(6k^2+16k+10) 4^{\binom{k+4}{3}}$
@@ -1344,7 +1344,7 @@ Combining \cref{non-repetitive} with our results on product structure, we obtain
   \end{compactitem}
 \end{cor}
 
-Prior to the current work, the strongest upper bound on the non-repetitive chromatic number of $n$-vertex  $k$-planar graphs was $O(k\log n)$ \cite{dujmovic.morin.ea:layered}.  Our results also give bounds on the nonrepetitive chromatic number of $(g,\delta)$-string graphs and $k$-nearest-neighbour graphs, but these bounds are weaker than existing results based on maximum degree.  The bounds obtained from product structure are exponential in $\delta$ and $k^2$, respectively.  However, each of these graph classes has degree bounded by $O(\delta)$ and $O(k^2)$, respectively, and therefore have nonrepetitive chromatic number $O(\delta^2)$ and $O(k^{4})$, respectively \cite{DJKW16}.
+Prior to the current work, the strongest upper bound on the non-repetitive chromatic number of $n$-vertex  $k$-planar graphs was $O(k\log n)$ \cite{dujmovic.morin.ea:layered}.  Our results also give bounds on the non-repetitive chromatic number of $(g,\delta)$-string graphs and $k$-nearest-neighbour graphs, but these bounds are weaker than existing results based on maximum degree.  The bounds obtained from product structure are exponential in $\delta$ and $k^2$, respectively.  However, each of these graph classes has degree bounded by $O(\delta)$ and $O(k^2)$, respectively, and therefore have non-repetitive chromatic number $O(\delta^2)$ and $O(k^{4})$, respectively \cite{DJKW16}.
 
 %%%%%%%%%%%%%%%%%%%
 \subsection{Centered Colourings}
@@ -1427,7 +1427,7 @@ Combining \cref{p-centered,simple_3tree_centered_colouring} with our results on 
 Prior to the current work, the strongest known upper bounds on the $p$-centered chromatic number of $(g,k)$-planar graphs $G$ were doubly-exponential in $p$, as we now explain. \citet{dujmovic.eppstein.ea:structure} proved that $G$ has layered treewidth $(4g+6)(k+1)$.
 Van den Heuvel and Wood~\citep{vdHW18} showed that this implies that $G$  has $r$-strong colouring number at most $(4g + 6)(k + 1)(2r + 1)$. By a result of \citet{zhu:colouring}, $G$ has $r$-weak colouring number at most $( (4g + 6)(k + 1)(2r + 1) )^r$, which by another result of  \citet{zhu:colouring} implies that $G$ has  $p$-centered chromatic number at most $( (4g+6)(k+1)(2^{p-1} + 1) )^{2^{p-2}}$. The above results are substantial improvements, providing bounds on $\chi_p(G)$ that are polynomial in $p$ for fixed $g$ and $k$.
 
-As with nonrepetitive chromatic number, our results also imply bounds on the $p$-centered chromatic numer of $(g,\delta)$-string graphs, powers of bounded-degree graphs, and $k$-nearest-neighbour graphs, but these bounds are weaker than the bounds implied by the fact that these graphs have bounded maximum degree \cite{DFMS21}.
+As with non-repetitive chromatic number, our results also imply bounds on the $p$-centered chromatic numer of $(g,\delta)$-string graphs, powers of bounded-degree graphs, and $k$-nearest-neighbour graphs, but these bounds are weaker than the bounds implied by the fact that these graphs have bounded maximum degree \cite{DFMS21}.
 
 \subsection{Universal Graphs}
 
