@@ -13,11 +13,7 @@
 \usepackage{stmaryrd}
 \usepackage{thm-restate}
 \usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
-
 \usepackage{todonotes}
-
-\newcommand{\arXiv}[1]{arXiv:\,\href{https://arxiv.org/abs/#1}{#1}}
-%\newcommand{\doi}[1]{\href{https://doi.org/#1}{\tt https://doi.org/#1}}
 
 \usepackage[longnamesfirst,numbers,sort&compress]{natbib}
 
@@ -51,8 +47,6 @@
 
 \definecolor{brew2}{rgb}{1.0, 1.0, 0.701960784314}
 \definecolor{brew8}{rgb}{0.988235294118, 0.803921568627, 0.898039215686}
-
-
 
 % \allowdisplaybreaks
 %\sloppy
@@ -1089,10 +1083,11 @@ Using \cref{induction}, the proof of \cref{d_framed_product_stucture} is now str
 % }
 
 \begin{proof}[Proof of \cref{d_framed_product_stucture}]
-	Let $G$ be a $d$-framed multigraph with frame $G_0$ having outer face $F_0$.	Let $T$ be a BFS forest of $G_0$ rooted at $V(F_0)$ and let $\langle L_0,L_1,\ldots\rangle$ be the resulting BFS layering.  Let $P_1:= V(F_0)$, let $Y_1$ be any subset of $\min\{|P_1|,3\}$ vertices in $P_1$ and let $X_1:=P_1\setminus Y_1$.  Now apply \cref{induction} on $G$, $G_0$, $T$, $F=F_0$, $k=1$, and $P_1=Y_1\cup X_1$.
-    This gives an $H$-partition $\mathcal{P}:=\{S_x:x\in V(H)\}$ of $G$ in which $H$ has a $3$-simple tree decomposition.  Since any graph having a $3$-simple tree decomposition is planar \cite{knauer.ueckerdt:simple,kratochvil.vaner:note,elmallah.colbourn:on}, this implies that $H$ is planar.
+	Let $G$ be a $d$-framed multigraph with frame $G_0$ having outer face $F_0$
+	\note{DW}{Replace ``outer face'' by ``outer-cycle'' since a face is a defined to be a portion of the plane. }.	Let $T$ be a BFS forest of $G_0$ rooted at $V(F_0)$ and let $\langle L_0,L_1,\ldots\rangle$ be the resulting BFS layering.  Let $P_1:= V(F_0)$, let $Y_1$ be any subset of $\min\{|P_1|,3\}$ vertices in $P_1$ and let $X_1:=P_1\setminus Y_1$.  Now apply \cref{induction} on $G$, $G_0$, $T$, $F=F_0$, $k=1$, and $P_1=Y_1\cup X_1$.
+    This gives an $H$-partition $\mathcal{P}:=\{S_x:x\in V(H)\}$ of $G$ in which $H$ has a $3$-simple tree decomposition.  Since any graph having a $3$-simple tree decomposition is planar \cite{knauer.ueckerdt:simple,kratochvil.vaner:note,elmallah.colbourn:on}, $H$ is planar.
 
-	Use the layering $\mathcal{L}=\langle L_0',L_1'\ldots\rangle$ where $L_i'=L_{\lfloor d/2\rfloor i}\cup \cdots \cup L_{\lfloor d/2\rfloor(i+1)-1}$ for each integer $i\ge 0$. That this is a layering of $G$ follows from the fact that $\dist_{G_0}(v,w)\le \lfloor d/2\rfloor$ for each edge $vw\in E(G)$.  Since $|L_j\cap Y_x|\le 3$ for each integer $j\ge 0$, $|L_i'\cap Y_x|\le 3\lfloor d/2\rfloor$ and therefore $|L_i'\cap S_x|= |L_i'\cap Y_x|+ |L_i'\cap X_x|\le \lfloor d/2\rfloor + d -3$ for each integer $i\ge 0$ and each $x\in V(H)$. The result now follows from \cref{PartitionProduct}.
+	Define $\mathcal{L}=\langle L_0',L_1'\ldots\rangle$ where $L_i'=L_{\lfloor d/2\rfloor i}\cup \cdots \cup L_{\lfloor d/2\rfloor(i+1)-1}$ for each integer $i\ge 0$. This is a layering of $G$ since $\dist_{G_0}(v,w)\le \floor{ \frac{d}{2} }$ for each edge $vw\in E(G)$.  Since $|L_j\cap Y_x|\le 3$ for each integer $j\ge 0$, $|L_i'\cap Y_x|\le 3\floor{\frac{d}{2}}$ and therefore $|L_i'\cap S_x|= |L_i'\cap Y_x|+ |L_i'\cap X_x|\le \floor{ \frac{d}{2}} + d -3$ for each integer $i\ge 0$ and each $x\in V(H)$. The result now follows from \cref{PartitionProduct}.
 \end{proof}
 
 
@@ -1277,7 +1272,7 @@ The following corollary summarizes all of these results.
     \item $(g,k)$-planar: $\max\{1,g\}\cdot 2^{O(k^3)}$
     \item $(g,\delta)$-string: $\max\{1,g\}\cdot 2^{O(\delta^3)}$
     \item $1$-planar: $115$ 
-    \item $d$-map: $\floor{ \frac{33}{2} (d+3\floor{d/2}-3) }$ 
+    \item $d$-map: $\floor{ \frac{33}{2} (d+3\floor{\frac{d}{2}}-3) }$ 
     \item $(g,d)$-map: $\max\{1,g\}\cdot 2^{O(d)}$
     \item $k$-nearest-neighbour: $2^{O(k^6)}$
   \end{compactitem}
@@ -1321,7 +1316,7 @@ Combining \cref{non-repetitive} with our results on product structure, we obtain
     \item $(g,k)$-planar: $\max\{2g,3\}\cdot(6k^2+16k+10) 4^{\binom{k+4}{3}}$
     % \item $(g,\delta)$-string: $g4^{O(\delta^3)}$
     \item $1$-planar: $1792$
-    \item $d$-map: $256(d+3\floor{d/2}-3)$
+    \item $d$-map: $256(d+3\floor{\frac{d}{2}}-3)$
     % \item $(g,d)$-map: $g4^{O(d)}$
     % \item $k$-nearest-neighbour: $4^{O(k^6)}$
     \item $(g,d)$-map graph: $(7d^2-21d)\cdot 4^{10}$
