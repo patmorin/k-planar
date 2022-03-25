@@ -1188,6 +1188,20 @@ integer %s $g\geq 0$ and
  $d\geq 3$, every $d$-map graph is a spanning subgraph of a $d$-framed graph.
 \end{lem}
 
+
+\note{PM}{Suggested new Proof}
+\begin{proof}
+  Let $G_0$ be a graph embedded in the plane, with each face labelled a nation or a face, and where each vertex of $G_0$ is incident with at most $d$ nations and let $G$ be the corresponding map graph.  Let $G_0^*$ be the dual graph of $G_0$, so that each vertex of $G_0^*$ corresponds to face of $G_0$ and vice-versa.  Thus, each vertex of $G_0^*$ is a nation vertex or a lake vertex.
+
+  Let $x$ be a vertex of $G_0$, let $F_x$ be the corresponding face of $G_0^*$, and let $v_0,\ldots,v_r$ be the facial cycle of $F_x$.  Let $C:=w_0,\ldots,w_s$ be the subsequence of $v_0,\ldots,v_r$ consisting of only the nation vertices.  Since $x$ is incident to at most $d$ nations, $r\le d$.  We call $C_x$ the \emph{nation cycle} of $F_x$.
+
+  Let $G_1$ be a plane supergraph of $G_0^*$ obtained by adding each nation cycle of each face $F$ of $G^0$ and then triangulating each face with more than $d$ vertices on its boundary.  Each nation cycle is now a face of $G_1$ and no face of $G_1$ has more than $d$ vertices on its boundary. Let $\widehat{G}_1$ be the $d$-framed graph whose frame is $G_1$.
+
+  Since $\widehat{G}_1$ is a $d$-framed graph, it suffices to show that these definitions imply that $E(G)\subseteq E(\widehat{G}_1)$.  Indeed, if $vw\in E(G)$ then the nation faces corresponding to $v$ and $w$ have a common vertex $x$ on their boundary. The vertex $x$ corresponds to a face $F_x$ in $G_0^*$ and the facial cycle of $F_x$ contains $v$ and $w$.  Therefore, the nation cycle $C_x$ of $F_x$ contains $v$ and $w$. Since $C_x$ a face in $G_1$ the vertices $vw\in E(G_1)$.
+\end{proof}
+
+\note{PM}{Old proof}
+
 \begin{proof}
 % \note{PM}{I fixed some issues here that come from the fact that some vertices of $G_0$ do not contribute faces to $G_1$.  This happens when two nations and two lakes meet at a vertex $x$.  It's not an issue but it means we can't write ``the face of $G_1$ that corresponds to $x$.''} \note{DW}{Good}
 Let $G_0$ be a graph embedded in the plane, with each face labelled a nation or a face, and where each vertex of $G_0$ is incident with at most $d$ nations. If two lakes have a common edge in their boundaries, then we may delete the edges and merge the lakes \note{DW}{Delete the previous sentence? This sentence is incompatible with ``in the clockwise or anticlockwise order of faces around $x$, all the faces between $A$ and $B$ are lakes'' below.}. Now assume that no two lakes have a common edge in their boundaries.
