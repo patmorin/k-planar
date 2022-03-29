@@ -294,7 +294,7 @@ Theorem~\ref{PlanarProduct}(b), \cref{ShortcutProduct}, and \cref{AddDummy} impl
       \multicolumn{4}{l}{$^*$ these bounds also apply to the simple treewidth of $H$.}
     \end{tabular}
   }
-  \caption{Known product structure theorems (of the form $G\subseteq H\boxtimes P\boxtimes K_\ell$).}
+  \caption{Product structure theorems (of the form $G\subseteq H\boxtimes P\boxtimes K_\ell$).}
   \label{summary_table}
 \end{table}
 
@@ -1194,18 +1194,21 @@ Every $d$-map graph is contained in $H \boxtimes P \boxtimes K_{ d + 3\floor{d/2
 For every %all
 integer %s $g\geq 0$ and
  $d\geq 3$, every $d$-map graph is a spanning subgraph of a $d$-framed graph.
+\note{DW}{Does this need to be ``spanning subgraph of a $d$-framed multigraph''?}
 \end{lem}
 
 
 \note{PM}{Suggested new Proof}
+\note{DW}{I am happy with the new proof, once we address the issues.}
+
 \begin{proof}
-  Let $G_0$ be a graph embedded in the plane, with each face labelled a nation or a face, and where each vertex of $G_0$ is incident with at most $d$ nations and let $G$ be the corresponding map graph.  Let $G_0^*$ be the dual graph of $G_0$, so that each vertex of $G_0^*$ corresponds to face of $G_0$ and vice-versa.  Thus, each vertex of $G_0^*$ is a nation vertex or a lake vertex.
+  Let $G_0$ be a graph embedded in the plane, with each face labelled a nation or a face, and where each vertex of $G_0$ is incident with at most $d$ nations and let $G$ be the corresponding map graph.  Let $G_0^*$ be the dual graph of $G_0$. So the vertices of $G_0^*$ correspond to faces of $G_0$, and each vertex of $G_0^*$ is a nation vertex or a lake vertex.
 
-  Let $x$ be a vertex of $G_0$, let $F_x$ be the corresponding face of $G_0^*$, and let $v_0,\ldots,v_r$ be the facial cycle of $F_x$.  Let $C:=w_0,\ldots,w_s$ be the subsequence of $v_0,\ldots,v_r$ consisting of only the nation vertices.  Since $x$ is incident to at most $d$ nations, $r\le d$.  We call $C_x$ the \emph{nation cycle} of $F_x$.
+  Let $x$ be a vertex of $G_0$, let $F_x$ be the corresponding face of $G_0^*$, and let $v_0,\ldots,v_s$ be the facial cycle of $F_x$.  Let $C:=w_0,\ldots,w_r$ be the subsequence of $v_0,\ldots,v_s$ consisting of only the nation vertices.  Since $x$ is incident to at most $d$ nations, $r\le d$ \note{DW}{Why not $r+1\leq d$? Do we mean that $v_0=v_r$? I suggest we write $(v_1,\dots,v_s)$ and $(w_1,\dots,w_r)$. }.  Call $C_x$ the \defin{nation cycle} of $F_x$. \note{DW}{What if there are 1 or 2 nations incident to $x$? Is $C_x$ a cycle? Do we need parallel edges here?}
 
-  Let $G_1$ be a plane supergraph of $G_0^*$ obtained by adding each nation cycle of each face $F$ of $G^0$ and then triangulating each face with more than $d$ vertices on its boundary.  Each nation cycle is now a face of $G_1$ and no face of $G_1$ has more than $d$ vertices on its boundary. Let $\widehat{G}_1$ be the $d$-framed graph whose frame is $G_1$.
+  Let $G_1$ be a plane supergraph of $G_0^*$ obtained by adding each nation cycle of each face $F$ of $G^0$ \note{DW}{We mean `` face $F$ of $G^*_0$'', right?} and then triangulating each face with more than $d$ vertices on its boundary.  Each nation cycle is now a face of $G_1$ and no face of $G_1$ has more than $d$ vertices on its boundary. Let $\widehat{G}_1$ be the $d$-framed graph whose frame is $G_1$.
 
-  Since $\widehat{G}_1$ is a $d$-framed graph, it suffices to show that these definitions imply that $E(G)\subseteq E(\widehat{G}_1)$.  Indeed, if $vw\in E(G)$ then the nation faces corresponding to $v$ and $w$ have a common vertex $x$ on their boundary. The vertex $x$ corresponds to a face $F_x$ in $G_0^*$ and the facial cycle of $F_x$ contains $v$ and $w$.  Therefore, the nation cycle $C_x$ of $F_x$ contains $v$ and $w$. Since $C_x$ a face in $G_1$ the vertices $vw\in E(G_1)$.
+By definition, $V(G)=V(\widehat{G}_1)$. To prove the claim, it suffices to show that $E(G)\subseteq E(\widehat{G}_1)$.  Indeed, if $vw\in E(G)$ then the nation faces corresponding to $v$ and $w$ have a common vertex $x$ on their boundary. The vertex $x$ corresponds to a face $F_x$ in $G_0^*$ and the facial cycle of $F_x$ contains $v$ and $w$.  Therefore, the nation cycle $C_x$ of $F_x$ contains $v$ and $w$. Since $C_x$ bounds a face in $G_1$, $vw\in E(\widehat{G}_1)$.
 \end{proof}
 
 \note{PM}{Old proof}
