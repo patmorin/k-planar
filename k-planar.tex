@@ -197,18 +197,16 @@ Every $k$-planar graph is contained in $H\boxtimes P\boxtimes K_{18k^2+48k+30}$,
 %\note{PM}{Yes, I think so.  Two theorems, like this, or one?}
 %\note{DW}{two theorems}
 
-For the important special case of $1$-planar graphs, we are able to obtain better constants and an additional property (planarity) of $H$.
+For the important special case of $1$-planar graphs, we obtain the following result with $H$ planar and a best possible bound on the treewidth of $H$.
 
 \begin{thm}\label{1_planar_product}
-  Every $1$-planar graph is contained in $H\boxtimes P\boxtimes K_{7}$, for some planar graph $H$ of treewidth $3$ and for some path $P$.
+Every $1$-planar graph is contained in $H\boxtimes P\boxtimes K_{7}$, for some planar graph $H$ of treewidth $3$ and for some path $P$.
 \end{thm}
 
 % A planar graph of treewidth at most $3$ is said to have \emph{simple treewidth} $3$.
 
-For at least two applications, the planarity of $H$ in \cref{1_planar_product} is critical in obtaining asymptotically tight bounds \cite{BDJM,DFMS21}. \cref{1_planar_product} is proven in the more general setting of $d$-framed multigraphs. This more general result also implies a product structure theorem for $d$-map graphs in which $H$ is a planar.
+For at least two applications, the planarity of $H$ in \cref{1_planar_product} is critical in obtaining asymptotically tight bounds \cite{BDJM,DFMS21}. \cref{1_planar_product} is proven in the more general setting of $d$-framed multigraphs, which also implies a product structure theorem for $d$-map graphs in which $H$ is a planar with treewidth 3. 
 
-%
-%
 % These theorems have applications in diverse areas, which we explore in \cref{Applications}.
 
 % This theorem has applications in diverse areas, including queue layouts  \citep{DJMMUW20}, non-repetitive colouring  \citep{dujmovic.esperet.ea:planar}, $p$-centered colouring  \citep{DFMS21}, and adjacency labelling \citep{DEJGMM21}, which we explore in \cref{Applications}. For example, we prove that $k$-planar graphs have bounded non-repetitive chromatic number (for fixed $k$). Prior to the recent work of \citet{dujmovic.esperet.ea:planar}, it was even open whether planar graphs have bounded non-repetitive chromatic number.
@@ -222,6 +220,8 @@ For at least two applications, the planarity of $H$ in \cref{1_planar_product} i
 % \note{DW}{I suggest we write, ``This theorem has applications in diverse areas, which we explore in \cref{Applications}....''}
 
 \subsection{Shortcut Systems}
+
+\note{DW}{I'm not comfortable about saying that $k$-planar graphs are our most high-profile target. Why are they more important than map graphs, say?}
 
 Although $k$-planar graphs are the most high-profile target for a generalization of \cref{PlanarProduct}, we actually prove a more general result than \cref{kPlanarProduct} using the following definition. A non-empty set $\SS$ of non-trivial paths in a graph $G$ is a \defin{$(k,d)$-shortcut system} (for $G$) if:
 
@@ -256,6 +256,8 @@ Let $G$ be a graph contained in $H\boxtimes P \boxtimes K_\ell$, for some graph 
 % \note{PM}{Ok.  I've implemented this change.  I was careful, but will still reread.}
 
 Theorem~\ref{PlanarProduct}(b), \cref{ShortcutProduct}, and \cref{AddDummy} imply \cref{kPlanarProduct} with $K_{6(k^3+3k)}$ instead of $K_{18k^2+48k+30}$. Some further observations presented in \cref{k_planar_section} lead to the improved result.  \cref{ShortcutProduct} is applicable for many graph classes in addition to $k$-planar graphs. Some examples are explored in \cref{first_example,mid_example,last_example}.
+\note{DW}{I suggest we replace ``\cref{first_example,mid_example,last_example}''
+by ``\cref{examples}''.}
 
 % Here is one example. The \defin{$k$-th power} of a graph $G$ is the graph $G^k$ with vertex set $V(G^k):=V(G)$, where $vw\in E(G^k)$ if and only if $\dist_G(v,w)\leq k$.\footnote{For a graph $G$ and two vertices $v,w\in V(G)$, $\dist_G(v,w)$  denotes the length of a shortest path, in $G$, with endpoints $v$ and $w$.  We define $\dist_G(v,w):=\infty$ if $v$ and $w$ are in different connected components of $G$.} If $G$ has maximum degree $\Delta$, then $G^k = G^\SS$ for some $(k,2k\Delta^{k})$-shortcut system $\SS$; see \cref{PowerShortcut}. Theorems~\ref{PlanarProduct}(b) and \ref{ShortcutProduct} then imply:
 
@@ -271,10 +273,12 @@ Theorem~\ref{PlanarProduct}(b), \cref{ShortcutProduct}, and \cref{AddDummy} impl
 
 \cref{summary_table} summarizes existing results on product structure theorems for minor-closed graph classes and new results for non-minor-closed graph classes.
 
+\note{DW}{I suggest the table headers are not in bold}
 
 \begin{table}[h]
   \centering{
     \begin{tabular}{lccl}
+    	\hline
       \textbf{Graph class} & \boldmath $\tw(H)$ & \boldmath $\ell$ & \textbf{Reference} \\ \hline
       planar & $3^*$ & $3$ & \cite{DJMMUW20} \\
       planar & $4^*$ & $2$ & \cite{bose.morin.ea:optimal} \\
@@ -315,7 +319,7 @@ The remainder of this paper is organized as follows:
 \section{\boldmath Shortcut Systems and $k$-Planar Graphs}
 \label{Structure}
 
-The purpose of this section is to prove \cref{ShortcutProduct} and its specialization to $k$-planar graphs, \cref{kPlanarProduct}. While strong products enable concise statements of the theorems in \cref{Introduction}, to prove such results it is helpful to work with layerings and partitions, which we now introduce.
+This section proves \cref{ShortcutProduct} and its specialization to $k$-planar graphs, \cref{kPlanarProduct}. While strong products enable concise statements of the theorems in \cref{Introduction}, to prove such results it is helpful to work with layerings and partitions, which we now introduce.
 
 \subsection{Layered Partitions}
 
@@ -367,7 +371,7 @@ We now prove \cref{ShortcutPartition}.
 For convenience, it will be helpful to assume that $\SS$ contains a length-1 $vw$-shortcut for every edge $vw\in E(G)$.  Since $G^\SS$ is defined to be a supergraph of $G$, this assumption has no effect on $G^{\SS}$ but eliminates special cases in some of our proofs.
 
 Let $T$ be a tree rooted at some node $x_0\in V(T)$.  A node $a\in V(T)$ is a \defin{$T$-ancestor} of $x\in V(T)$ (and $x$ is a \defin{$T$-descendant} of $a$) if $a$ is a vertex of the path, in $T$, from $x_0$ to $x$.  Note that each node $x\in V(T)$ is a $T$-ancestor and $T$-descendant of itself.  We say that a $T$-ancestor $a\in V(T)$ of $x\in V(T)$ is a \defin{strict} $T$-ancestor of $x$ if $a\neq x$.
-The \defin{$T$-depth} of a node $x\in V(T)$ is the length of the path, in $T$, from $x_0$ to $x$.  The \defin{lowest common $T$-ancestor} of a non-empty set $S\subseteq V(T)$ is the maximum $T$-depth node of $T$ that is a $T$-ancestor of every node in $S$.  In the following, we treat any subtree $T'$ of $T$ as a rooted tree whose root is the lowest common $T$-ancestor of $V(T')$.
+The \defin{$T$-depth} of a node $x\in V(T)$ is the length of the path, in $T$, from $x_0$ to $x$.  The \defin{lowest common $T$-ancestor} of a non-empty set $S\subseteq V(T)$ is the $T$-ancestor of every node in $S$ with maximum $T$-depth. In the following, we treat any subtree $T'$ of $T$ as a rooted tree whose root is the lowest common $T$-ancestor of $V(T')$.
 
 
 
@@ -493,7 +497,7 @@ For each $x\in V(T)$, define $S_x := \{v\in V(G): a(v)= x\}$. Since $a:V(G)\to V
 
 From this point onward, the plan is to show that:
 \begin{compactenum}[(i)]
-  \item $\PP$ has small layered width with respect to the layering $\mathcal{L}$ of $G$ and that
+  \item $\PP$ has small layered width with respect to the layering $\mathcal{L}$ of $G$, and 
   \item $J$ has small treewidth.
 \end{compactenum}
 Once we have established (i) and (ii), the result follows easily since a layering of $G^\SS$ is easily obtained from $\mathcal{L}$ by `compressing' groups of $k$ consecutive layers.  We begin with Step~(i):
@@ -525,14 +529,14 @@ Once we have established (i) and (ii), the result follows easily since a layerin
   \]
 \end{proof}
 
-We now proceed with Step~(ii), showing that $J$ has small treewidth. To accomplish this, we construct a small width tree-decomposition $\mathcal{C}:=(C_x:x\in V(T))$ of $J$ using the same tree $T$ used in the tree decomposition $\mathcal{T}$ of $H$.  The following claim will be useful in showing that the resulting decomposition has small width.
+We now proceed with Step~(ii), showing that $J$ has small treewidth. To accomplish this, we construct a small width tree-decomposition $\mathcal{C}:=(C_x:x\in V(T))$ of $J$ using the same tree $T$ used in the tree-decomposition $\mathcal{T}$ of $H$.  The following claim will be useful in showing that the resulting decomposition has small width.
 
 \begin{clm}\label{i-ancestor}
   For each edge $xy\in E(J)$, one of $x$ or $y$ is a $T$-ancestor of the other.
 \end{clm}
 
 \begin{proof}
-  If $xy\in E(J)$ then there exists a shortcut $P:=v_0,\ldots,v_r\in\SS$ with endpoints $v_0\in S_x$ and $v_r\in S_y$.\footnote{Recall that we have made the assumption that $\SS$ contains a length-$1$ $vw$-shortcut for each edge $vw\in E(G)$.}  For each $i\in\{0,\ldots,r\}$, let $Y_{x_i}$ be the part in $\mathcal{Y}$ that contains $v_i$.  Since $P$ is a connected subgraph of $G$, $H[\{x_0,\ldots,x_r\}]$ is a connected subgraph of $H$.  Since $\mathcal{T}$ is a normalized tree decomposition of $H$, \tref{ancestor-edge} implies that some node $x_i$ is a $T$-ancestor of all nodes in $x_0,\ldots,x_r$.
+  If $xy\in E(J)$ then there exists a shortcut $P:=v_0,\ldots,v_r\in\SS$ with endpoints $v_0\in S_x$ and $v_r\in S_y$.\footnote{Recall that we have made the assumption that $\SS$ contains a length-$1$ $vw$-shortcut for each edge $vw\in E(G)$.}  For each $i\in\{0,\ldots,r\}$, let $Y_{x_i}$ be the part in $\mathcal{Y}$ that contains $v_i$.  Since $P$ is a connected subgraph of $G$, $H[\{x_0,\ldots,x_r\}]$ is a connected subgraph of $H$.  Since $\mathcal{T}$ is a normalized tree-decomposition of $H$, \tref{ancestor-edge} implies that some node $x_i$ is a $T$-ancestor of all nodes in $x_0,\ldots,x_r$.
 
   We claim that at least one of $v_0$ or $v_r$ participates in $x_i$.  If $i=0$ then $v_0\in Y_{x_0}=Y_{x_i}$ so $v_0$ participates in $x_i$. Similarly, if $i=r$ then $v_r$ participates in $x_r$.  Otherwise $i\in\{1,\ldots,r-1\}$ so $v_i$ is an internal vertex of the shortcut $P$, so $P$ crosses $x_i$.  Since $v_0,v_r\in V(P)$, this implies that $v_0$ and $v_r$ both participate in $x_i$.
 
@@ -548,9 +552,9 @@ The graph $J$ has a tree-decomposition in which every bag has size at most $\bin
   For the tree-decomposition $(C_x:x\in V(T))$ of $J$ we use the same tree $T$ used in the tree-decomposition $(B_x:x\in V(T))$ of $H$. For each node $x$ of $T$, we define $C_x$ as follows: $C_x$ contains $x$ as well as every $T$-ancestor $a$ of $x$ such that $J$ contains an edge $ax'$ where $x$ is a $T$-ancestor of $x'$ (including the possibility that $x=x'$).
   \cref{i-ancestor} ensures that, for every edge $ax'\in E(J)$, both $a$ and $x$ are contained in $C_{x'}$.  The connectivity of $T[a]:=T[\{x\in V(T):a\in C_x\}]$ follows from the fact that, for every node $x'\in V(T[a])$, every node $x$ on the path in $T$ from $a$ to  $x'$ is also a node of $T[a]$.  Therefore $(C_x:x\in V(T))$ is indeed a tree-decomposition of $J$.
 
-  It remains to show that each bag in this tree decomposition has size at most $\binom{k+t}{t}$.  We will do this by appealing to an elegant result of \citet{PS21} on $k$-reachability in directed skeletons, which we now explain.
+  It remains to show that each bag in this tree-decomposition has size at most $\binom{k+t}{t}$.  We will do this by appealing to an elegant result of \citet{PS21} on $k$-reachability in directed skeletons, which we now explain.
 
-  Let $H^+$ denote the supergraph of $H$ that contains the edge $xy$ if and only if some bag $B_z\in\mathcal{T}$ contains both $x$ and $y$ (i.e., $H^+$ is the chordal closure of $H$ with respect to $\mathcal{T}$).  Let $\overrightarrow{H}^+$ be the directed graph obtained by directing each edge $xy$ of $H^+$ in the direction $\overrightarrow{xy}$ so that $y$ is a $T$-ancestor of $x$. Observe that any directed path in $\overrightarrow{H}^+$ that begins at $x$ leads to a $T$-ancestor of $x$.  \citet[Lemma~13]{PS21} show that, for any $x\in V(\overrightarrow{H}^+)$, the number of strict $T$-ancestors of $x$ that can be reached by a directed path of length at most $k$ that begins at $x$ is at most $\binom{k+t}{t}-1$.
+  Let $H^+$ denote the supergraph of $H$ that contains the edge $xy$ if and only if some bag $B_z\in\mathcal{T}$ contains both $x$ and $y$ (that is, $H^+$ is the chordal closure of $H$ with respect to $\mathcal{T}$).  Let $\overrightarrow{H}^+$ be the directed graph obtained by directing each edge $xy$ of $H^+$ in the direction $\overrightarrow{xy}$ so that $y$ is a $T$-ancestor of $x$. Observe that any directed path in $\overrightarrow{H}^+$ that begins at $x$ leads to a $T$-ancestor of $x$.  \citet[Lemma~13]{PS21} show that, for any $x\in V(\overrightarrow{H}^+)$, the number of strict $T$-ancestors of $x$ that can be reached by a directed path of length at most $k$ that begins at $x$ is at most $\binom{k+t}{t}-1$.
 
   Consider an arbitrary node $x\in V(T)$ and suppose that some strict $T$-ancestor $a$ of $x$ is contained in $C_x$.  We will show that $\overrightarrow{H}^+$ contains a directed path from $x$ to $a$ of length at most $k$.  By \cite[Lemma~13]{PS21}, this implies that the number of strict $T$-ancestors of $x$ contained in $C_x$ is at most $\binom{k+t}{t}-1$ and therefore $|C_x|\le\binom{k+t}{t}$.
 
@@ -569,12 +573,11 @@ At this point, the proof of \cref{ShortcutPartition} is almost immediate from \c
 
 % \note{DW}{These definitions should appear earlier, certainly before the definition of framed graph, which should be defined as an ``embedded graph''. One option is to put this whole paragraph as a footnote in the introduction where we first mention $k$-planar graphs. The experienced reader can skip this paragraph, which says to me it should be a footnote.}
 
-We first formally define $k$-planar graphs.  For a surface $\Sigma$,  an \defin{$\Sigma$-embedded graph} $G$ is a graph with $V(G)\subset\Sigma$ in which each edge $vw\in E(G)$ is a curve\footnote{A \defin{curve} in a surface $\Sigma$ is a continuous function $f:[0,1]\to \Sigma$. The points $f(0)$ and $f(1)$ are called the \defin{endpoints} of the curve.  When there is no danger of misunderstanding we treat a curve $f$ as the point set $\{f(t):0\le t\le 1\}$.  The \defin{interior} of $f$ is the point set $\{f(t):0<t<1\}$.} in $\Sigma$ with endpoints $v$ and $w$ and not containing any vertex of $G$ in its interior. The \defin{faces} of $G$ are the connected components of $\R^2\setminus \bigcup_{vw\in E(G)} vw$. A \defin{crossing} in a $\Sigma$-embedded (multi)graph $G$ is an unordered pair of distinct edges $\{vw,xy\}\subseteq E(G)$ whose interiors have a point in common.
+We first formally define $k$-planar graphs.  For a surface $\Sigma$,  a \defin{$\Sigma$-embedded graph} $G$ is a graph with $V(G)\subset\Sigma$ in which each edge $vw\in E(G)$ is a curve\footnote{A \defin{curve} in a surface $\Sigma$ is a continuous function $f:[0,1]\to \Sigma$. The points $f(0)$ and $f(1)$ are called the \defin{endpoints} of the curve.  When there is no danger of misunderstanding we treat a curve $f$ as the point set $\{f(t):0\le t\le 1\}$.  The \defin{interior} of $f$ is the point set $\{f(t):0<t<1\}$.} in $\Sigma$ with endpoints $v$ and $w$ and not containing any vertex of $G$ in its interior. The \defin{faces} of $G$ are the connected components of $\R^2\setminus \bigcup_{vw\in E(G)} vw$. A \defin{crossing} in a $\Sigma$-embedded (multi)graph $G$ is an unordered pair of distinct edges $\{vw,xy\}\subseteq E(G)$ whose interiors have a point in common.
 
-If an embedded graph $G$  has no crossings then it is \defin{non-crossing} graph.  When $G$ is non-crossing and $F$ is a face of $G$ then $V(F)$ denotes the set of vertices in $G$ on the boundary of $F$.  When $F$ is homeomorphic to a disk, the \defin{facial walk} of $F$ is the cycle consisting of the edges and vertices of $G$ on the boundary of $F$.  When $\Sigma=\R^2$ is the Euclidean plane and each edge of $G$ is involved in at most $k$ crossings then $G$ is a $k$-plane graph.  A graph $G$ is \defin{$k$-planar} if is isomorphic to some $k$-plane graph.  A $0$-plane graph is a \defin{plane} graph and a $0$-planar graph is a \defin{planar} graph.
+If an embedded graph $G$  has no crossings then it is \defin{non-crossing} graph.  When $G$ is non-crossing and $F$ is a face of $G$ then $V(F)$ denotes the set of vertices in $G$ on the boundary of $F$.  When $F$ is homeomorphic to a disk, the \defin{facial walk} of $F$ is the cycle consisting of the edges and vertices of $G$ on the boundary of $F$.  If  $\Sigma=\R^2$ is the Euclidean plane and each edge of $G$ is involved in at most $k$ crossings, then $G$ is a $k$-plane graph.  A graph $G$ is \defin{$k$-planar} if is isomorphic to some $k$-plane graph.  A $0$-plane graph is a \defin{plane} graph and a $0$-planar graph is a \defin{planar} graph.
 
-
-Without any loss of generality we may assume that the interiors of any two edges of a $\sigma$-embedded graph $G$ have at most one point in common and that no point in $\R^2$ is contained in the interior of three or more edges of $G$.  This assumption can be enforced by local changes that do not change the number of crossings each edge is involved in.  If $p$ is a common point in the interior of two crossing edges $vw$ and $xy$ then we say that $vw$ and $xy$ \defin{cross at} $p$.
+Without any loss of generality we may assume that the interiors of any two edges of a $\Sigma$-embedded graph $G$ have at most one point in common and that no point in $\R^2$ is contained in the interior of three or more edges of $G$.  This assumption can be enforced by local changes that do not change the number of crossings each edge is involved in.  If $p$ is a common point in the interior of two crossing edges $vw$ and $xy$, then we say that $vw$ and $xy$ \defin{cross at} $p$.
 
 
 
@@ -623,7 +626,7 @@ As mentioned in \cref{Introduction}, \cref{PlanarProduct,ShortcutProduct} imply 
 % \subsection{Examples}
 
 
-\cref{kPlanarProduct} shows that every $k$-planar graph is contained in $H\boxtimes P \boxtimes K_\ell$ for some graph $H$ with treewidth $O(k^3)$ where $\ell\leq O(k^2)$.  In some applications, the treewidth of $H$ is much more important than the value of $\ell$, which leads to the following question:
+\cref{kPlanarProduct} shows that every $k$-planar graph is contained in $H\boxtimes P \boxtimes K_\ell$ for some graph $H$ with treewidth $O(k^3)$ where $\ell\leq O(k^2)$.  In some applications, the treewidth of $H$ is much more significant than the value of $\ell$, which leads to the following question:
 
 \noindent\textbf{Open Problem:}
   Does there exist a function $\ell:\N\to\N$ and a universal constant $C$ such that every $k$-planar graph is contained in $H\boxtimes P \boxtimes K_{\ell(k)}$ for some graph $H$ with treewidth at most $C$?  Perhaps $C=3$, which is the case for planar graphs (\cref{PlanarProduct}(b)) and for $1$-planar graphs (\cref{1_planar_product}). Note that $C\geq 3$ even for planar graphs \citep{DJMMUW20}.
@@ -641,7 +644,7 @@ As mentioned in the introduction, product structure theorems have been establish
   \end{compactenum}
 \end{thm}
 
-The definition of $k$-planar graphs naturally generalises to genus-$g$ surfaces. A graph $\Sigma$-embedded graph $G$ is \defin{$(\Sigma,k)$-plane} if every edge of $G$ is involved in at most $k$ crossings.  A graph $G$ is \defin{$(g,k)$-planar} if it is isomorphic to some $(\Sigma,k)$-plane graph, for some surface $\Sigma$ with Euler genus at most $g$. \cref{AddDummy} immediately generalises as follows:
+The definition of $k$-planar graphs naturally generalises to genus-$g$ surfaces. A $\Sigma$-embedded graph $G$ is \defin{$(\Sigma,k)$-plane} if every edge of $G$ is involved in at most $k$ crossings.  A graph $G$ is \defin{$(g,k)$-planar} if it is isomorphic to some $(\Sigma,k)$-plane graph, for some surface $\Sigma$ with Euler genus at most $g$. \cref{AddDummy} immediately generalises as follows:
 
 \begin{obs}
 \label{gAddDummy}
@@ -689,7 +692,7 @@ Every $(g,k)$-planar graph is contained in $H\boxtimes P \boxtimes K_\ell$ for s
 	< 2k \Delta^k \enspace.
 	\]
 	Fix a $(\Sigma,k)$-plane drawing of $G_0$ in a surface $\Sigma$ of Euler genus at most $g$. Choose $\epsilon>\epsilon'>0$.
-	For each vertex $v$ of $G_0$, let $B_v$ be the \defin{ball} $\{x\in \mathbb{R}^2:\dist(x,v)\leq\epsilon\}$
+	For each vertex $v$ of $G_0$, let $B_v$ be the \defin{ball} $\{x\in \mathbb{R}^2:\dist(x,v)\leq\epsilon\}$. 
 	For each edge $vw$ of $G_0$, let $C_{vw}$ be the \defin{channel} $\{x\in \mathbb{R}^2:\dist(x,vw)\leq\epsilon'\}\setminus(B_v\cup B_w)$.
 	We may choose $\epsilon>\epsilon'>0$ sufficiently small so that
 	(i) $B_v\cap B_w=\emptyset$ for distinct $v,w\in V(G_0)$,
@@ -898,7 +901,7 @@ Note that \cref{nearest-neighbour} is tight up to the leading constant:  Every $
 
 
 \begin{thm}\label{nn_product_structure}
-  Every $k$-nearest neighbour graph is a subgraph of $H\boxtimes P\boxtimes K_{\ell}$ for some graph $H$ of treewidth $O(k^6)$ and some $\ell\in O(k^4)$.
+  Every $k$-nearest neighbour graph is a subgraph of $H\boxtimes P\boxtimes K_{\ell}$ for some graph $H$ of treewidth $O(k^6)$ and for some $\ell\in O(k^4)$.
 \end{thm}
 
 \section{Framed Graphs}
@@ -927,15 +930,15 @@ Note that \cref{nearest-neighbour} is tight up to the leading constant:  Every $
 % \note{DW}{I suggest we use the language of ``embedded graph'' here}
 For any integer $d\ge 3$, an embedded (multi)graph $G$ is \defin{$d$-framed} if it has a biconnected plane spanning (multi)subgraph $G_0$, whose facial cycles each have length at most $d$,  and such that the interior of each edge in $E(G)\setminus E(G_0)$ is contained in the interior of some face of $G_0$. The embedded (multi)graph $G_0$ is called the \defin{frame} of $G$. This definition (for simple graphs) was introduced by \citet{BDGGMR}.
 
-Every $d$-framed multigraph can be described by a $(2,d(d-3)/2)$-shortcut system applied to a plane multigraph by adding a vertex inside each face $F$ of $G_0$ adjacent to the vertices of $F$ and creating a shortcut between each non-consecutive pair of vertices of $F$. Thus \cref{ShortcutProduct} is applicable. However, for framed graphs we prove the following stronger result, where the treewidth bound on $H$ is best possible.\footnote{A multigraph $G$ is \defin{contained} in a graph $X$ if the simple graph underlying $G$ is contained in $X$.}
+Every $d$-framed multigraph can be described by a $(2,d(d-3)/2)$-shortcut system applied to a plane multigraph by adding a vertex inside each face $F$ of $G_0$ adjacent to the vertices of $F$ and creating a shortcut between each non-adjacent pair of vertices in $V(F)$. Thus \cref{ShortcutProduct} is applicable. However, for framed graphs we prove the following stronger result, where the treewidth bound on $H$ is best possible.\footnote{A multigraph $G$ is \defin{contained} in a graph $X$ if the simple graph underlying $G$ is contained in $X$.}
 
 \begin{thm}\label{d_framed_product_stucture}
 For any integer $d\ge 3$, every $d$-framed multigraph is contained in $H\boxtimes P\boxtimes K_{d+3\floor{d/2}-3}$ for some planar graph $H$ with treewidth at most 3 and for some path $P$.
 \end{thm}
 
-\cref{d_framed_product_stucture} is used below to obtain product structure theorems for 1-planar multigraphs and for map graphs.  Even for simple 1-planar graphs it is essential that we allow frames with parallel edges.
+\cref{d_framed_product_stucture} is used below to obtain product structure theorems for 1-planar multigraphs and for map graphs.  Note that even for simple 1-planar graphs it is essential that we allow frames with parallel edges.
 
-\cref{d_framed_product_stucture} is a consequence of the following technical lemma, which is an extension of the analogous result for plane graphs~\cite{DJMMUW20}. The following definition is a convenient way to establish the planarity of $H$ in \cref{d_framed_product_stucture}:  A tree-decomposition $\mathcal{T}$ of a graph $G$ is \defin{$t$-simple} if each of its bags has size at most $t+1$ and, for each $t$-element subset $\{v_1,\ldots,v_t\}\subseteq V(G)$, at most two bags of $\mathcal{T}$ contain $\{v_1,\ldots,v_t\}$.  Finally, a \defin{BFS spanning forest} $T$ of $G$ rooted at a set $V_0\subseteq V(G)$ is a spanning forest of $G$ with the property that for each $v\in V(G)$,  \[\min\{\dist_G(v,w):w\in V_0\}=\min\{\dist_T(v,w):w\in V_0\}.\]
+\cref{d_framed_product_stucture} is a consequence of the following technical lemma, which is an extension of the analogous result for plane graphs~\cite{DJMMUW20}. The following definition is a convenient way to establish the planarity of $H$ in \cref{d_framed_product_stucture}:  A $T$-decomposition of a graph $G$ is \defin{$t$-simple} if each of its bags has size at most $t+1$ and, for each $t$-element subset $\{v_1,\ldots,v_t\}\subseteq V(G)$, at most two bags contain $v_1,\ldots,v_t$.  Finally, a \defin{BFS spanning forest} $T$ of $G$ rooted at a set $V_0\subseteq V(G)$ is a spanning forest of $G$ with the property that for each $v\in V(G)$,  \[\min\{\dist_G(v,w):w\in V_0\}=\min\{\dist_T(v,w):w\in V_0\}.\]
 
 % \note{DW}{I suggest $G'$ be changed to $G_0$ throughout (since $G'$ feels like a graph derived from $G$, which it is not). Similarly, replace $N'$ by $N_0$.}
 %
@@ -960,7 +963,7 @@ For any integer $d\ge 3$, every $d$-framed multigraph is contained in $H\boxtime
 	\begin{compactenum}[(i)]
 		\item for each $i\in\{1,\ldots,k\}$, there exists $x_i\in V(H)$ such that $P_i=S_{x_i}$;
 		\item For each $x\in V(H)$, $S_x$ has a partition $\{X_x,Y_x\}$ where $|X_x|\le d-3$ and $|Y_x\cap L_j|\le 3$ for each $j\ge 0$;
-		\item $H$ has a $3$-simple tree decomposition $\mathcal{T}$ and, if $k=3$ then $\{x_1,x_2,x_3\}$ is contained in exactly one bag of $\mathcal{T}$.
+		\item $H$ has a $3$-simple tree-decomposition $\mathcal{T}$, and if $k=3$ then $\{x_1,x_2,x_3\}$ is contained in exactly one bag of $\mathcal{T}$.
 	\end{compactenum}
 %\note{PM}{I've changed my mind about this notation change.  We end up applying the lemma inductively on the faces $F_1,\ldots,F_m$ of $M$ (which are cycles in $G$).  It makes sense that the original cycle in $G$ is called $F$.}
 %\note{DW}{okay}
@@ -981,14 +984,14 @@ For any integer $d\ge 3$, every $d$-framed multigraph is contained in $H\boxtime
 %  \begin{compactenum}[(i)]
 %    \item for each $i\in\{1,\ldots,k\}$, there exists $x_i\in V(H)$ such that $P_i=S_{x_i}$;
 %    \item For each $x\in V(H)$, $S_x=Y_x\cup X_x$ where $|X_x|\le d-3$ and $|Y_x\cap L_j|\le 3$ for each $j\ge 0$;
-%    \item $H$ has a $3$-simple tree decomposition $\mathcal{T}$ and, if $k=3$, then $\{x_1,x_2,x_3\}$ is contained in exactly one bag of $\mathcal{T}$.
+%    \item $H$ has a $3$-simple tree-decomposition $\mathcal{T}$ and, if $k=3$, then $\{x_1,x_2,x_3\}$ is contained in exactly one bag of $\mathcal{T}$.
 %  \end{compactenum}
 \end{lem}
 
 \begin{proof}
 	This proof is similar to the proof of Lemma~13 by \citet{DJMMUW20}, but is complicated by several factors.  In particular, the reader should keep in mind that $G$ and $G_0$ are multigraphs and that the cycle $F$ may consist of two vertices and two (parallel) edges.
 
-  We proceed by induction on $(x,y)$ where $x$ is the number of inner vertices of $N_0$ and $y$ is the number of inner faces of $N_0$.  The induction base case occurs when $N_0$ has no inner vertices, i.e., $V(N_0)=V(F)$. In this case we can simply take
+  We proceed by induction on $(x,y)$ where $x$ is the number of inner vertices of $N_0$ and $y$ is the number of inner faces of $N_0$.  The induction base case occurs when $N_0$ has no inner vertices (that is, $V(N_0)=V(F)$). In this case we can simply take
 	% \note{DW}{Suggested revision, ``In the base case, $N_0$ has only one inner face, and we can simply take ...}
   % \note{PM}{I debated what to put here since, even when $N'$ has only one face, the rules below work for picking $\tau$.  The \emph{real} base case occurs when $N'$ has zero faces, but that's not something that ever happens since we only ever apply induction on the inner faces of $M$ (except $\tau$).  I settled on this ``base case'' since it's clear that, in this case, the partition $\mathcal{P}$ is already decided.}
   % \note{PM}{The longwinded version is that induction is on $(x,y)$ where $x$ is the number of inner vertices of $N_0$ and $y$ is the number of inner faces of $N_0$.  The base cases are $(0,y)$ for any $y$.  Unfortunately, we can't just induct on $x$ because it doesn't always decrease.} \note{DW}{We need to make it clear what we are doing induction on.
@@ -997,7 +1000,7 @@ For any integer $d\ge 3$, every $d$-framed multigraph is contained in $H\boxtime
 	\begin{compactenum}[(i)]
 		\item By definition, each of $P_1,\ldots,P_k$ is a part of $\mathcal{P}$.
 		\item Assumption 4(b) ensures, for each $x\in V(H)$, the existence of $X_x$ and $Y_x$ such that $|X_x|\le d-3$ and $|Y_x\cap L_j|\le 3$ for each integer $j\ge 0$.
-		\item The trivial tree decomposition of $H$ that has a single bag containing $\{x_1,\ldots,x_k\}$ is $3$-simple and, if $k=3$, has exactly one bag that contains $\{x_1,\ldots,x_3\}$.
+		\item The trivial tree-decomposition of $H$ that has a single bag containing $\{x_1,\ldots,x_k\}$ is $3$-simple and, if $k=3$, has exactly one bag that contains $\{x_1,\ldots,x_3\}$.
 	\end{compactenum}
 
 % \note{DW}{Now assume that $N'$ has at least two internal faces.}
@@ -1010,7 +1013,7 @@ Our $H$-partition $\mathcal{P}$ will include $P_1$, $P_2$ , $P_3$ and a (possibl
 
 		\item If $k= 2$ then let $\tau:=v_1,\ldots,v_p$ be an inner face of $N_0$ that contains at least one edge $v_1v_2$ of $F$ on its boundary and such that $v_1\in P_1$ and $v_2\in P_2$.
 
-		\item If $k=3$ then assign each vertex $v$ of $N_0$ a colour $\alpha(v)\in\{1,\ldots,3\}$ as follows:  Let $w$ be the first vertex of $F$ encountered on the path in $T$ from $v$ to the appropriate vertex of $F_0$.  (This implies that $w=v$ when $v$ is a vertex of $F$.)  Since $w\in V(F)$, $w\in P_i$ for some $i\in\{1,\ldots,k\}$ and we define $\alpha(v):=i$.  Now, for each $d'\in\{4,\ldots,d\}$ and each $d'$-sided inner face $F$ of $N_0$, add $d'-3$ edges inside of $F$ to split it into $3$-sided faces.  This yields a plane supergraph $N_0'$ of $N_0$ in which each inner face has exactly three edges on its boundary. By Sperner's Lemma there exists an inner face $\tau':=v_1,v_2,v_3$ of $N_0'$ such that $\alpha(v_i)=i$ for each $i\in\{1,2,3\}$.  Let $\tau:=v_1,\ldots,v_p$ be  the facial cycle of $N_0$ that contains $\tau'$.
+		\item If $k=3$ then assign each vertex $v$ of $N_0$ a colour $\alpha(v)\in\{1,\ldots,3\}$ as follows:  Let $w$ be the first vertex of $V(F)$ encountered on the path in $T$ from $v$ to the appropriate vertex of $F_0$.  (This implies that $w=v$ when $v$ is a vertex of $F$.)  Since $w\in V(F)$, $w\in P_i$ for some $i\in\{1,\ldots,k\}$ and we define $\alpha(v):=i$.  Now, for each $d'\in\{4,\ldots,d\}$ and each $d'$-sided inner face $F$ of $N_0$, add $d'-3$ edges inside of $F$ to split it into $3$-sided faces.  This yields a plane supergraph $N_0'$ of $N_0$ in which each inner face has exactly three edges on its boundary. By Sperner's Lemma (see \citep{Proofs4}) there exists an inner face $\tau':=v_1,v_2,v_3$ of $N_0'$ such that $\alpha(v_i)=i$ for each $i\in\{1,2,3\}$.  Let $\tau:=v_1,\ldots,v_p$ be  the facial cycle of $N_0$ that contains $\tau'$.
 	\end{compactenum}
 
 	%  \todo[inline]{%
@@ -1019,53 +1022,52 @@ Our $H$-partition $\mathcal{P}$ will include $P_1$, $P_2$ , $P_3$ and a (possibl
 	%    DW: great. This is basically the same as the proof of the Hex Lemma.
 	%  }
 
-	We can now define the vertices in $S$.  For each $i\in\{1,2,3\}$, let $Q_i$ be the shortest path, in $T$, from $v_i$ to a vertex in $V(F)$.  Let $\overline{S}$ denote the subgraph of $N_0$ consisting of vertices and edges of $Q_1$, $Q_2$, $Q_3$, and $\tau$.
-	Let $S:=V(\overline{S})\setminus V(F)$, let $Y:=(V(Q_1)\cup V(Q_2)\cup V(Q_3))\setminus V(F)$, and let $X:=S\setminus Y$. Observe that, for each $i\in\{1,2,3\}$ and each $j\ge 0$, $|V(Q_i)\cap L_j|\le 1$.  Therefore $|Y\cap L_j|\le 3$ for each integer $j\ge 0$. Furthermore, $X\subseteq V(\tau)\setminus\{x_1,x_2,x_3\}$, so $|X|\le p-3\le d-3$. Therefore, using $S:=Y\cup X$ as a part in the partition $\PP$ satisfies condition~(ii).
+
+\begin{figure}[!b]
+	\begin{center}
+		\begin{tabular}{c@{}c@{}c}
+			\includegraphics{figs/zoomba-1} &
+			\includegraphics{figs/zoomba-2} &
+			\includegraphics{figs/zoomba-3} \\
+			\multicolumn{3}{c}{{\color{brew8}\raisebox{-3pt}{\rule{12pt}{12pt}}} $S$\qquad {\color{brew2}\raisebox{-3pt}{\rule{12pt}{12pt}}} $X$} \\
+			$k=1$ & $k=2$ & $k=3$
+		\end{tabular}
+	\end{center}
+	\caption{Three cases when choosing the face $\tau$ of $N_0$.}
+	\label{boring_figure}
+\end{figure}
+
+	We now define the vertices in $S$.  For each $i\in\{1,2,3\}$, let $Q_i$ be the shortest path, in $T$, from $v_i$ to a vertex in $V(F)$.  Let $\overline{S}$ denote the subgraph of $N_0$ consisting of vertices and edges of $Q_1$, $Q_2$, $Q_3$, and $\tau$.
+	Let $S:=V(\overline{S})\setminus V(F)$, let $Y:=(V(Q_1)\cup V(Q_2)\cup V(Q_3))\setminus V(F)$, and let $X:=S\setminus Y$. Observe that $|V(Q_i)\cap L_j|\le 1$ 	for each $i\in\{1,2,3\}$ and each $j\ge 0$.  Therefore $|Y\cap L_j|\le 3$ for each $j\ge 0$. Furthermore, $X\subseteq V(\tau)\setminus\{x_1,x_2,x_3\}$, so $|X|\le p-3\le d-3$. Therefore, using $S:=Y\cup X$ as a part in the partition $\PP$ satisfies condition~(ii).
 
 	% We claim that, for each integer $i\ge 0$, $|V(\overline{Y}^+)\cap L_i|\le 15$.  First observe that, since $Q_1,Q_2,Q_3$ are each vertical paths in $T$,  $\overline{Y}$ contains at most three vertices of $L_i$, each incident on at most two edges of $\overline{Y}$.  Since $\dist_{G'}(v,w)\le 2$ for each $vw\in E(G)$, any vertex $x\in V(\overline{Y}^+)\setminus V(\overline{Y})\cap L_i$, is incident to an edge $xy\in E(G)$ that crosses one of the at most six edges in $\overline{Y}$ having an endpoint in $L_i$.  These at most six edges have at most 12 endpoints.  Therefore $|V(\overline{Y}^+)\setminus V(\overline{Y})\cap L_i|\le 6\times 2=12$, so $|V(\overline{Y}^+)\cap L_i|\le 12+3=15$.
 
 
-	\begin{figure}
-		\begin{center}
-			\begin{tabular}{c@{}c@{}c}
-				\includegraphics{figs/zoomba-1} &
-				\includegraphics{figs/zoomba-2} &
-				\includegraphics{figs/zoomba-3} \\
-        \multicolumn{3}{c}{{\color{brew8}\raisebox{-3pt}{\rule{12pt}{12pt}}} $S$\qquad {\color{brew2}\raisebox{-3pt}{\rule{12pt}{12pt}}} $X$} \\
-				$k=1$ & $k=2$ & $k=3$
-			\end{tabular}
-		\end{center}
-		\caption{Three cases when choosing the face $\tau$ of $N_0$.}
-		\label{boring_figure}
-	\end{figure}
-
-	Refer to \cref{boring_figure}.  Let $M$ denote the subgraph of $N_0$ containing the edges and vertices of $\overline{S}$ and the edges and vertices of $F$. By our choice of $\tau$, the graph $M$ is $2$-connected.
+Let $M$ denote the subgraph of $N_0$ containing the edges and vertices of $\overline{S}$ and the edges and vertices of $F$. By our choice of $\tau$, the graph $M$ is $2$-connected.
   % Since $N'\subseteq G'$ contains only edges of $N\subseteq G$ that are not crossed, each component of $N-V(M)$ is contained in a single face of $M$.
 	Let $F_1,\ldots,F_m,\tau$ be the inner faces of $M$. By our choice of $v_1v_2v_3$, the vertices of each $F_i$ can be partitioned into at most three sets $P_{i,1}$, $P_{i,2}$, and $P_{i,3}$ where $P_{i,1}\subset Y$, $P_{i,2}\subseteq P_b$, and $P_{i,3}\subseteq P_c$ for some $b,c\in\{1,\ldots,k\}$.
 
 	In the following, in order to avoid introducing even more notation or constantly adding the modifier ``when it exists'', we will assume that $V(F_i)\cap S\neq\emptyset$ and that there are exactly two distinct $b,c\in\{1,\ldots,k\}$ such that $V(F_i)\cap P_b\neq\emptyset$ and $V(F_i)\cap P_c\neq\emptyset$.  When this assumption does not hold, exactly the same reasoning can be used, while omitting one or more of $P_{i,1}$, $P_{i,2}$ or $P_{i,3}$.
 
-	Since $M$ is $2$-connected and $\overline{S}$ is connected, $F_i[P_{i,j}]$ is connected, for each $j\in\{1,2,3\}$.  Let $N_i$ and $N_{0,i}$ be the subgraphs of $N$ and $N_0$ contained in the interior or boundary of $F_i$.  Every inner vertex of $N_{0,i}$ is an inner vertex of $N_{0}$.  Every inner face of $N_{0,i}$ is an inner face of $N_0$ and $\tau$ is not an inner face of $N_{0,i}$.  Therefore $N_{0,i}$ has no more inner vertices than $N_0$ and has fewer inner faces than $N_{0}$.  Therefore, we can apply induction using the cycle $F_i$ and the partition $P_{i,1},P_{i,2},P_{i,3}$ of $V(F_i)$.  The result of the induction is a $H_i$-partition $\mathcal{P}_i$ of $N_i$.
-	% The partition $\mathcal{P}_i$ contains each of $P_{i,1}$, $P_{i,2}$ and $P_{i,3}$.
-	We can now define our partition
+	Since $M$ is $2$-connected and $\overline{S}$ is connected, $F_i[P_{i,j}]$ is connected, for each $j\in\{1,2,3\}$.  Let $N_i$ and $N_{0,i}$ be the subgraphs of $N$ and $N_0$ contained in the interior or boundary of $F_i$.  Every inner vertex of $N_{0,i}$ is an inner vertex of $N_{0}$.  Every inner face of $N_{0,i}$ is an inner face of $N_0$ and $\tau$ is not an inner face of $N_{0,i}$.  Therefore $N_{0,i}$ has no more inner vertices than $N_0$ and has fewer inner faces than $N_{0}$.  Therefore, we can apply induction using the cycle $F_i$ and the partition $P_{i,1},P_{i,2},P_{i,3}$ of $V(F_i)$.  The result of the induction is a $H_i$-partition $\mathcal{P}_i$ of $N_i$ satisfying (i)--(iii) above. We now define our partition
 	\[
 	\mathcal{P}:=\{Y, P_1,\ldots,P_k\} \cup \bigcup_{i=1}^m \{P\in\mathcal{P}_i: P\cap V(M)=\emptyset\} \enspace .
 	\]
-	It is straightforward to verify that $\mathcal{P}$ is indeed a partition of $V(N)$ and, by definition this is an $H$-partition of $N$ for the graph $H:=N/\mathcal{P}$.  All that remains is to verify that $\mathcal{P}$ satisfies (i)--(iii).
+	It is straightforward to verify that $\mathcal{P}$ is indeed a partition of $V(N)$ and, by definition this is an $H$-partition of $N$ for the graph $H:=N/\mathcal{P}$.  It remains to verify that $\mathcal{P}$ satisfies (i)--(iii).
 
-	By construction $\mathcal{P}$ contains parts $P_1,\ldots,P_k$, so $\mathcal{P}$ satisifes (i).  By Assumption~4(b) each of the parts $P_1,P_2,P_3$ satisfies condition~(ii).  We have already argued that the part $S$ satisfies condition~(ii).  The inductive hypothesis ensures that each of the remaining parts satisfies condition~(ii).   Therefore $\mathcal{P}$ satisfies (ii).
+	By construction $\mathcal{P}$ contains parts $P_1,\ldots,P_k$, so $\mathcal{P}$ satisfies (i).  By Assumption~4(b) each of the parts $P_1,P_2,P_3$ satisfies condition~(ii).  We have already argued that the part $S$ satisfies condition~(ii).  The inductive hypothesis ensures that each of the remaining parts satisfies condition~(ii).   Therefore $\mathcal{P}$ satisfies (ii).
 
-	All that remains is to construct a tree decomposition $\mathcal{T}:=(B_y:y\in V(T_0))$ of $H$ that satisfies (iii). Let $x_0$ be the vertex of $H$ obtained from contracting $S$ and, for each $j\in\{1,\ldots,k\}$, let $x_j$ denote the vertex of $H$ obtained from contracting $P_j$.  The tree $T_0$ has a node $y_0$ with bag $B_{y_0}:=\{x_0,\ldots,x_k\}$. The inductive hypothesis ensures that, for each $i\in\{1,\ldots,m\}$,  $H_i:=N_i/\mathcal{P}_i$ has a tree decomposition $\mathcal{T}_i:=(B_z:z\in V(T_i))$ that satisfies (iii).  Let $a_i,b_i,c_i\in V(H_i)$ be the vertices obtained by contracting $P_{i,1}$, $P_{i,2}$, and $P_{i,3}$, respectively. Since $a_i$, $b_i$, $c_i$ form a clique in $H_i$, there exists a bag $B_{z_i}$ in $\mathcal{T}_i$ that contains $\{a_i,b_i,c_i\}$.
+	It remains to construct a tree-decomposition $\mathcal{T}:=(B_y:y\in V(T_0))$ of $H$ that satisfies (iii). Let $x_0$ be the vertex of $H$ obtained from contracting $S$ and, for each $j\in\{1,\ldots,k\}$, let $x_j$ denote the vertex of $H$ obtained from contracting $P_j$.  The tree $T_0$ has a node $y_0$ with bag $B_{y_0}:=\{x_0,\ldots,x_k\}$. The inductive hypothesis ensures that, for each $i\in\{1,\ldots,m\}$,  $H_i:=N_i/\mathcal{P}_i$ has a tree-decomposition $\mathcal{T}_i:=(B_z:z\in V(T_i))$ that satisfies (iii).  Let $a_i,b_i,c_i\in V(H_i)$ be the vertices obtained by contracting $P_{i,1}$, $P_{i,2}$, and $P_{i,3}$, respectively. Since $a_i$, $b_i$, $c_i$ form a clique in $H_i$, there exists a bag $B_{z_i}$ in $\mathcal{T}_i$ that contains $\{a_i,b_i,c_i\}$.
 
-	Recall that $P_{i,1}:=V(N_i)\cap S$, $P_{i,2}:=V(N_i)\cap P_b$ and $P_{i,3}:=V(N_i)\cap P_c$ for some $b,c\in\{1,\ldots,k\}$.  For each bag $B_z$, $z\in V(T_i)$, replace each occurrence of $a_i$ by $x_0$, replace each occurrence of $b_i$ by $x_b$ and replace each occurrence of $c_i$ by $x_c$.  These replacements do not increase the size of any bag and they result in a tree decomposition of the graph obtained from $H_i$ by renaming the vertices $a_i$, $b_i$, and $c_i$ with the names $x_0$, $x_a$, and $x_b$. Now add an edge that joins $y_0$ to $z_i$ so that $T_i$ becomes a subtree of $T_0$ that is adjacent to $y_0$.  We perform this operation for each $i\in\{1,\ldots,m\}$ to obtain our final tree decomposition $\mathcal{T}:=(B_y:y\in V(T_0))$.
+	Recall that $P_{i,1}:=V(N_i)\cap S$, $P_{i,2}:=V(N_i)\cap P_b$ and $P_{i,3}:=V(N_i)\cap P_c$ for some $b,c\in\{1,\ldots,k\}$.  For each bag $B_z$, $z\in V(T_i)$, replace each occurrence of $a_i$ by $x_0$, replace each occurrence of $b_i$ by $x_b$ and replace each occurrence of $c_i$ by $x_c$.  These replacements do not increase the size of any bag and they result in a tree-decomposition of the graph obtained from $H_i$ by renaming the vertices $a_i$, $b_i$, and $c_i$ with the names $x_0$, $x_a$, and $x_b$. Now add an edge that joins $y_0$ to $z_i$ so that $T_i$ becomes a subtree of $T_0$ that is adjacent to $y_0$.  We perform this operation for each $i\in\{1,\ldots,m\}$ to obtain our final tree-decomposition $\mathcal{T}:=(B_y:y\in V(T_0))$.
 
-  It is now straightforward to verify that $\mathcal{T}$ is a tree decomposition of $H_0:=N_0/\mathcal{P}$ in which each bag has size at most $4$.    To see that $\mathcal{T}$ is also a tree decomposition of $H:=N/\mathcal{P}$, consider any edge $vw\in E(N)\setminus E(N_0)$ with $v\in P_\alpha$ and $w\in P_\beta$.  We must verify that some bag of $\mathcal{T}$ contains $\alpha$ and $\beta$.  If both $v$ and $w$ are in $V(M)$, then $\alpha=x_a$ and $\beta=x_b$ for some $a,b\in\{0,\ldots,3\}$, in which case $B_{y_0}=\{x_0,\ldots,x_k\}$ contains $\alpha$ and $\beta$.  If neither $v$ nor $w$ are in $V(M)$ then, since no edge of $N\subseteq G$ crosses an edge of $M\subseteq G_0$, both $v$ and $w$ are contained in the interior of the same face $F_i$ of $M$ so, by the inductive hypothesis there exists a bag of $\mathcal{T}_i$ that contains $\alpha$ and $\beta$ and this becomes a bag of $\mathcal{T}$ that contains $\alpha$ and $\beta$.  Finally, if $v\in V(M)$ and $w\not\in V(M)$ then $v\in P_{i,j}$ for some $j\in\{1,2,3\}$ and $w$ is in the interior of some face $F_i$ of $M$. By induction, some bag of $\mathcal{T}_i$ contains $\beta$ and $\alpha'$, where $\alpha'$ is the vertex of $H_i$ obtained by contracting $P_{i,j}$.  However, before $T_i$ is attached to $T_0$ each occurence of $\alpha'$ in $\mathcal{T}_i$ is replaced by $\alpha$, so some bag of $\mathcal{T}$ contains both $\alpha$ and $\beta$. Therefore $\mathcal{T}$ is a tree decomposition of $H$.
+  It is now straightforward to verify that $\mathcal{T}$ is a tree-decomposition of $H_0:=N_0/\mathcal{P}$ in which each bag has size at most $4$.    To see that $\mathcal{T}$ is also a tree-decomposition of $H:=N/\mathcal{P}$, consider any edge $vw\in E(N)\setminus E(N_0)$ with $v\in P_\alpha$ and $w\in P_\beta$.  We must verify that some bag of $\mathcal{T}$ contains $\alpha$ and $\beta$.  If both $v$ and $w$ are in $V(M)$, then $\alpha=x_a$ and $\beta=x_b$ for some $a,b\in\{0,\ldots,3\}$, in which case $B_{y_0}=\{x_0,\ldots,x_k\}$ contains $\alpha$ and $\beta$.  If neither $v$ nor $w$ are in $V(M)$ then, since no edge of $N\subseteq G$ crosses an edge of $M\subseteq G_0$, both $v$ and $w$ are contained in the interior of the same face $F_i$ of $M$. So, by the inductive hypothesis there exists a bag of $\mathcal{T}_i$ that contains $\alpha$ and $\beta$ and this becomes a bag of $\mathcal{T}$ that contains $\alpha$ and $\beta$.  Finally, if $v\in V(M)$ and $w\not\in V(M)$, then $v\in P_{i,j}$ for some $j\in\{1,2,3\}$ and $w$ is in the interior of some face $F_i$ of $M$. By induction, some bag of $\mathcal{T}_i$ contains $\beta$ and $\alpha'$, where $\alpha'$ is the vertex of $H_i$ obtained by contracting $P_{i,j}$.  However, before $T_i$ is attached to $T_0$ each occurence of $\alpha'$ in $\mathcal{T}_i$ is replaced by $\alpha$, so some bag of $\mathcal{T}$ contains both $\alpha$ and $\beta$. Therefore $\mathcal{T}$ is a tree-decomposition of $H$.
 
   Next we verify that, when $k=3$ exactly one bag of $\mathcal{T}$ contains $\{x_1,\ldots,x_3\}$.  The bag $B_{y_0}$ contains $x_1,\ldots,x_k$. When $k=3$, each neighbour of $z_i$ of $y_0$ has a bag that contains at most two of $\{x_1,x_2,x_3\}$.  Therefore, when $k=3$, $B_y$ is the unique bag in $\mathcal{T}$ that contains $\{x_1,x_2,x_3\}$.
 
-	All that remains is to show that any triple of vertices of $H$ is contained in at most two bags of $\mathcal{T}$. By the inductive hypothesis, the only triples we need to be concerned about are the $3$-element subsets of  $\{x_0,x_1,\ldots,x_k\}$. The case $k=1$ is trivial since no triples can be formed by $\{x_0,x_1\}$.  When $k=2$, $B_{y_0}=\{x_0,x_1,x_2\}$.  In this case, the fact that $\tau$ contains an edge $v_1v_2$ of $F$ with $v_1\in P_{x_1}$ and $v_2\in P_{x_2}$ ensures that there is at most one face $F_i$ of $M$ that has vertices of $S$, $P_1$, and $P_2$ on its boundary.  (Refer to the middle of \cref{boring_figure} to convince yourself of this.)  By the inductive hypothesis (applied to $H_i$) the bag $B_{z_i}$ is the only bag of $\mathcal{T}_i$ that contains $\{x_0,x_1,x_2\}$.  Therefore there are at most two bags, $B_y$ and $B_{z_i}$ of $\mathcal{T}$ that contain $\{x_0,x_1,x_2\}$.  This establishes (iii) for $k\in\{1,2\}$ so, from this point on we assume that $k=3$.
+It remains to show that any triple of vertices of $H$ is contained in at most two bags of $\mathcal{T}$. By the inductive hypothesis, the only triples we need to be concerned about are the $3$-element subsets of  $\{x_0,x_1,\ldots,x_k\}$. The case $k=1$ is trivial since no triples can be formed by $\{x_0,x_1\}$.  When $k=2$, $B_{y_0}=\{x_0,x_1,x_2\}$.  In this case, the fact that $\tau$ contains an edge $v_1v_2$ of $F$ with $v_1\in P_{x_1}$ and $v_2\in P_{x_2}$ ensures that there is at most one face $F_i$ of $M$ that has vertices of $S$, $P_1$, and $P_2$ on its boundary  (see the middle part of \cref{boring_figure}).  By the inductive hypothesis (applied to $H_i$) the bag $B_{z_i}$ is the only bag of $\mathcal{T}_i$ that contains $\{x_0,x_1,x_2\}$.  Therefore there are at most two bags, $B_y$ and $B_{z_i}$ of $\mathcal{T}$ that contain $\{x_0,x_1,x_2\}$.  This establishes (iii) for $k\in\{1,2\}$ so, from this point on we assume that $k=3$.
 
-	We claim that, for each distinct $a,b\in \{1,2,3\}$ there is at most one face $F_i$ such that $V(F_i)\cap S_{x_j}\neq\emptyset$ for each $j\in\{0,a,b\}$.  Suppose to the contrary that there are two such faces $F_{i_1}$ and $F_{i_2}$.  Create a graph $M^+$ from $M$ by placing a vertex $v_{i_b}$ inside $F_{i_b}$ and adjacent to each vertex in $V(F_{i_b})$ for each $b\in\{1,2\}$.  Since $M$ is planar and $F_{i_1}$ and $F_{i_2}$ are distinct faces of $M$, $M^+$ is planar.  However, contracting each of $S_{x_0},\ldots,S_{x_3}$ in $M^+$ produces a graph isomorphic to the complete bipartite graph $K_{3,3}$, a contradiction.  (In this contracted graph, $x_0,x_a,x_b$ are on one side of the bipartition and $v_{i_a}$, $v_{i_b}$, and the node in $\{x_1,x_2,x_3\}\setminus\{x_a,x_b\}$ is on the other side.)
+	We claim that, for distinct $a,b\in \{1,2,3\}$ there is at most one face $F_i$ such that $V(F_i)\cap S_{x_j}\neq\emptyset$ for each $j\in\{0,a,b\}$.  Suppose to the contrary that there are two such faces $F_{i_1}$ and $F_{i_2}$.  Create a graph $M^+$ from $M$ by placing a vertex $v_{i_b}$ inside $F_{i_b}$ and adjacent to each vertex in $V(F_{i_b})$ for each $b\in\{1,2\}$.  Since $M$ is planar and $F_{i_1}$ and $F_{i_2}$ are distinct faces of $M$, $M^+$ is planar.  However, contracting each of $S_{x_0},\ldots,S_{x_3}$ in $M^+$ produces a graph isomorphic to the complete bipartite graph $K_{3,3}$, a contradiction.  (In this contracted graph, $x_0,x_a,x_b$ are on one side of the bipartition and $v_{i_a}$, $v_{i_b}$, and the node in $\{x_1,x_2,x_3\}\setminus\{x_a,x_b\}$ is on the other side.)
 
 	We have already established that, when $k=3$, the only bag that contains $\{x_1,x_2,x_3\}$ is $B_{y_0}$, so we need only consider triples $\{x_0,x_a,x_b\}$ for distinct $a,b\in\{1,2,3\}$. By the preceding claim, there is at most one face $F_i$ with vertices of $S$, $P_a$, and $P_b$ on its boundary.  By the inductive hypothesis, the only other bag in $\mathcal{T}$ that contains $\{x_0,x_a,x_b\}$ is the bag $B_{z_i}$.  This completes the proof.
 \end{proof}
@@ -1092,7 +1094,7 @@ Using \cref{induction}, the proof of \cref{d_framed_product_stucture} is now str
 	% \note{DW}{Replace ``outer face'' by ``outer-cycle'' since a face is a defined to be a portion of the plane. }.
   %\note{PM}{I added some conventions around the definition of $\Sigma$-embedded graph so that $V(F)$ is defined for a face $F$ in a non-crossing embedded graph.}
   Let $T$ be a BFS forest of $G_0$ rooted at $V(F_0)$ and let $\langle L_0,L_1,\ldots\rangle$ be the resulting BFS layering.  Let $P_1:= V(F_0)$, let $Y_1$ be any subset of $\min\{|P_1|,3\}$ vertices in $P_1$ and let $X_1:=P_1\setminus Y_1$.  Now apply \cref{induction} on $G$, $G_0$, $T$, $F=F_0$, $k=1$, and $P_1=Y_1\cup X_1$.
-    This gives an $H$-partition $\mathcal{P}:=\{S_x:x\in V(H)\}$ of $G$ in which $H$ has a $3$-simple tree decomposition.  Since any graph having a $3$-simple tree decomposition is planar \cite{knauer.ueckerdt:simple,kratochvil.vaner:note,elmallah.colbourn:on}, $H$ is planar.
+    This gives an $H$-partition $\mathcal{P}:=\{S_x:x\in V(H)\}$ of $G$ in which $H$ has a $3$-simple tree-decomposition.  Since any graph having a $3$-simple tree-decomposition is planar \cite{knauer.ueckerdt:simple,kratochvil.vaner:note,elmallah.colbourn:on}, $H$ is planar.
 
 	Define $\mathcal{L}=\langle L_0',L_1'\ldots\rangle$ where $L_i'=L_{\lfloor d/2\rfloor i}\cup \cdots \cup L_{\lfloor d/2\rfloor(i+1)-1}$ for each integer $i\ge 0$. This is a layering of $G$ since $\dist_{G_0}(v,w)\le \floor{ \frac{d}{2} }$ for each edge $vw\in E(G)$.  Since $|L_j\cap Y_x|\le 3$ for each integer $j\ge 0$, $|L_i'\cap Y_x|\le 3\floor{\frac{d}{2}}$ and therefore $|L_i'\cap S_x|= |L_i'\cap Y_x|+ |L_i'\cap X_x|\le \floor{ \frac{d}{2}} + d -3$ for each integer $i\ge 0$ and each $x\in V(H)$. The result now follows from \cref{PartitionProduct}.
 \end{proof}
@@ -1154,7 +1156,7 @@ We make $G$ into an \defin{edge-maximal} $1$-plane multigraph, by repeating the 
 \end{figure}
 
 Refer to \cref{one_planar_example}.
-To understand the structure of $G$, it is helpful to consider the plane graph $G'$ obtained by replacing each pair of edges $vw$ and $xy$ that cross at $p$ with four edges $vp$, $wp$, $xp$, and $yp$ meeting at a newly added \defin{dummy vertex} $p$. Let $F$ be a face of $G_0$ and let $W:=w_0,\ldots,w_{r-1}$ be the facial walk around $F$. In the following paragraphs, subscripts on the vertices in $W$ are implicitly taken modulo $r$. By edge maximality, if $W$ contains only non-dummy vertices, then it contains exactly three vertices and $F$ is bounded by three edges of $G$.
+To understand the structure of $G$, it is helpful to consider the plane graph $G'$ obtained by replacing each pair of edges $vw$ and $xy$ that cross at $p$ with four edges $vp$, $wp$, $xp$, and $yp$ meeting at a newly added \defin{dummy vertex} $p$. Let $F$ be a face of $G_0$ and let $W:=w_0,\ldots,w_{r-1}$ be the facial walk around $F$. In the following paragraphs, subscripts on the vertices in $W$ are implicitly taken modulo $r$. By edge-maximality, if $W$ contains only non-dummy vertices, then it contains exactly three vertices and $F$ is bounded by three edges of $G$.
 
 If $W$ contains a dummy vertex $w_i$, then neither $w_{i-1}$ nor $w_{i+1}$ is a dummy vertex since if $w_{i-1}$ (respectively $w_{i+1}$) were a dummy vertex then the edge of $G$ that contains $w_{i-1}w_i$ (respectively $w_iw_{i+1}$) would be involved in at least two crossings.  Therefore each dummy vertex $w_i$ of $W$ is flanked by two non-dummy vertices $w_{i-1},w_{i+1}\in V(G)$.  Since $w_i$ has degree $4>1$ in $G'$ and no two edges incident to a common vertex cross each other, $w_{i-1}\neq w_{i+1}$.  Since $G$ is edge-maximal the edge $w_{i-1}w_{i+1}$ is an edge of $G$ on the boundary of $F$.  Therefore, if $F$ has a dummy vertex $w_i$ in its facial walk $W$, then $W=w_{i-1},w_i,w_{i+1}$ and $F$ is bounded by three edges of $G'$, each of which is contained in a different edge of $G$.
 
@@ -1211,34 +1213,25 @@ integer %s $g\geq 0$ and
 By definition, $V(G)=V(\widehat{G}_1)$. To prove the claim, it suffices to show that $E(G)\subseteq E(\widehat{G}_1)$.  Indeed, if $vw\in E(G)$ then the nation faces corresponding to $v$ and $w$ have a common vertex $x$ on their boundary. The vertex $x$ corresponds to a face $F_x$ in $G_0^*$ and the facial cycle of $F_x$ contains $v$ and $w$.  Therefore, the nation cycle $C_x$ of $F_x$ contains $v$ and $w$. Since $C_x$ bounds a face in $G_1$, $vw\in E(\widehat{G}_1)$.
 \end{proof}
 
-\note{PM}{Old proof}
-
-\begin{proof}
-% \note{PM}{I fixed some issues here that come from the fact that some vertices of $G_0$ do not contribute faces to $G_1$.  This happens when two nations and two lakes meet at a vertex $x$.  It's not an issue but it means we can't write ``the face of $G_1$ that corresponds to $x$.''} \note{DW}{Good}
-Let $G_0$ be a graph embedded in the plane, with each face labelled a nation or a face, and where each vertex of $G_0$ is incident with at most $d$ nations. If two lakes have a common edge in their boundaries, then we may delete the edges and merge the lakes \note{DW}{Delete the previous sentence? This sentence is incompatible with ``in the clockwise or anticlockwise order of faces around $x$, all the faces between $A$ and $B$ are lakes'' below.}. Now assume that no two lakes have a common edge in their boundaries.
-Let $G$ be the corresponding map graph.
-Let $G_1$ be the graph with $V(G_1):=V(G)$, which is the set of nations, and whose edge set we now define.  Consider vertices $v$ and $w$ of $G_1$.
-Let $A$ and $B$ be the nation faces of $G_0$ corresponding to $v$ and $w$.
-Then $vw\in E(G_1)$ if $A$ and $B$ have a common edge in their boundaries,
-or there is a vertex $x$ of $G_0$ in the boundary of $A$ and $B$, and in the clockwise or anticlockwise order of faces around $x$, all the faces between $A$ and $B$ are lakes.
-% Then $G_1$ has Euler genus at most $g$.
-Each face of $G_1$ corresponds to a vertex of $G_0$ or a lake of $G_0$.
-Triangulate each face of $G_1$ corresponding to a lake of $G_0$.
-
-For each face $F$ of $G_1$ that corresponds to a vertex $x$ of $G_0$, the size of $F$ \note{DW}{Is ``size'' defined? Do we mean length of the facial cycle? } equals the number of nations incident to $x$, which is at most $d$. So every face of $G_1$ has size at most $d$.  Let $\widehat{G}_1$ be the $d$-framed graph whose frame is $G_1$.  \note{DW}{I like this notation. Should we use it throughout?} \note{PM}{No. For most things I prefer $G$ and $G_0$ rather than $\widehat{G}_0$ and $G_0$.}
-
-To complete the proof, we now show that $\widehat{G}_1$ contains every edge of $G$.
-If $vw\in E(G)$ then the nation faces of $G_0$ corresponding to $v$ and $w$ have a vertex $x$ of $G_0$ in common.   If some face of $G_1$ corresponds to $x$, then $v$ and $w$ are on a common face of $G_1$ so $vw\in E(\widehat{G}_1)$.  If no face of $G_1$ corresponds to $x$\footnote{This can occur when $x$ is on the boundary of exactly two nation faces and two lake faces.}, then the only two nation faces of $G_0$ with $x$ on their boundary are those corresponding to $v$ and $w$, in which case $vw\in E(G_1)\subseteq E(\widehat{G}_1)$.  Therefore $G\subseteq\widehat{G}_1$.
-\end{proof}
-
-% \note{DW}{give a better version of \cref{MapPartition} with $g=0$. }
-
-%So $(g,d)$-map graphs generalise graphs embedded in a surface, and we now assume that $d\geq 4$ for the remainder of this section.
-
-
-
-
-
+%\note{PM}{Old proof}
+%
+%\begin{proof}
+%% \note{PM}{I fixed some issues here that come from the fact that some vertices of $G_0$ do not contribute faces to $G_1$.  This happens when two nations and two lakes meet at a vertex $x$.  It's not an issue but it means we can't write ``the face of $G_1$ that corresponds to $x$.''} \note{DW}{Good}
+%Let $G_0$ be a graph embedded in the plane, with each face labelled a nation or a face, and where each vertex of $G_0$ is incident with at most $d$ nations. If two lakes have a common edge in their boundaries, then we may delete the edges and merge the lakes \note{DW}{Delete the previous sentence? This sentence is incompatible with ``in the clockwise or anticlockwise order of faces around $x$, all the faces between $A$ and $B$ are lakes'' below.}. Now assume that no two lakes have a common edge in their boundaries.
+%Let $G$ be the corresponding map graph.
+%Let $G_1$ be the graph with $V(G_1):=V(G)$, which is the set of nations, and whose edge set we now define.  Consider vertices $v$ and $w$ of $G_1$.
+%Let $A$ and $B$ be the nation faces of $G_0$ corresponding to $v$ and $w$.
+%Then $vw\in E(G_1)$ if $A$ and $B$ have a common edge in their boundaries,
+%or there is a vertex $x$ of $G_0$ in the boundary of $A$ and $B$, and in the clockwise or anticlockwise order of faces around $x$, all the faces between $A$ and $B$ are lakes.
+%% Then $G_1$ has Euler genus at most $g$.
+%Each face of $G_1$ corresponds to a vertex of $G_0$ or a lake of $G_0$.
+%Triangulate each face of $G_1$ corresponding to a lake of $G_0$.
+%
+%For each face $F$ of $G_1$ that corresponds to a vertex $x$ of $G_0$, the size of $F$ \note{DW}{Is ``size'' defined? Do we mean length of the facial cycle? } equals the number of nations incident to $x$, which is at most $d$. So every face of $G_1$ has size at most $d$.  Let $\widehat{G}_1$ be the $d$-framed graph whose frame is $G_1$.  \note{DW}{I like this notation. Should we use it throughout?} \note{PM}{No. For most things I prefer $G$ and $G_0$ rather than $\widehat{G}_0$ and $G_0$.}
+%
+%To complete the proof, we now show that $\widehat{G}_1$ contains every edge of $G$.
+%If $vw\in E(G)$ then the nation faces of $G_0$ corresponding to $v$ and $w$ have a vertex $x$ of $G_0$ in common.   If some face of $G_1$ corresponds to $x$, then $v$ and $w$ are on a common face of $G_1$ so $vw\in E(\widehat{G}_1)$.  If no face of $G_1$ corresponds to $x$\footnote{This can occur when $x$ is on the boundary of exactly two nation faces and two lake faces.}, then the only two nation faces of $G_0$ with $x$ on their boundary are those corresponding to $v$ and $w$, in which case $vw\in E(G_1)\subseteq E(\widehat{G}_1)$.  Therefore $G\subseteq\widehat{G}_1$.
+%\end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 \section{Applications}
@@ -1428,7 +1421,7 @@ Combining \cref{p-centered,simple_3tree_centered_colouring} with our results on 
 
 
 Prior to the current work, the strongest known upper bounds on the $p$-centered chromatic number of $(g,k)$-planar graphs $G$ were doubly-exponential in $p$, as we now explain. \citet{dujmovic.eppstein.ea:structure} proved that $G$ has layered treewidth $(4g+6)(k+1)$.
-Van den Heuvel and Wood~\citep{vdHW18} showed that this implies that $G$  has $r$-strong colouring number at most $(4g + 6)(k + 1)(2r + 1)$. By a result of \citet{zhu:colouring}, $G$ has $r$-weak colouring number at most $( (4g + 6)(k + 1)(2r + 1) )^r$, which by another result of  \citet{zhu:colouring} implies that $G$ has  $p$-centered chromatic number at most $( (4g+6)(k+1)(2^{p-1} + 1) )^{2^{p-2}}$. The above results are substantial improvements, providing bounds on $\chi_p(G)$ that are polynomial in $p$ for fixed $g$ and $k$.
+Van den Heuvel and Wood~\citep{vdHW18} showed this implies that $G$  has $r$-strong colouring number at most $(4g + 6)(k + 1)(2r + 1)$. By a result of \citet{zhu:colouring}, $G$ has $r$-weak colouring number at most $( (4g + 6)(k + 1)(2r + 1) )^r$, which by another result of  \citet{zhu:colouring} implies that $G$ has  $p$-centered chromatic number at most $( (4g+6)(k+1)(2^{p-1} + 1) )^{2^{p-2}}$. The above results are substantial improvements, providing bounds on $\chi_p(G)$ that are polynomial in $p$ for fixed $g$ and $k$.
 
 As with non-repetitive chromatic number, our results also imply bounds on the $p$-centered chromatic numer of $(g,\delta)$-string graphs, powers of bounded-degree graphs, and $k$-nearest-neighbour graphs, but these bounds are weaker than the bounds implied by the fact that these graphs have bounded maximum degree \cite{DFMS21}.
 
