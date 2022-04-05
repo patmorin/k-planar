@@ -85,7 +85,7 @@ Are the improved constants at all close to tight? Is there another
 reason for including it?
 
 \begin{response}
-There is a lot of motivation for proving this result with $H$ of treewidth 3 and planar. First, the treewidth bound is best possible (even for planar graphs). Having $H$ planar means that $H$ is in fact a planar 3-tree (also called stack polytope or Appolonian etwork). It follows that we get better bounds for queue-number for example. 
+There is a lot of motivation for proving this result with $H$ of treewidth 3 and planar. First, the treewidth bound is best possible (even for planar graphs). Having $H$ planar means that $H$ is in fact a planar 3-tree (also called stack polytope or Appolonian network). It follows that we get better bounds for queue-number for example. 
 	
 Since the initial submission, there is now even more justification for including this material.  A result of Bose et al on vertex ranking relies critically on the simple treewidth of $H$, as does the result of Debski et al on $p$-centered colouring.  In both case, if $H$ does not have simple treewidth $3$ then one does not get an asymptotically tight bound.
   
@@ -121,7 +121,7 @@ of things discussed earlier on in the introduction.
 
 5. page 6, line 16: ``Select any node $x \in V (T_0)$'' $\longrightarrow$ ``Select any nonempty node $x \in V (T_0)$''
 
-\tba
+\textcolor{blue}{All the bags at this point are non-empty. We have revised to make this clear. }
 
 6. page 6, last paragraph of Lemma 2: This isn’t quite right since you
 have to be careful with $x_0$.
@@ -289,7 +289,7 @@ reproducing the entire proof and telling the reader that they can skip
 all the details if they wish.  This is just my personal opinion
 though, so the authors can ignore this request if they choose.
 
-\textcolor{blue}{Upon reflection we agree with the referee here. Indeed, while cleaning up this proof we have also improved the constant from $30$ to $7$. The proof is quite similar to the previous proof except that graph $G'$ is obtained by removing both crossing edges involved in a crossing (the spars of a kite), rather than just one.  We now use the language of framed multigraph, for consistency with the literature. Thanks to the referee for forcing us to write this proof more carefully so that we could discover this improvement.}
+\textcolor{blue}{Upon reflection we agree with the referee here. Indeed, while cleaning up this proof we have also improved the constant from $30$ to $7$. The proof is similar to the previous proof except that graph $G'$ is obtained by removing both crossing edges involved in a crossing (the spars of a kite), rather than just one.  We now use the language of framed multigraph, for consistency with the literature. Thanks to the referee for forcing us to write this proof more carefully so that we could discover this improvement.}
 
 Page 15. Regarding the proof of Theorem 11, if it really is the same
 proof as the proof of Theorem 2, why not just prove Theorem 11 (from
@@ -314,11 +314,11 @@ be '$\alpha(w)$'.
 
 Page 18.  Say $H'$ is connected since $X$ is connected.
 
-\tba
+\textcolor{blue}{This proof is now removed since the authors of [10] included this result in the journal version of their paper.}
 
 Page 18.  Replace '$|i'-i''| < p$' by  '$0< |i'-i''| < p$'.
 
-\textcolor{blue}{This proof is now gone since the authors of [10] helpfully include this result in the journal version of their paper.}
+\textcolor{blue}{This proof is now removed since the authors of [10] included this result in the journal version of their paper.}
 
 Page 20.  Where does the bound $d(d-3)/2$ come from?  The naive bound I
 compute is $d(d-1)/2$.
