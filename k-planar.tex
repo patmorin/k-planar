@@ -221,10 +221,10 @@ For at least two applications, the planarity of $H$ in \cref{1_planar_product} i
 
 \subsection{Shortcut Systems}
 
-\note{DW}{I'm uncomfortable about saying that $k$-planar graphs are our most high-profile target. Why are they more important than map graphs or nearest neighbour graphs? I suggest ``
-The above result for $k$-planar graphs (\cref{kPlanarProduct}) is in fact a special case of a more general result that relies on the following definition. A non-empty set $\SS$  ....''}
+% \note{DW}{I'm uncomfortable about saying that $k$-planar graphs are our most high-profile target. Why are they more important than map graphs or nearest neighbour graphs? I suggest ``
+% The above result for $k$-planar graphs (\cref{kPlanarProduct}) is in fact a special case of a more general result that relies on the following definition. A non-empty set $\SS$  ....''}
 
-Although $k$-planar graphs are the most high-profile target for a generalization of \cref{PlanarProduct}, we actually prove a more general result than \cref{kPlanarProduct} using the following definition. A non-empty set $\SS$ of non-trivial paths in a graph $G$ is a \defin{$(k,d)$-shortcut system} (for $G$) if:
+The above result for $k$-planar graphs (\cref{kPlanarProduct}) is in fact a special case of a more general result that relies on the following definition. A non-empty set $\SS$ of non-trivial paths in a graph $G$ is a \defin{$(k,d)$-shortcut system} (for $G$) if:
 
 \begin{compactitem}
 \item every path in $\SS$ has length at most $k$,\footnote{A path of length $k$ consists of $k$ edges and $k+1$ vertices.  A path is \defin{trivial} if it has length 0 and \defin{non-trivial} otherwise.} and
@@ -256,9 +256,9 @@ Let $G$ be a graph contained in $H\boxtimes P \boxtimes K_\ell$, for some graph 
 % \note{DW}{Use $\SS$ for shortcut system, okay?}
 % \note{PM}{Ok.  I've implemented this change.  I was careful, but will still reread.}
 
-Theorem~\ref{PlanarProduct}(b), \cref{ShortcutProduct}, and \cref{AddDummy} imply \cref{kPlanarProduct} with $K_{6(k^3+3k)}$ instead of $K_{18k^2+48k+30}$. Some further observations presented in \cref{k_planar_section} lead to the improved result.  \cref{ShortcutProduct} is applicable for many graph classes in addition to $k$-planar graphs. Some examples are explored in \cref{first_example,mid_example,last_example}.
-\note{DW}{I suggest we replace ``\cref{first_example,mid_example,last_example}''
-by ``\cref{examples}''.}
+Theorem~\ref{PlanarProduct}(b), \cref{ShortcutProduct}, and \cref{AddDummy} imply \cref{kPlanarProduct} with $K_{6(k^3+3k)}$ instead of $K_{18k^2+48k+30}$. Some further observations presented in \cref{k_planar_section} lead to the improved result.  \cref{ShortcutProduct} is applicable for many graph classes in addition to $k$-planar graphs. Some examples are explored in \cref{examples}.
+
+% \note{DW}{I suggest we replace ``\cref{first_example,mid_example,last_example}''by ``\cref{examples}''.}
 
 % Here is one example. The \defin{$k$-th power} of a graph $G$ is the graph $G^k$ with vertex set $V(G^k):=V(G)$, where $vw\in E(G^k)$ if and only if $\dist_G(v,w)\leq k$.\footnote{For a graph $G$ and two vertices $v,w\in V(G)$, $\dist_G(v,w)$  denotes the length of a shortest path, in $G$, with endpoints $v$ and $w$.  We define $\dist_G(v,w):=\infty$ if $v$ and $w$ are in different connected components of $G$.} If $G$ has maximum degree $\Delta$, then $G^k = G^\SS$ for some $(k,2k\Delta^{k})$-shortcut system $\SS$; see \cref{PowerShortcut}. Theorems~\ref{PlanarProduct}(b) and \ref{ShortcutProduct} then imply:
 
@@ -274,13 +274,13 @@ by ``\cref{examples}''.}
 
 \cref{summary_table} summarizes existing results on product structure theorems for minor-closed graph classes and new results for non-minor-closed graph classes.
 
-\note{DW}{I suggest the table headers are not in bold}
+% \note{DW}{I suggest the table headers are not in bold}
 
 \begin{table}[h]
   \centering{
     \begin{tabular}{lccl}
     	\hline
-      \textbf{Graph class} & \boldmath $\tw(H)$ & \boldmath $\ell$ & \textbf{Reference} \\ \hline
+      {Graph class} & $\tw(H)$ & $\ell$ & {Reference} \\ \hline
       planar & $3^*$ & $3$ & \cite{DJMMUW20} \\
       planar & $4^*$ & $2$ & \cite{bose.morin.ea:optimal} \\
       planar & $6^*$ & $1$ & \cite{UWY} \\
@@ -1196,20 +1196,26 @@ Every $d$-map graph is contained in $H \boxtimes P \boxtimes K_{ d + 3\floor{d/2
 \label{MewMapGraphLemma}
 For every %all
 integer %s $g\geq 0$ and
- $d\geq 3$, every $d$-map graph is a spanning subgraph of a $d$-framed graph.
-\note{DW}{Does this need to be ``spanning subgraph of a $d$-framed multigraph''?}
+ $d\geq 3$, every $d$-map graph is a spanning subgraph of a $d$-framed multigraph.
 \end{lem}
 
 
-\note{PM}{Suggested new Proof}
-\note{DW}{I am happy with the new proof, once we address the issues.}
+% \note{PM}{Suggested new Proof}
+% \note{DW}{I am happy with the new proof, once we address the issues.}
 
 \begin{proof}
   Let $G_0$ be a graph embedded in the plane, with each face labelled a nation or a face, and where each vertex of $G_0$ is incident with at most $d$ nations and let $G$ be the corresponding map graph.  Let $G_0^*$ be the dual graph of $G_0$. So the vertices of $G_0^*$ correspond to faces of $G_0$, and each vertex of $G_0^*$ is a nation vertex or a lake vertex.
 
-  Let $x$ be a vertex of $G_0$, let $F_x$ be the corresponding face of $G_0^*$, and let $v_0,\ldots,v_s$ be the facial cycle of $F_x$.  Let $C:=w_0,\ldots,w_r$ be the subsequence of $v_0,\ldots,v_s$ consisting of only the nation vertices.  Since $x$ is incident to at most $d$ nations, $r\le d$ \note{DW}{Why not $r+1\leq d$? Do we mean that $v_0=v_r$? I suggest we write $(v_1,\dots,v_s)$ and $(w_1,\dots,w_r)$. }.  Call $C_x$ the \defin{nation cycle} of $F_x$. \note{DW}{What if there are 1 or 2 nations incident to $x$? Is $C_x$ a cycle? Do we need parallel edges here?}
+  Let $x$ be a vertex of $G_0$, let $F_x$ be the corresponding face of $G_0^*$, and let $v_1,\ldots,v_s$ be the facial cycle of $F_x$.  Let $C:=w_1,\ldots,w_r$ be the subsequence of $v_1,\ldots,v_s$ consisting of only the nation vertices.  Since $x$ is incident to at most $d$ nations, $r\le d$.
+  Call $C_x$ the \defin{nation cycle} of $F_x$. 
+  
+  \note{DW}{What if there are 1 or 2 nations incident to $x$? Is $C_x$ a cycle? Do we need parallel edges here?}
+  
+  \note{PM}{If $r=1$ then the ``nation cycle'' has no edges, so this doesn't contribute any edges to $G_1$, which is the right thing to do.}
 
-  Let $G_1$ be a plane supergraph of $G_0^*$ obtained by adding each nation cycle of each face $F$ of $G^0$ \note{DW}{We mean `` face $F$ of $G^*_0$'', right?} and then triangulating each face with more than $d$ vertices on its boundary.  Each nation cycle is now a face of $G_1$ and no face of $G_1$ has more than $d$ vertices on its boundary. Let $\widehat{G}_1$ be the $d$-framed graph whose frame is $G_1$.
+  \note{PM}{If $r=2$ then the ``nation cycle'' has one edge, so this contributes one edge to $G_1$ (which is needed, because the corresponding nations are adjacent, but no other edges are needed.)}
+  
+  Let $G_1$ be a plane supergraph of $G_0^*$ obtained by adding each nation cycle of each face $F$ of $G_0$ and then triangulating each face with more than $d$ vertices on its boundary.  Each nation cycle is now a face of $G_1$ and no face of $G_1$ has more than $d$ vertices on its boundary. Let $\widehat{G}_1$ be the $d$-framed graph whose frame is $G_1$.
 
 By definition, $V(G)=V(\widehat{G}_1)$. To prove the claim, it suffices to show that $E(G)\subseteq E(\widehat{G}_1)$.  Indeed, if $vw\in E(G)$ then the nation faces corresponding to $v$ and $w$ have a common vertex $x$ on their boundary. The vertex $x$ corresponds to a face $F_x$ in $G_0^*$ and the facial cycle of $F_x$ contains $v$ and $w$.  Therefore, the nation cycle $C_x$ of $F_x$ contains $v$ and $w$. Since $C_x$ bounds a face in $G_1$, $vw\in E(\widehat{G}_1)$.
 \end{proof}
