@@ -126,8 +126,6 @@ Dujmovi\'c~et~al.~[\emph{J.~ACM}~'20] recently proved that every planar graph is
 \section{Introduction}
 \label{Introduction}
 
-% \note{DW}{I suggest we delete ``We use $G'\subseteq G$ to denote subgraph containment; that is, $V(G')\subseteq V(G)$ and $E(G')\subseteq E(G)$. '' This is absolutely standard.}
-
 The starting point for this work is the following `product structure theorem' for planar graphs\footnote{In this paper, all graphs are finite and undirected. Unless mentioned otherwise, all graphs are also simple. For any graph $G$ and any set $S$ (typically $S\subseteq V(G)$), let $G[S]$  denote the graph with vertex set $V(G)\cap S$ and edge set $\{uv\in E(G) : u,v\in S\}$.  We use $G-S$ as a shorthand for $G[V(G)\setminus S]$. Undefined terms are in \citep{Diestel5}.} by \citet{DJMMUW20} (with an improvement by \citet{UWY}). A graph $G$ is \defin{contained} in a graph $X$ if $G$ is isomorphic to a subgraph of $X$.
 
 \begin{thm}[\citep{DJMMUW20,UWY}]
@@ -173,10 +171,6 @@ In addition, \cref{PlanarProduct} has been used to resolve or make substantial p
 % aking the first progress on this problem since the work of \citet{babai.xx} in 1984.
 % \end{compactitem}
 
-% \note{DW}{Mention other application such as vertex ranking~\citep{BDJM}, twin-width~\citep{BKW}, odd colourings~\citep{DMO}? We write a lot about adjacency labellings and universal induced subgraphs. Do we need so much detail here? We also mention this work in \cref{WrappingUp}.}
-
-% \note{PM}{Agreed. I cut this down to a list of famous open problem. We don't need to sell this so hard anymore.}
-
 All of these results hold for any graph class that has a product structure theorem analogous to \cref{PlanarProduct}; that is, for any graph class  $\mathcal{G}$ where every graph in $\mathcal{G}$ is contained in $H\boxtimes P\boxtimes K_\ell$ where $H$ has bounded treewidth, $P$ is a path, and $\ell$ is bounded.\footnote{It is easily seen that $\tw(H\boxtimes K_\ell) \leq (\tw(H)+1)\ell-1$, so we may assume that $\ell=1$ in this statement.} These applications motivate finding product structure theorems for other graph classes. \citet{DJMMUW20} prove product structure theorems for graphs of bounded Euler genus\footnote{The \textit{Euler genus} of a surface with $h$ handles and $c$ crosscaps is $2h+c$. The \textit{Euler genus} of a graph $G$ is the minimum integer $g$ such that $G$ embeds in a surface of Euler genus $g$. Of course, a graph is planar if and only if it has Euler genus 0; see \citep{mohar.thomassen:graphs} for more about graph embeddings in surfaces.} and for apex-minor-free graphs,\footnote{A graph $M$ is a \textit{minor} of a graph $G$ if a graph isomorphic to $M$ can be obtained from a subgraph of $G$ by contracting edges. A class $\mathcal{G}$ of graphs is \defin{minor-closed} if for every graph $G\in\mathcal{G}$, every minor of $G$ is in $\mathcal{G}$. A minor-closed class is \defin{proper} if it is not the class of all graphs. For example, for fixed $g\geq 0$, the class of graphs with Euler genus at most $g$ is a proper minor-closed class. A graph $G$ is $t$-apex if it contains a set $A$ of at most $t$ vertices such that $G-A$ is planar. A 1-apex graph is \defin{apex}.  A minor-closed class $\mathcal{G}$ is apex-minor-free if some apex graph is not in $\mathcal{G}$.} and \citet{DEMWW22} do so for bounded-degree graphs in any minor-closed class. See
 % \cref{Generalisations} for more precise statements and see
 \citep{DHJLW21} for a survey on this topic.
@@ -193,17 +187,11 @@ We start with the example of $k$-planar graphs. A graph is \defin{$k$-planar} if
 Every $k$-planar graph is contained in $H\boxtimes P\boxtimes K_{18k^2+48k+30}$, for some graph $H$ of treewidth $\binom{k+4}{3}-1$ and for some path $P$.
 \end{thm}
 
-%\note{DW}{Do we want to mention ``every $1$-planar graph is contained in $H\boxtimes P\boxtimes K_7$ for some planar graph $H$ of treewidth $3$ and for some path $P$'' here?}
-%\note{PM}{Yes, I think so.  Two theorems, like this, or one?}
-%\note{DW}{two theorems}
-
 For the important special case of $1$-planar graphs, we obtain the following result with $H$ planar and a best possible bound on the treewidth of $H$.
 
 \begin{thm}\label{1_planar_product}
 Every $1$-planar graph is contained in $H\boxtimes P\boxtimes K_{7}$, for some planar graph $H$ of treewidth $3$ and for some path $P$.
 \end{thm}
-
-% A planar graph of treewidth at most $3$ is said to have \emph{simple treewidth} $3$.
 
 For at least two applications, the planarity of $H$ in \cref{1_planar_product} is critical in obtaining asymptotically tight bounds \cite{BDJM,DFMS21}. \cref{1_planar_product} is proven in the more general setting of $d$-framed multigraphs, which also implies a product structure theorem for $d$-map graphs in which $H$ is a planar with treewidth 3. 
 
@@ -220,9 +208,6 @@ For at least two applications, the planarity of $H$ in \cref{1_planar_product} i
 % \note{DW}{I suggest we write, ``This theorem has applications in diverse areas, which we explore in \cref{Applications}....''}
 
 \subsection{Shortcut Systems}
-
-% \note{DW}{I'm uncomfortable about saying that $k$-planar graphs are our most high-profile target. Why are they more important than map graphs or nearest neighbour graphs? I suggest ``
-% The above result for $k$-planar graphs (\cref{kPlanarProduct}) is in fact a special case of a more general result that relies on the following definition. A non-empty set $\SS$  ....''}
 
 The above result for $k$-planar graphs (\cref{kPlanarProduct}) is in fact a special case of a more general result that relies on the following definition. A non-empty set $\SS$ of non-trivial paths in a graph $G$ is a \defin{$(k,d)$-shortcut system} (for $G$) if:
 
@@ -1199,23 +1184,12 @@ integer %s $g\geq 0$ and
  $d\geq 3$, every $d$-map graph is a spanning subgraph of a $d$-framed multigraph.
 \end{lem}
 
-
-% \note{PM}{Suggested new Proof}
-% \note{DW}{I am happy with the new proof, once we address the issues.}
-
 \begin{proof}
   Let $G_0$ be a graph embedded in the plane, with each face labelled a nation or a face, and where each vertex of $G_0$ is incident with at most $d$ nations and let $G$ be the corresponding map graph.  Let $G_0^*$ be the dual graph of $G_0$. So the vertices of $G_0^*$ correspond to faces of $G_0$, and each vertex of $G_0^*$ is a nation vertex or a lake vertex.
 
-  Let $x$ be a vertex of $G_0$, let $F_x$ be the corresponding face of $G_0^*$, and let $v_1,\ldots,v_s$ be the facial cycle of $F_x$.  Let $C:=w_1,\ldots,w_r$ be the subsequence of $v_1,\ldots,v_s$ consisting of only the nation vertices.  Since $x$ is incident to at most $d$ nations, $r\le d$.
-  Call $C_x$ the \defin{nation cycle} of $F_x$. 
+  Let $x$ be a vertex of $G_0$, let $F_x$ be the corresponding face of $G_0^*$, and let $v_1,\ldots,v_s$ be the facial cycle of $F_x$.  Let $C:=w_1,\ldots,w_r$ be the subsequence of $v_1,\ldots,v_s$ consisting of only the nation vertices.  Since $x$ is incident to at most $d$ nations, $r\le d$. Call $C_x$ the \defin{nation cycle} of $F_x$. Note that if $r=1$ then the ``nation cycle'' has no edges, and if $r=2$ then the ``nation cycle'' has one edge. \note{DW}{Perhaps we shouldn't call it the ``nation cycle'' since it is not necessarily a cycle.}
   
-  \note{DW}{What if there are 1 or 2 nations incident to $x$? Is $C_x$ a cycle? Do we need parallel edges here?}
-  
-  \note{PM}{If $r=1$ then the ``nation cycle'' has no edges, so this doesn't contribute any edges to $G_1$, which is the right thing to do.}
-
-  \note{PM}{If $r=2$ then the ``nation cycle'' has one edge, so this contributes one edge to $G_1$ (which is needed, because the corresponding nations are adjacent, but no other edges are needed.)}
-  
-  Let $G_1$ be a plane supergraph of $G_0^*$ obtained by adding each nation cycle of each face $F$ of $G_0$ and then triangulating each face with more than $d$ vertices on its boundary.  Each nation cycle is now a face of $G_1$ and no face of $G_1$ has more than $d$ vertices on its boundary. Let $\widehat{G}_1$ be the $d$-framed graph whose frame is $G_1$.
+  Let $G_1$ be a plane supergraph of $G_0^*$ obtained by adding the nation cycle of each face $F$ of $G_0$, and then triangulating each face with more than $d$ vertices on its boundary.  Each nation cycle \note{DW}{add `` of length at least 3''} is now a face of $G_1$, and no face of $G_1$ has more than $d$ vertices on its boundary. Let $\widehat{G}_1$ be the $d$-framed graph whose frame is $G_1$.
 
 By definition, $V(G)=V(\widehat{G}_1)$. To prove the claim, it suffices to show that $E(G)\subseteq E(\widehat{G}_1)$.  Indeed, if $vw\in E(G)$ then the nation faces corresponding to $v$ and $w$ have a common vertex $x$ on their boundary. The vertex $x$ corresponds to a face $F_x$ in $G_0^*$ and the facial cycle of $F_x$ contains $v$ and $w$.  Therefore, the nation cycle $C_x$ of $F_x$ contains $v$ and $w$. Since $C_x$ bounds a face in $G_1$, $vw\in E(\widehat{G}_1)$.
 \end{proof}
