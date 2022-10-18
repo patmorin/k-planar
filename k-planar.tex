@@ -126,9 +126,9 @@ Dujmovi\'c~et~al.~[\emph{J.~ACM}~'20] recently proved that every planar graph is
 \section{Introduction}
 \label{Introduction}
 
-The starting point for this work is the following `product structure theorem' for planar graphs\footnote{In this paper, all graphs are finite and undirected. Unless mentioned otherwise, all graphs are also simple. For any graph $G$ and any set $S$ (typically $S\subseteq V(G)$), let $G[S]$  denote the graph with vertex set $V(G)\cap S$ and edge set $\{uv\in E(G) : u,v\in S\}$.  We use $G-S$ as a shorthand for $G[V(G)\setminus S]$. Undefined terms are in \citep{Diestel5}.} by \citet{DJMMUW20} (with an improvement by \citet{UWY}). A graph $G$ is \defin{contained} in a graph $X$ if $G$ is isomorphic to a subgraph of $X$.
+The starting point for this work is the following `product structure theorem' for planar graphs\footnote{In this paper, all graphs are finite and undirected. Unless mentioned otherwise, all graphs are also simple. For any graph $G$ and any set $S$ (typically $S\subseteq V(G)$), let $G[S]$  denote the graph with vertex set $V(G)\cap S$ and edge set $\{uv\in E(G) : u,v\in S\}$.  We use $G-S$ as a shorthand for $G[V(G)\setminus S]$. Undefined terms are in \citep{Diestel5}.} by \citet{DJMMUW20} (with an improvement by \citet{UWY22}). A graph $G$ is \defin{contained} in a graph $X$ if $G$ is isomorphic to a subgraph of $X$.
 
-\begin{thm}[\citep{DJMMUW20,UWY}]
+\begin{thm}[\citep{DJMMUW20,UWY22}]
 \label{PlanarProduct}
 Every planar graph is contained in:
 \begin{compactenum}[(a)]
@@ -227,9 +227,9 @@ Let $G$ be a graph contained in $H\boxtimes P \boxtimes K_\ell$, for some graph 
       {Graph class} & $\tw(H)$ & $\ell$ & {Reference} \\ \hline
       planar & $3^*$ & $3$ & \cite{DJMMUW20} \\
       planar & $4^*$ & $2$ & \cite{bose.morin.ea:optimal} \\
-      planar & $6^*$ & $1$ & \cite{UWY} \\
+      planar & $6^*$ & $1$ & \cite{UWY22} \\
       genus $g$ & $3^*$ & $\max\{2g,3\}$ & \cite{DHHW} \\
-      genus $g$ & $2g+6$ & 1 & \cite{UWY} \\
+      genus $g$ & $2g+6$ & 1 & \cite{UWY22} \\
       apex-minor-free & $O(1)$ & $O(1)$ & \cite{DJMMUW20} \\
       % B-minor-free & $O(1)$ & $O(1)$ & \cite{DJMMUW20} \\
       $k$-planar & $\binom{k+4}{3}-1$ & $18k^2 + 48k + 30$ & \cref{kPlanarProduct} \\
@@ -279,7 +279,7 @@ For every graph $H$, a graph $G$ has an $H$-partition of layered width at most $
 \end{lem}
 
 As an example of the use of layered partitions, to prove \cref{PlanarProduct}(a),
-\citet{DJMMUW20} build on an earlier result of \citet{PS21} to show that every planar graph has an $H$-partition of layered width $1$ for some planar graph $H$ of treewidth at most $8$ (improved to $6$ in \cite{UWY}). The proof is constructive and gives a simple quadratic-time algorithm for finding the corresponding partition and layering.\footnote{\citet{bose.morin.ea:optimal} have recently given linear time algorithms for computing layered $H$-partitions of planar graphs.}
+\citet{DJMMUW20} build on an earlier result of \citet{PS21} to show that every planar graph has an $H$-partition of layered width $1$ for some planar graph $H$ of treewidth at most $8$ (improved to $6$ in \citep{UWY22}). The proof is constructive and gives a simple quadratic-time algorithm for finding the corresponding partition and layering.\footnote{\citet{bose.morin.ea:optimal} have recently given linear time algorithms for computing layered $H$-partitions of planar graphs.}
 
 By \cref{PartitionProduct}, \cref{ShortcutProduct} is equivalent to the following result, whose proof is the subject of the next section.
 
@@ -444,7 +444,7 @@ As mentioned in \cref{Introduction}, \cref{PlanarProduct,ShortcutProduct} imply 
 
 As mentioned in the introduction, product structure theorems have been established for several minor-closed classes in addition to planar graphs, including the following version of \cref{PlanarProduct} for graphs of bounded Euler genus.
 
-\begin{thm}[\citep{DJMMUW20,UWY,DHHW}]\label{GenusProduct}
+\begin{thm}[\citep{DJMMUW20,UWY22,DHHW}]\label{GenusProduct}
   Every graph of Euler genus $g$ is contained in:
   \begin{compactenum}[(a)]
   \item $H  \boxtimes P$ for some graph $H$ of treewidth at most $2g+6$  and some path $P$.
@@ -984,357 +984,6 @@ Combining \cref{Universal} with our results on product structure yields the foll
        \setlength{\itemsep}{0ex}%
    }{\end{oldthebibliography}}
 
-%\bibliographystyle{DavidNatbibStyle}
-%\bibliography{k-planar}
-
-\begin{thebibliography}{49}
-	\providecommand{\natexlab}[1]{#1}
-	\providecommand{\msn}[1]{MR:\,\href{http://www.ams.org/mathscinet-getitem?mr=MR{#1}}{#1}}
-	\providecommand{\ZBL}[1]{Zbl:\,\href{https://www.zentralblatt-math.org/zmath/en/search/?q=an:#1}{#1}}
-	\providecommand{\url}[1]{\texttt{#1}}
-	\providecommand{\urlprefix}{}
-	\expandafter\ifx\csname urlstyle\endcsname\relax
-	\providecommand{\doi}[1]{doi:\discretionary{}{}{}#1}\else
-	\providecommand{\doi}{doi:\discretionary{}{}{}\begingroup
-		\urlstyle{rm}\Url}\fi
-	
-	\bibitem[{{\'{A}}brego et~al.(2011){\'{A}}brego, Monroy,
-		Fern{\'{a}}ndez{-}Merchant, Flores{-}Pe{\~{n}}aloza, Hurtado,
-		Sacrist{\'{a}}n, and Saumell}]{abrego.munroy.ea:on}
-	\textsc{Bernardo~M. {\'{A}}brego, Ruy~Fabila Monroy, Silvia
-		Fern{\'{a}}ndez{-}Merchant, David Flores{-}Pe{\~{n}}aloza, Ferran Hurtado,
-		Vera Sacrist{\'{a}}n, and Maria Saumell}.
-	\newblock \href{https://doi.org/10.1016/j.comgeo.2010.11.003}{On crossing
-		numbers of geometric proximity graphs}.
-	\newblock \emph{Comput. Geom.}, 44(4):216--233, 2011.
-	
-	\bibitem[{Aigner and Ziegler(2010)}]{Proofs4}
-	\textsc{Martin Aigner and G{\"u}nter~M. Ziegler}.
-	\newblock Proofs from {T}he {B}ook.
-	\newblock Springer, 4th edn., 2010.
-	
-	\bibitem[{Ajtai et~al.(1982)Ajtai, Chv{\'a}tal, Newborn, and
-		Szemer{\'e}di}]{ajtai.chvatal.ea:crossing-free}
-	\textsc{Mikl{\'o}s Ajtai, Va{\v{s}}ek Chv{\'a}tal, Monroe~M. Newborn, and Endre
-		Szemer{\'e}di}.
-	\newblock \href{https://doi.org/10.1016/S0304-0208(08)73484-4}{Crossing-free
-		subgraphs}.
-	\newblock \emph{Ann. Discrete Math.}, 12:9--12, 1982.
-	
-	\bibitem[{Alam et~al.(2020)Alam, Bekos, Gronemann, Kaufmann, and
-		Pupyrev}]{ABGKP20}
-	\textsc{Jawaherul~Md. Alam, Michael~A. Bekos, Martin Gronemann, Michael
-		Kaufmann, and Sergey Pupyrev}.
-	\newblock \href{https://doi.org/10.1007/s00453-020-00697-4}{Queue layouts of
-		planar 3-trees}.
-	\newblock \emph{Algorithmica}, 82:2564--2585, 2020.
-	
-	\bibitem[{Alon et~al.(2002)Alon, Grytczuk, Ha{\l}uszczak, and
-		Riordan}]{AGHR-RSA02}
-	\textsc{Noga Alon, {Jaros{\l}aw} Grytczuk, Mariusz Ha{\l}uszczak, and Oliver
-		Riordan}.
-	\newblock \href{https://doi.org/10.1002/rsa.10057}{Nonrepetitive colorings of
-		graphs}.
-	\newblock \emph{Random Structures Algorithms}, 21(3-4):336--346, 2002.
-	
-	\bibitem[{Babai et~al.(1982)Babai, Chung, Erd\H{o}s, Graham, and
-		Spencer}]{babai.chung.ea:on}
-	\textsc{Laszlo Babai, F.~R.~K. Chung, Paul Erd\H{o}s, Ronald~L. Graham, and
-		J.~H. Spencer}.
-	\newblock On graphs which contain all sparse graphs.
-	\newblock In \emph{Theory and practice of combinatorics. A collection of
-		articles honoring Anton Kotzig on the occasion of his sixtieth birthday}, pp.
-	21--26. Elsevier, 1982.
-	
-	\bibitem[{Bekos et~al.(2020)Bekos, Lozzo, Griesbach, Gronemann, Montecchiani,
-		and Raftopoulou}]{BDGGMR}
-	\textsc{Michael~A. Bekos, Giordano~Da Lozzo, Svenja Griesbach, Martin
-		Gronemann, Fabrizio Montecchiani, and Chrysanthi~N. Raftopoulou}.
-	\newblock \href{https://doi.org/10.4230/LIPIcs.SoCG.2020.16}{Book embeddings of
-		nonplanar graphs with small faces in few pages}.
-	\newblock In \textsc{Sergio Cabello and Danny~Z. Chen}, eds., \emph{36th
-		International Symposium on Computational Geometry, SoCG 2020, June 23-26,
-		2020, Z{\"{u}}rich, Switzerland}, vol. 164 of \emph{LIPIcs}, pp. 16:1--16:17.
-	Schloss Dagstuhl - Leibniz-Zentrum f{\"{u}}r Informatik, 2020.
-	\newblock arXiv:2003.07655.
-	
-	\bibitem[{Bodlaender(1998)}]{Bodlaender-TCS98}
-	\textsc{Hans~L. Bodlaender}.
-	\newblock \href{https://doi.org/10.1016/S0304-3975(97)00228-4}{A partial
-		$k$-arboretum of graphs with bounded treewidth}.
-	\newblock \emph{Theoret. Comput. Sci.}, 209(1-2):1--45, 1998.
-	
-	\bibitem[{Bonnet et~al.(2022)Bonnet, Kwon, and Wood}]{BKW}
-	\textsc{\'Edouard Bonnet, {O-joung} Kwon, and David~R. Wood}.
-	\newblock \href{http://arxiv.org/abs/2202.11858}{Reduced bandwidth: a
-		qualitative strengthening of twin-width in minor-closed classes (and
-		beyond)}.
-	\newblock 2022, arXiv:2202.11858.
-	
-	\bibitem[{Bose et~al.(2012)Bose, Dujmovic, Hurtado, Iacono, Langerman, Meijer,
-		Adinolfi, Saumell, and Wood}]{ProximityGraphs}
-	\textsc{Prosenjit Bose, Vida Dujmovic, Ferran Hurtado, John Iacono, Stefan
-		Langerman, Henk Meijer, Vera~Sacrist{\'{a}}n Adinolfi, Maria Saumell, and
-		David~R. Wood}.
-	\newblock \href{https://doi.org/10.1142/S0218195912500112}{Proximity graphs: E,
-		{\(\delta\)}, {\(\Delta\)}, {\(\chi\)} and {\(\omega\)}}.
-	\newblock \emph{Int. J. Comput. Geometry Appl.}, 22(5):439--470, 2012.
-	
-	\bibitem[{Bose et~al.(2020)Bose, Dujmovi\'c, Javarsineh, and Morin}]{BDJM}
-	\textsc{Prosenjit Bose, Vida Dujmovi\'c, Mehrnoosh Javarsineh, and Pat Morin}.
-	\newblock \href{http://arxiv.org/abs/2007.06455}{Asymptotically optimal vertex
-		ranking of planar graphs}.
-	\newblock 2020, arXiv:2007.06455.
-	
-	\bibitem[{Bose et~al.(2022)Bose, Morin, and Odak}]{bose.morin.ea:optimal}
-	\textsc{Prosenjit Bose, Pat Morin, and Saeed Odak}.
-	\newblock \href{http://arxiv.org/abs/2202.08870}{An optimal algorithm for
-		product structure in planar graphs}.
-	\newblock 2022, arXiv:2202.08870.
-	
-	\bibitem[{Bose et~al.(2001)Bose, Morin, Stojmenović, and
-		Urrutia}]{bose.morin.ea:routing}
-	\textsc{Prosenjit Bose, Pat Morin, Ivan Stojmenović, and Jorge Urrutia}.
-	\newblock \href{https://doi.org/10.1023/A:1012319418150}{Routing with
-		guaranteed delivery in ad hoc wireless networks}.
-	\newblock \emph{Wireless Networks}, 7(6):609--616, 2001.
-	
-	\bibitem[{Brandenburg(2019)}]{Brandenburg19}
-	\textsc{Franz~J. Brandenburg}.
-	\newblock \href{https://doi.org/10.1007/s00453-018-0510-x}{Characterizing and
-		recognizing 4-map graphs}.
-	\newblock \emph{Algorithmica}, 81(5):1818--1843, 2019.
-	
-	\bibitem[{Brandenburg(2020)}]{Brandenburg20}
-	\textsc{Franz~J. Brandenburg}.
-	\newblock \href{http://arxiv.org/abs/2012.06874}{Book embeddings of $k$-map
-		graphs}.
-	\newblock 2020, arXiv:2012.06874.
-	
-	\bibitem[{Chen et~al.(2002)Chen, Grigni, and Papadimitriou}]{CGP02}
-	\textsc{Zhi-Zhong Chen, Michelangelo Grigni, and Christos~H. Papadimitriou}.
-	\newblock \href{https://doi.org/10.1145/506147.506148}{Map graphs}.
-	\newblock \emph{J. ACM}, 49(2):127--138, 2002.
-	
-	\bibitem[{Chen et~al.(2006)Chen, Grigni, and Papadimitriou}]{CGP06}
-	\textsc{Zhi-Zhong Chen, Michelangelo Grigni, and Christos~H. Papadimitriou}.
-	\newblock \href{https://doi.org/10.1007/s00453-005-1184-8}{Recognizing
-		hole-free 4-map graphs in cubic time}.
-	\newblock \emph{Algorithmica}, 45(2):227--262, 2006.
-	
-	\bibitem[{Diestel(2018)}]{Diestel5}
-	\textsc{Reinhard Diestel}.
-	\newblock \href{http://diestel-graph-theory.com/}{Graph theory}, vol. 173 of
-	\emph{Graduate Texts in Mathematics}.
-	\newblock Springer, 5th edn., 2018.
-	
-	\bibitem[{Distel et~al.(2021)Distel, Hickingbotham, Huynh, and Wood}]{DHHW}
-	\textsc{Marc Distel, Robert Hickingbotham, Tony Huynh, and David~R. Wood}.
-	\newblock \href{http://arxiv.org/abs/2112.10025}{Improved product structure for
-		graphs on surfaces}.
-	\newblock 2021, arXiv:2112.10025.
-	
-	\bibitem[{D\k{e}bski et~al.(2021)D\k{e}bski, Felsner, Micek, and
-		Schr\"{o}der}]{DFMS21}
-	\textsc{Micha{\l} D\k{e}bski, Stefan Felsner, Piotr Micek, and Felix
-		Schr\"{o}der}.
-	\newblock \href{https://doi.org/10.19086/aic.27351}{Improved bounds for
-		centered colorings}.
-	\newblock \emph{Adv. Comb.}, \#8, 2021.
-	
-	\bibitem[{Dujmovi\'c et~al.(2017{\natexlab{a}})Dujmovi\'c, Eppstein, and
-		Wood}]{dujmovic.eppstein.ea:structure}
-	\textsc{Vida Dujmovi\'c, David Eppstein, and David~R. Wood}.
-	\newblock \href{https://doi.org/10.1137/16M1062879}{Structure of graphs with
-		locally restricted crossings}.
-	\newblock \emph{{SIAM} J. Discrete Math.}, 31(2):805--824, 2017{\natexlab{a}}.
-	
-	\bibitem[{Dujmovi\'c et~al.(2021)Dujmovi\'c, Esperet, Gavoille, Joret, Micek,
-		and Morin}]{DEJGMM21}
-	\textsc{Vida Dujmovi\'c, Louis Esperet, Cyril Gavoille, Gwena\"el Joret, Piotr
-		Micek, and Pat Morin}.
-	\newblock \href{https://doi.org/10.1145/3477542}{Adjacency labelling for planar
-		graphs (and beyond)}.
-	\newblock \emph{J. ACM}, 68(6):42, 2021.
-	
-	\bibitem[{Dujmovi\'c et~al.(2020)Dujmovi\'c, Esperet, Joret, Walczak, and
-		Wood}]{dujmovic.esperet.ea:planar}
-	\textsc{Vida Dujmovi\'c, Louis Esperet, Gwena{\"{e}}l Joret, Bartosz Walczak,
-		and David~R. Wood}.
-	\newblock \href{https://doi.org/10.19086/aic.12100}{Planar graphs have bounded
-		nonrepetitive chromatic number}.
-	\newblock \emph{Adv. Comb.}, \#5, 2020.
-	
-	\bibitem[{Dujmovi{\'c} et~al.(2022)Dujmovi{\'c}, Esperet, Morin, Walczak, and
-		Wood}]{DEMWW22}
-	\textsc{Vida Dujmovi{\'c}, Louis Esperet, Pat Morin, Bartosz Walczak, and
-		David~R. Wood}.
-	\newblock \href{https://doi.org/10.1017/S0963548321000213}{Clustered
-		3-colouring graphs of bounded degree}.
-	\newblock \emph{Combin. Probab. Comput.}, 31(1):123--135, 2022.
-	
-	\bibitem[{Dujmovi\'{c} et~al.(2016)Dujmovi\'{c}, Joret, Kozik, and
-		Wood}]{DJKW16}
-	\textsc{Vida Dujmovi\'{c}, Gwena\"{e}l Joret, Jakub Kozik, and David~R. Wood}.
-	\newblock \href{https://doi.org/10.1007/s00493-015-3070-6}{Nonrepetitive
-		colouring via entropy compression}.
-	\newblock \emph{Combinatorica}, 36(6):661--686, 2016.
-	
-	\bibitem[{Dujmovi{\'c} et~al.(2020)Dujmovi{\'c}, Joret, Micek, Morin, Ueckerdt,
-		and Wood}]{DJMMUW20}
-	\textsc{Vida Dujmovi{\'c}, Gwena\"{e}l Joret, Piotr Micek, Pat Morin, Torsten
-		Ueckerdt, and David~R. Wood}.
-	\newblock \href{https://doi.org/10.1145/3385731}{Planar graphs have bounded
-		queue-number}.
-	\newblock \emph{J. ACM}, 67(4):\#22, 2020.
-	
-	\bibitem[{Dujmovi\'c et~al.(2022)Dujmovi\'c, Morin, and Odak}]{DMO}
-	\textsc{Vida Dujmovi\'c, Pat Morin, and Saeed Odak}.
-	\newblock \href{http://arxiv.org/abs/2202.12882}{Odd colourings of graph
-		products}.
-	\newblock 2022, arXiv:2202.12882.
-	
-	\bibitem[{Dujmovi\'c et~al.(2017{\natexlab{b}})Dujmovi\'c, Morin, and
-		Wood}]{dujmovic.morin.ea:layered}
-	\textsc{Vida Dujmovi\'c, Pat Morin, and David~R. Wood}.
-	\newblock \href{https://doi.org/10.1016/j.jctb.2017.05.006}{Layered separators
-		in minor-closed graph classes with applications}.
-	\newblock \emph{J. Comb. Theory, Ser. {B}}, 127:111--147, 2017{\natexlab{b}}.
-	
-	\bibitem[{Dvo{\v{r}}{\'a}k et~al.(2021)Dvo{\v{r}}{\'a}k, Huynh, Joret, Liu, and
-		Wood}]{DHJLW21}
-	\textsc{Zden{\v{e}}k Dvo{\v{r}}{\'a}k, Tony Huynh, Gwena\"el Joret, Chun-Hung
-		Liu, and David~R. Wood}.
-	\newblock \href{https://doi.org/10.1007/978-3-030-62497-2_32}{Notes on graph
-		product structure theory}.
-	\newblock In \textsc{David~R. Wood, Jan de~Gier, Cheryl~E. Praeger, and Terence
-		Tao}, eds., \emph{2019-20 MATRIX Annals}, pp. 513--533. Springer, 2021.
-	\newblock arXiv:2001.08860.
-	
-	\bibitem[{Elmallah and Colbourn(1990)}]{elmallah.colbourn:on}
-	\textsc{Ehab~S. Elmallah and Charles~J. Colbourn}.
-	\newblock \href{https://doi.org/10.1016/0012-365X(90)90293-Q}{On two dual
-		classes of planar graphs}.
-	\newblock \emph{Discrete. Math.}, 80(1):21--40, 1990.
-	
-	\bibitem[{Esperet et~al.(2020)Esperet, Joret, and Morin}]{EJM}
-	\textsc{Louis Esperet, Gwena\"{e}l Joret, and Pat Morin}.
-	\newblock \href{http://arxiv.org/abs/2010.05779}{Sparse universal graphs for
-		planarity}.
-	\newblock 2020, arXiv:2010.05779.
-	
-	\bibitem[{Fomin et~al.(2012)Fomin, Lokshtanov, and Saurabh}]{FLS-SODA12}
-	\textsc{Fedor~V. Fomin, Daniel Lokshtanov, and Saket Saurabh}.
-	\newblock \href{https://doi.org/10.1137/1.9781611973099.124}{Bidimensionality
-		and geometric graphs}.
-	\newblock In \emph{Proc. 23rd {A}nnual {ACM}-{SIAM} {S}ymposium on {D}iscrete
-		{A}lgorithms}, pp. 1563--1575. 2012.
-	
-	\bibitem[{Fox and Pach(2010)}]{FP10}
-	\textsc{Jacob Fox and J{\'a}nos Pach}.
-	\newblock \href{https://doi.org/10.1017/S0963548309990459}{A separator theorem
-		for string graphs and its applications}.
-	\newblock \emph{Combin. Probab. Comput.}, 19(3):371--390, 2010.
-	
-	\bibitem[{Fox and Pach(2014)}]{FP14}
-	\textsc{Jacob Fox and J{\'a}nos Pach}.
-	\newblock \href{https://doi.org/10.1017/S0963548313000412}{Applications of a
-		new separator theorem for string graphs}.
-	\newblock \emph{Combin. Probab. Comput.}, 23(1):66--74, 2014.
-	
-	\bibitem[{Harvey and Wood(2017)}]{HW17}
-	\textsc{Daniel~J. Harvey and David~R. Wood}.
-	\newblock \href{https://doi.org/10.1002/jgt.22030}{Parameters tied to
-		treewidth}.
-	\newblock \emph{J. Graph Theory}, 84(4):364--385, 2017.
-	
-	\bibitem[{Heath et~al.(1992)Heath, Leighton, and Rosenberg}]{HLR92}
-	\textsc{Lenwood~S. Heath, F.~Thomson Leighton, and Arnold~L. Rosenberg}.
-	\newblock \href{https://doi.org/10.1137/0405031}{Comparing queues and stacks as
-		mechanisms for laying out graphs}.
-	\newblock \emph{SIAM J. Discrete Math.}, 5(3):398--412, 1992.
-	
-\bibitem[{van~den Heuvel and Wood(2018)}]{vdHW18}
-\textsc{Jan van~den Heuvel and David~R. Wood}.
-\newblock \href{https://doi.org/10.1112/jlms.12127}{Improper colourings
-	inspired by {H}adwiger's conjecture}.
-\newblock \emph{J. London Math. Soc.}, 98:129--148, 2018.
-\newblock arXiv:1704.06536.
-
-	\bibitem[{Kannan et~al.(1992)Kannan, Naor, and
-		Rudich}]{kannan.naor.ea:implicit}
-	\textsc{Sampath Kannan, Moni Naor, and Steven Rudich}.
-	\newblock \href{https://doi.org/10.1137/0405049}{Implicit representation of
-		graphs}.
-	\newblock \emph{{SIAM} J. Discrete Math.}, 5(4):596--603, 1992.
-	
-	\bibitem[{Knauer and Ueckerdt(2012)}]{knauer.ueckerdt:simple}
-	\textsc{Kolja Knauer and Torsten Ueckerdt}.
-	\newblock
-	\href{https://kam.mff.cuni.cz/workshops/mcw/work18/mcw2012booklet.pdf}{Simple
-		treewidth}.
-	\newblock In \textsc{Pavel Rytír}, ed., \emph{Midsummer Combinatorial Workshop
-		Prague}. 2012.
-	
-	\bibitem[{Kobourov et~al.(2017)Kobourov, Liotta, and
-		Montecchiani}]{kobourov.liotta.ea:annotated}
-	\textsc{Stephen~G. Kobourov, Giuseppe Liotta, and Fabrizio Montecchiani}.
-	\newblock \href{https://doi.org/10.1016/j.cosrev.2017.06.002}{An annotated
-		bibliography on 1-planarity}.
-	\newblock \emph{Comput. Sci. Rev.}, 25:49--67, 2017.
-	
-	\bibitem[{Kratochv{\'{\i}}l and Vaner(2012)}]{kratochvil.vaner:note}
-	\textsc{Jan Kratochv{\'{\i}}l and Michal Vaner}.
-	\newblock \href{http://arxiv.org/abs/1210.8113}{A note on planar partial
-		3-trees}.
-	\newblock 2012, arXiv:1210.8113.
-	
-	\bibitem[{Leighton(1983)}]{leighton:complexity}
-	\textsc{F.~Thomson Leighton}.
-	\newblock Complexity issues in {VLSI}.
-	\newblock MIT Press, Cambridge, MA, 1983.
-	
-	\bibitem[{Mohar and Thomassen(2001)}]{mohar.thomassen:graphs}
-	\textsc{Bojan Mohar and Carsten Thomassen}.
-	\newblock Graphs on surfaces.
-	\newblock Johns Hopkins University Press, 2001.
-	
-	\bibitem[{Ne{\v{s}}et{\v{r}}il and Ossona~de Mendez(2012)}]{Sparsity}
-	\textsc{Jaroslav Ne{\v{s}}et{\v{r}}il and Patrice Ossona~de Mendez}.
-	\newblock \href{https://doi.org/10.1007/978-3-642-27875-4}{Sparsity}, vol.~28
-	of \emph{Algorithms and Combinatorics}.
-	\newblock Springer, 2012.
-	
-	\bibitem[{Pach and T{\'o}th(2002)}]{PachToth-DCG02}
-	\textsc{J{\'a}nos Pach and G{\'e}za T{\'o}th}.
-	\newblock \href{https://doi.org/10.1007/s00454-002-2891-4}{Recognizing string
-		graphs is decidable}.
-	\newblock \emph{Discrete Comput. Geom.}, 28(4):593--606, 2002.
-	
-	\bibitem[{Pilipczuk and Siebertz(2021)}]{PS21}
-	\textsc{Micha{\l} Pilipczuk and Sebastian Siebertz}.
-	\newblock \href{https://doi.org/10.1016/j.jctb.2021.06.002}{Polynomial bounds
-		for centered colorings on proper minor-closed graph classes}.
-	\newblock \emph{J. Comb. Theory, Series B}, 151:111--147, 2021.
-	
-	\bibitem[{Reed(2003)}]{Reed03}
-	\textsc{Bruce~A. Reed}.
-	\newblock \href{https://doi.org/10.1007/0-387-22444-0_4}{Algorithmic aspects of
-		tree width}.
-	\newblock In \emph{Recent advances in algorithms and combinatorics}, vol.~11,
-	pp. 85--107. Springer, 2003.
-	
-	\bibitem[{Ueckerdt et~al.(2021)Ueckerdt, Wood, and Yi}]{UWY}
-	\textsc{Torsten Ueckerdt, David~R. Wood, and Wendy Yi}.
-	\newblock \href{https://doi.org/10.37236/10614}{An improved planar graph product structure theorem}.
-	\newblock Electronic J. Combinatorics 29:P2.51, 2022.
-	
-	\bibitem[{Zhu(2009)}]{zhu:colouring}
-	\textsc{Xuding Zhu}.
-	\newblock \href{https://doi.org/10.1016/j.disc.2008.03.024}{Colouring graphs
-		with bounded generalized colouring number}.
-	\newblock \emph{Discrete Math.}, 309(18):5562--5568, 2009.
-	
-\end{thebibliography}
-
+\bibliographystyle{DavidNatbibStyle}
+\bibliography{k-planar}
 \end{document}
