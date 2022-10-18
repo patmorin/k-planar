@@ -1,0 +1,176 @@
+\documentclass[12pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=20mm]{geometry}
+\usepackage{amsmath,color,amsthm,enumerate,amsfonts,mathtools}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{amsfonts}
+\usepackage{paralist}
+\usepackage{stmaryrd}
+\usepackage{amssymb}
+\usepackage{todonotes}
+
+\newcommand{\done}{\textcolor{blue}{Done.}}
+\newcommand{\changed}{\textcolor{blue}{Revised accordingly.}}
+\newcommand{\tba}{\textcolor{red}{To be addresssed.}}
+
+\newenvironment{response}{\color{blue}}{}
+
+\setlength{\parindent}{0ex}
+\setlength{\parskip}{1ex}
+
+\begin{document}
+
+\subsection*{Graph Product Structure for Non-Minor-Closed Classes\\
+Vida Dujmovi\'c, Pat Morin, David R. Wood\\
+Journal of Combinatorial Theory Series B (JCTB9758)\\
+Response to Referee Report received 4th October 2022}
+
+Thanks to the referee for thoroughly checking the paper, and for highlighting several places for improvement. Here we respond to the referee's comments.
+
+\hrulefill
+
+1. In the proof of Theorem 7, I see no reason why we should have $a = x_r$
+(or $x'=x_0$, for that matter). I think you need to use the fact that $v_r$ is
+in $S_a$. (Also, if we did have that $a = x_r$, then $j$ would be $r$, so maybe
+there is a different mistake, or the intention is different.) It might be
+helpful to define $H^+$ first and then have a separate claim which shows
+how to use paths in $H$ to get paths in $H^+$.
+
+\tba
+
+2. Are the nations incident to a vertex counted with multiplicity in dmap graphs? The definition does not say so, but the proof of Lemma 27 (as currently stated) assumes not only this, but that the embedded graph under consideration is 2-connected. It also seems that frames are loopless, so slightly more care is called for when they are constructed.
+It may be worth noting explicitly that you allow d-framed graphs to
+have edges outside the outer face of their frame - I was unsure about
+this given the phrase “interior of the face”.
+
+\tba
+
+3. Sperner’s Lemma is usually stated for simple graphs (as is the case
+in the source given) so there should be a reduction argument. It is
+more than just removing parallel edges because there may be separating
+cycles of length two.
+
+\tba
+
+Other comments:
+
+1. There are some proofreading things to do - some lines overflow, there
+are citations on a new line (instead of using tilde), and there are typos
+like missing words (page 3, line 7, should read “H is a planar graph”).
+
+\begin{response}
+	We have fixed ``$H$ is a planar graph'', but do not see the point in fixing minor line overflows, since the paper will be reformatted in the journal style anyway.
+\end{response}
+
+
+2. Page 4, second bullet point. It says that you derive product structure
+theorems for string graphs, which is clearly not possible. Please use
+more precise language. This comment was in the previous review as
+well. Some but not all instances have been corrected.
+
+\begin{response}
+We do not understand this comment. Why can't there be a product structure
+theorem for string graphs?
+\end{response}
+
+3. page 6, line -6: The elements of P are not ordered so it is not a sequence.
+
+\tba
+
+4. Page 7, line 6: It is confusing to say that Sx “is defined by vertices
+that participate in x” because it suggests that Sx is the set of vertices
+which participate in x. Moreover, for the proven upper bound to be
+enough, you need to show that the set of all nodes which participate in
+x induces a subtree of T (and thus that a(v) is in this set).
+
+\tba
+
+5. The paper regularly says things like “let P be an H-partition” without
+saying what H is. Typically this is understandable, but it could be
+written more clearly. For instance, on page 8, line 2, it says “let Yxi
+be the part in Y...” without saying what xi
+is (and similarly in other
+places). This shouldn’t be a serious hang-up for anyone, but still, it
+would be better to acknowledge technical inaccuracies.
+
+\tba
+
+6. page 8, Claim 3. The definition of Cx, a subset of V (J), includes things
+which may not be vertices of J. This, of course, is not a real problem,
+but the proof treats the fact that V (J) may be a proper subset of
+V (T) sloppily. Also, the notation T[x] is unfortunately ambiguous - it
+is strange to need to define something which has already been defined.
+
+\tba
+
+7. page 16, line 6: Say why that is a convenient way to establish the
+planarity of H. (It does not actually say here that any such graph G
+is planar.)
+
+\begin{response}
+	Added the desired sentence.
+\end{response}
+
+8. page 16, line 8. I would not call these “BFS spanning forests rooted
+at V0” since they need not be BFS spanning forests (unless the same
+terminology has already appeared elsewhere?).
+
+\tba
+
+9. page 16, Lemma 24. The lemma is rather long to state and I would
+imagine that anyone reading it has already read the proof of the product
+structure theorem for planar graphs. So I would add a sentence or two
+beforehand about how the set-up relates to that proof/tripods.
+
+\tba
+
+10. page 16, Lemma 24: Add “non-empty” before “sets $P_1,\dots,P_k$”.
+
+\done
+
+11. page 16, line -2. “$P_1, P_2, P_3$” should be $P_1,\dots,P_k$.
+
+\done
+
+12. page 17, top. In the first two cases there may not be a vertex v3 defined
+as we could have p = 2.
+
+\tba
+
+13. page 17, right after 3. The end of Qi should be the same as the vertex w
+chosen in case 3 because there may be multiple “appropriate” vertices.
+It should also really say what “appropriate” means.
+
+\tba
+
+14. page 17, line -9. “$\{x_1, x_2, x_3\}$” should be “$\{v_1, v_2, v_3\}$”
+
+\tba
+
+15. page 19, second to last paragraph. Add a sentence about why such
+a forest exists. The definition of a BFS layering is missing. A reader
+may expect that you will just use the assumptions about H and P
+that are stated, so it would be better to say something like “This gives
+an H-partition... and conditions (i), (ii), and (iii) of Lemma 24 are
+satisfied”.
+
+\tba
+
+16. page 20, first paragraph of Lemma 25. Well, parallel edges can appear
+on the boundary of a common face if they were there before. Add a
+sentence about why the process ends.
+
+\tba
+
+17. page 20, second to last paragraph. Figure 4 is mentioned several paragraphs before the graph which it depicts is defined. The graph $G_0$ in
+this paragraph should be $G'$, and check for this throughout.
+
+\tba
+
+18. page 21, Lemma 27. Should be “labelled a nation or a lake” in the
+first paragraph. In the third paragraph, the graph $\hat{G}_1$ should be “edge-maximal” or similar.
+
+\tba
+\end{document}

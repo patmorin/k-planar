@@ -664,7 +664,8 @@ For any integer $d\ge 3$, every $d$-framed multigraph is contained in $H\boxtime
 
 \cref{d_framed_product_stucture} is used below to obtain product structure theorems for 1-planar multigraphs and for map graphs.  Note that even for simple 1-planar graphs it is essential that we allow frames with parallel edges.
 
-\cref{d_framed_product_stucture} is a consequence of the following technical lemma, which is an extension of the analogous result for plane graphs~\cite{DJMMUW20}. The following definition is a convenient way to establish the planarity of $H$ in \cref{d_framed_product_stucture}:  A $T$-decomposition of a graph $G$ is \defin{$t$-simple} if each of its bags has size at most $t+1$ and, for each $t$-element subset $\{v_1,\ldots,v_t\}\subseteq V(G)$, at most two bags contain $v_1,\ldots,v_t$.  Finally, a \defin{BFS spanning forest} $T$ of $G$ rooted at a set $V_0\subseteq V(G)$ is a spanning forest of $G$ with the property that for each $v\in V(G)$,  \[\min\{\dist_G(v,w):w\in V_0\}=\min\{\dist_T(v,w):w\in V_0\}.\]
+\cref{d_framed_product_stucture} is a consequence of the following technical lemma, which is an extension of the analogous result for plane graphs~\cite{DJMMUW20}. The following definition is a convenient way to establish the planarity of $H$ in \cref{d_framed_product_stucture}:  A $T$-decomposition of a graph $G$ is \defin{$t$-simple} if each of its bags has size at most $t+1$ and, for each $t$-element subset $\{v_1,\ldots,v_t\}\subseteq V(G)$, at most two bags contain $v_1,\ldots,v_t$. 
+To show the planarity of $H$ in \cref{d_framed_product_stucture} we use the fact that a graph has a 3-simple tree-decomposition if and only if it has treewidth at most 3 and is planar~\citep{KV12}. Finally, a \defin{BFS spanning forest} $T$ of $G$ rooted at a set $V_0\subseteq V(G)$ is a spanning forest of $G$ with the property that for each $v\in V(G)$,  \[\min\{\dist_G(v,w):w\in V_0\}=\min\{\dist_T(v,w):w\in V_0\}.\]
 
 \begin{lem}
 	\label{induction} The setup:
@@ -672,7 +673,7 @@ For any integer $d\ge 3$, every $d$-framed multigraph is contained in $H\boxtime
 		\item Let $G$ be a $d$-framed multigraph and let $G_0$ be a frame of $G$.
 		\item Let $F_0$ be the outer face of $G_0$ and let $T$ be a BFS spanning forest of $G_0$ rooted at $V(F_0)$.
 		\item For every integer $j\ge 0$, let $L_j=\{v\in V(G):\dist_T(v,V(F_0))=j\}$.
-		\item Let $F$ be a cycle in $G_0$ whose vertices are partitioned into $k\le 3$ sets $P_1,\ldots,P_k$ such that for each $i\in\{1,\ldots,k\}$,
+		\item Let $F$ be a cycle in $G_0$ whose vertices are partitioned into $k\le 3$ non-empty sets $P_1,\ldots,P_k$ such that for each $i\in\{1,\ldots,k\}$,
 		\begin{compactenum}
 			\item $F[P_i]$ is connected; and
 			\item $P_i$ has a partition $\{X_i,Y_i\}$ where $|X_i|\le d-3$ and $|Y_i\cap L_j| \le 3$ for each $j\ge 0$.
@@ -698,7 +699,7 @@ We proceed by induction on $(x,y)$ where $x$ is the number of inner vertices of 
 	\end{compactenum}
 
 We now move onto the case in which $N_0$ contains at least one inner vertex.
-Our $H$-partition $\mathcal{P}$ will include $P_1$, $P_2$ , $P_3$ and a (possibly empty) part $S$ that will be determined by three vertices $v_1v_2v_3$ that belong to a common inner face $\tau$ of $N_0$.  We first explain how $v_1$, $v_2$ and $v_3$ are chosen and then explain how these are used to define $S$.  There is one case to consider for each possible value of $k$ (see \cref{boring_figure}):
+Our $H$-partition $\mathcal{P}$ will include $P_1,\dots,P_k$ and a (possibly empty) part $S$ that will be determined by three vertices $v_1v_2v_3$ that belong to a common inner face $\tau$ of $N_0$.  We first explain how $v_1$, $v_2$ and $v_3$ are chosen and then explain how these are used to define $S$.  There is one case to consider for each possible value of $k$ (see \cref{boring_figure}):
 
 \begin{compactenum}
 		\item If $k=1$ then let $\tau:=v_1,\ldots,v_p$ be an inner face of $N_0$ that contains at least one edge $v_1v_2$ of $F$ on its boundary.
