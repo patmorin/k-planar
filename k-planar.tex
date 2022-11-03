@@ -182,7 +182,7 @@ For the important special case of $1$-planar graphs, we obtain the following res
 Every $1$-planar graph is contained in $H\boxtimes P\boxtimes K_{7}$, for some planar graph $H$ of treewidth $3$ and for some path $P$.
 \end{thm}
 
-For at least two applications, the planarity of $H$ in \cref{1_planar_product} is critical in obtaining asymptotically tight bounds \cite{BDJM,DFMS21}. \cref{1_planar_product} is proven in the more general setting of $d$-framed multigraphs, which also implies a product structure theorem for $d$-map graphs in which $H$ is a planar graph with treewidth 3. 
+For at least two applications, the planarity of $H$ in \cref{1_planar_product} is critical in obtaining asymptotically tight bounds \cite{BDJM,DFMS21}. \cref{1_planar_product} is proven in the more general setting of $d$-framed multigraphs, which also implies a product structure theorem for $d$-map graphs in which $H$ is a planar graph with treewidth 3.
 
 
 \subsection{Shortcut Systems}
@@ -321,11 +321,11 @@ We begin with a standard technique that allows us to work with a normalised tree
 
 For a node $x\in V(T)$, we say that a shortcut $P\in\SS$ \defin{crosses} $x$ if $Y_x$ contains an internal vertex of $P$.  In other words, if $P=v_0,\ldots,v_r$ and $\{v_1,\ldots,v_{r-1}\}\cap Y_x\neq\emptyset$.  We say that a vertex $v\in V(G)$ \defin{participates} in $x$ if $v\in Y_x$ or if $\SS$ contains a shortcut $P$ with $v\in V(P)$ and $P$ crosses $x$.  For each $v\in V(G)$, let $a(v)$ denote the lowest common $T$-ancestor of all the nodes $x\in V(T)$ in which $v$ participates.
 
-For each $x\in V(T)$, define $S_x := \{v\in V(G): a(v)= x\}$. Since $a:V(G)\to V(T)$ is a function with domain $V(G)$ and range $V(T)$, $\PP:=(S_x : x\in V(T))$ is a sequence of pairwise disjoint sets that cover $V(G)$. Let $J:=G^\SS/\PP$ denote the resulting quotient graph. We consider $V(J)\subseteq V(T)$, where each $x\in V(J)$ is the vertex obtained by contracting $S_x$ in $G^{\SS}$. (Any node $x\in V(T)$ with $S_x=\emptyset$ does not contribute a vertex to $J$.)
+For each $x\in V(T)$, define $S_x := \{v\in V(G): a(v)= x\}$. Since $a:V(G)\to V(T)$ is a function with domain $V(G)$ and range $V(T)$, $\PP:=\{S_x : x\in V(T)\}$ is a partition of $V(G)$. Let $J:=G^\SS/\PP$ denote the resulting quotient graph. We consider $V(J)\subseteq V(T)$, where each $x\in V(J)$ is the vertex obtained by contracting $S_x$ in $G^{\SS}$. (Any node $x\in V(T)$ with $S_x=\emptyset$ does not contribute a vertex to $J$.)
 
 From this point onward, the plan is to show that:
 \begin{compactenum}[(i)]
-  \item $\PP$ has small layered width with respect to the layering $\mathcal{L}$ of $G$, and 
+  \item $\PP$ has small layered width with respect to the layering $\mathcal{L}$ of $G$, and
   \item $J$ has small treewidth.
 \end{compactenum}
 Once we have established (i) and (ii), the result follows easily since a layering of $G^\SS$ is easily obtained from $\mathcal{L}$ by `compressing' groups of $k$ consecutive layers.  We begin with Step~(i):
@@ -378,7 +378,7 @@ The graph $J$ has a tree-decomposition in which every bag has size at most $\bin
 
 \begin{proof}
   For the tree-decomposition $(C_x:x\in V(T))$ of $J$ we use the same tree $T$ used in the tree-decomposition $(B_x:x\in V(T))$ of $H$. For each node $x$ of $T$, we define $C_x$ as follows: $C_x$ contains $x$ as well as every $T$-ancestor $a$ of $x$ such that $J$ contains an edge $ax'$ where $x$ is a $T$-ancestor of $x'$ (including the possibility that $x=x'$).
-  \cref{i-ancestor} ensures that, for every edge $ax'\in E(J)$, both $a$ and $x$ are contained in $C_{x'}$.  The connectivity of $T[a]:=T[\{x\in V(T):a\in C_x\}]$ follows from the fact that, for every node $x'\in V(T[a])$, every node $x$ on the path in $T$ from $a$ to  $x'$ is also a node of $T[a]$.  Therefore $(C_x:x\in V(T))$ is indeed a tree-decomposition of $J$.
+  \cref{i-ancestor} ensures that, for every edge $ax'\in E(J)$, both $a$ and $x$ are contained in $C_{x'}$\todo{Do we mean $C_x$ here?}.  The connectivity of $T[a]:=T[\{x\in V(T):a\in C_x\}]$ follows from the fact that, for every node $x'\in V(T[a])$, every node $x$ on the path in $T$ from $a$ to  $x'$ is also a node of $T[a]$.  Therefore $(C_x:x\in V(T))$ is indeed a tree-decomposition of $J$.
 
   It remains to show that each bag in this tree-decomposition has size at most $\binom{k+t}{t}$.  We will do this by appealing to an elegant result of \citet{PS21} on $k$-reachability in directed skeletons, which we now explain.
 
@@ -500,7 +500,7 @@ Every $(g,k)$-planar graph is contained in $H\boxtimes P \boxtimes K_\ell$ for s
 	< 2k \Delta^k \enspace.
 	\]
 	Fix a $(\Sigma,k)$-plane drawing of $G_0$ in a surface $\Sigma$ of Euler genus at most $g$. Choose $\epsilon>\epsilon'>0$.
-	For each vertex $v$ of $G_0$, let $B_v$ be the \defin{ball} $\{x\in \mathbb{R}^2:\dist(x,v)\leq\epsilon\}$. 
+	For each vertex $v$ of $G_0$, let $B_v$ be the \defin{ball} $\{x\in \mathbb{R}^2:\dist(x,v)\leq\epsilon\}$.
 	For each edge $vw$ of $G_0$, let $C_{vw}$ be the \defin{channel} $\{x\in \mathbb{R}^2:\dist(x,vw)\leq\epsilon'\}\setminus(B_v\cup B_w)$.
 	We may choose $\epsilon>\epsilon'>0$ sufficiently small so that
 	(i) $B_v\cap B_w=\emptyset$ for distinct $v,w\in V(G_0)$,
@@ -664,7 +664,7 @@ For any integer $d\ge 3$, every $d$-framed multigraph is contained in $H\boxtime
 
 \cref{d_framed_product_stucture} is used below to obtain product structure theorems for 1-planar multigraphs and for map graphs.  Note that even for simple 1-planar graphs it is essential that we allow frames with parallel edges.
 
-\cref{d_framed_product_stucture} is a consequence of the following technical lemma, which is an extension of the analogous result for plane graphs~\cite{DJMMUW20}. The following definition is a convenient way to establish the planarity of $H$ in \cref{d_framed_product_stucture}:  A $T$-decomposition of a graph $G$ is \defin{$t$-simple} if each of its bags has size at most $t+1$ and, for each $t$-element subset $\{v_1,\ldots,v_t\}\subseteq V(G)$, at most two bags contain $v_1,\ldots,v_t$. 
+\cref{d_framed_product_stucture} is a consequence of the following technical lemma, which is an extension of the analogous result for plane graphs~\cite{DJMMUW20}. The following definition is a convenient way to establish the planarity of $H$ in \cref{d_framed_product_stucture}:  A $T$-decomposition of a graph $G$ is \defin{$t$-simple} if each of its bags has size at most $t+1$ and, for each $t$-element subset $\{v_1,\ldots,v_t\}\subseteq V(G)$, at most two bags contain $v_1,\ldots,v_t$.
 To show the planarity of $H$ in \cref{d_framed_product_stucture} we use the fact that a graph has a 3-simple tree-decomposition if and only if it has treewidth at most 3 and is planar~\citep{KV12}. Finally, a \defin{BFS spanning forest} $T$ of $G$ rooted at a set $V_0\subseteq V(G)$ is a spanning forest of $G$ with the property that for each $v\in V(G)$,  \[\min\{\dist_G(v,w):w\in V_0\}=\min\{\dist_T(v,w):w\in V_0\}.\]
 
 \begin{lem}
@@ -816,17 +816,17 @@ Every $d$-map graph is contained in $H \boxtimes P \boxtimes K_{ d + 3\floor{d/2
 For every integer $d\geq 3$, every $d$-map graph is a subgraph of a $d$-framed multigraph.
 \end{lem}
 
-\begin{proof}	
-Let $G_0$ be a graph embedded in the plane, with each face labelled a nation or a lake, and where each vertex of $G_0$ is incident with at most $d$ nations and let $G$ be the corresponding map graph. 
+\begin{proof}
+Let $G_0$ be a graph embedded in the plane, with each face labelled a nation or a lake, and where each vertex of $G_0$ is incident with at most $d$ nations and let $G$ be the corresponding map graph.
 
 If $G_0$ has a face $f$ of length 2, then add a new vertex inside $f$ adjacent to both vertices on the boundary of $f$, which creates two new triangular faces $f_1$ and $f_2$. If $f$ is a lake, then make $f_1$ and $f_2$ lakes. If $F$ is a nation, then make $f_1$ a nation and make $f_2$ a lake. The resulting map graph is still $G$. So we may assume that $G_0$ is an edge-maximal multigraph with no faces of length 2 (and with each face labelled a nation or a lake), such that $G$ is the corresponding map graph. This is well-defined since the assumption of having no face of length 2 implies that $|E(G_0|\leq 3|V(G)|-6$.
 
-Suppose that some face $f$ of $G_0$ has a disconnected boundary (implying $G_0$ is disconnected). Let $v$ and $w$ be vertices in distinct components of the boundary of $f$. Add the edge $vw$ to $G_0$ across $f$. The corresponding map graph is unchanged, which contradicts the edge-maximality of $G_0$. Thus no face of $G_0$ is disconnected. Suppose that some face $f$ of $G_0$ has a repeated vertex in the boundary walk of $f$. Let $u,v,w$ be consecutive vertices on the boundary of $f$. So $u,v,w$ are distinct and $uw$ is not an edge in the boundary of $f$. Add the edge $uw$ across $f$ and consider the resulting face $uvw$ to be a lake. Since $v$ appears elsewhere in the boundary of $f$, the corresponding map graph is unchanged, which contradicts the edge-maximality of $G_0$. Thus no facial walk of $G_0$ has a repeated vertex. Since each facial walk is connected, every face of $G_0$ is bounded by a cycle, and $G_0$ is biconnected. 
+Suppose that some face $f$ of $G_0$ has a disconnected boundary (implying $G_0$ is disconnected). Let $v$ and $w$ be vertices in distinct components of the boundary of $f$. Add the edge $vw$ to $G_0$ across $f$. The corresponding map graph is unchanged, which contradicts the edge-maximality of $G_0$. Thus no face of $G_0$ is disconnected. Suppose that some face $f$ of $G_0$ has a repeated vertex in the boundary walk of $f$. Let $u,v,w$ be consecutive vertices on the boundary of $f$. So $u,v,w$ are distinct and $uw$ is not an edge in the boundary of $f$. Add the edge $uw$ across $f$ and consider the resulting face $uvw$ to be a lake. Since $v$ appears elsewhere in the boundary of $f$, the corresponding map graph is unchanged, which contradicts the edge-maximality of $G_0$. Thus no facial walk of $G_0$ has a repeated vertex. Since each facial walk is connected, every face of $G_0$ is bounded by a cycle, and $G_0$ is biconnected.
 
-Let $G_0^*$ be the dual graph of $G_0$. So the vertices of $G_0^*$ correspond to faces of $G_0$, and each vertex of $G_0^*$ is a nation vertex or a lake vertex. Since $G_0$ is biconnected, so is $G^*_0$. 
+Let $G_0^*$ be the dual graph of $G_0$. So the vertices of $G_0^*$ correspond to faces of $G_0$, and each vertex of $G_0^*$ is a nation vertex or a lake vertex. Since $G_0$ is biconnected, so is $G^*_0$.
 
-Let $x$ be a vertex of $G_0$, let $F_x$ be the corresponding face of $G_0^*$, and let $v_1,\ldots,v_s$ be the facial cycle of $F_x$.  Let $C:=w_1,\ldots,w_r$ be the subsequence of $v_1,\ldots,v_s$ consisting of only the nation vertices.  Since $x$ is incident to at most $d$ nations, $r\le d$. Call $C_x$ the \defin{nation cycle} of $F_x$. Note that if $r=1$ then the ``nation cycle'' has no edges, and if $r=2$ then the ``nation cycle'' has one edge. 
-  
+Let $x$ be a vertex of $G_0$, let $F_x$ be the corresponding face of $G_0^*$, and let $v_1,\ldots,v_s$ be the facial cycle of $F_x$.  Let $C:=w_1,\ldots,w_r$ be the subsequence of $v_1,\ldots,v_s$ consisting of only the nation vertices.  Since $x$ is incident to at most $d$ nations, $r\le d$. Call $C_x$ the \defin{nation cycle} of $F_x$. Note that if $r=1$ then the ``nation cycle'' has no edges, and if $r=2$ then the ``nation cycle'' has one edge.
+
 Let $G_1$ be a plane supergraph of $G_0^*$ obtained by adding the nation cycle of each face $F$ of $G_0$, and then triangulating each face with more than $d$ vertices on its boundary. $G_1$ is biconnected since $G^*_0$ is a biconnected spanning subgraph of $G_1$. Each nation cycle of length at least $3$ is now a facial cycle of $G_1$, and no face of $G_1$ has more than $d$ vertices on its boundary. Let $\widehat{G}_1$ be the $d$-framed graph whose frame is $G_1$.
 
 By definition, $V(G) \subseteq V(\widehat{G}_1)$. To prove the claim, it suffices to show that $E(G)\subseteq E(\widehat{G}_1)$.  Indeed, if $vw\in E(G)$ then the nation faces corresponding to $v$ and $w$ have a common vertex $x$ on their boundary. The vertex $x$ corresponds to a face $F_x$ in $G_0^*$ and the facial cycle of $F_x$ contains $v$ and $w$.  Therefore, the nation cycle $C_x$ of $F_x$ contains $v$ and $w$. If $C_x$ has length $2$ then $vw\in E(G_1)\subseteq E(\widehat{G}_1)$.  If $C_x$ has length at least $3$ then $C_x$ bounds a face in $G_1$, so $vw\in E(\widehat{G}_1)$.
