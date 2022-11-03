@@ -378,7 +378,7 @@ The graph $J$ has a tree-decomposition in which every bag has size at most $\bin
 
 \begin{proof}
   For the tree-decomposition $(C_x:x\in V(T))$ of $J$ we use the same tree $T$ used in the tree-decomposition $(B_x:x\in V(T))$ of $H$. For each node $x$ of $T$, we define $C_x$ as follows: $C_x$ contains $x$ as well as every $T$-ancestor $a$ of $x$ such that $J$ contains an edge $ax'$ where $x$ is a $T$-ancestor of $x'$ (including the possibility that $x=x'$).
-  \cref{i-ancestor} ensures that, for every edge $ax'\in E(J)$, both $a$ and $x$ are contained in $C_{x'}$\todo{Do we mean $C_x$ here?}.  The connectivity of $T[a]:=T[\{x\in V(T):a\in C_x\}]$ follows from the fact that, for every node $x'\in V(T[a])$, every node $x$ on the path in $T$ from $a$ to  $x'$ is also a node of $T[a]$.  Therefore $(C_x:x\in V(T))$ is indeed a tree-decomposition of $J$.
+  \cref{i-ancestor} ensures that, for every edge $ax'\in E(J)$, both $a$ and $x'$ are contained in $C_{x'}$.  The connectivity of $T[a]:=T[\{x\in V(T):a\in C_x\}]$ follows from the fact that, for every node $x'\in V(T[a])$, every node $x$ on the path in $T$ from $a$ to  $x'$ is also a node of $T[a]$.  Therefore $(C_x:x\in V(T))$ is indeed a tree-decomposition of $J$.
 
   It remains to show that each bag in this tree-decomposition has size at most $\binom{k+t}{t}$.  We will do this by appealing to an elegant result of \citet{PS21} on $k$-reachability in directed skeletons, which we now explain.
 
