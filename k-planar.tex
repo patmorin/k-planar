@@ -228,7 +228,7 @@ Let $G$ be a graph contained in $H\boxtimes P \boxtimes K_\ell$, for some graph 
       planar & $3^*$ & $3$ & \cite{DJMMUW20} \\
       planar & $4^*$ & $2$ & \cite{bose.morin.ea:optimal} \\
       planar & $6^*$ & $1$ & \cite{UWY22} \\
-      genus $g$ & $3^*$ & $\max\{2g,3\}$ & \cite{DHHW} \\
+      genus $g$ & $3^*$ & $\max\{2g,3\}$ & \cite{DHHW22} \\
       genus $g$ & $2g+6$ & 1 & \cite{UWY22} \\
       apex-minor-free & $O(1)$ & $O(1)$ & \cite{DJMMUW20} \\
       % B-minor-free & $O(1)$ & $O(1)$ & \cite{DJMMUW20} \\
@@ -464,7 +464,7 @@ As mentioned in \cref{Introduction}, \cref{PlanarProduct,ShortcutProduct} imply 
 
 As mentioned in the introduction, product structure theorems have been established for several minor-closed classes in addition to planar graphs, including the following version of \cref{PlanarProduct} for graphs of bounded Euler genus.
 
-\begin{thm}[\citep{DJMMUW20,UWY22,DHHW}]\label{GenusProduct}
+\begin{thm}[\citep{DJMMUW20,UWY22,DHHW22}]\label{GenusProduct}
   Every graph of Euler genus $g$ is contained in:
   \begin{compactenum}[(a)]
   \item $H  \boxtimes P$ for some graph $H$ of treewidth at most $2g+6$  and some path $P$.
@@ -685,7 +685,7 @@ For any integer $d\ge 3$, every $d$-framed multigraph is contained in $H\boxtime
 \cref{d_framed_product_stucture} is used below to obtain product structure theorems for 1-planar multigraphs and for map graphs.  Note that even for simple 1-planar graphs it is essential that we allow frames with parallel edges.
 
 \cref{d_framed_product_stucture} is a consequence of the following technical lemma, which is an extension of the analogous result for plane graphs~\cite{DJMMUW20}. The following definition is a convenient way to establish the planarity of $H$ in \cref{d_framed_product_stucture}:  A $T$-decomposition of a graph $G$ is \defin{$t$-simple} if each of its bags has size at most $t+1$ and, for each $t$-element subset $\{v_1,\ldots,v_t\}\subseteq V(G)$, at most two bags contain $v_1,\ldots,v_t$.
-To show the planarity of $H$ in \cref{d_framed_product_stucture} we use the fact that a graph has a 3-simple tree-decomposition if and only if it has treewidth at most 3 and is planar~\citep{KV12}. Finally, a \defin{BFS spanning forest} $T$ of $G$ rooted at a set $V_0\subseteq V(G)$ is a spanning forest of $G$ with the property that for each $v\in V(G)$,  \[\min\{\dist_G(v,w):w\in V_0\}=\min\{\dist_T(v,w):w\in V_0\}.\]
+To show the planarity of $H$ in \cref{d_framed_product_stucture} we use the fact that a graph has a 3-simple tree-decomposition if and only if it has treewidth at most 3 and is planar~\citep{kratochvil.vaner:note}. Finally, a \defin{BFS spanning forest} $T$ of $G$ rooted at a set $V_0\subseteq V(G)$ is a spanning forest of $G$ with the property that for each $v\in V(G)$,  \[\min\{\dist_G(v,w):w\in V_0\}=\min\{\dist_T(v,w):w\in V_0\}.\]
 
 \begin{lem}
 	\label{induction} The setup:
