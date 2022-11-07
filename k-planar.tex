@@ -328,8 +328,7 @@ For a node $x\in V(T)$, we say that a shortcut $P\in\SS$ \defin{crosses} $x$ if 
 \begin{proof}
   Let $x_0\in V(T)$ be the unique node with $v\in Y_{x_0}$ and let $x_r:=a(v)$.  If $x_0=x_r$ then the length-$0$ path with the single vertex $x_0=x_r$ satisfies the requirements of the lemma.  Assume now that $x_0\neq x_r$.
 
-  Consider the subgraph $H_v:=H[\{x\in V(T):\text{$v$ participates in $x$}\}]$.  Since $v\in Y_{x_0}$, $v$ participates in $x_0$, so $x_0\in V(H_v)$.  We claim that, for each $x\in V(H_v)\setminus\{x_0\}$, $H_v$ contains a path $y_0,\ldots,y_s$ of length $s\le k-1$ from $y_0:=x_0$ to $y_s:=x$.  Indeed, since $v$ participates in $x\neq x_0$, $\mathcal{S}$ contains a shortcut $P$ with $v\in V(P)$ and that crosses $x$.  Therefore $P$ contains a path $v_0,\ldots,v_s$ from $v_0:=v$ to some $v_s\in Y_x$.   Furthermore $v_s$ is an internal vertex of $P$ and $P$ has length at most $k$, so $s\le k-1$.  For each $i\in\{0,\ldots,s\}$, let $Y_{y_i}$ be the part of $\mathcal{Y}$ that contains $v_i$.  For each $i\in\{1,\ldots,s\}$, the existence of $v_{i-1}v_{i}\in E(G)$ implies that $y_{i-1}=y_i$ or $y_{i-1}y_i\in E(H)$.
-  Therefore $y_0,\ldots,y_s$ is a lazy walk\footnote{A \defin{lazy walk} in a graph $G$ is a walk in the pseudograph obtained by adding a self-loop at each vertex of $G$.} in $H_v$ of length at most $s\le k-1$.  This lazy walk contains a path from $y_0$ to $y_s$ of length at most $s\le k-1$, as promised.
+  Consider the subgraph $H_v:=H[\{x\in V(T):\text{$v$ participates in $x$}\}]$.  Since $v\in Y_{x_0}$, $v$ participates in $x_0$, so $x_0\in V(H_v)$.  We claim that, for each $x\in V(H_v)\setminus\{x_0\}$, $H_v$ contains a path $y_0,\ldots,y_s$ of length $s\le k-1$ from $y_0:=x_0$ to $y_s:=x$.  Indeed, since $v$ participates in $x\neq x_0$, $\mathcal{S}$ contains a shortcut $P$ with $v\in V(P)$ and that crosses $x$.  Therefore $P$ contains a path $v_0,\ldots,v_s$ from $v_0:=v$ to some $v_s\in Y_x$.   Furthermore $v_s$ is an internal vertex of $P$ and $P$ has length at most $k$, so $s\le k-1$.  For each $i\in\{0,\ldots,s\}$, let $Y_{y_i}$ be the part of $\mathcal{Y}$ that contains $v_i$.  For each $i\in\{1,\ldots,s\}$, the existence of $v_{i-1}v_{i}\in E(G)$ implies that $y_{i-1}=y_i$ or that $y_{i-1}y_i\in E(H)$.  Therefore $y_0,\ldots,y_s$ is a lazy walk\footnote{A \defin{lazy walk} in a graph $G$ is a walk in the pseudograph obtained by adding a self-loop at each vertex of $G$.} in $H_v$ of length at most $s\le k-1$.  This lazy walk contains a path from $y_0$ to $y_s$ of length at most $s\le k-1$, as promised.
 
   Since $H_v$ contains a path from $x_0$ to $x$ for each $x\in V(H_v)\setminus\{x_0\}$,  $H_v$ is connected.  Since $H_v$ is connected, $x_r$---which is the lowest common $T$-ancestor of $V(H_v)$---is itself a node of $V(H_v)$.  Therefore $H_v$ contains a path $x_0,\ldots,x_r$ of length most $k-1$.  By the definition of $H_v$, $v$ participates in each of $x_0,\ldots,x_r$.
 \end{proof}
@@ -399,7 +398,20 @@ The graph $J$ has a tree-decomposition in which every bag has size at most $\bin
 
   Consider an arbitrary node $x\in V(T)$ and suppose that some strict $T$-ancestor $a$ of $x$ is contained in $C_x$.  We will show that $\overrightarrow{H}^+$ contains a directed path from $x$ to $a$ of length at most $k$.  By \cite[Lemma~13]{PS21}, this implies that the number of strict $T$-ancestors of $x$ contained in $C_x$ is at most $\binom{k+t}{t}-1$ and therefore $|C_x|\le\binom{k+t}{t}$.
 
-  Since $a\in C_x$, there exists a $T$-descendant $x'$ of $x$ such that $ax'\in E(J)$.  Therefore, there exists a shortcut $P:=v_0,\ldots,v_r$ in $\SS$ with $v_0\in S_{x'}$ and $v_r\in S_a$.  For each $i\in\{0,\ldots,r\}$, let $Y_{x_i}$ be the part of $\mathcal{Y}$ that contains $v_i$. Since $x_r\in S_{a}$, $a(v_r)=a$.  By \cref{short_path_in_h}, $H$ contains a path $y_0,\ldots,y_s$ from $y_0:=x_r$ to $y_s:=a$ of length at most $k-1$ such that $v_r$ participates in each of $y_0,\ldots,y_s$.  We will use this to show that $H$ contains a path $z_0,\ldots,z_{s'}$ from $z_0:=x$ to $z_{s'}:=a$ such that $v_r$ participates in each of $z_1,\ldots,z_{s'}$.   There are three cases to consider, depending on the location of $x_r$ relative to $x'$.
+  Since $a\in C_x$, there exists a $T$-descendant $x'$ of $x$ such that $ax'\in E(J)$.  Therefore, there exists a shortcut $P:=v_0,\ldots,v_r$ in $\SS$ with $v_0\in S_{x'}$ and $v_r\in S_a$.  For each $i\in\{0,\ldots,r\}$, let $Y_{x_i}$ be the part of $\mathcal{Y}$ that contains $v_i$. Since $x_r\in S_{a}$, $a(v_r)=a$.  By \cref{short_path_in_h}, $H$ contains a path $y_0,\ldots,y_s$ from $y_0:=x_r$ to $y_s:=a$ of length at most $k-1$ such that $v_r$ participates in each of $y_0,\ldots,y_s$.  We will use this to show that $H$ contains a path $z_0,\ldots,z_{s'}$ of length $s'\le s$, from $z_0:=x$ to $z_{s'}:=a$, and such that $v_r$ participates in each of $z_1,\ldots,z_{s'}$.   There are three cases to consider, depending on the location of $x_r$ relative to $x'$.
+
+  % \begin{figure}
+  %   \begin{center}
+  %     \begin{tabular}{ccc}
+  %       % (1) & (2) & (3) \\
+  %       \includegraphics[page=2]{figs/width} &
+  %       \includegraphics[page=3]{figs/width} &
+  %       \includegraphics[page=4]{figs/width}
+  %     \end{tabular}
+  %   \end{center}
+  %   \caption{Three cases in the proof of \cref{general-bag-size}}
+  %   \label{width_figure}
+  % \end{figure}
 
   \begin{enumerate}
     \item $x_r$ is a strict $T$-ancestor of $x$.  The shortcut $P=v_0,\ldots,v_r$ implies that $v_0$ participates in $x_{r-1}$.  Therefore $x'=a(v_0)$ is a $T$-ancestor of $x_{r-1}$, so $x$ is also a $T$-ancestor of $x_{r-1}$.  Since $x_{r-1}$ is a $T$-descendant of $x$ and $x_{r-1}x_r\in E(H)$, $x_r=y_0$ is contained in $B_x$. Therefore $xy_0$ is an edge of $H^+$, so the path $x,y_0,\ldots,y_s$ is a path in $H^+$ from $x$ to $a$ of length at most $s+1\le k$ and $v_r$ participates in each of $y_0,\ldots,y_s$.
@@ -407,8 +419,7 @@ The graph $J$ has a tree-decomposition in which every bag has size at most $\bin
     \item $x_r=x$.  In this case, $y_0,\ldots,y_s$ is a path from $x$ to $a$ of length at most $k-1\le k$ and $v_r$ participates in each of $y_0,\ldots,y_s$.
 
     \item $x_r$ is a strict $T$-descendant of $x$.
-      Since  $y_0=x_r$ is a strict $T$-descendant of $x$ and $y_s$ is a $T$-ancestor of $x$, at least one of $y_0,\ldots,y_s$, say $y_i$, is contained in $B_x$. Therefore $xy_i$ is an edge of $H^{+}$.  Therefore $x,y_i,\ldots,y_s$ is a path in $H^+$ from $x$ to $a$ of length at most $s+1\le k$ and $v_r$ participates in each of $y_i,\ldots,y_s$.
-
+      Since  $y_0=x_r$ is a strict $T$-descendant of $x$ and $y_s$ is a $T$-ancestor of $x$, the path in $T$ from $y_s$ to $y_0$ includes $x$.  Since $H[\{y_0,\ldots,y_s\}]$ is connected, at least one of $y_0,\ldots,y_s$, say $y_i$, is contained in $B_x$. Therefore $xy_i$ is an edge of $H^{+}$.  Therefore $x,y_i,\ldots,y_s$ is a path in $H^+$ from $x$ to $a$ of length at most $s+1\le k$ and $v_r$ participates in each of $y_i,\ldots,y_s$.
   \end{enumerate}
   In each case, we obtain a path $z_0,\ldots,z_{s'}$ in $H$ of length at most $k$ from $z_0:=x$ to $z_{s'}:=a$ such that $v_r$ participates in each of $z_1,\ldots,z_{s'}$.  By definition, $a$ is a $T$-ancestor of $x$.  Since $v_r$ participates in each of $z_1,\ldots,z_{s'}$, $a=a(v_r)$ is also a $T$-ancestor of each of $z_1,\ldots,z_{s'}$.  Let $W$ be the sequence obtained from $z_0,\ldots,z_{s'}$ by replacing $z_i$ with the lowest common $T$-ancestor of $z_0,\ldots,z_i$, for each $i\in\{0,\ldots,s'\}$.  Then $W$ is a lazy walk in $H^+$ of length at most $k$ that begins at $z_0=x$ and ends at $z_{s'}=a$. By removing duplicates from $W$ we obtain a path in $H^+$ that is also a directed path in $\overrightarrow{H}^+$.  This completes the proof of \cref{general-bag-size}.
 \end{proof}
