@@ -39,7 +39,7 @@ helpful to define $H^+$ first and then have a separate claim which shows
 how to use paths in $H$ to get paths in $H^+$.
 
 \begin{response}
-  Thanks to the referee for catching this embarrassing mistake.  In our previous round of simplifications, we oversimplified here.  The existence of the directed path in $\overrightarrow{H}^+$ does not come from the shortcut $v_0,\ldots,v_r$.  Rather, it comes from some shortcut that contains $v_r$ and some vertex in $Y_a$ (which must exist since $a=a(v_r)$ so $v_r\in Y_a$ or some shortcut that contains $v_r$ crosses $a$).  We have rewritten this part accordingly.  
+  Thanks to the referee for catching this embarrassing mistake.  In our previous round of simplifications, we oversimplified here.  The existence of the directed path in $\overrightarrow{H}^+$ does not come from the shortcut $v_0,\ldots,v_r$.  Rather, it comes from some shortcut that contains $v_r$ and some vertex in $Y_a$ (which must exist since $a=a(v_r)$ so $v_r\in Y_a$ or some shortcut that contains $v_r$ crosses $a$).  We have rewritten this part accordingly.
 \end{response}
 
 
@@ -55,7 +55,9 @@ in the source given) so there should be a reduction argument. It is
 more than just removing parallel edges because there may be separating
 cycles of length two.
 
-\tba
+\begin{response}
+  We have added a footnote here explaining that the proof of Sperner's Lemma is based on a certain graph defined on the faces of the embedding (triangles plus outer face).  It relies only on the fact that the number of odd-degree vertices in this graph is even, which is true even if this graph is not simple.
+\end{response}
 
 Other comments:
 
@@ -74,8 +76,7 @@ more precise language. This comment was in the previous review as
 well. Some but not all instances have been corrected.
 
 \begin{response}
-We do not understand this comment. Why can't there be a product structure
-theorem for string graphs?
+  We have added the qualifier "bounded-degree" here.
 \end{response}
 
 3. page 6, line -6: The elements of P are not ordered so it is not a sequence.
@@ -90,7 +91,10 @@ which participate in x. Moreover, for the proven upper bound to be
 enough, you need to show that the set of all nodes which participate in
 x induces a subtree of T (and thus that a(v) is in this set).
 
-\tba
+\begin{response}
+  As part of addressing the referee's primary comment, we have introduced an extra claim that which shows that, for any $v\in V(G)$, there is a path in $H$ from $v$ to $a(v)$ of length at most $k-1$ in which $v$ participates in every vertex on this path, including $a(v)$.  We have rephrased this confusing sentence and replaced it with a reference to this claim.
+\end{response}
+
 
 5. The paper regularly says things like “let P be an H-partition” without
 saying what H is. Typically this is understandable, but it could be
@@ -100,7 +104,10 @@ is (and similarly in other
 places). This shouldn’t be a serious hang-up for anyone, but still, it
 would be better to acknowledge technical inaccuracies.
 
-\tba
+\begin{response}
+  We have added a note at the beginning of Section 2.2 stating that, rather write ``$x$ is the unique vertex in $V(H)$ such that $v\in B_x$'' we write
+  ``$P_x$ is the part in $\mathcal{H}$ that contains $v$.''  (Where the $H$-partition $\mathcal{H}:=\{B_x:\in V(H)\}$ has already been defined.)
+\end{response}
 
 6. page 8, Claim 3. The definition of Cx, a subset of V (J), includes things
 which may not be vertices of J. This, of course, is not a real problem,
@@ -108,7 +115,9 @@ but the proof treats the fact that V (J) may be a proper subset of
 V (T) sloppily. Also, the notation T[x] is unfortunately ambiguous - it
 is strange to need to define something which has already been defined.
 
-\tba
+\begin{response}
+  We have adjusted the definition of $C_x$ so that it only includes $x$ if $x\in V(J)$.  We agree that the overloading of the notation $T[\cdot]$ is slightly unfortunate, but can live with it since the two uses can be distinguished from the type of the argument.  For a single node $a$, $T[a]$ denote the subtree induced by all nodes whose bags contain $a$. For a set $S$, $T[S]$ is the subgraph of $T$ induced by $S$.
+\end{response}
 
 7. page 16, line 6: Say why that is a convenient way to establish the
 planarity of H. (It does not actually say here that any such graph G
@@ -122,14 +131,18 @@ is planar.)
 at V0” since they need not be BFS spanning forests (unless the same
 terminology has already appeared elsewhere?).
 
-\tba
+\begin{response}
+  We now specify that this forest contains one tree rooted at each vertex of $V_0$.
+\end{response}
 
 9. page 16, Lemma 24. The lemma is rather long to state and I would
 imagine that anyone reading it has already read the proof of the product
 structure theorem for planar graphs. So I would add a sentence or two
 beforehand about how the set-up relates to that proof/tripods.
 
-\tba
+\begin{response}
+  We have added a couple of sentences here pointing to the exact lemma (Lemma~17) in the JACM paper and discussing the differences between the tripods here and there.
+\end{response}
 
 10. page 16, Lemma 24: Add “non-empty” before “sets $P_1,\dots,P_k$”.
 
@@ -142,26 +155,36 @@ beforehand about how the set-up relates to that proof/tripods.
 12. page 17, top. In the first two cases there may not be a vertex v3 defined
 as we could have p = 2.
 
-\tba
+\begin{response}
+  We have added an explanation, prior to this, of how to eliminate the possibility that an edge of $F$ bounds a face with with only two vertices and two parallel edges.  Simply apply induction on the cycle $F'$ that uses the second of the parallel edges rather than the first.  This is valid since $F'$ has fewer faces in its interior.
+\end{response}
+
 
 13. page 17, right after 3. The end of Qi should be the same as the vertex w
 chosen in case 3 because there may be multiple “appropriate” vertices.
 It should also really say what “appropriate” means.
 
-\tba
+\begin{response}
+  We have replaced "appropriate" with the "root of tree in $T$ that contains $v$".
+\end{response}
+
 
 14. page 17, line -9. “$\{x_1, x_2, x_3\}$” should be “$\{v_1, v_2, v_3\}$”
 
-\tba
+\done
 
 15. page 19, second to last paragraph. Add a sentence about why such
-a forest exists. The definition of a BFS layering is missing. A reader
-may expect that you will just use the assumptions about H and P
-that are stated, so it would be better to say something like “This gives
-an H-partition... and conditions (i), (ii), and (iii) of Lemma 24 are
-satisfied”.
+a forest exists. The definition of a BFS layering is missing.
 
-\tba
+
+\begin{response}
+  The more precise definition of ``BFS forest rooted $V_0$'' takes care of this.
+\end{response}
+
+A reader may expect that you will just use the assumptions about H and P that are stated, so it would be better to say something like “This gives an H-partition... and conditions (i), (ii), and (iii) of Lemma 24 are satisfied”.
+
+\done
+
 
 16. page 20, first paragraph of Lemma 25. Well, parallel edges can appear
 on the boundary of a common face if they were there before. Add a
