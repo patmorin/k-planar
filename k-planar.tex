@@ -686,7 +686,7 @@ Note that \cref{nearest-neighbour} is tight up to the leading constant:  Every $
 \section{Framed Graphs}
 \label{FramedSection}
 
-For any integer $d\ge 3$, an embedded (multi)graph $G$ is \defin{$d$-framed} if it has a biconnected plane spanning (multi)subgraph $G_0$, whose facial cycles each have length at most $d$,  and such that the interior of each edge in $E(G)\setminus E(G_0)$ is contained in the interior of some face of $G_0$. The embedded (multi)graph $G_0$ is called the \defin{frame} of $G$. This definition (for simple graphs) was introduced by \citet{BDGGMR}.
+For any integer $d\ge 3$, an embedded (multi)graph $G$ is \defin{$d$-framed} if it has a biconnected plane spanning (multi)subgraph $G_0$, whose facial cycles each have length at most $d$,  and such that the interior of each edge in $E(G)\setminus E(G_0)$ is contained in the interior of some face of $G_0$ \note{DW}{The word ``interior'' may be misinterpreted when refering to the outerface (see referee's comment). Shall we just write ``contained in some face''? Do we need to change this elsewhere?}. The embedded (multi)graph $G_0$ is called the \defin{frame} of $G$. This definition (for simple graphs) was introduced by \citet{BDGGMR}.
 
 Every $d$-framed multigraph can be described by a $(2,d(d-3)/2)$-shortcut system applied to a plane multigraph by adding a vertex inside each face $F$ of $G_0$ adjacent to the vertices of $F$ and creating a shortcut between each non-adjacent pair of vertices in $V(F)$. Thus \cref{ShortcutProduct} is applicable. However, for framed graphs we prove the following stronger result, where the treewidth bound on $H$ is best possible.\footnote{A multigraph $G$ is \defin{contained} in a graph $X$ if the simple graph underlying $G$ is contained in $X$.}
 
@@ -831,6 +831,7 @@ Therefore this process eventually reaches a stage where each face is either boun
 
 To understand the structure of $G$, it is helpful to consider the plane graph $G'$  obtained by replacing each pair of edges $vw$ and $xy$ that cross at $p$ with four edges $vp$, $wp$, $xp$, and $yp$ meeting at a newly added \defin{dummy vertex} $p$. Let $F$ be a face of $G'$ and let $W:=w_0,\ldots,w_{r-1}$ be the facial walk around $F$. In the following paragraphs, subscripts on the vertices in $W$ are implicitly taken modulo $r$. By edge-maximality, if $W$ contains only non-dummy vertices, then it contains exactly three vertices and $F$ is bounded by three edges of $G$.
 
+\note{DW}{I suggest we do not start a new paragraph here}
 If $W$ contains a dummy vertex $w_i$, then neither $w_{i-1}$ nor $w_{i+1}$ is a dummy vertex since if $w_{i-1}$ (respectively $w_{i+1}$) were a dummy vertex then the edge of $G$ that contains $w_{i-1}w_i$ (respectively $w_iw_{i+1}$) would be involved in at least two crossings.  Therefore each dummy vertex $w_i$ of $W$ is flanked by two non-dummy vertices $w_{i-1},w_{i+1}\in V(G)$.  Since $w_i$ has degree $4>1$ in $G'$ and no two edges incident to a common vertex cross each other, $w_{i-1}\neq w_{i+1}$.  Since $G$ is edge-maximal, the edge $w_{i-1}w_{i+1}$ is an edge of $G$ on the boundary of $F$.  Therefore, if $F$ has a dummy vertex $w_i$ in its facial walk $W$, then $W=w_{i-1},w_i,w_{i+1}$ and $F$ is bounded by three edges of $G'$, each of which is contained in a different edge of $G$.
 
 \begin{figure}[!h]
@@ -1026,6 +1027,8 @@ Combining \cref{Universal} with our results on product structure yields the foll
     \item every $k$-nearest neighbour graph of $n$ points in $\R^2$.
   \end{compactitem}
 \end{cor}
+
+\subsection*{Acknowledgements} Thanks to the referees for many helpful comments.  
 
 % %%%  Squashing the bibliography
    \let\oldthebibliography=\thebibliography
