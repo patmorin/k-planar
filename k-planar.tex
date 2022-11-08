@@ -823,24 +823,30 @@ A multigraph $G$ is $1$-planar if and only if it is contained in a $4$-framed mu
 
 
 \begin{proof}
-Let $G$ be a $1$-plane multigraph. We may assume that no two edges incident to a common vertex of $G$ cross, since such a crossing can be removed by a local modification to obtain an isomorphic 1-plane graph in which the two edges do not cross\footnote{While this is true for 1-plane graphs it is not true for $k$-plane graphs with $k\ge 3$; the uncrossing operation can increase the number of crossings on a particular edge from $k$ to $2(k-1)$.}. We make $G$ into an \defin{edge-maximal} $1$-plane multigraph, by repeating the following operation:  If two vertices $v$ and $w$ of $G$ appear on a common face $F$ and there is no edge $vw\in E(G)$ contained in the boundary of $F$, then add the edge $vw$, embedded in the face $F$.  This may introduce parallel edges into $G$, but no two such edges  appear on the boundary of a common face.
+Let $G$ be a $1$-plane multigraph. We may assume that no two edges incident to a common vertex of $G$ cross, since such a crossing can be removed by a local modification to obtain an isomorphic 1-plane graph in which the two edges do not cross\footnote{While this is true for 1-plane graphs it is not true for $k$-plane graphs with $k\ge 3$; the uncrossing operation can increase the number of crossings on a particular edge from $k$ to $2(k-1)$.}. We make $G$ into an \defin{edge-maximal} $1$-plane multigraph, by repeating the following operation:  If two vertices $v$ and $w$ of $G$ appear on a common face $F$ and there is no edge $vw\in E(G)$ contained in the boundary of $F$, then add the edge $vw$, embedded in the face $F$.  This may introduce parallel edges into $G$, but no two such edges  appear on the boundary of a common face. 
+\note{DW}{Add ``So each face is bounded by a triangle, and this process terminates by Euler's formula.''}
 
-\begin{figure}[h]
-  \begin{center}
-    \begin{tabular}{c@{\hspace{1cm}}c}
-        \includegraphics{figs/one_planar_example-3} &
-        \includegraphics{figs/one_planar_example-4} \\
-        $G$ & $G_0$
-     \end{tabular}
-    \end{center}
-    \caption{The graph $G_0$ obtained by removing pairs of crossing edges from $G$ is a plane multigraph whose faces all have three or four sides.}
-    \label{one_planar_example}
+\note{DW}{I think $G_0$ should be replaced by $G'$ throughout this proof.} 
+
+\begin{figure}[!h]
+	\begin{center}
+		\begin{tabular}{c@{\hspace{1cm}}c}
+			\includegraphics{figs/one_planar_example-3} &
+			\includegraphics{figs/one_planar_example-4} \\
+			$G$ & $G_0$
+		\end{tabular}
+	\end{center}
+	\caption{The graph $G_0$ obtained by removing pairs of crossing edges from $G$ is a plane multigraph whose faces all have three or four sides.}
+	\label{one_planar_example}
 \end{figure}
 
-Refer to \cref{one_planar_example}.
-To understand the structure of $G$, it is helpful to consider the plane graph $G'$ obtained by replacing each pair of edges $vw$ and $xy$ that cross at $p$ with four edges $vp$, $wp$, $xp$, and $yp$ meeting at a newly added \defin{dummy vertex} $p$. Let $F$ be a face of $G_0$ and let $W:=w_0,\ldots,w_{r-1}$ be the facial walk around $F$. In the following paragraphs, subscripts on the vertices in $W$ are implicitly taken modulo $r$. By edge-maximality, if $W$ contains only non-dummy vertices, then it contains exactly three vertices and $F$ is bounded by three edges of $G$.
 
-If $W$ contains a dummy vertex $w_i$, then neither $w_{i-1}$ nor $w_{i+1}$ is a dummy vertex since if $w_{i-1}$ (respectively $w_{i+1}$) were a dummy vertex then the edge of $G$ that contains $w_{i-1}w_i$ (respectively $w_iw_{i+1}$) would be involved in at least two crossings.  Therefore each dummy vertex $w_i$ of $W$ is flanked by two non-dummy vertices $w_{i-1},w_{i+1}\in V(G)$.  Since $w_i$ has degree $4>1$ in $G'$ and no two edges incident to a common vertex cross each other, $w_{i-1}\neq w_{i+1}$.  Since $G$ is edge-maximal the edge $w_{i-1}w_{i+1}$ is an edge of $G$ on the boundary of $F$.  Therefore, if $F$ has a dummy vertex $w_i$ in its facial walk $W$, then $W=w_{i-1},w_i,w_{i+1}$ and $F$ is bounded by three edges of $G'$, each of which is contained in a different edge of $G$.
+Refer to \cref{one_planar_example}.
+To understand the structure of $G$, it is helpful to consider the plane graph $G'$  obtained by replacing each pair of edges $vw$ and $xy$ that cross at $p$ with four edges $vp$, $wp$, $xp$, and $yp$ meeting at a newly added \defin{dummy vertex} $p$. Let $F$ be a face of $G_0$ and let $W:=w_0,\ldots,w_{r-1}$ be the facial walk around $F$. In the following paragraphs, subscripts on the vertices in $W$ are implicitly taken modulo $r$. By edge-maximality, if $W$ contains only non-dummy vertices, then it contains exactly three vertices and $F$ is bounded by three edges of $G$.
+
+If $W$ contains a dummy vertex $w_i$, then neither $w_{i-1}$ nor $w_{i+1}$ is a dummy vertex since if $w_{i-1}$ (respectively $w_{i+1}$) were a dummy vertex then the edge of $G$ that contains $w_{i-1}w_i$ (respectively $w_iw_{i+1}$) would be involved in at least two crossings.  Therefore each dummy vertex $w_i$ of $W$ is flanked by two non-dummy vertices $w_{i-1},w_{i+1}\in V(G)$.  Since $w_i$ has degree $4>1$ in $G'$ and no two edges incident to a common vertex cross each other, $w_{i-1}\neq w_{i+1}$.  Since $G$ is edge-maximal, the edge $w_{i-1}w_{i+1}$ is an edge of $G$ on the boundary of $F$.  Therefore, if $F$ has a dummy vertex $w_i$ in its facial walk $W$, then $W=w_{i-1},w_i,w_{i+1}$ and $F$ is bounded by three edges of $G'$, each of which is contained in a different edge of $G$.
+
+\note{DW}{Put \cref{one_planar_example} here?}
 
 Consider some pair of edges $vw$ and $xy$ that cross at point $p$, which is a degree-4 vertex of $G'$.  Since no pair of edges incident to a common vertex cross each other, $v$, $w$, $x$, and $y$ are all distinct.  There are four faces $F_1,\ldots,F_4$ of $G'$ with $p$ on their boundary and, from the preceding discussion each of $vx$, $xw$, $wy$, and $yv$ is an uncrossed edge of $G$.  Therefore, by removing each pair of crossing edges from $G$ we obtain a plane multigraph $G_0$ each of whose faces is bounded by three or four edges.  Therefore $G$ is a $4$-framed graph with frame $G_0$.
 \end{proof}
@@ -863,7 +869,7 @@ For every integer $d\geq 3$, every $d$-map graph is a subgraph of a $d$-framed m
 \end{lem}
 
 \begin{proof}
-Let $G_0$ be a graph embedded in the plane, with each face labelled a nation or a lake, and where each vertex of $G_0$ is incident with at most $d$ nations and let $G$ be the corresponding map graph.
+Let $G_0$ be a graph embedded in the plane, with each face labelled a nation or a lake, and where each vertex of $G_0$ is incident with at most $d$ nations. Let $G$ be the corresponding map graph.
 
 If $G_0$ has a face $f$ of length 2, then add a new vertex inside $f$ adjacent to both vertices on the boundary of $f$, which creates two new triangular faces $f_1$ and $f_2$. If $f$ is a lake, then make $f_1$ and $f_2$ lakes. If $F$ is a nation, then make $f_1$ a nation and make $f_2$ a lake. The resulting map graph is still $G$. So we may assume that $G_0$ is an edge-maximal multigraph with no faces of length 2 (and with each face labelled a nation or a lake), such that $G$ is the corresponding map graph. This is well-defined since the assumption of having no face of length 2 implies that $|E(G_0|\leq 3|V(G)|-6$.
 
@@ -873,7 +879,7 @@ Let $G_0^*$ be the dual graph of $G_0$. So the vertices of $G_0^*$ correspond to
 
 Let $x$ be a vertex of $G_0$, let $F_x$ be the corresponding face of $G_0^*$, and let $v_1,\ldots,v_s$ be the facial cycle of $F_x$.  Let $C:=w_1,\ldots,w_r$ be the subsequence of $v_1,\ldots,v_s$ consisting of only the nation vertices.  Since $x$ is incident to at most $d$ nations, $r\le d$. Call $C_x$ the \defin{nation cycle} of $F_x$. Note that if $r=1$ then the ``nation cycle'' has no edges, and if $r=2$ then the ``nation cycle'' has one edge.
 
-Let $G_1$ be a plane supergraph of $G_0^*$ obtained by adding the nation cycle of each face $F$ of $G_0$, and then triangulating each face with more than $d$ vertices on its boundary. $G_1$ is biconnected since $G^*_0$ is a biconnected spanning subgraph of $G_1$. Each nation cycle of length at least $3$ is now a facial cycle of $G_1$, and no face of $G_1$ has more than $d$ vertices on its boundary. Let $\widehat{G}_1$ be the $d$-framed graph whose frame is $G_1$.
+Let $G_1$ be a plane supergraph of $G_0^*$ obtained by adding the nation cycle of each face $F$ of $G_0$, and then triangulating each face with more than $d$ vertices on its boundary. $G_1$ is biconnected since $G^*_0$ is a biconnected spanning subgraph of $G_1$. Each nation cycle of length at least $3$ is now a facial cycle of $G_1$, and no face of $G_1$ has more than $d$ vertices on its boundary. Let $\widehat{G}_1$ be the \note{DW}{Add ``edge-maximal''. Do we need to write this anywhere else?} $d$-framed graph whose frame is $G_1$.
 
 By definition, $V(G) \subseteq V(\widehat{G}_1)$. To prove the claim, it suffices to show that $E(G)\subseteq E(\widehat{G}_1)$.  Indeed, if $vw\in E(G)$ then the nation faces corresponding to $v$ and $w$ have a common vertex $x$ on their boundary. The vertex $x$ corresponds to a face $F_x$ in $G_0^*$ and the facial cycle of $F_x$ contains $v$ and $w$.  Therefore, the nation cycle $C_x$ of $F_x$ contains $v$ and $w$. If $C_x$ has length $2$ then $vw\in E(G_1)\subseteq E(\widehat{G}_1)$.  If $C_x$ has length at least $3$ then $C_x$ bounds a face in $G_1$, so $vw\in E(\widehat{G}_1)$.
 \end{proof}
