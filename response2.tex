@@ -43,12 +43,17 @@ how to use paths in $H$ to get paths in $H^+$.
 \end{response}
 
 
-2. Are the nations incident to a vertex counted with multiplicity in dmap graphs? The definition does not say so, but the proof of Lemma 27 (as currently stated) assumes not only this, but that the embedded graph under consideration is 2-connected. It also seems that frames are loopless, so slightly more care is called for when they are constructed.
+2. Are the nations incident to a vertex counted with multiplicity in dmap graphs? The definition does not say so, but the proof of Lemma 27 (as currently stated) assumes not only this, but that the embedded graph under consideration is 2-connected.  It also seems that frames are loopless, so slightly more care is called for when they are constructed.
+
+\begin{response}
+  We have addressed this by adding the assumption that the underlying planar graph $G_0$ is edge-maximal. More precisely, it is not possible to add an edge to $G_0$ (and relabel faces as nation or lake) to obtain the same map graph $G$.  We then argue that this implies that $G_0$ is biconnected. 
+\end{response}
+
+
 It may be worth noting explicitly that you allow d-framed graphs to
 have edges outside the outer face of their frame - I was unsure about
 this given the phrase “interior of the face”.
 
-\tba
 
 3. Sperner’s Lemma is usually stated for simple graphs (as is the case
 in the source given) so there should be a reduction argument. It is
@@ -187,19 +192,23 @@ A reader may expect that you will just use the assumptions about H and P that ar
 
 
 16. page 20, first paragraph of Lemma 25. Well, parallel edges can appear
-on the boundary of a common face if they were there before. Add a
-sentence about why the process ends.
+on the boundary of a common face if they were there before.
 
-\textcolor{orange}{DW: I have suggested a sentence to add. }
+\begin{response}
+  We rephrased this to clarify that it only applies to newly-introduced edges.
+\end{response}
 
-\tba
+
+Add a sentence about why the process ends.
+
+\done
 
 17. page 20, second to last paragraph. Figure 4 is mentioned several paragraphs before the graph which it depicts is defined. The graph $G_0$ in
 this paragraph should be $G'$, and check for this throughout.
 
-\textcolor{orange}{DW: I think $G_0$ should be replaced by $G'$ throughout this proof.} 
-
-\tba
+\begin{response}
+  We have moved Figure 4 a bit later and, indeed, several occurrences of $G_0$ should have been $G'$.  These are corrected now.
+\end{response}
 
 18. page 21, Lemma 27. Should be “labelled a nation or a lake” in the
 first paragraph. In the third paragraph, the graph $\hat{G}_1$ should be “edge-maximal” or similar.
