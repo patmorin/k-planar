@@ -160,7 +160,7 @@ and treewidth\footnote{For a tree $T$, a \defin{$T$-decomposition} of a graph $G
 \item \citet{DEJGMM21} use it to find asymptotically optimal adjacency labellings of planar graphs (resolving a problem of \citet{kannan.naor.ea:implicit}).
 \item \citet{EJM} use it to show the existence of a `universal graph' with $n^{1+o(1)}$ vertices and edges that contains every $n$-vertex planar graph as an induced subgraph (resolving a problem of \citet{babai.chung.ea:on}).
 \end{compactitem}
-In addition, \cref{PlanarProduct} has been used to resolve or make substantial progress on a number of other problems on planar graphs, including $\ell$-vertex ranking~\citep{BDJM}, twin-width~\citep{BKW}, and odd colourings~\citep{DMO}.
+In addition, \cref{PlanarProduct} has been used to resolve or make substantial progress on a number of other problems on planar graphs, including $\ell$-vertex ranking~\citep{BDJM} and twin-width~\citep{BKW}.
 
 
 All of these results hold for any graph class that has a product structure theorem analogous to \cref{PlanarProduct}; that is, for any graph class  $\mathcal{G}$ where every graph in $\mathcal{G}$ is contained in $H\boxtimes P\boxtimes K_\ell$ where $H$ has bounded treewidth, $P$ is a path, and $\ell$ is bounded.\footnote{It is easily seen that $\tw(H\boxtimes K_\ell) \leq (\tw(H)+1)\ell-1$, so we may assume that $\ell=1$ in this statement.} These applications motivate finding product structure theorems for other graph classes. \citet{DJMMUW20} prove product structure theorems for graphs of bounded Euler genus\footnote{The \textit{Euler genus} of a surface with $h$ handles and $c$ crosscaps is $2h+c$. The \textit{Euler genus} of a graph $G$ is the minimum integer $g$ such that $G$ embeds in a surface of Euler genus $g$. Of course, a graph is planar if and only if it has Euler genus 0; see \citep{mohar.thomassen:graphs} for more about graph embeddings in surfaces.} and for apex-minor-free graphs,\footnote{A graph $M$ is a \textit{minor} of a graph $G$ if a graph isomorphic to $M$ can be obtained from a subgraph of $G$ by contracting edges. A class $\mathcal{G}$ of graphs is \defin{minor-closed} if for every graph $G\in\mathcal{G}$, every minor of $G$ is in $\mathcal{G}$. A minor-closed class is \defin{proper} if it is not the class of all graphs. For example, for fixed $g\geq 0$, the class of graphs with Euler genus at most $g$ is a proper minor-closed class. A graph $G$ is $t$-apex if it contains a set $A$ of at most $t$ vertices such that $G-A$ is planar. A 1-apex graph is \defin{apex}.  A minor-closed class $\mathcal{G}$ is apex-minor-free if some apex graph is not in $\mathcal{G}$.} and \citet{DEMWW22} do so for bounded-degree graphs in any minor-closed class. See \citep{DHJLW21} for a survey on this topic.
@@ -169,7 +169,7 @@ The main purpose of this paper is to prove product structure theorems for severa
 
 \subsection{$k$-Planar Graphs}
 
-We start with the example of $k$-planar graphs. A graph is \defin{$k$-planar} if it has a drawing in the plane in which each edge is involved in at most $k$ crossings, where no three edges cross at a single point (see \cref{k_planar_section} for a formal definition). Such graphs provide a natural generalisation of planar graphs, and are important in graph drawing research; see the recent bibliography on 1-planar graphs and the 140 references therein \citep{kobourov.liotta.ea:annotated}. It is well-known that the family of $k$-planar graphs is not minor-closed.  Indeed, 1-planar graphs may contain arbitrarily large complete graph minors~\citep{dujmovic.eppstein.ea:structure}. Hence the above results are not applicable for  $k$-planar graphs. We extend \cref{PlanarProduct} as follows.
+We start with the example of $k$-planar graphs. A graph is \defin{$k$-planar} if it has a drawing in the plane in which each edge is involved in at most $k$ crossings, where no three edges cross at a single point (see \cref{k_planar_section} for a formal definition). Such graphs provide a natural generalisation of planar graphs, and are important in graph drawing research; see the recent bibliography on 1-planar graphs and the 140 references therein \citep{kobourov.liotta.ea:annotated}. It is well-known that the family of $k$-planar graphs is not minor-closed.  Indeed, 1-planar graphs may contain arbitrarily large complete graph minors~\citep{dujmovic.eppstein.ea:structure}. Hence the preceding results are not applicable for  $k$-planar graphs. We extend \cref{PlanarProduct} as follows.
 
 \begin{thm}
 \label{kPlanarProduct}
@@ -187,7 +187,7 @@ For at least two applications, the planarity of $H$ in \cref{1_planar_product} i
 
 \subsection{Shortcut Systems}
 
-The above result for $k$-planar graphs (\cref{kPlanarProduct}) is in fact a special case of a more general result that relies on the following definition. A non-empty set $\SS$ of non-trivial paths in a graph $G$ is a \defin{$(k,d)$-shortcut system} (for $G$) if:
+The preceding result for $k$-planar graphs (\cref{kPlanarProduct}) is in fact a special case of a more general result that relies on the following definition. A non-empty set $\SS$ of non-trivial paths in a graph $G$ is a \defin{$(k,d)$-shortcut system} (for $G$) if:
 
 \begin{compactitem}
 \item every path in $\SS$ has length at most $k$,\footnote{A path of length $k$ consists of $k$ edges and $k+1$ vertices.  A path is \defin{trivial} if it has length 0 and \defin{non-trivial} otherwise.} and
@@ -240,7 +240,7 @@ Let $G$ be a graph contained in $H\boxtimes P \boxtimes K_\ell$, for some graph 
       $1$-planar & $3^*$ & $7$ & \cref{1_planar_product} \\
       $d$-map & $3^*$ & $d+ 3\floor{d/2} - 3$ & \cref{dMapProduct} \\
       $(g,d)$-map & $9$ & $\max\{2g,3\}\,(7d^2 -21d)$ & \cref{gdMapProduct} \\ \hline
-      \multicolumn{4}{l}{$^*$ these bounds also apply to the simple treewidth of $H$.}
+      \multicolumn{4}{l}{$^*$ these bounds also apply to the simple treewidth \cite{knauer.ueckerdt:simple} of $H$.}
     \end{tabular}
   }
   \caption{Product structure theorems (of the form $G\subseteq H\boxtimes P\boxtimes K_\ell$).}
@@ -250,7 +250,7 @@ Let $G$ be a graph contained in $H\boxtimes P \boxtimes K_\ell$, for some graph 
 The remainder of this paper is organized as follows:
 \begin{compactitem}
   \item In \cref{Structure} we prove our main result for shortcut systems (\cref{ShortcutProduct}), and its optimisations for $k$-planar graphs and their genus-$g$ generalisation (\cref{kPlanarProduct,gkPlanarProduct}).
-  \item \Cref{examples} uses \cref{ShortcutProduct,kPlanarProduct,gkPlanarProduct} to derive product structure theorems for bounded-degree string graphs, powers of bounded-degree graphs, map graphs, and $k$-nearest neighbour graphs.
+  \item \Cref{examples} uses \cref{ShortcutProduct,kPlanarProduct,gkPlanarProduct} to derive product structure theorems for bounded-degree string graphs, powers of bounded-degree graphs, map graphs of bounded clique number, and $k$-nearest neighbour graphs.
   \item \Cref{FramedSection} proves a product structure theorem for $d$-framed multigraphs in which the graph $H$ has treewidth $3$ and is planar.  Using this result, we derive improved product structure theorems for $1$-planar graphs and planar map graphs, again with a planar graph $H$.
   \item \Cref{Applications} quickly surveys applications of product structure theorems and the consequences of the current work.
 \end{compactitem}
@@ -291,11 +291,11 @@ By \cref{PartitionProduct}, \cref{ShortcutProduct} is equivalent to the followin
 \subsection{Shortcut Systems}
 
 We now prove \cref{ShortcutPartition}.
-For convenience, it will be helpful to assume that $\SS$ contains a length-1 $vw$-shortcut for every edge $vw\in E(G)$.  Since $G^\SS$ is defined to be a supergraph of $G$, this assumption has no effect on $G^{\SS}$ but eliminates special cases in some of our proofs.  For a given $H$-partition $\mathcal{H}:=\{B_x:x\in V(H)\}$ of a graph $G$, we are frequently interested in the unique vertex $x\in V(H)$ such that $B_x$ contains a particular vertex $v\in V(G)$.  We will write this concisely by writing that ``$P_x$ is the part in $\mathcal{H}$ that contains $v$.''
+For convenience, it will be helpful to assume that $\SS$ contains a length-1 $vw$-shortcut for every edge $vw\in E(G)$.  Since $G^\SS$ is defined to be a supergraph of $G$, this assumption has no effect on $G^{\SS}$ but eliminates special cases in some of our proofs.  For a given $H$-partition $\mathcal{H}:=\{B_x:x\in V(H)\}$ of a graph $G$, we are frequently interested in the unique vertex $x\in V(H)$ such that $B_x$ contains a particular vertex $v\in V(G)$.  We express this concisely by writing that ``$P_x$ is the part in $\mathcal{H}$ that contains $v$.''
 
 
 Let $T$ be a tree rooted at some node $x_0\in V(T)$.  A node $a\in V(T)$ is a \defin{$T$-ancestor} of $x\in V(T)$ (and $x$ is a \defin{$T$-descendant} of $a$) if $a$ is a vertex of the path, in $T$, from $x_0$ to $x$.  Note that each node $x\in V(T)$ is a $T$-ancestor and $T$-descendant of itself.  We say that a $T$-ancestor $a\in V(T)$ of $x\in V(T)$ is a \defin{strict} $T$-ancestor of $x$ if $a\neq x$.
-The \defin{$T$-depth} of a node $x\in V(T)$ is the length of the path, in $T$, from $x_0$ to $x$.  The \defin{lowest common $T$-ancestor} of a non-empty set $S\subseteq V(T)$ is the $T$-ancestor of every node in $S$ with maximum $T$-depth. In the following, we treat any subtree $T'$ of $T$ as a rooted tree whose root is the lowest common $T$-ancestor of $V(T')$.
+The \defin{$T$-depth} of a node $x\in V(T)$ is the length of the path, in $T$, from $x_0$ to $x$.  The \defin{lowest common $T$-ancestor} of a non-empty set $S\subseteq V(T)$ is the maximum $T$-depth node $a\in V(T)$ that is a $T$-ancestor of every node in $S$.  In the following, we treat any subtree $T'$ of $T$ as a rooted tree whose root is the lowest common $T$-ancestor of $V(T')$.
 
 We begin with a standard technique that allows us to work with a normalised tree-decomposition whose tree has the same vertex set as the graph it decomposes:
 
@@ -310,7 +310,7 @@ We begin with a standard technique that allows us to work with a normalised tree
 \begin{proof}
   That \tref{subtree-root} implies \tref{ancestor-edge} is a standard observation: If two subtrees intersect, then one contains the root of the other.  Thus, it suffices to construct a width-$t$ tree-decomposition that satisfies \tref{subtree-root}.
 
-  Begin with any width-$t$ tree-decomposition $(B_x:x\in V(T_0))$ of $H$ that uses some tree $T_0$ and has no empty bags.  Select any node $x_1\in V(T_0)$, add a leaf $x_0$, with $B_{x_0}=\emptyset$, adjacent to $x_1$ and root $T_0$ at $x_0$. (The purpose of $x_0$ is to ensure that every node $x$ for which $B_x$ is non-empty has a parent.)  Let $f:V(H)\to V(T)$ be the function that maps each $x\in V(H)$ onto the root of the subtree $T_0[x]:=T_0[\{y\in V(T_0): x\in B_y\}]$.  If $f$ is not one-to-one, then select some distinct pair $x,y\in V(H)$ with $a:=f(x)=f(y)$.  Subdivide the edge between $a$ and its $T$-parent by introducing a new node $a'$ with $B_{a'}=B_{a}\setminus\{x\}$. Now $f(y)=a'$ and $f(x)=a$, so this modification reduces the number of distinct pairs $x,y\in V(H)$ with $f(x)=f(y)$.  Repeatedly performing this modification will eventually produce a tree-decomposition $(B_x:x\in V(T_0))$ of $H$ in which $f$ is one-to-one.
+  Begin with any width-$t$ tree-decomposition $(B_x:x\in V(T_0))$ of $H$ that uses some tree $T_0$ and has no empty bags.  Select any node $x_1\in V(T_0)$, add a leaf $x_0$, with $B_{x_0}=\emptyset$, adjacent to $x_1$ and root $T_0$ at $x_0$. (The sole purpose of $x_0$ is to ensure that every node $x$ for which $B_x$ is non-empty has a parent.)  Let $f:V(H)\to V(T)$ be the function that maps each $x\in V(H)$ onto the root of the subtree $T_0[x]:=T_0[\{y\in V(T_0): x\in B_y\}]$.  If $f$ is not one-to-one, then select some distinct pair $x,y\in V(H)$ with $a:=f(x)=f(y)$.  Subdivide the edge between $a$ and its $T$-parent by introducing a new node $a'$ with $B_{a'}=B_{a}\setminus\{x\}$. Now $f(y)=a'$ and $f(x)=a$, so this modification reduces the number of distinct pairs $x,y\in V(H)$ with $f(x)=f(y)$.  Repeatedly performing this modification will eventually produce a tree-decomposition $(B_x:x\in V(T_0))$ of $H$ in which $f$ is one-to-one.
 
   Next, remove the node $x_0$ from $T_0$ (so that $x_1$ becomes the new root of $T_0$).  Consider any node $a\in V(T_0)$ such that there is no vertex $x\in V(H)$ with $f(x)=a$.  In this case, $B_{a}\subseteq B_{a'}$ where $a'$ is the parent of $a$ since any $x\in B_a\setminus B_{a'}$ would have $f(x)=a$.  In this case, contract the edge $aa'$ in $T_0$, eliminating the node $a$.  Repeating this operation will eventually produce a width-$t$ tree-decomposition of $(B_x:x\in V(T_0))$ where $f$ is a bijection between $V(H)$ and $V(T_0)$.  Renaming each node $a\in V(T_0)$ as $f^{-1}(a)$ gives a tree-decomposition $(B_x:x\in V(T))$ with $V(T)=V(H)$.  By the definition of $f$, the tree-decomposition $(B_x:x\in V(T))$ satisfies \tref{subtree-root}.
 \end{proof}
@@ -331,7 +331,7 @@ For a node $x\in V(T)$, we say that a shortcut $P\in\SS$ \defin{crosses} $x$ if 
 
   Consider the subgraph $H_v:=H[\{x\in V(T):\text{$v$ participates in $x$}\}]$.  Since $v\in Y_{x_0}$, $v$ participates in $x_0$, so $x_0\in V(H_v)$.  We claim that, for each $x\in V(H_v)\setminus\{x_0\}$, $H_v$ contains a path $y_0,\ldots,y_s$ of length $s\le k-1$ from $y_0:=x_0$ to $y_s:=x$.  Indeed, since $v$ participates in $x\neq x_0$, $\mathcal{S}$ contains a shortcut $P$ with $v\in V(P)$ and that crosses $x$.  Therefore $P$ contains a path $v_0,\ldots,v_s$ from $v_0:=v$ to some $v_s\in Y_x$.   Furthermore $v_s$ is an internal vertex of $P$ and $P$ has length at most $k$, so $s\le k-1$.  For each $i\in\{0,\ldots,s\}$, let $Y_{y_i}$ be the part of $\mathcal{Y}$ that contains $v_i$.  For each $i\in\{1,\ldots,s\}$, the existence of $v_{i-1}v_{i}\in E(G)$ implies that $y_{i-1}=y_i$ or that $y_{i-1}y_i\in E(H)$.  Therefore $y_0,\ldots,y_s$ is a lazy walk\footnote{A \defin{lazy walk} in a graph $G$ is a walk in the pseudograph obtained by adding a self-loop at each vertex of $G$.} in $H_v$ of length at most $s\le k-1$.  This lazy walk contains a path from $y_0$ to $y_s$ of length at most $s\le k-1$, as promised.
 
-  Since $H_v$ contains a path from $x_0$ to $x$ for each $x\in V(H_v)\setminus\{x_0\}$,  $H_v$ is connected.  Since $H_v$ is connected, $x_r$---which is the lowest common $T$-ancestor of $V(H_v)$---is itself a node of $V(H_v)$.  Therefore $H_v$ contains a path $x_0,\ldots,x_r$ of length most $k-1$.  By the definition of $H_v$, $v$ participates in each of $x_0,\ldots,x_r$.
+  Since $H_v$ contains a path from $x_0$ to $x$ for each $x\in V(H_v)\setminus\{x_0\}$,  $H_v$ is connected.  Since $H_v$ is connected, $x_r$---which is the lowest common $T$-ancestor of $V(H_v)$---is itself a node of $V(H_v)$.  Therefore $H_v$ contains a path $x_0,\ldots,x_r$ of length at most $k-1$.  By the definition of $H_v$, $v$ participates in each of $x_0,\ldots,x_r$.
 \end{proof}
 
 For each $x\in V(T)$, define $S_x := \{v\in V(G): a(v)= x\}$. Since $a:V(G)\to V(T)$ is a function with domain $V(G)$ and range $V(T)$, $\PP:=(S_x : x\in V(T))$ is a collection of disjoint sets that cover $V(G)$. Let $J:=G^\SS/\PP$ denote the resulting quotient graph. We consider $V(J)\subseteq V(T)$, where each $x\in V(J)$ is the vertex obtained by contracting $S_x$ in $G^{\SS}$. (Any node $x\in V(T)$ with $S_x=\emptyset$ does not contribute a vertex to $J$.)
@@ -350,7 +350,7 @@ Once we have established (i) and (ii), the result follows easily since a layerin
 
 \begin{proof}
   % Recall that $S_x$ is defined by vertices that participate in $x$, and these are vertices that are either in $Y_x$ or in shortcuts that cross $Y_x$.
-  It follows from \cref{short_path_in_h} that, for each $v\in V(H)$, $v$ participates in $x:=a(v)$.  Therefore, the contents of $S_x$ are limited to elements that are in $Y_x$ or vertices in shortcuts that cross $x$.  We say that a vertex $w\in Y_x$ \defin{contributes} a vertex $v\in S_x$ if $v=w$ or if some path in $\SS$ that contains $v$ has $w$ as an internal vertex.  We upper bound the number of vertices in $S_x\cap L_i$ by upper-bounding the number of vertices contributed to $S_x\cap L_i$ by each $w\in Y_x$.
+  It follows from \cref{short_path_in_h} that, for each $v\in V(H)$, $v$ participates in $x:=a(v)$.  Therefore, for each $x\in V(J)$, the contents of $S_x$ are limited to vertices that are in $Y_x$ or in shortcuts that cross $x$.  We say that a vertex $w\in Y_x$ \defin{contributes} a vertex $v\in S_x$ if $v=w$ or if some path in $\SS$ that contains $v$ has $w$ as an internal vertex.  We upper bound the number of vertices in $S_x\cap L_i$ by upper-bounding the number of vertices contributed to $S_x\cap L_i$ by each $w\in Y_x$.
 
   Refer to \cref{contribute}.  If $w\in Y_x\cap L_i$ and no path in $\SS$ includes $w$ as an internal vertex then $w$ contributes at most one vertex, itself, to $S_x\cap L_i$.  Otherwise, consider some path $P\in\SS$ that contains $w$ as an internal vertex.  If $w\in L_{i}$, then $P$ contributes at most $k+1$ vertices to $S_x\cap L_i$.  If $w\in L_{i-1}\cup L_{i+1}$, then $P$ contributes at most $k$ vertices to $S_x\cap L_i$. If $w\in L_{i-j}\cup L_{i+j}$ for $j\ge 2$, then $P$ contributes at most $k-j$ vertices to $S_x\cap L_i$.
 
@@ -391,11 +391,11 @@ The graph $J$ has a tree-decomposition in which every bag has size at most $\bin
 
 \begin{proof}
   For the tree-decomposition $(C_x:x\in V(T))$ of $J$ we use the same tree $T$ used in the tree-decomposition $(B_x:x\in V(T))$ of $H$. For each node $x$ of $T$, we define $C_x$ as follows: $C_x$ contains every $T$-ancestor $a$ of $x$ such that $J$ contains an edge $ax'$ where $x$ is a $T$-ancestor of $x'$ (including the possibility that $x=x'$).  Additionally, $C_x$ includes $x$ if $x\in V(J)$.
-  \cref{i-ancestor} ensures that, for every edge $ax'\in E(J)$, both $a$ and $x'$ are contained in $C_{x'}$.  The connectivity of $T[a]:=T[\{x\in V(T):a\in C_x\}]$ follows from the fact that, for every node $x'\in V(T[a])$, every node $x$ on the path in $T$ from $a$ to  $x'$ is also a node of $T[a]$. Therefore $(C_x:x\in V(T))$ is indeed a tree-decomposition of $J$.
+  \cref{i-ancestor} ensures that, for each edge $ax'\in E(J)$, both $a$ and $x'$ are contained in $C_{x'}$.  The connectivity of $T[a]:=T[\{x\in V(T):a\in C_x\}]$ follows from the fact that, for every node $x'\in V(T[a])$, every node $x$ on the path in $T$ from $a$ to  $x'$ is also a node of $T[a]$. Therefore $(C_x:x\in V(T))$ is indeed a tree-decomposition of $J$.
 
   It remains to show that each bag in this tree-decomposition has size at most $\binom{k+t}{t}$.  We will do this by appealing to an elegant result of \citet{PS21} on $k$-reachability in directed skeletons, which we now explain.
 
-  Let $H^+$ denote the supergraph of $H$ that contains the edge $xy$ if and only if some bag $B_z\in\mathcal{T}$ contains both $x$ and $y$ (that is, $H^+$ is the chordal closure of $H$ with respect to $\mathcal{T}$).  Let $\overrightarrow{H}^+$ be the directed graph obtained by directing each edge $xy$ of $H^+$ in the direction $\overrightarrow{xy}$ so that $y$ is a $T$-ancestor of $x$. Observe that any directed path in $\overrightarrow{H}^+$ that begins at $x$ leads to a $T$-ancestor of $x$.  \citet[Lemma~13]{PS21} show that, for any $x\in V(\overrightarrow{H}^+)$, the number of strict $T$-ancestors of $x$ that can be reached by a directed path of length at most $k$ that begins at $x$ is at most $\binom{k+t}{t}-1$.
+  Let $H^+$ denote the supergraph of $H$ that contains the edge $xy$ if and only if some bag $B_z\in\mathcal{T}$ contains both $x$ and $y$ (that is, $H^+$ is the chordal closure of $H$ with respect to $\mathcal{T}$).  Let $\overrightarrow{H}^+$ be the directed graph obtained by directing each edge $xy$ of $H^+$ in the direction $\overrightarrow{xy}$ so that $y$ is a $T$-ancestor of $x$. Observe that any directed path in $\overrightarrow{H}^+$ that begins at $x$ leads to a $T$-ancestor of $x$.  \citet[Lemma~13]{PS21} show that, for any $x\in V(\overrightarrow{H}^+)$, the number of strict $T$-ancestors of $x$ that can be reached by a directed path in $\overrightarrow{H}^+$ of length at most $k$ that begins at $x$ is at most $\binom{k+t}{t}-1$.
 
   Consider an arbitrary node $x\in V(T)$ and suppose that some strict $T$-ancestor $a$ of $x$ is contained in $C_x$.  We will show that $\overrightarrow{H}^+$ contains a directed path from $x$ to $a$ of length at most $k$.  By \cite[Lemma~13]{PS21}, this implies that the number of strict $T$-ancestors of $x$ contained in $C_x$ is at most $\binom{k+t}{t}-1$ and therefore $|C_x|\le\binom{k+t}{t}$.
 
@@ -420,9 +420,9 @@ The graph $J$ has a tree-decomposition in which every bag has size at most $\bin
     \item $x_r=x$.  In this case, $y_0,\ldots,y_s$ is a path from $x$ to $a$ of length at most $k-1\le k$ and $v_r$ participates in each of $y_0,\ldots,y_s$.
 
     \item $x_r$ is a strict $T$-descendant of $x$.
-      Since  $y_0=x_r$ is a strict $T$-descendant of $x$ and $y_s$ is a $T$-ancestor of $x$, the path in $T$ from $y_s$ to $y_0$ includes $x$.  Since $H[\{y_0,\ldots,y_s\}]$ is connected, at least one of $y_0,\ldots,y_s$, say $y_i$, is contained in $B_x$. Therefore $xy_i$ is an edge of $H^{+}$.  Therefore $x,y_i,\ldots,y_s$ is a path in $H^+$ from $x$ to $a$ of length at most $s+1\le k$ and $v_r$ participates in each of $y_i,\ldots,y_s$.
+      Since  $y_0=x_r$ is a strict $T$-descendant of $x$ and $y_s=a$ is a $T$-ancestor of $x$, the path in $T$ from $y_0$ to $y_s$ includes $x$.  Since $H[\{y_0,\ldots,y_s\}]$ is connected, at least one of $y_0,\ldots,y_s$, say $y_i$, is contained in $B_x$. Therefore $xy_i$ is an edge of $H^{+}$.  Therefore $x,y_i,\ldots,y_s$ is a path in $H^+$ from $x$ to $a$ of length at most $s+1\le k$ and $v_r$ participates in each of $y_i,\ldots,y_s$.
   \end{enumerate}
-  In each case, we obtain a path $z_0,\ldots,z_{s'}$ in $H$ of length at most $k$ from $z_0:=x$ to $z_{s'}:=a$ such that $v_r$ participates in each of $z_1,\ldots,z_{s'}$.  By definition, $a$ is a $T$-ancestor of $x$.  Since $v_r$ participates in each of $z_1,\ldots,z_{s'}$, $a=a(v_r)$ is also a $T$-ancestor of each of $z_1,\ldots,z_{s'}$.  Let $W$ be the sequence obtained from $z_0,\ldots,z_{s'}$ by replacing $z_i$ with the lowest common $T$-ancestor of $z_0,\ldots,z_i$, for each $i\in\{0,\ldots,s'\}$.  Then $W$ is a lazy walk in $H^+$ of length at most $k$ that begins at $z_0=x$ and ends at $z_{s'}=a$. By removing duplicates from $W$ we obtain a path in $H^+$ that is also a directed path in $\overrightarrow{H}^+$.  This completes the proof of \cref{general-bag-size}.
+  In each case, we obtain a path $z_0,\ldots,z_{s'}$ in $H$ of length $s'\le k$ from $z_0:=x$ to $z_{s'}:=a$ such that $v_r$ participates in each of $z_1,\ldots,z_{s'}$.  By definition, $a$ is a $T$-ancestor of $x$.  Since $v_r$ participates in each of $z_1,\ldots,z_{s'}$, $a=a(v_r)$ is also a $T$-ancestor of each of $z_1,\ldots,z_{s'}$.  Let $W$ be the sequence obtained from $z_0,\ldots,z_{s'}$ by replacing $z_i$ with the lowest common $T$-ancestor of $z_0,\ldots,z_i$, for each $i\in\{0,\ldots,s'\}$.  Then $W$ is a lazy walk in $H^+$ of length at most $k$ that begins at $z_0=x$ and ends at $z_{s'}=a$. By removing duplicates from $W$ we obtain a path in $H^+$ that is also a directed path in $\overrightarrow{H}^+$.  This completes the proof of \cref{general-bag-size}.
 \end{proof}
 
 At this point, the proof of \cref{ShortcutPartition} is almost immediate from \cref{general-width,general-bag-size}, except that the layering $\mathcal{L}$ of $G$ may not be a valid layering of $G^{\SS}$.  In particular, $G^{\SS}$ may contain edges $vw$ with $v\in L_i$ and $w\in L_{i+j}$ for any $j\in\{0,\ldots,k\}$.  To resolve this, we use a new layering $\mathcal{L}':=\langle L_0',\ldots,L_h'\rangle$ in which $L_i'=\bigcup_{j=ki}^{ki+k-1} L_i$.  This increases the layered width given by \cref{general-width} from $d\ell(k^2+3)$ to $d\ell(k^3+3k)$.  Therefore $G$ has an $H$-partition of layered width at most $d\ell(k^3+3k)$ in which $H$ has treewidth at most $\binom{k+t}{t}-1$, completing the proof of \cref{ShortcutPartition}.
@@ -557,7 +557,7 @@ In this section we give four examples of well-known graph families that can be e
 
 
 %%%%%%%
-\subsection{String Graphs}
+\subsection{Bounded-Degree String Graphs}
 \label{first_example}
 
 A \defin{string graph} is the intersection graph of a set of curves in the plane with no three curves meeting at a single point; see  \cite{PachToth-DCG02,FP10,FP14} for example. For an integer $\delta\geq 2$, if each curve is in at most $\delta$ intersections with other curves, then the corresponding string graph is called a \defin{$\delta$-string graph}. A \defin{$(g,\delta)$-string} graph is defined analogously for curves on a surface of Euler genus at most $g$.
@@ -610,11 +610,9 @@ Hence $\SS$ is a $(k, 2k \Delta^k)$-shortcut system.
 Let $G$ be contained in $H\boxtimes P\boxtimes K_\ell$ with maximum degree $\Delta$, for some graph $H$ of treewidth at most $t$ and for some path $P$. Then for every integer $k\geq 1$, the $k$-th power $G^k$ is contained in $J\boxtimes P\boxtimes K_{2k \ell \Delta^{k}(k^3+3k)}$ for some graph $J$ of treewidth at most $\binom{k+t}{t}-1$ and some path $P$.
 \end{thm}
 
+\subsection{Map Graphs of Bounded Clique Number}
 
-
-
-
-\subsection{Map Graphs}
+\note{PM}{To make the referee happy I've added the ``bounded-degree'' qualifier to string graphs and the ``bounded clique number'' qualifier to map graphs.  Do we want to explcitly state that the clique number of a $(g,d)$-map graph is bounded by a function of $g$ and $d$?  Proof (for the $g=0$ case): A $d$-map representation gives a drawing with at most $\floor{\tfrac{d-2}{2}}\ceil{\tfrac{d-2}{2}}\in O(d^2)$ crossings per edge, but any drawing of $K_{\omega}$ on a surface of genus-$g$ has an edge that is crossed $\Omega(\omega^2)$ times. So if $G$ is a $d$-map graph then $\omega(G) \in O(d)$.}
 
 Map graphs are defined as follows. Start with a graph $G_0$ embedded in a surface of Euler genus $g$, with each face labelled a `nation' or a `lake', where each vertex of $G_0$ is incident with at most $d$ nations. Let $G$ be the graph whose vertices are the nations of $G_0$, where two vertices are adjacent in $G$ if the corresponding faces in $G_0$ share a vertex. Then $G$ is called a \defin{$(g,d)$-map graph}.  A $(0,d)$-map graph is called a (plane) \defin{$d$-map graph}; see \citep{FLS-SODA12,CGP02} for example. The $(g,3)$-map graphs are precisely the graphs of Euler genus at most $g$; see \citep{dujmovic.eppstein.ea:structure}.
 
@@ -702,7 +700,7 @@ For any integer $d\ge 3$, every $d$-framed multigraph is contained in $H\boxtime
 
 \cref{d_framed_product_stucture} is used below to obtain product structure theorems for 1-planar multigraphs and for map graphs.  Note that even for simple 1-planar graphs it is essential that we allow frames with parallel edges.
 
-The following definition is a convenient way to establish the planarity of $H$ in \cref{d_framed_product_stucture}:  A $T$-decomposition of a graph $G$ is \defin{$t$-simple} if each of its bags has size at most $t+1$ and, for each $t$-element subset $\{v_1,\ldots,v_t\}\subseteq V(G)$, at most two bags contain $v_1,\ldots,v_t$.  To show the planarity of $H$ in \cref{d_framed_product_stucture} we use the fact that a graph has a 3-simple tree-decomposition if and only if it has treewidth at most 3 and is planar~\citep{kratochvil.vaner:note}.
+The following definition is a convenient way to establish the planarity of $H$ in \cref{d_framed_product_stucture}:  A $T$-decomposition of a graph $G$ is \defin{$t$-simple} if each of its bags has size at most $t+1$ and, for each $t$-element subset $\{v_1,\ldots,v_t\}\subseteq V(G)$, at most two bags contain $v_1,\ldots,v_t$.  To show the planarity of $H$ in \cref{d_framed_product_stucture} we use the fact that a graph has a 3-simple tree-decomposition if and only if it has treewidth at most 3 and is planar~\citep{knauer.ueckerdt:simple,kratochvil.vaner:note}.
 
 
 % The following technical lemma is analogous to Lemma~17 in \cite{dujmovic.joret.ea:planar}, which performs the inductive step in the construction of a so-called \emph{tripod decomposition}.
