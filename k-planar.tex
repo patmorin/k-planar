@@ -607,7 +607,7 @@ Hence $\SS$ is a $(k, 2k \Delta^k)$-shortcut system.
 
 \begin{thm}
 \label{PowerProduct}
-Let $G$ be contained in $H\boxtimes P\boxtimes K_\ell$ with maximum degree $\Delta$, for some graph $H$ of treewidth at most $t$ and for some path $P$. Then for every integer $k\geq 1$, the $k$-th power $G^k$ is contained in $J\boxtimes P\boxtimes K_{2k \ell \Delta^{k}(k^3+3k)}$ for some graph $J$ of treewidth at most $\binom{k+t}{t}-1$ and some path $P$.
+Let $G$ be a graph of maximum degree $\Delta$ that is contained in $H\boxtimes P\boxtimes K_\ell$, for some graph $H$ of treewidth at most $t$ and for some path $P$. Then for every integer $k\geq 1$, the $k$-th power $G^k$ is contained in $J\boxtimes P\boxtimes K_{2k \ell \Delta^{k}(k^3+3k)}$ for some graph $J$ of treewidth at most $\binom{k+t}{t}-1$ and some path $P$.
 \end{thm}
 
 \subsection{Map Graphs of Bounded Clique Number}
@@ -616,7 +616,7 @@ Let $G$ be contained in $H\boxtimes P\boxtimes K_\ell$ with maximum degree $\Del
 
 Map graphs are defined as follows. Start with a graph $G_0$ embedded in a surface of Euler genus $g$, with each face labelled a `nation' or a `lake', where each vertex of $G_0$ is incident with at most $d$ nations. Let $G$ be the graph whose vertices are the nations of $G_0$, where two vertices are adjacent in $G$ if the corresponding faces in $G_0$ share a vertex. Then $G$ is called a \defin{$(g,d)$-map graph}.  A $(0,d)$-map graph is called a (plane) \defin{$d$-map graph}; see \citep{FLS-SODA12,CGP02} for example. The $(g,3)$-map graphs are precisely the graphs of Euler genus at most $g$; see \citep{dujmovic.eppstein.ea:structure}.
 
-There is a natural drawing of a map graph obtained by positioning each vertex of $G$ inside the corresponding nation and each edge of $G$ as a curve passing through the corresponding vertex of $G_0$. It is easily seen that each edge is in at most $\floor{\frac{d-2}{2}}\ceil{\frac{d-2}{2}}$ crossings; see \citep{dujmovic.eppstein.ea:structure}. Thus $G$ is $(g,\floor{\frac{d-2}{2}}\ceil{\frac{d-2}{2}})$-planar. Also note that \cref{DrawG} with $k=2$ implies that $G$ is $(g, O(d^{2}) )$-planar. \cref{gkPlanarProduct} then establishes a product structure theorem for map graphs, but we get much better bounds by constructing a shortcut system directly.  The following lemma is reminiscent of the characterisation of $(g,d)$-map graphs in terms of the half-square of bipartite graphs \citep{CGP02,dujmovic.eppstein.ea:structure}.
+There is a natural drawing of a map graph obtained by positioning each vertex of $G$ inside the corresponding nation and each edge of $G$ as a curve passing through the corresponding vertex of $G_0$. It is easily seen that each edge of this drawing is involved in at most $\floor{\frac{d-2}{2}}\ceil{\frac{d-2}{2}}$ crossings; see \citep{dujmovic.eppstein.ea:structure}. Thus $G$ is $(g,\floor{\frac{d-2}{2}}\ceil{\frac{d-2}{2}})$-planar. Also note that \cref{DrawG} with $k=2$ implies that $G$ is $(g, O(d^{2}) )$-planar. \cref{gkPlanarProduct} then establishes a product structure theorem for map graphs, but we get much better bounds by constructing a shortcut system directly.  The following lemma is reminiscent of the characterisation of $(g,d)$-map graphs in terms of the half-square of bipartite graphs \citep{CGP02,dujmovic.eppstein.ea:structure}.
 
 \begin{lem}
 \label{MapShortcut}
