@@ -46,7 +46,7 @@ how to use paths in $H$ to get paths in $H^+$.
 2. Are the nations incident to a vertex counted with multiplicity in dmap graphs? The definition does not say so, but the proof of Lemma 27 (as currently stated) assumes not only this, but that the embedded graph under consideration is 2-connected.  It also seems that frames are loopless, so slightly more care is called for when they are constructed.
 
 \begin{response}
-  We have addressed this by adding the assumption that the underlying planar graph $G_0$ is edge-maximal. More precisely, it is not possible to add an edge to $G_0$ (and relabel faces as nation or lake) to obtain the same map graph $G$.  We then argue that this implies that $G_0$ is biconnected. 
+  We have addressed this by adding the assumption that the underlying planar graph $G_0$ is edge-maximal. More precisely, it is not possible to add an edge to $G_0$ (and relabel faces as nation or lake) to obtain the same map graph $G$.  We then argue that this implies that $G_0$ is biconnected.
 \end{response}
 
 
@@ -54,7 +54,9 @@ It may be worth noting explicitly that you allow $d$-framed graphs to
 have edges outside the outer face of their frame - I was unsure about
 this given the phrase “interior of the face”.
 
-\tba
+\begin{response}
+  We no longer talk about ``interiors of faces''.  Faces are already defined as the connected components one gets after cutting a surface along all the edges of the (embedded) graph, so faces are already open sets.  In this particular instance we now write ``the interior of each edge in $E(G)\setminus E(G_0)$ is contained in some face (possibly the outer face) of $G_0$.''
+\end{response}
 
 3. Sperner’s Lemma is usually stated for simple graphs (as is the case
 in the source given) so there should be a reduction argument. It is
@@ -98,7 +100,7 @@ enough, you need to show that the set of all nodes which participate in
 x induces a subtree of T (and thus that a(v) is in this set).
 
 \begin{response}
-  As part of addressing the referee's primary comment, we have introduced an extra claim which shows that, for any $v\in V(G)$, there is a path in $H$ from $v$ to $a(v)$ of length at most $k-1$ in which $v$ participates in every vertex on this path, including $a(v)$.  We have rephrased this confusing sentence and replaced it with a reference to this claim.
+  As part of addressing the referee's primary comment, we have introduced an extra claim which shows that, for any $x\in V(H)$ and any $v\in Y_x$, there is a path in $H$ from the $x$ to $a(v)$ of length at most $k-1$ in which $v$ participates in every vertex on this path, including $a(v)$.  We have rephrased the confusing sentence and replaced it with a reference to this claim.
 \end{response}
 
 
@@ -162,7 +164,7 @@ beforehand about how the set-up relates to that proof/tripods.
 as we could have $p=2$.
 
 \begin{response}
-  We have added an explanation, prior to this, of how to eliminate the possibility that an edge of $F$ bounds a face with with only two vertices and two parallel edges.  Simply apply induction on the cycle $F'$ that uses the second of the parallel edges rather than the first.  This is valid since $F'$ has fewer faces in its interior.
+  We have added an explanation, prior to this, of how to eliminate the possibility that an edge of $F$ bounds an inner face with with only two vertices and two parallel edges.  Simply apply induction on the cycle $F'$ that uses the second of the parallel edges rather than the first.  This is valid since $F'$ has fewer faces in its interior.
 \end{response}
 
 
@@ -171,7 +173,7 @@ chosen in case 3 because there may be multiple “appropriate” vertices.
 It should also really say what “appropriate” means.
 
 \begin{response}
-  We have replaced "appropriate" with the "root of tree in $T$ that contains $v$".
+  We have replaced ``appropriate vertex'' with ``the root of tree in $T$ that contains $v$.''
 \end{response}
 
 
@@ -212,9 +214,14 @@ this paragraph should be $G'$, and check for this throughout.
 \end{response}
 
 18. page 21, Lemma 27. Should be “labelled a nation or a lake” in the
-first paragraph. In the third paragraph, the graph $\hat{G}_1$ should be “edge-maximal” or similar.
+first paragraph.
 
-\textcolor{orange}{DW: First point fixed. I have suggested words to add. }
+\done
 
-\tba
+In the third paragraph, the graph $\hat{G}_1$ should be “edge-maximal” or similar.
+
+\begin{response}
+  We have added the edge-maximal qualifier and (earlier) defined what it means for a framed graph to be edge-maximal (with respect to its frame).
+\end{response}
+
 \end{document}

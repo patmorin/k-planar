@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
-<ipe version="70218" creator="Ipe 7.2.24">
-<info created="D:20220307160746" modified="D:20220314102835"/>
+<ipe version="70218" creator="Ipe 7.2.26">
+<info created="D:20220307160746" modified="D:20221109103644"/>
 <ipestyle name="basic">
 <symbol name="arrow/arc(spx)">
 <path stroke="sym-stroke" fill="sym-stroke" pen="sym-pen">
@@ -471,17 +471,7 @@ h
 218.76 554.522
 207.999 553.081 c
 </path>
-<path layer="epsilon" matrix="1.15 0 0 1.15 -38.387 -86.405" stroke="black" pen="heavier">
-257.69 602.484 m
-236.822 578.93
-203.862 586.224 c
-</path>
-<path matrix="1.15 0 0 1.15 -38.387 -86.405" stroke="black" pen="heavier">
-203.171 570.56 m
-223.031 572.218
-232.55 563.065 c
-</path>
-<path layer="alpha" matrix="0.69552 0 0 0.69552 78.0252 175.39" stroke="black">
+<path matrix="0.69552 0 0 0.69552 78.0252 175.39" stroke="black">
 89.5337 0 0 89.5337 257.631 576.033 e
 </path>
 <path matrix="0.69552 0 0 0.69552 78.0252 175.39" stroke="brew7" pen="ultrafat" cap="1">
@@ -502,9 +492,6 @@ h
 <text layer="alpha" matrix="0.828 0 0 0.828 86.1764 107.842" transformations="translations" pos="261.158 623.386" stroke="brew7" type="label" width="10.866" height="6.812" depth="1.49" valign="baseline" style="math">P_3</text>
 <text matrix="0.828 0 0 0.828 69.8308 86.8552" transformations="translations" pos="299.119 556.296" stroke="brew1" type="label" width="10.866" height="6.812" depth="1.49" valign="baseline" style="math">P_2</text>
 <text matrix="0.828 0 0 0.828 18.7219 75.921" transformations="translations" pos="224 560" stroke="brew4" type="label" width="10.866" height="6.812" depth="1.49" halign="right" valign="top" style="math">P_1</text>
-<path layer="delta" matrix="0.69552 0 0 0.69552 78.0252 175.391" stroke="brew4" pen="ultrafat">
-89.5337 0 0 89.5337 257.631 576.033 e
-</path>
 <path layer="epsilon" matrix="0.69552 0 0 0.69552 78.0252 175.391" stroke="black" pen="heavier">
 89.5337 0 0 89.5337 257.631 576.033 e
 </path>
@@ -516,51 +503,9 @@ h
 182.808 568.432 m
 75.2083 0 0 75.2083 257.631 576.033 332.286 566.93 a
 </path>
-<use matrix="0.828 0 0 0.828 43.895 99.0774" name="mark/disk(sx)" pos="183.767 590.188" size="normal" stroke="brew1"/>
-<use matrix="0.828 0 0 0.828 43.895 99.0774" name="mark/disk(sx)" pos="182.808 568.432" size="normal" stroke="brew4"/>
 <text matrix="0.828 0 0 0.828 40.9239 79.4469" transformations="translations" pos="184.197 614.929" stroke="black" type="label" width="9.298" height="4.294" depth="1.49" halign="right" valign="baseline" style="math">v_1</text>
 <text matrix="0.828 0 0 0.828 40.3487 58.8791" transformations="translations" pos="184.197 614.929" stroke="black" type="label" width="9.298" height="4.294" depth="1.49" halign="right" valign="top" style="math">v_2</text>
-<path layer="delta" matrix="1.15 0 0 1.15 -38.387 -86.405" stroke="black" pen="heavier">
-203.66 585.112 m
-220.712 580.272
-223.885 572.096 c
-</path>
-<text matrix="0.828 0 0 0.828 62.4626 61.6242" transformations="translations" pos="184.197 614.929" stroke="black" type="label" width="9.298" height="4.294" depth="1.49" halign="right" valign="top" style="math">v_3</text>
-<path matrix="1.15 0 0 1.15 -38.387 -86.405" stroke="black" pen="heavier">
-223.885 572.096 m
-235.845 576.367
-252.443 571.73 c
-</path>
-<path matrix="1.15 0 0 1.15 -38.387 -86.405" stroke="black" pen="heavier">
-252.443 571.73 m
-263.06 553.79
-261.333 522.054 c
-</path>
-<path matrix="1.15 0 0 1.15 -38.387 -86.405" stroke="black" pen="heavier">
-261.333 522.054 m
-276.119 543.66
-272.091 563.065 c
-</path>
-<path matrix="1.15 0 0 1.15 -38.387 -86.405" stroke="black" pen="heavier">
-272.091 563.065 m
-283.807 579.784
-311.039 580.122 c
-</path>
-<path matrix="1.15 0 0 1.15 -38.387 -86.405" stroke="black" pen="heavier">
-311.039 580.122 m
-284.051 583.201
-262.938 605.047 c
-</path>
-<path matrix="1.15 0 0 1.15 -38.387 -86.405" stroke="black" pen="heavier">
-262.938 605.047 m
-250.734 584.666
-208.552 600.132 c
-</path>
-<use matrix="1.15 0 0 1.15 -38.387 -86.405" name="mark/disk(sx)" pos="262.938 605.047" size="normal" stroke="black"/>
-<use matrix="1.15 0 0 1.15 -38.387 -86.405" name="mark/disk(sx)" pos="311.039 580.122" size="normal" stroke="brew4"/>
-<use matrix="1.15 0 0 1.15 -38.387 -86.405" name="mark/disk(sx)" pos="261.333 522.054" size="normal" stroke="brew4"/>
-<use matrix="1.15 0 0 1.15 -38.387 -86.405" name="mark/disk(sx)" pos="272.091 563.065" size="normal" stroke="black"/>
-<use matrix="1.15 0 0 1.15 -38.387 -86.405" name="mark/disk(sx)" pos="252.443 571.73" size="normal" stroke="black"/>
+<text layer="delta" matrix="0.828 0 0 0.828 62.4626 61.6242" transformations="translations" pos="184.197 614.929" stroke="black" type="label" width="9.298" height="4.294" depth="1.49" halign="right" valign="top" style="math">v_3</text>
 <path matrix="1.15 0 0 1.15 -38.387 -86.405" stroke="brew4" pen="heavier">
 223.885 572.096 m
 240.239 554.156
@@ -570,32 +515,11 @@ h
 </path>
 <use matrix="1.15 0 0 1.15 -38.387 -86.405" name="mark/disk(sx)" pos="227.353 530.749" size="normal" stroke="brew4"/>
 <text matrix="1.15 0 0 1.15 -38.387 -86.405" transformations="translations" pos="256.714 585.764" stroke="black" type="label" width="5.483" height="4.289" depth="0" halign="center" valign="baseline" style="math">\tau</text>
-<path layer="epsilon" matrix="1.15 0 0 1.15 -38.387 -86.405" stroke="black" pen="heavier">
-232.55 563.065 m
-245.975 566.116
-254.639 561.6 c
-</path>
-<path matrix="1.15 0 0 1.15 -38.387 -86.405" stroke="black" pen="heavier">
-280.268 580.15 m
-261.23 586.985
-257.69 602.484 c
-</path>
-<use matrix="1.15 0 0 1.15 -38.387 -86.405" name="mark/disk(sx)" pos="254.639 561.6" size="normal" stroke="black"/>
+<use layer="epsilon" matrix="1.15 0 0 1.15 -38.387 -86.405" name="mark/disk(sx)" pos="254.639 561.6" size="normal" stroke="black"/>
 <use matrix="1.15 0 0 1.15 -38.387 -86.405" name="mark/disk(sx)" pos="280.268 580.15" size="normal" stroke="black"/>
 <use matrix="1.15 0 0 1.15 -38.387 -86.405" name="mark/disk(sx)" pos="257.69 602.484" size="normal" stroke="black"/>
 <use matrix="1.15 0 0 1.15 -38.387 -86.405" name="mark/disk(sx)" pos="247.025 522.818" size="normal" stroke="brew4"/>
 <text matrix="1.15 0 0 1.15 -34.937 -87.555" transformations="translations" pos="239.018 543.783" stroke="brew4" type="label" width="12.345" height="6.815" depth="1.93" valign="baseline" style="math">Q_3</text>
-<path matrix="1.15 0 0 1.15 -38.387 -86.405" stroke="black" pen="heavier">
-254.639 561.6 m
-287.102 554.644
-296.909 539.388 c
-</path>
-<path matrix="1.15 0 0 1.15 -38.387 -86.405" stroke="black" pen="heavier">
-296.909 539.388 m
-281.732 564.773
-280.268 580.15 c
-</path>
-<use matrix="0.828 0 0 0.828 65.123 114.135" name="mark/disk(sx)" pos="287.362 506.951" size="normal" stroke="brew4"/>
 <path matrix="1.15 0 0 1.15 -38.387 -86.405" stroke="brew4" pen="heavier">
 232.55 563.065 m
 229.133 553.668
@@ -611,36 +535,6 @@ h
 <text matrix="1.15 0 0 1.15 -36.087 -87.555" transformations="translations" pos="230.891 567.652" stroke="black" type="label" width="9.298" height="4.294" depth="1.49" valign="baseline" style="math">v_3</text>
 <use layer="alpha" matrix="1.15 0 0 1.15 -38.387 -86.405" name="mark/disk(sx)" pos="281.854 586.619" size="normal" stroke="black"/>
 <use matrix="1.15 0 0 1.15 -38.387 -86.405" name="mark/disk(sx)" pos="259.033 544.881" size="normal" stroke="black"/>
-<path matrix="1.15 0 0 1.15 -38.387 -86.405" stroke="black" pen="heavier">
-239.385 567.214 m
-241.093 590.28
-215.748 611.06 c
-</path>
-<path matrix="1.15 0 0 1.15 -38.387 -86.405" stroke="black" pen="heavier">
-215.748 611.06 m
-238.896 592.965
-255.738 596.016 c
-</path>
-<path matrix="1.15 0 0 1.15 -38.387 -86.405" stroke="black" pen="heavier">
-255.738 596.016 m
-255.494 578.442
-281.854 586.619 c
-</path>
-<path matrix="1.15 0 0 1.15 -38.387 -86.405" stroke="black" pen="heavier">
-281.854 586.619 m
-259.521 578.198
-272.823 566.116 c
-</path>
-<path matrix="1.15 0 0 1.15 -38.387 -86.405" stroke="black" pen="heavier">
-272.823 566.116 m
-265.257 567.702
-259.033 544.881 c
-</path>
-<path matrix="1.15 0 0 1.15 -38.387 -86.405" stroke="black" pen="heavier">
-259.033 544.881 m
-256.958 566.97
-239.385 567.214 c
-</path>
 <text matrix="1.15 0 0 1.15 -39.537 -85.255" transformations="translations" pos="251.1 577.099" stroke="black" type="label" width="5.483" height="4.289" depth="0" halign="center" valign="baseline" style="math">\tau</text>
 <text matrix="1.15 0 0 1.15 -36.087 -85.255" transformations="translations" pos="234.503 566.604" stroke="black" type="label" width="9.298" height="4.294" depth="1.49" halign="right" valign="baseline" style="math">v_1</text>
 <text matrix="1.15 0 0 1.15 6.72692 -83.4305" transformations="translations" pos="234.503 566.604" stroke="black" type="label" width="9.298" height="4.294" depth="1.49" valign="baseline" style="math">v_2</text>
@@ -649,7 +543,6 @@ h
 <text matrix="1.15 0 0 1.15 18.8422 -102.965" transformations="translations" pos="236.7 611.759" stroke="black" type="label" width="10.876" height="6.812" depth="1.49" halign="center" valign="baseline" style="math">F_2</text>
 <text matrix="1.15 0 0 1.15 -25.3673 -172.437" transformations="translations" pos="236.7 611.759" stroke="black" type="label" width="10.876" height="6.812" depth="1.49" halign="center" valign="baseline" style="math">F_3</text>
 <text matrix="1.15 0 0 1.15 -60.536 -125.226" transformations="translations" pos="236.7 611.759" stroke="black" type="label" width="10.876" height="6.812" depth="1.49" halign="center" valign="baseline" style="math">F_4</text>
-<use matrix="1.15 0 0 1.15 -38.387 -86.405" name="mark/disk(sx)" pos="215.748 611.06" size="normal" stroke="brew7"/>
 <text layer="delta" matrix="1.15 0 0 1.15 -37.237 -87.555" transformations="translations" pos="234.855 549.227" stroke="brew4" type="label" width="12.345" height="6.815" depth="1.93" valign="baseline" style="math">Q_3</text>
 <text layer="alpha" matrix="1.15 0 0 1.15 -38.387 -85.255" transformations="translations" pos="220.677 555.885" stroke="brew4" type="label" width="12.345" height="6.815" depth="1.93" valign="top" style="math">Q_1</text>
 <text matrix="1.15 0 0 1.15 -41.837 -87.555" transformations="translations" pos="289.717 559.707" stroke="brew1" type="label" width="12.345" height="6.815" depth="1.93" valign="baseline" style="math">Q_2</text>
@@ -658,11 +551,8 @@ h
 <use matrix="1.15 0 0 1.15 -38.387 -86.405" name="mark/disk(sx)" pos="234.65 555.232" size="normal" stroke="brew4"/>
 <use matrix="1.15 0 0 1.15 -38.387 -86.405" name="mark/disk(sx)" pos="232.556 546.792" size="normal" stroke="brew4"/>
 <use matrix="1.15 0 0 1.15 -38.387 -86.405" name="mark/disk(sx)" pos="232.584 539.821" size="normal" stroke="brew4"/>
-<use matrix="0.828 0 0 0.828 43.895 99.0774" name="mark/disk(sx)" pos="183.487 588.643" size="normal" stroke="brew4"/>
-<use matrix="0.828 0 0 0.828 43.895 99.0774" name="mark/disk(sx)" pos="190.281 609.504" size="normal" stroke="brew4"/>
 <text matrix="0.828 0 0 0.828 47.207 97.4214" transformations="translations" pos="184.197 614.929" stroke="black" type="label" width="9.298" height="4.294" depth="1.49" halign="right" valign="baseline" style="math">v_1</text>
 <text matrix="0.828 0 0 0.828 40.0071 77.6816" transformations="translations" pos="184.197 614.929" stroke="black" type="label" width="9.298" height="4.294" depth="1.49" halign="right" valign="baseline" style="math">v_2</text>
-<use matrix="1.15 0 0 1.15 -38.387 -86.405" name="mark/disk(sx)" pos="223.885 572.096" size="normal" stroke="brew4"/>
 <use layer="epsilon" matrix="1.15 0 0 1.15 -38.387 -86.405" name="mark/disk(sx)" pos="232.56 554.101" size="normal" stroke="brew4"/>
 <use matrix="1.15 0 0 1.15 -38.387 -86.405" name="mark/disk(sx)" pos="237.128 548.591" size="normal" stroke="brew4"/>
 <use matrix="1.15 0 0 1.15 -38.387 -86.405" name="mark/disk(sx)" pos="242.239 540.814" size="normal" stroke="brew4"/>
@@ -679,8 +569,141 @@ h
 <use matrix="1.15 0 0 1.15 -38.387 -86.405" name="mark/disk(sx)" pos="285.786 557.684" size="normal" stroke="brew1"/>
 <use matrix="1.15 0 0 1.15 -38.387 -86.405" name="mark/disk(sx)" pos="289.794 550.206" size="normal" stroke="brew1"/>
 <use matrix="1.15 0 0 1.15 -38.387 -86.405" name="mark/disk(sx)" pos="292.986 545.04" size="normal" stroke="brew1"/>
-<use matrix="1.15 0 0 1.15 -38.387 -86.405" name="mark/disk(sx)" pos="255.738 596.016" size="normal" stroke="brew7"/>
-<use matrix="1.15 0 0 1.15 -38.387 -86.405" name="mark/disk(sx)" pos="272.823 566.116" size="normal" stroke="brew1"/>
+<path layer="delta" stroke="black" pen="heavier">
+201.448 603.747
+201.448 603.747
+196.705 595.37
+195.822 586.474
+195.822 586.474
+215.805 584.881
+219.081 571.505
+219.081 571.505
+236.889 578.253
+251.922 571.085
+251.922 571.085
+263.191 546.158
+262.146 513.957
+262.146 513.957
+276.864 540.209
+274.518 561.12
+274.518 561.12
+285.318 576.322
+319.308 580.735
+319.308 580.735
+283.387 589.056
+263.992 609.399
+263.992 609.399
+246.596 590.621 u
+</path>
+<use matrix="1.15 0 0 1.15 -38.387 -86.405" name="mark/disk(sx)" pos="261.333 522.054" size="normal" stroke="brew4"/>
+<path matrix="1 0 0 1 -0.000332 -0.000288" fill="brew7" opacity="30%" stroke-opacity="opaque">
+201.448 603.747
+201.448 603.747
+196.705 595.37
+195.822 586.474
+195.822 586.474
+215.805 584.881
+219.081 571.505
+219.081 571.505
+236.889 578.253
+251.922 571.085
+251.922 571.085
+263.191 546.158
+262.146 513.957
+262.146 513.957
+276.864 540.209
+274.518 561.12
+274.518 561.12
+285.318 576.322
+319.308 580.735
+319.308 580.735
+283.387 589.056
+263.992 609.399
+263.992 609.399
+246.596 590.621 u
+</path>
+<use matrix="0.828 0 0 0.828 43.895 99.0774" name="mark/disk(sx)" pos="190.281 609.504" size="normal" stroke="brew4"/>
+<use matrix="0.828 0 0 0.828 43.895 99.0774" name="mark/disk(sx)" pos="183.487 588.643" size="normal" stroke="brew4"/>
+<path matrix="0.69552 0 0 0.69552 78.0252 175.391" stroke="brew4" pen="ultrafat">
+89.5337 0 0 89.5337 257.631 576.033 e
+</path>
+<use matrix="1.15 0 0 1.15 -38.387 -86.405" name="mark/disk(sx)" pos="311.039 580.122" size="normal" stroke="brew4"/>
+<use matrix="1.15 0 0 1.15 -38.387 -86.405" name="mark/disk(sx)" pos="272.091 563.065" size="normal" stroke="black"/>
+<use matrix="1.15 0 0 1.15 -38.387 -86.405" name="mark/disk(sx)" pos="252.443 571.73" size="normal" stroke="black"/>
+<use matrix="1.15 0 0 1.15 -38.387 -86.405" name="mark/disk(sx)" pos="262.938 605.047" size="normal" stroke="black"/>
+<use matrix="1.15 0 0 1.15 -38.387 -86.405" name="mark/disk(sx)" pos="223.885 572.096" size="normal" stroke="brew4"/>
+<path layer="epsilon" stroke="black" pen="heavier">
+196.054 587.753
+196.054 587.753
+194.774 577.783
+195.26 569.739
+195.26 569.739
+218.884 570.895
+229.046 561.12
+229.046 561.12
+246.022 565.467
+254.448 559.435
+254.448 559.435
+285.423 554.612
+303.059 533.89
+303.059 533.89
+284.64 564.423
+283.921 580.767
+283.921 580.767
+260.321 590.152
+257.956 606.452
+257.956 606.452
+231.827 583.419 u
+</path>
+<path matrix="1 0 0 1 0.000076 0.000064" fill="brew7" opacity="30%" stroke-opacity="opaque">
+196.054 587.753
+196.054 587.753
+194.774 577.783
+195.26 569.739
+195.26 569.739
+218.884 570.895
+229.046 561.12
+229.046 561.12
+246.022 565.467
+254.448 559.435
+254.448 559.435
+285.423 554.612
+303.059 533.89
+303.059 533.89
+284.64 564.423
+283.921 580.767
+283.921 580.767
+260.321 590.152
+257.956 606.452
+257.956 606.452
+231.827 583.419 u
+</path>
+<use matrix="0.828 0 0 0.828 43.895 99.0774" name="mark/disk(sx)" pos="183.767 590.188" size="normal" stroke="brew1"/>
+<use matrix="0.828 0 0 0.828 43.895 99.0774" name="mark/disk(sx)" pos="182.808 568.432" size="normal" stroke="brew4"/>
+<use matrix="0.828 0 0 0.828 65.123 114.135" name="mark/disk(sx)" pos="287.362 506.951" size="normal" stroke="brew4"/>
+<path layer="alpha" stroke="black" fill="brew7" pen="heavier" opacity="30%" stroke-opacity="opaque">
+209.723 616.314
+209.723 616.314
+236.367 587.125
+236.906 565.891
+236.906 565.891
+256.929 560.249
+259.501 540.208
+259.501 540.208
+263.765 558.84
+275.359 564.628
+275.359 564.628
+267.053 578.931
+285.745 588.207
+285.745 588.207
+263.765 584.15
+255.712 599.013
+255.712 599.013
+240.594 596.727 u
+</path>
+<use matrix="1.15 0 0 1.15 -38.387 -86.405" name="mark/disk(sx)" pos="215.748 611.06" size="normal" stroke="brew7"/>
 <use matrix="1.15 0 0 1.15 -38.387 -86.405" name="mark/disk(sx)" pos="239.385 567.214" size="normal" stroke="brew4"/>
+<use matrix="1.15 0 0 1.15 -38.387 -86.405" name="mark/disk(sx)" pos="272.823 566.116" size="normal" stroke="brew1"/>
+<use matrix="1.15 0 0 1.15 -38.387 -86.405" name="mark/disk(sx)" pos="255.738 596.016" size="normal" stroke="brew7"/>
 </page>
 </ipe>
