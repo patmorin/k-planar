@@ -702,8 +702,8 @@ For any integer $d\ge 3$, every $d$-framed multigraph is contained in $H\boxtime
 
 \cref{d_framed_product_stucture} is used below to obtain product structure theorems for 1-planar multigraphs and for map graphs.  Note that even for simple 1-planar graphs it is essential that we allow frames with parallel edges.
 
-\cref{d_framed_product_stucture} is a consequence of the following technical lemma, which is an extension of the analogous result for plane graphs~\cite[Lemma~17]{DJMMUW20}. The following definition is a convenient way to establish the planarity of $H$ in \cref{d_framed_product_stucture}:  A $T$-decomposition of a graph $G$ is \defin{$t$-simple} if each of its bags has size at most $t+1$ and, for each $t$-element subset $\{v_1,\ldots,v_t\}\subseteq V(G)$, at most two bags contain $v_1,\ldots,v_t$.  To show the planarity of $H$ in \cref{d_framed_product_stucture} we use the fact that a graph has a 3-simple tree-decomposition if and only if it has treewidth at most 3 and is planar~\citep{kratochvil.vaner:note}. Finally, a \defin{BFS spanning forest} $T$ of $G$ rooted at a set $V_0\subseteq V(G)$ is a spanning forest of $G$ that contains a tree rooted at each vertex of $V_0$ with the property that for each $v\in V(G)$,
-\[  \min\{\dist_G(v,w):w\in V_0\}=\min\{\dist_T(v,w):w\in V_0\}.  \]
+The following definition is a convenient way to establish the planarity of $H$ in \cref{d_framed_product_stucture}:  A $T$-decomposition of a graph $G$ is \defin{$t$-simple} if each of its bags has size at most $t+1$ and, for each $t$-element subset $\{v_1,\ldots,v_t\}\subseteq V(G)$, at most two bags contain $v_1,\ldots,v_t$.  To show the planarity of $H$ in \cref{d_framed_product_stucture} we use the fact that a graph has a 3-simple tree-decomposition if and only if it has treewidth at most 3 and is planar~\citep{kratochvil.vaner:note}.
+
 
 % The following technical lemma is analogous to Lemma~17 in \cite{dujmovic.joret.ea:planar}, which performs the inductive step in the construction of a so-called \emph{tripod decomposition}.
 %
@@ -718,7 +718,9 @@ For any integer $d\ge 3$, every $d$-framed multigraph is contained in $H\boxtime
 %
 % we offer some comparison.  \cite[Lemma~17]{dujmovic.joret.ea:planar} shows that, given a partial partition of $V(G)$ into tripods, and a cycle $F$ in $G$ whose vert
 
-For readers already familiar with the proof in \cite{dujmovic.joret.ea:planar}, the main difference here is that a typical tripod in the proof of \cite[Lemma~17]{dujmovic.joret.ea:planar} consists of three upward paths in a BFS tree/forest whose lower endpoints belong to a single triangular face $\tau$.  In the current setting, a typical tripod consists of three upward paths whose lower endpoints belong to a common face $\tau$ of $G_0$ plus all of the (at most $d$) vertices of $\tau$ that are not already included in tripods.
+A \defin{BFS spanning forest} $T$ of $G$ rooted at a set $V_0\subseteq V(G)$ is a spanning forest of $G$ that contains a tree rooted at each vertex of $V_0$ with the property that for each $v\in V(G)$,
+\[  \min\{\dist_G(v,w):w\in V_0\}=\min\{\dist_T(v,w):w\in V_0\}.  \]
+\cref{d_framed_product_stucture} is a consequence of the following technical lemma, which is an extension of the analogous result for plane graphs~\cite[Lemma~17]{DJMMUW20}.  For readers already familiar with the proof in \cite{dujmovic.joret.ea:planar}, the main difference here is that a typical tripod in the proof of \cite[Lemma~17]{dujmovic.joret.ea:planar} consists of three upward paths in a BFS tree/forest whose lower endpoints belong to a single triangular face $\tau$.  In the current setting, a typical tripod consists of three upward paths whose lower endpoints belong to a common face $\tau$ of $G_0$ plus all of the (at most $d$) vertices of $\tau$ that are not already included in tripods.
 
 \begin{lem}
   \label{induction} The setup:
