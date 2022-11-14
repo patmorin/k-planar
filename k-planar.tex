@@ -499,14 +499,7 @@ Theorems~\ref{ShortcutProduct}  and \ref{GenusProduct}(b) imply a product struct
 \begin{thm}
 \label{gkPlanarProduct}
 Every $(g,k)$-planar graph is contained in $H\boxtimes P \boxtimes K_\ell$ for some graph $H$ with $\tw(H) \leq \binom{k+4}{3}-1$, where $\ell:=\max\{2g,3\}\cdot(6k^2+16k+10)$.
-% \note{DW}{I have changed $\tw(H) \leq \binom{k+5}{4}-1$ to $\tw(H) \leq \binom{k+4}{3}-1$, okay?}
-%\note{PM}{Ok}
 \end{thm}
-
-
-
-
-
 
 \subsection{Rough Characterisation}
 \label{Characterisation}
@@ -689,8 +682,6 @@ Note that \cref{nearest-neighbour} is tight up to the leading constant:  Every $
 
 For any integer $d\ge 3$, an \note{DW}{add ``$\R^2$-''}embedded (multi)graph $G$ is \defin{$d$-framed} if it has a biconnected plane spanning (multi)subgraph $G_0$, whose facial cycles each have length at most $d$,  and such that the interior of each edge in $E(G)\setminus E(G_0)$ is contained in some face (possibly the outer face) of $G_0$. The embedded (multi)graph $G_0$ is called the \defin{frame} of $G$. This definition (for simple graphs) was introduced by \citet{BDGGMR}.  A $d$-framed graph $G$ is \defin{edge-maximal} with respect to its frame $G_0$ if, for each face $F$ of $G_0$ and each pair of distinct vertices $v,w\in V(F)$, $vw\in E(F)$ or $G$ contains an edge $vw$ whose interior is contained in $F$.
 
-%\note{DW}{The word ``interior'' may be misinterpreted when refering to the outerface (see referee's comment). Shall we just write ``contained in some face''? Do we need to change this elsewhere?} \note{PM}{Done.  I've changed occurrences elsewhere also.  Under our definitions (in Section 2.3) the faces of $G$ are open sets so ``in $F$'' already means ``in the interior of $F$.''} \note{DW}{great}
-
 Every edge-maximal $d$-framed multigraph can be described by a $(2,d(d-3)/2)$-shortcut system applied to a plane multigraph by adding a vertex inside each face $F$ of $G_0$ adjacent to the vertices of $F$ and creating a length-$2$ shortcut between each non-adjacent pair of vertices in $V(F)$. Thus \cref{ShortcutProduct,PlanarProduct} imply that any $d$-framed multigraph $G$ is a subgraph of $H\boxtimes P\boxtimes K_{O(d^2)}$ where the treewidth of $H$ is at most $10$.  However, for framed graphs we prove the following stronger result, where the treewidth bound on $H$ is best possible and the dependence on $d$ is only linear.\footnote{A multigraph $G$ is \defin{contained} in a graph $X$ if the simple graph underlying $G$ is contained in $X$.}
 
 \begin{thm}\label{d_framed_product_stucture}
@@ -830,9 +821,6 @@ A multigraph $G$ is $1$-planar if and only if it is contained in a $4$-framed mu
 \begin{proof}
 Let $G$ be a (connected) $1$-plane multigraph. We may assume that no two edges incident to a common vertex of $G$ cross, since such a crossing can be removed by a local modification to obtain an isomorphic 1-plane graph in which the two edges do not cross\footnote{While this is true for 1-plane graphs it is not true for $k$-plane graphs with $k\ge 3$; the uncrossing operation can increase the number of crossings on a particular edge from $k$ to $2(k-1)$.}. We make $G$ into an \defin{edge-maximal} $1$-plane multigraph, by repeating the following operation:  If distinct vertices $v$ and $w$ of $G$ appear on a common face $F$ and there is no edge $vw\in E(G)$ contained in the boundary of $F$, then add the edge $vw$, embedded in the face $F$.  This may introduce parallel edges into $G$, but no newly-introduced edge $vw$ is on the boundary of a face with an edge parallel to $vw$.  Since $G$ is connected, each edge added during this process splits a face $F$ with a facial walk of length at least $4$ into two faces each having a shorter facial walk than that of $F$. Therefore this process eventually reaches a stage where each face is either bounded by a $3$-cycle or a (pre-existing) $2$-cycle, and the process ends.
 
-% \note{DW}{I think $G_0$ should be replaced by $G'$ throughout this proof.}
-% \note{PM}{Agreed. Done.}
-
 To understand the structure of $G$, it is helpful to consider the plane graph $G'$  obtained by replacing each pair of edges $vw$ and $xy$ that cross at $p$ with four edges $vp$, $wp$, $xp$, and $yp$ meeting at a newly added \defin{dummy vertex} $p$. Let $F$ be a face of $G'$ and let $W:=w_0,\ldots,w_{r-1}$ be the facial walk around $F$. In the following paragraphs, subscripts on the vertices in $W$ are implicitly taken modulo $r$. By edge-maximality, if $W$ contains only non-dummy vertices, then it contains exactly three vertices and $F$ is bounded by three edges of $G$. If $W$ contains a dummy vertex $w_i$, then neither $w_{i-1}$ nor $w_{i+1}$ is a dummy vertex since if $w_{i-1}$ (respectively $w_{i+1}$) were a dummy vertex then the edge of $G$ that contains $w_{i-1}w_i$ (respectively $w_iw_{i+1}$) would be involved in at least two crossings.  Therefore each dummy vertex $w_i$ of $W$ is flanked by two non-dummy vertices $w_{i-1},w_{i+1}\in V(G)$.  Since $w_i$ has degree $4>1$ in $G'$ and no two edges incident to a common vertex cross each other, $w_{i-1}\neq w_{i+1}$.  Since $G$ is edge-maximal, the edge $w_{i-1}w_{i+1}$ is an edge of $G$ on the boundary of $F$.  Therefore, if $F$ has a dummy vertex $w_i$ in its facial walk $W$, then $W=w_{i-1},w_i,w_{i+1}$ and $F$ is bounded by three edges of $G'$, each of which is contained in a different edge of $G$.
 
 \begin{figure}[!h]
@@ -968,10 +956,7 @@ For every graph $H$ of treewidth at most $t$ and for every path $P$, if $G\subse
 \[\chi_p(G)\le \ell (p+1)\, \chi_p(H) \leq \ell (p+1) \tbinom{p+t}{t}.\]
 \end{lem}
 
-
-
 For planar graphs of treewidth at most $3$ a $O(p^2\log p)$ upper bound is known:
-% \note{DW}{I prefer ``a $O(p^2\log p)$'', pronounced ``a big-O...''}
 
 \begin{lem}\cite{DFMS21}\label{simple_3tree_centered_colouring}
   For every planar graph $H$ of treewidth at most $3$,
