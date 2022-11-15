@@ -250,8 +250,8 @@ Let $G$ be a graph contained in $H\boxtimes P \boxtimes K_\ell$, for some graph 
 The remainder of this paper is organized as follows:
 \begin{compactitem}
   \item In \cref{Structure} we prove our main result for shortcut systems (\cref{ShortcutProduct}), and its optimisations for $k$-planar graphs and their genus-$g$ generalisation (\cref{kPlanarProduct,gkPlanarProduct}).
-  \item \Cref{examples} uses \cref{ShortcutProduct,kPlanarProduct,gkPlanarProduct} to derive product structure theorems for bounded-degree 
-  %\note{DW}{We actually make a stronger assumption than bounded degree; we assume each string is crossed at most $k$ times. I am happy to leave our write-up as is, but be aware of the difference. } 
+  \item \Cref{examples} uses \cref{ShortcutProduct,kPlanarProduct,gkPlanarProduct} to derive product structure theorems for bounded-degree
+  %\note{DW}{We actually make a stronger assumption than bounded degree; we assume each string is crossed at most $k$ times. I am happy to leave our write-up as is, but be aware of the difference. }
   string graphs, powers of bounded-degree graphs, map graphs of bounded clique number, and $k$-nearest neighbour graphs.
   \item \Cref{FramedSection} proves a product structure theorem for $d$-framed multigraphs in which the graph $H$ has treewidth $3$ and is planar.  Using this result, we derive improved product structure theorems for $1$-planar graphs and planar map graphs, again with a planar graph $H$.
   \item \Cref{Applications} quickly surveys applications of product structure theorems and the consequences of the current work.
@@ -555,7 +555,7 @@ In this section we give four examples of well-known graph families that can be e
 \subsection{Bounded-Degree String Graphs}
 \label{first_example}
 
-A \defin{string graph} is the intersection graph of a set of curves in the plane with no three curves meeting at a single point; see  \cite{PachToth-DCG02,FP10,FP14} for example. For an integer $\delta\geq 2$, if each curve is in at most $\delta$ intersections with other curves, then the corresponding string graph is called a \defin{$\delta$-string graph}. A \defin{$(g,\delta)$-string} graph is defined analogously for curves on a surface of Euler genus at most $g$.
+A \defin{string graph} is the intersection graph of a set of curves (\defin{strings}) in the plane with no three curves meeting at a single point; see  \cite{PachToth-DCG02,FP10,FP14} for example. For an integer $\delta\geq 2$, if each curve is in at most $\delta$ intersections with other curves, then the corresponding string graph is called a \defin{$\delta$-string graph}.\footnote{Every $\delta$-string graph has maximum degree at most $\delta$.  However, it is not necessarily the case that every string graph of maximum degree $\delta$ is a $\delta$-string graph.  If a pair of strings intersect in $c\ge 1$ points, then this counts as $c$ crossings for each string, but only contributes one to the degree of each.} A \defin{$(g,\delta)$-string} graph is defined analogously for curves on a surface of Euler genus at most $g$.
 
 \begin{lem}
 \label{StringShortcut}
