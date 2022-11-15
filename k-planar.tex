@@ -114,7 +114,7 @@ David R. Wood%
 \maketitle
 
 \begin{abstract}
-Dujmovi\'c~et~al.~[\emph{J.~ACM}~'20] recently \note{DW}{delete ``recently''?} proved that every planar graph is isomorphic to a subgraph of the strong product of a bounded treewidth graph and a path. Analogous results were obtained for graphs of bounded Euler genus or apex-minor-free graphs. These tools have been used to solve longstanding problems on queue layouts, non-repetitive colouring, $p$-centered colouring, and adjacency labelling. This paper proves analogous product structure theorems for various non-minor-closed classes. One noteable example is $k$-planar graphs (those with a drawing in the plane in which each edge is involved in at most $k$ crossings). We prove that every $k$-planar graph is isomorphic to a subgraph of the strong product of a graph of treewidth $O(k^5)$ and a path. This is the first result of this type for a non-minor-closed class of graphs. It implies, amongst other results, that $k$-planar graphs have non-repetitive chromatic number upper-bounded by a function of $k$. All these results generalise for drawings of graphs on arbitrary surfaces. In fact, we work in a more general setting based on so-called shortcut systems, which are of independent interest. This leads to analogous results for certain types of map graphs, string graphs, graph powers, and nearest neighbour graphs.
+Dujmovi\'c~et~al.~[\emph{J.~ACM}~'20] proved that every planar graph is isomorphic to a subgraph of the strong product of a bounded treewidth graph and a path. Analogous results were obtained for graphs of bounded Euler genus or apex-minor-free graphs. These tools have been used to solve longstanding problems on queue layouts, non-repetitive colouring, $p$-centered colouring, and adjacency labelling. This paper proves analogous product structure theorems for various non-minor-closed classes. One noteable example is $k$-planar graphs (those with a drawing in the plane in which each edge is involved in at most $k$ crossings). We prove that every $k$-planar graph is isomorphic to a subgraph of the strong product of a graph of treewidth $O(k^5)$ and a path. This is the first result of this type for a non-minor-closed class of graphs. It implies, amongst other results, that $k$-planar graphs have non-repetitive chromatic number upper-bounded by a function of $k$. All these results generalise for drawings of graphs on arbitrary surfaces. In fact, we work in a more general setting based on so-called shortcut systems, which are of independent interest. This leads to analogous results for certain types of map graphs, string graphs, graph powers, and nearest neighbour graphs.
 \end{abstract}
 \end{titlepage}
 \pagenumbering{roman}
@@ -126,9 +126,9 @@ Dujmovi\'c~et~al.~[\emph{J.~ACM}~'20] recently \note{DW}{delete ``recently''?} p
 \section{Introduction}
 \label{Introduction}
 
-The starting point for this work is the following `product structure theorem' for planar graphs\footnote{In this paper, all graphs are finite and undirected. Unless mentioned otherwise, all graphs are also simple. For any graph $G$ and any set $S$ (typically $S\subseteq V(G)$), let $G[S]$  denote the graph with vertex set $V(G)\cap S$ and edge set $\{uv\in E(G) : u,v\in S\}$.  We use $G-S$ as a shorthand for $G[V(G)\setminus S]$. Undefined terms are in \citep{Diestel5}.} by \citet{DJMMUW20} (with an improvement by \citet{UWY22}). A graph $G$ is \defin{contained} in a graph $X$ if $G$ is isomorphic to a subgraph of $X$.
+The starting point for this work is the following `product structure theorem' for planar graphs\footnote{In this paper, all graphs are finite and undirected. Unless mentioned otherwise, all graphs are also simple. For any graph $G$ and any set $S$ (typically $S\subseteq V(G)$), let $G[S]$  denote the graph with vertex set $V(G)\cap S$ and edge set $\{uv\in E(G) : u,v\in S\}$.  We use $G-S$ as a shorthand for $G[V(G)\setminus S]$. Undefined terms are in \citep{Diestel5}.} by \citet{dujmovic.joret.ea:planar} (with an improvement by \citet{UWY22}). A graph $G$ is \defin{contained} in a graph $X$ if $G$ is isomorphic to a subgraph of $X$.
 
-\begin{thm}[\citep{DJMMUW20,UWY22}]
+\begin{thm}[\citep{dujmovic.joret.ea:planar,UWY22}]
 \label{PlanarProduct}
 Every planar graph is contained in:
 \begin{compactenum}[(a)]
@@ -154,7 +154,7 @@ and treewidth\footnote{For a tree $T$, a \defin{$T$-decomposition} of a graph $G
 
 \noindent\cref{PlanarProduct} has been the key tool in solving the following well-known open problems:
 \begin{compactitem}
-\item \citet{DJMMUW20} use it to prove that planar graphs have bounded queue-number (resolving a conjecture of \citet{HLR92}).
+\item \citet{dujmovic.joret.ea:planar} use it to prove that planar graphs have bounded queue-number (resolving a conjecture of \citet{HLR92}).
 \item  \citet{dujmovic.esperet.ea:planar} use it to prove that planar graphs have bounded non-repetitive chromatic number (resolving a conjecture of \citet{AGHR-RSA02}).
 \item \citet{DFMS21} use it to prove that planar graphs have $p$-centered chromatic number $O(p^2\log p)$ and give a matching lower bound.
 \item \citet{DEJGMM21} use it to find asymptotically optimal adjacency labellings of planar graphs (resolving a problem of \citet{kannan.naor.ea:implicit}).
@@ -163,7 +163,7 @@ and treewidth\footnote{For a tree $T$, a \defin{$T$-decomposition} of a graph $G
 In addition, \cref{PlanarProduct} has been used to resolve or make substantial progress on a number of other problems on planar graphs, including $\ell$-vertex ranking~\citep{BDJM} and twin-width~\citep{BKW}.
 
 
-All of these results hold for any graph class that has a product structure theorem analogous to \cref{PlanarProduct}; that is, for any graph class  $\mathcal{G}$ where every graph in $\mathcal{G}$ is contained in $H\boxtimes P\boxtimes K_\ell$ where $H$ has bounded treewidth, $P$ is a path, and $\ell$ is bounded.\footnote{It is easily seen that $\tw(H\boxtimes K_\ell) \leq (\tw(H)+1)\ell-1$, so we may assume that $\ell=1$ in this statement.} These applications motivate finding product structure theorems for other graph classes. \citet{DJMMUW20} prove product structure theorems for graphs of bounded Euler genus\footnote{The \textit{Euler genus} of a surface with $h$ handles and $c$ crosscaps is $2h+c$. The \textit{Euler genus} of a graph $G$ is the minimum integer $g$ such that $G$ embeds in a surface of Euler genus $g$. Of course, a graph is planar if and only if it has Euler genus 0; see \citep{mohar.thomassen:graphs} for more about graph embeddings in surfaces.} and for apex-minor-free graphs,\footnote{A graph $M$ is a \textit{minor} of a graph $G$ if a graph isomorphic to $M$ can be obtained from a subgraph of $G$ by contracting edges. A class $\mathcal{G}$ of graphs is \defin{minor-closed} if for every graph $G\in\mathcal{G}$, every minor of $G$ is in $\mathcal{G}$. A minor-closed class is \defin{proper} if it is not the class of all graphs. For example, for fixed $g\geq 0$, the class of graphs with Euler genus at most $g$ is a proper minor-closed class. A graph $G$ is $t$-apex if it contains a set $A$ of at most $t$ vertices such that $G-A$ is planar. A 1-apex graph is \defin{apex}.  A minor-closed class $\mathcal{G}$ is apex-minor-free if some apex graph is not in $\mathcal{G}$.} and \citet{DEMWW22} do so for bounded-degree graphs in any minor-closed class. See \citep{DHJLW21} for a survey on this topic.
+All of these results hold for any graph class that has a product structure theorem analogous to \cref{PlanarProduct}; that is, for any graph class  $\mathcal{G}$ where every graph in $\mathcal{G}$ is contained in $H\boxtimes P\boxtimes K_\ell$ where $H$ has bounded treewidth, $P$ is a path, and $\ell$ is bounded.\footnote{It is easily seen that $\tw(H\boxtimes K_\ell) \leq (\tw(H)+1)\ell-1$, so we may assume that $\ell=1$ in this statement.} These applications motivate finding product structure theorems for other graph classes. \citet{dujmovic.joret.ea:planar} prove product structure theorems for graphs of bounded Euler genus\footnote{The \textit{Euler genus} of a surface with $h$ handles and $c$ crosscaps is $2h+c$. The \textit{Euler genus} of a graph $G$ is the minimum integer $g$ such that $G$ embeds in a surface of Euler genus $g$. Of course, a graph is planar if and only if it has Euler genus 0; see \citep{mohar.thomassen:graphs} for more about graph embeddings in surfaces.} and for apex-minor-free graphs,\footnote{A graph $M$ is a \textit{minor} of a graph $G$ if a graph isomorphic to $M$ can be obtained from a subgraph of $G$ by contracting edges. A class $\mathcal{G}$ of graphs is \defin{minor-closed} if for every graph $G\in\mathcal{G}$, every minor of $G$ is in $\mathcal{G}$. A minor-closed class is \defin{proper} if it is not the class of all graphs. For example, for fixed $g\geq 0$, the class of graphs with Euler genus at most $g$ is a proper minor-closed class. A graph $G$ is $t$-apex if it contains a set $A$ of at most $t$ vertices such that $G-A$ is planar. A 1-apex graph is \defin{apex}.  A minor-closed class $\mathcal{G}$ is apex-minor-free if some apex graph is not in $\mathcal{G}$.} and \citet{DEMWW22} do so for bounded-degree graphs in any minor-closed class. See \citep{DHJLW21} for a survey on this topic.
 
 The main purpose of this paper is to prove product structure theorems for several non-minor-closed classes of interest. Our results are the first of this type for non-minor-closed classes.
 
@@ -225,13 +225,13 @@ Let $G$ be a graph contained in $H\boxtimes P \boxtimes K_\ell$, for some graph 
     \begin{tabular}{lccl}
       \hline
       {Graph class} & $\tw(H)$ & $\ell$ & {Reference} \\ \hline
-      planar & $3^*$ & $3$ & \cite{DJMMUW20} \\
+      planar & $3^*$ & $3$ & \cite{dujmovic.joret.ea:planar} \\
       planar & $4^*$ & $2$ & \cite{bose.morin.ea:optimal} \\
       planar & $6^*$ & $1$ & \cite{UWY22} \\
       genus $g$ & $3^*$ & $\max\{2g,3\}$ & \cite{DHHW22} \\
       genus $g$ & $2g+6$ & 1 & \cite{UWY22} \\
-      apex-minor-free & $O(1)$ & $O(1)$ & \cite{DJMMUW20} \\
-      % B-minor-free & $O(1)$ & $O(1)$ & \cite{DJMMUW20} \\
+      apex-minor-free & $O(1)$ & $O(1)$ & \cite{dujmovic.joret.ea:planar} \\
+      % B-minor-free & $O(1)$ & $O(1)$ & \cite{dujmovic.joret.ea:planar} \\
       $k$-planar & $\binom{k+4}{3}-1$ & $18k^2 + 48k + 30$ & \cref{kPlanarProduct} \\
       $(g,k)$-planar & $\binom{k+4}{3}-1$ & $\max\{2g,3\}(6k^2+16k+10)$ & \cref{gkPlanarProduct} \\
       $(g,\delta)$-string & $\binom{\delta+4}{3}-1$ & $\max\{2g,3\}(\delta^4 + 4\delta^3 + 9\delta^2 + 10\delta+4)$ & \cref{StringProduct} \\
@@ -250,7 +250,9 @@ Let $G$ be a graph contained in $H\boxtimes P \boxtimes K_\ell$, for some graph 
 The remainder of this paper is organized as follows:
 \begin{compactitem}
   \item In \cref{Structure} we prove our main result for shortcut systems (\cref{ShortcutProduct}), and its optimisations for $k$-planar graphs and their genus-$g$ generalisation (\cref{kPlanarProduct,gkPlanarProduct}).
-  \item \Cref{examples} uses \cref{ShortcutProduct,kPlanarProduct,gkPlanarProduct} to derive product structure theorems for bounded-degree \note{DW}{We actually make a stronger assumption than bounded degree; we assume each string is crossed at most $k$ times. I am happy to leave our write-up as is, but be aware of the difference. } string graphs, powers of bounded-degree graphs, map graphs of bounded clique number, and $k$-nearest neighbour graphs.
+  \item \Cref{examples} uses \cref{ShortcutProduct,kPlanarProduct,gkPlanarProduct} to derive product structure theorems for bounded-degree 
+  %\note{DW}{We actually make a stronger assumption than bounded degree; we assume each string is crossed at most $k$ times. I am happy to leave our write-up as is, but be aware of the difference. } 
+  string graphs, powers of bounded-degree graphs, map graphs of bounded clique number, and $k$-nearest neighbour graphs.
   \item \Cref{FramedSection} proves a product structure theorem for $d$-framed multigraphs in which the graph $H$ has treewidth $3$ and is planar.  Using this result, we derive improved product structure theorems for $1$-planar graphs and planar map graphs, again with a planar graph $H$.
   \item \Cref{Applications} quickly surveys applications of product structure theorems and the consequences of the current work.
 \end{compactitem}
@@ -272,13 +274,13 @@ For any partition $\PP$ of $V(G)$ and any layering $\mathcal{L}$ of $G$ we defin
 
 These definitions relate to strong products as follows.
 
-\begin{lem}[\citep{DJMMUW20}]
+\begin{lem}[\citep{dujmovic.joret.ea:planar}]
 \label{PartitionProduct}
 For every graph $H$, a graph $G$ has an $H$-partition of layered width at most $\ell$ if and only if $G$ is contained in $H \boxtimes P \boxtimes K_\ell$ for some path $P$.
 \end{lem}
 
 As an example of the use of layered partitions, to prove \cref{PlanarProduct}(a),
-\citet{DJMMUW20} build on an earlier result of \citet{PS21} to show that every planar graph has an $H$-partition of layered width $1$ for some planar graph $H$ of treewidth at most $8$ (improved to $6$ in \citep{UWY22}). The proof is constructive and gives a simple quadratic-time algorithm for finding the corresponding partition and layering.\footnote{\citet{bose.morin.ea:optimal} have recently given linear time algorithms for computing layered $H$-partitions of planar graphs.}
+\citet{dujmovic.joret.ea:planar} build on an earlier result of \citet{PS21} to show that every planar graph has an $H$-partition of layered width $1$ for some planar graph $H$ of treewidth at most $8$ (improved to $6$ in \citep{UWY22}). The proof is constructive and gives a simple quadratic-time algorithm for finding the corresponding partition and layering.\footnote{\citet{bose.morin.ea:optimal} have recently given linear time algorithms for computing layered $H$-partitions of planar graphs.}
 
 By \cref{PartitionProduct}, \cref{ShortcutProduct} is equivalent to the following result, whose proof is the subject of the next section.
 
@@ -472,14 +474,14 @@ As mentioned in \cref{Introduction}, \cref{PlanarProduct,ShortcutProduct} imply 
 \cref{kPlanarProduct} shows that every $k$-planar graph is contained in $H\boxtimes P \boxtimes K_\ell$ for some graph $H$ with treewidth $O(k^3)$ where $\ell\leq O(k^2)$.  In some applications, the treewidth of $H$ is much more significant than the value of $\ell$, which leads to the following question:
 
 \noindent\textbf{Open Problem:}
-  Does there exist a function $\ell:\N\to\N$ and a universal constant $C$ such that every $k$-planar graph is contained in $H\boxtimes P \boxtimes K_{\ell(k)}$ for some graph $H$ with treewidth at most $C$?  Perhaps $C=3$, which is the case for planar graphs (\cref{PlanarProduct}(b)) and for $1$-planar graphs (\cref{1_planar_product}). Note that $C\geq 3$ even for planar graphs \citep{DJMMUW20}.
+  Does there exist a function $\ell:\N\to\N$ and a universal constant $C$ such that every $k$-planar graph is contained in $H\boxtimes P \boxtimes K_{\ell(k)}$ for some graph $H$ with treewidth at most $C$?  Perhaps $C=3$, which is the case for planar graphs (\cref{PlanarProduct}(b)) and for $1$-planar graphs (\cref{1_planar_product}). Note that $C\geq 3$ even for planar graphs \citep{dujmovic.joret.ea:planar}.
 
 \subsection{\boldmath $(g,k)$-Planar Graphs}
 \label{gk_planar_section}
 
 As mentioned in the introduction, product structure theorems have been established for several minor-closed classes in addition to planar graphs, including the following version of \cref{PlanarProduct} for graphs of bounded Euler genus.
 
-\begin{thm}[\citep{DJMMUW20,UWY22,DHHW22}]\label{GenusProduct}
+\begin{thm}[\citep{dujmovic.joret.ea:planar,UWY22,DHHW22}]\label{GenusProduct}
   Every graph of Euler genus $g$ is contained in:
   \begin{compactenum}[(a)]
   \item $H  \boxtimes P$ for some graph $H$ of treewidth at most $2g+6$  and some path $P$.
@@ -605,7 +607,7 @@ Let $G$ be a graph of maximum degree $\Delta$ that is contained in $H\boxtimes P
 
 \subsection{Map Graphs of Bounded Clique Number}
 
-\note{PM}{To make the referee happy I've added the ``bounded-degree'' qualifier to string graphs and the ``bounded clique number'' qualifier to map graphs.  Do we want to explcitly state that the clique number of a $(g,d)$-map graph is bounded by a function of $g$ and $d$?  Proof (for the $g=0$ case): A $d$-map representation gives a drawing with at most $\floor{\tfrac{d-2}{2}}\ceil{\tfrac{d-2}{2}}\in O(d^2)$ crossings per edge, but any drawing of $K_{\omega}$ on a surface of genus-$g$ has an edge that is crossed $\Omega(\omega^2)$ times. So if $G$ is a $d$-map graph then $\omega(G) \in O(d)$.} \note{DW}{I see no need to state that the clique number of a $(g,d)$-map graph is bounded by a function of $g$ and $d$. This is implied by \cref{gdMapProduct} and is not used in its proof. Also, surely there is a more combinatorial proof (with better bounds) than what you get by counting crossings.}
+%\note{PM}{To make the referee happy I've added the ``bounded-degree'' qualifier to string graphs and the ``bounded clique number'' qualifier to map graphs.  Do we want to explcitly state that the clique number of a $(g,d)$-map graph is bounded by a function of $g$ and $d$?  Proof (for the $g=0$ case): A $d$-map representation gives a drawing with at most $\floor{\tfrac{d-2}{2}}\ceil{\tfrac{d-2}{2}}\in O(d^2)$ crossings per edge, but any drawing of $K_{\omega}$ on a surface of genus-$g$ has an edge that is crossed $\Omega(\omega^2)$ times. So if $G$ is a $d$-map graph then $\omega(G) \in O(d)$.} \note{DW}{I see no need to state that the clique number of a $(g,d)$-map graph is bounded by a function of $g$ and $d$. This is implied by \cref{gdMapProduct} and is not used in its proof. Also, surely there is a more combinatorial proof (with better bounds) than what you get by counting crossings.}
 
 Map graphs are defined as follows. Start with a graph $G_0$ embedded in a surface of Euler genus $g$, with each face labelled a `nation' or a `lake', where each vertex of $G_0$ is incident with at most $d$ nations. Let $G$ be the graph whose vertices are the nations of $G_0$, where two vertices are adjacent in $G$ if the corresponding faces in $G_0$ share a vertex. Then $G$ is called a \defin{$(g,d)$-map graph}.  A $(0,d)$-map graph is called a (plane) \defin{$d$-map graph}; see \citep{FLS-SODA12,CGP02} for example. The $(g,3)$-map graphs are precisely the graphs of Euler genus at most $g$; see \citep{dujmovic.eppstein.ea:structure}.
 
@@ -680,7 +682,7 @@ Note that \cref{nearest-neighbour} is tight up to the leading constant:  Every $
 \section{Framed Graphs}
 \label{FramedSection}
 
-For any integer $d\ge 3$, an \note{DW}{add ``$\R^2$-''}embedded (multi)graph $G$ is \defin{$d$-framed} if it has a biconnected plane spanning (multi)subgraph $G_0$, whose facial cycles each have length at most $d$,  and such that the interior of each edge in $E(G)\setminus E(G_0)$ is contained in some face (possibly the outer face) of $G_0$. The embedded (multi)graph $G_0$ is called the \defin{frame} of $G$. This definition (for simple graphs) was introduced by \citet{BDGGMR}.  A $d$-framed graph $G$ is \defin{edge-maximal} with respect to its frame $G_0$ if, for each face $F$ of $G_0$ and each pair of distinct vertices $v,w\in V(F)$, $vw\in E(F)$ or $G$ contains an edge $vw$ whose interior is contained in $F$.
+For any integer $d\ge 3$, an $\R^2$-embedded (multi)graph $G$ is \defin{$d$-framed} if it has a biconnected plane spanning (multi)subgraph $G_0$, whose facial cycles each have length at most $d$,  and such that the interior of each edge in $E(G)\setminus E(G_0)$ is contained in some face (possibly the outer face) of $G_0$. The embedded (multi)graph $G_0$ is called the \defin{frame} of $G$. This definition (for simple graphs) was introduced by \citet{BDGGMR}.  A $d$-framed graph $G$ is \defin{edge-maximal} with respect to its frame $G_0$ if, for each face $F$ of $G_0$ and each pair of distinct vertices $v,w\in V(F)$, $vw\in E(F)$ or $G$ contains an edge $vw$ whose interior is contained in $F$.
 
 Every edge-maximal $d$-framed multigraph can be described by a $(2,d(d-3)/2)$-shortcut system applied to a plane multigraph by adding a vertex inside each face $F$ of $G_0$ adjacent to the vertices of $F$ and creating a length-$2$ shortcut between each non-adjacent pair of vertices in $V(F)$. Thus \cref{ShortcutProduct,PlanarProduct} imply that any $d$-framed multigraph $G$ is a subgraph of $H\boxtimes P\boxtimes K_{O(d^2)}$ where the treewidth of $H$ is at most $10$.  However, for framed graphs we prove the following stronger result, where the treewidth bound on $H$ is best possible and the dependence on $d$ is only linear.\footnote{A multigraph $G$ is \defin{contained} in a graph $X$ if the simple graph underlying $G$ is contained in $X$.}
 
@@ -708,7 +710,7 @@ The following definition is a convenient way to establish the planarity of $H$ i
 
 A \defin{BFS spanning forest} $T$ of $G$ rooted at a set $V_0\subseteq V(G)$ is a spanning forest of $G$ that contains a tree rooted at each vertex of $V_0$ with the property that for each $v\in V(G)$,
 \[  \min\{\dist_G(v,w):w\in V_0\}=\min\{\dist_T(v,w):w\in V_0\}.  \]
-\cref{d_framed_product_stucture} is a consequence of the following technical lemma, which is an extension of the analogous result for plane graphs~\cite[Lemma~17]{DJMMUW20}.  For readers already familiar with the proof in \cite{dujmovic.joret.ea:planar}, the main difference here is that a typical tripod in the proof of \cite[Lemma~17]{dujmovic.joret.ea:planar} consists of three upward paths in a BFS tree/forest whose lower endpoints belong to a single triangular face $\tau$.  In the current setting, a typical tripod consists of three upward paths whose lower endpoints belong to a common face $\tau$ of $G_0$ plus all of the (at most $d$) vertices of $\tau$ that are not already included in tripods.
+\cref{d_framed_product_stucture} is a consequence of the following technical lemma, which is an extension of the analogous result for plane graphs~\cite[Lemma~17]{dujmovic.joret.ea:planar}.  For readers already familiar with the proof in \cite{dujmovic.joret.ea:planar}, the main difference here is that a typical tripod in the proof of \cite[Lemma~17]{dujmovic.joret.ea:planar} consists of three upward paths in a BFS tree/forest whose lower endpoints belong to a single triangular face $\tau$.  In the current setting, a typical tripod consists of three upward paths whose lower endpoints belong to a common face $\tau$ of $G_0$ plus all of the (at most $d$) vertices of $\tau$ that are not already included in tripods.
 
 \begin{lem}
   \label{induction} The setup:
@@ -732,7 +734,7 @@ A \defin{BFS spanning forest} $T$ of $G$ rooted at a set $V_0\subseteq V(G)$ is 
 \end{lem}
 
 \begin{proof}
-This proof is similar to the proofs of Lemmas~13 and 17 in \cite{DJMMUW20}, but is complicated by several factors.  In particular, the reader should keep in mind that $G$ and $G_0$ are multigraphs and that the cycle $F$ may consist of two vertices and two (parallel) edges.
+This proof is similar to the proofs of Lemmas~13 and 17 in \cite{dujmovic.joret.ea:planar}, but is complicated by several factors.  In particular, the reader should keep in mind that $G$ and $G_0$ are multigraphs and that the cycle $F$ may consist of two vertices and two (parallel) edges.
 
 We proceed by induction on $(x,y)$ where $x$ is the number of inner vertices of $N_0$ and $y$ is the number of inner faces of $N_0$.  The induction base case occurs when $N_0$ has no inner vertices (that is, $V(N_0)=V(F)$). In this case, simply take $\PP:=\{P_1,\ldots,P_k\}$ and verify that the preconditions of the lemma (the `setup') ensure that $\PP$ satisfies the requirements (i)--(iii):
   \begin{compactenum}[(i)]
@@ -753,7 +755,7 @@ Our $H$-partition $\mathcal{P}$ will include $P_1,\dots,P_k$ and a (possibly emp
     \item If $k=3$ then assign each vertex $v$ of $N_0$ a colour $\alpha(v)\in\{1,\ldots,3\}$ as follows:  Let $w$ be the first vertex of $V(F)$ encountered on the path in $T$ from $v$ to the root of the tree that contains $v$.  (This implies that $w=v$ when $v$ is a vertex of $F$.)  Since $w\in V(F)$, $w\in P_i$ for some $i\in\{1,\ldots,k\}$ and we define $\alpha(v):=i$.  Now, for each $d'\in\{4,\ldots,d\}$ and each $d'$-sided inner face $F$ of $N_0$, add $d'-3$ edges inside of $F$ to split it into $3$-sided faces.  This yields a plane supergraph $N_0'$ of $N_0$ in which each inner face has exactly three edges on its boundary. By Sperner's Lemma (see \citep{Proofs4}) there exists an inner face $\tau':=v_1,v_2,v_3$ of $N_0'$ such that $\alpha(v_i)=i$ for each $i\in\{1,2,3\}$.\footnote{Although Sperner's Lemma is usually stated for simple graphs, the proof considers a certain graph defined over the faces of $N_0'$.  The proof relies only on the fact that the number of odd-degree vertices in this graph is even (known as the \defin{Handshake Lemma}), which is true even when this graph is non-simple.}  Let $\tau:=v_1,\ldots,v_p$ be (the facial cycle of) the face in $N_0$ that contains $\tau'$.
   \end{compactenum}
 
-  \begin{figure}[!b]
+  \begin{figure}[!h]
     \begin{center}
       \begin{tabular}{c@{}c@{}c}
         \includegraphics{figs/zoomba-1} &
@@ -883,9 +885,9 @@ As discussed in the introduction, product structure has been used to resolve a n
 %%%%%%%%%%%%%%%%%%%
 \subsection{Queue Layouts}
 
-For an integer $k\geq 0$, a \defin{$k$-queue layout} of a graph $G$ consists of a linear ordering $\preceq$ of $V(G)$ and a partition $\{E_1,E_2,\dots,E_k\}$ of $E(G)$, such that for $i\in\{1,2,\dots,k\}$, no two edges in $E_i$ are nested with respect to $\preceq$. That is, it is not the case that $v\prec x \prec y \prec w$ for edges $vw,xy\in E_i$. The \defin{queue-number} of a graph $G$, denoted by \defin{$\qn(G)$}, is the minimum integer $k$ such that $G$ has a $k$-queue layout. Queue-number was introduced by \citet{HLR92}, who famously conjectured that planar graphs have bounded queue-number. \citet{DJMMUW20} recently \note{DW}{delete ``recently''?} proved this conjecture using \cref{PlanarProduct} and the following lemma. Indeed, resolving this question was the motivation for the development of \cref{PlanarProduct}.
+For an integer $k\geq 0$, a \defin{$k$-queue layout} of a graph $G$ consists of a linear ordering $\preceq$ of $V(G)$ and a partition $\{E_1,E_2,\dots,E_k\}$ of $E(G)$, such that for $i\in\{1,2,\dots,k\}$, no two edges in $E_i$ are nested with respect to $\preceq$. That is, it is not the case that $v\prec x \prec y \prec w$ for edges $vw,xy\in E_i$. The \defin{queue-number} of a graph $G$, denoted by \defin{$\qn(G)$}, is the minimum integer $k$ such that $G$ has a $k$-queue layout. Queue-number was introduced by \citet{HLR92}, who famously conjectured that planar graphs have bounded queue-number. \citet{dujmovic.joret.ea:planar} proved this conjecture using \cref{PlanarProduct} and the following lemma. Indeed, resolving this question was the motivation for the development of \cref{PlanarProduct}.
 
-\begin{lem}[\citep{DJMMUW20}]
+\begin{lem}[\citep{dujmovic.joret.ea:planar}]
 \label{qn}
 If $G\subseteq H \boxtimes P \boxtimes K_\ell$ then
 $\qn(G) \leq  3 \ell \, \qn(H) + \floor{\tfrac{3}{2}\ell}
@@ -909,14 +911,14 @@ The following corollary summarizes all of these results.
 \end{cor}
 
 
-Note that \citet{DJMMUW20} previously proved the bound of
+Note that \citet{dujmovic.joret.ea:planar} previously proved the bound of
 $O(g^{k+2})$ for $(g,k)$-planar graphs using \cref{GenusProduct} and an ad-hoc method. Our result provides a better bound when $g>2^{k^2}$.
 
 %%%%%%%%%%%%%%%%%%%
 \subsection{Non-Repetitive Colouring}
 
 The next two applications are in the field of graph colouring. For our purposes, a \defin{$c$-colouring} of a graph $G$ is any function $\phi\colon V(G)\to C$, where $C$ is a set of size at most $c$.
-A $c$-colouring $\phi$ of $G$ is \defin{non-repetitive} if, for every path $v_1,\ldots,v_{2h}$ in $G$, there exists $i\in\{1,\ldots,h\}$ such that $\phi(v_i)\neq\phi(v_{i+h})$.  The \defin{non-repetitive chromatic number} $\pi(G)$ of $G$ is the minimum integer $c$ such that $G$ has a non-repetitive $c$-colouring. This concept, introduced by \citet{AGHR-RSA02}, has since been widely studied; see \citep{Wood21} for an extensive survey. Up until recently the main open problem in the field has been \note{DW}{replace ``has been'' by ``was''?} whether planar graphs have bounded non-repetitive chromatic number, first asked by \citet{AGHR-RSA02}. \citet{dujmovic.esperet.ea:planar} recently \note{DW}{delete ``recently''?}  solved this question using \cref{PlanarProduct} and the following lemma.
+A $c$-colouring $\phi$ of $G$ is \defin{non-repetitive} if, for every path $v_1,\ldots,v_{2h}$ in $G$, there exists $i\in\{1,\ldots,h\}$ such that $\phi(v_i)\neq\phi(v_{i+h})$.  The \defin{non-repetitive chromatic number} $\pi(G)$ of $G$ is the minimum integer $c$ such that $G$ has a non-repetitive $c$-colouring. This concept, introduced by \citet{AGHR-RSA02}, has since been widely studied; see \citep{Wood21} for an extensive survey. Up until recently the main open problem in the field was whether planar graphs have bounded non-repetitive chromatic number, first asked by \citet{AGHR-RSA02}. \citet{dujmovic.esperet.ea:planar} solved this question using \cref{PlanarProduct} and the following lemma.
 
 \begin{lem}[\citep{dujmovic.esperet.ea:planar}]
 \label{non-repetitive}
