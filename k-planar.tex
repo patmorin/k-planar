@@ -141,7 +141,7 @@ Here $\boxtimes$ is the strong product,\!\footnote{The \defin{strong product} of
   $v=w$ and $xy\in E(B)$, or
   $x=y$ and $vw\in E(A)$, or
   $vw\in E(A)$ and $xy\in E(B)$.}
-and treewidth\footnote{For a tree $T$, a \defin{$T$-decomposition} of a graph $G$ is a collection $\mathcal{T}=(B_x:x\in V(T))$ of subsets of $V(G)$ indexed by the nodes of $T$ such that
+and treewidth\footnote{For a tree $T$, a \defin{$T$-decomposition} of a graph $G$ is an indexed family $\mathcal{T}=(B_x:x\in V(T))$ of subsets of $V(G)$ indexed by the nodes of $T$ such that
 (i) for every $vw\in E(G)$, there exists some node $x\in V(T)$ with $v,w\in B_x$; and
 (ii) for every $v\in V(G)$, the induced subgraph $T[v] := T[\{x: v\in B_x\}]$ is connected. The \defin{width} of $\mathcal{T}$ is $\max\{|B_x|:x\in V(T)\}-1$.  A \defin{tree-decomposition} is a $T$-decomposition for any tree $T$. The \defin{treewidth} $\tw(G)$ of a graph $G$ is the minimum width of a tree-decomposition of $G$.  Treewidth is the standard measure of how similar a graph is to a tree. Indeed, a connected graph has treewidth 1 if and only if it is a tree. Treewidth is of fundamental importance in structural and algorithmic graph theory; see \citep{Reed03,HW17,Bodlaender-TCS98} for surveys.} is an invariant that measures how `tree-like' a given graph is; see \cref{ProductExample} for an example. Loosely speaking, \cref{PlanarProduct} says that every planar graph is contained in the product of a tree-like graph and a path. This enables combinatorial results for graphs of bounded treewidth to be generalised for planar graphs (with different constants).
 
@@ -336,7 +336,7 @@ For a node $x\in V(T)$, we say that a shortcut $P\in\SS$ \defin{crosses} $x$ if 
   Since $H_v$ contains a path from $x_0$ to $x$ for each $x\in V(H_v)\setminus\{x_0\}$,  $H_v$ is connected.  Since $H_v$ is connected, $x_r$---which is the lowest common $T$-ancestor of $V(H_v)$---is itself a node of $V(H_v)$.  Therefore $H_v$ contains a path $x_0,\ldots,x_r$ of length at most $k-1$.  By the definition of $H_v$, $v$ participates in each of $x_0,\ldots,x_r$.
 \end{proof}
 
-For each $x\in V(T)$, define $S_x := \{v\in V(G): a(v)= x\}$. Since $a:V(G)\to V(T)$ is a function with domain $V(G)$ and range $V(T)$, $\PP:=(S_x : x\in V(T))$ is a collection of disjoint sets that cover $V(G)$. Let $J:=G^\SS/\PP$ denote the resulting quotient graph. We consider $V(J)\subseteq V(T)$, where each $x\in V(J)$ is the vertex obtained by contracting $S_x$ in $G^{\SS}$. (Any node $x\in V(T)$ with $S_x=\emptyset$ does not contribute a vertex to $J$.)
+For each $x\in V(T)$, define $S_x := \{v\in V(G): a(v)= x\}$. Since $a:V(G)\to V(T)$ is a function with domain $V(G)$ and range $V(T)$, $\PP:=(S_x : x\in V(T))$ is an indexed family of disjoint sets that cover $V(G)$. Let $J:=G^\SS/\PP$ denote the resulting quotient graph. We consider $V(J)\subseteq V(T)$, where each $x\in V(J)$ is the vertex obtained by contracting $S_x$ in $G^{\SS}$. (Any node $x\in V(T)$ with $S_x=\emptyset$ does not contribute a vertex to $J$.)
 
 From this point onward, the plan is to show that:
 \begin{compactenum}[(i)]
