@@ -250,9 +250,7 @@ Let $G$ be a graph contained in $H\boxtimes P \boxtimes K_\ell$, for some graph 
 The remainder of this paper is organized as follows:
 \begin{compactitem}
   \item In \cref{Structure} we prove our main result for shortcut systems (\cref{ShortcutProduct}), and its optimisations for $k$-planar graphs and their genus-$g$ generalisation (\cref{kPlanarProduct,gkPlanarProduct}).
-  \item \Cref{examples} uses \cref{ShortcutProduct,kPlanarProduct,gkPlanarProduct} to derive product structure theorems for bounded-degree
-  %\note{DW}{We actually make a stronger assumption than bounded degree; we assume each string is crossed at most $k$ times. I am happy to leave our write-up as is, but be aware of the difference. }
-  string graphs, powers of bounded-degree graphs, map graphs of bounded clique number, and $k$-nearest neighbour graphs.
+  \item \Cref{examples} uses \cref{ShortcutProduct,kPlanarProduct,gkPlanarProduct} to derive product structure theorems for bounded-degree string graphs, powers of bounded-degree graphs, map graphs of bounded clique number, and $k$-nearest neighbour graphs.
   \item \Cref{FramedSection} proves a product structure theorem for $d$-framed multigraphs in which the graph $H$ has treewidth $3$ and is planar.  Using this result, we derive improved product structure theorems for $1$-planar graphs and planar map graphs, again with a planar graph $H$.
   \item \Cref{Applications} quickly surveys applications of product structure theorems and the consequences of the current work.
 \end{compactitem}
@@ -606,8 +604,6 @@ Let $G$ be a graph of maximum degree $\Delta$ that is contained in $H\boxtimes P
 \end{thm}
 
 \subsection{Map Graphs of Bounded Clique Number}
-
-%\note{PM}{To make the referee happy I've added the ``bounded-degree'' qualifier to string graphs and the ``bounded clique number'' qualifier to map graphs.  Do we want to explcitly state that the clique number of a $(g,d)$-map graph is bounded by a function of $g$ and $d$?  Proof (for the $g=0$ case): A $d$-map representation gives a drawing with at most $\floor{\tfrac{d-2}{2}}\ceil{\tfrac{d-2}{2}}\in O(d^2)$ crossings per edge, but any drawing of $K_{\omega}$ on a surface of genus-$g$ has an edge that is crossed $\Omega(\omega^2)$ times. So if $G$ is a $d$-map graph then $\omega(G) \in O(d)$.} \note{DW}{I see no need to state that the clique number of a $(g,d)$-map graph is bounded by a function of $g$ and $d$. This is implied by \cref{gdMapProduct} and is not used in its proof. Also, surely there is a more combinatorial proof (with better bounds) than what you get by counting crossings.}
 
 Map graphs are defined as follows. Start with a graph $G_0$ embedded in a surface of Euler genus $g$, with each face labelled a `nation' or a `lake', where each vertex of $G_0$ is incident with at most $d$ nations. Let $G$ be the graph whose vertices are the nations of $G_0$, where two vertices are adjacent in $G$ if the corresponding faces in $G_0$ share a vertex. Then $G$ is called a \defin{$(g,d)$-map graph}.  A $(0,d)$-map graph is called a (plane) \defin{$d$-map graph}; see \citep{FLS-SODA12,CGP02} for example. The $(g,3)$-map graphs are precisely the graphs of Euler genus at most $g$; see \citep{dujmovic.eppstein.ea:structure}.
 
