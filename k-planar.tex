@@ -968,7 +968,9 @@ Combining \cref{p-centered,simple_3tree_centered_colouring} with our results on 
 \begin{cor}\label{p_centered_cor}
   The following bounds hold for the $p$-centered chromatic number of any graph from each of the following classes:
   \begin{compactitem}
-    \item $k$-planar: $(18k^2+48k+30)\cdot 4^{\binom{k+4}{3}}$
+    \item $k$-planar: 
+    %$(18k^2+48k+30)\cdot 4^{\binom{k+4}{3}}$ WRONG
+     $(18k^2+48k+30) (p+1)\, \binom{p+\binom{k+4}{3}-1}{\binom{k+4}{3}-1}$
     \item $(g,k)$-planar: $\max\{2g,3\}\cdot(6k^2+16k+10)(p+1)\binom{p+\binom{k+4}{3}-1}{\binom{k+4}{3}-1}$
     % \item $(g,\delta)$-string: $g4^{O(\delta^3)}$
     \item $1$-planar: $7(p+1)^2(p\ceil{\log(p+1)}+2p+1)$
